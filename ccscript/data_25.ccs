@@ -1,0 +1,532 @@
+/*
+ * EarthBound Text Dump
+ * Time: 09:28:30 - 12/02/2022
+ * Generated using CCScriptWriter.
+ */
+
+command e(label) "{long label}"
+
+// Text Data
+l_0xc6e298:
+    "@Ground floor." end
+
+l_0xc6e2a4:
+    "[06 4B 00 {e(l_0xc6e45a)}]" goto(l_0xc6e2ab)
+
+l_0xc6e2ab:
+    "@Oooo la la." next
+    "@This... this is my poor old friend..." next
+    "@Ah... what's your name..." next
+    "{counter(1)}" call(data_33.l_0xc7dc7f) "[1B 02 {e(l_0xc6e33a)}]@Ah, Pig's Butt..." next
+    "@No, You're [1C 02 01]'s friend." next
+    "@Pig's Butt, you came here to beg me for some money, right?" next
+    goto(l_0xc6e36d)
+
+l_0xc6e33a:
+    "@Pig's Butt... no no, [1C 02 01]!" next
+    "@Didn't you come here to beg me for some money?" next
+    goto(l_0xc6e36d)
+
+l_0xc6e36d:
+    "@Oooo la la." next
+    "@Don't you recognize me?" next
+    "@I'm Master Pokey!" next
+    "@Pokey!" next
+    "@Get it?" next
+    "@I'm now Geldegarde Monotoli's partner," next
+    "@and I give him political and economic advice." next
+    "@I heard there were some ratty-looking kids asking for Mr. Monotoli..." next
+    "{counter(1)}" call(data_33.l_0xc7dc7f) "[1B 03 {e(l_0xc6e426)}]@Was that you [1C 02 01]?" next
+    goto(l_0xc6e426)
+
+l_0xc6e426:
+    "@This isn't a place for the likes of you!" next
+    "@Get outta here!{pause(20)}  Now, loser![03]{window_closeall}" goto(data_40.l_0xc894ac)
+
+l_0xc6e45a:
+    "[06 71 02 {e(l_0xc6e2ab)}]@Oooo la la." next
+    "@You shouldn't be satisfied with eating just some more [1C 01 04]." next
+    "@You're so out of it." next
+    "@I've ordered <Trout-flavored Yogurt.>" next
+    "@It's very popular among gourmets." next
+    "@Aren't you jealous that I get to eat such a tongue-tickling treat?" next
+    "@Ha ha ha!" next
+    "@<Trout-flavored Yogurt>...{pause(20)}  Oooo, I can't wait!" next
+    "@I'm starting to drool all over myself just thinking about it." end
+
+l_0xc6e557:
+    "{counter(1)}" call(data_33.l_0xc7dc7f) "[1B 03 {e(l_0xc6e57d)}]@You haven't changed much, [1C 02 01]." next
+    goto(l_0xc6e5a1)
+
+l_0xc6e57d:
+    "@Have I met you before?" next
+    "@You're just annoying kids to me..." next
+    goto(l_0xc6e5a1)
+
+l_0xc6e5a1:
+    "@I'm Aloysius Minch, Pokey's dad." next
+    "@Due to my son's success,{pause(15)} I now live the life of a rich man." next
+    "@<Every dog has its day...>" next
+    "@That's the perfect proverb to describe me!  HA! Haha!  hahaha!  hohohoho!" next
+    "@GWA HA Ha Ha hahahaha!" next
+    "@Hee ha haha hehe haha!" next
+    "@Ha hahaha... *cough, cough," linebreak
+    "  COOOOUGH!*" next
+    "@Oooo... my jaw is tired!" end
+
+l_0xc6e69c:
+    "[06 0A 00 {e(l_0xc6e759)}][06 8F 00 {e(l_0xc6e79a)}]@Shhh! Quiet!" linebreak
+    "[19 10 01]{rtoarg}  Aren't you [1C 02 00]?" next
+    "@Mr. Monotoli's maid, Electra, told me about you." next
+    "@I'll take you to Mr. Monotoli's office on the 48th floor." next
+    "@Only you may go.[03][19 10 01]{rtoarg}" goto(l_0xc6e71e)
+
+l_0xc6e71e:
+    "{window_closeall}[1F 16 65 03 01]{music(137)}[1F 15 B7 01 63 01 01]{pause(1)}[1F EF B7 01][1F E8 FF][1F 15 6A 00 46 02 01][1F 61]{music(139)}{pause(90)}[1F ED][1F E5 FF][1F 1F B7 01 06]{set(flag 350)}{set(flag 10)}" eob goto(l_0xc6e759)
+
+l_0xc6e759:
+    "[06 8F 00 {e(l_0xc6e7e9)}]@48th floor." next
+    "@A robot bodyguard is patrolling the floor." next
+    "@Be careful!" end
+
+l_0xc6e79a:
+    "@This elevator goes to the top of this building, the 48th floor." next
+    "@Enjoy your ride, even though it's only one floor.[03]" goto(l_0xc6e71e)
+
+l_0xc6e7e9:
+    "@48th floor." end
+
+l_0xc6e7f6:
+    "@Get away from me, kid!" end
+
+l_0xc6e806:
+    "@You won't get away from me, kid!" end
+
+l_0xc6e81a:
+    "[06 0A 00 {e(l_0xc6e8bf)}][06 D7 00 {e(l_0xc6e961)}][06 8F 00 {e(l_0xc6e8cc)}]@You might run into the maid, Electra." next
+    "@I wonder what your relationship is...(smile)." next
+    "@This elevator takes you to the 47th floor.[03]" goto(l_0xc6e884)
+
+l_0xc6e884:
+    "{window_closeall}[1F 16 66 03 01]{music(138)}[1F 15 B7 01 63 01 01]{pause(1)}[1F EF B7 01][1F E8 FF][1F 15 6A 00 47 02 01][1F 61]{music(139)}{pause(90)}[1F ED][1F E5 FF][1F 1F B7 01 06]{set(flag 350)}{set(flag 10)}" eob
+
+l_0xc6e8bf:
+    "@47th floor." end
+
+l_0xc6e8cc:
+    "@Are you a friend of the Runaway Five?" next
+    "@Would an autograph be asking for too much?" linebreak
+    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc6e90f)} {e(l_0xc6e90f)}]" goto(l_0xc6e90f)
+
+l_0xc6e90f:
+    "@I don't mean your autograph, silly.{wait}{window_closeall}[1F 16 66 03 01]{music(138)}[1F 15 B7 01 63 01 01]{pause(1)}[1F EF B7 01][1F E8 FF][1F 15 6A 00 47 02 01][1F 61]{music(139)}{pause(90)}[1F ED][1F E5 FF][1F 1F B7 01 06]{set(flag 350)}{set(flag 10)}" eob
+
+l_0xc6e961:
+    "@This elevator takes you to the 47th floor.{wait}" goto(l_0xc6e884)
+
+l_0xc6e982:
+    "[06 49 00 {e(l_0xc6ea0f)}][06 02 00 {e(l_0xc6e9d6)}][06 8D 00 {e(l_0xc6ea0f)}][1D 03 FF][1B 02 {e(l_0xc6e9d6)}][1D 0E 00 BD]@Your Trout-flavored yogurt, {store_registers}[19 10 01]" call(data_33.l_0xc7e6b3) ".[03]{load_registers}{set(flag 141)}{set(flag 2)}" call(data_33.l_0xc7dccf) next
+    goto(l_0xc6e9d6)
+
+l_0xc6e9d6:
+    "@Master Pokey's cool!" next
+    "@He gave me something the other day, and said <this is fit for a maid...>" end goto(l_0xc6ea0f)
+
+l_0xc6ea0f:
+    "@Thanks for dropping by, even though there's nothing to do, honey." end
+
+l_0xc6ea34:
+    "[06 A0 02 {e(l_0xc6ee6f)}][06 0F 00 {e(l_0xc6ee2e)}]@Look at my skinny arms,{pause(20)} thin body,{pause(20)} and gray hair..." next
+    "@I've become so weak since I lost the Mani Mani Statue." next
+    "@I'm sorry I kidnapped [1C 02 02]." next
+    "@I haven't done anything to her." next
+    "@...[1C 02 02] is a nice girl.[03]{window_closeall}{pause(60)}[1F 16 68 03 03]{pause(10)}{window_open(1)}@[1C 02 02]." next
+    "@Return to [1C 02 01]." next
+    "@I'm sorry I've created so much trouble for you.[03]{window_closeall}{pause(60)}" call(data_21.l_0xc68253) "{set(flag 15)}{unset(flag 776)}[19 23 68 03 01 FF 00][1F 16 68 03 00]{music_resume}{pause(120)}{window_open(1)}" goto(l_0xc6eb2c)
+
+l_0xc6eb2c:
+    "@....." next
+    "@I'll tell you everything." next
+    "@The Mani Mani Statue creates an illusion." next
+    "@It attracts evil spirits and weakens your heart." next
+    "@The power scared me so much, I hid the statue in the warehouse at Jackie's Cafe." next
+    "@I often went there to pray." next
+    "@....." next
+    "@Cryptic words appeared to me while I was in the illusion." next
+    "@[1C 02 01], your name appeared in the cryptic messages." next
+    "@<Stop [1C 02 01], and do so by your own hand.>" next
+    "@Or..." next
+    "@<Don't let them go to Summers.>" next
+    "@Or..." next
+    "@<Make sure they know nothing of the Pyramid>..." next
+    "@I don't fully understand the messages," next
+    "@but someone obviously doesn't want you to go to Summers." next
+    "{pause(60)}" linebreak
+    "@...Evil... Giygas... or something... I could hear the name..." next
+    "@Anyway, the evil side would be in trouble if you visit Summers..." next
+    "@Oh!  On the contrary, you should definitely go to Summers," next
+    "@especially because they don't want you to make it there." next
+    "@....." next
+    "@...Would you like to hear the whole story again?" linebreak
+    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc6eb2c)} {e(l_0xc6ed74)}]" goto(l_0xc6ed74)
+
+l_0xc6ed74:
+    "@Summers is located across the ocean.{pause(20)}  Take my helicopter." next
+    "@I'll open the door to my heliport.[03]{window_closeall}{pause(1)}[1F F1 68 03 BD 02][1F 61][1F F1 6C 03 BE 02][1F 61][1F F1 6C 03 2C 00][1F E6 68 03][1F 07 03]{pause(180)}{music(85)}[1F F1 6D 03 BF 02][1F 61][1F F1 6D 03 08 00][1F 07 02]{pause(30)}{sound(28)}{pause(60)}{music_resume}[1F E9 68 03][1F 61][1F F1 68 03 08 00]{window_open(1)}@You must go on!" next
+    "@[1C 02 01]!" next
+    "@This is your destiny." next
+    "{set(flag 664)}{set(flag 741)}" goto(l_0xc6ee2e)
+
+l_0xc6ee2e:
+    "@[1C 01 1E], it's time we said goodbye." next
+    "@Take care.{wait}{window_closeall}{set(flag 357)}{set(flag 358)}{set(flag 359)}{set(flag 360)}{set(flag 361)}{set(flag 362)}{set(flag 11)}{set(flag 754)}{set(flag 779)}{unset(flag 759)}" eob
+
+l_0xc6ee6f:
+    "@Pokey took the helicopter..." next
+    "@I hope he's okay..." end
+
+l_0xc6ee94:
+    "@(This bear won't attack you.{pause(20)}" linebreak
+    "  He's stuffed!)" end
+
+l_0xc6eeb4:
+    "[19 10 01]{rtoarg}@...[1C 02 01]!" next
+    "@You finally made it here!" next
+    "@...I'm fine." next
+    "@I believed you'd come and save me." next
+    "{pause(60)}" linebreak
+    "@Mr. Monotoli isn't really a bad person." next
+    "@Take some time to listen to him.{wait}{set(flag 10)}" eob goto(l_0xc6ef24)
+
+l_0xc6ef24:
+    "[06 65 01 {e(data_32.l_0xc7c588)}]" call(l_0xc6f054) call(data_21.l_0xc68562) "[1B 03 {e(data_21.l_0xc683de)}]{pause(1)}[1F F1 6F 03 7B 02]{set(flag 357)}" eob
+
+l_0xc6ef47:
+    "[06 66 01 {e(data_32.l_0xc7c588)}]" call(l_0xc6f054) call(data_21.l_0xc68562) "[1B 03 {e(data_21.l_0xc683de)}]{pause(1)}[1F F1 70 03 7B 02]{set(flag 358)}" eob
+
+l_0xc6ef6a:
+    "[06 67 01 {e(data_32.l_0xc7c588)}]" call(l_0xc6f054) call(data_21.l_0xc68562) "[1B 03 {e(data_21.l_0xc683de)}]{pause(1)}[1F F1 71 03 7B 02]{set(flag 359)}" eob
+
+l_0xc6ef8d:
+    "[06 68 01 {e(data_32.l_0xc7c588)}]" call(l_0xc6f054) call(data_21.l_0xc68562) "[1B 03 {e(data_21.l_0xc683de)}]{pause(1)}[1F F1 72 03 7B 02]{set(flag 360)}" eob
+
+l_0xc6efb0:
+    "[06 69 01 {e(data_32.l_0xc7c588)}]" call(l_0xc6f054) call(data_21.l_0xc68562) "[1B 03 {e(data_21.l_0xc683de)}]{pause(1)}[1F F1 79 03 7B 02]{set(flag 361)}" eob
+
+l_0xc6efd3:
+    "[06 6A 01 {e(data_32.l_0xc7c588)}]" call(l_0xc6eff9) call(data_21.l_0xc68569) "[1B 03 {e(data_21.l_0xc683de)}]{pause(1)}[1F F1 73 03 7B 02]{set(flag 362)}{set(flag 318)}" eob
+
+l_0xc6eff9:
+    "{window_open(1)}@Ping!{pause(20)}  Clankety clankety..." next
+    "@Rattle, rattle dwourrrrr!..." next
+    "@Squeeeek, tweet tweet...{pause(20)}  CLANK!!{wait}{window_closeall}" eob
+
+l_0xc6f054:
+    "{window_open(1)}@Secret code, please." next
+    "@Say your code in 10 seconds." next
+    "@10{pause(50)}, 9{pause(45)}, 8{pause(40)}, 7{pause(35)}, 6{pause(30)}, 5{pause(25)}, 4{pause(20)}, 3{pause(15)}, 2{pause(10)}, 1{pause(10)}.{window_closeall}" eob
+
+l_0xc6f0b5:
+    "[19 10 01]{rtoarg}@[1C 02 00], {swap}" call(data_33.l_0xc7e6b3) "..." next
+    "@Are you staying here tonight?" next
+    "@Thanks for being so generous with your tips..." next
+    "@...You never gave me a tip?... never mind..." end goto(l_0xc6f112)
+
+l_0xc6f112:
+    "@Hey, you!..." next
+    "@If you meet a beautiful, seductive woman who's looking for me,{pause(15)} tell her <hi.>" next
+    "@...Anyway, I don't think a woman like that would be looking for me..." end
+
+l_0xc6f175:
+    "[06 8F 00 {e(l_0xc6f1d6)}]@What?" next
+    "@Does Mr. Geldegarde Monotoli come here often?" next
+    "@Hello!{pause(20)}  Time to get up!!" next
+    "@It could never happen!...  Well, actually that's not true." end
+
+l_0xc6f1d6:
+    "@Sorry about the other day." next
+    "@This sidewalk cafe isn't as profitable as it used to be." next
+    "@This is just a hangout for the regulars." end
+
+l_0xc6f225:
+    "[06 8F 00 {e(l_0xc6f354)}]@Kids shouldn't be drinking espresso!" next
+    "@You shouldn't be hanging around here." next
+    "@What?" next
+    "@Mr. Monotoli's here?" next
+    "@You got that wrong, kid!" end
+
+l_0xc6f27c:
+    "[06 8F 00 {e(l_0xc6f354)}][06 91 00 {e(l_0xc6f2e7)}]@There's a loud noise outside." next
+    "@Must be the seventh inning stretch," next
+    "@and the fans are singing <Take me out to the ballgame> at the stadium.{wait}{set(flag 60)}" eob
+
+l_0xc6f2e7:
+    "@Kids shouldn't drink espresso.  It'll stunt your growth, stubby!" next
+    "@And quit hanging out around here." next
+    "@What?" next
+    "@Mr. Monotoli's here?" next
+    "@You must be thinking of someone else!" end
+
+l_0xc6f354:
+    "@Good evening, hero!{pause(20)}  How about an espresso?" end
+
+l_0xc6f374:
+    "[06 49 00 {e(l_0xc6f584)}][06 8F 00 {e(l_0xc6f4b1)}]@I'm surprised you talked to an ordinary guy like me." next
+    "@I have no information or items to help you out." next
+    "@Don't you think it's natural for a guy like me to be here?!" next
+    "@I enjoy the atmosphere here." next
+    "@By the way,{pause(15)} let me quiz you." next
+    "@There are 5 apples." next
+    "@If you eat one, how many are left?" next
+    "@5 minus 1 is 4...{pause(15)} so 4's left." next
+    "@...Ah, it's not funny?{pause(20)}  Okay, here's another one..." next
+    "@Master Pokey's maid Electra is <maid> to order..." next
+    "@...Oh, puns aren't funny either..." end
+
+l_0xc6f4b1:
+    "@I've been trying to think of some funny jokes..." next
+    "@I scream, you scream, we all scream for ice cream!" next
+    "@Waaa ha ha ha ha ha.  That's so funny!" next
+    "@That should really make you laugh." next
+    "@C'mon, laugh!" next
+    "@If you hear any funny jokes, be sure you let loose and laugh..." next
+    "@Please... I'm counting on you to laugh!" next
+    "@*boo hoo hoo*..." end
+
+l_0xc6f584:
+    "@Hey, long time no see!" next
+    "@I've thought of a new joke since before..." next
+    "@Knock, knock!... (who's there?)" next
+    "@Sawyer... (Sawyer who?)" next
+    "@Sawyer doin' well, I'm fine, too!" next
+    "@Baaa ha ha ha!..." next
+    "@...You don't think it's funny?" next
+    "@I really thought this would be funny to you." next
+    "@Now my self confidence is TOTALLY shot!  Back to therapy..." end
+
+l_0xc6f659:
+    "[06 8F 00 {e(l_0xc6f717)}]@I was in the middle of a caffeine buzz," next
+    "@and I had to get to the bathroom fast!" next
+    "@When I got there," next
+    "@I accidentally knocked on the wall instead of the restroom door..." next
+    "@The next thing I knew, someone asked <Who is it?> and really surprised me!" next
+    "@Maybe I just imagined it?..." end
+
+l_0xc6f717:
+    "@The hint that I gave you was critical to helping you win..." next
+    "@Happy happy!" next
+    "@We rock!  Ha ha ha." end
+
+l_0xc6f757:
+    "[06 8F 00 {e(l_0xc6f819)}]@I used to be Monotoli's employer." next
+    "@Then I realized his schemes made my company go bankrupt." next
+    "@My house and land were taken away..." next
+    "@Now I'm homeless..." next
+    "@Monotoli didn't used to be so powerful." next
+    "@I want to find out his secrets, so I'm spending my time here," next
+    "@watching to see if he ever drops in." end
+
+l_0xc6f819:
+    "[19 10 01]{rtoarg}@I wanna say thanks." next
+    "@Monotoli destroyed my life... but I've decided not to blame anyone." next
+    "@I'm having a wonderful time each and every day now." next
+    "@Thank you, thank you!" end goto(l_0xc6f881)
+
+l_0xc6f881:
+    "@You've brought the town of Fourside back to life." next
+    "@I appreciate it from the bottom of my heart." next
+    "@Thank you." end
+
+l_0xc6f8bf:
+    "@Seems like it's just for decoration." end
+
+l_0xc6f8d9:
+    "@This one is locked." end
+
+l_0xc6f8e6:
+    call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) "[1D 05 FF 24][1B 03 {e(l_0xc6fa93)}]{counter(36)}" call(l_0xc6fa2e) eob
+
+l_0xc6f913:
+    call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) "[1D 05 FF 4B][1B 03 {e(l_0xc6fa93)}]{counter(75)}" call(l_0xc6fa2e) eob
+
+l_0xc6f940:
+    call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) "[1D 05 FF 06][1B 03 {e(l_0xc6fa93)}]{counter(6)}" call(l_0xc6fa2e) eob
+
+l_0xc6f96d:
+    call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) "[1D 05 FF 07][1B 03 {e(l_0xc6fa93)}]{counter(7)}" call(l_0xc6fa2e) eob
+
+l_0xc6f99a:
+    call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) call(l_0xc6fa93) eob
+
+l_0xc6f9bb:
+    call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) call(l_0xc6fa93) eob
+
+l_0xc6f9dc:
+    call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) call(l_0xc6fa93) eob
+
+l_0xc6f9fd:
+    call(data_33.l_0xc7dd2c) "{result_is(205)}" eob
+
+l_0xc6fa05:
+    "{load_registers}{swap}{result_is(172)}" eob
+
+l_0xc6fa0c:
+    "{load_registers}{swap}@[1C 02 00] opened the locker using the [1C 05 AC].{sound(119)}[03]" newline
+    eob
+
+l_0xc6fa2e:
+    "{ctoarg}@There was a [1C 05 00] in the locker." next
+    "[1D 03 FF][1B 02 {e(l_0xc6fab4)}]{store_registers}[1D 0E 00 00]{load_registers}{swap}@[1C 02 00]{swap} got it.{wait}{sound(116)}{pause(1)}" eob
+
+l_0xc6fa68:
+    "{load_registers}" newline
+    "@(The key is bent and doesn't fit into the key hole!){wait}{set(flag 605)}" eob
+
+l_0xc6fa93:
+    "@(Unfortunately, there is nothing in this locker.)" end
+
+l_0xc6fab4:
+    "@However, you already have too many things to carry." next
+    "[19 10 01]{swap}@[1C 02 00]{swap} left it in the locker." end goto(l_0xc6fae5)
+
+l_0xc6fae5:
+    "[06 1D 02 {e(data_50.l_0xc9992f)}]" call(l_0xc6fb20) "[06 0E 00 {e(data_50.l_0xc9992f)}]{window_closeall}{pause(1)}" call(data_31.l_0xc79e55) eob
+
+l_0xc6fb02:
+    "{store_registers}[19 19 00 00]{swap}{result_is(172)}[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fb33) "[1F 1E DF 01 06]{set(flag 541)}" eob goto(l_0xc6fb20)
+
+l_0xc6fb20:
+    "{window_open(1)}@The door is locked.{wait}{window_closeall}" eob
+
+l_0xc6fb33:
+    "{load_registers}[19 19 00 00]{swap}@[1C 02 00]{swap} used" linebreak
+    "  the [1C 05 00]." next
+    "@The door opened.{wait}{sound(119)}" eob goto(l_0xc6fb5d)
+
+l_0xc6fb5d:
+    "@It wasn't the right key." end
+
+l_0xc6fb6d:
+    newline
+    "@The Suporma sang the song <Ode to Orange Kid.>" next
+    "@As soon as it finished, the machine broke down." end
+
+l_0xc6fbb5:
+    newline
+    "@By using the Insignificant Present, you had a very fruitful experience" next
+    "@that cannot be understood by someone who does not use something insignificant." end
+
+l_0xc6fc1a:
+    newline
+    " {user} used the Monkey Love." next
+    " All of a sudden, a monkey came along," next
+    " and pinned the enemy down with its tiny monkey body.[03]" eob
+
+l_0xc6fc6d:
+    newline
+    "@It smelled so unbelievably bad that you could not eat it." end
+
+l_0xc6fc94:
+    newline
+    "@(Dear [1C 01 08]," linebreak
+    "  How are you?" next
+    "@Since you left home on your journey, things have changed around here." next
+    "@For example, I don't have as much laundry." next
+    "@Also, we don't seem to eat [1C 01 04] as much as we used to." next
+    "@I heard that you defeated some universal evil character--what was it," next
+    "@Googi, or something like that?" next
+    "@Well, that sounds really great!" linebreak
+    "  I want to hear all the details, so hurry home, okay?" next
+    "@Tracy, [1C 01 03] and I are waiting for you." next
+    "@                                Love," linebreak
+    "                                  Mama)" end
+
+l_0xc6fdbe:
+    newline
+    "@(Dear [1C 01 34]," linebreak
+    "  Everything's really going great here." next
+    "@I wish I could have gone with you on your adventure, even just part of the way," next
+    "@but instead I'm sitting here, waiting for you in Winters." next
+    "@I want to see you again as soon as possible.  I can't wait to see your cheerful face." next
+    "@I bet your glasses are dirty... If you come back, I'll clean them for you!" next
+    "@Like I said, I'm waiting for you." next
+    "@                        Yours truly," linebreak
+    "                                   Tony " next
+    linebreak
+    "@P.S.  Don't show this letter to anyone!)" end
+
+l_0xc6fed6:
+    newline
+    "@(Dear [1C 01 1E]," linebreak
+    "  How are you doing?" linebreak
+    "  I'm fine." next
+    "@I fine too!" next
+    "@So are me!" next
+    "@Me also!" next
+    "@Me okay." next
+    "@Please come and play with us again at the Polestar Preschool." next
+    "@Oh yeah, one more thing, bring us some presents ...if you have any." next
+    "@                           Sincerely," linebreak
+    "               Your friends at the" linebreak
+    "               Polestar Preschool)" end
+
+l_0xc6ff9b:
+    newline
+    "@You would probably regret it if you ate this now...[03]" eob
+
+l_0xc6ffbb:
+    newline
+    "@This phone  only receives calls.  You cannot make outgoing calls from it.[03]" eob
+
+l_0xc70000:
+    "[09 50 {e(l_0xc70511)} {e(data_26.l_0xc7058d)} {e(data_26.l_0xc705e4)} {e(data_26.l_0xc7062a)} {e(data_26.l_0xc70688)} {e(data_26.l_0xc70711)} {e(data_26.l_0xc70789)} {e(data_26.l_0xc70868)} {e(data_26.l_0xc708dd)} {e(data_26.l_0xc70943)} {e(data_26.l_0xc709e8)} {e(data_26.l_0xc70a4c)} {e(data_26.l_0xc70ab5)} {e(data_26.l_0xc70b17)} {e(data_26.l_0xc70b59)} {e(data_26.l_0xc70bc4)} {e(data_26.l_0xc70bff)} {e(data_26.l_0xc70c4d)} {e(data_26.l_0xc70c8d)} {e(data_26.l_0xc70d2f)} {e(data_26.l_0xc70d5f)} {e(data_26.l_0xc70db0)} {e(data_26.l_0xc70db6)} {e(data_26.l_0xc70e26)} {e(data_26.l_0xc70e61)} {e(data_26.l_0xc70e95)} {e(data_26.l_0xc70f16)} {e(data_26.l_0xc7105d)} {e(data_26.l_0xc710bb)} {e(data_26.l_0xc71140)} {e(data_26.l_0xc7117e)} {e(data_26.l_0xc71208)} {e(data_26.l_0xc71295)} {e(data_26.l_0xc712e3)} {e(data_26.l_0xc712ec)} {e(data_26.l_0xc713cb)} {e(data_26.l_0xc71435)} {e(data_26.l_0xc7152c)} {e(data_26.l_0xc715b7)} {e(data_26.l_0xc7162b)} {e(data_26.l_0xc71677)} {e(data_26.l_0xc716b7)} {e(data_26.l_0xc7175b)} {e(data_26.l_0xc717bc)} {e(data_26.l_0xc71808)} {e(data_26.l_0xc71837)} {e(data_26.l_0xc7188e)} {e(data_26.l_0xc718e0)} {e(data_26.l_0xc7192c)} {e(data_26.l_0xc71973)} {e(data_26.l_0xc719d7)} {e(data_26.l_0xc71a14)} {e(data_26.l_0xc71a67)} {e(data_26.l_0xc71af0)} {e(data_26.l_0xc71b3f)} {e(data_26.l_0xc71baa)} {e(data_26.l_0xc71be2)} {e(data_26.l_0xc71cad)} {e(data_26.l_0xc71d08)} {e(data_26.l_0xc71d65)} {e(data_26.l_0xc71dd2)} {e(data_26.l_0xc71ea1)} {e(data_26.l_0xc71efb)} {e(data_26.l_0xc71f21)} {e(data_26.l_0xc71f78)} {e(data_26.l_0xc71fb8)} {e(data_26.l_0xc72026)} {e(data_26.l_0xc72139)} {e(data_26.l_0xc721d9)} {e(data_26.l_0xc72205)} {e(data_26.l_0xc72258)} {e(data_26.l_0xc72296)} {e(data_26.l_0xc722c1)} {e(data_26.l_0xc72348)} {e(data_26.l_0xc72398)} {e(data_26.l_0xc7246a)} {e(data_26.l_0xc724ab)} {e(data_26.l_0xc724d7)} {e(data_26.l_0xc7252b)} {e(data_26.l_0xc7259f)}]" end
+
+l_0xc70144:
+    "{set(flag 681)}{counter(35)}" call(l_0xc70198) eob
+
+l_0xc7014f:
+    "{set(flag 682)}{counter(50)}" call(l_0xc70198) eob
+
+l_0xc7015a:
+    "{set(flag 683)}{counter(60)}" call(l_0xc70198) eob
+
+l_0xc70165:
+    "{set(flag 684)}{set(flag 656)}{counter(75)}" call(l_0xc70198) "{unset(flag 656)}" eob
+
+l_0xc70176:
+    "{set(flag 685)}{set(flag 656)}{counter(150)}" call(l_0xc70198) "{unset(flag 656)}" eob
+
+l_0xc70187:
+    "{set(flag 686)}{set(flag 656)}{counter(100)}" call(l_0xc70198) "{unset(flag 656)}" eob
+
+l_0xc70198:
+    "[06 49 00 {e(data_26.l_0xc72398)}][06 4F 00 {e(data_26.l_0xc72348)}]{ctoarg}[06 08 00 {e(data_26.l_0xc726da)}]" call(data_26.l_0xc726b2) "@I could give you a great hint for just $[1C 0A 00 00 00 00]." next
+    "@You'd like a hint, wouldn't you?" linebreak
+    call(data_33.l_0xc7dd4d) "[11]{clearline}[09 02 {e(l_0xc7030f)} {e(l_0xc701f6)}]" goto(l_0xc701f6)
+
+l_0xc701f6:
+    "@So you're telling me that you don't want a hint?" next
+    "@You're either awfully confident or $[1C 0A 00 00 00 00] is too much to pay." next
+    "@Anyway, a young man like you is very unusual these days." next
+    "@If you happen to need a hint, c'mon back!" next
+    "@I'm here all the time..." end
+
+l_0xc70288:
+    "@So you're telling me that you don't want a hint?" next
+    "@You're either awfully confident or $[1C 0A 00 00 00 00] is too much to pay." next
+    "@Anyway, a young man like you is very unusual these days." next
+    "@You say that you don't want a hint?" next
+    "@Well, so long." end
+
+l_0xc7030f:
+    "[1D 14 00 00 00 00][1B 03 {e(data_26.l_0xc72664)}]{set(flag 8)}[1D 09 00 00]{open_wallet}{sound(118)}{pause(10)}" goto(l_0xc70329)
+
+l_0xc70329:
+    call(data_26.l_0xc72440) "[06 84 00 {e(data_26.l_0xc722c1)}][06 4A 00 {e(data_26.l_0xc72296)}][06 BD 00 {e(data_26.l_0xc72258)}][06 BC 00 {e(data_26.l_0xc72205)}][06 99 00 {e(data_26.l_0xc721d9)}][06 9B 00 {e(data_26.l_0xc72139)}][06 59 00 {e(data_26.l_0xc72026)}][06 7E 00 {e(data_26.l_0xc71fb8)}][06 6B 02 {e(data_26.l_0xc71f78)}][06 6A 02 {e(data_26.l_0xc71f21)}][06 7B 01 {e(data_26.l_0xc71efb)}][06 20 01 {e(data_26.l_0xc71ea1)}][06 DA 00 {e(data_26.l_0xc71dd2)}][06 12 01 {e(data_26.l_0xc71d65)}][06 5C 01 {e(data_26.l_0xc71d08)}][06 56 01 {e(data_26.l_0xc71cad)}][06 D9 00 {e(data_26.l_0xc71be2)}][06 94 00 {e(data_26.l_0xc71baa)}][06 10 00 {e(data_26.l_0xc71af0)}][06 69 02 {e(data_26.l_0xc71a67)}][06 51 01 {e(data_26.l_0xc71a14)}][06 CB 00 {e(data_26.l_0xc719d7)}][06 D7 00 {e(data_26.l_0xc71973)}][06 B8 00 {e(data_26.l_0xc7192c)}][06 76 02 {e(data_26.l_0xc718e0)}][06 8F 00 {e(data_26.l_0xc7188e)}][06 8E 00 {e(data_26.l_0xc71837)}][06 2A 02 {e(data_26.l_0xc71808)}][06 E9 02 {e(data_26.l_0xc717bc)}][06 4B 00 {e(data_26.l_0xc7179a)}][06 91 00 {e(data_26.l_0xc7175b)}][06 3C 00 {e(data_26.l_0xc716b7)}][06 8B 00 {e(data_26.l_0xc71677)}][06 39 00 {e(data_26.l_0xc7162b)}][06 93 00 {e(data_26.l_0xc715b7)}][06 5A 00 {e(data_26.l_0xc7152c)}][06 10 01 {e(data_26.l_0xc71435)}][06 1A 01 {e(data_26.l_0xc713cb)}][06 AE 00 {e(data_26.l_0xc712e3)}][06 5F 02 {e(data_26.l_0xc71295)}][06 D6 00 {e(data_26.l_0xc71208)}][06 89 00 {e(data_26.l_0xc7117e)}][06 47 00 {e(data_26.l_0xc71140)}][06 71 01 {e(data_26.l_0xc7105d)}][06 83 00 {e(data_26.l_0xc70f16)}][06 D5 00 {e(data_26.l_0xc70e95)}][06 5B 02 {e(data_26.l_0xc70e61)}][06 2C 01 {e(data_26.l_0xc70e26)}][06 28 02 {e(data_26.l_0xc70db6)}][06 31 00 {e(data_26.l_0xc70d5f)}][06 B1 01 {e(data_26.l_0xc70d2f)}][06 D3 00 {e(data_26.l_0xc70c8d)}][06 77 00 {e(data_26.l_0xc70c4d)}][06 55 00 {e(data_26.l_0xc70bff)}][06 0C 00 {e(data_26.l_0xc70bc4)}][06 0D 00 {e(data_26.l_0xc70b59)}][06 44 00 {e(data_26.l_0xc70b17)}][06 56 00 {e(data_26.l_0xc70ab5)}][06 E8 02 {e(data_26.l_0xc70a4c)}][06 E7 02 {e(data_26.l_0xc709e8)}][06 53 00 {e(data_26.l_0xc70943)}][06 2A 00 {e(data_26.l_0xc708dd)}][06 52 00 {e(data_26.l_0xc70868)}][06 D2 00 {e(data_26.l_0xc70789)}][06 69 00 {e(data_26.l_0xc70711)}][06 B6 00 {e(data_26.l_0xc70688)}][06 6C 00 {e(data_26.l_0xc7062a)}][06 50 00 {e(data_26.l_0xc705e4)}][06 40 00 {e(data_26.l_0xc7058d)}]" goto(l_0xc70511)
+
+l_0xc70511:
+    "@It seems that the citizens of Onett have been harassed" next
+    "@by those dang street punks called the Sharks." next
+    "@I wonder if going and talking to Frank," next
+    "@the leader of the Sharks, would do any good?" call(data_26.l_0xc726cb) eob
+

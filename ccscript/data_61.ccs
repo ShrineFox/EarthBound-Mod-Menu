@@ -1,0 +1,44 @@
+/*
+ * EarthBound Text Dump
+ * Time: 09:28:30 - 12/02/2022
+ * Generated using CCScriptWriter.
+ */
+
+command e(label) "{long label}"
+
+// Text Data
+l_0xefa0dc:
+    "{swap}@[1C 02 00] read the hieroglyphs." next
+    "@<To fight against the invaders, we built this pyramid fortress." next
+    "@However, our efforts were futile, and we lost." next
+    "@Nonetheless, our pyramid was protected by the gods of Scaraba." next
+    "@The invaders will be reborn every millennium and will attack again." next
+    "@Even now, the invaders hide beyond space and time and build their evil stronghold." next
+    "@A place out of time is beyond the Dark, and is even farther beyond the Lost Underworld." next
+    "@The Deep Darkness is shrouded, it is without light." next
+    "@Only one with the [1C 05 AF] can pierce the dark." next
+    "@The Sphinx now watches over everything," next
+    "@waiting for the coming of a truly brave hero." next
+    "@   #" linebreak
+    "  4   3" linebreak
+    "   2 5" next
+    "@Dance in front of the Sphinx!>" end
+
+l_0xefa2ab:
+    "[1F 41 07][1B 02 {e(l_0xefa2b5)}]" eob
+
+l_0xefa2b5:
+    "@This town is not shown on the map." end
+
+l_0xefa2c9:
+    "[06 6C 00 {e(l_0xefa2d5)}]" call(data_25.l_0xc6fb20) goto(l_0xefa2d5)
+
+l_0xefa2d5:
+    eob
+
+l_0xefa2d6:
+    "{store_registers}[19 19 00 00]{swap}{result_is(170)}[1B 02 {e(data_25.l_0xc6fb5d)}]" call(data_25.l_0xc6fb33) "{load_registers}[1D 0F 00 00][1F 1E 93 00 06]{set(flag 108)}[02]{set(flag 11)}[1F 15 6A 00 91 00 01][1F EF 6A 00][1F E8 FF][1F 61][1F EB FF 06]{music(83)}{music_switching_off}[1F ED][1F E5 FF][1F 15 A2 00 8B 00 01][1F 61][1F E9 6F 02][1F 61][1F 21 AE][1F 15 D1 00 92 00 01]{pause(1)}[1F EF D1 00][1F E8 FF]{pause(1)}[1F 61][1F ED][1F E5 FF][1F 11 01][1F 11 02][1F 12 03][1F 21 4D][1F 15 0D 00 B0 00 01]{pause(60)}[1F 1F 0D 00 06][1F 15 03 00 B1 00 01]{pause(1)}[1F E7 03 00]{window_open(1)}{unset(flag 11)}" goto(data_40.l_0xc884d0)
+
+l_0xefa379:
+    eob
+

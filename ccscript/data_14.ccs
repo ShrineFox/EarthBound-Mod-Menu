@@ -1,0 +1,332 @@
+/*
+ * EarthBound Text Dump
+ * Time: 09:28:30 - 12/02/2022
+ * Generated using CCScriptWriter.
+ */
+
+command e(label) "{long label}"
+
+// Text Data
+l_0xc5e0cc:
+    "{load_registers}" call(data_00.l_0xc507f8) call(l_0xc5e52e) "[1B 02 {e(l_0xc5e1ad)}]" goto(l_0xc5e0de)
+
+l_0xc5e0de:
+    "{store_registers}{swap}[1D 03 00][1B 02 {e(l_0xc5e1b7)}]{load_registers}[1D 02 02][1B 02 {e(l_0xc5e1e0)}]" call(l_0xc5e25b) call(l_0xc5e26a) "[1B 02 {e(l_0xc5e18f)}][1B 06][1D 0F 00 00]" call(l_0xc5e3a5) call(data_13.l_0xc5d835) "{store_registers}" call(data_00.l_0xc50990) call(data_33.l_0xc7dd4f) call(data_33.l_0xc7dd5e) "[09 02 {e(l_0xc5e136)} {e(l_0xc5e18b)}]" goto(l_0xc5e18b)
+
+l_0xc5e136:
+    "{sound(115)}" call(l_0xc5e277) "{load_registers}[1F 83 00 00]{store_registers}" call(l_0xc5e2f7) "{load_registers}{swap}[1B 02 {e(l_0xc5e18b)}]" call(l_0xc5e36e) "[1B 02 {e(l_0xc5e18b)}]" call(data_00.l_0xc50a72) call(data_33.l_0xc7dd4f) call(data_33.l_0xc7dd5e) "[09 02 {e(l_0xc5e17e)} {e(l_0xc5e18b)}]" goto(l_0xc5e18b)
+
+l_0xc5e17e:
+    call(data_13.l_0xc5d835) call(l_0xc5e37a) goto(l_0xc5e188)
+
+l_0xc5e188:
+    "{set(flag 224)}" goto(l_0xc5e18b)
+
+l_0xc5e18b:
+    "{unset(flag 658)}" eob
+
+l_0xc5e18f:
+    call(l_0xc5e387) call(data_00.l_0xc50b54) call(data_33.l_0xc7dd4f) call(data_33.l_0xc7dd5e) "[09 02 {e(l_0xc5e1e0)} {e(l_0xc5e1ad)}]" goto(l_0xc5e1ad)
+
+l_0xc5e1ad:
+    call(data_00.l_0xc50c36) goto(l_0xc5e18b)
+
+l_0xc5e1b7:
+    newline
+    call(data_00.l_0xc5197a) call(data_33.l_0xc7dd4f) call(data_33.l_0xc7dd5e) "[09 02 {e(l_0xc5e0cc)} {e(l_0xc5e1ad)}]" goto(l_0xc5e1ad)
+
+l_0xc5e1d6:
+    call(data_00.l_0xc50dce) goto(l_0xc5e18b)
+
+l_0xc5e1e0:
+    call(l_0xc5e3a5) call(data_13.l_0xc5d835) goto(l_0xc5e188)
+
+l_0xc5e1ef:
+    call(data_00.l_0xc510fe) call(l_0xc5e456) "[1B 02 {e(l_0xc5e236)}]{store_registers}[19 19 00 00][1D 0B 00][1B 02 {e(l_0xc5e241)}]" call(data_00.l_0xc511e0) call(data_33.l_0xc7dd4f) call(data_33.l_0xc7dd5e) "[09 02 {e(l_0xc5e22c)} {e(l_0xc5e237)}]" goto(l_0xc5e237)
+
+l_0xc5e22c:
+    call(l_0xc5e392) call(data_13.l_0xc5d835) goto(l_0xc5e236)
+
+l_0xc5e236:
+    eob
+
+l_0xc5e237:
+    call(data_00.l_0xc512c2) goto(l_0xc5e236)
+
+l_0xc5e241:
+    call(data_00.l_0xc51486) goto(l_0xc5e236)
+
+l_0xc5e24b:
+    "{swap}[1D 0A 00]{store_registers}{swap}[1D 14 00 00 00 00]" eob
+
+l_0xc5e25b:
+    "[1D 23 00]{result_is(1)}[1B 02 {e(l_0xc5e269)}]{set(flag 658)}" goto(l_0xc5e269)
+
+l_0xc5e269:
+    eob
+
+l_0xc5e26a:
+    "{load_registers}[1D 0E 00 00][1B 05][1D 11 00 00]" eob
+
+l_0xc5e277:
+    "{load_registers}{rtoarg}@([1C 02 00]'s[06 92 02 {e(l_0xc5e2c4)}][06 92 02 {e(l_0xc5e2c4)}] defense" linebreak
+    "  changed [09 04 {e(l_0xc5e2b0)} {e(l_0xc5e2b5)} {e(l_0xc5e2ba)} {e(l_0xc5e2bf)}]" goto(l_0xc5e2b0)
+
+l_0xc5e2b0:
+    " [1C 01 12]" eob
+
+l_0xc5e2b5:
+    " [1C 01 28]" eob
+
+l_0xc5e2ba:
+    " [1C 01 3E]" eob
+
+l_0xc5e2bf:
+    " [1C 01 54]" eob
+
+l_0xc5e2c4:
+    " offense" linebreak
+    "  changed [09 04 {e(l_0xc5e2e3)} {e(l_0xc5e2e8)} {e(l_0xc5e2ed)} {e(l_0xc5e2f2)}]" goto(l_0xc5e2e3)
+
+l_0xc5e2e3:
+    " [1C 01 11]" eob
+
+l_0xc5e2e8:
+    " [1C 01 27]" eob
+
+l_0xc5e2ed:
+    " [1C 01 3D]" eob
+
+l_0xc5e2f2:
+    " [1C 01 53]" eob
+
+l_0xc5e2f7:
+    " to{rtoarg}[06 92 02 {e(l_0xc5e338)}][09 04 {e(l_0xc5e314)} {e(l_0xc5e31d)} {e(l_0xc5e326)} {e(l_0xc5e32f)}]" goto(l_0xc5e314)
+
+l_0xc5e314:
+    "  [1C 01 12])" next
+    eob
+
+l_0xc5e31d:
+    "  [1C 01 28])" next
+    eob
+
+l_0xc5e326:
+    "  [1C 01 3E])" next
+    eob
+
+l_0xc5e32f:
+    "  [1C 01 54])" next
+    eob
+
+l_0xc5e338:
+    "[09 04 {e(l_0xc5e34a)} {e(l_0xc5e353)} {e(l_0xc5e35c)} {e(l_0xc5e365)}]" goto(l_0xc5e34a)
+
+l_0xc5e34a:
+    "  [1C 01 11])" next
+    eob
+
+l_0xc5e353:
+    "  [1C 01 27])" next
+    eob
+
+l_0xc5e35c:
+    "  [1C 01 3D])" next
+    eob
+
+l_0xc5e365:
+    "  [1C 01 53])" next
+    eob
+
+l_0xc5e36e:
+    "{swap}{store_registers}[19 19 00 00][1D 0B 00]" eob goto(l_0xc5e37a)
+
+l_0xc5e37a:
+    "[1D 08 00 00]{open_wallet}{load_registers}[1D 0F 00 00]" eob
+
+l_0xc5e387:
+    "[1B 06][1D 0F 00 00]{load_registers}{swap}" eob
+
+l_0xc5e392:
+    "[1D 08 00 00]{load_registers}[1D 0F 00 00]{open_wallet}{set(flag 657)}{set(flag 225)}" eob
+
+l_0xc5e3a5:
+    "{load_registers}[1D 0A 00]{swap}[1D 09 00 00]{open_wallet}{load_registers}[1D 0E 00 00]{set(flag 657)}" eob
+
+l_0xc5e3bc:
+    "{store_registers}{result_is(226)}[1B 03 {e(l_0xc5e3c9)}]{load_registers}" eob
+
+l_0xc5e3c9:
+    "[1D 21 0F][18 07 07 00 00 00 00][1B 02 {e(l_0xc5e42e)}][1D 21 08][18 07 04 00 00 00 00][1B 02 {e(l_0xc5e427)}][1D 21 04][18 07 03 00 00 00 00][1B 02 {e(l_0xc5e420)}][1D 21 01][1B 02 {e(l_0xc5e419)}][1D 21 02][1B 03 {e(l_0xc5e412)}]{counter(231)}{ctoarg}{swap}" eob
+
+l_0xc5e412:
+    "{counter(230)}{ctoarg}{swap}" eob
+
+l_0xc5e419:
+    "{counter(229)}{ctoarg}{swap}" eob
+
+l_0xc5e420:
+    "{counter(228)}{ctoarg}{swap}" eob
+
+l_0xc5e427:
+    "{counter(227)}{ctoarg}{swap}" eob
+
+l_0xc5e42e:
+    "{load_registers}" eob
+
+l_0xc5e431:
+    "{counter(1)}" goto(l_0xc5e433)
+
+l_0xc5e433:
+    "{ctoarg}[1D 19 00][1B 03 {e(l_0xc5e453)}][19 10 00][19 19 00 01]{swap}[1B 03 {e(l_0xc5e455)}]{inc}" goto(l_0xc5e433)
+
+l_0xc5e453:
+    "{result_is(0)}" goto(l_0xc5e455)
+
+l_0xc5e455:
+    eob
+
+l_0xc5e456:
+    "{open_hp}[1D 19 02][1B 03 {e(l_0xc5e499)}][1A 01 {e(l_0xc5e584)} {e(l_0xc5e58b)} {e(l_0xc5e592)} {e(l_0xc5e599)} 00]{rtoarg}[1B 02 {e(l_0xc5e48e)}][19 1B 02][1B 02 {e(l_0xc5e456)}][18 09 02][1B 02 {e(l_0xc5e456)}]" goto(l_0xc5e48e)
+
+l_0xc5e48e:
+    "{window_switch(2)}{window_closetop}{window_switch(1)}{swap}" eob goto(l_0xc5e499)
+
+l_0xc5e499:
+    "[19 10 01]{rtoarg}[1B 05][18 02][1B 06][1A 05 02 00][1B 06][18 09 02][1B 05]{window_switch(2)}{window_closetop}{window_switch(1)}[1B 06][1B 02 {e(l_0xc5e4c2)}]{swap}" eob goto(l_0xc5e4c2)
+
+l_0xc5e4c2:
+    eob
+
+l_0xc5e4c3:
+    "[1D 19 02][1B 03 {e(l_0xc5e504)}][1A 01 {e(l_0xc5e584)} {e(l_0xc5e58b)} {e(l_0xc5e592)} {e(l_0xc5e599)} 00]{rtoarg}[1B 02 {e(l_0xc5e4f9)}][19 1B 02][1B 02 {e(l_0xc5e4c3)}][18 09 02][1B 02 {e(l_0xc5e4c3)}]" goto(l_0xc5e4f9)
+
+l_0xc5e4f9:
+    "{window_switch(2)}{window_closetop}{window_switch(14)}{swap}" eob goto(l_0xc5e504)
+
+l_0xc5e504:
+    "[19 10 01]{rtoarg}[1B 05][18 02][1B 06][1A 05 02 00][1B 06][18 09 02][1B 05]{window_switch(2)}{window_closetop}{window_switch(14)}[1B 06][1B 02 {e(l_0xc5e52d)}]{swap}" eob goto(l_0xc5e52d)
+
+l_0xc5e52d:
+    eob
+
+l_0xc5e52e:
+    "[1A 01 {e(l_0xc5e584)} {e(l_0xc5e58b)} {e(l_0xc5e592)} {e(l_0xc5e599)} 02]{window_switch(2)}{window_closetop}{window_switch(1)}" eob
+
+l_0xc5e54a:
+    "[1A 01 {e(l_0xc5e5a0)} {e(l_0xc5e5a7)} {e(l_0xc5e5ae)} {e(l_0xc5e5b5)} 02][1B 05][1B 02 {e(l_0xc5e579)}]{swap}[1D 03 00][1B 03 {e(l_0xc5e579)}][1B 06]{swap}" goto(l_0xc5e54a)
+
+l_0xc5e579:
+    "[1B 06]{window_switch(44)}{window_closetop}{window_switch(1)}" eob
+
+l_0xc5e584:
+    "[18 02][1A 05 02 01]" eob
+
+l_0xc5e58b:
+    "[18 02][1A 05 02 02]" eob
+
+l_0xc5e592:
+    "[18 02][1A 05 02 03]" eob
+
+l_0xc5e599:
+    "[18 02][1A 05 02 04]" eob
+
+l_0xc5e5a0:
+    "[18 02][1A 05 2C 01]" eob
+
+l_0xc5e5a7:
+    "[18 02][1A 05 2C 02]" eob
+
+l_0xc5e5ae:
+    "[18 02][1A 05 2C 03]" eob
+
+l_0xc5e5b5:
+    "[18 02][1A 05 2C 04]" eob
+
+l_0xc5e5bc:
+    "{set(flag 104)}{set(flag 288)}[1F 11 02][1F 11 03][1F E5 FF][1F 21 AE][1F 15 6A 00 17 02 01]{pause(1)}[1F EF 6A 00][1F E8 FF]" eob
+
+l_0xc5e5df:
+    "[1F 16 29 04 03][1F F1 29 04 08 00]" eob
+
+l_0xc5e5eb:
+    "[1F 11 02][1F E5 FF][1F 21 AF][1F 15 6A 00 18 02 01]{pause(1)}[1F EF 6A 00][1F E8 FF]" eob
+
+l_0xc5e605:
+    "[1F 11 02][1F 11 03][1F 11 04][1F E5 FF][1F 21 B0][1F 15 6A 00 19 02 01][1F 15 22 01 2C 00 01]{pause(1)}[1F EF 6A 00][1F E8 FF]" eob
+
+l_0xc5e62c:
+    "[1F F2 22 01 1A 02]" eob
+
+l_0xc5e633:
+    "[1F E5 FF][1F EB FF 06][1F 21 B1][1F 15 CD 00 1B 02 01][1F 15 FE 00 1C 02 01]{pause(1)}[1F EF CD 00][1F E8 FF]" eob
+
+l_0xc5e655:
+    "[1F 11 02][1F 11 03][1F 11 04][1F E5 FF][1F 21 B2][1F 15 6A 00 1D 02 01]{pause(1)}[1F EF 6A 00][1F E8 FF]" eob
+
+l_0xc5e675:
+    "[1F E5 FF][1F 21 B3][1F F0][1F E5 01][1F 15 6A 00 1E 02 01]{pause(1)}[1F EF 6A 00][1F E8 FF]" eob
+
+l_0xc5e691:
+    "[1F 11 02][1F 11 03][1F E5 FF][1F 21 B4][1F 15 6A 00 1F 02 01]{pause(1)}[1F EF 6A 00][1F E8 FF]" eob
+
+l_0xc5e6ae:
+    "{set(flag 60)}[1F 11 03][1F E5 FF][1F 21 B5][1F 15 6A 00 20 02 01]{pause(1)}[1F EF 6A 00][1F E8 FF]" eob
+
+l_0xc5e6cb:
+    "[1F 16 BA 03 07][1F F1 BA 03 08 00]" eob
+
+l_0xc5e6d7:
+    "[1F 11 02][1F 11 03][1F E5 FF][1F 21 B6][1F 15 6A 00 21 02 01]{pause(1)}[1F EF 6A 00][1F E8 FF]" eob
+
+l_0xc5e6f4:
+    "[1F E5 FF][1F 21 B7][1F 15 6A 00 22 02 01]{pause(1)}[1F EF 6A 00][1F E8 FF]" eob
+
+l_0xc5e70b:
+    "{set(flag 469)}{set(flag 11)}[1F EB FF 06][1F 15 6A 00 DC 01 01]" call(data_52.l_0xc9b4b8) "[1F 21 96][1F E6 BA 00][1F 15 6A 00 DD 01 01]" call(data_52.l_0xc9b4b8) "[1F 21 97][1F 15 6A 00 DE 01 01]" call(data_52.l_0xc9b4b8) "{set(flag 477)}{set(flag 532)}{set(flag 749)}[1F 21 0A][1F E9 1A 00][1F E9 1B 00]{pause(120)}{pause(120)}{pause(120)}{pause(120)}{pause(120)}{pause(60)}[1F 1E 1B 00 06][1F 15 6A 00 24 00 01]{unset(flag 532)}{set(flag 533)}{music_resume}[1F 61][1F 1E 1A 00 06][1F EC FF 01][1F F2 6A 00 72 02][1F EF 6A 00][1F E8 FF][1F 61][1F ED]{set(flag 476)}{unset(flag 477)}{unset(flag 469)}{save}" eob
+
+l_0xc5e79f:
+    "{set(flag 375)}{music_resume}[1F 17 16 00 26 00 01]" eob
+
+l_0xc5e7ac:
+    "[06 FB 02 {e(data_53.l_0xc9c85d)}][1F 01 00]{sound(8)}[1F 15 6A 00 27 00 01]" call(data_52.l_0xc9b4b8) "[1F 17 11 00 0B 00 01][1F 1E 16 00 06]{sound(9)}[1F ED][19 23 11 00 01 01 00][1F 16 11 00 00][19 22 01 02 11 00][1F 13 01 00][1F E5 FF]{pause(1)}[1F E6 11 00]{set(flag 97)}{set(flag 301)}{unset(flag 295)}{set(flag 467)}{set(flag 531)}{unset(flag 473)}{window_open(1)}" call(data_28.l_0xc75c33) "{window_closeall}" eob goto(l_0xc5e812)
+
+l_0xc5e812:
+    "[1F F1 15 00 08 00]" eob
+
+l_0xc5e819:
+    "[1F F1 15 00 29 00]" eob
+
+l_0xc5e820:
+    "[1F E9 13 00][1F 61][1F E6 13 00]{window_open(1)}" goto(data_28.l_0xc75c33)
+
+l_0xc5e832:
+    eob
+
+l_0xc5e833:
+    "[1F 1E 10 00 06][1F 17 12 00 2B 00 01]" eob
+
+l_0xc5e840:
+    "[1F 1C 05 03]{pause(60)}[1F 1D 05]{window_open(1)}@Hey [1C 01 08]!{pause(20)}[19 22 01 01 05 00][1F 13 01 00]  So, are you just gonna wander around wherever you please?" next
+    "@Don't you think we should focus on getting Picky home?[03]{window_closeall}" eob goto(l_0xc5e8a0)
+
+l_0xc5e8a0:
+    "[1F 1A 7C 00 03]{pause(60)}[1F 1B 7C 00][1F 1E 7C 00 06][1F 15 2D 00 08 00 01]@Wha-!" next
+    "[19 24 2D 00 01 01 00][1F E4 2D 00 00]@Oh!" next
+    "@You woke me up..." next
+    "@Pokey!{pause(15)}  I've been looking all over for you..." next
+    "@You see,{pause(15)} Pokey got scared and ran away..." next
+    "@Well, I'm glad that you're okay at least..." next
+    "@Let's go home now.{pause(20)}  I bet Mom and Dad are worried sick about us." next
+    "@Geez!{pause(15)}  Sometimes I wonder which one of us is the real big brother.[03]{sound(16)}" call(data_21.l_0xc681f0) "{set(flag 20)}{set(flag 37)}{set(flag 742)}[1F 66 01 0F 45 EA C5 00]{set(flag 100)}{unset(flag 466)}{unset(flag 468)}{set(flag 11)}[02][19 10 03]{result_is(7)}[1B 02 {e(data_50.l_0xc9992f)}]{window_open(1)}[19 22 01 01 07 00][1F 13 01 00][19 22 05 01 07 00][1F 13 05 00]@Awo{pause(5)}o{pause(5)}o{pause(5)}o{pause(5)}of!" next
+    "@(If I knew this was going to be such a scary place," next
+    "@I wouldn't have come along...{pause(20)}  I'm outta here!){wait}" call(data_21.l_0xc683d5) "{window_closeall}[1F 15 28 00 2E 00 01][1F 61][1F F1 7C 00 73 02]{set(flag 304)}[02][06 12 00 {e(l_0xc5ea3d)}]" eob
+
+l_0xc5ea3d:
+    "[1F 15 5B 01 33 00 01]" eob
+
+l_0xc5ea45:
+    "[1F 67 01][19 22 05 01 01 00][1F 13 05 00]{window_open(1)}[19 22 01 01 05 00][1F 13 01 00]@[1C 02 01]!" next
+    "@Do you hear a buzzing that sounds like a bee flying around?" next
+    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(data_15.l_0xc5eabf)} {e(data_15.l_0xc5eaa3)}]" goto(data_15.l_0xc5eaa3)
+

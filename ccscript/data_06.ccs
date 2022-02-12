@@ -1,0 +1,390 @@
+/*
+ * EarthBound Text Dump
+ * Time: 09:28:30 - 12/02/2022
+ * Generated using CCScriptWriter.
+ */
+
+command e(label) "{long label}"
+
+// Text Data
+l_0xc575f8:
+    "@I stayed here the whole time you were gone." next
+    "@But now I don't know why I did." end
+
+l_0xc5762c:
+    "[06 50 01 {e(l_0xc576e0)}]@I am not sure if it was the <Dungeon Man,> but..." next
+    "@there is a strange looking tower to the northwest." next
+    "@...This key I picked up a little while ago shall maybe open the tower." next
+    "@You may have it, I do not need it.[1D 03 FF][1B 02 {e(l_0xc57718)}][03][1D 0E 00 C0][1B 05]" call(data_33.l_0xc7dcb6) "{set(flag 336)}{wait}{window_closeall}{isset(flag 691)}[1B 02 {e(data_50.l_0xc9992f)}]{pause(60)}" call(data_22.l_0xc692f7) eob
+
+l_0xc576e0:
+    "@I'm not sure if it was the <Dungeon Man>..." next
+    "@There's a strange looking tower to the northwest." end
+
+l_0xc57718:
+    next
+    "@...But it seems that you have too many things." end
+
+l_0xc57730:
+    "[06 5E 02 {e(l_0xc57753)}]@(Looks like you could enter, but it's locked.)" end
+
+l_0xc57753:
+    "{window_closeall}{pause(1)}[1F 21 9F]" call(data_52.l_0xc9b112) eob
+
+l_0xc57760:
+    "{store_registers}[06 5E 02 {e(l_0xc577c5)}]{load_registers}" call(data_33.l_0xc7dd2c) "{result_is(192)}[1B 02 {e(l_0xc577b2)}]{load_registers}" call(data_33.l_0xc7dd37) newline
+    "@(The key worked to open the door." next
+    "@You may enter.){wait}{wait}{set(flag 606)}{sound(119)}{window_closeall}[1F 21 9F]" call(data_52.l_0xc9b112) eob
+
+l_0xc577b2:
+    "@(The key doesn't fit!)" end
+
+l_0xc577c5:
+    "@(The door's already opened.)" end
+
+l_0xc577d8:
+    "[06 DA 00 {e(l_0xc57911)}]@A scary place called Deep Darkness is on the other side of the river." next
+    "@The monsters are very strong and you can lose your health" next
+    "@just by wandering in the swamp." next
+    "@Do you want to cross the river,{pause(15)} even though you know it's a stupid idea?" next
+    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc578b3)} {e(l_0xc57878)}]" goto(l_0xc57878)
+
+l_0xc57878:
+    "@It was stupid of me to ask." next
+    "@Let's watch the sunset over Deep Darkness together from here." end
+
+l_0xc578b3:
+    "@The swamp is bottomless." next
+    "@Even if you're swimming, you'll be dragged in." next
+    "@It is a different story if you have a submarine.{wait}{set(flag 151)}{set(flag 762)}" eob
+
+l_0xc57911:
+    "@You returned from exploring the Deep Darkness?" next
+    "@I cannot believe you made it back alive." end
+
+l_0xc57947:
+    "[06 DA 00 {e(l_0xc57955)}][06 97 00 {e(l_0xc57a26)}]" goto(l_0xc57955)
+
+l_0xc57955:
+    "@Welcome![03]{window_closeall}" call(data_44.l_0xc915f4) "{sound(37)}{pause(90)}{window_open(1)}[06 DA 00 {e(l_0xc57ad9)}]@Long time, no see." next
+    "@Mr. [1C 02 03], we met in Winters a long time ago." next
+    "@I'm Brick Road." next
+    "@Dr. Andonuts finally made me Dungeon Man." next
+    "@If you want, I'll come with you guys for a while." next
+    "@The <Return Hole> is over there." next
+    "@Jump in that hole and then walk out.{wait}{set(flag 24)}{set(flag 445)}[1F 66 01 09 81 33 C9 00]{set(flag 507)}" eob
+
+l_0xc57a26:
+    "@There's an old submarine at the back of the dungeon." next
+    "@It can be used to cross the river." next
+    "@There's a <Goodbye Exit> ...over there." next
+    "@It will take you to the submarine." next
+    "@Don't make a mistake on which exit you take." next
+    "@You need to take the <Goodbye Exit!>{pause(20)}  Hope to see you again!" end
+
+l_0xc57ad9:
+    "@I don't know how, but my homemade dungeon helped you out." next
+    "@I'm glad.{wait}{window_closeall}" eob
+
+l_0xc57b04:
+    "[06 DA 00 {e(l_0xc57b3e)}]@<Goodbye Exit>" next
+    "@Some day, you should enter with courage." next
+    "@...Brick Road." end
+
+l_0xc57b3e:
+    "@This path is closed." next
+    "@...Brick Road.{wait}" linebreak
+    eob
+
+l_0xc57b5c:
+    call(l_0xc57bdc) call(data_44.l_0xc90f7d) call(l_0xc57c10) call(data_44.l_0xc915d6) call(data_44.l_0xc91582) "[1F 21 38]{unset(flag 383)}" eob
+
+l_0xc57b7c:
+    call(l_0xc57bdc) call(data_44.l_0xc90f7d) call(l_0xc57c10) call(data_44.l_0xc915d6) call(data_44.l_0xc91582) "[1F 21 37]{unset(flag 383)}" eob
+
+l_0xc57b9c:
+    call(l_0xc57bdc) call(data_44.l_0xc90f7d) call(l_0xc57c10) call(data_44.l_0xc915d6) call(data_44.l_0xc91582) "[1F 21 39]{unset(flag 383)}" eob
+
+l_0xc57bbc:
+    call(l_0xc57bdc) call(data_44.l_0xc90f7d) call(l_0xc57c10) call(data_44.l_0xc915d6) call(data_44.l_0xc91582) "[1F 21 3A]{unset(flag 383)}" eob
+
+l_0xc57bdc:
+    "@<Good Night Bench.>" next
+    "@May you relax and recover your health and spirits.{wait}" end
+
+l_0xc57c10:
+    "{window_open(1)}@" call(data_33.l_0xc7e6d7) "'s health is restored.{wait}{window_closeall}" eob
+
+l_0xc57c2c:
+    "{counter(3)}" call(data_33.l_0xc7dc7f) "[1B 03 {e(l_0xc57c6f)}]@([1C 02 03] checked the broken submarine.)" next
+    "@Yes!{pause(20)}  It can still work.{wait}{window_closeall}" goto(data_46.l_0xc934ed)
+
+l_0xc57c6f:
+    "@(No one can repair the submarine except [1C 02 03].)" end
+
+l_0xc57c96:
+    "@Oh, be careful where you walk.  It's filthy." next
+    "@A chubby kid did his business out here somewhere..." end
+
+l_0xc57cd4:
+    "@(Pokey's stink still hangs in the air...)" end
+
+l_0xc57cf3:
+    "@You need to be able to read hieroglyphs to solve the mystery of the Pyramid." next
+    "@...I couldn't solve it, although I read it." next
+    "@Didn't you read the hieroglyphs at the museum in Summers?" next
+    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc57da9)} {e(l_0xc57d85)}]" goto(l_0xc57d85)
+
+l_0xc57d85:
+    "@Well, that means that you must go back, read it and then come back here." end
+
+l_0xc57da9:
+    "@Then, you should be able to solve the mystery somehow." end
+
+l_0xc57dc6:
+    "@Hassan's Shop" next
+    "@($ dollars acceptable.)" end
+
+l_0xc57dea:
+    "@That face is mine.{pause(20)}  (Feel free to talk to it.)" next
+    "@...Brick Road." end
+
+l_0xc57e1c:
+    "@[1C 02 01]!{pause(20)}  Are you surprised?" next
+    "@It's me, Pokey." next
+    "@I assist only the strong and able!" next
+    "@That's Pokey." next
+    "@You guys look pathetic!" next
+    "@The Apple of Enlightenment has already made a prediction." next
+    "@...But I won't let what the Apple of Enlightenment predicted take place." next
+    "@You guys will be beaten by Giygas." next
+    "@Giygas will be stronger, a more powerful entity than any other!" next
+    "@Why?" next
+    "@'Cause of me." next
+    "@I was led by Giygas, and now I'm here." next
+    "@The Apple of Enlightenment couldn't predict this." next
+    "@Master Giygas.{pause(20)}  No,{pause(15)} Giygas is no longer the wielder of Evil." next
+    "@He has become the embodiment of Evil itself..." next
+    "@which he cannot control on his own." next
+    "@He is the Evil Power.[03]" eob
+
+l_0xc58000:
+    "{window_open(1)}" newline
+    "@NNW SMSK?[18 02]{open_hp}{open_wallet}{window_open(2)}[19 02]P-TiNStTI[02][19 02]GtZStTI[02][19 02]TKSyZyUTI[02][19 02]IDU[02][19 02]OKNNStTI[02][19 02]RBRAtP[02][19 02]MSYUNSKRPT[02][19 02]IBNT[02][19 02]HNTY[02][19 02]SUND[02][19 02]STMI[02][19 02]TRP-T[02][19 02]HNTTZ[02][1C 0C 02][11][1B 05]{window_closetop}{window_switch(1)}{clearline}" newline
+    "[1B 06][09 0D {e(l_0xc58103)} {e(l_0xc58262)} {e(l_0xc58718)} {e(data_07.l_0xc588cd)} {e(data_07.l_0xc58afb)} {e(data_07.l_0xc58a36)} {e(data_07.l_0xc58c88)} {e(data_08.l_0xc59895)} {e(data_07.l_0xc58e13)} {e(data_07.l_0xc58d09)} {e(data_09.l_0xc5a57f)} {e(data_07.l_0xc58e73)} {e(l_0xc580da)}]@YMMST." end
+
+l_0xc580da:
+    newline
+    "@HNTYW" linebreak
+    " TZNNSMS" next
+    "{set(flag 681)}{set(flag 682)}{set(flag 683)}{set(flag 684)}{set(flag 685)}{set(flag 686)}" goto(l_0xc58000)
+
+l_0xc58103:
+    "@NNW SMSK?" linebreak
+    "[19 02]KWER[02][19 02]HZS[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc5812f)} {e(l_0xc581ee)}]" goto(l_0xc58000)
+
+l_0xc5812f:
+    "{open_hp}@KWER PR-Y-W" linebreak
+    " ERNDKDSI." goto(l_0xc58148)
+
+l_0xc58148:
+    "{window_open(8)}[19 02]NS[02][19 02]P-R[02][19 02]ZeF[02][19 02]P-[02][19 02]P-K-[02][19 02]PtK-[02][19 02]IN[02][19 02]TN-[02][19 02]BR-NMNK-[02][19 02]DNZyNMN[02][19 02]FRINGMN1[02][19 02]FRINGMN2[02][19 02]FRINGMN3[02][19 02]FRINGMN4[02][19 02]FRINGMN5[02][1C 0C 03][11][1B 05][19 04]{window_closetop}{window_switch(1)}[1B 06][1B 02 {e(l_0xc581e7)}]{swap}[1F 11 00]{open_hp}" goto(l_0xc58148)
+
+l_0xc581e7:
+    "{window_closetop}" goto(l_0xc58000)
+
+l_0xc581ee:
+    "[19 10 02][1B 02 {e(l_0xc58250)}]@HZSPR-Y-NITW" linebreak
+    " NyURyKSTKDSI." linebreak
+    goto(l_0xc58214)
+
+l_0xc58214:
+    "[19 10 02][1B 02 {e(l_0xc5824b)}]  [1F 52 01][1B 02 {e(l_0xc5824b)}]{clearline}{swap}[19 10 00][1B 02 {e(l_0xc58214)}]{swap}[1F 12 00]@[1C 02 00]W HZSMS." linebreak
+    goto(l_0xc58214)
+
+l_0xc5824b:
+    goto(l_0xc58000)
+
+l_0xc58250:
+    "@0NNNHDKMSN.{wait}" goto(l_0xc58000)
+
+l_0xc58262:
+    newline
+    "@GtZNStTIWSMS.[18 02]{open_hp}{open_wallet}{window_open(7)}[19 02]GtZKWER[02][19 02]ZyUYUGtZ[02][19 02]GtZMNTN[02][19 02]GtZSKZy[02][19 02]AZKRSyMNTN[02][19 02]AZKRSyKR[02][19 02]SIKyUBK[02][1C 0C 01][11][1B 05]{window_closetop}[19 04]{window_switch(1)}" newline
+    "[1B 06][09 07 {e(l_0xc582f8)} {e(l_0xc58369)} {e(l_0xc58539)} {e(l_0xc58568)} {e(l_0xc585dc)} {e(l_0xc58614)} {e(l_0xc5863c)}]" goto(l_0xc58000)
+
+l_0xc582f8:
+    "@GtZIDW NyURyK" linebreak
+    "   [1F 52 03]{clearline}[1B 02 {e(l_0xc58364)}]{swap}[1D 03 FF][1B 02 {e(l_0xc58358)}]{store_registers}@[1C 05 00]DS." linebreak
+    " DRNSMSK?" call(data_14.l_0xc5e52e) linebreak
+    "[1B 02 {e(l_0xc582f8)}][1D 0E 00 00]" newline
+    "@GtZRNN KWEMST." next
+    goto(l_0xc582f8)
+
+l_0xc58358:
+    "@MTMNItPIDS." goto(l_0xc58364)
+
+l_0xc58364:
+    goto(l_0xc58000)
+
+l_0xc58369:
+    "[18 02]{window_open(12)}[19 02]TBGYNKG[02][19 02]ZySNDNW[02][19 02]TKKSMSN[02][19 02]FRNKRNBtZ[02][19 02]RUYNKG[02][19 02]STTB[02][19 02]TytTKGMSN[02][19 02]ZNBHIHI[02][19 02]DIYMND[02][19 02]GRMDUFMSN[02][19 02]HERGRFNKP-[02][19 02]TKNM[02][19 02]F-SNGM[02][19 02]MKTWNOSHN[02][19 02]BtSTXYZ[02][19 02]SINIRBNN[02][19 02]KKSKSMSN[02][19 02]GMDRAN[02][19 02]USGGNMNNZN[02][1C 0C 01][11][1B 05]{window_closetop}[19 04]{window_switch(1)}" newline
+    "[1B 06][1B 02 {e(l_0xc58364)}]{swap}@DRNSMSK." call(data_14.l_0xc5e52e) "[1B 02 {e(l_0xc58369)}]{swap}[1F C0 13 {e(l_0xc584b4)} {e(l_0xc584bb)} {e(l_0xc584c2)} {e(l_0xc584c9)} {e(l_0xc584d0)} {e(l_0xc584d7)} {e(l_0xc584de)} {e(l_0xc584e5)} {e(l_0xc584ec)} {e(l_0xc584f3)} {e(l_0xc584fa)} {e(l_0xc58501)} {e(l_0xc58508)} {e(l_0xc5850f)} {e(l_0xc58516)} {e(l_0xc5851d)} {e(l_0xc58524)} {e(l_0xc5852b)} {e(l_0xc58532)}]" goto(l_0xc58369)
+
+l_0xc584b4:
+    "{swap}[1D 0E 00 AA]" eob
+
+l_0xc584bb:
+    "{swap}[1D 0E 00 B5]" eob
+
+l_0xc584c2:
+    "{swap}[1D 0E 00 B8]" eob
+
+l_0xc584c9:
+    "{swap}[1D 0E 00 01]" eob
+
+l_0xc584d0:
+    "{swap}[1D 0E 00 AB]" eob
+
+l_0xc584d7:
+    "{swap}[1D 0E 00 B4]" eob
+
+l_0xc584de:
+    "{swap}[1D 0E 00 AC]" eob
+
+l_0xc584e5:
+    "{swap}[1D 0E 00 AE]" eob
+
+l_0xc584ec:
+    "{swap}[1D 0E 00 B6]" eob
+
+l_0xc584f3:
+    "{swap}[1D 0E 00 8B]" eob
+
+l_0xc584fa:
+    "{swap}[1D 0E 00 B9]" eob
+
+l_0xc58501:
+    "{swap}[1D 0E 00 AF]" eob
+
+l_0xc58508:
+    "{swap}[1D 0E 00 68]" eob
+
+l_0xc5850f:
+    "{swap}[1D 0E 00 A4]" eob
+
+l_0xc58516:
+    "{swap}[1D 0E 00 C1]" eob
+
+l_0xc5851d:
+    "{swap}[1D 0E 00 B7]" eob
+
+l_0xc58524:
+    "{swap}[1D 0E 00 D2]" eob
+
+l_0xc5852b:
+    "{swap}[1D 0E 00 D3]" eob
+
+l_0xc58532:
+    "{swap}[1D 0E 00 FD]" eob
+
+l_0xc58539:
+    "@GtZRNWMNTNNSMS." next
+    call(l_0xc58555) goto(l_0xc58000)
+
+l_0xc58555:
+    "[1D 03 FF][1B 02 {e(l_0xc58567)}][1D 0E 00 E1]" goto(l_0xc58555)
+
+l_0xc58567:
+    eob
+
+l_0xc58568:
+    "@GtZWSKZySMS." linebreak
+    "[19 02]ZNB[02][19 02]SNTK[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc58597)} {e(l_0xc585c5)}]" goto(l_0xc58364)
+
+l_0xc58597:
+    "{counter(1)}" goto(l_0xc58599)
+
+l_0xc58599:
+    "{ctoarg}[1D 19 00][1B 03 {e(l_0xc585c4)}][19 10 00]" goto(l_0xc585a7)
+
+l_0xc585a7:
+    "[19 19 00 01]{swap}[1B 02 {e(l_0xc585be)}]{swap}[1D 0F 00 01]" goto(l_0xc585a7)
+
+l_0xc585be:
+    "{inc}" goto(l_0xc58599)
+
+l_0xc585c4:
+    eob
+
+l_0xc585c5:
+    "{open_hp}" goto(l_0xc585c7)
+
+l_0xc585c7:
+    call(data_14.l_0xc5e456) "[1B 02 {e(l_0xc585db)}][1D 0F 00 00]" goto(l_0xc585c7)
+
+l_0xc585db:
+    eob
+
+l_0xc585dc:
+    "@AZKRSyW" linebreak
+    " ItPIN SMS.{counter(20)}" goto(l_0xc585f2)
+
+l_0xc585f2:
+    "{ctoarg}[1D 0C 01 01][18 07 02 00 00 00 00][1B 03 {e(l_0xc5860e)}][1D 18 00]{inc}" goto(l_0xc585f2)
+
+l_0xc5860e:
+    "{wait}" goto(l_0xc58000)
+
+l_0xc58614:
+    "@AZKRZyW KRNSMS." goto(l_0xc58624)
+
+l_0xc58624:
+    "[19 1A 01][1B 02 {e(l_0xc58636)}][19 1C FF 01]" goto(l_0xc58624)
+
+l_0xc58636:
+    "{wait}" goto(l_0xc58000)
+
+l_0xc5863c:
+    "@SIKyUNBKW" linebreak
+    " KWEMS.[03]" call(l_0xc58659) goto(l_0xc58000)
+
+l_0xc58659:
+    "{counter(1)}" goto(l_0xc5865b)
+
+l_0xc5865b:
+    "{ctoarg}[1D 19 00][1B 03 {e(l_0xc5869b)}][19 10 00]" goto(l_0xc58669)
+
+l_0xc58669:
+    "[19 19 00 07]{swap}[1B 02 {e(l_0xc58680)}]{swap}[1D 0F 00 07]" goto(l_0xc58669)
+
+l_0xc58680:
+    "{swap}[1F C0 04 {e(l_0xc5869c)} {e(l_0xc586bd)} {e(l_0xc586de)} {e(l_0xc586ff)}]{inc}" goto(l_0xc5865b)
+
+l_0xc5869b:
+    eob
+
+l_0xc5869c:
+    "[1D 0E 01 19][1F 83 00 00][1D 0E 01 3D][1F 83 00 00][1D 0E 01 48][1F 83 00 00][1D 0E 01 56][1F 83 00 00]" eob
+
+l_0xc586bd:
+    "[1D 0E 02 22][1F 83 00 00][1D 0E 02 C2][1F 83 00 00][1D 0E 02 47][1F 83 00 00][1D 0E 02 DC][1F 83 00 00]" eob
+
+l_0xc586de:
+    "[1D 0E 03 2F][1F 83 00 00][1D 0E 03 3C][1F 83 00 00][1D 0E 03 46][1F 83 00 00][1D 0E 03 55][1F 83 00 00]" eob
+
+l_0xc586ff:
+    "[1D 0E 04 3F][1F 83 00 00][1D 0E 04 49][1F 83 00 00][1D 0E 04 57][1F 83 00 00]" eob
+
+l_0xc58718:
+    newline
+    "@DRNSMSK?[1A 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01][1B 02 {e(l_0xc587ee)}]{store_registers}" linebreak
+    "@DRNSR?" linebreak
+    "[18 02]{window_open(12)}[19 02]KNKU[02][19 02]KZT[02][19 02]DIY[02][19 02]SBR[02][19 02]HKK[02][19 02]MUDK[02][19 02]NtSyByU[02][19 02]KZ[02][19 02]KNK[02][19 02]TRTK[02][19 02]H-MStK[02][19 02]HPHRS[02][19 02]PPHRS[02][1C 0C 02][11][1B 05]{window_closetop}{window_switch(1)}[1B 06][09 0D {e(l_0xc587f3)} {e(data_07.l_0xc58813)} {e(data_07.l_0xc5882f)} {e(data_07.l_0xc58841)} {e(data_07.l_0xc5884e)} {e(data_07.l_0xc5885b)} {e(data_07.l_0xc58868)} {e(data_07.l_0xc58875)} {e(data_07.l_0xc58882)} {e(data_07.l_0xc5888f)} {e(data_07.l_0xc5889c)} {e(data_07.l_0xc588a9)} {e(data_07.l_0xc588bb)}]" goto(l_0xc58718)
+
+l_0xc587ee:
+    goto(l_0xc58000)
+
+l_0xc587f3:
+    "{load_registers}[19 05 00 01 01][19 05 00 02 01][19 05 00 06 01]{swap}[1E 00 00 64][1E 04 00 64]" goto(l_0xc58718)
+

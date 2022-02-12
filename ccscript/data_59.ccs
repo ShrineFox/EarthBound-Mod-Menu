@@ -1,0 +1,412 @@
+/*
+ * EarthBound Text Dump
+ * Time: 09:28:30 - 12/02/2022
+ * Generated using CCScriptWriter.
+ */
+
+command e(label) "{long label}"
+
+// Text Data
+l_0xef845d:
+    newline
+    "@{user} is acting" linebreak
+    "  a bit unusual.[03]" eob
+
+l_0xef8477:
+    newline
+    "@{user} is" linebreak
+    "  feeling funky.[03]" eob
+
+l_0xef848c:
+    newline
+    "[1F 41 08][1B 02 {e(l_0xef84a7)}]{sound(25)}@{user} is attacking!{sound(26)}[03]" eob
+
+l_0xef84a7:
+    "{sound(24)}@{user} attacks!{sound(26)}[03]" eob
+
+l_0xef84b6:
+    newline
+    "{sound(24)}@{user} attacks!{sound(27)}[03]" eob
+
+l_0xef84c6:
+    newline
+    "@{user} is on guard." eob
+
+l_0xef84d4:
+    newline
+    "@{user} relaxed" linebreak
+    "  and took a deep breath.[03]" eob
+
+l_0xef84f3:
+    newline
+    "@" call(data_33.l_0xc7e6d7) " tried to get away,{pause(60)}" next
+    "@and did![03]" eob
+
+l_0xef8511:
+    newline
+    "@" call(data_33.l_0xc7e6d7) " tried to get away,{pause(60)}" next
+    "@but couldn't![03]" eob
+
+l_0xef8530:
+    newline
+    "@{user} spies on" linebreak
+    "  {target}![03]" eob
+
+l_0xef8543:
+    newline
+    "[1F 41 08][1B 02 {e(l_0xef8568)}]{sound(55)}@{user} tried" linebreak
+    "[19 1F]{swap}  [1C 12 00]![03]" goto(l_0xef857e)
+
+l_0xef8568:
+    "{sound(29)}@{user} tried" linebreak
+    "[19 1F]{swap}  [1C 12 00]![03]" goto(l_0xef857e)
+
+l_0xef857e:
+    "{swap}[1F C0 32 {e(l_0xef864c)} {e(l_0xef866e)} {e(l_0xef8698)} {e(l_0xef86e2)} {e(l_0xef874a)} {e(l_0xef875f)} {e(l_0xef8777)} {e(l_0xef878f)} {e(l_0xef87ac)} {e(l_0xef87c3)} {e(l_0xef87da)} {e(l_0xef87f4)} {e(l_0xef8813)} {e(l_0xef8813)} {e(l_0xef8813)} {e(l_0xef8813)} {e(l_0xef883d)} {e(l_0xef8847)} {e(l_0xef8851)} {e(l_0xef8868)} {e(l_0xef8882)} {e(l_0xef88b8)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88ec)} {e(l_0xef88f6)} {e(l_0xef8900)} {e(l_0xef890a)} {e(l_0xef8914)} {e(l_0xef891e)} {e(l_0xef8928)} {e(l_0xef8932)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef893c)} {e(l_0xef894c)} {e(l_0xef895c)} {e(l_0xef896c)} {e(l_0xef897c)} {e(l_0xef898c)} {e(l_0xef899c)} {e(l_0xef89ac)} {e(l_0xef89bc)} {e(l_0xef89ce)}]" eob goto(l_0xef864c)
+
+l_0xef864c:
+    "[1C 13 00 13]{pause(10)}{sound(48)}{pause(32)}{sound(74)}{pause(2)}{sound(48)}[1C 13 2A 00]{pause(32)}{sound(74)}{pause(14)}{sound(91)}" eob
+
+l_0xef866e:
+    "{sound(48)}[1C 13 00 14]{pause(32)}{sound(74)}{pause(2)}{sound(48)}{pause(29)}{sound(74)}{pause(2)}{sound(49)}[1C 13 2A 00]{pause(29)}{sound(49)}{pause(25)}{sound(91)}" eob
+
+l_0xef8698:
+    "[1C 13 00 15]{pause(5)}{sound(49)}{pause(32)}{sound(50)}{pause(26)}{sound(71)}{pause(7)}{sound(71)}{pause(7)}{sound(71)}{pause(7)}{sound(71)}{pause(7)}{sound(71)}{pause(7)}[1C 13 2A 00]{sound(71)}{pause(7)}{sound(71)}{pause(7)}{sound(71)}{pause(3)}{sound(91)}{pause(3)}{sound(91)}{pause(5)}{sound(91)}" eob
+
+l_0xef86e2:
+    "[1C 13 00 16]{pause(30)}{sound(49)}{pause(34)}{sound(49)}{pause(34)}{sound(49)}{pause(34)}{sound(91)}{pause(7)}{sound(91)}{pause(7)}{sound(91)}{pause(7)}{sound(91)}{pause(7)}{sound(91)}{pause(11)}{sound(91)}{pause(11)}{sound(91)}{pause(11)}[1C 13 2A 00]{sound(91)}{pause(3)}{sound(91)}{pause(3)}{sound(91)}{pause(3)}{sound(91)}{pause(3)}{sound(91)}{pause(3)}{sound(91)}{pause(3)}{sound(91)}{pause(3)}{sound(91)}{pause(3)}{sound(91)}" eob
+
+l_0xef874a:
+    "{sound(51)}[1C 13 00 07]{pause(28)}{sound(53)}{pause(6)}[1C 13 24 00]{pause(30)}" eob
+
+l_0xef875f:
+    "{sound(51)}[1C 13 00 08]{pause(28)}{sound(53)}{pause(24)}{sound(52)}[1C 13 24 00]{pause(30)}" eob
+
+l_0xef8777:
+    "{sound(51)}[1C 13 00 09]{pause(28)}{sound(53)}{pause(24)}{sound(52)}[1C 13 24 00]{pause(35)}" eob
+
+l_0xef878f:
+    "{sound(51)}[1C 13 00 0A]{pause(28)}{sound(53)}{pause(29)}{sound(53)}{pause(24)}{sound(53)}[1C 13 24 00]{pause(55)}" eob
+
+l_0xef87ac:
+    "{sound(56)}[1C 13 00 0F]{pause(30)}{sound(57)}{pause(20)}[1C 13 29 00]{pause(15)}{pause(27)}" eob
+
+l_0xef87c3:
+    "{sound(56)}[1C 13 00 10]{pause(34)}{sound(57)}{pause(20)}[1C 13 29 00]{pause(15)}{pause(27)}" eob
+
+l_0xef87da:
+    "{sound(56)}[1C 13 00 11]{pause(38)}{sound(57)}{pause(11)}[1C 13 29 00]{pause(27)}{sound(58)}{pause(42)}" eob
+
+l_0xef87f4:
+    "{sound(56)}[1C 13 00 12]{pause(54)}{sound(57)}{pause(5)}[1C 13 29 00]{pause(31)}{sound(58)}{pause(27)}{sound(58)}{pause(20)}" eob
+
+l_0xef8813:
+    eob
+
+l_0xef8814:
+    "{sound(61)}[1C 13 2E 21]{pause(22)}{sound(63)}{pause(30)}" eob
+
+l_0xef8823:
+    "{sound(62)}[1C 13 2E 22]{pause(22)}{sound(63)}{pause(23)}{sound(63)}{pause(30)}" eob
+
+l_0xef8837:
+    "{sound(60)}{pause(60)}" eob
+
+l_0xef883d:
+    "{sound(65)}[1C 13 28 0B]{pause(30)}" eob
+
+l_0xef8847:
+    "{sound(65)}[1C 13 28 0C]{pause(30)}" eob
+
+l_0xef8851:
+    "{sound(67)}{pause(10)}[1C 13 00 0D]{pause(20)}[1C 13 28 00]{pause(19)}{sound(66)}{pause(26)}" eob
+
+l_0xef8868:
+    "{sound(67)}[1C 13 00 0E]{pause(17)}[1C 13 28 00]{pause(50)}{sound(66)}{pause(5)}{sound(66)}{pause(14)}" eob
+
+l_0xef8882:
+    "[1C 13 00 1F]{pause(10)}{sound(64)}{pause(50)}[1C 13 2D 00]{sound(91)}{pause(7)}{sound(91)}{pause(15)}{sound(91)}{pause(7)}{sound(91)}{pause(7)}{sound(91)}{pause(7)}{sound(91)}{pause(7)}{sound(91)}{pause(7)}{sound(91)}" eob
+
+l_0xef88b8:
+    "[1C 13 00 20]{pause(20)}{sound(64)}{pause(40)}[1C 13 2D 00]{pause(24)}{sound(64)}{sound(91)}{pause(19)}{sound(91)}{pause(15)}{sound(91)}{pause(15)}{sound(91)}{pause(11)}{sound(91)}{pause(4)}{sound(91)}" eob
+
+l_0xef88e9:
+    "{pause(30)}" eob
+
+l_0xef88ec:
+    "{sound(38)}[1C 13 32 00]{pause(1)}" eob
+
+l_0xef88f6:
+    "{sound(38)}[1C 13 32 00]{pause(1)}" eob
+
+l_0xef8900:
+    "{sound(38)}[1C 13 33 00]{pause(1)}" eob
+
+l_0xef890a:
+    "{sound(38)}[1C 13 33 00]{pause(1)}" eob
+
+l_0xef8914:
+    "{sound(39)}[1C 13 34 00]{pause(1)}" eob
+
+l_0xef891e:
+    "{sound(39)}[1C 13 34 00]{pause(1)}" eob
+
+l_0xef8928:
+    "{sound(39)}[1C 13 35 00]{pause(1)}" eob
+
+l_0xef8932:
+    "{sound(39)}[1C 13 35 00]{pause(1)}" eob
+
+l_0xef893c:
+    "{sound(44)}[1C 13 00 05]{pause(40)}[1C 13 27 00]{pause(100)}" eob
+
+l_0xef894c:
+    "{sound(79)}[1C 13 00 06]{pause(40)}[1C 13 27 00]{pause(125)}" eob
+
+l_0xef895c:
+    "{sound(42)}[1C 13 00 1C]{pause(25)}[1C 13 2F 00]{pause(30)}" eob
+
+l_0xef896c:
+    "{sound(42)}[1C 13 00 1D]{pause(55)}[1C 13 2F 00]{pause(30)}" eob
+
+l_0xef897c:
+    "{sound(43)}[1C 13 00 19]{pause(45)}[1C 13 2C 00]{pause(57)}" eob
+
+l_0xef898c:
+    "{sound(76)}[1C 13 00 1A]{pause(45)}[1C 13 2C 00]{pause(33)}" eob
+
+l_0xef899c:
+    "{sound(44)}[1C 13 00 17]{pause(60)}[1C 13 2B 00]{pause(70)}" eob
+
+l_0xef89ac:
+    "{sound(79)}[1C 13 00 18]{pause(60)}[1C 13 2B 00]{pause(70)}" eob
+
+l_0xef89bc:
+    "{pause(20)}{sound(45)}[1C 13 00 02]{pause(20)}[1C 13 2F 00]{pause(76)}" eob
+
+l_0xef89ce:
+    "{pause(20)}{sound(80)}[1C 13 00 03]{pause(40)}[1C 13 2F 00]{pause(128)}" eob
+
+l_0xef89e0:
+    newline
+    "{sound(28)}@{user} prayed" linebreak
+    "  with her whole heart![03]" eob
+
+l_0xef89fe:
+    newline
+    "{sound(25)}@{user} made a" linebreak
+    "  loud rumble![03]" eob
+
+l_0xef8a18:
+    newline
+    "{sound(25)}@{user} gave you" linebreak
+    "  a great big hug.[03]" eob
+
+l_0xef8a33:
+    newline
+    "{sound(25)}@{user} let loose" linebreak
+    "  with a hacking cough.[03]" eob
+
+l_0xef8a52:
+    newline
+    "{sound(25)}@{user} used" linebreak
+    "  " call(data_33.l_0xc7e66e) " misery attack![03]" eob
+
+l_0xef8a6f:
+    newline
+    "{sound(25)}@{user} utilized a" linebreak
+    "  paint attack![03]" eob
+
+l_0xef8a8c:
+    newline
+    "{sound(25)}@{user} came out" linebreak
+    "  swinging![03]" eob
+
+l_0xef8aa3:
+    newline
+    "{sound(25)}@{user} scratched" linebreak
+    "  with its claws![03]" eob
+
+l_0xef8ac2:
+    newline
+    "{sound(25)}@{user} pecked" linebreak
+    "  at your eyes![03]" eob
+
+l_0xef8add:
+    newline
+    "{sound(25)}@{user} rammed and trampled you![03]" eob
+
+l_0xef8af8:
+    newline
+    "{sound(25)}@{user} threw" linebreak
+    "  a punch![03]" eob
+
+l_0xef8b11:
+    newline
+    "{sound(25)}@{user} spit" linebreak
+    "  its pumpkin seeds![03]" eob
+
+l_0xef8b2f:
+    newline
+    "{sound(25)}@{user} fired" linebreak
+    "  a beam!{sound(77)}[03]{pause(1)}" eob
+
+l_0xef8b4a:
+    newline
+    "{sound(25)}@{user} jabbed" linebreak
+    "  with a spear![03]" eob
+
+l_0xef8b65:
+    newline
+    "{sound(25)}@{user} stomped" linebreak
+    "  with " call(data_33.l_0xc7e66e) " huge foot![03]" eob
+
+l_0xef8b89:
+    newline
+    "{sound(25)}@{user} swung" linebreak
+    "  his hula hoop.{sound(26)}[03]" eob
+
+l_0xef8ba8:
+    newline
+    "{sound(25)}@{user} charged" linebreak
+    "  forward![03]" eob
+
+l_0xef8bc0:
+    newline
+    "{sound(25)}@{user} shredded" linebreak
+    "  fiercely on a skateboard![03]" eob
+
+l_0xef8be8:
+    newline
+    "{sound(25)}@{user} bit you" linebreak
+    "  hard![03]" eob
+
+l_0xef8bfb:
+    newline
+    "{sound(25)}@{user} grumbled" linebreak
+    "  about today's youth!{sound(84)}[03]" eob
+
+l_0xef8c1d:
+    newline
+    "{sound(25)}@{user} started" linebreak
+    "  lecturing you!{sound(84)}[03]" eob
+
+l_0xef8c3a:
+    newline
+    "{sound(25)}@{user} scowled" linebreak
+    "  sharply!{sound(84)}[03]" eob
+
+l_0xef8c58:
+    newline
+    "{sound(25)}@{user} vented" linebreak
+    "  a terrible odor![03]" eob
+
+l_0xef8c75:
+    newline
+    "{sound(25)}@{user} shouted" linebreak
+    "  in a loud voice![03]" eob
+
+l_0xef8c92:
+    newline
+    "{sound(25)}@{user} shrieked a war cry![03]" eob
+
+l_0xef8cac:
+    newline
+    "{sound(25)}@{user} knitted" linebreak
+    "  its brow![03]" eob
+
+l_0xef8cc7:
+    "[1D 21 03][09 03 {e(l_0xef8cfb)} {e(l_0xef8d17)} {e(l_0xef8d2f)}]" goto(l_0xef8cdd)
+
+l_0xef8cdd:
+    newline
+    "{sound(25)}@{user} lost" linebreak
+    "  a gear and some bolts![03]" eob
+
+l_0xef8cfb:
+    newline
+    "{sound(25)}@{user} re-applied" linebreak
+    "  a bandage![03]" eob
+
+l_0xef8d17:
+    newline
+    "{sound(25)}@{user} cleaned" linebreak
+    "  the area![03]" eob
+
+l_0xef8d2f:
+    newline
+    "{sound(25)}@{user} wanted to go" linebreak
+    "  and get a battery![03]" eob
+
+l_0xef8d4c:
+    newline
+    "@{user} ate a" linebreak
+    "  bologne sandwich!{sound(68)}" next
+    call(data_56.l_0xef69a1) eob
+
+l_0xef8d72:
+    newline
+    "{sound(25)}@{user} shot a" linebreak
+    "  beam`that`causes`night-time`stuffiness![03]" eob
+
+l_0xef8d9f:
+    newline
+    "{sound(25)}@{user} emitted" linebreak
+    "  a pale green light![03]" eob
+
+l_0xef8dc1:
+    newline
+    "{sound(25)}@{user} coiled" linebreak
+    "  around you and attacked![03]" eob
+
+l_0xef8dde:
+    newline
+    "@All of a sudden," next
+    "@{user} gave off" linebreak
+    "  a rainbow of colors!{sound(65)}[1C 13 28 00]{pause(30)}{sound(65)}[1C 13 28 00]{pause(30)}{sound(65)}[1C 13 28 00]{pause(30)}" eob
+
+l_0xef8e27:
+    newline
+    "@{user}[19 1F]{swap} used the" linebreak
+    "  [1C 05 00]![03]" eob goto(l_0xef8e3c)
+
+l_0xef8e3c:
+    newline
+    "@{user}[19 1F]{swap} used the" linebreak
+    "  [1C 05 00]!{pause(30)}{sound(54)}{pause(30)}[1C 13 00 01]{pause(60)}[03]" eob goto(l_0xef8e5e)
+
+l_0xef8e5e:
+    newline
+    "@{user}[19 1F]{swap} used the" linebreak
+    "  [1C 05 00]!{pause(30)}{sound(59)}[1C 13 00 04]{pause(60)}[03]" eob goto(l_0xef8e7e)
+
+l_0xef8e7e:
+    newline
+    "@{user}[19 1F]{swap} used the" linebreak
+    "  [1C 05 00]!{pause(30)}{sound(59)}[1C 13 00 1E]{pause(60)}[03]" eob goto(l_0xef8e9e)
+
+l_0xef8e9e:
+    newline
+    "@{user}[19 1F]{swap} used the" linebreak
+    "  [1C 05 00]!{pause(30)}{sound(99)}[1C 13 00 1B]{pause(60)}[03]" eob goto(l_0xef8ebe)
+
+l_0xef8ebe:
+    newline
+    "{sound(25)}@{user} discharged" linebreak
+    "  a very stinky gas![03]" eob
+
+l_0xef8ee2:
+    call(data_54.l_0xc9ee2f) "{pause(40)}{window_clear}@You cannot grasp the true form" linebreak
+    "  of {user}' attack![1C 13 31 00][1C 13 36 00]{sound(81)}{pause(40)}{sound(81)}" eob
+
+l_0xef8f17:
+    call(data_54.l_0xc9ee68) "{window_clear}@You cannot grasp the true form" linebreak
+    "  of {user}' attack![1C 13 31 00][1C 13 36 00]{sound(81)}{pause(40)}{sound(81)}" eob
+
+l_0xef8f4a:
+    call(data_54.l_0xc9ee2f) "{pause(40)}{window_clear}" call(data_54.l_0xc9ee2f) "{pause(40)}{window_clear}" call(data_54.l_0xc9ee2f) "{pause(40)}{window_clear}@You cannot grasp the true form" linebreak
+    "  of {user}' attack![1C 13 31 00][1C 13 36 00]{sound(81)}{pause(40)}{sound(81)}" eob
+
+l_0xef8f91:
+    call(data_54.l_0xc9ee2f) "{pause(40)}{window_clear}" call(data_54.l_0xc9ee2f) "{pause(40)}{window_clear}" call(data_54.l_0xc9ee2f) "{pause(40)}{window_clear}" eob
+
