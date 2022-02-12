@@ -3174,11 +3174,13 @@
   Cost: 0
   Help Text Pointer: data_04.l_0xc55d2e
   Misc Flags:
+  - cannot be given away
+  - cannot be stored with escargo express
   - jeff can use
   - ness can use
   - paula can use
   - poo can use
-  Name: Video relaxant
+  Name: Mod Menu
   Type: 56
 204:
   Action: 281

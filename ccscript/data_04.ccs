@@ -435,7 +435,7 @@ l_0xc55cce:
 l_0xc55d2e:
     newline
     " <[1C 05 CB]>" next
-    "@What the hey is this?" end
+    "In-game trainer by ShrineFox." end
 
 l_0xc55d46:
     newline

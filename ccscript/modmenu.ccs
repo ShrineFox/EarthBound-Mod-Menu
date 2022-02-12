@@ -1,0 +1,929 @@
+mod_menu:
+refreshwindow
+"Mod Menu by ShrineFox" newline
+menu 3 {
+   "Party": {
+      goto(partymenu)
+   }
+   "Warp": {
+      goto(warpmenu)
+   }
+   "Status": {
+      goto(statusmenu)
+   }
+    "Music": {
+    goto(musicmenu)
+   }
+    "About": {
+    goto(about)
+   }
+   "Flags": {
+	goto(flagmenu)
+	}
+   default "Exit": {
+    eob
+   }
+}
+end
+
+partymenu:
+refreshwindow
+"@Do what to party members?" newline
+menu 2 {
+	"Add": {
+	goto(partyadd)
+	}
+	"Remove": {
+	goto(partyremove)
+	}
+	default "Back": {
+	goto(mod_menu)
+	}
+}
+
+partyadd:
+refreshwindow
+"@Add who?" newline
+menu 3 {
+	"Ness": {
+	party_add(1) newline
+	"@Added Ness." next
+	flashscreen
+	goto(mod_menu)
+	}
+	"Paula": {
+	party_add(2) newline
+	"@Added Paula." next
+	flashscreen
+	goto(mod_menu)
+	}
+	"Jeff": {
+	party_add(3) newline
+	"@Added Jeff." next
+	flashscreen
+	goto(mod_menu)
+	}
+	"Poo": {
+	party_add(4) newline
+	"@Added Poo." next
+	flashscreen
+	goto(mod_menu)
+	}
+	"More": {
+	goto(partyadd2)
+	}
+	default "Back": {
+	goto(partymenu)
+	}
+}
+
+partyadd2:
+refreshwindow
+"@Add who?" newline
+menu 3 {
+	"Pokey": {
+	party_add(5) newline
+	"@Added Pokey." next
+	goto(mod_menu)
+	}
+	"Picky": {
+	party_add(6) newline
+	"@Added Picky." next
+	goto(mod_menu)
+	}
+	"King": {
+	party_add(7) newline
+	"@Added King." next
+	goto(mod_menu)
+	}
+	"Tony": {
+	party_add(8) newline
+	"@Added Tony." next
+	goto(mod_menu)
+	}
+	"More": {
+	goto(partyadd3)
+	}
+	default "Back": {
+	goto(partyadd)
+	}
+}
+
+partyadd3:
+refreshwindow
+"@Add who?" newline
+menu 3 {
+	"DungeonMan": {
+	party_add(10) newline
+	"@Added Dungeon Man." next
+	goto(mod_menu)
+	}
+	"BubbleMonkey": {
+	party_add(9) newline
+	"@Added Bubble Monkey." next
+	goto(mod_menu)
+	}
+	"Flying Man": {
+	party_add(11) newline
+	"@Added Flying Man." next
+	goto(mod_menu)
+	}
+	"Teddy Bear": {
+	party_add(16) newline
+	"@Added Teddy Bear." next
+	goto(mod_menu)
+	}
+	default "Back": {
+	goto(partyadd2)
+	}
+}
+
+partyremove:
+refreshwindow
+"@remove who?" newline
+menu 3 {
+	"Ness": {
+	party_remove(1) newline
+	"@removed Ness." next
+	flashscreen
+	goto(mod_menu)
+	}
+	"Paula": {
+	party_remove(2) newline
+	"@removed Paula." next
+	flashscreen
+	goto(mod_menu)
+	}
+	"Jeff": {
+	party_remove(3) newline
+	"@removed Jeff." next
+	flashscreen
+	goto(mod_menu)
+	}
+	"Poo": {
+	party_remove(4) newline
+	"@removed Poo." next
+	flashscreen
+	goto(mod_menu)
+	}
+	"More": {
+	goto(partyremove2)
+	}
+	default "Back": {
+	goto(partymenu)
+	}
+}
+
+partyremove2:
+refreshwindow
+"@remove who?" newline
+menu 3 {
+	"Pokey": {
+	party_remove(5) newline
+	"@removed Pokey." next
+	goto(mod_menu)
+	}
+	"Picky": {
+	party_remove(6) newline
+	"@removed Picky." next
+	goto(mod_menu)
+	}
+	"King": {
+	party_remove(7) newline
+	"@removed King." next
+	goto(mod_menu)
+	}
+	"Tony": {
+	party_remove(8) newline
+	"@removed Tony." next
+	goto(mod_menu)
+	}
+	"More": {
+	goto(partyremove3)
+	}
+	default "Back": {
+	goto(partyremove)
+	}
+}
+
+partyremove3:
+refreshwindow
+"@remove who?" newline
+menu 3 {
+	"DungeonMan": {
+	party_remove(10) newline
+	"@removed Dungeon Man." next
+	goto(mod_menu)
+	}
+	"BubbleMonkey": {
+	party_remove(9) newline
+	"@removed Bubble Monkey." next
+	goto(mod_menu)
+	}
+	"Flying Man": {
+	party_remove(11) newline
+	"@removed Flying Man." next
+	goto(mod_menu)
+	}
+	"Teddy Bear": {
+	party_remove(16) newline
+	"@removed Teddy Bear." next
+	goto(mod_menu)
+	}
+	default "Back": {
+	goto(partyremove2)
+	}
+}
+
+warpmenu:
+"@Warp where?" newline
+window_open(5)
+window_switch(5)
+menu 1 {
+	"Onett": {
+	window_close(5)
+	warp(25)
+	window_switch(1)
+		refreshwindow
+	"@Welcome to Onett!||" eob
+}
+	"Twoson": {
+	window_close(5)
+	warp(29)
+	window_switch(1)
+		refreshwindow
+	"@Welcome to Twoson!||" eob
+}
+	"Threed": {
+	window_close(5)
+	warp(15)
+	window_switch(1)
+		refreshwindow
+	"@Welcome to Threed!||" eob
+	refreshwindow
+}
+	"Fourside": {
+	window_close(5)
+	warp(20)
+	window_switch(1)
+		refreshwindow
+	"@Welcome to Threed!||" eob
+		refreshwindow
+}
+	"Moonside": {
+	window_close(5)
+	warp(24)
+	window_switch(1)
+		refreshwindow
+	"@!edisnooM ot emocleW||" eob
+		refreshwindow
+}
+	"Winters": {
+	window_close(5)
+	warp(30)
+	window_switch(1)
+		refreshwindow
+	"@Welcome to Winters!||" eob
+}
+	"Summers": {
+	window_close(5)
+	warp(31)
+	window_switch(1)
+		refreshwindow
+	"@Welcome to Summers!||" eob
+}
+	"SaturnValley": {
+	window_close(5)
+	warp(143)
+	window_switch(1)
+		refreshwindow
+	font_saturn
+	"@Welcome, boing!!||" eob
+}
+	"More": {
+	window_close(5)
+	goto(warpmenu2)
+	}
+	default "Back": {
+	window_close(5)
+	window_switch(1)
+	refreshwindow
+	goto(mod_menu)
+	}
+}
+eob
+
+warpmenu2:
+"@Warp where?" newline
+window_open(5)
+window_switch(5)
+menu 1 {
+	"Tenda Village": {
+	window_close(5)
+	warp(22)
+	window_switch(1)
+		refreshwindow
+	"@Welcome to Tenda Village!||" eob
+		refreshwindow
+}
+	"Magicant": {
+	window_close(5)
+	warp(23)
+	window_switch(1)
+	refreshwindow
+	"@Welcome to Magicant!||" eob
+		refreshwindow
+}
+	"Cave of Past": {
+	window_close(5)
+	warp(26)
+	window_switch(1)
+		refreshwindow
+	"@Welcome to the past!||" eob
+}
+	"Dalaam": {
+	window_close(5)
+	warp(27)
+	window_switch(1)
+		refreshwindow
+	"@Welcome to Dalaam!||" eob
+}
+	"Scaraba": {
+	window_close(5)
+	warp(32)
+	window_switch(1)
+	refreshwindow
+	"@Welcome to Scaraba!||" eob
+}
+	default "Back": {
+	window_close(5)
+	window_switch(1)
+	refreshwindow
+	goto(warpmenu)
+	}
+}
+
+statusmenu:
+refreshwindow
+"@Choose what to edit." next
+window_open(5)
+window_switch(5)
+menu 1 {
+	"Inventory": {	
+	window_close(5)
+	window_switch(1)
+	refreshwindow
+	goto(invedit)
+	}
+	"Save": {	
+	window_close(5)
+	window_switch(1)
+	refreshwindow
+	save "@Game saved."
+	goto(statusmenu)
+	}
+	"Health": {	
+	window_close(5)
+	window_switch(1)
+	refreshwindow
+	goto(health)
+	}
+	"Money": {
+	window_close(5)
+	window_switch(1)
+	refreshwindow
+	goto(moneymenu)
+	}
+	"Phone": {
+	window_close(5)
+	window_switch(1)
+	refreshwindow
+	goto(phone)
+	}
+	"PSI": {
+	window_close(5)
+	window_open(1)
+	refreshwindow
+	goto(psi)
+	}
+	"Max EXP": {
+	window_close(5)
+	window_open(1)
+	refreshwindow
+	goto(exp)
+	}
+	default "Back": {	
+	window_close(5)
+	window_switch(1)
+	refreshwindow
+	goto(mod_menu)
+	}
+}
+
+invedit:
+"@Edit whose inventory?" newline
+menu 4 {
+	"Ness": { refreshwindow goto(nessinvedit)}
+	"Jeff": { refreshwindow goto(jeffinvedit)}
+	"Paula": { refreshwindow goto(paulainvedit)}
+	"Poo": { refreshwindow goto(pooinvedit)}
+	"Tracy": { refreshwindow goto(storage) }
+	default "Back": { refreshwindow goto(statusmenu)}
+}
+
+storage:
+"@What do you want me to do?[00][19 02]Store[02][19 02]Check out[02][1c 07 02][11][12][09 02 4f 47 c6 00 3c 48 c6 00][06 49 00 fa 46 c6 00]@Well, take care and I'll talk to you later![13][02]"
+
+nessinvedit:
+"@Give Ness what item?" next
+window_open(2)
+window_switch(2)
+menu 3 {
+	"Debug": {give(1, 203) sound(16) window_close(2) window_switch(1) goto(nessinvedit)}
+	"Bicycle": {give(1, 176) sound(16) window_close(2) window_switch(1) goto(nessinvedit)}
+	"FranklinB.": {give(1, 1) sound(16) window_close(2) window_switch(1) goto(nessinvedit)}
+	"LegendBat": {give(1, 25) sound(16) window_close(2) window_switch(1) goto(nessinvedit)}
+	"GoddessBand": {give(1, 72) sound(16) window_close(2) window_switch(1) goto(nessinvedit)}
+	"Sound Stone": {give(1, 196) sound(16) window_close(2) window_switch(1) goto(nessinvedit)}
+	default "Back": {
+	window_close(2)
+	window_switch(1)
+	refreshwindow
+	goto(invedit)
+	}
+}
+
+paulainvedit:
+"@Give Paula what item?" next
+window_open(2)
+window_switch(2)
+menu 3 {
+	"Debug": {give(2, 203) sound(16) window_close(2) window_switch(1) goto(paulainvedit)}
+	"FranklinB.": {give(2, 1) sound(16) window_close(2) window_switch(1) goto(paulainvedit)}
+	"HolyFryPan": {give(2, 34) sound(16) window_close(2) window_switch(1) goto(paulainvedit)}
+	"GoddessBand": {give(2, 72) sound(16) window_close(2) window_switch(1) goto(paulainvedit)}
+	"GoddessRibbon": {give(2, 80) sound(16) window_close(2) window_switch(1) goto(paulainvedit)}
+	"Teddy Bear": {give(2, 2) sound(16) window_close(2) window_switch(1) goto(paulainvedit)}
+	"Plush Bear": {give(2, 3) sound(16) window_close(2) window_switch(1) goto(paulainvedit)}
+	default "Back": {
+	window_close(2)
+	window_switch(1)
+	refreshwindow
+	goto(invedit)
+	}
+}
+
+jeffinvedit:
+"@Give Jeff what item?" next
+window_open(2)
+window_switch(2)
+menu 3 {
+	"Debug": {give(3, 203) sound(16) window_close(2) window_switch(1) goto(jeffinvedit)}
+	"FranklinB.": {give(3, 1) sound(16) window_close(2) window_switch(1) goto(jeffinvedit)}
+	"GaiaBeam": {give(3, 48) sound(16) window_close(2) window_switch(1) goto(jeffinvedit)}
+	"GoddessBand": {give(3, 72) sound(16) window_close(2) window_switch(1) goto(jeffinvedit)}
+	"HeavyBazooka": {give(3, 134) sound(16) window_close(2) window_switch(1) goto(jeffinvedit)}
+	"HungryHPSucker": {give(3, 136) sound(16) window_close(2) window_switch(1) goto(jeffinvedit)}
+	"MultiBottleRocket": {give(3, 146) sound(16) window_close(2) window_switch(1) goto(jeffinvedit)}
+	"SuperBomb": {give(3, 148) sound(16) window_close(2) window_switch(1) goto(jeffinvedit)}
+	"BadKeyMachine": {give(3, 172) sound(16) window_close(2) window_switch(1) goto(jeffinvedit)}
+	default "Back": {
+	window_close(2)
+	window_switch(1)
+	refreshwindow
+	goto(invedit)
+	}
+}
+
+pooinvedit:
+"@Give Poo what item?" next
+window_open(2)
+window_switch(2)
+menu 3 {
+	"Debug": {give(4, 203) sound(16) window_close(2) window_switch(1) goto(pooinvedit)}
+	"FranklinB.": {give(4, 1) sound(16) window_close(2) window_switch(1) goto(pooinvedit)}
+	"SwordofKings": {give(4, 35) sound(16) window_close(2) window_switch(1) goto(pooinvedit)}
+	"GoddessBand": {give(4, 72) sound(16) window_close(2) window_switch(1) goto(pooinvedit)}
+	"CloakofKings": {give(4, 63) sound(16) window_close(2) window_switch(1) goto(pooinvedit)}
+	default "Back": {
+	window_close(2)
+	window_switch(1)
+	refreshwindow
+	goto(invedit)
+	}
+}
+
+health:
+refreshwindow
+"@How should health be affected?" next
+window_open(5)
+window_switch(5)
+menu 1 {
+	"HealAll": { healall sound(36)
+	window_close(5) window_switch(1) refreshwindow "@All party members have full HP and PP! |" goto(health)}
+	"ReviveAll": { "[08 2c 16 c9 00]" sound(36)
+	window_close(5) window_switch(1) refreshwindow "@All party members have been revived! |" goto(health) }
+	"Kill Ness": { hurt_percent (1, 100) sound(32)
+	window_close(5) window_switch(1) refreshwindow "@Ness's HP is depleted! |" goto(health)}
+	"Kill Paula": { hurt_percent (2, 100) sound(32)
+	window_close(5) window_switch(1) refreshwindow "@Paula's HP is depleted! |" goto(health)}
+	"Kill Jeff": { hurt_percent (3, 100) sound(32)
+	window_close(5) window_switch(1) refreshwindow "@Jeff's HP is depleted! |" goto(health)}
+	"Kill Poo": { hurt_percent (4, 100) sound(32)
+	window_close(5) window_switch(1) refreshwindow "@Poo's HP is depleted! |" goto(health)}
+	default "Back": { window_close(5) window_switch(1) refreshwindow goto(statusmenu)}
+}
+
+moneymenu:
+refreshwindow
+"@How should your funds be affected?" next
+window_open(5)
+window_switch(5)
+menu 1 {
+	"Use Bank": { window_close(5) window_switch(1) refreshwindow "@Please select a transaction:[00][19 02]Withdrawal[02][19 02]Deposit[02][1c 07 02][11][12][09 02 6d 2e c6 00 93 2d c6 00]@Thank you very much.[13][02]" }
+	"+ $100": { givemoney(100) sound(SND_KACHING)
+	window_close(5) window_switch(1) refreshwindow "@Added $100!" goto(moneymenu)}
+	"+ $1,000": { givemoney(1000) sound(SND_KACHING)
+	window_close(5) window_switch(1) refreshwindow "@Added $1,000!" goto(moneymenu)}
+	"+ $10,000": { givemoney(10000) sound(SND_KACHING)
+	window_close(5) window_switch(1) refreshwindow "@Added $10,000!" goto(moneymenu)}
+	"- $100": { takemoney(100) sound(SND_KACHING)
+	window_close(5) window_switch(1) refreshwindow "@Lost $100!" goto(moneymenu)}
+	"- $1,000": { takemoney(1000) sound(SND_KACHING)
+	window_close(5) window_switch(1) refreshwindow "@Lost $1,000!" goto(moneymenu)}
+	"- $10,000": { takemoney(10000) sound(SND_KACHING)
+	window_close(5) window_switch(1) refreshwindow "@Lost $10,000!" goto(moneymenu)}
+	default "Back": { window_close(5) window_switch(1) refreshwindow goto(statusmenu)}
+}
+
+define dadphone = flag 0x0C7
+define momphone = flag 0xC8
+define escargophone = flag 0x0C9
+define machpizzaphone = flag 0x0CA
+define stoicclubphone = flag 0x0CB
+
+phone:
+refreshwindow
+window_open(5)
+window_switch(5)
+menu 1 {
+"Use Phone": { window_close(5) window_switch(1) refreshwindow "[08 29 30 c6 00]" end }
+"Add Dad": { set(dadphone)
+window_close(5) window_switch(1) refreshwindow "@Added dad's number to your contacts! |" goto(phone) }
+"Add Mom": { set(momphone)
+window_close(5) window_switch(1) refreshwindow "@Added mom's number to your contacts! |" goto(phone) }
+"Add Escargo": { set(escargophone)
+window_close(5) window_switch(1) refreshwindow "@Added Escargo Express to your contacts! |" goto(phone) }
+"Add Pizza": { set(machpizzaphone)
+window_close(5) window_switch(1) refreshwindow "@Added Mach Pizza to your contacts! |" goto(phone) }
+"Add Stoic": { set(stoicclubphone)
+window_close(5) window_switch(1) refreshwindow "@Added Stoic Club to your contacts! |" goto(phone) }
+default "Back": { window_close(5) window_switch(1) refreshwindow goto(statusmenu)}
+}
+
+psi:
+refreshwindow
+"@Who should learn a PSI move?" newline
+menu {
+	"Ness": {goto(nesspsi)}
+	"Poo": {goto(poopsi)}
+	default "Back": { goto(statusmenu)}
+}
+
+define tplearned = flag 0x113
+
+nesspsi:
+refreshwindow
+"@What should Ness learn?" next
+window_open(5)
+window_switch(5)
+menu 1 {
+	"Teleport Alpha": {learnpsi (1, 1) set(tplearned)
+	window_close(5) window_switch(1) refreshwindow sound(SND_LEARNPSI) "@Ness learned PSI Teleport Alpha! |" goto(psi)}
+	"Teleport Beta": {learnpsi (1, 2) set(tplearned)
+	window_close(5) window_switch(1) refreshwindow sound(SND_LEARNPSI) "@Ness learned PSI Teleport Beta! |" goto(psi) }
+	default "Back": { window_close(5) window_switch(1) refreshwindow goto(statusmenu)}
+}
+
+poopsi:
+refreshwindow
+"@What should Poo learn?" next
+window_open(5)
+window_switch(5)
+menu 1 {
+	"Teleport Alpha": {learnpsi (4, 1) set(tplearned)
+	window_close(5) window_switch(1) refreshwindow sound(SND_LEARNPSI) "@Poo learned PSI Teleport Alpha! |" goto(psi)}
+	"Teleport Beta": {learnpsi (4, 2) set(tplearned)
+	window_close(5) window_switch(1) refreshwindow sound(SND_LEARNPSI) "@Poo learned PSI Teleport Beta! |" goto(psi) }
+	"Starstorm Alpha": {learnpsi (4, 3)
+	window_close(5) window_switch(1) refreshwindow sound(SND_LEARNPSI) "@Poo learned PSI Starstorm Alpha! |" goto(psi)}
+	"Starstorm Omega": {learnpsi (4, 4)
+	window_close(5) window_switch(1) refreshwindow sound(SND_LEARNPSI) "@Poo learned PSI Starstorm Omega! |" goto(psi) }
+	default "Back": { window_close(5) window_switch(1) refreshwindow goto(statusmenu)}
+}
+
+exp:
+window_switch(1)
+refreshwindow
+"@WARNING: This can take awhile." next
+"@Max whose EXP?" newline
+menu 4 {
+	"Ness": { window_close(5) window_switch(1) refreshwindow sound(SND_LEARNPSI) next {boost_exp(1,1)} next goto(exp)}
+	"Jeff": { window_close(5) window_switch(1) refreshwindow sound(SND_LEARNPSI) next {boost_exp(2,1)} next goto(exp)}
+	"Paula": { window_close(5) window_switch(1) refreshwindow sound(SND_LEARNPSI) next {boost_exp(3,1)} next goto(exp)}
+	"Poo": { window_close(5) window_switch(1) refreshwindow sound(SND_LEARNPSI) next {boost_exp(4,1)} next goto(exp)}
+	default "Back": { refreshwindow goto(statusmenu)}
+}
+
+musicmenu: 
+"@Change music to which type?" next
+menu 2 { 
+	"Overworld": {goto(owmusicmenu)}
+	"Battle": {goto(battlemusicmenu)}
+	default "Back": {refreshwindow goto(mod_menu)}
+}
+
+owmusicmenu:
+window_open(2)
+window_switch(2)
+menu 3 {
+	"None": {music(0) end}
+	"Naming": {music(2) end}
+	"Home": {music(23) end}
+	"Paula": {music(24) end}
+	"Hotel": {music(26) end}
+	"Store": {music(28) end}
+	"Factory": {music(43) end}
+	"Threed 1": {music(44) end}
+	"Onett": {music(46) end}
+	"Fourside": {music(47) end}
+	"Saturn": {music(48) end}
+	"Peaceful": {music(52) end}
+	"Desert": {music(51) end}
+	"Winters": {music(54) end}
+	"Summers": {music(56) end}
+	"Cafe": {music(57) end}
+	"Sailing": {music(58) end}
+	"Dalaam": {music(59) end}
+	"Darkness": {music(64) end}
+	"Love": {music(93) end}
+	"Credits": {music(94) end}
+	"SmileTears": {music(95) end}
+	"Threed2": {music(129) end}
+	"Bus": {music(87) end}
+	"Skyrun": {music(83) end}
+	"Bicycle": {music(82) end}
+	"Venus": {music(80) end}
+	"Place": {music(71) end}
+	"Moonside": {music(50) end}
+	default "Back": {
+	window_close(2)
+	window_switch(1)
+	refreshwindow
+	goto(musicmenu)
+	}
+}
+
+battlemusicmenu:
+window_open(2)
+window_switch(2)
+menu 3 {
+	"None": {music(0) end}
+	"Giygas1": {music(72) end}
+	"Giygas2": {music(73) end}
+	"Giygas3": {music(74) end}
+	"Giygas4": {music(75) end}
+	"CrankyLady": {music(96) end}
+	"SpinningRobo": {music(97) end}
+	"Mushroom": {music(98) end}
+	"Hippie": {music(100) end}
+	"RunawayDog": {music(101) end}
+	"CaveBoy": {music(102) end}
+	"Boss": {music(103) end}
+	"Kraken": {music(104) end}
+	"Pokey": {music(105) end}
+	default "Back": {
+	window_close(2)
+	window_switch(1)
+	refreshwindow
+	goto(musicmenu)
+	}
+}
+
+about:
+refreshwindow
+"@EarthBound debug menu by Ryan ShrineFox." next
+"@Last updated 3-30-16. Made using Coilsnake and CCScript." next
+"@View changelog?" newline
+menu 2 { 
+	"Yes": {goto(changelog)}
+	default "No": {end }
+}
+
+changelog:
+refreshwindow
+"@Fixed cave tileset glitch." next
+"@Removed conflicting titlescreen data." next
+"@Added function to revive fallen party members." next
+"@Added money options." next
+"@Added mobile bank access." next
+"@Added mobile storage access." next
+"@Added mobile phone access." next
+"@Added PSI learning menu." next
+"@Added experimental EXP feature." end 
+ 
+define buzzbuzz = flag 0x012
+define nesspajamas = flag 0x2ed
+define onettday = flag 0x1a6
+define onettmusic = flag 0x068
+define phonesoff = flag 0x05f
+define enemiesoff = flag 0x00b
+define roadblocks = flag 0x1dc
+
+flagmenu:
+"@Toggle which flag?" newline
+window_open(5)
+window_switch(5)
+menu 1 {
+	"Buzz Buzz": {
+		if not buzzbuzz 
+			{
+			set(buzzbuzz)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@Buzz Buzz is now active." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		else
+			{ 
+			unset(buzzbuzz)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@Buzz Buzz is no longer active." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		}
+	"Ness Pajamas": {
+		if not nesspajamas 
+			{
+			set(nesspajamas)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@Ness's alt sprite is now active." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		else
+			{ 
+			unset(nesspajamas)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@Ness's normal sprite is now active." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		}
+	"Onett Daytime": {
+		if not onettday 
+			{
+			set(onettday)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@Time of day in Onett updated." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		else
+			{ 
+			unset(onettday)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@Time of day in Onett updated." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		}
+	"Onett Music": {
+		if not onettmusic 
+			{
+			set(onettmusic)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@Daytime music in Onett is enabled." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		else
+			{ 
+			unset(onettmusic)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@Daytime music in Onett is disabled." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		}
+	"Phonecalls": {
+		if not phonesoff 
+			{
+			set(phonesoff)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@You can now call people when checking phones." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		else
+			{ 
+			unset(phonesoff)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@Phones will no longer work if checked." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		}
+	"Enemies": {
+		if not enemiesoff 
+			{
+			set(enemiesoff)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@Enemies are now disabled." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		else
+			{ 
+			unset(enemiesoff)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@Enemies enabled." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		}
+	"Roadblocks": {
+		if not roadblocks 
+			{
+			set(roadblocks)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@Roadblocks are now set up in Onett." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		else
+			{ 
+			unset(roadblocks)
+			window_close(5)
+			window_switch(1)
+			refreshwindow
+			"@Roadblocks in Onett have been taken down." next
+			refreshwindow
+			goto(flagmenu)
+			}
+		}
+	"Help!": {
+	window_close(5)
+	window_switch(1)
+	refreshwindow
+	"@Turns selected flags on/off." next
+	"@Press B or select back to quit." next
+	"@Changes will take effect upon map reload." next
+	goto(flagmenu)
+	}
+	default "Back": {
+		window_close(5)
+		window_switch(1)
+		refreshwindow
+		goto(mod_menu)
+		}
+}
+
+// Custom Commands
+
+command refreshwindow {
+	window_close(1)
+	window_open(1)
+}
+
+command flashscreen {
+	window_open(11)
+	window_close(11)
+}

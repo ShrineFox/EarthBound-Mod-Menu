@@ -1908,7 +1908,7 @@
   Direction: party
   PP Cost: 0
   Target: none
-  Text Address: data_29.l_0xc77eff
+  Text Address: modmenu.mod_menu
 273:
   Action type: other
   Code Address: $c29254
