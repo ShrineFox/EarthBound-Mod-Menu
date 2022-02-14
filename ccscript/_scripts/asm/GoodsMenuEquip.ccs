@@ -1,0 +1,101 @@
+//Originally created by Chaz for the EarthBound Randomizer
+//CCScript adaptation by phoenixbound, ShadowOne333, and vince94
+//This patch lets you ignore the Equip menu and equip stuff right in Goods!
+//This version also adds the word "from" and removes the extra spaces in the message that displays.
+
+command e(label) "{long label}"
+define UsingEquipmentCheckFlag = flag 0x3F0
+ROM[0xC7C742] = goto(newUse)
+ROM[0xC5E36E] = goto(newCheck)
+ROM[0xC5E277] = goto(equipMessagePartOne)
+ROM[0xC5E2F7] = goto(equipMessagePartTwo)
+
+/////////////////////////////////////////////////////////////
+// Changes to what happens when you Use an equippable item //
+newUse:
+   store_registers
+   if not "[1D 11 00 00]" //Is this item equippable?
+   { 
+      "@{user} can't equip the [19 1F]{swap}{itemname(0)}." end 
+   }
+
+   "[19 1F]"
+   swap
+   call(0xC5E25B)
+
+   load_registers
+   set(UsingEquipmentCheckFlag)
+   goto(0xC5E136)
+
+newCheck:
+   swap
+   store_registers
+
+   if isset(UsingEquipmentCheckFlag)
+   {
+      //loadZero
+      unset(UsingEquipmentCheckFlag)
+      isset(UsingEquipmentCheckFlag)
+      eob
+   }
+
+   load_registers
+   "[19 19 00 00][1D 0B 00]"
+   eob
+
+//////////////////////////////////
+// Changes to the Equip message //
+equipMessagePartOne:
+   load_registers
+   rtoarg
+   "@([1C 02 00]'s " //[NAME]'s
+   "[06 92 02 {e(initialOffense)}]"
+   goto(initialDefense)
+
+initialDefense:
+   "defense" linebreak
+   "  changed from [09 04 {e(nessDefenseStat)} {e(paulaDefenseStat)} {e(jeffDefenseStat)} {e(pooDefenseStat)}]"
+
+initialOffense:
+   "offense" linebreak
+   "  changed from [09 04 {e(nessOffenseStat)} {e(paulaOffenseStat)} {e(jeffOffenseStat)} {e(pooOffenseStat)}]"
+
+equipMessagePartTwo:
+   " to "
+   rtoarg
+   "[06 92 02 {e(finalOffense)}]"
+   goto(finalDefense)
+
+finalDefense:
+   "[1F C0 04 {e(nessDefenseStat)} {e(paulaDefenseStat)} {e(jeffDefenseStat)} {e(pooDefenseStat)}]"
+   ".)" wait newline eob
+
+finalOffense:
+   "[1F C0 04 {e(nessOffenseStat)} {e(paulaOffenseStat)} {e(jeffOffenseStat)} {e(pooOffenseStat)}]"
+   ".)" wait newline eob
+
+///////////////////////////////////////
+//Stat printing for each party member//
+nessDefenseStat:
+   "[1C 01 12]" eob
+
+paulaDefenseStat:
+   "[1C 01 28]" eob
+
+jeffDefenseStat:
+   "[1C 01 3E]" eob
+
+pooDefenseStat:
+   "[1C 01 54]" eob
+
+nessOffenseStat:
+   "[1C 01 11]" eob
+
+paulaOffenseStat:
+   "[1C 01 27]" eob
+
+jeffOffenseStat:
+   "[1C 01 3D]" eob
+
+pooOffenseStat:
+   "[1C 01 53]" eob

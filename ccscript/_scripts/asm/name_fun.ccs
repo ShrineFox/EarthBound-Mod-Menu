@@ -1,0 +1,182 @@
+/**
+ * name_fun.ccs
+ * Last updated 14 December 2018
+ */
+
+/**
+ * Base commands
+ */
+
+// Get a single character from a playable character's name.
+// Uses the same argument numbers as the name(char) command.
+command namechar(char) "[19 11 {byte char}]"
+
+// Get the ith character from a playable character's name.
+// Uses the same argument numbers as the name(char) command.
+command namechar_index(i, char) {
+	counter(i)
+	namechar(char)
+}
+
+// Get a single character from a stat string (not including numerical stats).
+// Uses the same argument numbers as the stat(n) command.
+command statchar(n) "[19 28 {byte n}]"
+
+// Get the ith character from a stat string (not including numerical stats).
+// Uses the same argument numbers as the stat(n) command.
+command statchar_index(i, stat) {
+	counter(i)
+	statchar(stat)
+}
+
+/**
+ * Macros
+ */
+
+// Print a name string slowly.
+command name_slow(char, slowness) {
+	counter(1)
+	_loop:
+		if (namechar(char)) {
+			swap
+			"[1C 11 00]"
+			"[1C 03 00]"
+			pause(slowness)
+			inc
+			goto(_loop)
+		}
+	// If namechar returns zero, the string has no more characters.
+}
+
+// Print a stat string slowly.
+command stat_slow(stat, slowness) {
+	counter(1) // Conclusive proof that arrays start at 1
+	_loop:
+		if (statchar(stat)) {
+			swap
+			"[1C 11 00]" // Due to the way this code works, it's either hint a
+			"[1C 03 00]" // linebreak to the autoformatter or do nothing
+			pause(slowness)
+			inc
+			goto(_loop)
+		}
+	// If statchar returns zero, the string has no more characters.
+}
+
+// Print a name with random failure to print characters, like the final prayer
+command name_randomfail(char, chance_success_percent) {
+	counter (1)
+	_loop:
+		if (namechar(char)) {
+			swap
+			"[1D 21 63]"
+			if ("[18 07 {byte chance_success_percent} 00 00 00 00]") {
+				"[1C 11 00]"
+				"[1C 03 00]"
+			}
+			else {
+				"#"
+			}
+			inc
+			goto(_loop)
+		}
+}
+
+// Print a stat with random failure to print characters, like the final prayer
+command stat_randomfail(stat, chance_success_percent) {
+	counter(1)
+	_loop:
+		if (statchar(stat)) {
+			swap
+			"[1D 21 63]" // 0x63 = 99 dec
+			if ("[18 07 {byte chance_success_percent} 00 00 00 00]") {
+				"[1C 11 00]"
+				"[1C 03 00]"
+			}
+			else {
+				"#"
+			}
+			inc
+			goto(_loop)
+		}
+}
+
+// After printing each character of a name string, insert a string or control
+// code sequence to print or execute.
+// May produce unexpected behavior if the counter register is modified.
+command name_with_separator(char, separator) {
+	if (namechar_index(1, char)) {
+		namechar(char)
+		swap
+		"[1C 11 00]"
+		"[1C 03 00]"
+		_loop:
+		inc
+		if (namechar(char)) {
+			separator
+			namechar(char)
+			swap
+			"[1C 11 00]"
+			"[1C 03 00]"
+			goto(_loop)
+		} else {
+			goto(_end)
+		}
+	}
+	_end:
+}
+
+// After printing each character of a stat string, insert a string or control
+// code sequence to print or execute.
+// May produce unexpected behavior if the counter register is modified.
+command stat_with_separator(stat, separator) {
+	if (statchar_index(1, stat)) {
+		statchar(stat)
+		swap
+		"[1C 11 00]"
+		"[1C 03 00]"
+		_loop:
+		inc
+		if (statchar(stat)) {
+			separator
+			statchar(stat)
+			swap
+			"[1C 11 00]"
+			"[1C 03 00]"
+			goto(_loop)
+		} else {
+			goto(_end)
+		}
+	}
+	_end:
+}
+
+// Get the number of characters/digits in a name
+command name_getlength(char) {
+	counter(1)
+	_loop:
+		if (namechar(char)) {
+			store_registers
+			inc
+			goto(_loop)
+		}
+	
+	load_registers
+	ctoarg
+	swap
+}
+
+// Get the number of characters/digits in a stat
+command stat_getlength(stat) {
+	counter(1)
+	_loop:
+		if (statchar(stat)) {
+			store_registers
+			inc
+			goto(_loop)
+		}
+	
+	load_registers
+	ctoarg
+	swap
+}

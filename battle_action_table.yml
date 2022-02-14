@@ -1908,7 +1908,7 @@
   Direction: party
   PP Cost: 0
   Target: none
-  Text Address: modmenu.mod_menu
+  Text Address: _scripts.ModMenu
 273:
   Action type: other
   Code Address: $c29254

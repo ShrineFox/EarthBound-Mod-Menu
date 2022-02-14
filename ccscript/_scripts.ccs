@@ -1,0 +1,22 @@
+/* ASM Hacks */
+import "_scripts/asm/asm65816.ccs"
+import "_scripts/asm/ASMRef.ccs"
+import "_scripts/asm/asm_code.ccs"
+import "_scripts/asm/asm_controls.ccs"
+/* EarthBound++ */
+import "_scripts/asm/ebpp.ccs"
+import "_scripts/asm/ebpp_std.ccs"
+import "_scripts/asm/ebpp_mem.ccs"
+import "_scripts/asm/EBPP_Disassembly_HardwareCompatible_v1_1.ccs"
+import "_scripts/asm/general.ccs"
+/* Quality of Life improvements from CCScript Library */
+import "_scripts/asm/Title_Window.ccs"
+import "_scripts/asm/name_fun.ccs"
+import "_scripts/asm/run_button_toggleable.ccs"
+import "_scripts/asm/repel_sandwiches.ccs"
+import "_scripts/asm/GoodsMenuEquip.ccs"
+/* Mod Menu */
+import "_scripts/modmenu/menus/modmenu.ccs"
+
+ModMenu:
+	goto(ModMenu_MainMenu)

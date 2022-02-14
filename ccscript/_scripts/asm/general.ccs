@@ -1,0 +1,1094 @@
+import ebpp
+
+command e(label) "{long label}"
+command adr32(a) "[{byte[0] a} {byte[1] a} {byte[2] a} 00]"
+command adr24(a) "[{byte[0] a} {byte[1] a} {byte[2] a}]"
+
+// Special symbols
+command symbol_tm "[b0]"
+
+
+define Damage_PSI_Percent = 0xC2B608
+define Status_PSI_Percent = 0xC2B639
+
+// If event flag is set, goto
+command ifgoto (num, target) "[06 {short num} {long target}]"
+// Copy active memory to WRAM
+command act_to_wram "[1B 05]"
+// Copy WRAM to actie memory
+command wram_to_act "[1B 06]"
+// Return the character number in party slot "char"
+command char_num (char) "[19 10 {byte char}]"
+// If binary flag is false, goto
+command false_goto(target) "[1B 02 {long target}]"
+// If binary flag is true, goto
+command true_goto(target) "[1B 03 {long target}]"
+
+// Display PSI animation
+command psi_animation (enemypsi, playerpsi) "[1C 13 {byte enemypsi} {byte playerpsi}]"
+
+// Lock player movement
+command lock_player_movement "[1F E8 FF]"
+
+// Equip character "char" with his or her item in slot #itemslot in his or her inventory
+command equip (char, itemslot) "[1F 83 {byte char} {byte itemslot}]"
+
+command change_palette(tset, pal, time) {
+  "[1F E1 {byte tset} {byte pal} {byte time}"
+}
+
+// Commands for generated sprites
+command sprite2_spawn(sprite,move,style) "[1F 15 {short sprite} {short move} {byte style}]"
+command sprite2_do_mc(sprite,move) "[1F F2 {short sprite} {short move}]"
+command sprite2_delete(sprite,style) "[1F 1F {short sprite} {byte style}]"
+command sprite2_direction(sprite,dir) "[1F E4 {short sprite} {byte dir}]"
+
+// Commands for NPCs (TPTs)
+command npc_spawn(tpt, move, style) "[1F 17 {short tpt} {short move} {byte style}]"
+command npc_do_mc(tpt, move) "[1F F1 {short tpt} {short move}]"
+command npc_delete(tpt, style) { hide_sprite(tpt, style) }
+command npc_direction(tpt, dir) { sprite_direction(tpt, dir) }
+
+command show_npc_float(tpt, float) "[1F 1A {short tpt} {byte float}"
+command hide_npc_float(tpt) "[1F 1B {short tpt}]"
+command show_sprite2_float(sprite, float) "[1F F3 {short sprite} {byte float}"
+command hide_sprite2_float(sprite) "[1F F4 {sprite sprite}]"
+
+command npc_question (tpt) "[1F 1A {short tpt} 01][10 3C][1F 1B {short tpt}]"
+command npc_exclamation (tpt) "[1F 1A {short tpt} 03][10 3C][1F 1B {short tpt}]"
+command npc_exclamation2 (tpt1, tpt2) {
+  "[1F 1A {short tpt1} 03]"
+  "[1F 1A {short tpt2} 03]"
+  "[10 3C]"
+  "[1F 1B {short tpt1}]"
+  "[1F 1B {short tpt2}]"
+}
+command npc_lightbulb (tpt) "[1F 1A {short tpt} 04][10 3C][1F 1B {short tpt}]"
+command npc_heart (tpt) "[1F 1A {short tpt} 09][10 3C][1F 1B {short tpt}]"
+command npc_surprise (tpt) {
+  show_npc_float(tpt, FLOAT_SURPISE)
+  pause(60)
+  hide_npc_float(tpt)
+}
+command sprite2_surprise(sprite) {
+  show_sprite2_float(sprite, FLOAT_SURPISE)
+  pause(60)
+  hide_sprite2_float(sprite)
+}
+
+command char_question(char) {
+  show_char_float(char, FLOAT_SURPISE)
+  pause(60)
+  hide_char_float(char)
+}
+
+command char_exclamation(char) {
+  show_char_float(char, FLOAT_EXCLAIM)
+  pause(60)
+  hide_char_float(char)
+}
+
+//For type, 1 is another character in party, 2 is TPT entry, and 3 is a sprite
+//Used for a character facing something
+command char_face(char, type, tpt) {"[19 22 {byte char} {byte type} {short tpt}][1F 13 {byte char} 00]"}
+//Used for a TPT entry facing something
+command npc_face(tpt1, type, tpt2) {"[19 23 {short tpt1} {byte type} {short tpt2}][1F 16 {short tpt1} 00]"}
+//Used for a sprite facing something
+command sprite2_face (sprite, type, tpt) {"[19 24 {short sprite} {byte type} {short tpt}][1F E4 {short sprite} 00]"}
+
+command is_object_relatively_positioned_to_party(direction, type, object_id) {
+  "[19 10 01]" // Return leading character number
+  "[19 22 00 {byte type} {short object_id}]" // Store direction from character to the object
+  swap
+  result_is(direction)
+}
+
+
+// CCs
+command activate_move "[1F 61]"
+command goto_after_screen_refresh(a) "[1f 63 {adr32(a)}]"
+command focus_camera_on_sprite(sprite) "[1F EF {short sprite}]"
+
+// Other commands
+
+// Shows item name, help style.
+command helpintro(item) "[01] <[1c 05 {byte item}]>[03 00]"
+
+command callend "[03][02]"
+
+command callendpause "[03][10 01][02]"
+
+command give2(item, failLabel) {
+  "[1d 03 ff]"
+  "[1b 02]" adr24(failLabel) "[00]"
+  "[1d 0e 00 {byte item}]"
+  call(0xc7dccf)
+}
+
+command give2char(char, item, failLabel) {
+  "[1d 03 {byte char}]"
+  "[1b 02]" adr24(failLabel) "[00]"
+  "[1d 0e {byte char} {byte item}]"
+  call (0xc7dccf)
+}
+
+// If the item matches, continue
+// If not, jump to fail_label
+command item_use_npc(item, fail_label) {
+	"[1b 00][19 19 00 00][1b 04][0b {byte[0] item}]"
+	"[1b 02]" adr32(fail_label)
+}
+
+// Ask the player to select an item in text
+// After calling this, use "if result_is(XX)" to check if the correct item was selected
+command select_item(cancel_label) {
+  call(0xc5e456)
+  false_goto(cancel_label)
+  "[1b 00]" // copy all memory to storage
+  "[19 19 00 00]" // copy the selected item's number into storage
+  swap
+  "[0d 00]" // copy into arg memory
+}
+
+command sprite2_spin_end_east(sprite) {
+  sprite2_direction(sprite, WEST)
+  pause(2)
+  sprite2_direction(sprite, NORTH)
+  pause(2)
+  sprite2_direction(sprite, EAST)
+  pause(2)
+  sprite2_direction(sprite, SOUTH)
+  pause(2)
+  sprite2_direction(sprite, WEST)
+  pause(2)
+  sprite2_direction(sprite, NORTH)
+  pause(2)
+  sprite2_direction(sprite, EAST)
+  pause(2)
+  sprite2_direction(sprite, SOUTH)
+}
+
+command sprite2_spin_end_south(sprite) {
+  sprite2_spin_end_east(sprite)
+  pause(2)
+  sprite2_direction(sprite, SOUTH)
+}
+
+command char12_face_eachother {
+  char_face(1, 1, 2)
+  char_face(2, 1, 1)
+}
+
+command char12_face_npc(npc_id) {
+  char_face(1, 2, npc_id)
+  char_face(2, 2, npc_id)
+}
+
+command char12_face_sprite(sprite_id) {
+  char_face(1, 3, sprite_id)
+  char_face(2, 3, sprite_id)
+}
+
+command save_at_coordinates(x, y, direction, reg0, reg1, reg2, reg3) {
+  load16(reg1, 0x7E9877)
+  load16(reg2, 0x7E987B)
+  load8(reg3, 0x7E987F)
+
+  load16c(reg0, x)
+  store16(reg0, 0x7E9877) // X
+  load16c(reg0, y)
+  store16(reg0, 0x7E987B) // Y
+  load16c(reg0, direction)
+  store8(reg0, 0x7E987F)
+
+  save
+
+  store16(reg1, 0x7E9877)
+  store16(reg2, 0x7E987B)
+  store8(reg3, 0x7E987F)
+}
+
+command set_party_direction(direction, reg0) {
+  load16c(reg0, direction)
+  store8(reg0, 0x7E987F)
+}
+
+// sample text for debugging
+TODO_noroom:
+"@(You had no room to take the item.)" end
+
+// For usage in trees
+_eob:
+eob
+
+_end:
+end
+
+// Movement code creation commands
+command mov_jsl(target) "[04 {short target}{byte [2] target}]"
+
+command mov_true_goto (target) "[0A {short target}]"
+
+command mov_false_goto (target) "[0B {short target}]"
+
+command movs_init_alt(speed, style) {
+  mov_jslmov_short(0xC3AAAA, 0x01F6)
+  mov_jslasm(0xC0A685) "[{short speed}]"
+  mov_tablewrite(5, byte style)
+}
+
+command movs_warp (dest) "[42 07 A9 C0 {byte dest}]"
+
+command movs_turn (dir) { mov_jslasm (0xC0AA6E) "[{short dir}]" }
+
+command movecode_walk(mc_num, speed, destX, destY) {
+  _mc: {
+    movs_init_alt(speed, 2)
+    movs_walker(destX, destY)
+    mov_jslasm(0xC46E46)
+    movs_go
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+command movecode_walk_and_turn(mc_num, speed, destX, destY, dir) {
+  _mc: {
+    movs_init_alt(speed, 2)
+    movs_walker(destX, destY)
+    mov_jslasm(0xC46E46)
+    movs_go
+    movs_turn(dir)
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+
+command movecode_slide(mc_num, speed, destX, destY) {
+  _mc: {
+    movs_init_alt(speed, 2)
+    movs_slider(destX, destY)
+    mov_jslasm(0xC46E46)
+    movs_go
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+command movecode_walk2(mc_num, speed, destX, destY, destX2, destY2) {
+  _mc: {
+    movs_init_alt(speed, 2)
+    movs_walker(destX, destY)
+    movs_walker(destX2, destY2)
+    mov_jslasm(0xC46E46)
+    movs_go
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+command movecode_walk3(mc_num, speed, destX1, destY1, text1,
+                                      destX2, destY2, text2,
+                                      destX3, destY3, text3) { 
+  _mc: {
+    movs_init_alt(speed, 2)
+
+    movs_walker(destX1, destY1)
+    movs_walker(destX2, destY2)
+    movs_walker(destX3, destY3)
+
+    mov_jslasm(0xC46E46)
+    movs_go
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+command movecode_walk4(mc_num, speed, destX, destY, destX2, destY2, destX3, destY3, destX4, destY4) {
+  _mc: {
+    movs_init_alt(speed, 2)
+    movs_walker(destX, destY)
+    movs_walker(destX2, destY2)
+    movs_walker(destX3, destY3)
+    movs_walker(destX4, destY4)
+    mov_jslasm(0xC46E46)
+    movs_go
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+command movecode_run(mc_num, speed, destX, destY) {
+  _mc: {
+    movs_init(speed, 2)
+    movs_walker(destX, destY)
+    mov_jslasm(0xC46E46)
+    movs_go
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+command movecode_run2(mc_num, speed, destX, destY, destX2, destY2) {
+  _mc: {
+    movs_init(speed, 2)
+    movs_walker(destX, destY)
+    movs_walker(destX2, destY2)
+    mov_jslasm(0xC46E46)
+    movs_go
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+command movecode_run3(mc_num, speed, destX, destY, destX2, destY2, destX3, destY3) {
+  _mc: {
+    movs_init(speed, 2)
+    movs_walker(destX, destY)
+    movs_walker(destX2, destY2)
+    movs_walker(destX3, destY3)
+    mov_jslasm(0xC46E46)
+    movs_go
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+command movecode_appear(mc_num, x, y) {
+  _mc: {
+    mov_setxy(x,y)
+    mov_pause(2)
+    mov_jmlmov(0xC3A2AA)
+  }
+  mov_link(mc_num, _mc)
+}
+
+command movecode_sprite_appear(mc_num, x, y, direction) {
+  _mc: {
+    mov_setxy(x, y)
+    mov_jslmov_short(0xC31D4F, 0x01F6) //1A 4F 1D
+    movs_go
+    movs_turn(direction)
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+// Spawns a sprite at relative coordinatex x,y and makes the sprite run in direction dir for t frames at speed speed
+command movecode_appear_relative(mc_num, x, y, speed, dir, t) {
+  _mc: {
+    mov_jslasm (0xc0a87a) "{short x}{short y}"
+    mov_jslmov_short(0xC3AA38, 0x01F6)
+    mov_jslasm (0xC0A685) "{short speed}"
+    movs_dirwalker (dir)
+    mov_pause (t)
+    mov_jslasm (0xc46e46)
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+command movecode_appear_rel(mc_num, x, y) {
+  _mc: {
+    mov_jslasm (0xc0a87a) "{short x}{short y}"
+    mov_jslmov_short(0xC31D4F, 0x01F6)
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+command movecode_appear_relative_and_walk(mc_num, x, y, speed, destX, destY) {
+  _mc: {
+    mov_jslasm (0xc0a87a) "{short x}{short y}"
+    mov_jslmov_short(0xC3AA38, 0x01F6)
+    mov_jslasm (0xC0A685) "{short speed}"
+    movs_walker(destX, destY)
+    mov_jslasm (0xc46e46)
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+command movecode_appear_relative_and_walk2(mc_num, x, y, speed, destX, destY, destX2, destY2) {
+  _mc: {
+    mov_jslasm (0xc0a87a) "{short x}{short y}"
+    mov_jslmov_short(0xC3AA38, 0x01F6)
+    mov_jslasm (0xC0A685) "{short speed}"
+    movs_walker(destX, destY)
+    movs_walker(destX2, destY2)
+    mov_jslasm (0xc46e46)
+    mov_halt
+  }
+  mov_link(mc_num, _mc)
+}
+
+// Makes a sprite run to a coordinate (pixels) and disappear when you get close
+command movecode_flee(mc_num, x, y) {
+  _mc: {
+    //mov_jsrmov(0xAAAA)
+    mov_jslmov_short(0xC3AAAA, 0x01F6)
+    mov_tablewrite(4, 0)
+    "[42 BF A4 C0]"
+    "[42 45 6C C4]"
+    mov_tablewrite(2, 0x50)
+    mov_tablewrite(3, 0x50)
+    //mov_jsrmov(0xAB8A)
+    mov_jslmov_short(0xC3AB8A, 0x01F6)
+    mov_loadtmp(1)
+    "[42 57 A8 C0 32 01]"
+    mov_loadtmp(0)
+    "[42 57 A8 C0 21 00]"
+    mov_loadtmp(4)
+    "[42 5F A6 C0]"
+    "[42 BF A4 C0 06 08]"
+    mov_tablewrite(4, 5)
+    "[42 85 A6 C0 00 02]"
+    mov_tablewrite(5, 2)
+    mov_tablewrite(6, x)
+    mov_tablewrite(7, y)
+    //mov_jsrmov(0xAB59)
+    mov_jslmov_short(0xC3AB59, 0x01F6)
+    //mov_jmpmov(0xA204)
+    mov_jslmov_short(0xC3A204, 0x01F6)
+    mov_end
+  }
+  mov_link(mc_num, _mc)
+}
+
+// Darkens the screen "num" times, waiting "delay" frames between each darkening
+// Initial shade is the starting shade in two's complement format.
+command movecode_darken_screen(movecode_num, initial_shade, num, delay) {
+  _mc: {
+    "[25 F0 9F]"
+    "[3B FF]"
+    "[39]"
+    mov_tablewrite(0, initial_shade)
+    mov_loop_start(num)
+      "[14 00 02 FF FF]"
+      "[42 A8 74 C4]"
+      mov_pause(delay)
+    mov_loop_end
+    "[42 46 6E C4]"
+    mov_jslmov_short(0xC3A204, 0x01F6) //"[19 04 A2]"
+    mov_halt
+  }
+  mov_link(movecode_num, _mc)
+}
+
+// Brightens the screen "num" times, waiting "delay" frames between each brightening
+// Initial shade is the starting shade in two's complement format.
+// IE: To start at a shade which is the result of movecode_darken_screen(_, 0, 7, _), set initial_shade=0xfff9
+command movecode_brighten_screen(movecode_num, initial_shade, num, delay) {
+  _mc: {
+    "[25 F0 9F]"
+    "[3B FF]"
+    "[39]"
+    mov_tablewrite(0, initial_shade)
+    mov_loop_start(num)
+      "[14 00 02 01 00]"
+      "[42 A8 74 C4]"
+      mov_pause(delay)
+    mov_loop_end
+    "[42 46 6E C4]"
+    mov_jslmov_short(0xC3A204, 0x01F6) //"[19 04 A2]"
+    mov_halt
+  }
+  mov_link(movecode_num, _mc)
+}
+
+// Pans the camera to the coordinates, then executes the text at "text"
+command movecode_camera_pan(movecode_num, speed, x, y, text) {
+  _mc: {
+    mov_pause(10)
+    mov_jslasm(0xC0A864) "[FF]"
+    "[25 C8 9F]"
+    "[3B FF]"
+    "[08 2B 8C C4]"
+    mov_jslasm(0xC0A685) "{short speed}"
+    mov_tablewrite(5, 1)
+    mov_tablewrite(6, x)
+    mov_tablewrite(7, y)
+    mov_jslmov_short(0xC3AB59, 0x01F6) //1A 59 AB
+    mov_jslasm(0xC0A88D) "[{byte[2] text} {byte[3] text} {byte[0] text} {byte[1] text}]"
+    mov_halt
+  }
+  mov_link(movecode_num, _mc)
+}
+
+command movecode_camera_pan2(movecode_num, speed, x1, y1, text1, speed2, x2, y2, text2) {
+  _mc: {
+    mov_pause(10)
+    mov_jslasm(0xC0A864) "[FF]"
+    "[25 C8 9F]"
+    "[3B FF]"
+    "[08 2B 8C C4]"
+    mov_jslasm(0xC0A685) "{short speed}"
+    mov_tablewrite(5, 1)
+    mov_tablewrite(6, x1)
+    mov_tablewrite(7, y1)
+    mov_jslmov_short(0xC3AB59, 0x01F6) //1A 59 AB
+    mov_jslasm(0xC0A88D) "[{byte[2] text1} {byte[3] text1} {byte[0] text1} {byte[1] text1}]"
+    mov_jslasm(0xC0A685) "{short speed2}"
+    mov_tablewrite(5, 1)
+    mov_tablewrite(6, x2)
+    mov_tablewrite(7, y2)
+    mov_jslmov_short(0xC3AB59, 0x01F6) //1A 59 AB
+    mov_jslasm(0xC0A88D) "[{byte[2] text2} {byte[3] text2} {byte[0] text2} {byte[1] text2}]"
+    mov_halt
+  }
+  mov_link(movecode_num, _mc)
+}
+
+command movecode_camera_pan5(movecode_num, speed, x1, y1, text1, x2, y2, text2, x3, y3, text3, x4, y4, text4, x5, y5, text5) {
+  _mc: {
+    mov_pause(10)
+    mov_jslasm(0xC0A864) "[FF]"
+    "[25 C8 9F]"
+    "[3B FF]"
+    "[08 2B 8C C4]"
+    mov_jslasm(0xC0A685) "{short speed}"
+    mov_tablewrite(5, 1)
+    mov_tablewrite(6, x1)
+    mov_tablewrite(7, y1)
+    mov_jslmov_short(0xC3AB59, 0x01F6) //1A 59 AB
+    mov_jslasm(0xC0A88D) "[{byte[2] text1} {byte[3] text1} {byte[0] text1} {byte[1] text1}]"
+    mov_tablewrite(5, 1)
+    mov_tablewrite(6, x2)
+    mov_tablewrite(7, y2) 
+    mov_jslmov_short(0xC3AB59, 0x01F6) //1A 59 AB
+    mov_jslasm(0xC0A88D) "[{byte[2] text2} {byte[3] text2} {byte[0] text2} {byte[1] text2}]"
+    mov_tablewrite(5, 1) 
+    mov_tablewrite(6, x3)
+    mov_tablewrite(7, y3)
+    mov_jslmov_short(0xC3AB59, 0x01F6) //1A 59 AB
+    mov_jslasm(0xC0A88D) "[{byte[2] text3} {byte[3] text3} {byte[0] text3} {byte[1] text3}]"
+    mov_tablewrite(5, 1) 
+    mov_tablewrite(6, x4)
+    mov_tablewrite(7, y4)
+    mov_jslmov_short(0xC3AB59, 0x01F6) //1A 59 AB
+    mov_jslasm(0xC0A88D) "[{byte[2] text4} {byte[3] text4} {byte[0] text4} {byte[1] text4}]"
+    mov_tablewrite(5, 1)
+    mov_tablewrite(6, x5)
+    mov_tablewrite(7, y5)
+    mov_jslmov_short(0xC3AB59, 0x01F6) //1A 59 AB
+    mov_jslasm(0xC0A88D) "[{byte[2] text5} {byte[3] text5} {byte[0] text5} {byte[1] text5}]"
+    mov_halt
+  }
+  mov_link(movecode_num, _mc)
+}
+
+// Moves the camera from x,y to the player
+// Based on movecode 400
+command movecode_camera_pan_return(movecode_num, x, y, text) {
+  _mc: {
+    mov_setx(x)
+    mov_sety(y)
+    mov_jslasm(0xC0A685) "[00 01]"
+    mov_tablewrite(5, 1)
+    mov_tablewrite(1, 1)
+    mov_jslmov_short(0xC31E2D, 0x01F6) // 1A 2D 1E
+
+    mov_jslasm(0xC0A88D) "[{byte[2] text} {byte[3] text} {byte[0] text} {byte[1] text}]"
+    mov_jslmov_short(0xC3A204, 0x01F6) // 19 04 A2
+    mov_halt
+  }
+  mov_link(movecode_num, _mc)
+
+  ROM[0xc31e2d] = {
+    "[25 C8 9F]"
+    "[3B FF]"
+    "[08 2B 8C C4]"
+    mov_tablewrite(2, 0)
+    "[07 4D 1E]"
+    mov_jslasm(0xc0a943) "[FF]"
+    mov_jsrmov(0xab59)
+    mov_pause(1)
+    "[20 02]"
+    "[0A 45 1E]"
+    mov_rts
+  }
+}
+
+command movecode_boom(movecode_num) {
+  ROM[0xC3CD87] = {
+    "[42 46 6E C4]"
+    mov_pause(1)
+    mov_tablewrite(0, 0xfff8)
+    "[42 A8 74 C4]"
+    mov_tablewrite(0, 4)
+    mov_tablewrite(1, 0)
+    mov_tablewrite(2, 2)
+    mov_tablewrite(3, 3)
+    "[42 9E 7A C4]"
+    "[1a 1d 3c]" //TODO
+    //mov_jslmov_short(0xC33C1D, 0x01F6)
+    mov_tablewrite(1, 0)
+    mov_tablewrite(3, 6)
+    "[1a 1d 3c]" //TODO
+    //mov_jslmov_short(0xC33C1D, 0x01F6)
+    mov_tablewrite(1, 0)
+    mov_tablewrite(3, 9)
+    "[1a 1d 3c]" //TODO
+    //mov_jslmov_short(0xC33C1D, 0x01F6)
+    mov_tablewrite(1, 0)
+    mov_tablewrite(3, 14)
+    "[1a 1d 3c]" //TODO
+    //mov_jslmov_short(0xC33C1D, 0x01F6)
+    mov_pause(60)
+    /*"[42 12 A9 C0 EC 02 2B 04 04]"
+    "[42 BB 9F C0 01 01]"
+    "[1a e0 ab]"*/
+    //mov_jslmov_short(0xC3ABE0, 0x01F6)
+    "[15 1B 9D 0B 80]"
+    "[15 1D 9D C4 00]"
+    "[42 46 6E C4]"
+    mov_halt
+  }
+  mov_link(movecode_num, 0xC3CD87)
+}
+
+command movecode_facedown(movecode_num, flag_id) {
+  _mc: {
+    "[42 4C A8 C0 {short flag_id}]"
+    mov_jslmov_short(0xC38795, 0x01F6) //"[19 95 87]"
+  }
+  mov_link(movecode_num, _mc)
+}
+
+command movecode_vibrate(movecode_num, loops, speed) {
+  _mc: {
+    movs_init_noanim(0xa0, 2)
+    
+    mov_loop_start(loops)
+      "[2C FF FF]" // move a bit up
+      mov_pause(speed)
+      "[2C 01 00]" // move a bit down
+      mov_pause(speed)
+    mov_loop_end
+    mov_halt
+  }
+  mov_link(movecode_num, _mc)
+}
+
+command movecode_party_walk(movecode_num, speed, x1, y1, x2, y2) {
+  _mc: {
+    mov_setx(x1)
+    mov_sety(y1)
+    "[23 39 A0]"
+    "[25 C8 9F]"
+    "[3B FF]"
+    "[08 E1 8B C4]"
+    mov_jslasm(0xC0A685) "[{short speed}]"
+    mov_loadtmp(0)
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x2, y2)
+    mov_jslasm(0xC46E46)
+    movs_go
+    mov_halt
+  }
+  mov_link(movecode_num, _mc)
+}
+
+command movecode_party_walk8(movecode_num, speed, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6, x7, y7, x8, y8) {
+  _mc: {
+    mov_setx(x1)
+    mov_sety(y1)
+    "[23 39 A0]"
+    "[25 C8 9F]"
+    "[3B FF]"
+    "[08 E1 8B C4]"
+
+    mov_jslasm(0xC0A685) "[{short speed}]"
+    mov_loadtmp(0)            
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x2, y2)
+    //mov_jslasm(0xC46E46)
+    movs_go
+
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x3, y3)
+    movs_go
+
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x4, y4)
+    movs_go
+
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x5, y5)
+    movs_go
+
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x6, y6)
+    movs_go
+
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x7, y7)
+    movs_go
+
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x8, y8)
+    mov_jslasm(0xC46E46)
+    movs_go
+
+    mov_halt
+  } 
+  mov_link(movecode_num, _mc)                                 
+}
+
+command movecode_party_walk4(movecode_num, speed, x1, y1, x2, y2, x3, y3, x4, y4) {
+  _mc: {
+    mov_setx(x1)
+    mov_sety(y1)
+    "[23 39 A0]"
+    "[25 C8 9F]"
+    "[3B FF]"
+    "[08 E1 8B C4]"
+
+    mov_jslasm(0xC0A685) "[{short speed}]"
+    mov_loadtmp(0)
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x2, y2)
+    //mov_jslasm(0xC46E46)
+    movs_go
+
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x3, y3)
+    movs_go
+
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x4, y4)
+    mov_jslasm(0xC46E46)
+    movs_go
+
+    mov_halt
+  }
+  mov_link(movecode_num, _mc)
+}
+
+command movecode_party_walk5(movecode_num, speed, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5) {
+  _mc: {
+    mov_setx(x1)
+    mov_sety(y1)
+    "[23 39 A0]"
+    "[25 C8 9F]"
+    "[3B FF]"
+    "[08 E1 8B C4]"
+
+    mov_jslasm(0xC0A685) "[{short speed}]"
+    mov_loadtmp(0)
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x2, y2)
+    //mov_jslasm(0xC46E46)
+    movs_go
+
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x3, y3)
+    movs_go
+
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x4, y4)
+    movs_go
+
+    mov_jslmov_short(0xC3AA1E, 0x01F6) //1A 1E AA
+    mov_tablewrite(5, 1)
+    movs_walker(x5, y5)
+    mov_jslasm(0xC46E46)
+    movs_go
+
+    mov_halt
+  }
+  mov_link(movecode_num, _mc)
+}
+
+command party_walk(movecode_num, sprite) {
+  sprite2_spawn(sprite, movecode_num, 1)
+  pause(1)
+  focus_camera_on_sprite(sprite)
+  "[1f e8 ff]"
+  activate_move
+  "[1f ed]"
+  "[1f e5 ff]"
+}
+
+command movecode_lead_npc(movecode_num, destX, destY) {
+  // This overwrites mc #222
+  ROM[0xC30235] = {
+    mov_jsrmov(0x0295)
+    mov_rtl
+  }
+  _mc: {
+    // Copied from movement code #222, used by Capt Strong
+    "[15 9a 5d 01 00]"
+    mov_tablewrite(6, destX)
+    mov_tablewrite(7, destY)
+    mov_jslmov(0xC30235)
+    "[42 46 6E C4]"
+    mov_halt
+  }
+  mov_link(movecode_num, _mc)
+}
+
+command movecode_lead_npc2(movecode_num, destX, destY, destX2, destY2) {
+  // This overwrites mc #222
+  ROM[0xC30235] = {
+    mov_jsrmov(0x0295)
+    mov_rtl
+  }
+  _mc: {
+    // Copied from movement code #222, used by Capt Strong
+    "[15 9a 5d 01 00]"
+    mov_tablewrite(6, destX)
+    mov_tablewrite(7, destY)
+    mov_jslmov(0xC30235)
+    mov_tablewrite(6, destX2)
+    mov_tablewrite(7, destY2)
+    mov_jslmov(0xC30235)
+    "[42 46 6E C4]"
+    mov_halt
+  }
+  mov_link(movecode_num, _mc)
+}
+
+// Note that "sprite" is a graphical sprite number, not a TPT
+command movecode_follow(movecode_num, sprite) {
+  // This overwrites mc #225/226/227
+  ROM[0xC302AC] = {
+    mov_jsrmov(0xAB37)
+    mov_rtl
+  }
+  ROM[0xC302B0] = {
+    mov_jsrmov(0xAB44)
+    mov_rtl
+  }
+  _mc: {
+    // Copied from movement code #225, used in Capt Strong cutscene
+    "[42 64 A8 C0 FF]"
+    mov_jslmov(0xC302AC)
+    mov_tablewrite(5, 0x11)
+    "[42 38 A9 C0 {short sprite}]"
+    "[42 85 A6 C0 00 01]"
+    mov_jslmov(0xC302B0)
+    _movecode_tmp:
+    mov_pause(1)
+    "[39]"
+    "[42 38 A9 C0 {short sprite}]"
+    "[42 C6 A8 C0]"
+    mov_jmlmov(_movecode_tmp)
+  }
+  mov_link(movecode_num, _mc)
+}
+
+// Apply this on a generated sprite
+command movecode_lead_sprite(movecode_num, x1, y1, x2, y2) {
+  // This overwrites mc #222
+  ROM[0xC30235] = {
+    mov_jsrmov(0x0295)
+    mov_rtl
+  }
+  _mc: {
+    // Copied from movement code #223, used in Strong cutscene
+    mov_setx(x1)
+    mov_sety(y1)
+    mov_tablewrite(6, x2)
+    mov_tablewrite(7, y2)
+    mov_jslmov(0xC30235)
+    "[42 46 6E C4]"
+    // The following two codes effectively "end" the cutscene
+    // If you want to do more following still, don't use the following 2 codes
+    mov_pause(1)
+    "[15 9A 5D 00 00]"
+    mov_halt
+  }
+  mov_link(movecode_num, _mc)
+}
+
+command movecode_flyover_text(movecode_num, n) {
+  _mc: {
+    mov_jslasm(0xC09FBB) "[01 07]"
+    mov_jslmov_short(0xC3ABE0, 0x01F6)
+    mov_loadtmp(n)
+    mov_jslasm(0xC49EC4)
+    mov_jslasm(0xC46E46)
+    mov_jslmov_short(0xC3A204, 0x01F6)
+    mov_end
+  }
+  mov_link(movecode_num, _mc)
+}
+
+// pause_codes should be "[06 XX]" repeated as often as you want in a string. [06 XX] = mov_pause(XX)
+command movecode_battle_bg(movecode_num, bg1, bg2, pause_codes) {
+  _mc: {
+    mov_jslasm(0xC0A864) "[FF]"
+    "[25 C8 9F]"
+    "[39]"
+    "[3B FF]"
+    mov_jslasm(0xC0AA07) "[01 00 01 00 00 00]"
+    mov_jslasm(0xC0A977) "[{short bg1} {short bg2}]"
+    mov_setx(0x80)
+    mov_sety(0x70)
+    mov_jslasm(0xC09FAE) "[01 01]"
+    "[08 DA 8B C4]"
+    pause_codes
+    mov_jslasm(0xC0AA07) "[01 00 08 00 00 00]"
+    mov_jslasm(0xC46E46)
+    mov_jslmov_short(0xC3A204, 0x01F6)
+    mov_end
+  }
+  mov_link(movecode_num, _mc)
+}
+
+// Based on movement code #46, when King leaves the party on the hill
+// The party member walks over to the specified X,Y and does not disappear
+command movecode_party_sprite_walk(movecode_num, party_member_id, speed, x, y) {
+  _mc: {
+    mov_jslmov_short(0xC3AAAA, 0x01F6)
+    mov_tablewrite(4, party_member_id) // party member #
+    mov_jslmov(0xC30239)
+    mov_jslasm(0xC0A685) "{short speed}" // speed
+
+    mov_tablewrite(5, 2) // Use the "2" style
+    movs_walker(x, y)
+
+    mov_jslasm(0xC46E46)
+    movs_go
+    mov_halt
+  }
+  ROM[0xC30239] = {
+    "[07 A3 AF]"
+    mov_rtl
+  }
+  mov_link(movecode_num, _mc)
+}
+
+
+// NOTE: x and flag_reg must be two different registers
+command check_flag_register(x, flag_reg) {
+  push(flag_reg)
+
+  // get the address of the flag byte in memory
+  if (ltc(x, flag_reg, 0x401)) {
+    dec(flag_reg, flag_reg) // flag numbering starts at 1
+  
+    // divide by 8, number of bits in a byte
+    shr(flag_reg, flag_reg)
+    shr(flag_reg, flag_reg)
+    shr(flag_reg, flag_reg)
+  
+    addc(flag_reg, flag_reg, 0x7E9C08)
+  } else {
+    dec(flag_reg, flag_reg) // flag numbering starts at 1
+    subc(flag_reg, flag_reg, 0x400)
+  
+    // divide by 8, number of bits in a byte
+    shr(flag_reg, flag_reg)
+    shr(flag_reg, flag_reg)
+    shr(flag_reg, flag_reg)
+  
+    addc(flag_reg, flag_reg, 0x316000)
+  }
+  
+  // read flag byte from memory
+  pload8(x, flag_reg)
+  
+  // get the location of the flag bit in the flag byte
+  peek(flag_reg)
+  dec(flag_reg, flag_reg) // flag numbering starts at 1
+  bwandc(flag_reg, flag_reg, 7) // flag_reg %= 8
+  
+  _loop:
+  // x >>= flag_reg
+  push(flag_reg)
+  if (eqc(flag_reg, flag_reg, 0)) {
+    pop
+    goto(_loop_end) 
+  }
+  pull(flag_reg)
+  shr(x, x)
+  dec(flag_reg, flag_reg)
+  goto(_loop)
+  
+  _loop_end:
+  bwandc(x, x, 1) // get the least significant bit only
+  
+  pull(flag_reg)
+}
+
+command set_flag_register(flag_reg, tmp_reg1, tmp_reg2, tmp_reg3) {
+  push(tmp_reg1)
+  push(tmp_reg2)
+  push(tmp_reg3)
+  push(flag_reg)
+
+  // get the address of the flag byte in memory
+  if (ltc(tmp_reg1, flag_reg, 0x401)) {
+    dec(flag_reg, flag_reg) // flag numbering starts at 1
+    
+    // divide by 8, number of bits in a byte
+    shr(flag_reg, flag_reg)
+    shr(flag_reg, flag_reg)
+    shr(flag_reg, flag_reg)
+    
+    addc(flag_reg, flag_reg, 0x7E9C08)
+  } else {
+    dec(flag_reg, flag_reg) // flag numbering starts at 1
+    subc(flag_reg, flag_reg, 0x400)
+    
+    // divide by 8, number of bits in a byte
+    shr(flag_reg, flag_reg)
+    shr(flag_reg, flag_reg)
+    shr(flag_reg, flag_reg)
+    
+    addc(flag_reg, flag_reg, 0x316000)
+  } 
+
+  // read flag byte from memory
+  pload8(tmp_reg1, flag_reg)
+
+  // set the flag bit to true
+  peek(tmp_reg2)
+  dec(tmp_reg2, tmp_reg2)
+  bwandc(tmp_reg2, tmp_reg2, 7)
+
+  if eqc(tmp_reg3, tmp_reg2, 0) {
+    bworc(tmp_reg1, tmp_reg1, 1)
+  } else if eqc(tmp_reg3, tmp_reg2, 1) {
+    bworc(tmp_reg1, tmp_reg1, 2)
+  } else if eqc(tmp_reg3, tmp_reg2, 2) {
+    bworc(tmp_reg1, tmp_reg1, 4)
+  } else if eqc(tmp_reg3, tmp_reg2, 3) {
+    bworc(tmp_reg1, tmp_reg1, 8)
+  } else if eqc(tmp_reg3, tmp_reg2, 4) {
+    bworc(tmp_reg1, tmp_reg1, 16)
+  } else if eqc(tmp_reg3, tmp_reg2, 5) {
+    bworc(tmp_reg1, tmp_reg1, 32)
+  } else if eqc(tmp_reg3, tmp_reg2, 6) {
+    bworc(tmp_reg1, tmp_reg1, 64)
+  } else if eqc(tmp_reg3, tmp_reg2, 7) {
+    bworc(tmp_reg1, tmp_reg1, 128)
+  }
+
+  // Write the altered flag byte
+  pstore8(tmp_reg1, flag_reg)
+
+  pull(flag_reg)
+  pull(tmp_reg3)
+  pull(tmp_reg2)
+  pull(tmp_reg1)
+}
+
+command reset_vram "[1F 41 09]"

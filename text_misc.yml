@@ -10,7 +10,7 @@ Ailments:
   Ailment 09: Possessed
   Ailment 10: Homesick
 Battle Menu:
-  Auto Fight: Auto Fight
+  Auto Fight: Auto
   Bash: Bash
   Defend: Defend
   Do Nothing: Do Nothing
@@ -53,11 +53,11 @@ Other:
   Player Name Prompt: Register your name, please
 Out of Battle Menu:
   Check: Check
-  Equip: Equip
-  Goods: Goods
+  Equip: Status
+  Goods: Equip
   PSI: PSI
   Status: Status
-  Talk to: Talk to
+  Talk to: Goods
 PSI Menu:
   PP Cost: PP Cost
   Row Back: the Back Row

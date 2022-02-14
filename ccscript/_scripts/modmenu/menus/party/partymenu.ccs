@@ -1,0 +1,50 @@
+/* Mod Menu */
+import "../../enums/flags.ccs"
+import "../../enums/labels.ccs"
+import "../../enums/party.ccs"
+import "../../enums/windows.ccs"
+import "../../commands.ccs"
+
+PartyMenu:
+	LblWnd(wnd_Phone, lbl_Party)
+	menu 1 {
+		"Ness":  { arg(pty_Ness) goto(PartyMenu_Main4) }
+		"Paula": { arg(pty_Paula) goto(PartyMenu_Main4) }
+		"Jeff":  { arg(pty_Jeff) goto(PartyMenu_Main4) }
+		"Poo":   { arg(pty_Poo) goto(PartyMenu_Main4) }
+		"Pokey": { arg(pty_Pokey) goto(FollowersMenu) }
+		"Picky": { arg(pty_Picky) goto(FollowersMenu) }
+		"King":  { arg(pty_King) goto(FollowersMenu) }
+		"Tony":  { arg(pty_Tony) goto(FollowersMenu) }
+		"BubbleMonkey": { arg(pty_BubbleMonkey) goto(FollowersMenu) }
+		"BrickRoad":    { arg(pty_BrickRoad) goto(FollowersMenu) }
+		"FlyingMan":    { arg(pty_FlyingMan) goto(FollowersMenu) }
+		"TeddyBear":    { arg(pty_TeddyBear) goto(FollowersMenu) }
+		"PlushBear": { arg(pty_PlushBear) goto(FollowersMenu) }
+		default "Back": { goto(modmenu.ModMenu_MainMenu) }
+	}
+goto(PartyMenu)
+
+
+PartyMenu_Main4:
+	PartyWnd(wnd_Phone)
+	menu 1 {
+		"Health": {  }
+		"Stats":  {  }
+		"Goods":  {  }
+		"EXP":    {  }
+		"PSI":    {  }
+		"Add":    { party_add(0) RefreshScreen() SystemWnd(wnd_Phone, "@Added {name(0)}.") }
+		"Remove": { party_remove(0) RefreshScreen() SystemWnd(wnd_Phone, "@Removed {name(0)}.") RefreshScreen() }
+		 default "Back": { goto(PartyMenu) }
+	}
+goto(PartyMenu)
+
+FollowersMenu:
+	PartyWnd(wnd_Phone)
+	menu 1 {
+		"Add":    { party_add(0) }
+		"Remove": { party_remove(0) }
+		 default "Back": { goto(PartyMenu) }
+	}
+goto(PartyMenu)

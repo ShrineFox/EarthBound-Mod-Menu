@@ -1,0 +1,34 @@
+/* Mod Menu */
+import "../enums/flags.ccs"
+import "../enums/labels.ccs"
+import "../enums/party.ccs"
+import "../enums/windows.ccs"
+import "../commands.ccs"
+/* Submenus */
+import "party/partymenu.ccs"
+
+// Procedures
+
+ModMenu_MainMenu:
+	// Hide unnecessary windows that may be open
+	window_close(wnd_Action)
+	window_close(wnd_Dialog)
+	window_close(wnd_Cash)
+	// Open "phone" style window with label "MOD"
+	LblWnd(wnd_Phone, lbl_Mod)
+	// Pick a menu option
+	menu 1 {
+		"Party": { call(PartyMenu) }
+		"Save":  { save SystemWnd(wnd_Phone, "@Game saved.") }
+		"About": { call(ModMenu_AboutDlg)  }
+		default "Exit": { }
+	}
+eob
+
+
+ModMenu_AboutDlg:
+	LblWnd(wnd_Dialog, lbl_About)
+	"@EarthBound Mod Menu by ShrineFox." newline
+	"@Made using Coilsnake." newline
+	"@Updated 2-13-22." wait
+goto(ModMenu_MainMenu)

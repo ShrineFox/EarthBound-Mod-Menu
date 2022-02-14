@@ -1,0 +1,105 @@
+//import asm65816
+
+/* Mod Menu */
+import "enums/flags.ccs"
+import "enums/labels.ccs"
+import "enums/party.ccs"
+import "enums/windows.ccs"
+import "commands.ccs"
+
+/*
+ * Window Commands
+ */
+
+// Preset title commands for strings
+command Lbl(labelText)  { "[18 0C 00 {byte[0] labelText} {byte[1] labelText} {byte[2] labelText} 00]" clearline }
+
+// Show debug info then switch back to active window
+command DebugDisplay() 
+{   
+	"@Current Registers" newline
+	"@Name: {name(0)}" newline
+	"@Number: {number(0)}||" newline
+}
+
+command OpenDebugWnd()
+{
+	// TODO: Special window type reserved for debug
+	window_close(wnd_Inventory)
+	window_open(wnd_Inventory) 
+	Lbl(lbl_Debug)
+}
+
+command CloseDebugWnd(prevWndType)
+{
+	window_close(wnd_Inventory)
+	window_switch(prevWndType)
+}
+
+// Temporary window showing confirmation of action
+command SystemWnd(prevWndType, string) 
+{
+	// TODO: Special window type reserved for temp
+	window_close(wnd_Inventory)
+	window_open(wnd_Inventory) 
+	Lbl(lbl_System)
+	load_registers
+	"{string}"
+	"|||"
+	window_close(wnd_Inventory)
+	window_switch(prevWndType)
+}
+
+// Redraw window
+command Wnd(wndType) 
+{ 
+	window_close(wndType)
+	window_open(wndType) 
+}
+
+// Redraw window with label
+command LblWnd(wndType, labelText) 
+{ 
+	window_close(wndType)
+	window_open(wndType) 
+	Lbl(labelText)
+}
+
+// Redraw screen
+command RefreshScreen 
+{ 
+	window_open(wnd_FullScreen) 
+	window_close(wnd_FullScreen) 
+}
+
+/*
+ * Flag Commands
+ */
+
+// Enable/disable looping current section of menu
+command StartLoop() { set(flg_Loop) }
+command EndLoop() { unset(flg_Loop) }
+
+/*
+ * Mod Menu Commands
+ */
+
+// Set the selected party member to the name of the new window
+command PartyWnd(wndType) 
+{
+	
+	if result_is(pty_Ness)  { LblWnd(wndType, lbl_Ness) }
+	else if result_is(pty_Paula) { LblWnd(wndType, lbl_Paula) }
+	else if result_is(pty_Jeff)  { LblWnd(wndType, lbl_Jeff) }
+	else if result_is(pty_Poo)   { LblWnd(wndType, lbl_Poo) }
+	else if result_is(pty_Pokey) { LblWnd(wndType, lbl_Pokey) }
+	else if result_is(pty_Picky) { LblWnd(wndType, lbl_Picky) }
+	else if result_is(pty_King)  { LblWnd(wndType, lbl_King) }
+	else if result_is(pty_Tony)  { LblWnd(wndType, lbl_Tony) }
+	else if result_is(pty_BubbleMonkey) { LblWnd(wndType, lbl_BubbleMonkey) }
+	else if result_is(pty_BrickRoad) { LblWnd(wndType, lbl_BrickRoad) }
+	else if result_is(pty_FlyingMan) { LblWnd(wndType, lbl_FlyingMan) }
+	else if result_is(pty_TeddyBear) { LblWnd(wndType, lbl_TeddyBear) }
+	else if result_is(pty_PlushBear) { LblWnd(wndType, lbl_PlushBear) }
+	else { Wnd(wndType) }
+}
