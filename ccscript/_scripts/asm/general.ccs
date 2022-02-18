@@ -15,7 +15,7 @@ define Status_PSI_Percent = 0xC2B639
 command ifgoto (num, target) "[06 {short num} {long target}]"
 // Copy active memory to WRAM
 command act_to_wram "[1B 05]"
-// Copy WRAM to actie memory
+// Copy WRAM to active memory
 command wram_to_act "[1B 06]"
 // Return the character number in party slot "char"
 command char_num (char) "[19 10 {byte char}]"

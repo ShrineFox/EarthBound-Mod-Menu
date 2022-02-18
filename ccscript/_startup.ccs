@@ -1,0 +1,14 @@
+import "_scripts/modmenu/enums/flags.ccs"
+
+newgame_startup(Startup)
+setup_background(233)
+newgame_location(365, 7756)
+/* patches.yml - Show Sprites Without Flyover: enabled */
+
+Startup:
+set(flg_Ness)
+set(flg_Debug)
+set(flg_DadCantCall)
+eob
+
+/*[06 49 00 _L2175_][1F 00 00 73][10 3C][13][1F 01 00][1F 02 0B][06 10 00 _L3845_][06 95 00 _L3846_][06 0E 00 _L3845_][06 80 00 _L3847_]^L3845^[18 01 01][19 10 01][0B 01][1B 02 _L3848_]@Hello, it's your dad.*/

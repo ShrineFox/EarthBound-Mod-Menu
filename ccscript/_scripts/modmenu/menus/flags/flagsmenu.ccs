@@ -1,0 +1,24 @@
+/* Mod Menu */
+import "../../enums/flags.ccs"
+import "../../enums/labels.ccs"
+import "../../enums/party.ccs"
+import "../../enums/windows.ccs"
+import "../../commands.ccs"
+
+command ToggleFlag(flagName) { 
+	toggle(flagName) 
+	if (flagName) { SystemWnd(wnd_ModMenu2, "@Flag is now ON.") } 
+	else { SystemWnd(wnd_ModMenu2, "@Flag is now OFF.") } 
+}
+
+FlagsMenu:
+	LblWnd(wnd_ModMenu2, lbl_Flags)
+	menu 1 {
+		"Ness":  { ToggleFlag(flg_Ness) }
+		"Paula": { ToggleFlag(flg_Paula) }
+		"Jeff":  { ToggleFlag(flg_Jeff) }
+		"Poo":   { ToggleFlag(flg_Poo) }
+		"Debug":   { ToggleFlag(flg_Debug) }
+		default "Back": { goto(modmenu.ModMenu_MainMenu) }
+	}
+goto(FlagsMenu)

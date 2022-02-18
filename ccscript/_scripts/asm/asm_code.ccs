@@ -2,6 +2,20 @@
 // from: https://github.com/ShadowOne333/MaternalBound-Redux/tree/master/ccscript
 import asm65816
 
+/* Disable Gas Station Sequence */
+ROM[0xC4DB33] = "[4C F9 DB]" 
+
+/* Play Custom Music at Boot */
+ROM[0xC0B7E0] = JSL (BootUpMusic)
+
+BootUpMusic: {
+        JSL   (0xC43317) // Run original overwritten code (initialize pointers to party member data)
+        
+        LDA_i (104)      // Put the music ID here
+        JSL   (0xC4FBBD) // Play our music!
+        RTL
+}
+
 /* Lower HP/PP windows by one tile */
 ROM[0xC2044C] = LDA_i(0x0013)
 ROM[0xC20453] = LDA_i(0x0014)

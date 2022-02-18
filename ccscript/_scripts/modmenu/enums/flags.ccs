@@ -18,3 +18,10 @@ define flg_Yes = flag 0x65d
 define flg_No = flag 0x65c
 // Whether menu should loop or not
 define flg_Loop = flag 0x65b
+// Whether Debug messages should appear or not
+define flg_Debug = flag 0x65a
+
+
+
+// Whether your dad can call you.
+define flg_DadCantCall = flag 775

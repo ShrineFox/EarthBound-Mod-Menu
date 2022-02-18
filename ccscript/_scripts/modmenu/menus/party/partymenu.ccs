@@ -2,49 +2,248 @@
 import "../../enums/flags.ccs"
 import "../../enums/labels.ccs"
 import "../../enums/party.ccs"
+import "../../enums/status.ccs"
 import "../../enums/windows.ccs"
 import "../../commands.ccs"
 
+
 PartyMenu:
-	LblWnd(wnd_Phone, lbl_Party)
+	counter_zero
+	LblWnd(wnd_ModMenu, lbl_Party)
 	menu 1 {
-		"Ness":  { arg(pty_Ness) goto(PartyMenu_Main4) }
-		"Paula": { arg(pty_Paula) goto(PartyMenu_Main4) }
-		"Jeff":  { arg(pty_Jeff) goto(PartyMenu_Main4) }
-		"Poo":   { arg(pty_Poo) goto(PartyMenu_Main4) }
-		"Pokey": { arg(pty_Pokey) goto(FollowersMenu) }
-		"Picky": { arg(pty_Picky) goto(FollowersMenu) }
-		"King":  { arg(pty_King) goto(FollowersMenu) }
-		"Tony":  { arg(pty_Tony) goto(FollowersMenu) }
-		"BubbleMonkey": { arg(pty_BubbleMonkey) goto(FollowersMenu) }
-		"BrickRoad":    { arg(pty_BrickRoad) goto(FollowersMenu) }
-		"FlyingMan":    { arg(pty_FlyingMan) goto(FollowersMenu) }
-		"TeddyBear":    { arg(pty_TeddyBear) goto(FollowersMenu) }
-		"PlushBear": { arg(pty_PlushBear) goto(FollowersMenu) }
+		"All": { goto(PartyMenu_All) }
+		"Ness":  { counter(pty_Ness) goto(PartyMenu_Main4) }
+		"Paula": { counter(pty_Paula) goto(PartyMenu_Main4) }
+		"Jeff":  { counter(pty_Jeff) goto(PartyMenu_Main4) }
+		"Poo":   { counter(pty_Poo) goto(PartyMenu_Main4) }
+		"Followers": { goto(PartyMenu_Followers) }
 		default "Back": { goto(modmenu.ModMenu_MainMenu) }
 	}
 goto(PartyMenu)
 
 
-PartyMenu_Main4:
-	PartyWnd(wnd_Phone)
+PartyMenu_Followers:
+	counter_zero
+	LblWnd(wnd_ModMenu, lbl_Party)
 	menu 1 {
-		"Health": {  }
-		"Stats":  {  }
-		"Goods":  {  }
-		"EXP":    {  }
-		"PSI":    {  }
-		"Add":    { party_add(0) RefreshScreen() SystemWnd(wnd_Phone, "@Added {name(0)}.") }
-		"Remove": { party_remove(0) RefreshScreen() SystemWnd(wnd_Phone, "@Removed {name(0)}.") RefreshScreen() }
+		"Pokey": { counter(pty_Pokey) goto(FollowersMenu) }
+		"Picky": { counter(pty_Picky) goto(FollowersMenu) }
+		"King":  { counter(pty_King) goto(FollowersMenu) }
+		"Tony":  { counter(pty_Tony) goto(FollowersMenu) }
+		"Bubble Monkey": { counter(pty_BubbleMonkey) goto(FollowersMenu) }
+		"Dungeon Man":    { counter(pty_BrickRoad) goto(FollowersMenu) }
+		"Flying Man":    { counter(pty_FlyingMan) goto(FollowersMenu) }
+		"Teddy Bear":    { counter(pty_TeddyBear) goto(FollowersMenu) }
+		"Plush Bear": { counter(pty_PlushBear) goto(FollowersMenu) }
+		default "Back": { goto(PartyMenu) }
+		}
+goto(PartyMenu_Followers)
+
+
+command AddToParty() { party_add(0) RefreshScreen(wnd_ModMenu) SystemWnd(wnd_ModMenu, "{music(0x7B)}@{name(0)} joined the party. {pause(90)} {music_resume}.") }
+command RemoveFromParty() { party_remove(0) RefreshScreen(wnd_ModMenu) SystemWnd(wnd_ModMenu, "{sound(SND_STATUSCHANGE)}@{name(0)} left the party.") }
+
+
+PartyMenu_All:
+	PartyWnd(wnd_ModMenu)
+	menu 1 {
+		"Health": { goto(HealthMenu) }
+		//"Stats":  { goto(StatsMenu) }
+		//"Goods":  { goto(GoodsMenu) }
+		//"EXP":    { goto(EXPMenu) }
+		//"PSI":    { goto(PSIMenu) }
+		"Add":    { party_add(1) party_add(2) party_add(3) party_add(4) RefreshScreen(wnd_ModMenu) SystemWnd(wnd_ModMenu, "{music(0x7B)}@Everyone joined the party. {pause(90)} {music_resume}") goto(PartyMenu_All) }
+		 default "Back": { goto(PartyMenu) }
+	}
+goto(PartyMenu)
+
+PartyMenu_Main4:
+	PartyWnd(wnd_ModMenu)
+	menu 1 {
+		"Health": { goto(HealthMenu) }
+		//"Stats":  { goto(StatsMenu) }
+		//"Goods":  { goto(GoodsMenu) }
+		//"EXP":    { goto(EXPMenu) }
+		//"PSI":    { goto(PSIMenu) }
+		"Add":    { AddToParty() }
+		"Remove": { RemoveFromParty() }
 		 default "Back": { goto(PartyMenu) }
 	}
 goto(PartyMenu)
 
 FollowersMenu:
-	PartyWnd(wnd_Phone)
+	PartyWnd(wnd_ModMenu)
 	menu 1 {
-		"Add":    { party_add(0) }
-		"Remove": { party_remove(0) }
+		"Add":    { AddToParty() }
+		"Remove": { RemoveFromParty() }
 		 default "Back": { goto(PartyMenu) }
 	}
 goto(PartyMenu)
+
+command ClearStatus(partyMember) 
+{ 
+	inflict(partyMember, sts_Normal_0) inflict(partyMember, sts_Normal_1) inflict(partyMember, sts_Normal_2) 
+	inflict(partyMember, sts_Normal_3) inflict(partyMember, sts_Normal_4) inflict(partyMember, sts_Normal_5)
+}
+
+command ClearStatusNotification(string)
+{
+	SystemWnd(wnd_ModMenu2, "{sound(SND_STATUSRECOVER)}@Cleared {string)}'s status effects.")
+}
+
+command ClearAllStatus()
+{
+	if not counter_is(5) 
+	{
+		inc
+		inflict(pty_Ness, sts_Normal_0) inflict(pty_Ness, sts_Normal_0) inflict(pty_Ness, sts_Normal_2)
+		inflict(pty_Ness, sts_Normal_3) inflict(pty_Ness, sts_Normal_4) inflict(pty_Ness, sts_Normal_5)
+	}
+}
+
+command Revive(partyMember) { inflict(partyMember, sts_Normal_0) }
+
+command ReviveNotification(string)
+{
+	SystemWnd(wnd_ModMenu2, "{sound(SND_STATUSRECOVER)}@Revived {string)}.")
+}
+
+command Kill(PartyMember) { sound(SND_HERODEATH) hurt_percent(PartyMember, 100) }
+command AlmostKill(PartyMember) { sound(SND_CRITICAL) hurt_percent(PartyMember, 99) }
+
+HealthMenu:
+	LblWnd(wnd_ModMenu2, lbl_Health)
+	menu 1 {
+		"Heal":  { 
+			if (counter_is(0)) { healall SystemWnd(wnd_ModMenu2, "{sound(SND_RECOVER)}@Restored everyone's HP and PP.") }
+			else { SystemWnd(wnd_ModMenu2, "{call(data_45.l_0xc91675)}{sound(SND_RECOVER)}@{name(0)}'s HP and PP are restored.") LoadRAM() } 
+		}
+		"Set Status":  { goto(StatusMenu) }
+		"Clear Status":
+		{
+			if (counter_is(0)) 
+			{
+				ClearStatus(pty_Ness) ClearStatus(pty_Paula) ClearStatus(pty_Jeff) ClearStatus(pty_Poo)
+				ClearStatusNotification("everyone's")
+			}
+			else if (counter_is(pty_Ness))  { ClearStatus(pty_Ness)  ClearStatusNotification("name(pty_Ness)")  }
+			else if (counter_is(pty_Paula)) { ClearStatus(pty_Paula) ClearStatusNotification("name(pty_Paula)") }
+			else if (counter_is(pty_Jeff))  { ClearStatus(pty_Jeff)  ClearStatusNotification("name(pty_Jeff)")  }
+			else if (counter_is(pty_Poo))   { ClearStatus(pty_Poo)   ClearStatusNotification("name(pty_Poo)")   }
+		}
+		"Kill":  { 
+			if (counter_is(0)) { Kill(pty_Ness) Kill(pty_Paula) Kill(pty_Jeff) Kill(pty_Poo) }
+			else if (counter_is(pty_Ness))  { Kill(pty_Ness)  }
+			else if (counter_is(pty_Paula)) { Kill(pty_Paula) }
+			else if (counter_is(pty_Jeff))  { Kill(pty_Jeff)  }
+			else if (counter_is(pty_Poo))   { Kill(pty_Poo)   }
+		}
+		"AlmostKill": { 
+			if (counter_is(0)) { AlmostKill(pty_Ness) AlmostKill(pty_Paula) AlmostKill(pty_Jeff) AlmostKill(pty_Poo) }
+			else if (counter_is(pty_Ness))  { AlmostKill(pty_Ness)  }
+			else if (counter_is(pty_Paula)) { AlmostKill(pty_Paula) }
+			else if (counter_is(pty_Jeff))  { AlmostKill(pty_Jeff)  }
+			else if (counter_is(pty_Poo))   { AlmostKill(pty_Poo)   }
+		}
+		"Revive":  { 
+			if (counter_is(0)) { "[08 2c 16 c9 00]" ReviveNotification("the whole party") }
+			else if (counter_is(pty_Ness))  { Revive(pty_Ness)  ReviveNotification("name(pty_Ness)")  }
+			else if (counter_is(pty_Paula)) { Revive(pty_Paula) ReviveNotification("name(pty_Paula)") }
+			else if (counter_is(pty_Jeff))  { Revive(pty_Jeff)  ReviveNotification("name(pty_Jeff)")  }
+			else if (counter_is(pty_Poo))   { Revive(pty_Poo)   ReviveNotification("name(pty_Poo)")   }
+		}
+		 default "Back": { goto(PartyMenu) }
+	}
+goto(PartyMenu)
+
+StatusMenu:
+	LblWnd(wnd_ModMenu2, lbl_Status)
+	menu 1 {
+		"Group 0": { goto(StatusGroup_0) }
+		"Group 1": { goto(StatusGroup_1) }
+		"Group 2": { goto(StatusGroup_2) }
+		"Group 3": { goto(StatusGroup_3) }
+		"Group 4": { goto(StatusGroup_4) }
+		"Group 5": { goto(StatusGroup_5) }
+		 default "Back": { goto(HealthMenu) }
+	}
+goto(StatusMenu)
+
+command Inflict(status, partyMember) { inflict(partyMember, status) }
+command InflictNotification(partyName, statusName) { SystemWnd(wnd_ModMenu, "{sound(SND_AFFLICTED)}@Inflicted {partyName} with {statusName}.") }
+command InflictParty(status, statusName) 
+{
+	if (counter_is(0))
+	{ 
+		Inflict(status, pty_Ness) Inflict(status, pty_Paula) 
+		Inflict(status, pty_Jeff) Inflict(status, pty_Poo) 
+		InflictNotification("party", statusName) 
+	}
+	else if (counter_is(pty_Ness))  { Inflict(status, pty_Ness)  InflictNotification(name(pty_Ness),  statusName) }
+	else if (counter_is(pty_Paula)) { Inflict(status, pty_Paula) InflictNotification(name(pty_Paula), statusName) }
+	else if (counter_is(pty_Jeff))  { Inflict(status, pty_Jeff)  InflictNotification(name(pty_Jeff),  statusName) }
+	else if (counter_is(pty_Poo))   { Inflict(status, pty_Poo)   InflictNotification(name(pty_Poo),   statusName) }
+}
+
+StatusGroup_0:
+	LblWnd(wnd_ModMenu2, lbl_Group0)
+	menu 1 {
+		"Normal":   { InflictParty(sts_Normal_0, "Normal") }
+		"KO'd":     { InflictParty(sts_KO, "KO'd") }
+		"Diamondized": { InflictParty(sts_Diamondized, "Diamondized") }
+		"Nauseous":  { InflictParty(sts_Nauseous, "Nausea") }
+		"Poisoned":  { InflictParty(sts_Poisoned, "Poison") }
+		"Sunstroke": { InflictParty(sts_Sunstroke, "Sunstroke") }
+		"Cold":      { InflictParty(sts_Cold, "a Cold") }
+		default "Back": { goto(StatusMenu) }
+	}
+goto(StatusGroup_0)
+
+StatusGroup_1:
+	LblWnd(wnd_ModMenu2, lbl_Group1)
+	menu 1 {
+		"Normal": 	    { InflictParty(sts_Normal_1, "Normal") }
+		"Mushroomized": { InflictParty(sts_Mushroomized, "Mushroomized") }
+		"Possessed":    { sound(SND_POSSESSED) InflictParty(sts_Possessed, "Possession") }
+		default "Back": { goto(StatusMenu) }
+	}
+goto(StatusGroup_1)
+
+StatusGroup_2:
+	LblWnd(wnd_ModMenu2, lbl_Group2)
+	menu 1 {
+		"Normal": 	 { InflictParty(sts_Normal_2, "Normal") }
+		"Asleep":    { InflictParty(sts_Asleep, "Sleep") }
+		"Crying":    { InflictParty(sts_Crying, "Crying") }
+		"Paralyzed": { InflictParty(sts_Paralyzed, "Paralysis") }
+		"Solidified": { InflictParty(sts_Solidified, "Solidified") }
+		default "Back": { goto(StatusMenu) }
+	}
+goto(StatusGroup_2)
+
+StatusGroup_3:
+	LblWnd(wnd_ModMenu2, lbl_Group3)
+	menu 1 {
+		"Normal":  { InflictParty(sts_Normal_3, "Normal") }
+		"Strange": { InflictParty(sts_Strange, "Feeling Strange") }
+		default "Back": { goto(StatusMenu) }
+	}
+goto(StatusGroup_3)
+
+StatusGroup_4:
+	LblWnd(wnd_ModMenu2, lbl_Group4)
+	menu 1 {
+		"Normal": 	    { InflictParty(sts_Normal_4, "Normal") }
+		"CantConcentrate": { InflictParty(sts_Strange, "Can't Concentrate") }
+		default "Back": { goto(StatusMenu) }
+	}
+goto(StatusGroup_4)
+
+StatusGroup_5:
+	LblWnd(wnd_ModMenu2, lbl_Group5)
+	menu 1 {
+		"Normal": 	{ InflictParty(sts_Normal_5, "Normal") }
+		"Homesick": { InflictParty(sts_Strange, "Homesickness") }
+		default "Back": { goto(StatusMenu) }
+	}
+goto(StatusGroup_5)
