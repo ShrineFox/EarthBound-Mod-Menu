@@ -11,23 +11,30 @@ import "commands.ccs"
 /*
  * Window Commands
  */
-command SaveRAM() { act_to_wram }
-command LoadRAM() { wram_to_act }
-command LoadCounter() { ctoarg }
 
-// Hide unnecessary windows that may be open
-command CloseWindows() 
-{ 
-	window_close(wnd_Action)
-	window_close(wnd_Dialog)
-	window_close(wnd_Cash)
-	window_close(wnd_ModMenu2)
-	window_close(wnd_ModMenuNotification)
-	window_close(wnd_ModMenuConfirm)
-} 
+// Save current count/arg/result registers to RAM
+command SaveRAM() { act_to_wram }
+// Retreive count/arg/result registers from RAM
+command LoadRAM() { wram_to_act }
+// Load count value into arg for use as a parameter
+command LoadCounter() { ctoarg }
+// Reset counter to zero
+command ResetCounter() { counter_zero }
+
+// Hide unnecessary windows that may be open (using flag, without crashing the game)
+command CloseModMenuWnd() { LoadCounter() SaveRAM() if flg_ModMenuWnd { window_close(wnd_ModMenu) unset(flg_ModMenuWnd) } }
+command CloseModMenu2Wnd() { LoadCounter() SaveRAM() if flg_ModMenuWnd2 { window_close(wnd_ModMenu2) unset(flg_ModMenuWnd2) } }
+command CloseModMenuConfirmWnd() { LoadCounter() SaveRAM() if flg_ModMenuConfirmWnd { window_close(wnd_ModMenuConfirm) unset(flg_ModMenuConfirmWnd) } }
+
+command CloseAllModMenuWnd() { CloseModMenuWnd() CloseModMenu2Wnd() CloseModMenuConfirmWnd() }
+
+// Open Mod Menu window and set flag that it's open
+command OpenModMenuWnd() { window_open(wnd_ModMenu) LoadRAM() LoadCounter() set(flg_ModMenuWnd) }
+command OpenModMenu2Wnd() { window_open(wnd_ModMenu2) LoadRAM() LoadCounter() set(flg_ModMenuWnd2) }
+command OpenModMenuConfirmWnd() { window_open(wnd_ModMenuConfirm) LoadRAM() LoadCounter() set(flg_ModMenuConfirmWnd) }
 
 // Preset title commands for strings
-command Lbl(labelText)  { "[18 0C 00 {byte[0] labelText} {byte[1] labelText} {byte[2] labelText} 00]" clearline }
+command Lbl(label)  { "[18 0C 00 {byte[0] label} {byte[1] label} {byte[2] label} 00]" clearline }
 command PtyLbl(partyMemberID) { "[18 0B 00 {byte[0] partyMemberID} 05]" clearline }
 
 // Show debug info if Debug flag is on,
@@ -36,15 +43,19 @@ command DebugWnd(prevWndType, string)
 {
 	if flg_Debug 
 	{
-		LblWnd(wnd_ModMenuDebug, lbl_Debug)
+		window_open(wnd_ModMenuDebug)
+		LoadRAM()
+		LoadCounter()
+		Lbl(lbl_Debug)
 		"{string}" newline
 		"" newline
 		"@Current Registers" newline
-		"@Name: {name(0)}" newline
-		"@Number: {number(0)}" next
+		"@Name: {name(argument)}" newline
+		"@Number: {number(argument)}" next
 		SaveRAM()
 		window_switch(prevWndType)
 		LoadRAM()
+		LoadCounter()
 	}
 }
 
@@ -52,13 +63,17 @@ command DebugWnd(prevWndType, string)
 // waits about a second, then closes and returns to previous window
 command SystemWnd(prevWndType, string) 
 {
-	LblWnd(wnd_ModMenuNotification, lbl_System)
+	window_open(wnd_ModMenuNotification)
+	LoadRAM()
+	LoadCounter()
+	Lbl(lbl_System)
 	"{string}"
 	"|||"
 	SaveRAM()
 	window_close(wnd_ModMenuNotification)
 	window_switch(prevWndType)
 	LoadRAM()
+	LoadCounter()
 }
 
 // (Re)open/focus window
@@ -69,20 +84,6 @@ command Wnd(wndType)
 	window_close(wndType)
 	window_open(wndType) 
 	LoadRAM()
-}
-
-// (Re)open/focus window with text label
-command LblWnd(wndType, labelText) 
-{ 
-	Wnd(wndType)
-	Lbl(labelText)
-}
-
-// (Re)open/focus window with text label
-command PtyWnd(wndType, partyMemberID) 
-{ 
-	Wnd(wndType)
-	PtyLbl(partyMemberID)
 }
 
 // Redraw screen using giant window
@@ -108,20 +109,20 @@ command EndLoop() { unset(flg_Loop) }
  */
 
 // Set the selected party member to the name of the new window
-command PartyWnd(wndType) 
+command SetPartyLabel()
 {
-	if counter_is(pty_Ness)  { PtyWnd(wndType, pty_Ness) }
-	else if counter_is(pty_Paula) { PtyWnd(wndType, pty_Paula) }
-	else if counter_is(pty_Jeff)  { PtyWnd(wndType, pty_Jeff) }
-	else if counter_is(pty_Poo)   { PtyWnd(wndType, pty_Poo) }
-	else if counter_is(pty_Pokey) { LblWnd(wndType, lbl_Pokey) }
-	else if counter_is(pty_Picky) { LblWnd(wndType, lbl_Picky) }
-	else if counter_is(pty_King)  { PtyWnd(wndType, 5) }
-	else if counter_is(pty_Tony)  { LblWnd(wndType, lbl_Tony) }
-	else if counter_is(pty_BubbleMonkey) { LblWnd(wndType, lbl_BubbleMonkey) }
-	else if counter_is(pty_BrickRoad) { LblWnd(wndType, lbl_BrickRoad) }
-	else if counter_is(pty_FlyingMan) { LblWnd(wndType, lbl_FlyingMan) }
-	else if counter_is(pty_TeddyBear) { LblWnd(wndType, lbl_TeddyBear) }
-	else if counter_is(pty_PlushBear) { LblWnd(wndType, lbl_PlushBear) }
-	else { Wnd(wndType) }
+	if counter_is(pty_Ness)  { PtyLbl(pty_Ness) }
+	else if counter_is(pty_Paula) { PtyLbl(pty_Paula) }
+	else if counter_is(pty_Jeff)  { PtyLbl(pty_Jeff) }
+	else if counter_is(pty_Poo)   { PtyLbl(pty_Poo) }
+	else if counter_is(pty_Pokey) { Lbl(lbl_Pokey) }
+	else if counter_is(pty_Picky) { Lbl(lbl_Picky) }
+	else if counter_is(pty_King)  { PtyLbl(5) }
+	else if counter_is(pty_Tony)  { Lbl(lbl_Tony) }
+	else if counter_is(pty_BubbleMonkey) { Lbl(lbl_BubbleMonkey) }
+	else if counter_is(pty_BrickRoad) { Lbl(lbl_BrickRoad) }
+	else if counter_is(pty_FlyingMan) { Lbl(lbl_FlyingMan) }
+	else if counter_is(pty_TeddyBear) { Lbl(lbl_TeddyBear) }
+	else if counter_is(pty_PlushBear) { Lbl(lbl_PlushBear) }
+	else { Lbl(lbl_Party) }
 }

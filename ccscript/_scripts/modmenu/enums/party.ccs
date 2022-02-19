@@ -1,3 +1,4 @@
+define argument = 0 // pass the window arg value as a parameter
 define pty_Ness = 1
 define pty_Paula = 2
 define pty_Jeff = 3

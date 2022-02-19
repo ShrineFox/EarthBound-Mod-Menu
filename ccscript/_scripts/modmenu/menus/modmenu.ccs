@@ -12,17 +12,19 @@ import "flags/flagsmenu.ccs"
 // Procedures
 
 ModMenu_MainMenu:
-	// Hide unnecessary windows
-	// CloseWindows()
-	// Open window with label "MOD MENU"
-	LblWnd(wnd_ModMenu, lbl_ModMenu)
+	// Close unnecessary windows
+	CloseAllModMenuWnd()
+	window_closeall
+	// Open main Mod Menu Window
+	OpenModMenuWnd()
+	// Set label to "MOD MENU"
+	Lbl(lbl_ModMenu)
 	// Pick a menu option
 	menu 1 {
 		"Party": { call(PartyMenu) }
 		"Save":  { save SystemWnd(wnd_ModMenu, "@Game saved.") goto(ModMenu_MainMenu) }
 		"Warp":  { call(WarpMenu) }
 		"Flags": { call(FlagsMenu) }
-		"About": { call(ModMenu_AboutDlg)  }
 		"Test":  { call(TestDlg)  }
 		default "Exit": { }
 	}
@@ -30,16 +32,21 @@ eob
 
 
 ModMenu_AboutDlg:
-	LblWnd(wnd_Dialog, lbl_About)
+	window_open(wnd_Dialog)
+	Lbl(lbl_About)
+	// Workaround for status effects making menu inaccessible
+	ClearStatus(pty_Ness) ClearStatus(pty_Paula)
+	ClearStatus(pty_Jeff) ClearStatus(pty_Poo)
 	"@EarthBound Mod Menu by ShrineFox." newline
 	"@Made using Coilsnake." newline
 	"@Updated 2-15-22." wait
 	window_close(wnd_Dialog)
 goto(ModMenu_MainMenu)
 
-lbl_LabelTest: "{name(0)}[00]"
 
 TestDlg:
-LblWnd(wnd_ModMenu, lbl_ModMenu)
-"@Test goes here." next
+	OpenModMenuWnd()
+	Lbl(lbl_About)
+	"@Test goes here." next
+	window_close(wnd_Dialog)
 goto(ModMenu_MainMenu)

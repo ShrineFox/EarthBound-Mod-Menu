@@ -20,8 +20,12 @@ define flg_No = flag 0x65c
 define flg_Loop = flag 0x65b
 // Whether Debug messages should appear or not
 define flg_Debug = flag 0x65a
-
-
+// Whether Mod Menu window is open
+define flg_ModMenuWnd = flag 0x659
+// Whether Mod Menu window 2 is open
+define flg_ModMenuWnd2 = flag 0x658
+// Whether Mod Menu confirmation window is open
+define flg_ModMenuConfirmWnd = flag 0x657
 
 // Whether your dad can call you.
 define flg_DadCantCall = flag 775

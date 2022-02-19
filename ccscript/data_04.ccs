@@ -433,9 +433,7 @@ l_0xc55cce:
     "@You can view the map quickly, simply by pressing the X button." end
 
 l_0xc55d2e:
-    newline
-    " <[1C 05 CB]>" next
-    "In-game trainer by ShrineFox." end
+    goto(_scripts.ModMenu_About)
 
 l_0xc55d46:
     newline

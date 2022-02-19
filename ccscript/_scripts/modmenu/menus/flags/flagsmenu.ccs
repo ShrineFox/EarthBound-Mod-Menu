@@ -12,7 +12,8 @@ command ToggleFlag(flagName) {
 }
 
 FlagsMenu:
-	LblWnd(wnd_ModMenu2, lbl_Flags)
+	OpenModMenu2Wnd()
+	Lbl(lbl_Flags)
 	menu 1 {
 		"Ness":  { ToggleFlag(flg_Ness) }
 		"Paula": { ToggleFlag(flg_Paula) }

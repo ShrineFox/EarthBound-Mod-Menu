@@ -8,20 +8,24 @@ import "../../commands.ccs"
 command WarpNotification(string) { SystemWnd(wnd_ModMenu, "{sound(SND_EDENWARP)}@Warped to {string}.") }
 
 WarpMenu:
-	CloseWindows()
-	LblWnd(wnd_ModMenu2, lbl_Warp)
+	CloseModMenuConfirmWnd()
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Warp)
 	menu 1 {
 		"View List":    { goto(WarpList) }
 		"Enter ID":     { goto(WarpID) }
-		"Set Anchor":   { anchor_set SystemWnd(wnd_ModMenu2, "{sound(SND_BOXOPEN1)}@Anchor set to current location.") }
-		"Go To Anchor": { anchor_warp WarpNotification("anchor location") }
+		"Set Anchor":   { anchor_set SystemWnd(wnd_ModMenu2, "{sound(SND_BOXOPEN1)}@Anchor set to current position.") }
+		"Go To Anchor": { anchor_warp WarpNotification("anchor position") }
 		default "Back": { goto(modmenu.ModMenu_MainMenu) }
 	}
 goto(WarpMenu)
 
 WarpList:
-	CloseWindows()
-	LblWnd(wnd_ModMenu, lbl_Warp)
+	CloseModMenuConfirmWnd()
+	CloseModMenuWnd()
+	OpenModMenuWnd()
+	Lbl(lbl_Warp)
 		menu 1 {
 		"Onett":         { warp(25)  WarpNotification("{teleportname(1)}") }
 		"Twoson":        { warp(29)  WarpNotification("{teleportname(2)}") }
@@ -33,7 +37,7 @@ WarpList:
 		"Saturn Valley": { warp(143) WarpNotification("{teleportname(4)}") }
 		"Tenda Village": { warp(22)  WarpNotification("{teleportname(11)}") }
 		"Magicant":      { warp(23)  WarpNotification("Magicant") }
-		"Cave of Past":  { warp(26)  WarpNotification("Cave of the Past") }
+		"Cave of the Past":  { warp(26)  WarpNotification("Cave of the Past") }
 		"Scaraba":       { warp(32)  WarpNotification("{teleportname(8)}") }
 		"Dalaam":        { warp(27)  WarpNotification("{teleportname(9)}") }
 		default "Back":  {  goto(WarpMenu) }
@@ -41,14 +45,19 @@ WarpList:
 goto(WarpList)
 
 WarpID:
-	CloseWindows()
-	LblWnd(wnd_ModMenuConfirm, lbl_Warp)
+	OpenModMenuConfirmWnd()
+	Lbl(lbl_Warp)
 	"@Enter ID:" newline
 	input(3)
-	"@Warp using ID {number(0)}?"
+	rtoarg
+	newline
+	newline
+	newline
+	"@Warp using this ID?" newline
+	"{number(argument)}" newline
 	menu 2
 	{
-		"Yes": { warp(0) WarpNotification("Warp ID {number(0)}") }
+		"Yes": { warp(argument) WarpNotification("Warp ID {number(argument)}") }
 		default "No": { goto(WarpMenu) }
 	}
-goto(WarpID)
+goto(WarpMenu)

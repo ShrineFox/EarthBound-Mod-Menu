@@ -20,3 +20,6 @@ import "_scripts/modmenu/menus/modmenu.ccs"
 
 ModMenu:
 	goto(ModMenu_MainMenu)
+	
+ModMenu_About:
+	goto(ModMenu_AboutDlg)
