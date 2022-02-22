@@ -1,3 +1,5 @@
+/* EB++ Extra Flags */
+
 // Whether a party member has been selected for editing
 define flg_NessEdit = flag 0x668
 define flg_PaulaEdit = flag 0x667
@@ -26,6 +28,142 @@ define flg_ModMenuWnd = flag 0x659
 define flg_ModMenuWnd2 = flag 0x658
 // Whether Mod Menu confirmation window is open
 define flg_ModMenuConfirmWnd = flag 0x657
+// Whether Stat increase messages auto-advance
+define flg_AutoAdvStatIncMsgs = flag 0x656
+// Whether Stat increase messages are skipped
+define flg_SkipStatIncMsgs = flag 0x655
+// Whether collisions are disabled or not
+define flg_DisableCollision = flag 0x654
+// Whether bike is unrestricted or not
+define flg_UnrestrictBike = flag 0x653
+// Whether your dad can call you
+define flg_DadCantCall = flag 0x652
+// Whether the photo guy interrupts you or not
+define flg_NoPhotoGuy = flag 0x651
 
-// Whether your dad can call you.
-define flg_DadCantCall = flag 775
+/* Original Game Flags */
+define flg_BuzzBuzz = flag 0x12
+define flg_DadCantCall_Original = flag 0x307
+define flg_PajamaNess = flag 0x2ED
+define flg_NoEnemies = flag 0x0B
+define flg_LightsOnAtHome = flag 0x205
+define flg_NoOnettNPCs = flag 0x20B
+define flg_UnshyTendas = flag 0x9B
+define flg_WintersDaytime = flag 0x1F1
+define flg_OnettDaytime = flag 0x1A6
+define flg_OnettDaytimeMusic = flag 0x68
+
+/* Phone Numbers */
+define flg_Phone_Dad = flag 0xC7
+define flg_Phone_Mom = flag 0xC8
+define flg_Phone_EscargoExpress = flag 0xC9
+define flg_Phone_MachPizza = flag 0xCA
+define flg_Phone_StoicClub = flag 0xCB
+
+/* Teleport Destinations */
+define flg_Onett = flag 0xD1
+define flg_Twoson = flag 0xD2
+define flg_Threed = flag 0xD3
+define flg_Winters = flag 0xD4
+define flg_SaturnValley = flag 0xD5
+define flg_Fourside = flag 0xD6
+define flg_Summers = flag 0xD7
+define flg_Dalaam = flag 0xD8
+define flg_Scaraba = flag 0xD9
+define flg_DeepDarkness = flag 0xDA
+define flg_TendaVillage = flag 0xDB
+define flg_Underworld = flag 0xDC
+
+/* Sound Stone */
+define flg_GiantStep = flag 0xB6
+define flg_LilliputSteps = flag 0xB7
+define flg_MilkyWell = flag 0xB8
+define flg_RainyCircle = flag 0xB9
+define flg_MagnetHill = flag 0xBA
+define flg_PinkCloud = flag 0xBB
+define flg_LumineHall = flag 0xBC
+define flg_FireSpring = flag 0xBD
+
+/* Defeated Bosses */
+define flg_Defeat_TitanicAnt = flag 0xBE
+define flg_Defeat_MondoMole = flag 0xBF
+define flg_Defeat_TrillionageSprout = flag 0xC1
+define flg_Defeat_Shrooom = flag 0xC0
+define flg_Defeat_PlagueRatofDoom = flag 0xC2
+define flg_Defeat_ThunderandStorm = flag 0xC3
+define flg_Defeat_ElectroSpecter = flag 0xC4
+define flg_Defeat_CarbonDog = flag 0xC5
+define flg_Defeat_Giygas = flag 0x49
+
+/* Defeated Midbosses */
+define flg_Defeat_Frank = 0x40
+define flg_Defeat_CaptStrong = flag 0x69
+define flg_Defeat_Everdred = 0x42
+define flg_Defeat_EggStandGuy = 0x43
+define flg_Defeat_Carpainter = 0x44
+define flg_Defeat_BoogeyTent = 0x45
+define flg_Defeat_StarmanDX = 0x46
+define flg_Defeat_MasterBelch = 0x47
+define flg_Defeat_NessNightmare = 0x4A
+define flg_Defeat_ManiManiStatue = 0x4B
+define flg_Defeat_ClumsyRobot = 0x13E
+define flg_Defeat_3rdStrongMole_1 = 0x115
+define flg_Defeat_3rdStrongMole_2 = 0x116
+define flg_Defeat_3rdStrongMole_3 = 0x117
+define flg_Defeat_3rdStrongMole_4 = 0x118
+define flg_Defeat_3rdStrongMole_5 = 0x119
+define flg_Defeat_3rdStrongMoles = 0x48
+
+/* Roadblocks */
+define flg_OnettRoadblock = flag 0x1DC
+define flg_BoughtOnettHouse = flag 0x063
+// 0x6F = Marks that you have visited the Iron Pencil in Peaceful Rest Valley.
+
+/* Key Items */
+define flg_KeyItem_Meteorite = flag 0x4F
+define flg_KeyItem_ShackKey = flag 0x50 // 0x6C = Traveling Entertainer's Shack unlocked
+define flg_KeyItem_Bicycle = flag 0x51
+define flg_KeyItem_ReceiverPhone = flag 0x52
+define flg_KeyItem_PencilEraser = flag 0x53 // 0x2A = Apple Kid waiting to give Pencil Eraser in Burglin Park
+define flg_KeyItem_HandAid = flag 0x54
+define flg_KeyItem_WadofBills = flag 0x55
+define flg_KeyItem_FranklinBadge = flag 0x56
+define flg_KeyItem_FlyHoney = flag 0x57 // 0x7C = Zombie Paper on Threed tent floor
+define flg_KeyItem_BadKeyMachine = flag 0x58
+define flg_KeyItem_ShynessBook = flag 0x59
+define flg_KeyItem_Diamond = flag 0x5A
+define flg_KeyItem_SignedBanana = flag 0x5B
+
+/* Photos */
+define flg_Photo_1 = 0x2BA //in front of Ness’s house
+define flg_Photo_2 = 0x2BB //inside the rundown buyable house
+define flg_Photo_3 = 0x2BC //in front of the Twoson bike shop
+define flg_Photo_4 = 0x2BD //of Peaceful Rest Valley
+define flg_Photo_5 = 0x2BE //in front of Paula's shack
+define flg_Photo_6 = 0x2BF //in front of Chaos Theater
+define flg_Photo_7 = 0x2C0 //at Lake Tess
+define flg_Photo_8 = 0x2C1 //in Brick Road's Winters dungeon and prevents the photo guy from showing when ON.
+define flg_Photo_9 = 0x2C2 //in the Threed cemetery
+define flg_Photo_10 = 0x2C3 //at the Belch waterfall
+define flg_Photo_11 = 0x2C4 //at Saturn Valley (upper right)
+define flg_Photo_12 = 0x2C5 //in front of the Threed circus tent
+define flg_Photo_13 = 0x2C6 //with the Black Sesame Seed in the Dusty Dunes Desert (north end)
+define flg_Photo_14 = 0x2C7 //at the Dusty Dunes Desert mine entrance
+define flg_Photo_15 = 0x2C8 //at the Fourside tunnel entrance
+define flg_Photo_16 = 0x2C9 //at the Fourside museum entrance
+define flg_Photo_17 = 0x2CA //in front of the dinosaur in the Fourside museum
+define flg_Photo_18 = 0x2CB //behind the Monotoli building in Fourside
+define flg_Photo_19 = 0x2CC //at the toy shop in the Fourside department store
+define flg_Photo_20 = 0x2CD //at the Dalaam throne room
+define flg_Photo_21 = 0x2CE //in front of the Dalaam palace entrance
+define flg_Photo_22 = 0x2CF //at Stonehenge
+define flg_Photo_23 = 0x2D0 //in front of the Summers hotel
+define flg_Photo_24 = 0x2D1 //in the Summers restaurant
+define flg_Photo_25 = 0x2D2 //on the Summers beach
+define flg_Photo_26 = 0x2D3 //at the Summers docks
+define flg_Photo_27 = 0x2D4 //in Scaraba town
+define flg_Photo_28 = 0x2D5 //in front of the Scaraba pyramid
+define flg_Photo_29 = 0x2D6 //in the south Scaraba desert
+define flg_Photo_30 = 0x2D7 //in the Deep Darkness
+define flg_Photo_31 = 0x2D8 //in Tenda village
+define flg_Photo_32 = 0x2D9 //of Phase Distorter in Saturn Valley

@@ -96,6 +96,26 @@ command RefreshScreen(prevWndType)
 	LoadRAM()
 }
 
+// Prompts user to enter a number, saves to argument register, then calls procedure if Yes
+command ConfirmNumber(wndLabel, digits, string, yesLabel)
+{
+	CloseModMenuConfirmWnd()
+	OpenModMenuConfirmWnd()
+	Lbl(wndLabel)
+	input(digits)
+	rtoarg
+	SaveRAM()
+	" " newline
+	"@{string}" newline
+	" {number(argument)}" newline
+	menu 2
+	{
+		"Yes": { LoadRAM() call(yesLabel) }
+		default "No": { }
+	}
+	CloseModMenuConfirmWnd()
+}
+
 /*
  * Flag Commands
  */

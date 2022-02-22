@@ -4,6 +4,12 @@
  * Generated using CCScriptWriter.
  */
 
+import "_scripts/modmenu/enums/flags.ccs"
+command Advance()
+{
+	if (flg_AutoAdvStatIncMsgs) { "{newline}" } else { "{prompt}" }
+}
+
 command e(label) "{long label}"
 
 // Text Data
@@ -56,8 +62,11 @@ l_0xef79e6:
     "[1F 41 11][1B 03 {e(l_0xef7a0a)}]" goto(l_0xef79ef)
 
 l_0xef79ef:
-    next
-    "@" call(data_33.l_0xc7e6d7) " gained {delta} exp" call(data_60.l_0xef8fad) "{prompt}" eob
+    if not flg_SkipStatIncMsgs {
+		next
+		"@" call(data_33.l_0xc7e6d7) " gained {delta} exp" call(data_60.l_0xef8fad) Advance()
+	}
+	eob
 
 l_0xef7a0a:
     "[19 05 01 06 02]" goto(l_0xef79ef)
@@ -71,57 +80,91 @@ l_0xef7a28:
     "{window_clear}" linebreak
     "              [1C 08 02]" linebreak
     "{pause(90)}" linebreak
-    "@" call(data_33.l_0xc7e6d7) " gained {delta} exp" call(data_60.l_0xef8fad) "{prompt}" eob
+	if not flg_SkipStatIncMsgs {
+		"@" call(data_33.l_0xc7e6d7) " gained {delta} exp" call(data_60.l_0xef8fad) Advance()
+	} eob
 
 l_0xef7a4d:
     newline
     "{pause(10)}{music(7)}@" call(data_33.l_0xc7e6d7) " lost the battle...{prompt}" eob
 
 l_0xef7a66:
-    newline
-    "@{target}'s level is" linebreak
-    "  now {delta}!{prompt}" eob
+	if not flg_SkipStatIncMsgs {
+		newline
+		"@{target}'s level is" linebreak
+		"  now {delta}!" Advance() } 
+	eob
 
 l_0xef7a7d:
-    newline
-    "@" call(l_0xef7bbf) "Offense went up by {delta}!{prompt}" eob
+	if not flg_SkipStatIncMsgs {
+		newline
+		"@" call(l_0xef7bbf) "Offense went up by {delta}!" Advance()
+	}
+	eob
 
 l_0xef7a97:
-    newline
-    "@" call(l_0xef7bbf) "Defense went up by {delta}!{prompt}" eob
+	if not flg_SkipStatIncMsgs {
+		newline
+		"@" call(l_0xef7bbf) "Defense went up by {delta}!" Advance()
+	}
+	eob
 
 l_0xef7ab1:
-    newline
-    "@" call(l_0xef7bbf) "Speed went up by {delta}!{prompt}" eob
+	if not flg_SkipStatIncMsgs {
+		newline
+		"@" call(l_0xef7bbf) "Speed went up by {delta}!" Advance()
+	}
+	eob
 
 l_0xef7ac9:
-    newline
-    "@" call(l_0xef7bbf) "Guts went up by {delta}!{prompt}" eob
+	if not flg_SkipStatIncMsgs {
+		newline
+		"@" call(l_0xef7bbf) "Guts went up by {delta}!" Advance()
+	}
+	eob
 
 l_0xef7ae0:
-    newline
-    "@" call(l_0xef7bbf) "Vitality went up by {delta}!{prompt}" eob
+	if not flg_SkipStatIncMsgs {
+		newline
+		"@" call(l_0xef7bbf) "Vitality went up by {delta}!" Advance()
+	}
+	eob
 
 l_0xef7afb:
-    newline
-    "@" call(l_0xef7bbf) "IQ went up by {delta}!{prompt}" eob
+	if not flg_SkipStatIncMsgs {
+		newline
+		"@" call(l_0xef7bbf) "IQ went up by {delta}!" Advance()
+	}
+	eob
 
 l_0xef7b11:
-    newline
-    "@" call(l_0xef7bbf) "Luck went up by {delta}!{prompt}" eob
+	if not flg_SkipStatIncMsgs {
+		newline
+		"@" call(l_0xef7bbf) "Luck went up by {delta}!" Advance()
+	}
+	eob
 
 l_0xef7b28:
-    newline
-    "@" call(l_0xef7b83) "Maximum HP went up by {delta}!{prompt}" eob
+	if not flg_SkipStatIncMsgs {
+		newline
+		"@" call(l_0xef7b83) "Maximum HP went up by {delta}!" Advance()
+	}
+	eob
 
 l_0xef7b46:
-    newline
-    "@" call(l_0xef7ba0) "Maximum PP went up by {delta}!{prompt}" eob
+	if not flg_SkipStatIncMsgs {
+		newline
+		"@" call(l_0xef7ba0) "Maximum PP went up by {delta}!" Advance()
+	}
+	eob
 
 l_0xef7b64:
-    newline
-    "{sound(103)}@{target} realized the power of" linebreak
-    "[19 1F]{swap}  [1C 12 00].{prompt}" eob goto(l_0xef7b83)
+	if not flg_SkipStatIncMsgs {
+		newline
+		"{sound(103)}@{target} realized the power of" linebreak
+		"[19 1F]{swap}  [1C 12 00]." Advance()
+	}
+	eob goto(l_0xef7b83)
 
 l_0xef7b83:
     "{store_registers}[19 1E][18 07 14 00 00 00 00][1B 02 {e(l_0xef7b9d)}]Sweet!" linebreak

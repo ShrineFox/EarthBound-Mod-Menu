@@ -265,7 +265,8 @@ l_0xc5e655:
     "[1F 11 02][1F 11 03][1F 11 04][1F E5 FF][1F 21 B2][1F 15 6A 00 1D 02 01]{pause(1)}[1F EF 6A 00][1F E8 FF]" eob
 
 l_0xc5e675:
-    "[1F E5 FF][1F 21 B3][1F F0][1F E5 01][1F 15 6A 00 1E 02 01]{pause(1)}[1F EF 6A 00][1F E8 FF]" eob
+	goto(_scripts.BicycleStart)
+    //"[1F E5 FF][1F 21 B3][1F F0][1F E5 01][1F 15 6A 00 1E 02 01]{pause(1)}[1F EF 6A 00][1F E8 FF]" eob
 
 l_0xc5e691:
     "[1F 11 02][1F 11 03][1F E5 FF][1F 21 B4][1F 15 6A 00 1F 02 01]{pause(1)}[1F EF 6A 00][1F E8 FF]" eob

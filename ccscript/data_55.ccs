@@ -30,7 +30,9 @@ l_0xc9f9cf:
     "@Thanks to the Magic butterfly, you were able to totally relax.{wait}{window_closeall}" eob
 
 l_0xc9f9f3:
-    "[06 FB 02 {e(l_0xc9fab9)}][06 49 00 {e(l_0xc9fab9)}][06 74 01 {e(data_32.l_0xc7c6f1)}]" call(data_33.l_0xc7dd8d) "[1B 03 {e(l_0xc9fa74)}][06 BE 01 {e(l_0xc9fa74)}][06 86 02 {e(l_0xc9fa74)}][06 87 02 {e(l_0xc9fa74)}][06 88 02 {e(l_0xc9fa74)}]" newline
+    "[06 FB 02 {e(l_0xc9fab9)}][06 49 00 {e(l_0xc9fab9)}]"
+	//"[06 74 01 {e(data_32.l_0xc7c6f1)}]" 
+	call(data_33.l_0xc7dd8d) "[1B 03 {e(l_0xc9fa74)}][06 BE 01 {e(l_0xc9fa74)}][06 86 02 {e(l_0xc9fa74)}][06 87 02 {e(l_0xc9fa74)}][06 88 02 {e(l_0xc9fa74)}]" newline
     "@{user}[19 1F]{swap} used" linebreak
     "  the [1C 05 00]!" next
     "@A customer is heading this way.{wait}{window_closeall}[1D 21 03][09 03 {e(l_0xc9fb43)} {e(l_0xc9fb4d)} {e(l_0xc9fb57)}][1F D3 04]{set(flag 446)}{set(flag 754)}" eob goto(l_0xc9fa74)
@@ -105,14 +107,21 @@ l_0xc9fcd5:
     "@(For some reason,{pause(15)} the iron eraser statue disappeared in an instant!){wait}{window_closeall}{pause(1)}{sound(33)}[1F 1E 9F 02 0A]{set(flag 299)}" eob
 
 l_0xc9fd2e:
-    newline
-    "[19 10 02][1B 03 {e(l_0xc9fd5a)}][19 10 01][1D 0D 00 02 02][1B 03 {e(l_0xc9fd60)}]@{user} rode a bicycle.[1F F0]" eob goto(l_0xc9fd5a)
+	goto(_scripts.BicycleStart)
+    //newline
+    //"[19 10 02][1B 03 {e(l_0xc9fd5a)}][19 10 01][1D 0D 00 02 02][1B 03 {e(l_0xc9fd60)}]"
+	//"@{user} rode a bicycle.[1F F0]"*/
+	//eob goto(l_0xc9fd5a)
 
 l_0xc9fd5a:
-    call(data_32.l_0xc7c802) eob
+	goto(_scripts.BicycleStart)
+    //call(data_32.l_0xc7c802)
+	eob
 
 l_0xc9fd60:
-    "@If you are not feeling well, you should not ride a bicycle." end
+    //"@If you are not feeling well, you should not ride a bicycle." end
+	goto(_scripts.BicycleStart)
+	eob
 
 l_0xc9fd82:
     newline

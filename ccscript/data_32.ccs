@@ -83,8 +83,14 @@ l_0xc7c6b6:
     "  the {swap}[1C 05 00]." end goto(l_0xc7c6f1)
 
 l_0xc7c6f1:
-    "[19 1F]{swap}@The [1C 05 00] can't be used here.{wait}[02]{store_registers}[19 19 00 00]{swap}{result_is(104)}[1B 03 {e(l_0xc7c761)}]{load_registers}[19 19 00 00]@Why would you do that?" linebreak
+    "[19 1F]"
+	if result_is(176) { goto(_scripts.BicycleStart) }
+	else
+	{
+	"[19 1F]{swap}@The [1C 05 00] can't be used here.{wait}[02]{store_registers}[19 19 00 00]{swap}{result_is(104)}[1B 03 {e(l_0xc7c761)}]{load_registers}[19 19 00 00]@Why would you do that?" linebreak
     "  The [1C 05 00] would probably make you barf.{wait}[02][19 19 00 00]@The [1C 05 00] is one of the items that can be equipped." end goto(l_0xc7c761)
+	}
+	eob
 
 l_0xc7c761:
     "{load_registers}[19 19 00 00]{swap}@[1C 02 00] chewed" linebreak
@@ -100,13 +106,16 @@ l_0xc7c7af:
     "@Be careful!" end
 
 l_0xc7c802:
-    "@There is only one seat,{pause(15)} so you can't ride the bike now." end
+    //"@There is only one seat,{pause(15)} so you can't ride the bike now." end
+	goto(_scripts.BicycleStart) eob
 
 l_0xc7c823:
-    "@You cannot ride your bike here." end
+    //"@You cannot ride your bike here." end
+	goto(_scripts.BicycleStart) eob
 
 l_0xc7c833:
-    "@You should ride your bike in a less confining area." end
+    //"@You should ride your bike in a less confining area." end
+	goto(_scripts.BicycleStart) eob
 
 l_0xc7c850:
     "[06 F2 02 {e(l_0xc7c865)}]@You cannot teleport here." end
@@ -127,7 +136,8 @@ l_0xc7c93f:
     "@You cannot teleport while Dungeon Man is with you." end
 
 l_0xc7c95e:
-    "[19 10 01]{swap}@[1C 02 00] got off the bike.{wait}" eob newline
+	goto(_scripts.BicycleEnd)
+    //"[19 10 01]{swap}@[1C 02 00] got off the bike.{wait}" eob newline
     "@We're very sorry..." next
     "@but the record of adventure number {delta} has been lost..." end
 
@@ -254,7 +264,10 @@ l_0xc7d2f6:
     "{sound(11)}  Click!  Beep-beep-beep..." end
 
 l_0xc7d33e:
-    "[06 49 00 {e(data_50.l_0xc9992f)}]{music(115)}{pause(60)}{wait}[1F 01 00]{sound(11)}[06 10 00 {e(l_0xc7d36e)}][06 95 00 {e(l_0xc7d4af)}][06 0E 00 {e(l_0xc7d36e)}][06 80 00 {e(l_0xc7d627)}]" goto(l_0xc7d36e)
+	goto(_scripts.DadCall)
+    
+l_0xc7d33e_original:
+	"[06 49 00 {e(data_50.l_0xc9992f)}]{music(115)}{pause(60)}{wait}[1F 01 00]{sound(11)}[06 10 00 {e(l_0xc7d36e)}][06 95 00 {e(l_0xc7d4af)}][06 0E 00 {e(l_0xc7d36e)}][06 80 00 {e(l_0xc7d627)}]" goto(l_0xc7d36e)
 
 l_0xc7d36e:
     "{window_open(1)}[19 10 01]{result_is(1)}[1B 02 {e(l_0xc7d630)}]@Hello, it's your dad." next

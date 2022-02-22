@@ -1,0 +1,87 @@
+import asm65816
+
+// By JTolmar
+// Makes Ness accelerate when under the influence of skip sandwich / run button
+// This is very silly and a proof of concept, it'd need some polish to use for real
+
+// First all the code links and stuff:
+// SKIP_SANDWICH_SPEED $00018000 ;1.5x
+// https://github.com/Herringway/ebsrc/blob/de0eca7baf54c73f3ad02874ada78e55cc6ebe83/src/config.asm#L93
+
+// Skip sandwich speed is applied as a multiplier here:
+// https://github.com/Herringway/ebsrc/blob/478569f92e35941906ddccb4a4058ee7f9755c68/src/overworld/adjust_position_vertical.asm#L134
+// https://earthbound-rom-explorerr.herokuapp.com/address/$c03017
+/*
+$c03210            LDA #$8000
+$c03213            STA $0a
+$c03215            LDA #$0001
+$c03218            STA $0c
+$c0321a            JSL $c09086
+*/
+// https://github.com/Herringway/ebsrc/blob/478569f92e35941906ddccb4a4058ee7f9755c68/src/overworld/adjust_position_horizontal.asm#L134
+// https://earthbound-rom-explorerr.herokuapp.com/address/$c02d8f
+/*
+$c02f88            LDA #$8000
+$c02f8b            STA $0a
+$c02f8d            LDA #$0001
+$c02f90            STA $0c
+$c02f92            JSL $c09086
+*/
+
+// I'm purely guessing that this is free RAM
+define run_counter = 0x7E4678
+define run_used = 0x7E467A
+// Failing that, Herringway says 7E0720 is 224 bytes
+define acceleration = 0x400 // In subpixels/frame, 0x10000 = pixel
+
+SpeedHijack:
+  // If this is invoked, we are running
+  LDA_i(1)
+  STA_a(run_used)
+  // The number we're """supposed""" to multiply by is in 0a/0c but whatever,
+  // copy the run counter into 0a instead. (0c is 1.x, leave that alone)
+  // Increment run counter by something, then replace low byte of multiplier
+  LDA_a(run_counter)
+  STA_d(0x0a)
+  // Now multiply by that instead
+  JSL(0xc09086)
+  RTL
+
+ROM[0xc02f92] = JSL(SpeedHijack)
+ROM[0xc0321a] = JSL(SpeedHijack)
+
+// Reset run state when run not held
+// Main loop, some debug stuff not already overridden by r button menu
+// https://github.com/Herringway/ebsrc/blob/6deb1ef9aec968711da2a283375c81658475b199/src/system/main.asm#L135
+// https://earthbound-rom-explorerr.herokuapp.com/address/$c0b7d8
+/*
+$c0b92c UNKNOWN17:            LDA $436c
+$c0b92f                       BEQ UNKNOWN20
+$c0b931                       LDA $006f
+$c0b934                       AND #$8000
+$c0b937                       BEQ UNKNOWN20
+$c0b939                       LDA #$0000
+$c0b93c                       STA $0e
+$c0b93e                       BRA UNKNOWN19
+*/
+define end_main_loop_hijack = 0xc0b95e // UNKNOWN20 above
+ROM[0xc0b92c] = {
+  LDA_a(run_used) // Have we ran this frame?
+  BNE(9) // If yes, skip to _increase_run
+  // Else:
+  STZ_a(run_counter) // Reset run counter
+  STZ_a(run_used) // Set next frame to run not used
+  JMP(end_main_loop_hijack) // End
+_increase_run:
+  LDA_a(run_counter)
+  CLC
+  ADC_i(acceleration)
+  BCC(3) // if not overflow, goto _resume (skip _saturate)
+_saturate:
+  LDA_i(0xFFFF)
+_resume:
+  STA_a(run_counter)
+  STZ_a(run_used) // Set next frame to run not used
+  JMP(end_main_loop_hijack) // End
+}
+

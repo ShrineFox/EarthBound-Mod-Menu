@@ -12,14 +12,75 @@ import "_scripts/asm/general.ccs"
 /* Quality of Life improvements from CCScript Library */
 import "_scripts/asm/Title_Window.ccs"
 import "_scripts/asm/name_fun.ccs"
+import "_scripts/asm/noclip.ccs"
 import "_scripts/asm/run_button_toggleable.ccs"
 import "_scripts/asm/repel_sandwiches.ccs"
+import "_scripts/asm/run_accelerating.ccs"
 import "_scripts/asm/GoodsMenuEquip.ccs"
 /* Mod Menu */
 import "_scripts/modmenu/menus/modmenu.ccs"
+import "_scripts/modmenu/enums/flags.ccs"
+import "_scripts/modmenu/enums/windows.ccs"
 
+// Open the Mod Menu
 ModMenu:
 	goto(ModMenu_MainMenu)
 	
+// Show information about the Mod Menu (item help text)
 ModMenu_About:
 	goto(ModMenu_AboutDlg)
+	
+// Temporarily remove party if using unrestricted bike feature
+BicycleStart:
+	if flg_UnrestrictBike 
+	{
+		party_add(1) 
+		party_remove(2)  party_remove(3)  party_remove(4) 
+		party_remove(5)  party_remove(6)  party_remove(7) 
+		party_remove(8)  party_remove(9)  party_remove(10) 
+		party_remove(11) party_remove(12) party_remove(13) 
+		party_remove(14)
+		window_open(wnd_FullScreen)
+		window_closeall
+		"[1F F0]"
+	}
+	else { "@The bike cannot be used right now." next }
+eob
+
+// Restore party if using unrestricted bike feature
+BicycleEnd:
+	if flg_UnrestrictBike 
+	{
+		if flg_Ness  { party_add(1) } if flg_Paula { party_add(2) } 
+		if flg_Jeff  { party_add(3) } if flg_Poo   { party_add(4) } 
+		if not flg_Ness { party_remove(1) } if not flg_Paula { party_remove(2) } 
+		if not flg_Jeff { party_remove(3) } if not flg_Poo { party_remove(4) }
+		window_open(wnd_FullScreen)
+		window_closeall
+	}
+eob
+
+// Prevent your dad from calling you
+DadCall:
+	if not flg_DadCantCall { goto(data_32.l_0xc7d33e_original) }
+eob
+	
+command e(label) "{long label}"
+
+// Prevent Photo Guy cutscene from happening
+ROM[0xC7AB3F] = goto(PhotoGuy) // coilsnake didn't decompile it right...
+
+PhotoGuy:
+	if flg_NoPhotoGuy { "[1F 15 6A 00 C4 01 01]" }
+	else {
+		call(data_33.l_0xc7dd74) "{music(88)}{pause(180)}{pause(60)}[1F 15 8F 00 C0 01 01][1F 61][1F 15 58 01 C1 01 01][1F 61][1F E7 8F 00][19 10 01][19 22 00 03 8F 00][1F 14 00]{window_open(1)}[1F 41 12]@Pictures taken instantaneously!" next
+		"@I'm a photographic genius,{pause(15)}" linebreak
+		"  if I do say so myself!" next
+		"@Okay,{pause(15)} get ready for an instant memory!" next
+		"@Look at the camera...{pause(20)}" linebreak
+		"  Ready..." next
+		"@Say,{pause(15)} <fuzzy pickles.>" next
+		"{window_closeall}[1F EB 01 06][06 FD 01 {e(data_31.l_0xc7ac3a)}][1F 15 0E 00 C2 01 01]"
+		goto(data_31.l_0xc7ac42)
+	}
+eob

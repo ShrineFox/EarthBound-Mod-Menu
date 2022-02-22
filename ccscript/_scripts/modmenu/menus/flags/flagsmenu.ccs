@@ -12,14 +12,92 @@ command ToggleFlag(flagName) {
 }
 
 FlagsMenu:
+	CloseModMenu2Wnd()
 	OpenModMenu2Wnd()
 	Lbl(lbl_Flags)
 	menu 1 {
+		"Menu Settings": { goto(MenuSettings) }
+		"Party": { goto(PartyFlagsMenu) }
+		"Appearance": { goto(AppearanceMenu) }
+		"Town Stuff": { goto(TownMenu) }
+		"Misc": { goto(MiscFlagsMenu) }
+		default "Back": { goto(modmenu.ModMenu_MainMenu) }
+	}
+goto(FlagsMenu)
+
+MenuSettings:
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Flags)
+	menu 1 {
+		"Debug Window":   { ToggleFlag(flg_Debug) }
+		"Unrestrict Bike": { ToggleFlag(flg_UnrestrictBike) }
+		"No Photo Guy": { ToggleFlag(flg_NoPhotoGuy) }
+		"No Dad Calls": { ToggleFlag(flg_DadCantCall) }
+		"NoClip": { ToggleFlag(flg_DisableCollision) }
+		"Auto Adv Msgs": { ToggleFlag(flg_AutoAdvStatIncMsgs) }
+		"Skip Lvlup Msgs": { ToggleFlag(flg_SkipStatIncMsgs) }
+		default "Back": { goto(FlagsMenu) }
+	}
+goto(MenuSettings)
+
+PartyFlagsMenu:
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Flags)
+	menu 1 
+	{
 		"Ness":  { ToggleFlag(flg_Ness) }
 		"Paula": { ToggleFlag(flg_Paula) }
 		"Jeff":  { ToggleFlag(flg_Jeff) }
 		"Poo":   { ToggleFlag(flg_Poo) }
-		"Debug":   { ToggleFlag(flg_Debug) }
-		default "Back": { goto(modmenu.ModMenu_MainMenu) }
+		"Buzz Buzz": { ToggleFlag(flg_BuzzBuzz) }
+		default "Back": { goto(FlagsMenu) }
 	}
-goto(FlagsMenu)
+goto(PartyFlagsMenu)
+
+AppearanceMenu:
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Flags)
+	menu 1 
+	{
+		"Ness Pajamas":  { ToggleFlag(flg_PajamaNess) }
+		default "Back": { goto(FlagsMenu) }
+	}
+goto(AppearanceMenu)
+
+TownMenu:
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Flags)
+	menu 1 
+	{
+		"No Enemy Spawn":  { ToggleFlag(flg_NoEnemies) }
+		"Onett Daytime":  { ToggleFlag(flg_OnettDaytime) }
+		"Onett Day BGM":  { ToggleFlag(flg_OnettDaytimeMusic) }
+		"Home Lights On": { ToggleFlag(flg_LightsOnAtHome) }
+		"No Onett NPCs":  { ToggleFlag(flg_NoOnettNPCs) }
+		"Winters Daytime":  { ToggleFlag(flg_WintersDaytime) }
+		"Unshy Tendas":  { ToggleFlag(flg_UnshyTendas) }
+		default "Back": { goto(FlagsMenu) }
+	}
+goto(TownMenu)
+
+MiscFlagsMenu:
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Flags)
+	menu 1 
+	{
+		"Phone Numbers":  { goto(PhoneFlagsMenu) }
+		"Teleport Dest":  { goto(TeleportFlagsMenu) }
+		default "Back": { goto(FlagsMenu) }
+	}
+goto(MiscFlagsMenu)
+
+PhoneFlagsMenu:
+goto(MiscFlagsMenu)
+
+TeleportFlagsMenu:
+goto(MiscFlagsMenu)

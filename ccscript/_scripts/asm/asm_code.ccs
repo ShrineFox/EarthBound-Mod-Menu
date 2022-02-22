@@ -4,9 +4,17 @@ import asm65816
 
 /* Disable Gas Station Sequence */
 ROM[0xC4DB33] = "[4C F9 DB]" 
-
+/* Disable Attract Mode */
+ROM[0xC422E4] = "[09]"
+/* Still Animate EarthBound Logo Even if Intro is Skipped */
+ROM[0xc3f3d0] = { STZ_a(0x9f75) }
 /* Play Custom Music at Boot */
 ROM[0xC0B7E0] = JSL (BootUpMusic)
+
+/* Disable Non-Door Collisions */
+// ROM[0xC054EE] = "[10]"
+/* Disable All Collisions */
+// ROM[0xC054EA] = "[A9]"
 
 BootUpMusic: {
         JSL   (0xC43317) // Run original overwritten code (initialize pointers to party member data)
@@ -15,6 +23,9 @@ BootUpMusic: {
         JSL   (0xC4FBBD) // Play our music!
         RTL
 }
+
+/* Disable enemy collisions? */
+// ROM[0xC3A405] = short 0xA6D1
 
 /* Lower HP/PP windows by one tile */
 ROM[0xC2044C] = LDA_i(0x0013)

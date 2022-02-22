@@ -2,9 +2,10 @@
 import "../../enums/flags.ccs"
 import "../../enums/labels.ccs"
 import "../../enums/party.ccs"
-import "../../enums/status.ccs"
 import "../../enums/windows.ccs"
 import "../../commands.ccs"
+/* Submenu */
+import "health/healthmenu.ccs"
 
 
 PartyMenu:
@@ -58,9 +59,9 @@ command AddToParty()
 
 command RemoveFromParty() 
 {
-	DebugWnd(wnd_ModMenu, "RemoveFromParty")
 	// Check if you can remove from party without causing death loop
 	set(flg_Proceed)
+	
 	if counter_is(pty_Ness)
 	{
 		if not flg_Paula and not flg_Jeff and not flg_Poo { unset(flg_Proceed) }
@@ -81,12 +82,13 @@ command RemoveFromParty()
 		if not flg_Ness and not flg_Paula and not flg_Jeff { unset(flg_Proceed) }
 		else { unset(flg_Poo) }
 	}
-	DebugWnd(wnd_ModMenu, "RemoveFromParty2")
+	
 	if flg_Proceed
 	{
+		LoadCounter()
 		party_remove(0)
-		RefreshScreen(wnd_ModMenu) 
-		SystemWnd(wnd_ModMenu, "{sound(SND_STATUSCHANGE)}@{name(argument)} left the party.")
+		RefreshScreen(wnd_ModMenu2) 
+		SystemWnd(wnd_ModMenu2, "{sound(SND_STATUSCHANGE)}@{name(argument)} left the party.")
 	}
 	else { SystemWnd(wnd_ModMenu, "@Couldn't remove {name(argument)} from party.") }
 }
@@ -94,13 +96,12 @@ command RemoveFromParty()
 
 PartyMenu_All:
 	CloseModMenu2Wnd()
-	OpenModMenuWnd()
+	OpenModMenu2Wnd()
 	Lbl(lbl_Party)
 	menu 1 {
 		"Health": { goto(HealthMenu) }
-		//"Stats":  { goto(StatsMenu) }
+		"Stats":  { goto(StatsMenu) }
 		//"Goods":  { goto(GoodsMenu) }
-		//"EXP":    { goto(EXPMenu) }
 		//"PSI":    { goto(PSIMenu) }
 		"Add":    
 		{ 
@@ -122,23 +123,22 @@ goto(PartyMenu)
 
 PartyMenu_Main4:
 	CloseModMenu2Wnd()
-	OpenModMenuWnd()
+	OpenModMenu2Wnd()
 	SetPartyLabel()
 	menu 1 {
 		"Health": { goto(HealthMenu) }
-		//"Stats":  { goto(StatsMenu) }
+		"Stats":  { goto(StatsMenu) }
 		//"Goods":  { goto(GoodsMenu) }
-		//"EXP":    { goto(EXPMenu) }
 		//"PSI":    { goto(PSIMenu) }
 		"Add":    { AddToParty() }
 		"Remove": { RemoveFromParty() }
 		 default "Back": { goto(PartyMenu) }
 	}
-goto(PartyMenu)
+goto(PartyMenu_Main4)
 
 FollowersMenu:
 	CloseModMenu2Wnd()
-	OpenModMenuWnd()
+	OpenModMenu2Wnd()
 	SetPartyLabel()
 	menu 1 
 	{
@@ -146,168 +146,115 @@ FollowersMenu:
 		"Remove": { RemoveFromParty() }
 		 default "Back": { goto(PartyMenu) }
 	}
-goto(PartyMenu)
+goto(FollowersMenu)
 
-// Clear a party member's status effects
-command ClearStatus(partyMember) 
-{ 
-	inflict(partyMember, sts_Normal_0) inflict(partyMember, sts_Normal_1) inflict(partyMember, sts_Normal_2) 
-	inflict(partyMember, sts_Normal_3) inflict(partyMember, sts_Normal_4) inflict(partyMember, sts_Normal_5)
-}
-// Show message about status effect being cleared
-command ClearStatusNotification(string) { SystemWnd(wnd_ModMenu2, "{sound(SND_STATUSRECOVER)}@Cleared {string)}'s status.") }
-
-// Give a party member 1 HP and set their primary status to Normal
-command Revive(partyMember) { heal(partyMember, 1) inflict(partyMember, sts_Normal_0) }
-// Show message about party member being revived
-command ReviveNotification(string) { SystemWnd(wnd_ModMenu2, "{sound(SND_STATUSRECOVER)}@Revived {string)}.") }
-
-// Remove 100% of a party member's HP
-command Kill(PartyMember) { sound(SND_HERODEATH) hurt_percent(PartyMember, 100) }
-// Remove 99% of a party member's HP
-command AlmostKill(PartyMember) { sound(SND_CRITICAL) hurt_percent(PartyMember, 99) }
-
-HealthMenu:
-	OpenModMenu2Wnd()
-	Lbl(lbl_Health)
-	menu 1 {
-		"Heal":  { 
-			if (counter_is(0)) { healall SystemWnd(wnd_ModMenu2, "{sound(SND_RECOVER)}@Restored everyone's HP and PP.") }
-			else { SystemWnd(wnd_ModMenu2, "{call(data_45.l_0xc91675)}{sound(SND_RECOVER)}@{name(argument)}'s HP and PP are restored.") LoadRAM() } 
-		}
-		"Set Status":  { goto(StatusMenu) }
-		"Clear Status":
-		{
-			if (counter_is(0)) 
-			{
-				ClearStatus(pty_Ness) ClearStatus(pty_Paula) ClearStatus(pty_Jeff) ClearStatus(pty_Poo)
-				ClearStatusNotification("everyone")
-			}
-			else if (counter_is(pty_Ness))  { ClearStatus(pty_Ness)  ClearStatusNotification("{name(pty_Ness)}")  }
-			else if (counter_is(pty_Paula)) { ClearStatus(pty_Paula) ClearStatusNotification("{name(pty_Paula)}") }
-			else if (counter_is(pty_Jeff))  { ClearStatus(pty_Jeff)  ClearStatusNotification("{name(pty_Jeff)}")  }
-			else if (counter_is(pty_Poo))   { ClearStatus(pty_Poo)   ClearStatusNotification("{name(pty_Poo)}")   }
-		}
-		"Kill":  { 
-			if (counter_is(0)) { Kill(pty_Ness) Kill(pty_Paula) Kill(pty_Jeff) Kill(pty_Poo) }
-			else if (counter_is(pty_Ness))  { Kill(pty_Ness)  }
-			else if (counter_is(pty_Paula)) { Kill(pty_Paula) }
-			else if (counter_is(pty_Jeff))  { Kill(pty_Jeff)  }
-			else if (counter_is(pty_Poo))   { Kill(pty_Poo)   }
-		}
-		"AlmostKill": { 
-			if (counter_is(0)) { AlmostKill(pty_Ness) AlmostKill(pty_Paula) AlmostKill(pty_Jeff) AlmostKill(pty_Poo) }
-			else if (counter_is(pty_Ness))  { AlmostKill(pty_Ness)  }
-			else if (counter_is(pty_Paula)) { AlmostKill(pty_Paula) }
-			else if (counter_is(pty_Jeff))  { AlmostKill(pty_Jeff)  }
-			else if (counter_is(pty_Poo))   { AlmostKill(pty_Poo)   }
-		}
-		"Revive":  { 
-			if (counter_is(0)) { "[08 2c 16 c9 00]" ReviveNotification("the whole party") }
-			else if (counter_is(pty_Ness))  { Revive(pty_Ness)  ReviveNotification("{name(pty_Ness)}")  }
-			else if (counter_is(pty_Paula)) { Revive(pty_Paula) ReviveNotification("{name(pty_Paula)}") }
-			else if (counter_is(pty_Jeff))  { Revive(pty_Jeff)  ReviveNotification("{name(pty_Jeff)}")  }
-			else if (counter_is(pty_Poo))   { Revive(pty_Poo)   ReviveNotification("{name(pty_Poo)}")   }
-		}
-		 default "Back": { goto(PartyMenu) }
-	}
-goto(PartyMenu)
-
-StatusMenu:
+StatsMenu:
 	OpenModMenu2Wnd()
 	Lbl(lbl_Status)
 	menu 1 {
-		"Group 0": { goto(StatusGroup_0) }
-		"Group 1": { goto(StatusGroup_1) }
-		"Group 2": { goto(StatusGroup_2) }
-		"Group 3": { goto(StatusGroup_3) }
-		"Group 4": { goto(StatusGroup_4) }
-		"Group 5": { goto(StatusGroup_5) }
-		 default "Back": { goto(HealthMenu) }
+		"Set Level": { ConfirmNumber(lbl_Level, 3, "Set to this Level?", SetLevel) }
+		"Boost EXP": { ConfirmNumber(lbl_EXP, 5, "Increase EXP by this?", BoostEXP) }
+		"Boost IQ": { ConfirmNumber(lbl_IQ, 3, "Increase IQ by this?", BoostIQ) }
+		"Boost Guts": { ConfirmNumber(lbl_Guts, 3, "Increase Guts by this?", BoostGuts) }
+		"Boost Speed": { ConfirmNumber(lbl_Speed, 3, "Increase Speed by this?", BoostSpeed) }
+		"Boost Vitality": { ConfirmNumber(lbl_Vitality, 3, "Inc. vitality by this?", BoostVitality) }
+		"Boost Luck": { ConfirmNumber(lbl_Luck, 3, "Increase Luck by this?", BoostLuck) }
+		 default "Back": { goto(PartyMenu) }
 	}
-goto(StatusMenu)
+goto(StatsMenu)
 
-command Inflict(status, partyMember) { inflict(partyMember, status) }
-command InflictNotification(partyName, statusName) { SystemWnd(wnd_ModMenu, "{sound(SND_AFFLICTED)}@Inflicted {partyName} with {statusName}.") }
-command InflictParty(status, statusName) 
+command SetStatNotification(partyName, statName, amount) { SystemWnd(wnd_ModMenu2, "{sound(SND_STATSUP)}@Set {partyName)}'s {statName} to {amount}.") }
+command IncStatNotification(partyName, statName, amount) { SystemWnd(wnd_ModMenu2, "{sound(SND_STATSUP)}@{partyName)}'s {statName} went up by {amount}.") }
+
+SetLevel:
+if counter_is(pty_Ness) { change_level(pty_Ness, argument) SetStatNotification(name(pty_Ness), "Level", number(argument)) } 
+else if counter_is(pty_Paula) { change_level(pty_Paula, argument) SetStatNotification(name(pty_Paula), "Level", number(argument)) }
+else if counter_is(pty_Jeff)  { change_level(pty_Jeff, argument) SetStatNotification(name(pty_Jeff), "Level", number(argument))  } 
+else if counter_is(pty_Poo)   { change_level(pty_Poo, argument) SetStatNotification(name(pty_Poo), "Level", number(argument))   }
+else if counter_is(0)
 {
-	if (counter_is(0))
-	{ 
-		Inflict(status, pty_Ness) Inflict(status, pty_Paula) 
-		Inflict(status, pty_Jeff) Inflict(status, pty_Poo) 
-		InflictNotification("party", statusName) 
-	}
-	else if (counter_is(pty_Ness))  { Inflict(status, pty_Ness)  InflictNotification(name(pty_Ness),  statusName) }
-	else if (counter_is(pty_Paula)) { Inflict(status, pty_Paula) InflictNotification(name(pty_Paula), statusName) }
-	else if (counter_is(pty_Jeff))  { Inflict(status, pty_Jeff)  InflictNotification(name(pty_Jeff),  statusName) }
-	else if (counter_is(pty_Poo))   { Inflict(status, pty_Poo)   InflictNotification(name(pty_Poo),   statusName) }
+	change_level(pty_Ness, argument) change_level(pty_Paula, argument)
+	change_level(pty_Jeff, argument) change_level(pty_Poo, argument)
+	SetStatNotification("everyone", "Level", number(argument))
 }
+eob
 
-StatusGroup_0:
-	OpenModMenu2Wnd()
-	Lbl(lbl_Group0)
-	menu 1 {
-		"Normal":   { InflictParty(sts_Normal_0, "Normal") }
-		"KO'd":     { InflictParty(sts_KO, "KO'd") }
-		"Diamondized": { InflictParty(sts_Diamondized, "Diamondized") }
-		"Nauseous":  { InflictParty(sts_Nauseous, "Nausea") }
-		"Poisoned":  { InflictParty(sts_Poisoned, "Poison") }
-		"Sunstroke": { InflictParty(sts_Sunstroke, "Sunstroke") }
-		"Cold":      { InflictParty(sts_Cold, "a Cold") }
-		default "Back": { goto(StatusMenu) }
-	}
-goto(StatusGroup_0)
+command boost_exp_fixed(char, n) { "[1E 09 {byte char} {long n}]{linebreak}{newline}" }
 
-StatusGroup_1:
-	OpenModMenu2Wnd()
-	Lbl(lbl_Group1)
-	menu 1 {
-		"Normal": 	    { InflictParty(sts_Normal_1, "Normal") }
-		"Mushroomized": { InflictParty(sts_Mushroomized, "Mushroomized") }
-		"Possessed":    { sound(SND_POSSESSED) InflictParty(sts_Possessed, "Possession") }
-		default "Back": { goto(StatusMenu) }
+BoostEXP:
+	if counter_is(pty_Ness) { boost_exp_fixed(pty_Ness, argument) IncStatNotification(name(pty_Ness), "EXP", number(argument)) } 
+	else if counter_is(pty_Paula) { boost_exp_fixed(pty_Paula, argument) IncStatNotification(name(pty_Paula), "EXP", number(argument)) }
+	else if counter_is(pty_Jeff)  { boost_exp_fixed(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "EXP", number(argument))  } 
+	else if counter_is(pty_Poo)   { boost_exp_fixed(pty_Poo, argument) IncStatNotification(name(pty_Poo), "EXP", number(argument))   }
+	else if counter_is(0)
+	{
+		boost_exp_fixed(pty_Ness, argument) boost_exp_fixed(pty_Paula, argument)
+		boost_exp_fixed(pty_Jeff, argument) boost_exp_fixed(pty_Poo, argument)
+		IncStatNotification("everyone", "EXP", number(argument))
 	}
-goto(StatusGroup_1)
+eob
 
-StatusGroup_2:
-	OpenModMenu2Wnd()
-	Lbl(lbl_Group2)
-	menu 1 {
-		"Normal": 	 { InflictParty(sts_Normal_2, "Normal") }
-		"Asleep":    { InflictParty(sts_Asleep, "Sleep") }
-		"Crying":    { InflictParty(sts_Crying, "Crying") }
-		"Paralyzed": { InflictParty(sts_Paralyzed, "Paralysis") }
-		"Solidified": { InflictParty(sts_Solidified, "Solidified") }
-		default "Back": { goto(StatusMenu) }
+BoostIQ:
+	if counter_is(pty_Ness) { boost_iq(pty_Ness, argument) IncStatNotification(name(pty_Ness), "IQ", number(argument)) } 
+	else if counter_is(pty_Paula) { boost_iq(pty_Paula, argument) IncStatNotification(name(pty_Paula), "IQ", number(argument)) }
+	else if counter_is(pty_Jeff)  { boost_iq(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "IQ", number(argument))  } 
+	else if counter_is(pty_Poo)   { boost_iq(pty_Poo, argument) IncStatNotification(name(pty_Poo), "IQ", number(argument))   }
+	else if counter_is(0)
+	{
+		boost_iq(pty_Ness, argument) boost_iq(pty_Paula, argument)
+		boost_iq(pty_Jeff, argument) boost_iq(pty_Poo, argument)
+		IncStatNotification("everyone", "IQ", number(argument))
 	}
-goto(StatusGroup_2)
+eob
 
-StatusGroup_3:
-	OpenModMenu2Wnd()
-	Lbl(lbl_Group3)
-	menu 1 {
-		"Normal":  { InflictParty(sts_Normal_3, "Normal") }
-		"Strange": { InflictParty(sts_Strange, "Feeling Strange") }
-		default "Back": { goto(StatusMenu) }
+BoostGuts:
+	if counter_is(pty_Ness) { boost_guts(pty_Ness, argument) IncStatNotification(name(pty_Ness), "Guts", number(argument)) } 
+	else if counter_is(pty_Paula) { boost_guts(pty_Paula, argument) IncStatNotification(name(pty_Paula), "Guts", number(argument)) }
+	else if counter_is(pty_Jeff)  { boost_guts(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "Guts", number(argument))  } 
+	else if counter_is(pty_Poo)   { boost_guts(pty_Poo, argument) IncStatNotification(name(pty_Poo), "Guts", number(argument))   }
+	else if counter_is(0)
+	{
+		boost_guts(pty_Ness, argument) boost_guts(pty_Paula, argument)
+		boost_guts(pty_Jeff, argument) boost_guts(pty_Poo, argument)
+		IncStatNotification("everyone", "Guts", number(argument))
 	}
-goto(StatusGroup_3)
+eob
 
-StatusGroup_4:
-	OpenModMenu2Wnd()
-	Lbl(lbl_Group4)
-	menu 1 {
-		"Normal": 	    { InflictParty(sts_Normal_4, "Normal") }
-		"CantConcentrate": { InflictParty(sts_CantConcentrate, "Can't Concentrate") }
-		default "Back": { goto(StatusMenu) }
+BoostSpeed:
+	if counter_is(pty_Ness) { boost_speed(pty_Ness, argument) IncStatNotification(name(pty_Ness), "Speed", number(argument)) } 
+	else if counter_is(pty_Paula) { boost_speed(pty_Paula, argument) IncStatNotification(name(pty_Paula), "Speed", number(argument)) }
+	else if counter_is(pty_Jeff)  { boost_speed(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "Speed", number(argument))  } 
+	else if counter_is(pty_Poo)   { boost_speed(pty_Poo, argument) IncStatNotification(name(pty_Poo), "Speed", number(argument))   }
+	else if counter_is(0)
+	{
+		boost_speed(pty_Ness, argument) boost_speed(pty_Paula, argument)
+		boost_speed(pty_Jeff, argument) boost_speed(pty_Poo, argument)
+		IncStatNotification("everyone", "Speed", number(argument))
 	}
-goto(StatusGroup_4)
+eob
 
-StatusGroup_5:
-	OpenModMenu2Wnd()
-	Lbl(lbl_Group5)
-	menu 1 {
-		"Normal": 	{ InflictParty(sts_Normal_5, "Normal") }
-		"Homesick": { InflictParty(sts_Homesick, "Homesickness") }
-		default "Back": { goto(StatusMenu) }
+BoostVitality:
+	if counter_is(pty_Ness) { boost_vitality(pty_Ness, argument) IncStatNotification(name(pty_Ness), "Vitality", number(argument)) } 
+	else if counter_is(pty_Paula) { boost_vitality(pty_Paula, argument) IncStatNotification(name(pty_Paula), "Vitality", number(argument)) }
+	else if counter_is(pty_Jeff)  { boost_vitality(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "Vitality", number(argument))  } 
+	else if counter_is(pty_Poo)   { boost_vitality(pty_Poo, argument) IncStatNotification(name(pty_Poo), "Vitality", number(argument))   }
+	else if counter_is(0)
+	{
+		boost_vitality(pty_Ness, argument) boost_vitality(pty_Paula, argument)
+		boost_vitality(pty_Jeff, argument) boost_vitality(pty_Poo, argument)
+		IncStatNotification("everyone", "Vitality", number(argument))
 	}
-goto(StatusGroup_5)
+eob
+
+BoostLuck:
+	if counter_is(pty_Ness) { boost_luck(pty_Ness, argument) IncStatNotification(name(pty_Ness), "Luck", number(argument)) } 
+	else if counter_is(pty_Paula) { boost_luck(pty_Paula, argument) IncStatNotification(name(pty_Paula), "Luck", number(argument)) }
+	else if counter_is(pty_Jeff)  { boost_luck(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "Luck", number(argument))  } 
+	else if counter_is(pty_Poo)   { boost_luck(pty_Poo, argument) IncStatNotification(name(pty_Poo), "Luck", number(argument))   }
+	else if counter_is(0)
+	{
+		boost_luck(pty_Ness, argument) boost_luck(pty_Paula, argument)
+		boost_luck(pty_Jeff, argument) boost_luck(pty_Poo, argument)
+		IncStatNotification("everyone", "Luck", number(argument))
+	}
+eob

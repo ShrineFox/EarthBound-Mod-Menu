@@ -1,0 +1,39 @@
+// By Catador
+// Allows the user to toggle a "noclip" flag
+// Will allow the player to walk through walls, but not sprites and enemies
+
+import asm65816
+
+define NOCLIP_FLAG  = flag 0x654 // <---- YOUR FLAG ID HERE
+define GetEventFlag = 0xC21628
+
+/*
+ * ORIGINAL, HIJACKED CODE:
+ *   C0/54EA: BD 00 E0     LDA $E000,X
+ *   C0/54ED: 29 FF 00     AND #$00FF  // <---- Game-Genie changes this to "AND #$0010" permanently. We want to make this toggleable
+ */
+ROM[0xC054EA] = {
+                JSL (HIJACK_NoClip)
+                NOP // Align to next instruction
+                NOP // Align to next instruction
+}
+
+HIJACK_NoClip: {
+                PHX                   // Push X, we'll need it later
+            // Check our custom event flag
+                LDA_i  (NOCLIP_FLAG)
+                JSL    (GetEventFlag)
+                ASL                   // *2
+                TAX                   // To X register
+                LDA_xl (Bitmasks)
+                STA_d  (0x00)         // Store relevant bitmask to $00
+                PLX                   // Pop X, now it's time to run the hijacked code, but with "AND $00" instead of "AND #$00FF"
+                
+            // A copy of the hijacked code, but with modified AND
+                LDA_x  (0xE000)       // LDA $E000,x
+                AND_d  (0x00)         // AND $00
+                RTL                   // Return to original code
+
+Bitmasks:       short 0x00FF // Used if flag is clear (original, do collisions with everything)
+                short 0x0010 // Used if flag is set (Game-Genie code, do collisions only with doors)
+}

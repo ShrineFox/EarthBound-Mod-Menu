@@ -45,19 +45,9 @@ WarpList:
 goto(WarpList)
 
 WarpID:
-	OpenModMenuConfirmWnd()
-	Lbl(lbl_Warp)
-	"@Enter ID:" newline
-	input(3)
-	rtoarg
-	newline
-	newline
-	newline
-	"@Warp using this ID?" newline
-	"{number(argument)}" newline
-	menu 2
-	{
-		"Yes": { warp(argument) WarpNotification("Warp ID {number(argument)}") }
-		default "No": { goto(WarpMenu) }
-	}
+	ConfirmNumber(lbl_Warp, 3, "Warp using this ID?", WarpToID)
 goto(WarpMenu)
+
+WarpToID:
+warp(argument) WarpNotification("Warp ID {number(argument)}")
+eob

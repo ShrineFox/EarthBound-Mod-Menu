@@ -8,6 +8,8 @@ import "../commands.ccs"
 import "party/partymenu.ccs"
 import "warp/warpmenu.ccs"
 import "flags/flagsmenu.ccs"
+/* Commands */
+import "party/health/healthcommands.ccs"
 
 // Procedures
 
@@ -44,9 +46,7 @@ ModMenu_AboutDlg:
 goto(ModMenu_MainMenu)
 
 
+
 TestDlg:
-	OpenModMenuWnd()
-	Lbl(lbl_About)
-	"@Test goes here." next
-	window_close(wnd_Dialog)
+	""
 goto(ModMenu_MainMenu)
