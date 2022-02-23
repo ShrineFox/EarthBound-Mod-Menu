@@ -1,0 +1,45 @@
+/* Mod Menu */
+import "../../enums/flags.ccs"
+import "../../enums/labels.ccs"
+import "../../enums/items.ccs"
+import "../../enums/party.ccs"
+import "../../enums/windows.ccs"
+import "../../commands.ccs"
+
+GoodsMenu:
+	CloseModMenuConfirmWnd()
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Goods)
+	menu 1 {
+		"View List":    { goto(ItemList) }
+		"Enter ID":     { goto(ItemID) }
+		"Key Items":    { goto(KeyItems) }
+		default "Back": { goto(modmenu.ModMenu_MainMenu) }
+	}
+goto(GoodsMenu)
+
+ItemList:
+goto(GoodsMenu)
+
+KeyItems:
+goto(GoodsMenu)
+
+/* ID Entry */
+
+ItemID:
+	ConfirmNumber(lbl_Goods, 3, "Receive this item?", GiveItemID)
+goto(GoodsMenu)
+
+command GiveItem(item_id) {
+  "[1D 0E]" short item_id
+  call(0xc7dccf)
+}
+
+command GiveKeyItem(item_id) {
+  "[1D 0E]" short item_id
+  call(0xc7dcb6)
+}
+
+GiveItemID:
+GiveItem(0) eob

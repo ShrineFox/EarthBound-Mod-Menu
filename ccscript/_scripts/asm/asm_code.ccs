@@ -27,6 +27,16 @@ BootUpMusic: {
 /* Disable enemy collisions? */
 // ROM[0xC3A405] = short 0xA6D1
 
+// Swamps, sewers, and hot springs don't slow you down.
+ROM[0xC04575] = LDA_i (0x0000)
+
+// Fast movement in the lost underworld
+ROM[0xc03ae3] = byte 0x00 // A load here stores 0x0a to your walking mode. This replaces it 0, the normal one
+
+// Skip sandwiches and/or run button work on stairs/ladders (but just a little)
+ROM[0xc02f45] = { NOP NOP NOP }
+ROM[0xc031cd] = { NOP NOP NOP }
+
 /* Lower HP/PP windows by one tile */
 ROM[0xC2044C] = LDA_i(0x0013)
 ROM[0xC20453] = LDA_i(0x0014)

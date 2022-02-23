@@ -8,6 +8,9 @@ import "../commands.ccs"
 import "party/partymenu.ccs"
 import "warp/warpmenu.ccs"
 import "flags/flagsmenu.ccs"
+import "battle/battlemenu.ccs"
+import "goods/goodsmenu.ccs"
+import "music/musicmenu.ccs"
 /* Commands */
 import "party/health/healthcommands.ccs"
 
@@ -25,10 +28,13 @@ ModMenu_MainMenu:
 	menu 1 {
 		"Party": { call(PartyMenu) }
 		"Save":  { save SystemWnd(wnd_ModMenu, "@Game saved.") goto(ModMenu_MainMenu) }
+		"BGM": 	 { call(MusicMenu) }
 		"Warp":  { call(WarpMenu) }
+		"Battle": { call(BattleMenu) }
+		"Goods": { call(GoodsMenu) }
 		"Flags": { call(FlagsMenu) }
 		"Test":  { call(TestDlg)  }
-		default "Exit": { }
+		default "Exit": {  }
 	}
 eob
 
@@ -46,7 +52,7 @@ ModMenu_AboutDlg:
 goto(ModMenu_MainMenu)
 
 
-
+command e(label) "{long label}"
 TestDlg:
-	""
+	"{window_closeall}[1F 15 6A 00 C4 01 01][1F EB 01 06][06 FD 01 {e(data_31.l_0xc7ac3a)}][1F 15 0E 00 C2 01 01]{pause(32)}[1F 61][1F 1F 0E 00 06][1F EC 01 01][1F EA 8F 00]"
 goto(ModMenu_MainMenu)

@@ -64,14 +64,14 @@ eob
 DadCall:
 	if not flg_DadCantCall { goto(data_32.l_0xc7d33e_original) }
 eob
-	
-command e(label) "{long label}"
 
 // Prevent Photo Guy cutscene from happening
 ROM[0xC7AB3F] = goto(PhotoGuy) // coilsnake didn't decompile it right...
 
+command e(label) "{long label}"
+
 PhotoGuy:
-	if flg_NoPhotoGuy { "[1F 15 6A 00 C4 01 01]" }
+	if flg_NoPhotoGuy { "[1F 15 6A 00 C4 01 01]{music(88)}{music_stop}[1F EB 01 06][06 FD 01 {e(data_31.l_0xc7ac3a)}][1F 15 0E 00 C2 01 01]{pause(32)}[1F 61][1F 1F 0E 00 06][1F EC 01 01][1F EA 8F 00]{music_resume}" }
 	else {
 		call(data_33.l_0xc7dd74) "{music(88)}{pause(180)}{pause(60)}[1F 15 8F 00 C0 01 01][1F 61][1F 15 58 01 C1 01 01][1F 61][1F E7 8F 00][19 10 01][19 22 00 03 8F 00][1F 14 00]{window_open(1)}[1F 41 12]@Pictures taken instantaneously!" next
 		"@I'm a photographic genius,{pause(15)}" linebreak

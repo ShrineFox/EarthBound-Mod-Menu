@@ -1,4 +1,5 @@
 import "_scripts/modmenu/enums/flags.ccs"
+import "_scripts/modmenu/enums/bgm.ccs"
 
 /* Setup testing environment */
 
@@ -8,6 +9,8 @@ newgame_startup(Startup)
 // Requires patches.yml - Show Sprites Without Flyover: enabled
 
 Startup:
+music(bgm_None)
+music_switching_off
 set(flg_Ness)
 set(flg_Debug)
 set(flg_DadCantCall)

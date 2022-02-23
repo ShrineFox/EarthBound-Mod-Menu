@@ -1,0 +1,110 @@
+/* Mod Menu */
+import "../../enums/flags.ccs"
+import "../../enums/labels.ccs"
+import "../../enums/battles.ccs"
+import "../../enums/party.ccs"
+import "../../enums/windows.ccs"
+import "../../commands.ccs"
+
+BattleMenu:
+	CloseModMenuConfirmWnd()
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Battle)
+	menu 1 {
+		"View List":    { goto(BattleList) }
+		"Enter ID":     { goto(BattleID) }
+		default "Back": { goto(modmenu.ModMenu_MainMenu) }
+	}
+goto(BattleMenu)
+
+BattleList:
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Battle)
+	menu 1 
+	{
+		"Regular Foe":  { goto(RegularFoeBattleList) }
+		"Boss":  { goto(BossBattleList) }
+		default "Back": { goto(BattleMenu) }
+	}
+goto(BattleList)
+
+BossBattleList:
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Battle)
+	menu 1 {
+		"Sanctuary Guardians":    { goto(SanctuaryBossList) }
+		"Regular Bosses":     { goto(MidbossBattleList) }
+		default "Back":  { goto(BattleList) }
+	}
+goto(BossBattleList)
+
+RegularFoeBattleList:
+goto(BattleList)
+
+SanctuaryBossList:
+	CloseModMenu2Wnd()
+	CloseModMenuWnd()
+	OpenModMenuWnd()
+	Lbl(lbl_Battle)
+	menu 1 {
+		"Titanic Ant":    { battle(boss_TitanicAnt) }
+		"Mondo Mole":     { battle(boss_MondoMole) }
+		"Trill. Sprout":  { battle(boss_TrillionageSprout) }
+		"Shrooom!":       { battle(boss_Shrooom) }
+		"Plague Rat":     { battle(boss_PlagueRatofDoom) }
+		"ElectroSpecter": { battle(boss_ElectroSpecter) }
+		"ThunderNStorm":     { battle(boss_ThunderandStorm) }
+		"Carbon Dog":  { battle(boss_CarbonDog) }
+		default "Back":  { goto(BossBattleList) }
+	}
+goto(SanctuaryBossList)
+
+MidbossBattleList:
+	CloseModMenu2Wnd()
+	CloseModMenuWnd()
+	OpenModMenuWnd()
+	Lbl(lbl_Battle)
+	menu 1 {
+		"Frank":    { battle(boss_Frank) }
+		"Frankystein II":     { battle(boss_FrankysteinII) }
+		"Capt. Strong":  { battle(boss_CaptStrong) }
+		"Everdred":       { battle(boss_Everdred) }
+		"Carpainter":     { battle(boss_Carpainter) }
+		"Master Belch": { battle(boss_MasterBelch) }
+		"Boogey Tent":  { battle(boss_BoogeyTent) }
+		"Guardian Digger":  { battle(boss_GuardianDigger) }
+		"DeptStore Spook":     { battle(boss_DeptStoreSpook) }
+		"Mani Mani": { battle(boss_ManiMani) }
+		"Clumsy Robot":  { battle(boss_ClumsyRobot) }
+		"More...":  { goto(MidbossBattleList2) }
+		default "Back":  { goto(BossBattleList) }
+	}
+goto(MidbossBattleList)
+
+MidbossBattleList2:
+	CloseModMenu2Wnd()
+	CloseModMenuWnd()
+	OpenModMenuWnd()
+	Lbl(lbl_Battle)
+	menu 1 {
+		"Starman DX":    { battle(boss_StarmanDX) }
+		"Ness's Nightmare":     { battle(boss_NessNightmare) }
+		"Kraken":  { battle(boss_Kraken) }
+		"Starman Jr":       { battle(boss_StarmanJr) }
+		"H. Armed Pokey":     { battle(boss_Giygas_Pokey) }
+		"Giygas": { battle(boss_Giygas) }
+		default "Back":  { goto(MidbossBattleList) }
+	}
+goto(MidbossBattleList2)
+
+/* ID Entry */
+
+BattleID:
+	ConfirmNumber(lbl_BGM, 3, "Start this battle?", StartBattle)
+goto(BattleMenu)
+
+StartBattle:
+battle(0) eob

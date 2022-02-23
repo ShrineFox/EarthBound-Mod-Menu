@@ -18,6 +18,9 @@ lbl_Guts: "GUTS[00]"
 lbl_Speed: "SPEED[00]"
 lbl_Vitality: "VITALITY[00]"
 lbl_Luck: "LUCK[00]"
+lbl_BGM: "BGM[00]"
+lbl_Battle: "BATTLE[00]"
+lbl_Goods: "GOODS[00]"
 // NPC Follower Labels
 lbl_Pokey: "POKEY[00]"
 lbl_Picky: "PICKY[00]"
@@ -31,7 +34,6 @@ lbl_PlushBear: "P.BEAR[00]"
 // Party Option labels
 lbl_Health: "HEALTH[00]"
 lbl_Stats: "STATS[00]"
-lbl_Goods: "GOODS[00]"
 lbl_PSI: "PSI[00]"
 // Health Labels
 lbl_Status: "STATUS[00]"
