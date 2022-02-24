@@ -1,4 +1,4 @@
-D:/Games/Retroarch/ROMS/SNES/Mods/EarthBound/EarthBound (Mod).smc
+C:/Users/Ryan/Documents/GitHub/Earthbound (Mod).smc
 CCScript Compilation Summary
 ============================
 
@@ -6,8 +6,8 @@ CCScript Compilation Summary
 Compilation statistics
 =================================================================
 Compilation start:           $f10000
-Compilation end:             $f94632
-Total compiled size:         542258 bytes
+Compilation end:             $f944f5
+Total compiled size:         541941 bytes
 Fragmented space:            483 bytes
 -----------------------------------------------------------------
 
@@ -77,10 +77,10 @@ data_57                      $f8ea97      3756   bytes
 data_58                      $f8cbd3      3991   bytes
 data_59                      $f90000      3330   bytes
 data_60                      $f816f6      5725   bytes
-data_61                      $f939e6      928    bytes
+data_61                      $f93542      928    bytes
 data_62                      $f1fff3      0      bytes
 main                         $f1fff3      0      bytes
-_scripts                     $f9403a      637    bytes
+_scripts                     $f93efd      637    bytes
 _startup                     $f2ffd9      37     bytes
 stdarg                       $f1fff3      0      bytes
 std                          $f1fff3      0      bytes
@@ -92,26 +92,26 @@ asm_code                     $f2ffac      45     bytes
 asm_controls                 $f1fff3      0      bytes
 ebpp                         $f1fff3      0      bytes
 ebpp_std                     $f1ff86      109    bytes
-ebpp_mem                     $f93629      957    bytes
+ebpp_mem                     $f93185      957    bytes
 EBPP_Disassembly_HardwareCompatible_v1_1$f7f365      3161   bytes
 general                      $f3ff78      41     bytes
-Title_Window                 $f942b7      320    bytes
+Title_Window                 $f9417a      320    bytes
 name_fun                     $f1fff3      0      bytes
 noclip                       $f3ffe1      27     bytes
 run_button_toggleable        $f3ffa1      35     bytes
 repel_sandwiches             $f3ffc4      29     bytes
 run_accelerating             $f4ff62      16     bytes
-GoodsMenuEquip               $f943f7      307    bytes
-modmenu                      $f93d86      692    bytes
+GoodsMenuEquip               $f942ba      307    bytes
+modmenu                      $f93c49      692    bytes
 windows                      $f1fff3      0      bytes
-labels                       $f9452a      264    bytes
+labels                       $f943ed      264    bytes
 party                        $f1fff3      0      bytes
 commands                     $f1fff3      0      bytes
 partymenu                    $f71e0f      7681   bytes
 warpmenu                     $f8f943      1700   bytes
 flagsmenu                    $f8db6a      3885   bytes
 battlemenu                   $f929b8      1997   bytes
-goodsmenu                    $f93185      1188   bytes
+goodsmenu                    $f938e2      871    bytes
 musicmenu                    $f6c896      7786   bytes
 healthcommands               $f1fff3      0      bytes
 status                       $f1fff3      0      bytes
@@ -6594,13 +6594,13 @@ l_0xefa0b7                   $f82d1a
 Labels in module data_61
 Name                         Address
 -----------------------------------------------------------------
-l_0xefa0dc                   $f939e6
-l_0xefa2ab                   $f93ca1
-l_0xefa2b5                   $f93cab
-l_0xefa2c9                   $f93cd0
-l_0xefa2d5                   $f93ce1
-l_0xefa2d6                   $f93ce2
-l_0xefa379                   $f93d85
+l_0xefa0dc                   $f93542
+l_0xefa2ab                   $f937fd
+l_0xefa2b5                   $f93807
+l_0xefa2c9                   $f9382c
+l_0xefa2d5                   $f9383d
+l_0xefa2d6                   $f9383e
+l_0xefa379                   $f938e1
 -----------------------------------------------------------------
 
 
@@ -6619,12 +6619,12 @@ Name                         Address
 Labels in module _scripts
 Name                         Address
 -----------------------------------------------------------------
-BicycleEnd                   $f940a9
-BicycleStart                 $f94044
-DadCall                      $f9414d
-ModMenu                      $f9403a
-ModMenu_About                $f9403f
-PhotoGuy                     $f94163
+BicycleEnd                   $f93f6c
+BicycleStart                 $f93f07
+DadCall                      $f94010
+ModMenu                      $f93efd
+ModMenu_About                $f93f02
+PhotoGuy                     $f94026
 -----------------------------------------------------------------
 
 
@@ -6858,10 +6858,10 @@ TODO_noroom                  $f3ff78
 Labels in module Title_Window
 Name                         Address
 -----------------------------------------------------------------
-Title_Char_Name              $f94319
-Title_Str_Name               $f94395
-Win_Title                    $f942b7
-r_0xC1866D                   $f942e5
+Title_Char_Name              $f941dc
+Title_Str_Name               $f94258
+Win_Title                    $f9417a
+r_0xC1866D                   $f941a8
 -----------------------------------------------------------------
 
 
@@ -6902,31 +6902,31 @@ SpeedHijack                  $f4ff62
 Labels in module GoodsMenuEquip
 Name                         Address
 -----------------------------------------------------------------
-equipMessagePartOne          $f9445e
-equipMessagePartTwo          $f944c8
-finalDefense                 $f944da
-finalOffense                 $f944f2
-initialDefense               $f94476
-initialOffense               $f9449f
-jeffDefenseStat              $f94512
-jeffOffenseStat              $f94522
-nessDefenseStat              $f9450a
-nessOffenseStat              $f9451a
-newCheck                     $f9443b
-newUse                       $f943f7
-paulaDefenseStat             $f9450e
-paulaOffenseStat             $f9451e
-pooDefenseStat               $f94516
-pooOffenseStat               $f94526
+equipMessagePartOne          $f94321
+equipMessagePartTwo          $f9438b
+finalDefense                 $f9439d
+finalOffense                 $f943b5
+initialDefense               $f94339
+initialOffense               $f94362
+jeffDefenseStat              $f943d5
+jeffOffenseStat              $f943e5
+nessDefenseStat              $f943cd
+nessOffenseStat              $f943dd
+newCheck                     $f942fe
+newUse                       $f942ba
+paulaDefenseStat             $f943d1
+paulaOffenseStat             $f943e1
+pooDefenseStat               $f943d9
+pooOffenseStat               $f943e9
 -----------------------------------------------------------------
 
 
 Labels in module modmenu
 Name                         Address
 -----------------------------------------------------------------
-ModMenu_AboutDlg             $f93f30
-ModMenu_MainMenu             $f93d86
-TestDlg                      $f94009
+ModMenu_AboutDlg             $f93df3
+ModMenu_MainMenu             $f93c49
+TestDlg                      $f93ecc
 -----------------------------------------------------------------
 
 
@@ -6939,47 +6939,47 @@ Name                         Address
 Labels in module labels
 Name                         Address
 -----------------------------------------------------------------
-lbl_About                    $f94533
-lbl_BGM                      $f94595
-lbl_Battle                   $f94599
-lbl_BrickRoad                $f945cd
-lbl_BubbleMonkey             $f945c6
-lbl_Debug                    $f9453a
-lbl_EXP                      $f94575
-lbl_FlagID                   $f9455a
-lbl_Flags                    $f94554
-lbl_FlyingMan                $f945d4
-lbl_Followers                $f94568
-lbl_Goods                    $f945a0
-lbl_Group0                   $f94602
-lbl_Group1                   $f9460a
-lbl_Group2                   $f94612
-lbl_Group3                   $f9461a
-lbl_Group4                   $f94622
-lbl_Group5                   $f9462a
-lbl_Guts                     $f9457c
-lbl_Health                   $f945ea
-lbl_IQ                       $f94579
-lbl_KeyItems                 $f945a6
-lbl_King                     $f945bc
-lbl_Level                    $f9456f
-lbl_Luck                     $f94590
-lbl_ModMenu                  $f9452a
-lbl_None                     $f94539
-lbl_PSI                      $f945f7
-lbl_Party                    $f94562
-lbl_Picky                    $f945b6
-lbl_PlushBear                $f945e3
-lbl_Pokey                    $f945b0
-lbl_Speed                    $f94581
-lbl_Stats                    $f945f1
-lbl_Status                   $f945fb
-lbl_System                   $f94540
-lbl_TeddyBear                $f945dc
-lbl_Tony                     $f945c1
-lbl_Vitality                 $f94587
-lbl_Warp                     $f94547
-lbl_WarpID                   $f9454c
+lbl_About                    $f943f6
+lbl_BGM                      $f94458
+lbl_Battle                   $f9445c
+lbl_BrickRoad                $f94490
+lbl_BubbleMonkey             $f94489
+lbl_Debug                    $f943fd
+lbl_EXP                      $f94438
+lbl_FlagID                   $f9441d
+lbl_Flags                    $f94417
+lbl_FlyingMan                $f94497
+lbl_Followers                $f9442b
+lbl_Goods                    $f94463
+lbl_Group0                   $f944c5
+lbl_Group1                   $f944cd
+lbl_Group2                   $f944d5
+lbl_Group3                   $f944dd
+lbl_Group4                   $f944e5
+lbl_Group5                   $f944ed
+lbl_Guts                     $f9443f
+lbl_Health                   $f944ad
+lbl_IQ                       $f9443c
+lbl_KeyItems                 $f94469
+lbl_King                     $f9447f
+lbl_Level                    $f94432
+lbl_Luck                     $f94453
+lbl_ModMenu                  $f943ed
+lbl_None                     $f943fc
+lbl_PSI                      $f944ba
+lbl_Party                    $f94425
+lbl_Picky                    $f94479
+lbl_PlushBear                $f944a6
+lbl_Pokey                    $f94473
+lbl_Speed                    $f94444
+lbl_Stats                    $f944b4
+lbl_Status                   $f944be
+lbl_System                   $f94403
+lbl_TeddyBear                $f9449f
+lbl_Tony                     $f94484
+lbl_Vitality                 $f9444a
+lbl_Warp                     $f9440a
+lbl_WarpID                   $f9440f
 -----------------------------------------------------------------
 
 
@@ -7056,21 +7056,23 @@ StartBattle                  $f93172
 Labels in module goodsmenu
 Name                         Address
 -----------------------------------------------------------------
-EndItemList                  $f933ab
-ExampleMenu                  $f9333a
-GiveItemID                   $f9361f
-GoodsMenu                    $f93185
-IncrementCounter             $f93338
-ItemID                       $f9357d
-ItemList                     $f93272
-JeffMenuItem                 $f93393
-JeffResult                   $f93552
-KeyItems                     $f93277
-NessMenuItem                 $f9335f
-NessResult                   $f93525
-PaulaMenuItem                $f93379
-PaulaResult                  $f9353b
-PooResult                    $f93568
+GiveItemID                   $f93c3f
+GoodsMenu                    $f938e2
+ItemID                       $f93b9d
+ItemList                     $f939cf
+KeyItems                     $f939f8
+Set_Count_1                  $f939d4
+Set_Count_10                 $f939ef
+Set_Count_11                 $f939f2
+Set_Count_12                 $f939f5
+Set_Count_2                  $f939d7
+Set_Count_3                  $f939da
+Set_Count_4                  $f939dd
+Set_Count_5                  $f939e0
+Set_Count_6                  $f939e3
+Set_Count_7                  $f939e6
+Set_Count_8                  $f939e9
+Set_Count_9                  $f939ec
 -----------------------------------------------------------------
 
 
