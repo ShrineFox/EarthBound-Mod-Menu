@@ -8,10 +8,7 @@ import "enums/party.ccs"
 import "enums/windows.ccs"
 import "commands.ccs"
 
-/*
- * Window Commands
- */
- 
+
 
 // Save current count/arg/result registers to RAM
 command SaveRAM() { act_to_wram }
@@ -22,20 +19,30 @@ command LoadCounter() { ctoarg }
 // Reset counter to zero
 command ResetCounter() { counter_zero }
 
-// Hide unnecessary windows that may be open (using flag, without crashing the game)
-command CloseModMenuWnd() { LoadCounter() SaveRAM() if flg_ModMenuWnd { window_close(wnd_ModMenu) unset(flg_ModMenuWnd) } }
-command CloseModMenu2Wnd() { LoadCounter() SaveRAM() if flg_ModMenuWnd2 { window_close(wnd_ModMenu2) unset(flg_ModMenuWnd2) } }
-command CloseModMenuConfirmWnd() { LoadCounter() SaveRAM() if flg_ModMenuConfirmWnd { window_close(wnd_ModMenuConfirm) unset(flg_ModMenuConfirmWnd) } }
-
-command CloseAllModMenuWnd() { CloseModMenuWnd() CloseModMenu2Wnd() CloseModMenuConfirmWnd() }
+// Closes a window if a flag is set that says it's open (to prevent crashing from attempting to close unopened windows)
+command CloseFlagWnd(wnd, flg) { LoadCounter() SaveRAM() if flg { window_close(wnd) unset(flg) } }
+// Hide unnecessary windows that may be open
+command CloseModMenuWnd() { CloseFlagWnd(wnd_ModMenu, flg_ModMenuWnd) } // main mod menu window to the left
+command CloseModMenu2Wnd() { CloseFlagWnd(wnd_ModMenu2, flg_ModMenuWnd2) } // smaller mod menu window to the right
+command CloseModMenuConfirmWnd() { CloseFlagWnd(wnd_ModMenuConfirm, flg_ModMenuConfirmWnd) } // confirmation of choice window
+command CloseKeyItemWnd() { CloseFlagWnd(wnd_KeyItems, flg_KeyItemsWnd) } // duplicate goods window only for key items
+command CloseItemWnd() { CloseFlagWnd(wnd_Item, flg_ItemWnd) } // action menu for use, help etc.
+command CloseDebugWnd() { CloseFlagWnd(wnd_ModMenuDebug, flg_ModMenuDebugWnd) } // debug print window, also used for item help description
+// Hide all possible Mod Menu windows that may be open
+command CloseAllModMenuWnd() { CloseModMenuWnd() CloseModMenu2Wnd() CloseModMenuConfirmWnd() CloseKeyItemWnd() CloseItemWnd() CloseDebugWnd() }
 
 // Open Mod Menu window and set flag that it's open
-command OpenModMenuWnd() { window_open(wnd_ModMenu) LoadRAM() LoadCounter() set(flg_ModMenuWnd) }
-command OpenModMenu2Wnd() { window_open(wnd_ModMenu2) LoadRAM() LoadCounter() set(flg_ModMenuWnd2) }
-command OpenModMenuConfirmWnd() { window_open(wnd_ModMenuConfirm) LoadRAM() LoadCounter() set(flg_ModMenuConfirmWnd) }
+command OpenFlagWnd(wnd, flg) { window_open(wnd) LoadRAM() LoadCounter() set(flg) }
+
+command OpenModMenuWnd() { OpenFlagWnd(wnd_ModMenu, flg_ModMenuWnd) }
+command OpenModMenu2Wnd() { OpenFlagWnd(wnd_ModMenu2, flg_ModMenuWnd2) }
+command OpenModMenuConfirmWnd() { OpenFlagWnd(wnd_ModMenuConfirm, flg_ModMenuConfirmWnd) }
+command OpenKeyItemWnd() { OpenFlagWnd(wnd_KeyItems, flg_KeyItemsWnd) }
+command OpenItemWnd() { OpenFlagWnd(wnd_Item, flg_ItemWnd) }
+command OpenDebugWnd() { OpenFlagWnd(wnd_ModMenuDebug, flg_ModMenuDebugWnd) }
 
 // Preset title commands for strings
-command Lbl(label)  { "[18 0C 00 {byte[0] label} {byte[1] label} {byte[2] label} 00]" clearline }
+command Lbl(text)  { "[18 0C 00 {byte[0] text} {byte[1] text} {byte[2] text} 00]" clearline }
 command PtyLbl(partyMemberID) { "[18 0B 00 {byte[0] partyMemberID} 05]" clearline }
 
 // Show debug info if Debug flag is on,
@@ -116,18 +123,6 @@ command ConfirmNumber(wndLabel, digits, string, yesLabel)
 	}
 	CloseModMenuConfirmWnd()
 }
-
-/*
- * Flag Commands
- */
-
-// Enable/disable looping current section of menu
-command StartLoop() { set(flg_Loop) }
-command EndLoop() { unset(flg_Loop) }
-
-/*
- * Mod Menu Commands
- */
 
 // Set the selected party member to the name of the new window
 command SetPartyLabel()

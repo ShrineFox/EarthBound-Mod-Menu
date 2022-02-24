@@ -40,6 +40,12 @@ define flg_UnrestrictBike = flag 0x653
 define flg_DadCantCall = flag 0x652
 // Whether the photo guy interrupts you or not
 define flg_NoPhotoGuy = flag 0x651
+// Whether Mod Menu Key Items window is open
+define flg_KeyItemsWnd = flag 0x650
+// Whether Mod Menu Item Action window is open
+define flg_ItemWnd = flag 0x64f
+// Whether Mod Menu Debug Window is open
+define flg_ModMenuDebugWnd = flag 0x64e
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12

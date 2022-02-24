@@ -5,9 +5,12 @@ import "../../enums/items.ccs"
 import "../../enums/party.ccs"
 import "../../enums/windows.ccs"
 import "../../commands.ccs"
+import "../../../asm/asm65816.ccs"
 
 GoodsMenu:
-	CloseModMenuConfirmWnd()
+	CloseKeyItemWnd()
+	CloseItemWnd()
+	CloseDebugWnd()
 	CloseModMenu2Wnd()
 	OpenModMenu2Wnd()
 	Lbl(lbl_Goods)
@@ -23,7 +26,114 @@ ItemList:
 goto(GoodsMenu)
 
 KeyItems:
+	CloseAllModMenuWnd()
+	OpenKeyItemWnd()
+	Lbl(lbl_KeyItems)
+	"Example:" newline
+	call(ExampleMenu)
 goto(GoodsMenu)
+
+command e(label) "{long label}"
+command f(flagValue) "{short flagValue}"
+command FlagMenuItem(flagValue, menuItemName, nextLabel) 
+{
+	"[06 {f(flagValue)} {e(nextLabel)}][19 02]{menuItemName}[01 {e(IncrementCounter)}]" 
+	eob
+	goto(nextLabel)
+}
+
+IncrementCounter:
+	inc
+eob
+
+ExampleMenu:
+	ResetCounter()
+	FlagMenuItem(flg_Ness, "Ness", NessMenuItem)
+eob
+
+NessMenuItem:
+	FlagMenuItem(flg_Paula, "Paula", PaulaMenuItem)
+eob
+
+PaulaMenuItem:
+	FlagMenuItem(flg_Jeff, "Paula", JeffMenuItem)
+eob
+
+JeffMenuItem:
+	FlagMenuItem(flg_Poo, "Poo", EndItemList)
+eob
+
+EndItemList:
+	MenuWidth(2)
+eob
+
+command SetNumberOfOptions() 
+{
+	if counter_is(0) { "[09 00]" } if counter_is(9)  { "[09 09]" }
+	if counter_is(1) { "[09 01]" } if counter_is(10) { "[09 0A]" }
+	if counter_is(2) { "[09 02]" } if counter_is(11) { "[09 0B]" }
+	if counter_is(3) { "[09 03]" } if counter_is(12) { "[09 0C]" }
+	if counter_is(4) { "[09 04]" } if counter_is(13) { "[09 0D]" }
+	if counter_is(5) { "[09 05]" } if counter_is(14) { "[09 0E]" }
+	if counter_is(6) { "[09 06]" } if counter_is(15) { "[09 0F]" }
+	if counter_is(7) { "[09 07]" } if counter_is(16) { "[09 10]" }
+	if counter_is(8) { "[09 08]" } if counter_is(17) { "[09 11]" }
+}
+
+NessResult:
+	"@You selected Ness." next
+eob
+
+PaulaResult:
+	"@You selected Paula." next
+eob
+
+JeffResult:
+	"@You selected Jeff." next
+eob
+
+PooResult:
+	"@You selected Poo." next
+eob
+
+command b(byteValue) "{byte byteValue}"
+command MenuWidth(byteValue) { "[1C 0C {b(byteValue)}][11]" }
+command VerticalText() { "[1C 0C 01]" }
+
+/*
+l_0xc6505d:
+    "[06 AE 01 {e(l_0xc651cc)}]@I like the [1C 05 82]." next
+    "@Give me" linebreak
+    "  the [1C 05 82]," next
+    "@I give you something." next
+    "@Look at list.{window_open(7)}[06 A8 01 {e(l_0xc650ac)}][19 02]Plain roll" eob goto(l_0xc650ac)
+
+l_0xc650ac:
+    "[06 A9 01 {e(l_0xc650c2)}][19 02]Plain yogurt" eob goto(l_0xc650c2)
+
+l_0xc650c2:
+    "[06 AA 01 {e(l_0xc650d6)}][19 02]Plain roll" eob goto(l_0xc650d6)
+
+l_0xc650d6:
+    "[06 AB 01 {e(l_0xc650eb)}][19 02]Spicy jerky" eob goto(l_0xc650eb)
+
+l_0xc650eb:
+    "[06 AC 01 {e(l_0xc65105)}][19 02]Bag of Dragonite" eob goto(l_0xc65105)
+
+l_0xc65105:
+    "[06 AD 01 {e(l_0xc6511c)}][19 02]Talisman coin" eob goto(l_0xc6511c)
+
+l_0xc6511c:
+    "[19 02]Hall of fame bat[02][1C 0C 01]{wait}{window_closetop}{window_switch(1)}" newline
+    "@Will you give" linebreak
+    "  [1C 05 82]?[03]" call(data_14.l_0xc5e456) "[1B 02 {e(l_0xc651a6)}]{store_registers}[19 19 00 00]{swap}{result_is(130)}[1B 02 {e(l_0xc651bf)}]{load_registers}[1D 0F 00 00]" call(l_0xc651ef) "{ctoarg}" newline
+    "@Okay." linebreak
+    "  I give you " linebreak
+    "  the [1C 05 00]." next
+    "@You happy." linebreak
+    "  I happy.[03]" newline
+    "[1D 03 FF]{store_registers}[1D 0E 00 00]" call(data_33.l_0xc7dccf) end goto(l_0xc651a6)
+*/
 
 /* ID Entry */
 
