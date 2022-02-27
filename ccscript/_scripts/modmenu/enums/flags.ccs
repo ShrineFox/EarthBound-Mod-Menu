@@ -52,6 +52,8 @@ define flg_ModMenu = flag 0x64d
 define flg_KeyItems = flag 0x64c
 // Whether Key Item Description Window is open
 define flg_KeyItemDescWnd = flag 0x64b
+// Whether the user has configured the mod before
+define flg_ModConfigured = flag 0x64a
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12

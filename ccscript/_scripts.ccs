@@ -92,6 +92,8 @@ ROM[0xC7C59E] = goto(NewMenu)
 NewMenu:
 if flg_ModMenu or flg_KeyItems
 {
+	window_open(4)
 	
+	window_close(4)
 }
 eob

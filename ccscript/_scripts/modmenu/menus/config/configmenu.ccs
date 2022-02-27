@@ -3,42 +3,152 @@ import "../../enums/flags.ccs"
 import "../../enums/windows.ccs"
 import "../../enums/labels.ccs"
 import "../../commands.ccs"
-import "../../../asm/bg_viewer.ccs"
 
 command ToggleFlag(flagID, flagName) { 
 	toggle(flagID) 
-	if (flagID) { SystemWnd(wnd_ModMenu2, "@Enabled: {flagName}.") } 
-	else { SystemWnd(wnd_ModMenu2, "@Disabled: {flagName}.") } 
+	if (flagID) { /*SystemWnd(wnd_ModMenu2, "@Enabled: {flagName}.")*/ } 
+	else { /*SystemWnd(wnd_ModMenu2, "@Disabled: {flagName}.")*/ } 
 }
 
+Selected_1:
+counter(1) eob
+
+Selected_2:
+counter(2) eob
+
 ConfigMenuStart:
-	show_battle_bg(298, 298, 0)
-    window_open(1)
-	Lbl(lbl_ShrineFox)
-    "@Thanks for using this mod!" next
-	"@Please enable any features" newline
-	" you would like to use." next
-	window_close(1)
+if flg_ModConfigured {
+	CloseModMenuConfirmWnd()
+	OpenModMenuConfirmWnd()
+	Lbl(lbl_ModSetup)
+	ResetCounter()
+	"@Start the game?" newline
+		MenuOptionWithCallback("Begin", Selected_1)
+		MenuOptionWithCallback("Config", Selected_2)
+	DisplayVertical(2)
+	if not "[11]" {
+        // Exit
+		goto(ConfigMenuStart)
+    }
+	ctoarg
+    swap
+	SwitchGoto(2)
+        SwitchCase(chose_begin)
+        SwitchCase(chose_configuremod)
+	swap
+    "@Error! No option {number(0)} in this menu." next goto(ConfigMenuStart)
+	chose_begin:
+		goto(EndConfig)
+	chose_configuremod:
+		goto(ConfigMenuPrompt)
+	goto(ConfigMenuStart)
+}
+else { goto(ConfigMenuPrompt) }
+eob
+
+ConfigMenuPrompt:
+	CloseModMenuConfirmWnd()
+	ShowBattleBG(298, 298, 0)
+	if not flg_ModConfigured 
+	{
+		window_open(1)
+		Lbl(lbl_ShrineFox)
+		"@Thanks for using this mod!" next
+		"@Please enable any features" newline
+		" you would like to use." next
+		window_close(1)
+	}
     call(ConfigMenu)
 eob
 
-ConfigMenu:
-	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
-	Lbl(lbl_Config)
-	menu 1 {
-		"Key Items": { ToggleFlag(flg_KeyItems, "Key Items")}
-		"Unrestrict Bike": { ToggleFlag(flg_UnrestrictBike, "Unrestrict Bike") }
-		"No Photo Guy": { ToggleFlag(flg_NoPhotoGuy, "No Photo Guy") }
-		"No Dad Calls": { ToggleFlag(flg_DadCantCall, "No Dad Calls") }
-		"Auto-Advance": { ToggleFlag(flg_AutoAdvStatIncMsgs, "Auto-Advance") }
-		"Mod Menu": { ToggleFlag(flg_ModMenu, "Mod Menu") }
-		default "Start!": { ConfirmYesNo(lbl_Confirm, "Start the game?", EndConfig) }
+Set_Count_1: { SetDescription(1, wnd_KeyItems, ShowDescription) } Set_Count_2: { SetDescription(2, wnd_KeyItems, ShowDescription) } 
+Set_Count_3: { SetDescription(3, wnd_KeyItems, ShowDescription) } Set_Count_4: { SetDescription(4, wnd_KeyItems, ShowDescription) }
+Set_Count_5: { SetDescription(5, wnd_KeyItems, ShowDescription) } Set_Count_6: { SetDescription(6, wnd_KeyItems, ShowDescription) }
+
+ConfigMenu: {
+	set(flg_ModConfigured)
+	CloseAllModMenuWnd()
+	OpenKeyItemWnd()
+	Lbl(lbl_KeyItems)
+	ResetCounter()
+	ctoarg
+	if flag flg_KeyItems {
+        MenuOptionWithCallback("[ac]Key Items", Set_Count_1)
+	} else {
+		MenuOptionWithCallback("Key Items", Set_Count_1)
 	}
-goto(ConfigMenu)
+	if flg_UnrestrictBike {
+        MenuOptionWithCallback("[ac]Unrestrict Bike", Set_Count_2)
+	} else {
+		MenuOptionWithCallback("Unrestrict Bike", Set_Count_2)
+	}
+	if flg_NoPhotoGuy {
+        MenuOptionWithCallback("[ac]No Photo Guy", Set_Count_3)
+	} else {
+		MenuOptionWithCallback("No Photo Guy", Set_Count_3)
+	}
+	if flg_DadCantCall {
+        MenuOptionWithCallback("[ac]No Dad Calls", Set_Count_4)
+	} else {
+		MenuOptionWithCallback("No Dad Calls", Set_Count_4)
+	}
+	if flg_AutoAdvStatIncMsgs {
+		MenuOptionWithCallback("[ac]Auto-Advance", Set_Count_5)
+	} else {
+		MenuOptionWithCallback("Auto-Advance", Set_Count_5)
+	}
+	if flg_ModMenu {
+		MenuOptionWithCallback("[ac]Mod Menu", Set_Count_6)
+	} else {
+		MenuOptionWithCallback("Mod Menu", Set_Count_6)
+	}
+    DisplayVertical(2)
+    if not "[11]" {
+        // Exit
+        ConfirmYesNo(lbl_Confirm, "Start the game?", EndConfig)
+		goto(ConfigMenu)
+    }
+    ctoarg
+    swap
+    SwitchGoto(6)
+        SwitchCase(chose_keyitems)
+        SwitchCase(chose_unrestrictbike)
+        SwitchCase(chose_nophotoguy)
+        SwitchCase(chose_nodadcalls)
+		SwitchCase(chose_autoadvance)
+		SwitchCase(chose_modmenu)
+    swap
+    "@Error! No option {number(0)} in this menu." next goto(ConfigMenu)
+	chose_keyitems:
+		ToggleFlag(flg_KeyItems, "Key Items") goto(ConfigMenu)
+	chose_unrestrictbike:
+		ToggleFlag(flg_UnrestrictBike, "Unrestrict Bike") goto(ConfigMenu)
+	chose_nophotoguy:
+		ToggleFlag(flg_NoPhotoGuy, "No Photo Guy") goto(ConfigMenu)
+	chose_nodadcalls:
+		ToggleFlag(flg_DadCantCall, "No Dad Calls") goto(ConfigMenu)
+	chose_autoadvance:
+		ToggleFlag(flg_AutoAdvStatIncMsgs, "Auto-Advance") goto(ConfigMenu)
+	chose_modmenu:
+		ToggleFlag(flg_ModMenu, "Mod Menu") goto(ConfigMenu)
+}
+
+ShowDescription:
+	CloseKeyItemDescWnd()
+	OpenKeyItemDescWnd()
+	Lbl(lbl_Description)
+	if counter_is(1) { "<Key Items> Mod" newline "Makes Key Items separate from your" newline "Goods, so you have more space" newline "in your inventory." }
+	if counter_is(2) { "<Unrestrict Bike> Mod" newline "Use your bicycle anywhere, even when" newline "you have other characters in" newline "your party." }
+	if counter_is(3) { "<No Photo Guy> Mod" newline "Replaces Photo Guy cutscenes with a" newline "quick, unobtrusive shutter effect." }
+	if counter_is(4) { "<No Dad Calls> Mod" newline "Prevents Ness's dad from calling" newline "you periodically during your" newline "adventure." }
+	if counter_is(5) { "<Auto-Advance> Mod" newline "Advances Level Up text for you without" newline "having to spam the A button." }
+	if counter_is(6) { "<Mod Menu> Mod" newline "Always have access to an in-game" newline "trainer, full of cheats and" newline "other fun stuff." }
+eob
+	
 
 EndConfig:
-	hide_battle_bg()
+	CloseModMenuConfirmWnd()
+	HideBattleBG()
 	CloseAllModMenuWnd()
 	window_closeall
 	goto(End_)

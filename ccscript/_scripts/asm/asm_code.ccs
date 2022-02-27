@@ -14,6 +14,8 @@ ROM[0xC0B7E0] = JSL (BootUpMusic)
 //ROM[0xC44058] = NOP
 //ROM[0xC444E6] = NOP
 //ROM[0xC10D4E] = NOP
+/* Prevent Followers from becoming unconscious during battle */
+//ROM[0xef6c84] = eob
 
 /* Disable Non-Door Collisions */
 // ROM[0xC054EE] = "[10]"

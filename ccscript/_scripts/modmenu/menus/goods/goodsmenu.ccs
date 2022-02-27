@@ -5,7 +5,6 @@ import "../../enums/items.ccs"
 import "../../enums/party.ccs"
 import "../../enums/windows.ccs"
 import "../../commands.ccs"
-import "../../../asm/asm65816.ccs"
 
 GoodsMenu:
 	CloseKeyItemDescWnd()
@@ -26,48 +25,39 @@ goto(GoodsMenu)
 ItemList:
 goto(GoodsMenu)
 
-// Credit: phoenixbound for designing the menu
-command goto_if_flag(flg, addr) "[06 {short flg} {long addr}]"
-command switch_goto(n) "[09 {byte n}]"
-command switch_case(addr) long addr
-command menu_option_with_callback(text, callback) "[19 02 {text} 01 {long callback}]"
-command display_vertical(n) "[1C 0C {byte n}]"
-command SetDescription(countNo, prevWndType) { counter(countNo) call(ShowDescription) window_switch(prevWndType) eob }
-
-Set_Count_1: { SetDescription(1, wnd_KeyItems) } Set_Count_2: { SetDescription(2, wnd_KeyItems) } 
-Set_Count_3: { SetDescription(3, wnd_KeyItems) } Set_Count_4: { SetDescription(4, wnd_KeyItems) }
+Set_Count_1: { SetDescription(1, wnd_KeyItems, ShowDescription) } Set_Count_2: { SetDescription(2, wnd_KeyItems, ShowDescription) } 
+Set_Count_3: { SetDescription(3, wnd_KeyItems, ShowDescription) } Set_Count_4: { SetDescription(4, wnd_KeyItems, ShowDescription) }
  
 KeyItems: {
 	CloseAllModMenuWnd()
 	OpenKeyItemWnd()
-	SetTextSpeed(0)
 	Lbl(lbl_KeyItems)
 	ResetCounter()
 	ctoarg
     if flag flg_Ness {
-        menu_option_with_callback("Ness", Set_Count_1)
+        MenuOptionWithCallback("Ness", Set_Count_1)
     }
     if flag flg_Paula {
-        menu_option_with_callback("Paula", Set_Count_2)
+        MenuOptionWithCallback("Paula", Set_Count_2)
     }
     if flag flg_Jeff {
-        menu_option_with_callback("Jeff", Set_Count_3)
+        MenuOptionWithCallback("Jeff", Set_Count_3)
     }
     if flag flg_Poo {
-        menu_option_with_callback("Poo", Set_Count_4)
+        MenuOptionWithCallback("Poo", Set_Count_4)
     }
-    display_vertical(2)
+    DisplayVertical(2)
     if not "[11]" {
         // Exit
         goto(GoodsMenu)
     }
     ctoarg
     swap
-    switch_goto(4)
-        switch_case(chose_ness)
-        switch_case(chose_paula)
-        switch_case(chose_jeff)
-        switch_case(chose_poo)
+    SwitchGoto(4)
+        SwitchCase(chose_ness)
+        SwitchCase(chose_paula)
+        SwitchCase(chose_jeff)
+        SwitchCase(chose_poo)
     swap
     "@Error! No option {number(0)} in this menu." next goto(GoodsMenu)
 chose_ness:
@@ -84,7 +74,6 @@ ShowDescription:
 	CloseKeyItemDescWnd()
 	OpenKeyItemDescWnd()
 	Lbl(lbl_Description)
-	SetTextSpeed(0)
 	if counter_is(1) { "<Ness> The psychic main character of EarthBound. He's seeking out the <Eight Melodies> in order to realize his full power." }
 	if counter_is(2) { "<Paula> The first party member that joins Ness. She's loaded with offensive PSI abilities, and also some healing powers." }
 	if counter_is(3) { "<Jeff Andonuts> The boy genius from Winters with no PSI. Son of the renowned inventor, Dr. Andonuts." }

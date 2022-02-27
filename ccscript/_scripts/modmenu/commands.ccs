@@ -1,7 +1,7 @@
 //import asm65816
 import "../asm/general.ccs"
 import "../asm/cc_text_speed.ccs"
-
+import "../asm/bg_viewer.ccs"
 /* Mod Menu */
 import "enums/flags.ccs"
 import "enums/labels.ccs"
@@ -13,6 +13,18 @@ import "commands.ccs"
 command GetTextSpeed() { gettextspeed }
 // Set Text Speed
 command SetTextSpeed(num) { settextspeed(num) }
+// Show Battle BG
+command ShowBattleBG(layerNumber, distortionNumber, letterBox) { show_battle_bg(layerNumber, distortionNumber, letterBox) }
+// Hide Battle BG
+command HideBattleBG() { hide_battle_bg() }
+// Menu with variable options and description of selected items
+// Credit: phoenixbound for designing script
+command GotoIfFlag(flg, addr) "[06 {short flg} {long addr}]"
+command SwitchGoto(n) "[09 {byte n}]"
+command SwitchCase(addr) long addr
+command MenuOptionWithCallback(text, callback) "[19 02 {text} 01 {long callback}]"
+command DisplayVertical(n) "[1C 0C {byte n}]"
+command SetDescription(countNo, prevWndType, DescLabel) { counter_zero ctoarg SetTextSpeed(0) counter(countNo) ctoarg call(DescLabel) SetTextSpeed(1) window_switch(prevWndType) eob }
 
 // Save current count/arg/result registers to RAM
 command SaveRAM() { act_to_wram }
