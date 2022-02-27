@@ -13,10 +13,22 @@ import "goods/goodsmenu.ccs"
 import "music/musicmenu.ccs"
 /* Commands */
 import "party/health/healthcommands.ccs"
+import "../../asm/cc_text_speed.ccs"
 
 // Procedures
 
 ModMenu_MainMenu:
+	if (flg_ModMenu) 
+	{
+		goto(ModMenu)
+	}
+	else if (flg_KeyItems)
+	{
+		goto(KeyItems)
+	}
+eob
+
+ModMenu:
 	// Close unnecessary windows
 	CloseAllModMenuWnd()
 	window_closeall
@@ -38,7 +50,6 @@ ModMenu_MainMenu:
 	}
 eob
 
-
 ModMenu_AboutDlg:
 	window_open(wnd_Dialog)
 	Lbl(lbl_About)
@@ -47,12 +58,18 @@ ModMenu_AboutDlg:
 	ClearStatus(pty_Jeff) ClearStatus(pty_Poo)
 	"@EarthBound Mod Menu by ShrineFox." newline
 	"@Made using Coilsnake." newline
-	"@Updated 2-15-22." wait
+	"@Updated 2-26-22." wait
 	window_close(wnd_Dialog)
 goto(ModMenu_MainMenu)
 
 
 command e(label) "{long label}"
 TestDlg:
-	"{window_closeall}[1F 15 6A 00 C4 01 01][1F EB 01 06][06 FD 01 {e(data_31.l_0xc7ac3a)}][1F 15 0E 00 C2 01 01]{pause(32)}[1F 61][1F 1F 0E 00 06][1F EC 01 01][1F EA 8F 00]"
+	ConfirmNumber(lbl_Test, 2, "Set this text speed?", SetTxtSpeed)
 goto(ModMenu_MainMenu)
+
+SetTxtSpeed:
+	DebugWnd(wnd_ModMenu, "Text Speed")
+	settextspeed(0)
+	"T-e-s-t-i-n-g" next
+eob

@@ -1,0 +1,48 @@
+/* Mod Menu */
+import "../../enums/flags.ccs"
+import "../../enums/windows.ccs"
+import "../../enums/labels.ccs"
+import "../../commands.ccs"
+import "../../../asm/bg_viewer.ccs"
+
+command ToggleFlag(flagID, flagName) { 
+	toggle(flagID) 
+	if (flagID) { SystemWnd(wnd_ModMenu2, "@Enabled: {flagName}.") } 
+	else { SystemWnd(wnd_ModMenu2, "@Disabled: {flagName}.") } 
+}
+
+ConfigMenuStart:
+	show_battle_bg(298, 298, 0)
+    window_open(1)
+	Lbl(lbl_ShrineFox)
+    "@Thanks for using this mod!" next
+	"@Please enable any features" newline
+	" you would like to use." next
+	window_close(1)
+    call(ConfigMenu)
+eob
+
+ConfigMenu:
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Config)
+	menu 1 {
+		"Key Items": { ToggleFlag(flg_KeyItems, "Key Items")}
+		"Unrestrict Bike": { ToggleFlag(flg_UnrestrictBike, "Unrestrict Bike") }
+		"No Photo Guy": { ToggleFlag(flg_NoPhotoGuy, "No Photo Guy") }
+		"No Dad Calls": { ToggleFlag(flg_DadCantCall, "No Dad Calls") }
+		"Auto-Advance": { ToggleFlag(flg_AutoAdvStatIncMsgs, "Auto-Advance") }
+		"Mod Menu": { ToggleFlag(flg_ModMenu, "Mod Menu") }
+		default "Start!": { ConfirmYesNo(lbl_Confirm, "Start the game?", EndConfig) }
+	}
+goto(ConfigMenu)
+
+EndConfig:
+	hide_battle_bg()
+	CloseAllModMenuWnd()
+	window_closeall
+	goto(End_)
+eob
+
+End_:
+eob

@@ -8,6 +8,7 @@ import "../../commands.ccs"
 import "../../../asm/asm65816.ccs"
 
 GoodsMenu:
+	CloseKeyItemDescWnd()
 	CloseKeyItemWnd()
 	CloseItemWnd()
 	CloseDebugWnd()
@@ -31,16 +32,18 @@ command switch_goto(n) "[09 {byte n}]"
 command switch_case(addr) long addr
 command menu_option_with_callback(text, callback) "[19 02 {text} 01 {long callback}]"
 command display_vertical(n) "[1C 0C {byte n}]"
- 
-Set_Count_1: { counter(1) eob } Set_Count_2: { counter(2) eob } Set_Count_3: { counter(3) eob } Set_Count_4: { counter(4) eob }
-Set_Count_5: { counter(5) eob } Set_Count_6: { counter(6) eob } Set_Count_7: { counter(7) eob } Set_Count_8: { counter(8) eob }
-Set_Count_9: { counter(9) eob } Set_Count_10: { counter(10) eob } Set_Count_11: { counter(11) eob } Set_Count_12: { counter(12) eob }
+command SetDescription(countNo, prevWndType) { counter(countNo) call(ShowDescription) window_switch(prevWndType) eob }
+
+Set_Count_1: { SetDescription(1, wnd_KeyItems) } Set_Count_2: { SetDescription(2, wnd_KeyItems) } 
+Set_Count_3: { SetDescription(3, wnd_KeyItems) } Set_Count_4: { SetDescription(4, wnd_KeyItems) }
  
 KeyItems: {
 	CloseAllModMenuWnd()
 	OpenKeyItemWnd()
+	SetTextSpeed(0)
 	Lbl(lbl_KeyItems)
 	ResetCounter()
+	ctoarg
     if flag flg_Ness {
         menu_option_with_callback("Ness", Set_Count_1)
     }
@@ -68,15 +71,25 @@ KeyItems: {
     swap
     "@Error! No option {number(0)} in this menu." next goto(GoodsMenu)
 chose_ness:
-    "@{name(1)}" next goto(GoodsMenu)
+    "@You chose: {name(1)}" next goto(GoodsMenu)
 chose_paula:
-    "@{name(2)}" next goto(GoodsMenu)
+    "@You chose: {name(2)}" next goto(GoodsMenu)
 chose_jeff:
-    "@{name(3)}" next goto(GoodsMenu)
+    "@You chose: {name(3)}" next goto(GoodsMenu)
 chose_poo:
-    "@{name(4)}" next goto(GoodsMenu)
+    "@You chose: {name(4)}" next goto(GoodsMenu)
 }
 
+ShowDescription:
+	CloseKeyItemDescWnd()
+	OpenKeyItemDescWnd()
+	Lbl(lbl_Description)
+	SetTextSpeed(0)
+	if counter_is(1) { "<Ness> The psychic main character of EarthBound. He's seeking out the <Eight Melodies> in order to realize his full power." }
+	if counter_is(2) { "<Paula> The first party member that joins Ness. She's loaded with offensive PSI abilities, and also some healing powers." }
+	if counter_is(3) { "<Jeff Andonuts> The boy genius from Winters with no PSI. Son of the renowned inventor, Dr. Andonuts." }
+	if counter_is(4) { "<Prince Poo> The prince of Dalaam who completed his Mu Training to help Ness fight against Giygas." }
+eob
 
 /* ID Entry */
 

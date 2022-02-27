@@ -1,5 +1,6 @@
 //import asm65816
 import "../asm/general.ccs"
+import "../asm/cc_text_speed.ccs"
 
 /* Mod Menu */
 import "enums/flags.ccs"
@@ -8,7 +9,10 @@ import "enums/party.ccs"
 import "enums/windows.ccs"
 import "commands.ccs"
 
-
+// Get Text Speed
+command GetTextSpeed() { gettextspeed }
+// Set Text Speed
+command SetTextSpeed(num) { settextspeed(num) }
 
 // Save current count/arg/result registers to RAM
 command SaveRAM() { act_to_wram }
@@ -27,9 +31,10 @@ command CloseModMenu2Wnd() { CloseFlagWnd(wnd_ModMenu2, flg_ModMenuWnd2) } // sm
 command CloseModMenuConfirmWnd() { CloseFlagWnd(wnd_ModMenuConfirm, flg_ModMenuConfirmWnd) } // confirmation of choice window
 command CloseKeyItemWnd() { CloseFlagWnd(wnd_KeyItems, flg_KeyItemsWnd) } // duplicate goods window only for key items
 command CloseItemWnd() { CloseFlagWnd(wnd_Item, flg_ItemWnd) } // action menu for use, help etc.
-command CloseDebugWnd() { CloseFlagWnd(wnd_ModMenuDebug, flg_ModMenuDebugWnd) } // debug print window, also used for item help description
+command CloseDebugWnd() { CloseFlagWnd(wnd_ModMenuDebug, flg_ModMenuDebugWnd) } // debug print window
+command CloseKeyItemDescWnd() { CloseFlagWnd(wnd_KeyItemDescription, flg_KeyItemDescWnd) } // window below key items window for description
 // Hide all possible Mod Menu windows that may be open
-command CloseAllModMenuWnd() { CloseModMenuWnd() CloseModMenu2Wnd() CloseModMenuConfirmWnd() CloseKeyItemWnd() CloseItemWnd() CloseDebugWnd() }
+command CloseAllModMenuWnd() { CloseModMenuWnd() CloseModMenu2Wnd() CloseModMenuConfirmWnd() CloseKeyItemWnd() CloseItemWnd() CloseDebugWnd() CloseKeyItemDescWnd() }
 
 // Open Mod Menu window and set flag that it's open
 command OpenFlagWnd(wnd, flg) { window_open(wnd) LoadRAM() LoadCounter() set(flg) }
@@ -40,6 +45,7 @@ command OpenModMenuConfirmWnd() { OpenFlagWnd(wnd_ModMenuConfirm, flg_ModMenuCon
 command OpenKeyItemWnd() { OpenFlagWnd(wnd_KeyItems, flg_KeyItemsWnd) }
 command OpenItemWnd() { OpenFlagWnd(wnd_Item, flg_ItemWnd) }
 command OpenDebugWnd() { OpenFlagWnd(wnd_ModMenuDebug, flg_ModMenuDebugWnd) }
+command OpenKeyItemDescWnd() { OpenFlagWnd(wnd_KeyItemDescription, flg_KeyItemDescWnd) }
 
 // Preset title commands for strings
 command Lbl(text)  { "[18 0C 00 {byte[0] text} {byte[1] text} {byte[2] text} 00]" clearline }
@@ -53,17 +59,17 @@ command DebugWnd(prevWndType, string)
 	{
 		window_open(wnd_ModMenuDebug)
 		LoadRAM()
-		LoadCounter()
 		Lbl(lbl_Debug)
 		"{string}" newline
-		"" newline
-		"@Current Registers" newline
-		"@Name: {name(argument)}" newline
-		"@Number: {number(argument)}" next
-		SaveRAM()
+		"@Argument: {number(argument)}" newline
+		LoadRAM()
+		ctoarg
+		"@Counter: {number(argument)}" newline
+		LoadRAM()
+		rtoarg
+		"@Result: {number(argument)}"
 		window_switch(prevWndType)
 		LoadRAM()
-		LoadCounter()
 	}
 }
 
@@ -119,6 +125,21 @@ command ConfirmNumber(wndLabel, digits, string, yesLabel)
 	menu 2
 	{
 		"Yes": { LoadRAM() call(yesLabel) }
+		default "No": { }
+	}
+	CloseModMenuConfirmWnd()
+}
+
+// Asks the user something, then  go to procedure if Yes
+command ConfirmYesNo(wndLabel, string, yesLabel)
+{
+	CloseModMenuConfirmWnd()
+	OpenModMenuConfirmWnd()
+	Lbl(wndLabel)
+	"@{string}" newline
+	menu 2
+	{
+		"Yes": { goto(yesLabel) }
 		default "No": { }
 	}
 	CloseModMenuConfirmWnd()

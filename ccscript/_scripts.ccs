@@ -3,6 +3,7 @@ import "_scripts/asm/asm65816.ccs"
 import "_scripts/asm/ASMRef.ccs"
 import "_scripts/asm/asm_code.ccs"
 import "_scripts/asm/asm_controls.ccs"
+//import "_scripts/asm/bg_viewer.ccs"
 /* EarthBound++ */
 import "_scripts/asm/ebpp.ccs"
 import "_scripts/asm/ebpp_std.ccs"
@@ -83,4 +84,14 @@ PhotoGuy:
 		"{window_closeall}[1F EB 01 06][06 FD 01 {e(data_31.l_0xc7ac3a)}][1F 15 0E 00 C2 01 01]"
 		goto(data_31.l_0xc7ac42)
 	}
+eob
+
+// Replace "No problem here."
+ROM[0xC7C59E] = goto(NewMenu)
+
+NewMenu:
+if flg_ModMenu or flg_KeyItems
+{
+	
+}
 eob

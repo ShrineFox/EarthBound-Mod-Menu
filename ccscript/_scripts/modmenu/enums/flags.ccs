@@ -46,6 +46,12 @@ define flg_KeyItemsWnd = flag 0x650
 define flg_ItemWnd = flag 0x64f
 // Whether Mod Menu Debug Window is open
 define flg_ModMenuDebugWnd = flag 0x64e
+// Whether Mod Menu is enabled
+define flg_ModMenu = flag 0x64d
+// Whether Key Item Menu is enabled
+define flg_KeyItems = flag 0x64c
+// Whether Key Item Description Window is open
+define flg_KeyItemDescWnd = flag 0x64b
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12

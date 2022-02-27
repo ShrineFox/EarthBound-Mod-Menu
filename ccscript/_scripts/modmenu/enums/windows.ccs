@@ -49,5 +49,5 @@ define wnd_Unknown9 = 47 // unused
 define wnd_Unknown10 = 48 // unused
 define wnd_Unknown11 = 49 // unused
 define wnd_Flavor = 50 // Flavor choice?
-define wnd_Unknown12 = 51 // unused
+define wnd_KeyItemDescription = 51 // unused, resized for Key Item descriptions
 define wnd_ModMenuDebug = 52 // unused, resized for Debug printing

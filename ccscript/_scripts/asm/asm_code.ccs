@@ -10,6 +10,10 @@ ROM[0xC422E4] = "[09]"
 ROM[0xc3f3d0] = { STZ_a(0x9f75) }
 /* Play Custom Music at Boot */
 ROM[0xC0B7E0] = JSL (BootUpMusic)
+/* Ludicrous speed patch by Stochaztic */
+//ROM[0xC44058] = NOP
+//ROM[0xC444E6] = NOP
+//ROM[0xC10D4E] = NOP
 
 /* Disable Non-Door Collisions */
 // ROM[0xC054EE] = "[10]"

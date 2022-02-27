@@ -1,9 +1,14 @@
 import "_scripts/modmenu/enums/flags.ccs"
 import "_scripts/modmenu/enums/bgm.ccs"
+import "_scripts/modmenu/enums/labels.ccs"
+import "_scripts/modmenu/commands.ccs"
+import "_scripts/modmenu/menus/config/configmenu.ccs"
 
 /* Setup testing environment */
 
-setup_background(233)
+setup_background(302)
+setup_music(bgm_Moonside)
+setup_music2(bgm_Moonside)
 newgame_location(365, 7756)
 newgame_startup(Startup)
 // Requires patches.yml - Show Sprites Without Flyover: enabled
@@ -12,6 +17,7 @@ Startup:
 music(bgm_None)
 music_switching_off
 set(flg_Ness)
+/* Debug
 set(flg_Debug)
 set(flg_DadCantCall)
 set(flg_AutoAdvStatIncMsgs)
@@ -20,5 +26,13 @@ unset(flg_NoOnettNPCs)
 set(flg_OnettDaytime)
 set(flg_OnettDaytimeMusic)
 set(flg_NoPhotoGuy)
+/* End Debug */
 set(flg_DisableCollision)
+eob
+
+/* Configuration on game load */
+_asmptr(0xC1FF1C, Config)
+
+Config:
+	goto(ConfigMenuStart)
 eob

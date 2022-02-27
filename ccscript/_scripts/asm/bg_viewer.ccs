@@ -1,0 +1,157 @@
+// Created by cooprocks123e
+
+import asm65816_2
+import ccexpand
+import cc_asmcall
+
+command show_battle_bg(l1, l2, letterbox) { cc_asmcall(asm_ShowBattleBG, RET_NONE) short l1 short l2 byte letterbox }
+command hide_battle_bg                    { cc_asmcall(asm_HideBattleBG, RET_NONE) }
+asm_ShowBattleBG: M_EB_Function_Wrapper_Clobber({
+    LDY_i(0x0005)
+    JSL(R_Read_Parameter_Bytes)
+
+    // Load L1 ID
+    LDA_a(D_cc_argv_0)
+    BPL_a(L1good)
+    JSL(R_Get_Argument_Memory)
+    LDA_d(0x06)
+L1good:
+    STA_d(0x00)
+
+    // Load L2 ID
+    LDA_a(D_cc_argv_2)
+    BPL_a(L2good)
+    JSL(R_Get_Working_Memory)
+    LDA_d(0x06)
+L2good:
+    STA_d(0x02)
+
+    // Load letterboxing
+    LDA_a(D_cc_argv_4)
+    AND_i(0x00FF)
+    CMP_i(0x00FF)
+    BNE_a(LBoxgood)
+    JSL(R_Get_Secondary_Memory)
+    LDA_d(0x06)
+    AND_i(0x00FF)
+LBoxgood:
+    STA_d(0x04)
+
+    // Fade out
+	LDY_i(0x0000)
+	LDX_i(0x0001) // Frames per tick
+	LDA_i(0x0004) // Brightness per tick
+	JSL(0xC08814)
+
+    // Disable screen
+    JSL(0xC08726)
+
+    // Reset some things
+    JSL(0xC2E0E7) // Resets colour math
+    JSL(0xC2C8C8) // Sets up VRAM for battle mode
+
+    // Call the load battle bg function
+    LDA_d(0x00)
+    LDX_d(0x02)
+    LDY_d(0x04)
+    JSL(0xC2D121)
+
+    // Indicate that we're in battle mode to the text rendering screen update function
+    LDA_i(0x0001)
+    STA_a(0x9643)
+    
+    // Run screen twice to prevent weird scroll issue?
+    JSL(0xC1004E) // TEXT_RUN_SCREEN
+    JSL(0xC1004E) // TEXT_RUN_SCREEN
+
+    // Fade in
+	LDY_i(0x0000)
+	LDX_i(0x0001) // Frames per tick
+	LDA_i(0x0004) // Brightness per tick
+	JSL(0xC087CE)
+})
+
+asm_HideBattleBG: M_EB_Function_Wrapper_Clobber({
+    // Indicate that we're NOT in battle mode to the text rendering screen update function
+    STZ_a(0x9643)
+
+    JSL(0xC2E0E7) // Resets colour math
+    JSL(0xC2C8C8) // Sets up VRAM for battle mode
+    SEP(0x20)
+    STZ_a(0x001F) // Disable HDMA
+    STZ_a(0x420C) // Disable HDMA
+    REP(0x20)
+
+    // Disable layers except text
+    LDA_i(0x0004)
+    STA_a(0x001A)
+
+    JSL(0xC1004E) // TEXT_RUN_SCREEN
+})
+
+
+InitEverything: {
+    REP(0x31)
+    PHD
+    TDC
+    ADC_i(-0x20)
+    TCD
+
+    // Copied from INIT_INTRO
+    LDA_i(0x0001)
+    STA_a(0xB4B6)
+    LDA_i(0x0002) JSL(0xC0AC0C) // Something SPC related
+    JSL(0xC0927C) // Init movement scripts
+    JSL(0xC200D9) // Reset text engine
+    // JSL(0xC432B1) // Something about afflictions? I don't care
+    LDA_i(0x0001)
+    STA_a(0x5DD8)
+    // Reset scroll registers for BGs 1-3
+    STZ_a(0x0039)
+    STZ_a(0x003B)
+    STZ_a(0x0035)
+    STZ_a(0x0037)
+    STZ_a(0x0031)
+    STZ_a(0x0033)
+    JSL(0xC08B26) // UPDATE_SCREEN
+    STZ_a(0x0039)
+    STZ_a(0x003B)
+    STZ_a(0x0035)
+    STZ_a(0x0037)
+    STZ_a(0x0031)
+    STZ_a(0x0033)
+    JSL(0xC08B26) // UPDATE_SCREEN
+
+    // Set text style to default (1)
+    LDA_i(0x0001)
+    STA_a(0x99CD)
+
+    // Copied from main battle routine
+    JSL(0xC08726) // Disables screen
+    JSL(0xC2E0E7) // Resets colour math
+    JSL(0xC2C8C8) // Sets up VRAM for battle mode
+    JSL(0xC47C3F) // Load window graphics
+	LDA_i(0x0001)
+	JSL(0xC44963) // Upload to VRAM
+
+    // Load text palettes
+    ASMLoadAddress0E(0xE01FC8) // TEXT_WINDOW_FLAVOUR_PALETTES
+	LDX_i(0x0040)
+	LDA_i(0x0200)
+	JSL(0xC08ED2) // MEMCPY16
+    // Upload to CGRAM
+    LDA_i(0x0018)
+	STA_a(0x0030)
+    JSL(0xC08B26) // UPDATE_SCREEN
+
+    // Enable only text layer in Mode 1
+    LDA_i(0x0004)
+    STA_a(0x001A)
+
+    // Fade in
+	LDY_i(0x0000)
+	LDX_i(0x0001) // Frames per tick
+	LDA_i(0x0004) // Brightness per tick
+	JSL(0xC087CE)
+    PLD RTL
+}
