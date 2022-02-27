@@ -16,14 +16,14 @@ ROM[0xC0B8E3] = AND_i	(0x0040)	// AND operand check for Opening the Main Menu (A
 ROM[0xC0B907] = AND_i	(0x1000)	// AND operand check for Opening the Map (X button by default)
 ROM[0xC0B915] = AND_i	(0x00A0)	// AND operand check for A+L buttons. This determines which buttons can talk to people / Confirm selections at the Menus
 
-ROM[0xC13199] = {
+/*ROM[0xC13199] = {
 	NOP
 	NOP
 	NOP
 	NOP
 	NOP
 	NOP
-}
+}*/
 
 ROM[0xC1324D] = {	
 	JSL	(0xC04279)	// Jump to subroutine at $C04279
@@ -104,7 +104,7 @@ ROM[0xC134FB] = {
 
 
 /* Talk/Check Button subroutine modifications.
-I believe this is the one that removes the "No problem here" dialog */
+I believe this is the one that removes the "No problem here" dialog 
 ROM[0xC13C3E] = {
 	NOP			// No operation
 	NOP			// No operation
@@ -123,7 +123,7 @@ ROM[0xC13C6D] = {
 	LDA_i	(0x0001)	// LDA #$0001 
 	JSR	(0x04EE)	// Jump to RAM address $04EE
 	NOP			// No operation
-}
+}*/
 
 
 /* THE FOLLOWING SECTIONS ARE NOT ASM CODE, BUT RATHER PART OF THE DIALOG WINDOW ATTRIBUTES TABLE AND TEXT.

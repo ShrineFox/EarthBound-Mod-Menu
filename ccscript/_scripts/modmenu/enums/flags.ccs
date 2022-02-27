@@ -66,6 +66,18 @@ define flg_UnshyTendas = flag 0x9B
 define flg_WintersDaytime = flag 0x1F1
 define flg_OnettDaytime = flag 0x1A6
 define flg_OnettDaytimeMusic = flag 0x68
+define flg_HappyHappyNotBlue = flag 0x00D // Paula rescued from cabin
+define flg_OnettShackUnlocked = flag 0x6C
+define flg_RunawayFiveTwosonDebtPaid = flag 0x135
+define flg_BuzzBuzzDead = flag 0x1E0
+define flg_ZombiePaperOnFloor = flag 0x07C
+define flg_ZombiePaperUsed = flag 0x07D
+define flg_Venus = flag 0x093
+define flg_FoursideSewerOpen = flag 0x03A
+define flg_CarrotKeyUsed = flag 0x28C
+define flg_ShynessBookReturned = flag 0x297
+define flg_DungeonManOpen = flag 0x25E
+define flg_ZexonyteAndonuts = flag 0x086 // given meteorite piece
 
 /* Phone Numbers */
 define flg_Phone_Dad = flag 0xC7
@@ -134,19 +146,36 @@ define flg_BoughtOnettHouse = flag 0x063
 // 0x6F = Marks that you have visited the Iron Pencil in Peaceful Rest Valley.
 
 /* Key Items */
-define flg_KeyItem_Meteorite = flag 0x4F
 define flg_KeyItem_ShackKey = flag 0x50 // 0x6C = Traveling Entertainer's Shack unlocked
 define flg_KeyItem_Bicycle = flag 0x51
 define flg_KeyItem_ReceiverPhone = flag 0x52
 define flg_KeyItem_PencilEraser = flag 0x53 // 0x2A = Apple Kid waiting to give Pencil Eraser in Burglin Park
+define flg_KeyItem_CabinKey = flag 0x07A
 define flg_KeyItem_HandAid = flag 0x54
 define flg_KeyItem_WadofBills = flag 0x55
 define flg_KeyItem_FranklinBadge = flag 0x56
-define flg_KeyItem_FlyHoney = flag 0x57 // 0x7C = Zombie Paper on Threed tent floor
+define flg_KeyItem_FlyHoney = flag 0x57
+define flg_KeyItem_ZombiePaper = flag 0x228
 define flg_KeyItem_BadKeyMachine = flag 0x58
-define flg_KeyItem_ShynessBook = flag 0x59
+define flg_KeyItem_EraserEraser = flag 0x26A
 define flg_KeyItem_Diamond = flag 0x5A
 define flg_KeyItem_SignedBanana = flag 0x5B
+define flg_KeyItem_CarrotKey = flag 0x388
+define flg_KeyItem_DungeonManKey = flag 0x150
+define flg_KeyItem_ShynessBook = flag 0x59
+define flg_KeyItem_Meteorite = flag 0x4F
+// MISSING
+// Backstage pass
+// Tiny Ruby
+// Town Map
+// Yogurt Dispenser
+// Tendakraut
+// Show ticket
+// Pak of bubble gum
+// 	King banana
+// 	Hieroglyph copy
+// Hawk Eye
+// Contact lens
 
 /* Photos */
 define flg_Photo_1 = 0x2BA //in front of Ness’s house

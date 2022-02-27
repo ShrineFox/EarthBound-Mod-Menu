@@ -18,14 +18,7 @@ import "../../asm/cc_text_speed.ccs"
 // Procedures
 
 ModMenu_MainMenu:
-	if (flg_ModMenu) 
-	{
-		goto(ModMenu)
-	}
-	else if (flg_KeyItems)
-	{
-		goto(KeyItems)
-	}
+	goto(ModMenu)
 eob
 
 ModMenu:
@@ -58,7 +51,7 @@ ModMenu_AboutDlg:
 	ClearStatus(pty_Jeff) ClearStatus(pty_Poo)
 	"@EarthBound Mod Menu by ShrineFox." newline
 	"@Made using Coilsnake." newline
-	"@Updated 2-26-22." wait
+	"@Updated 2-27-22." wait
 	window_close(wnd_Dialog)
 goto(ModMenu_MainMenu)
 

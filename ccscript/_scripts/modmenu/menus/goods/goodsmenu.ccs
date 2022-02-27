@@ -17,7 +17,7 @@ GoodsMenu:
 	menu 1 {
 		"View List":    { goto(ItemList) }
 		"Enter ID":     { goto(ItemID) }
-		"Key Items":    { goto(KeyItems) }
+		"Key Items":    { goto(KeyItemsList) }
 		default "Back": { goto(modmenu.ModMenu_MainMenu) }
 	}
 goto(GoodsMenu)
@@ -25,60 +25,8 @@ goto(GoodsMenu)
 ItemList:
 goto(GoodsMenu)
 
-Set_Count_1: { SetDescription(1, wnd_KeyItems, ShowDescription) } Set_Count_2: { SetDescription(2, wnd_KeyItems, ShowDescription) } 
-Set_Count_3: { SetDescription(3, wnd_KeyItems, ShowDescription) } Set_Count_4: { SetDescription(4, wnd_KeyItems, ShowDescription) }
- 
-KeyItems: {
-	CloseAllModMenuWnd()
-	OpenKeyItemWnd()
-	Lbl(lbl_KeyItems)
-	ResetCounter()
-	ctoarg
-    if flag flg_Ness {
-        MenuOptionWithCallback("Ness", Set_Count_1)
-    }
-    if flag flg_Paula {
-        MenuOptionWithCallback("Paula", Set_Count_2)
-    }
-    if flag flg_Jeff {
-        MenuOptionWithCallback("Jeff", Set_Count_3)
-    }
-    if flag flg_Poo {
-        MenuOptionWithCallback("Poo", Set_Count_4)
-    }
-    DisplayVertical(2)
-    if not "[11]" {
-        // Exit
-        goto(GoodsMenu)
-    }
-    ctoarg
-    swap
-    SwitchGoto(4)
-        SwitchCase(chose_ness)
-        SwitchCase(chose_paula)
-        SwitchCase(chose_jeff)
-        SwitchCase(chose_poo)
-    swap
-    "@Error! No option {number(0)} in this menu." next goto(GoodsMenu)
-chose_ness:
-    "@You chose: {name(1)}" next goto(GoodsMenu)
-chose_paula:
-    "@You chose: {name(2)}" next goto(GoodsMenu)
-chose_jeff:
-    "@You chose: {name(3)}" next goto(GoodsMenu)
-chose_poo:
-    "@You chose: {name(4)}" next goto(GoodsMenu)
-}
-
-ShowDescription:
-	CloseKeyItemDescWnd()
-	OpenKeyItemDescWnd()
-	Lbl(lbl_Description)
-	if counter_is(1) { "<Ness> The psychic main character of EarthBound. He's seeking out the <Eight Melodies> in order to realize his full power." }
-	if counter_is(2) { "<Paula> The first party member that joins Ness. She's loaded with offensive PSI abilities, and also some healing powers." }
-	if counter_is(3) { "<Jeff Andonuts> The boy genius from Winters with no PSI. Son of the renowned inventor, Dr. Andonuts." }
-	if counter_is(4) { "<Prince Poo> The prince of Dalaam who completed his Mu Training to help Ness fight against Giygas." }
-eob
+KeyItemsList:
+goto(GoodsMenu)
 
 /* ID Entry */
 

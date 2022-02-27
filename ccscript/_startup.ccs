@@ -17,22 +17,21 @@ Startup:
 music(bgm_None)
 music_switching_off
 set(flg_Ness)
-/* Debug
 set(flg_Debug)
-set(flg_DadCantCall)
-set(flg_AutoAdvStatIncMsgs)
+set(flg_DisableCollision)
 unset(flg_NoEnemies)
 unset(flg_NoOnettNPCs)
 set(flg_OnettDaytime)
 set(flg_OnettDaytimeMusic)
+/* Debug
+set(flg_DadCantCall)
+set(flg_AutoAdvStatIncMsgs)
 set(flg_NoPhotoGuy)
 /* End Debug */
-set(flg_DisableCollision)
 eob
 
 /* Configuration on game load */
 _asmptr(0xC1FF1C, Config)
-
 Config:
 	goto(ConfigMenuStart)
 eob

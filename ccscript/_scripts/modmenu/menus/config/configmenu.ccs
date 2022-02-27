@@ -69,7 +69,7 @@ ConfigMenu: {
 	set(flg_ModConfigured)
 	CloseAllModMenuWnd()
 	OpenKeyItemWnd()
-	Lbl(lbl_KeyItems)
+	Lbl(lbl_ToggleMods)
 	ResetCounter()
 	ctoarg
 	if flag flg_KeyItems {
@@ -136,13 +136,14 @@ ConfigMenu: {
 ShowDescription:
 	CloseKeyItemDescWnd()
 	OpenKeyItemDescWnd()
+	DebugWnd(wnd_KeyItemDescription, "Description")
 	Lbl(lbl_Description)
-	if counter_is(1) { "<Key Items> Mod" newline "Makes Key Items separate from your" newline "Goods, so you have more space" newline "in your inventory." }
-	if counter_is(2) { "<Unrestrict Bike> Mod" newline "Use your bicycle anywhere, even when" newline "you have other characters in" newline "your party." }
-	if counter_is(3) { "<No Photo Guy> Mod" newline "Replaces Photo Guy cutscenes with a" newline "quick, unobtrusive shutter effect." }
-	if counter_is(4) { "<No Dad Calls> Mod" newline "Prevents Ness's dad from calling" newline "you periodically during your" newline "adventure." }
-	if counter_is(5) { "<Auto-Advance> Mod" newline "Advances Level Up text for you without" newline "having to spam the A button." }
-	if counter_is(6) { "<Mod Menu> Mod" newline "Always have access to an in-game" newline "trainer, full of cheats and" newline "other fun stuff." }
+	if counter_is(1) { "<Key Items>" newline "Makes Key Items separate from your" newline "Goods, so you have more space" newline "in your inventory." }
+	if counter_is(2) { "<Unrestrict Bike>" newline "Use your bicycle anywhere, even when" newline "you have other characters in" newline "your party." }
+	if counter_is(3) { "<No Photo Guy>" newline "Replaces Photo Guy cutscenes with a" newline "quick, unobtrusive shutter effect." }
+	if counter_is(4) { "<No Dad Calls>" newline "Prevents Ness's dad from calling" newline "you periodically during your" newline "adventure." }
+	if counter_is(5) { "<Auto-Advance>" newline "Advances Level Up text for you without" newline "having to spam the A button." }
+	if counter_is(6) { "<Mod Menu>" newline "Always have access to an in-game" newline "trainer, full of cheats and" newline "other fun stuff." }
 eob
 	
 

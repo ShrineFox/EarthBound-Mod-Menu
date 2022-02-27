@@ -14,13 +14,17 @@ import "_scripts/asm/general.ccs"
 import "_scripts/asm/Title_Window.ccs"
 import "_scripts/asm/name_fun.ccs"
 import "_scripts/asm/noclip.ccs"
+import "_scripts/asm/fast_doors.ccs"
 import "_scripts/asm/run_button_toggleable.ccs"
 import "_scripts/asm/repel_sandwiches.ccs"
 import "_scripts/asm/run_accelerating.ccs"
 import "_scripts/asm/GoodsMenuEquip.ccs"
 /* Mod Menu */
 import "_scripts/modmenu/menus/modmenu.ccs"
+import "_scripts/modmenu/commands.ccs"
+import "_scripts/modmenu/menus/goods/goodsmenu.ccs"
 import "_scripts/modmenu/enums/flags.ccs"
+import "_scripts/modmenu/enums/labels.ccs"
 import "_scripts/modmenu/enums/windows.ccs"
 
 // Open the Mod Menu
@@ -89,11 +93,170 @@ eob
 // Replace "No problem here."
 ROM[0xC7C59E] = goto(NewMenu)
 
+SetCnt_1: counter(1) eob
+SetCnt_2: counter(2) eob
+
 NewMenu:
+sound(6) // cancel out check sound with silence
+window_close(wnd_Dialog) // close dialog window that opens by default
 if flg_ModMenu or flg_KeyItems
 {
-	window_open(4)
-	
-	window_close(4)
+	window_open(wnd_Action)
+	Lbl(lbl_System)
+	ResetCounter()
+	ctoarg
+	sound(SND_CURSORCONFIRM) // play open window sound
+	if flg_KeyItems { MenuOptionWithCallback("Key Items", SetCnt_1) }
+	if flg_ModMenu { MenuOptionWithCallback("Mod Menu", SetCnt_2) }
+	DisplayVertical(1)
+    if not "[11]" {
+        // Exit
+        eob
+    }
+	ctoarg
+    swap
+    SwitchGoto(6)
+        SwitchCase(go_keyitems)
+        SwitchCase(go_modmenu)
+	    swap
+    "@Error! No option {number(0)} in this menu." next goto(GoodsMenu)
+	go_keyitems:
+		window_close(wnd_Action) goto(KeyItems)
+	go_modmenu:
+		window_close(wnd_Action) goto(ModMenu_MainMenu)
 }
+eob
+
+SetCount1: { SetDescription(1, wnd_KeyItems, ShowDesc) } SetCount2: { SetDescription(2, wnd_KeyItems, ShowDesc) } 
+SetCount3: { SetDescription(3, wnd_KeyItems, ShowDesc) } SetCount4: { SetDescription(4, wnd_KeyItems, ShowDesc) }
+SetCount5: { SetDescription(5, wnd_KeyItems, ShowDesc) } SetCount6: { SetDescription(6, wnd_KeyItems, ShowDesc) } 
+SetCount7: { SetDescription(7, wnd_KeyItems, ShowDesc) } SetCount8: { SetDescription(8, wnd_KeyItems, ShowDesc) }
+SetCount9: { SetDescription(9, wnd_KeyItems, ShowDesc) } SetCount10: { SetDescription(10, wnd_KeyItems, ShowDesc) } 
+SetCount11: { SetDescription(11, wnd_KeyItems, ShowDesc) } SetCount12: { SetDescription(12, wnd_KeyItems, ShowDesc) }
+SetCount13: { SetDescription(13, wnd_KeyItems, ShowDesc) } SetCount14: { SetDescription(14, wnd_KeyItems, ShowDesc) } 
+SetCount15: { SetDescription(15, wnd_KeyItems, ShowDesc) } SetCount16: { SetDescription(16, wnd_KeyItems, ShowDesc) }
+SetCount17: { SetDescription(17, wnd_KeyItems, ShowDesc) }
+
+KeyItems: {
+	CloseAllModMenuWnd()
+	OpenKeyItemWnd()
+	Lbl(lbl_KeyItems)
+	ResetCounter()
+	ctoarg
+    if flg_Ness {
+		if flg_BuzzBuzzDead and not flg_Defeat_NessNightmare
+		{
+			MenuOptionWithCallback("Sound Stone", SetCount1)
+		}
+        MenuOptionWithCallback("ATM Card", SetCount2)
+		if flg_KeyItem_ShackKey and not flg_OnettShackUnlocked
+		{
+			MenuOptionWithCallback("Shack Key", SetCount3)
+		}
+		if flg_KeyItem_Bicycle 
+		{
+			MenuOptionWithCallback("Bicycle", SetCount4)
+		}
+		if flg_KeyItem_ReceiverPhone 
+		{
+			MenuOptionWithCallback("Receiver Phone", SetCount5)
+		}
+		if flg_KeyItem_PencilEraser 
+		{
+			MenuOptionWithCallback("Pencil Eraser", SetCount6)
+		}
+		if flg_KeyItem_EraserEraser 
+		{
+			MenuOptionWithCallback("Eraser Eraser", SetCount7)
+		}
+		if flg_KeyItem_CabinKey and not flg_HappyHappyNotBlue
+		{
+			MenuOptionWithCallback("Cabin Key", SetCount8)
+		}
+		if flg_KeyItem_WadofBills and not flg_RunawayFiveTwosonDebtPaid
+		{
+			MenuOptionWithCallback("Wad of Bills", SetCount9)
+		}
+		if flg_KeyItem_ZombiePaper and not flg_ZombiePaperOnFloor and not flg_ZombiePaperUsed
+		{
+			MenuOptionWithCallback("Zombie Paper", SetCount10)
+		}
+		if flg_KeyItem_Diamond and not flg_Venus
+		{
+			MenuOptionWithCallback("Diamond", SetCount11)
+		}
+		if flg_KeyItem_SignedBanana and not flg_FoursideSewerOpen
+		{
+			MenuOptionWithCallback("Signed Banana", SetCount12)
+		}
+		if flg_KeyItem_CarrotKey and not flg_CarrotKeyUsed
+		{
+			MenuOptionWithCallback("Carrot Key", SetCount13)
+		}
+		if flg_KeyItem_DungeonManKey and not flg_DungeonManOpen
+		{
+			MenuOptionWithCallback("Tower Key", SetCount14)
+		}
+		if flg_KeyItem_ShynessBook and not flg_ShynessBookReturned
+		{
+			MenuOptionWithCallback("Shyness Book", SetCount15)
+		}
+		if flg_KeyItem_Meteorite and not flg_ZexonyteAndonuts
+		{
+			MenuOptionWithCallback("Meteorite Piece", SetCount16)
+		}
+    }
+    if flg_Jeff and flg_KeyItem_BadKeyMachine
+	{
+		MenuOptionWithCallback("Bad Key Machine", SetCount17)
+	}
+    DisplayVertical(2)
+    if not "[11]" {
+        // Exit
+        eob
+    }
+    ctoarg
+    swap
+    SwitchGoto(17)
+        SwitchCase(soundstone) SwitchCase(donothing) SwitchCase(donothing)
+        SwitchCase(bike) SwitchCase(phone) SwitchCase(donothing)
+		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing)
+        SwitchCase(zombiepaper) SwitchCase(donothing) SwitchCase(donothing)
+		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing)
+        SwitchCase(donothing) SwitchCase(donothing)
+    swap
+    "@Error! No option {number(0)} in this menu." next goto(KeyItems)
+	soundstone:
+		call(data_55.l_0xc9fefd) goto(KeyItems)
+	bike:
+		goto(BicycleStart)
+	phone:
+		call(data_20.l_0xc68017) goto(KeyItems)
+	zombiepaper:
+		call(data_55.l_0xc9fc48) goto(KeyItems)
+	donothing:
+		goto(KeyItems)
+}
+
+ShowDesc:
+	CloseKeyItemDescWnd()
+	OpenKeyItemDescWnd()
+	Lbl(lbl_Description)
+	if counter_is(1) { call(data_04.l_0xc55ad5) } // Sound Stone
+	if counter_is(2) { call(data_04.l_0xc5566b) } // ATM Card
+	if counter_is(3) { call(data_04.l_0xc554f6) } // Shack Key
+	if counter_is(4) { call(data_04.l_0xc55627) } // Bicycle
+	if counter_is(5) { call(data_04.l_0xc5570b) } // Receiver Phone
+	if counter_is(6) { call(data_04.l_0xc55794) } // Pencil Eraser
+	if counter_is(7) { call(data_04.l_0xc55e28) } // Eraser Eraser
+	if counter_is(8) { call(data_04.l_0xc5551d) } // Cabin Key
+	if counter_is(9) { call(data_04.l_0xc556e3) } // Wad of Bills
+	if counter_is(10) { call(data_04.l_0xc555b8) } // Zombie Paper
+	if counter_is(11) { call(data_04.l_0xc55740) } // Diamond
+	if counter_is(12) { call(data_04.l_0xc5576a) } // Signed Banana
+	if counter_is(13) { call(data_05.l_0xc5689f) } // Carrot Key
+	if counter_is(14) { call(data_04.l_0xc55943) } // Tower Key
+	if counter_is(15) { call(data_04.l_0xc55409) } // Shyness Book
+	if counter_is(16) { call(data_04.l_0xc55957) } // Meteorite Piece
+	if counter_is(17) { call(data_04.l_0xc55546) } // Bad Key Machine
 eob
