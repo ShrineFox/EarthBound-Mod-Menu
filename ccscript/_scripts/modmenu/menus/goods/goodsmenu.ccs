@@ -15,12 +15,47 @@ GoodsMenu:
 	OpenModMenu2Wnd()
 	Lbl(lbl_Goods)
 	menu 1 {
-		"View List":    { goto(ItemList) }
-		"Enter ID":     { goto(ItemID) }
-		"Key Items":    { goto(KeyItemsList) }
+		"View List": { goto(ItemList) }
+		"Enter ID":  { goto(ItemID) }
+		"Key Items": { goto(KeyItemsList) }
+		"Storage":   { goto(StorageMenu) }
 		default "Back": { goto(modmenu.ModMenu_MainMenu) }
 	}
 goto(GoodsMenu)
+
+StorageMenu:
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Storage)
+	menu 1
+	{
+		"Store": { goto(StoreItemMenu) }
+		"Take": { goto(TakeItemMenu) }
+		default "Back": { goto(GoodsMenu) }
+	}
+goto(StorageMenu)
+
+command e(label) "{long label}"
+
+StoreItemMenu:
+	window_open(wnd_Dialog)
+	call(data_14.l_0xc5e456)
+	SaveRAM()
+	if result_is(0) { window_close(wnd_Dialog) goto(StorageMenu) }
+	else
+	{
+		LoadRAM()
+		"[1D 0C 00 00]"
+		if result_is(0) { LoadRAM() "{sound(118)}[1D 12 00 00]" }
+	}
+goto(StoreItemMenu)
+
+TakeItemMenu:
+	window_open(wnd_Dialog)
+	call(data_14.l_0xc5e54a)
+	"[1B 02 {e(data_18.l_0xc648da)}]{sound(116)}[1D 13 00 00][19 19 00 00]"
+	window_close(wnd_Dialog)
+eob
 
 ItemList:
 goto(GoodsMenu)
@@ -34,15 +69,5 @@ ItemID:
 	ConfirmNumber(lbl_Goods, 3, "Receive this item?", GiveItemID)
 goto(GoodsMenu)
 
-command GiveItem(item_id) {
-  "[1D 0E]" short item_id
-  call(0xc7dccf)
-}
-
-command GiveKeyItem(item_id) {
-  "[1D 0E]" short item_id
-  call(0xc7dcb6)
-}
-
 GiveItemID:
-GiveItem(0) eob
+GiveItemToParty() eob

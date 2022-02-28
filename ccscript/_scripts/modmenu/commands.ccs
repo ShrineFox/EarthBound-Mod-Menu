@@ -175,3 +175,43 @@ command SetPartyLabel()
 	else if counter_is(pty_PlushBear) { Lbl(lbl_PlushBear) }
 	else { Lbl(lbl_Party) }
 }
+
+// Give Item in argument register to party
+command GiveItem(charaID) {
+	window_open(wnd_Dialog)
+	sound(SND_BOXTAKE)
+	LoadRAM()
+	"[1D 0E {byte charaID} 00]"
+	call(0xc7dcda) next
+	window_close(wnd_Dialog)
+}
+
+command GiveKeyItem(charaID) {
+	window_open(wnd_Dialog)
+	sound(SND_SPECIALITEM)
+	LoadRAM()
+	"[1D 0E {byte charaID} 00]" 
+	call(0xc7dcda) next
+	window_close(wnd_Dialog)
+}
+
+command GiveItemToParty()
+{
+	LoadRAM()
+	if not full(0xFF)
+	{
+		if not full(1) { GiveItem(1) }
+		else if not full(2) { GiveItem(2) }
+		else if not full(3) { GiveItem(3) }
+		else if not full(4) { GiveItem(4) }
+	}
+	else
+	{
+		NotifyInventoryFull()
+	}
+}
+
+command NotifyInventoryFull()
+{
+	SystemWnd(wnd_ModMenu2, "Nobody has room for new items.")
+}

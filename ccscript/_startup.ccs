@@ -17,7 +17,10 @@ Startup:
 music(bgm_None)
 music_switching_off
 set(flg_Ness)
-set(flg_Debug)
+//set(flg_Debug)
+set(flg_BuzzBuzzDead)
+unset(flg_Defeat_NessNightmare)
+set(flg_KeyItem_ShackKey)
 set(flg_DisableCollision)
 unset(flg_NoEnemies)
 unset(flg_NoOnettNPCs)

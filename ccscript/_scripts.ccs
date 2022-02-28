@@ -118,7 +118,7 @@ if flg_ModMenu or flg_KeyItems
     SwitchGoto(6)
         SwitchCase(go_keyitems)
         SwitchCase(go_modmenu)
-	    swap
+	swap
     "@Error! No option {number(0)} in this menu." next goto(GoodsMenu)
 	go_keyitems:
 		window_close(wnd_Action) goto(KeyItems)
@@ -138,75 +138,79 @@ SetCount15: { SetDescription(15, wnd_KeyItems, ShowDesc) } SetCount16: { SetDesc
 SetCount17: { SetDescription(17, wnd_KeyItems, ShowDesc) }
 
 KeyItems: {
+	if flg_Ness { goto(NessKeyItems) }
+	else if flg_Jeff { goto(JeffKeyItems) }
+	else { eob }
+}
+
+NessKeyItems: {
 	CloseAllModMenuWnd()
 	OpenKeyItemWnd()
 	Lbl(lbl_KeyItems)
 	ResetCounter()
 	ctoarg
-    if flg_Ness {
-		if flg_BuzzBuzzDead and not flg_Defeat_NessNightmare
-		{
-			MenuOptionWithCallback("Sound Stone", SetCount1)
-		}
-        MenuOptionWithCallback("ATM Card", SetCount2)
-		if flg_KeyItem_ShackKey and not flg_OnettShackUnlocked
-		{
-			MenuOptionWithCallback("Shack Key", SetCount3)
-		}
-		if flg_KeyItem_Bicycle 
-		{
-			MenuOptionWithCallback("Bicycle", SetCount4)
-		}
-		if flg_KeyItem_ReceiverPhone 
-		{
-			MenuOptionWithCallback("Receiver Phone", SetCount5)
-		}
-		if flg_KeyItem_PencilEraser 
-		{
-			MenuOptionWithCallback("Pencil Eraser", SetCount6)
-		}
-		if flg_KeyItem_EraserEraser 
-		{
-			MenuOptionWithCallback("Eraser Eraser", SetCount7)
-		}
-		if flg_KeyItem_CabinKey and not flg_HappyHappyNotBlue
-		{
-			MenuOptionWithCallback("Cabin Key", SetCount8)
-		}
-		if flg_KeyItem_WadofBills and not flg_RunawayFiveTwosonDebtPaid
-		{
-			MenuOptionWithCallback("Wad of Bills", SetCount9)
-		}
-		if flg_KeyItem_ZombiePaper and not flg_ZombiePaperOnFloor and not flg_ZombiePaperUsed
-		{
-			MenuOptionWithCallback("Zombie Paper", SetCount10)
-		}
-		if flg_KeyItem_Diamond and not flg_Venus
-		{
-			MenuOptionWithCallback("Diamond", SetCount11)
-		}
-		if flg_KeyItem_SignedBanana and not flg_FoursideSewerOpen
-		{
-			MenuOptionWithCallback("Signed Banana", SetCount12)
-		}
-		if flg_KeyItem_CarrotKey and not flg_CarrotKeyUsed
-		{
-			MenuOptionWithCallback("Carrot Key", SetCount13)
-		}
-		if flg_KeyItem_DungeonManKey and not flg_DungeonManOpen
-		{
-			MenuOptionWithCallback("Tower Key", SetCount14)
-		}
-		if flg_KeyItem_ShynessBook and not flg_ShynessBookReturned
-		{
-			MenuOptionWithCallback("Shyness Book", SetCount15)
-		}
-		if flg_KeyItem_Meteorite and not flg_ZexonyteAndonuts
-		{
-			MenuOptionWithCallback("Meteorite Piece", SetCount16)
-		}
-    }
-    if flg_Jeff and flg_KeyItem_BadKeyMachine
+	if flag flg_BuzzBuzzDead and not flag flg_Defeat_NessNightmare
+	{
+		MenuOptionWithCallback("Sound Stone", SetCount1)
+	}
+	MenuOptionWithCallback("ATM Card", SetCount2)
+	if flag flg_KeyItem_ShackKey and not flag flg_OnettShackUnlocked
+	{
+		MenuOptionWithCallback("Shack Key", SetCount3)
+	}
+	if flag flg_KeyItem_Bicycle 
+	{
+		MenuOptionWithCallback("Bicycle", SetCount4)
+	}
+	if flag flg_KeyItem_ReceiverPhone 
+	{
+		MenuOptionWithCallback("Receiver Phone", SetCount5)
+	}
+	if flag flg_KeyItem_PencilEraser 
+	{
+		MenuOptionWithCallback("Pencil Eraser", SetCount6)
+	}
+	if flag flg_KeyItem_EraserEraser 
+	{
+		MenuOptionWithCallback("Eraser Eraser", SetCount7)
+	}
+	if flag flg_KeyItem_CabinKey and not flg_HappyHappyNotBlue
+	{
+		MenuOptionWithCallback("Cabin Key", SetCount8)
+	}
+	if flag flg_KeyItem_WadofBills and not flag flg_RunawayFiveTwosonDebtPaid
+	{
+		MenuOptionWithCallback("Wad of Bills", SetCount9)
+	}
+	if flag flg_KeyItem_ZombiePaper and not flag flg_ZombiePaperOnFloor and not flag flg_ZombiePaperUsed
+	{
+		MenuOptionWithCallback("Zombie Paper", SetCount10)
+	}
+	if flag flg_KeyItem_Diamond and not flag flg_Venus
+	{
+		MenuOptionWithCallback("Diamond", SetCount11)
+	}
+	if flag flg_KeyItem_SignedBanana and not flag flg_FoursideSewerOpen
+	{
+		MenuOptionWithCallback("Signed Banana", SetCount12)
+	}
+	if flag flg_KeyItem_CarrotKey and not flag flg_CarrotKeyUsed
+	{
+		MenuOptionWithCallback("Carrot Key", SetCount13)
+	}
+	if flag flg_KeyItem_DungeonManKey and not flag flg_DungeonManOpen
+	{
+		MenuOptionWithCallback("Tower Key", SetCount14)
+	}
+	if flag flg_KeyItem_ShynessBook and not flag flg_ShynessBookReturned
+	{
+		MenuOptionWithCallback("Shyness Book", SetCount15)
+	}
+	if flag flg_KeyItem_Meteorite and not flag flg_ZexonyteAndonuts
+	{
+		MenuOptionWithCallback("Meteorite Piece", SetCount16)
+	}
+    if flag flg_KeyItem_BadKeyMachine
 	{
 		MenuOptionWithCallback("Bad Key Machine", SetCount17)
 	}
@@ -238,11 +242,40 @@ KeyItems: {
 		goto(KeyItems)
 }
 
+JeffKeyItems: {
+	CloseAllModMenuWnd()
+	OpenKeyItemWnd()
+	Lbl(lbl_KeyItems)
+	ResetCounter()
+	ctoarg
+    if flg_KeyItem_BadKeyMachine
+	{
+		MenuOptionWithCallback("Bad Key Machine", SetCount17)
+	}
+	// Pack of bubble gum
+    DisplayVertical(2)
+    if not "[11]" {
+        // Exit
+        eob
+    }
+    ctoarg
+    swap
+    SwitchGoto(1)
+        SwitchCase(donothing)
+    swap
+    "@Error! No option {number(0)} in this menu." next goto(KeyItems)
+	donothing:
+		goto(KeyItems)
+}
+
 ShowDesc:
 	CloseKeyItemDescWnd()
 	OpenKeyItemDescWnd()
 	Lbl(lbl_Description)
-	if counter_is(1) { call(data_04.l_0xc55ad5) } // Sound Stone
+	if counter_is(1) { //call(data_04.l_0xc55ad5) Sound Stone
+		" <[1C 05 C4]>" newline "If you touch this to your forehead and concentrate on your thoughts," newline "Your Sanctuary melodies can be heard." eob
+	}
+	/*
 	if counter_is(2) { call(data_04.l_0xc5566b) } // ATM Card
 	if counter_is(3) { call(data_04.l_0xc554f6) } // Shack Key
 	if counter_is(4) { call(data_04.l_0xc55627) } // Bicycle
@@ -258,5 +291,5 @@ ShowDesc:
 	if counter_is(14) { call(data_04.l_0xc55943) } // Tower Key
 	if counter_is(15) { call(data_04.l_0xc55409) } // Shyness Book
 	if counter_is(16) { call(data_04.l_0xc55957) } // Meteorite Piece
-	if counter_is(17) { call(data_04.l_0xc55546) } // Bad Key Machine
+	if counter_is(17) { call(data_04.l_0xc55546) } // Bad Key Machine*/
 eob

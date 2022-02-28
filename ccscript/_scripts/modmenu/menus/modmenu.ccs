@@ -46,9 +46,6 @@ eob
 ModMenu_AboutDlg:
 	window_open(wnd_Dialog)
 	Lbl(lbl_About)
-	// Workaround for status effects making menu inaccessible
-	ClearStatus(pty_Ness) ClearStatus(pty_Paula)
-	ClearStatus(pty_Jeff) ClearStatus(pty_Poo)
 	"@EarthBound Mod Menu by ShrineFox." newline
 	"@Made using Coilsnake." newline
 	"@Updated 2-27-22." wait
