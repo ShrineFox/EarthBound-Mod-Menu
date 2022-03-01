@@ -64,7 +64,7 @@ l_0xc62a9b:
     "@(He's not here...)" end
 
 l_0xc62ae7:
-    "{window_open(1)}@[1C 02 01] learned how to use PSI Teleportation.{wait}{window_closeall}[1F 71 01 01]{set(flag 275)}[19 23 05 03 01 FF 00][1F 16 05 03 00][1F 1A 05 03 03]{pause(60)}[1F 1B 05 03][1F F1 05 03 80 02][1F 61]{window_open(1)}@Kyaho!" next
+    "{window_open(1)}@[1C 02 01] learned how to use PK Teleport.{wait}{window_closeall}[1F 71 01 01]{set(flag 275)}[19 23 05 03 01 FF 00][1F 16 05 03 00][1F 1A 05 03 03]{pause(60)}[1F 1B 05 03][1F F1 05 03 80 02][1F 61]{window_open(1)}@Kyaho!" next
     "@(Great!{pause(20)}  Okay,{pause(15)} the teacher is going home now.){wait}{window_closeall}[1F F1 05 03 9F 02]{unset(flag 2)}{unset(flag 615)}{unset(flag 613)}" eob goto(l_0xc62b6f)
 
 l_0xc62b6f:

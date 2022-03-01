@@ -12,7 +12,7 @@ l_0xef58c7:
     "@There was a [1C 05 82]." next
     "[1D 03 FF][1B 02 {e(data_21.l_0xc685bb)}][1D 0E 00 82]" call(data_33.l_0xc7dccf) "{set(flag 223)}{wait}[02]{sound(99)}[1F 15 A9 00 6C 02 01][1F 61][1F 1F A9 00 06][1F 15 62 00 08 00 01][1F E4 62 00 07][1F E4 62 00 01][1F E4 62 00 03][1F E4 62 00 05][1F E4 62 00 07]{pause(1)}[1F E4 62 00 01]{pause(2)}[1F E4 62 00 03]{pause(3)}[1F E4 62 00 05]{pause(4)}[1F E4 62 00 07]{pause(5)}[1F E4 62 00 01]{pause(6)}[1F E4 62 00 03]{pause(7)}[1F E4 62 00 05]{pause(8)}[1F E4 62 00 07]{window_open(1)}@Greetings!{pause(20)}  So, you are finally here![03]{window_closeall}" call(data_44.l_0xc915f4) "{sound(37)}{pause(90)}{window_open(1)}@Excellent!{pause(20)}  You are truly excellent!" next
     "@There is only a little time left!{pause(15)}  I'll give you the last power." next
-    "@I must go now...[03]{window_closeall}[1F 71 04 03][1F 1F 62 00 06]{sound(99)}[1F 15 A9 00 6D 02 01][1F 61][1F 71 04 03]{window_open(1)}@([1C 01 4A] became conscious of PSI Starstorm _!){sound(103)}{wait}{window_closeall}" eob
+    "@I must go now...[03]{window_closeall}[1F 71 04 03][1F 1F 62 00 06]{sound(99)}[1F 15 A9 00 6D 02 01][1F 61][1F 71 04 03]{window_open(1)}@([1C 01 4A] became conscious of PK Starstorm _!){sound(103)}{wait}{window_closeall}" eob
 
 l_0xef5a3e:
     "[06 A7 01 {e(l_0xef5a81)}]@Even though I listened to the talkative Mystery Rock's story," next
@@ -260,15 +260,15 @@ l_0xef69ff:
 
 l_0xef6a0d:
     newline
-    "@Vulnerable to PSI Fire![03]" eob
+    "@Vulnerable to PK Fire![03]" eob
 
 l_0xef6a24:
     newline
-    "@Vulnerable to PSI Freeze![03]" eob
+    "@Vulnerable to PK Freeze![03]" eob
 
 l_0xef6a3c:
     newline
-    "@Vulnerable to PSI Flash![03]" eob
+    "@Vulnerable to PK Flash![03]" eob
 
 l_0xef6a54:
     newline

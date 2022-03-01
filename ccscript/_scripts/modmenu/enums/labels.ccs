@@ -28,8 +28,10 @@ lbl_Luck: "LUCK[00]"
 lbl_BGM: "BGM[00]"
 lbl_Battle: "BATTLE[00]"
 lbl_Goods: "GOODS[00]"
+// Item Labels
 lbl_KeyItems: "KEY ITEMS[00]"
 lbl_Storage: "STORAGE[00]"
+lbl_Consumables: "CONSUMABLES[00]"
 // NPC Follower Labels
 lbl_Pokey: "POKEY[00]"
 lbl_Picky: "PICKY[00]"

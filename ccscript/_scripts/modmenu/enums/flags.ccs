@@ -54,6 +54,12 @@ define flg_KeyItems = flag 0x64c
 define flg_KeyItemDescWnd = flag 0x64b
 // Whether the user has configured the mod before
 define flg_ModConfigured = flag 0x64a
+// Whether Backstage Pass has been obtained or not
+define flg_KeyItem_BackstagePass = flag 0x649
+// Whether Trout Yogurt Machine has been obtained or not
+define flg_KeyItem_YogurtMachine = flag 0x648
+// Whether Show Ticket has been obtained or not
+define flg_KeyItem_ShowTicket = flag 0x647
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12
@@ -75,8 +81,12 @@ define flg_ZombiePaperUsed = flag 0x07D
 define flg_Venus = flag 0x093
 define flg_FoursideSewerOpen = flag 0x03A
 define flg_CarrotKeyUsed = flag 0x28C
+define flg_PyramidOpen = flag 0x156
+define flg_UsedYogurtMachine = flag 0x08E // Trout Flavored Yogurt Machine given to Electra, activates elevator lady sprite 0×0365.
 define flg_ShynessBookReturned = flag 0x297
 define flg_DungeonManOpen = flag 0x25E
+define flg_HawkEyeUsed = flag 0x120
+define flg_UnderworldGateOpen = flag 0x28B
 define flg_ZexonyteAndonuts = flag 0x086 // given meteorite piece
 
 /* Phone Numbers */
@@ -148,6 +158,7 @@ define flg_BoughtOnettHouse = flag 0x063
 /* Key Items */
 define flg_KeyItem_ShackKey = flag 0x50 // 0x6C = Traveling Entertainer's Shack unlocked
 define flg_KeyItem_Bicycle = flag 0x51
+define flg_KeyItem_TownMap = flag 0x1FF
 define flg_KeyItem_ReceiverPhone = flag 0x52
 define flg_KeyItem_PencilEraser = flag 0x53 // 0x2A = Apple Kid waiting to give Pencil Eraser in Burglin Park
 define flg_KeyItem_CabinKey = flag 0x07A
@@ -160,10 +171,14 @@ define flg_KeyItem_BadKeyMachine = flag 0x58
 define flg_KeyItem_EraserEraser = flag 0x26A
 define flg_KeyItem_Diamond = flag 0x5A
 define flg_KeyItem_SignedBanana = flag 0x5B
+define flg_KeyItem_HieroglyphCopy = flag 0x94
 define flg_KeyItem_CarrotKey = flag 0x388
 define flg_KeyItem_DungeonManKey = flag 0x150
+define flg_KeyItem_HawkEye = flag 0x15C
 define flg_KeyItem_ShynessBook = flag 0x59
+define flg_KeyItem_Tendakraut = flag 0x5C
 define flg_KeyItem_Meteorite = flag 0x4F
+define flg_KeyItem_BubbleGum = flag 0x143
 // MISSING
 // Backstage pass
 // Tiny Ruby

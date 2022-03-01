@@ -1,15 +1,15 @@
 0:
-  Name: PSI(????)
+  Name: PK(????)
 1:
-  Name: 'PSI Fire '
+  Name: 'PK Fire '
 2:
-  Name: 'PSI Freeze '
+  Name: 'PK Freeze '
 3:
-  Name: 'PSI Thunder '
+  Name: 'PK Thunder '
 4:
-  Name: 'PSI Flash '
+  Name: 'PK Flash '
 5:
-  Name: 'PSI Starstorm '
+  Name: 'PK Starstorm '
 6:
   Name: 'Lifeup '
 7:
@@ -17,7 +17,7 @@
 8:
   Name: 'Shield '
 9:
-  Name: 'PSI Shield '
+  Name: 'PK Shield '
 10:
   Name: 'Offense up '
 11:
@@ -25,10 +25,10 @@
 12:
   Name: 'Hypnosis '
 13:
-  Name: 'PSI Magnet '
+  Name: 'PK Magnet '
 14:
   Name: 'Paralysis '
 15:
   Name: 'Brainshock '
 16:
-  Name: 'Teleport '
+  Name: 'PK Teleport '

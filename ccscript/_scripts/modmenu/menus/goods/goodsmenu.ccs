@@ -17,11 +17,66 @@ GoodsMenu:
 	menu 1 {
 		"View List": { goto(ItemList) }
 		"Enter ID":  { goto(ItemID) }
-		"Key Items": { goto(KeyItemsList) }
 		"Storage":   { goto(StorageMenu) }
 		default "Back": { goto(modmenu.ModMenu_MainMenu) }
 	}
 goto(GoodsMenu)
+
+ItemList:
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Goods)
+	menu 1 {
+		"Consumables": { goto(ConsumableItemList) }
+		"Equips": { goto(EquippableItemList) }
+		"Passives":   { goto(PassiveItemList) }
+		"Key Items":   { goto(KeyItemList) }
+		default "Back": { goto(modmenu.ModMenu_MainMenu) }
+	}
+goto(ItemList)
+
+ConsumableItemList:
+	OpenKeyItemWnd()
+	Lbl(lbl_Consumables)
+		menu 2 {
+		"Cookie Swap": { counter(196) ctoarg swap GiveItemToParty() }
+		"Cookie": { counter(196) ctoarg GiveItemToParty() }
+		"Cookie Arg": { arg(196) GiveItemToParty() }
+		"Cookie ArgSw": { arg(196) swap GiveItemToParty() }
+		default "Back": { goto(ItemList) }
+	}
+goto(ConsumableItemList)
+
+PassiveItemList:
+goto(ItemList)
+
+KeyItemList:
+goto(ItemList)
+	
+EquippableItemList:
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Goods)
+	menu 1 {
+		"Weapons":  { goto(WeaponEquipList) }
+		"Armor": { goto(ArmorEquipList) }
+		"Body":   { goto(BodyEquipList) }
+		"Other":   { goto(OtherEquipList) }
+		default "Back": { goto(ItemList) }
+	}
+goto(EquippableItemList)
+
+WeaponEquipList:
+goto(ItemList)
+
+ArmorEquipList:
+goto(ItemList)
+
+BodyEquipList:
+goto(ItemList)
+
+OtherEquipList:
+goto(ItemList)
 
 StorageMenu:
 	CloseModMenu2Wnd()
@@ -56,12 +111,6 @@ TakeItemMenu:
 	"[1B 02 {e(data_18.l_0xc648da)}]{sound(116)}[1D 13 00 00][19 19 00 00]"
 	window_close(wnd_Dialog)
 eob
-
-ItemList:
-goto(GoodsMenu)
-
-KeyItemsList:
-goto(GoodsMenu)
 
 /* ID Entry */
 

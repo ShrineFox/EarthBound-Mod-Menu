@@ -396,7 +396,7 @@ l_0xc7f949:
     "  [1C 01 1E],{pause(20)}" linebreak
     "  [1C 01 34]..." next
     "@Let me demonstrate a strange power before I go.{pause(20)}  I realized this power as a child." next
-    "@PSI Farewell!  Now![03]{window_closeall}{set(flag 637)}" eob
+    "@PK Farewell!  Now![03]{window_closeall}{set(flag 637)}" eob
 
 l_0xc7f9f8:
     "{window_open(1)}@[1C 01 1E],{pause(20)}" linebreak

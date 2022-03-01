@@ -14,6 +14,8 @@ import "music/musicmenu.ccs"
 /* Commands */
 import "party/health/healthcommands.ccs"
 import "../../asm/cc_text_speed.ccs"
+import "../../asm/movement_reloc.ccs"
+import "../../asm/general.ccs"
 
 // Procedures
 
@@ -32,13 +34,14 @@ ModMenu:
 	// Pick a menu option
 	menu 1 {
 		"Party": { call(PartyMenu) }
-		"Save":  { save SystemWnd(wnd_ModMenu, "@Game saved.") goto(ModMenu_MainMenu) }
+		"Save":  { save SystemWnd(wnd_ModMenu, "@Game saved.") goto(ModMenu) }
 		"BGM": 	 { call(MusicMenu) }
 		"Warp":  { call(WarpMenu) }
 		"Battle": { call(BattleMenu) }
 		"Goods": { call(GoodsMenu) }
 		"Flags": { call(FlagsMenu) }
 		"Test":  { call(TestDlg)  }
+		"Text Speed": { call(TextSpeed) goto(ModMenu) }
 		default "Exit": {  }
 	}
 eob
@@ -53,13 +56,23 @@ ModMenu_AboutDlg:
 goto(ModMenu_MainMenu)
 
 
-command e(label) "{long label}"
 TestDlg:
-	ConfirmNumber(lbl_Test, 2, "Set this text speed?", SetTxtSpeed)
+	OpenKeyItemWnd()
+	"Test"
+	OpenKeyItemDescWnd()
+	"Test"
+	sprite2_spawn(3, 895, 1) // Jeff running script "M_SpriteOnScreen"
+    "[1F 61]" next
+	CloseAllModMenuWnd()
+goto(ModMenu_MainMenu)
+
+TextSpeed:
+	ConfirmNumber(lbl_Test, 1, "Set this text speed?", SetTxtSpeed)
 goto(ModMenu_MainMenu)
 
 SetTxtSpeed:
-	DebugWnd(wnd_ModMenu, "Text Speed")
 	settextspeed(0)
+	window_open(1)
 	"T-e-s-t-i-n-g" next
+	window_close(1)
 eob

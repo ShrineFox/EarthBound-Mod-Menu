@@ -1,4 +1,4 @@
-// General ASM code for fixing or modifying different things in-gamem
+// General ASM code for fixing or modifying different things in-game
 // from: https://github.com/ShadowOne333/MaternalBound-Redux/tree/master/ccscript
 import asm65816
 
@@ -10,18 +10,6 @@ ROM[0xC422E4] = "[09]"
 ROM[0xc3f3d0] = { STZ_a(0x9f75) }
 /* Play Custom Music at Boot */
 ROM[0xC0B7E0] = JSL (BootUpMusic)
-/* Ludicrous speed patch by Stochaztic */
-//ROM[0xC44058] = NOP
-//ROM[0xC444E6] = NOP
-//ROM[0xC10D4E] = NOP
-/* Prevent Followers from becoming unconscious during battle */
-//ROM[0xef6c84] = eob
-
-/* Disable Non-Door Collisions */
-// ROM[0xC054EE] = "[10]"
-/* Disable All Collisions */
-// ROM[0xC054EA] = "[A9]"
-
 BootUpMusic: {
         JSL   (0xC43317) // Run original overwritten code (initialize pointers to party member data)
         
@@ -30,6 +18,54 @@ BootUpMusic: {
         RTL
 }
 
+// Title Screen music stop
+//ROM[0xc4dcb5] = {BRA(5) NOP NOP NOP NOP NOP}
+// Title Screen -> File Select
+//ROM[0xc1f049] = {BRA(5) NOP NOP NOP NOP NOP}
+// File Select -> Naming
+//ROM[0xc1f8fb] = {BRA(5) NOP NOP NOP NOP NOP}
+// Naming -> File Select
+//ROM[0xc1f92c] = {BRA(5) NOP NOP NOP NOP NOP}
+// Naming confirmation sound
+//ROM[0xc1fcda] = {BRA(5) NOP NOP NOP NOP NOP}
+
+/* Ludicrous speed patch by Stochaztic */
+//ROM[0xC44058] = NOP
+//ROM[0xC444E6] = NOP
+//ROM[0xC10D4E] = NOP
+/* Prevent Followers from becoming unconscious during battle */
+//ROM[0xef6c84] = eob
+
+// Fast "you won" text by JTolmar
+// [1C 08 02] displays the "you won!" message, so just reduce the associated delays a lot
+// Reducing to 10 is actually TOO FAST if you can believe such a thing exists. 15 is barely ok.
+ROM[0xef79d7] = goto(FastYouWon1)
+FastYouWon1:
+  "{window_clear}{music(5)}" linebreak
+  "              [1C 08 02]" linebreak
+  "{pause(25)}" // Delay was 120
+  // goto(0xef79e6) // Original goes to homesick check
+  goto(0xef79ef) // Place after homesick check fails
+ 
+ROM[0xef7a14] = goto(FastYouWon2)
+FastYouWon2: 
+    "{window_clear}{music(184)}" linebreak
+    "              [1C 08 02]" linebreak
+    "{pause(25)}" // Delay was 120
+  // goto(0xef79e6) // Original goes to homesick check
+  goto(0xef79ef) // Place after homesick check fails
+
+ROM[0xef7a28] = goto(FastYouWon3)
+FastYouWon3:
+    "{window_clear}" linebreak
+    "              [1C 08 02]" linebreak
+    "{pause(20)}" linebreak // This one was a 90 for some reason so now it's a 20
+    "@" call(0xc7e6d7) " gained {delta} exp" call(0xef8fad) "{prompt}" eob
+
+/* Disable Non-Door Collisions */
+// ROM[0xC054EE] = "[10]"
+/* Disable All Collisions */
+// ROM[0xC054EA] = "[A9]"
 /* Disable enemy collisions? */
 // ROM[0xC3A405] = short 0xA6D1
 
@@ -61,6 +97,26 @@ ROM[0xC2381F] = LDX_i(0x000B)
 ROM[0xC1C415] = byte [0] 0x26
 ROM[0xC1FE3D] = byte [0] 0x80
 ROM[0xC1FE42] = byte [0] 0x7B
+
+// Change "PSI [FAVTHING] " into "PK [FAVTHING] "
+//
+// Reference: https://github.com/Herringway/ebsrc/blob/master/src/intro/file_select_menu_loop.asm#L628-L651
+ROM[0xC1FE37] = {
+    LDA_8 ("P")
+    STA_a (0x9825)
+    LDA_8 ("K")
+    STA_a (0x9826)
+    LDA_8 (" ")
+    STA_a (0x9827)
+
+    REP   (0x20)
+    LDA_i (0x0003) // Length of "PK " string
+    JMP   (0xFE50) // Back into original code
+}
+// Copy favorite thing string into $9828 instead of $9829
+ROM[0xC1FA7D] = LDX_i (0x9828)
+ROM[0xC1FBC7] = LDA_i (0x9828)
+ROM[0xC1FC39] = LDA_i (0x9828)
 
 /* Restore original spanking sound from Mother 2 */
 ROM[0xC3B989] = "[62]"	// Uncomment if you want to enable it

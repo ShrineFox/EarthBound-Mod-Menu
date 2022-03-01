@@ -240,7 +240,7 @@ l_0xef7415:
 l_0xef743b:
     newline
     "@[1C 02 04] used his new power,{prompt}" linebreak
-    "  PSI Starstorm!{prompt}" linebreak
+    "  PK Starstorm!{prompt}" linebreak
     eob
 
 l_0xef745f:
