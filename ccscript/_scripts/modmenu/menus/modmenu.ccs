@@ -15,7 +15,6 @@ import "music/musicmenu.ccs"
 import "party/health/healthcommands.ccs"
 import "../../asm/cc_text_speed.ccs"
 import "../../asm/movement_reloc.ccs"
-import "../../asm/general.ccs"
 
 // Procedures
 
@@ -61,7 +60,7 @@ TestDlg:
 	"Test"
 	OpenKeyItemDescWnd()
 	"Test"
-	sprite2_spawn(3, 895, 1) // Jeff running script "M_SpriteOnScreen"
+	CreateSprite(3, 895, 1) // Jeff running script "M_SpriteOnScreen"
     "[1F 61]" next
 	CloseAllModMenuWnd()
 goto(ModMenu_MainMenu)

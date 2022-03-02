@@ -9,7 +9,7 @@ import "../../commands.ccs"
 GoodsMenu:
 	CloseKeyItemDescWnd()
 	CloseKeyItemWnd()
-	CloseItemWnd()
+	CloseItemWnd() 
 	CloseDebugWnd()
 	CloseModMenu2Wnd()
 	OpenModMenu2Wnd()
@@ -106,10 +106,13 @@ StoreItemMenu:
 goto(StoreItemMenu)
 
 TakeItemMenu:
+	CloseAllModMenuWnd()
 	window_open(wnd_Dialog)
+	call(data_18.l_0xc646bb)
+	/*"[1A 07]" newline
+    "[1B 02 {e(data_18.l_0xc64916)}]{swap}{store_registers}[18 02]" call(data_14.l_0xc5e54a) "[1B 02 {e(data_18.l_0xc648da)}][1B 05]{window_switch(13)}{window_closetop}{window_switch(1)}[1B 06]{sound(116)}[1D 13 00 00][19 19 00 00]"
 	call(data_14.l_0xc5e54a)
-	"[1B 02 {e(data_18.l_0xc648da)}]{sound(116)}[1D 13 00 00][19 19 00 00]"
-	window_close(wnd_Dialog)
+	"[1B 02 {e(data_18.l_0xc648da)}]{sound(116)}[1D 13 00 00][19 19 00 00]"*/
 eob
 
 /* ID Entry */

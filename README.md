@@ -1,5 +1,5 @@
-# EarthBound-Mod-Menu
-In-game trainer for EarthBound (SNES). Made using CoilSnake.
+# EarthBound Mod Menu + Enhancements
+In-game trainer and customizable QoL patch collection for EarthBound (SNES). Made using CoilSnake.
 ## Credits
 - The **PK Hack Discord Server** for all their kind assistance. You guys PK Rock <3
 - **Mr. Tenda**: Creating [CoilSnake](https://github.com/pk-hack/CoilSnake)
@@ -9,10 +9,9 @@ In-game trainer for EarthBound (SNES). Made using CoilSnake.
 - **Catador**: Toggle-able noclip option for Mod Menu, change bootup music
 - **phoenixbound, ShadowOne333, vince94, Chaz**: Goods Equip Menu
 - **jtolmar, phoenixbound, and Catador**: Fast Doors
-- **cooprocks123e**: Ability to call battle backgrounds from anywhere, CCExpand for custom control codes
+- **cooprocks123e**: Ability to call battle backgrounds from anywhere, CCExpand for custom control codes, extended flags
 - **ShadowOne333**: From [MaternalBound-Redux](https://github.com/ShadowOne333/MaternalBound-Redux): Changed controls, crying also affects enemies, lower HP/PP windows one tile, PSI => PK, restore spank sfx
 - **H.S.**: asm65816 and ASMRef for assembly patch support via CCScript
-- **Rufus**: ebpp, ebpp_mem, and ebpp_std for custom flags, ASM commmands, window labels and more
 ## Built-in Features
 These features are not toggleable in-game, but can be changed by editing the CoilSnake project and rebuilding the ROM.
 - Run button when holding Y (faster than bike/skip sandwich)

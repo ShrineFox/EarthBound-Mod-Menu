@@ -1,5 +1,4 @@
 //import asm65816
-import "../asm/general.ccs"
 import "../asm/cc_text_speed.ccs"
 import "../asm/bg_viewer.ccs"
 /* Mod Menu */
@@ -27,9 +26,9 @@ command DisplayVertical(n) "[1C 0C {byte n}]"
 command SetDescription(countNo, prevWndType, DescLabel) { counter_zero ctoarg SetTextSpeed(0) counter(countNo) ctoarg call(DescLabel) SetTextSpeed(1) window_switch(prevWndType) eob }
 
 // Save current count/arg/result registers to RAM
-command SaveRAM() { act_to_wram }
+command SaveRAM() { "[1B 05]" }
 // Retreive count/arg/result registers from RAM
-command LoadRAM() { wram_to_act }
+command LoadRAM() { "[1B 06]" }
 // Load count value into arg for use as a parameter
 command LoadCounter() { ctoarg }
 // Reset counter to zero
@@ -215,3 +214,6 @@ command NotifyInventoryFull()
 {
 	SystemWnd(wnd_ModMenu2, "Nobody has room for new items.")
 }
+
+/* Sprites */
+command CreateSprite(sprite,move,style) "[1F 15 {short sprite} {short move} {byte style}]"

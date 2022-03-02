@@ -1,0 +1,161 @@
+// expand_flags.ccs - v2 (fixed battle music bug)
+// developed by cooprocks123e with code from stochaztic
+// bug testing by Messianic
+// use it how you want. or don't, that's fine too
+
+import asm65816
+
+define NEW_PERSISTENT_RAM_LOCATION = 0x7EB600
+define NEW_PERSISTENT_RAM_SIZE     = 0x9D
+
+define NEW_FLAGS_LOCATION            = 0x7EB600
+define NEW_FLAGS_LOCATION_MINUS_0x80 = 0x7EB580 // Must equal (NEW_FLAGS_LOCATION - 0x80)
+define NEW_FLAGS_SIZE                = 0x9D
+define TOTAL_NUM_FLAG_BYTES          = 0x11D    // Must equal (NEW_FLAGS_SIZE + 0x80)
+
+define SAVEFILE_SIZE                        = 0x550
+define SAVEFILE_SIZE_TIMES_2                = 0xAA0
+define SAVEFILE_NUM_BYTES_AFTER_HEADER      = 0x530
+define SAVEFILE_NUM_WORDS_AFTER_HEADER      = 0x298
+define SAVEFILE_NUM_BYTES_USED_AFTER_HEADER = 0x530
+
+//// Expand flags /////////////////////////////////////////////////////////////
+
+ROM[0xc21628] = {
+GetEventFlag:
+    /* 28 */     REP(0x31)
+                 // We can save a lot of space since we don't need a stack frame
+    /* 2a */     DEC
+    /* 2b */     TAY
+                 // Read flag bit from table
+    /* 2c */     AND_i(0x0007) // Take flag_index mod 8
+    /* 2f */     TAX
+    /* 30 */     LDA_xl(0xc4562f)
+    /* 34 */     PHA
+                 // Calculate flag byte offset
+    /* 35 */     TYA
+    /* 36 */     LSR
+    /* 37 */     LSR
+    /* 38 */     LSR
+    /* 39 */     TAX
+    /* 3a */     PLA
+                 // Check if flag number is in range, and return 0 if not
+    /* 3b */     CPX_i(TOTAL_NUM_FLAG_BYTES)
+    /* 3e */     BMI(3)
+    /* 40 */     JMP(0x1659) // GetEventFlag_ReturnZero
+                 // Check if flag number is in the new range
+    /* 43 */     CPX_i(0x0080)
+    /* 46 */     BPL(5)
+                 // Load flag from old range
+    /* 48 */     AND_x(0x9c08)
+    /* 4b */     BRA(3)
+                 // Load flag from new range
+    /* 4d */     AND_x(NEW_FLAGS_LOCATION_MINUS_0x80)
+                 // Mask down to lowest byte
+    /* 50 */     AND_i(0x00ff)
+    /* 53 */     BEQ(4)
+    /* 55 */     LDA_i(0x0001)
+    /* 58 */     RTL
+             GetEventFlag_ReturnZero:
+    /* 59 */     LDA_i(0x0000)
+    /* 5c */     RTL
+    /* 5d */     RTL // To match up with the previous RTL
+
+SetEventFlag: /* Flag number in A, value in X */
+    /* 5e */    REP(0x31)
+    /* 60 */    DEC
+    /* 61 */    PHA
+    /* 62 */    LSR
+    /* 63 */    LSR
+    /* 64 */    LSR
+    /* 65 */    CMP_i(TOTAL_NUM_FLAG_BYTES)
+    /* 68 */    BMI(4)
+                // It's out of range. Return zero.
+    /* 6a */    PLA // Make sure stack is the same as when we got here
+    /* 6b */    JMP(0x1659) // GetEventFlag_ReturnZero
+    /* 6e */    CMP_i(0x0080)
+    /* 71 */    CLC
+    /* 72 */    BPL(5)
+    /* 74 */    ADC_i(0x9c08)
+    /* 77 */    BRA(3)
+    /* 79 */    ADC_i(NEW_FLAGS_LOCATION_MINUS_0x80)
+    /* 7c */    TAY
+    /* 7d */    PLA // A: Flag-1, X: Value, Y: Ptr to flag byte
+    /* 7e */    PHX
+    /* 7f */    AND_i(0x0007)
+    /* 82 */    TAX
+    /* 83 */    LDA_xl(0xc4562f)
+    /* 87 */    AND_i(0x00ff)
+    /* 8a */    PLX
+    /* 8b */    BEQ(5)
+    /* 8d */    ORA_y(0x0000)
+    /* 90 */    BRA(6)
+    /* 92 */    EOR_i(0xffff)
+    /* 95 */    AND_y(0x0000)
+    /* 98 */    STA_y(0x0000)
+                // For whatever reason this function returns the modified flag byte
+    /* 9b */    AND_i(0x00ff)
+    /* 9e */    RTL
+
+    /* 9f */    RTL
+    /* a0 */    RTL
+    /* a1 */    RTL
+    /* a2 */    RTL
+    /* a3 */    RTL
+    /* a4 */    RTL
+    /* a5 */    RTL
+    /* a6 */    RTL
+    /* a7 */    RTL
+    /* a8 */    RTL
+    /* a9 */    RTL
+    /* aa */    RTL
+    /* ab */    RTL
+    /* ac */    RTL // Original RTL
+}
+
+//// Expand SRAM savefile /////////////////////////////////////////////////////
+// Keep the SRAM the same size, but expand each savefile
+
+ROM[0xef05b4] = { short SAVEFILE_SIZE }
+ROM[0xef05de] = { short SAVEFILE_SIZE }
+
+ROM[0xef063e] = { short SAVEFILE_SIZE }
+
+ROM[0xef06b9] = { short SAVEFILE_SIZE }
+ROM[0xef06e3] = { short SAVEFILE_SIZE }
+ROM[0xef072c] = { short SAVEFILE_SIZE }
+
+ROM[0xef073f] = { short SAVEFILE_SIZE }
+ROM[0xef0774] = { short SAVEFILE_NUM_BYTES_AFTER_HEADER }
+
+ROM[0xef0786] = { short SAVEFILE_SIZE }
+ROM[0xef07b9] = { short SAVEFILE_NUM_WORDS_AFTER_HEADER }
+
+ROM[0xef07dc] = { short SAVEFILE_SIZE }
+
+ROM[0xef08b4] = { short SAVEFILE_SIZE }
+
+ROM[0xef0a73] = { short SAVEFILE_SIZE_TIMES_2 }
+
+ROM[0xef0ba7] = { short SAVEFILE_NUM_BYTES_USED_AFTER_HEADER }
+ROM[0xef0bb9] = { short SAVEFILE_NUM_BYTES_USED_AFTER_HEADER }
+
+
+//// Code from Chaz - thanks! /////////////////////////////////////////////////
+// This patches the savegame routines to load/store additional RAM to SRAM.
+
+// Both saving and loading happen in three chunks despite all sections being continuous.
+// Add the third chunk to the second, then use the third code to point to new memory.
+// New memory in RAM located at 0x7eb600, 77 (0x4d) bytes long. New SRAM block begins 0x4b3.
+
+// Saving function at EF/088F
+ROM[0xEF097E] = { LDA_i(0x02BA)                      }    // - existing 0x023A + next section 0x0080
+ROM[0xEF0985] = { LDA_i(0x02BA)                      }    //
+ROM[0xEF099B] = { LDA_i(NEW_PERSISTENT_RAM_LOCATION) }    // - new memory location (was #$9C08)
+ROM[0xEF09DA] = { LDA_i(NEW_PERSISTENT_RAM_SIZE)     }    // - new memory size
+
+// Loading function at EF/0A68
+ROM[0xEF0B2D] = { LDA_i(0x02BA)                      }    // - existing 0x023A + next section 0x0080
+ROM[0xEF0B34] = { LDA_i(0x02BA)                      }    //
+ROM[0xEF0B42] = { LDA_i(NEW_PERSISTENT_RAM_LOCATION) }    // - new memory location (was #$9C08)
+ROM[0xEF0B81] = { LDA_i(NEW_PERSISTENT_RAM_SIZE)     }    // - new memory size

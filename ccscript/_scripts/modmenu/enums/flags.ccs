@@ -1,4 +1,4 @@
-/* EB++ Extra Flags */
+/* Extra Flags (up to 0x8e8 */
 
 // Whether a party member has been selected for editing
 define flg_NessEdit = flag 0x668
@@ -60,6 +60,8 @@ define flg_KeyItem_BackstagePass = flag 0x649
 define flg_KeyItem_YogurtMachine = flag 0x648
 // Whether Show Ticket has been obtained or not
 define flg_KeyItem_ShowTicket = flag 0x647
+// Whether Run Button is inverted or not
+define flg_RunButton_Inverted = flag 0x646
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12
@@ -179,18 +181,6 @@ define flg_KeyItem_ShynessBook = flag 0x59
 define flg_KeyItem_Tendakraut = flag 0x5C
 define flg_KeyItem_Meteorite = flag 0x4F
 define flg_KeyItem_BubbleGum = flag 0x143
-// MISSING
-// Backstage pass
-// Tiny Ruby
-// Town Map
-// Yogurt Dispenser
-// Tendakraut
-// Show ticket
-// Pak of bubble gum
-// King banana
-// Hieroglyph copy
-// Hawk Eye
-// Contact lens
 
 /* Photos */
 define flg_Photo_1 = 0x2BA //in front of Ness’s house

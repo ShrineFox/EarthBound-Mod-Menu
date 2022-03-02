@@ -1,17 +1,18 @@
 import asm65816
+import "../modmenu/enums/flags.ccs"
 
 // Invertable, flag-controlled run button
 // By jtolmar
 // Unlike the standard run button patch, this one does not affect the skip sandwich
 // status in memory. Useful if you want skip sandwiches to do something else.
 
-define invert_run_button = flag 0x123 // Replace this flag with the one you want
+//define invert_run_button = flag 0x123 // Replace this flag with the one you want
 
 // New function, sets accumulator to 0 if run, 1 if not.
 InRunMode: {
   PHX
   PHY
-  LDA_i(invert_run_button)
+  LDA_i(flg_RunButton_Inverted)
   JSL(0xC21628) // Flag A -> result in A
   CMP_i(0)
   BEQ(9) // Manually computed jump to not inverted
