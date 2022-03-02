@@ -3,6 +3,9 @@ import "_scripts/modmenu/enums/bgm.ccs"
 import "_scripts/modmenu/enums/labels.ccs"
 import "_scripts/modmenu/commands.ccs"
 import "_scripts/modmenu/menus/config/configmenu.ccs"
+import "_scripts/asm/asm65816_2.ccs"
+import "_scripts/asm/ccexpand.ccs"
+import "_scripts/asm/cc_asmcall.ccs"
 
 /* Setup testing environment */
 
@@ -14,22 +17,25 @@ newgame_startup(Startup)
 // Requires patches.yml - Show Sprites Without Flyover: enabled
 
 Startup:
-music(bgm_None)
-music_switching_off
 set(flg_Ness)
-//set(flg_Debug)
-set(flg_BuzzBuzzDead)
-unset(flg_Defeat_NessNightmare)
-set(flg_KeyItem_ShackKey)
+set(flg_Debug)
+set(531) // Tracy downstairs
 set(flg_DisableCollision)
-unset(flg_NoEnemies)
-unset(flg_NoOnettNPCs)
-set(flg_OnettDaytime)
-set(flg_OnettDaytimeMusic)
-/* Debug
+set(flg_BuzzBuzzDead)
+set(flg_KeyItem_ShackKey)
+set(flg_ModMenu)
+set(flg_UnrestrictBike)
 set(flg_DadCantCall)
 set(flg_AutoAdvStatIncMsgs)
 set(flg_NoPhotoGuy)
+unset(flg_NoEnemies)
+/* Debug
+music(bgm_None)
+music_switching_off
+unset(flg_Defeat_NessNightmare)
+unset(flg_NoOnettNPCs)
+set(flg_OnettDaytime)
+set(flg_OnettDaytimeMusic)
 /* End Debug */
 eob
 

@@ -54,19 +54,19 @@
   X Offset: 1
   Y Offset: 10
 11:
-  Height: 33
-  Width: 32
-  X Offset: 0
-  Y Offset: 0
+  Height: 4
+  Width: 11
+  X Offset: 1
+  Y Offset: 15
 12:
+  Height: 16
+  Width: 19
+  X Offset: 12
+  Y Offset: 1
+13:
   Height: 16
   Width: 24
   X Offset: 7
-  Y Offset: 1
-13:
-  Height: 27
-  Width: 13
-  X Offset: 1
   Y Offset: 1
 14:
   Height: 6
@@ -84,10 +84,10 @@
   X Offset: 4
   Y Offset: 1
 17:
-  Height: 18
+  Height: 4
   Width: 12
-  X Offset: 7
-  Y Offset: 4
+  X Offset: 12
+  Y Offset: 1
 18:
   Height: 6
   Width: 14
@@ -184,10 +184,10 @@
   X Offset: 4
   Y Offset: 21
 37:
-  Height: 9
-  Width: 14
-  X Offset: 10
-  Y Offset: 11
+  Height: 8
+  Width: 13
+  X Offset: 18
+  Y Offset: 6
 38:
   Height: 4
   Width: 12
@@ -210,9 +210,9 @@
   Y Offset: 8
 42:
   Height: 4
-  Width: 22
-  X Offset: 8
-  Y Offset: 9
+  Width: 21
+  X Offset: 10
+  Y Offset: 8
 43:
   Height: 4
   Width: 27
@@ -254,12 +254,12 @@
   X Offset: 14
   Y Offset: 11
 51:
-  Height: 10
-  Width: 24
-  X Offset: 7
-  Y Offset: 17
+  Height: 4
+  Width: 9
+  X Offset: 22
+  Y Offset: 8
 52:
-  Height: 13
-  Width: 16
-  X Offset: 15
-  Y Offset: 15
+  Height: 18
+  Width: 18
+  X Offset: 7
+  Y Offset: 9

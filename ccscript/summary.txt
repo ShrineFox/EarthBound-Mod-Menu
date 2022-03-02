@@ -6,9 +6,9 @@ CCScript Compilation Summary
 Compilation statistics
 =================================================================
 Compilation start:           $f10000
-Compilation end:             $f96daa
-Total compiled size:         552362 bytes
-Fragmented space:            458 bytes
+Compilation end:             $f96a3b
+Total compiled size:         551483 bytes
+Fragmented space:            439 bytes
 -----------------------------------------------------------------
 
 
@@ -23,7 +23,7 @@ data_03                      $f84361      5590   bytes
 data_04                      $f6459e      8656   bytes
 data_05                      $f73c2a      7507   bytes
 data_06                      $f80000      5878   bytes
-data_07                      $f945fd      2123   bytes
+data_07                      $f94629      2123   bytes
 data_08                      $f85937      5478   bytes
 data_09                      $f71e1b      7695   bytes
 data_10                      $f86e9d      5315   bytes
@@ -37,7 +37,7 @@ data_17                      $f6a90c      8068   bytes
 data_18                      $f774e0      6876   bytes
 data_19                      $f6e6fa      6307   bytes
 data_20                      $f2938d      12329  bytes
-data_21                      $f93cc9      2356   bytes
+data_21                      $f93cf5      2356   bytes
 data_22                      $f2c3b6      12173  bytes
 data_23                      $f40000      11131  bytes
 data_24                      $f35dcd      11476  bytes
@@ -77,52 +77,51 @@ data_57                      $f90f2d      3755   bytes
 data_58                      $f8e1e1      3991   bytes
 data_59                      $f8f178      3330   bytes
 data_60                      $f816f6      5725   bytes
-data_61                      $f960a5      928    bytes
-data_62                      $f1fffb      0      bytes
-main                         $f1fffb      0      bytes
+data_61                      $f960d1      928    bytes
+data_62                      $f2fffa      0      bytes
+main                         $f2fffa      0      bytes
 _scripts                     $f82d53      5646   bytes
-_startup                     $f1ffc5      40     bytes
-stdarg                       $f1fffb      0      bytes
-std                          $f1fffb      0      bytes
-flags                        $f1fffb      0      bytes
-bgm                          $f1fffb      0      bytes
+_startup                     $f1ffc5      43     bytes
+stdarg                       $f2fffa      0      bytes
+std                          $f2fffa      0      bytes
+flags                        $f2fffa      0      bytes
+bgm                          $f2fffa      0      bytes
 labels                       $f8fe7a      348    bytes
-commands                     $f1fffb      0      bytes
-configmenu                   $f932bb      2574   bytes
-windows                      $f1fffb      0      bytes
-cc_text_speed                $f1ff86      63     bytes
-bg_viewer                    $f9697f      336    bytes
-party                        $f1fffb      0      bytes
-asm65816_2                   $f1fffb      0      bytes
-ccexpand                     $f967e0      415    bytes
+commands                     $f2fffa      0      bytes
+configmenu                   $f932e7      2574   bytes
+asm65816_2                   $f2fffa      0      bytes
+ccexpand                     $f96471      415    bytes
 cc_asmcall                   $f3ff78      128    bytes
-asm65816                     $f1fffb      0      bytes
-ASMRef                       $f1fffb      0      bytes
-asm_code                     $f96d0a      160    bytes
-asm_controls                 $f1fffb      0      bytes
-expand_flags                 $f1fffb      0      bytes
+windows                      $f2fffa      0      bytes
+cc_text_speed                $f1ff86      63     bytes
+bg_viewer                    $f96610      336    bytes
+party                        $f2fffa      0      bytes
+asm_code                     $f9699b      160    bytes
+asm_controls                 $f2fffa      0      bytes
+expand_flags                 $f2fffa      0      bytes
 Title_Window                 $f7feb6      320    bytes
-name_fun                     $f1fffb      0      bytes
+name_fun                     $f2fffa      0      bytes
 noclip                       $f4ff61      27     bytes
-fast_doors                   $f1ffed      14     bytes
+fast_doors                   $f2ffec      14     bytes
 run_button_toggleable        $f2ffac      35     bytes
 repel_sandwiches             $f2ffcf      29     bytes
-GoodsMenuEquip               $f96acf      307    bytes
+run_accelerating             $f1fff0      16     bytes
+GoodsMenuEquip               $f96760      307    bytes
 movement_reloc               $f91dd8      2728   bytes
-optimize_text_render_3       $f96445      923    bytes
-modmenu                      $f95cb9      1004   bytes
-goodsmenu                    $f92880      2619   bytes
-items                        $f1fffb      0      bytes
+modmenu                      $f95ce5      1004   bytes
+goodsmenu                    $f92880      2663   bytes
+items                        $f2fffa      0      bytes
 partymenu                    $f70000      7707   bytes
-warpmenu                     $f95615      1700   bytes
+warpmenu                     $f95641      1700   bytes
 flagsmenu                    $f90000      3885   bytes
-battlemenu                   $f94e48      1997   bytes
+battlemenu                   $f94e74      1997   bytes
 musicmenu                    $f6c890      7786   bytes
-healthcommands               $f1fffb      0      bytes
-status                       $f1fffb      0      bytes
-battles                      $f1fffb      0      bytes
+healthcommands               $f2fffa      0      bytes
+status                       $f2fffa      0      bytes
+battles                      $f2fffa      0      bytes
 healthmenu                   $f2635b      12338  bytes
-movscr_codes                 $f96c02      264    bytes
+asm65816                     $f2fffa      0      bytes
+movscr_codes                 $f96893      264    bytes
 -----------------------------------------------------------------
 
 
@@ -874,106 +873,106 @@ l_0xc587f3                   $f816d6
 Labels in module data_07
 Name                         Address
 -----------------------------------------------------------------
-l_0xc58813                   $f945fd
-l_0xc5882e                   $f94618
-l_0xc5882f                   $f94619
-l_0xc58840                   $f9462a
-l_0xc58841                   $f9462b
-l_0xc5884d                   $f94637
-l_0xc5884e                   $f94638
-l_0xc5885a                   $f94644
-l_0xc5885b                   $f94645
-l_0xc58867                   $f94651
-l_0xc58868                   $f94652
-l_0xc58874                   $f9465e
-l_0xc58875                   $f9465f
-l_0xc58881                   $f9466b
-l_0xc58882                   $f9466c
-l_0xc5888e                   $f94678
-l_0xc5888f                   $f94679
-l_0xc5889b                   $f94685
-l_0xc5889c                   $f94686
-l_0xc588a8                   $f94692
-l_0xc588a9                   $f94693
-l_0xc588ba                   $f946a4
-l_0xc588bb                   $f946a5
-l_0xc588cc                   $f946b6
-l_0xc588cd                   $f946b7
-l_0xc589e6                   $f947d0
-l_0xc589ea                   $f947d4
-l_0xc589ee                   $f947d8
-l_0xc589f2                   $f947dc
-l_0xc589f6                   $f947e0
-l_0xc589fa                   $f947e4
-l_0xc589fe                   $f947e8
-l_0xc58a02                   $f947ec
-l_0xc58a06                   $f947f0
-l_0xc58a0a                   $f947f4
-l_0xc58a0e                   $f947f8
-l_0xc58a12                   $f947fc
-l_0xc58a16                   $f94800
-l_0xc58a1a                   $f94804
-l_0xc58a1e                   $f94808
-l_0xc58a22                   $f9480c
-l_0xc58a26                   $f94810
-l_0xc58a2a                   $f94814
-l_0xc58a2e                   $f94818
-l_0xc58a32                   $f9481c
-l_0xc58a36                   $f94820
-l_0xc58a61                   $f9484b
-l_0xc58a8d                   $f9487c
-l_0xc58a92                   $f94881
-l_0xc58a93                   $f94882
-l_0xc58ad7                   $f948c6
-l_0xc58adc                   $f948cb
-l_0xc58add                   $f948cc
-l_0xc58afb                   $f948eb
-l_0xc58b6c                   $f9495c
-l_0xc58b88                   $f9497d
-l_0xc58ba0                   $f94995
-l_0xc58bab                   $f949a0
-l_0xc58bac                   $f949a1
-l_0xc58bd1                   $f949c6
-l_0xc58bd2                   $f949c7
-l_0xc58c2a                   $f94a24
-l_0xc58c2f                   $f94a29
-l_0xc58c30                   $f94a2a
-l_0xc58c54                   $f94a4e
-l_0xc58c55                   $f94a4f
-l_0xc58c5f                   $f94a5e
-l_0xc58c69                   $f94a6d
-l_0xc58c73                   $f94a7c
-l_0xc58c7d                   $f94a8b
-l_0xc58c88                   $f94a96
-l_0xc58d09                   $f94b17
-l_0xc58d46                   $f94b54
-l_0xc58d58                   $f94b6b
-l_0xc58d70                   $f94b84
-l_0xc58d80                   $f94b99
-l_0xc58d96                   $f94bb2
-l_0xc58da9                   $f94bca
-l_0xc58dbf                   $f94be3
-l_0xc58df1                   $f94c15
-l_0xc58e02                   $f94c26
-l_0xc58e13                   $f94c37
-l_0xc58e31                   $f94c5a
-l_0xc58e4a                   $f94c76
-l_0xc58e73                   $f94c9f
-l_0xc58e9f                   $f94ccb
-l_0xc58ea6                   $f94cd2
-l_0xc58ead                   $f94cd9
-l_0xc58eb4                   $f94ce0
-l_0xc58ebb                   $f94ce7
-l_0xc58ed1                   $f94cfd
-l_0xc58edd                   $f94d09
-l_0xc58f07                   $f94d33
-l_0xc58f35                   $f94d61
-l_0xc58f37                   $f94d63
-l_0xc58f61                   $f94d8d
-l_0xc58f93                   $f94dbf
-l_0xc58fc1                   $f94ded
-l_0xc58feb                   $f94e17
-l_0xc59019                   $f94e45
+l_0xc58813                   $f94629
+l_0xc5882e                   $f94644
+l_0xc5882f                   $f94645
+l_0xc58840                   $f94656
+l_0xc58841                   $f94657
+l_0xc5884d                   $f94663
+l_0xc5884e                   $f94664
+l_0xc5885a                   $f94670
+l_0xc5885b                   $f94671
+l_0xc58867                   $f9467d
+l_0xc58868                   $f9467e
+l_0xc58874                   $f9468a
+l_0xc58875                   $f9468b
+l_0xc58881                   $f94697
+l_0xc58882                   $f94698
+l_0xc5888e                   $f946a4
+l_0xc5888f                   $f946a5
+l_0xc5889b                   $f946b1
+l_0xc5889c                   $f946b2
+l_0xc588a8                   $f946be
+l_0xc588a9                   $f946bf
+l_0xc588ba                   $f946d0
+l_0xc588bb                   $f946d1
+l_0xc588cc                   $f946e2
+l_0xc588cd                   $f946e3
+l_0xc589e6                   $f947fc
+l_0xc589ea                   $f94800
+l_0xc589ee                   $f94804
+l_0xc589f2                   $f94808
+l_0xc589f6                   $f9480c
+l_0xc589fa                   $f94810
+l_0xc589fe                   $f94814
+l_0xc58a02                   $f94818
+l_0xc58a06                   $f9481c
+l_0xc58a0a                   $f94820
+l_0xc58a0e                   $f94824
+l_0xc58a12                   $f94828
+l_0xc58a16                   $f9482c
+l_0xc58a1a                   $f94830
+l_0xc58a1e                   $f94834
+l_0xc58a22                   $f94838
+l_0xc58a26                   $f9483c
+l_0xc58a2a                   $f94840
+l_0xc58a2e                   $f94844
+l_0xc58a32                   $f94848
+l_0xc58a36                   $f9484c
+l_0xc58a61                   $f94877
+l_0xc58a8d                   $f948a8
+l_0xc58a92                   $f948ad
+l_0xc58a93                   $f948ae
+l_0xc58ad7                   $f948f2
+l_0xc58adc                   $f948f7
+l_0xc58add                   $f948f8
+l_0xc58afb                   $f94917
+l_0xc58b6c                   $f94988
+l_0xc58b88                   $f949a9
+l_0xc58ba0                   $f949c1
+l_0xc58bab                   $f949cc
+l_0xc58bac                   $f949cd
+l_0xc58bd1                   $f949f2
+l_0xc58bd2                   $f949f3
+l_0xc58c2a                   $f94a50
+l_0xc58c2f                   $f94a55
+l_0xc58c30                   $f94a56
+l_0xc58c54                   $f94a7a
+l_0xc58c55                   $f94a7b
+l_0xc58c5f                   $f94a8a
+l_0xc58c69                   $f94a99
+l_0xc58c73                   $f94aa8
+l_0xc58c7d                   $f94ab7
+l_0xc58c88                   $f94ac2
+l_0xc58d09                   $f94b43
+l_0xc58d46                   $f94b80
+l_0xc58d58                   $f94b97
+l_0xc58d70                   $f94bb0
+l_0xc58d80                   $f94bc5
+l_0xc58d96                   $f94bde
+l_0xc58da9                   $f94bf6
+l_0xc58dbf                   $f94c0f
+l_0xc58df1                   $f94c41
+l_0xc58e02                   $f94c52
+l_0xc58e13                   $f94c63
+l_0xc58e31                   $f94c86
+l_0xc58e4a                   $f94ca2
+l_0xc58e73                   $f94ccb
+l_0xc58e9f                   $f94cf7
+l_0xc58ea6                   $f94cfe
+l_0xc58ead                   $f94d05
+l_0xc58eb4                   $f94d0c
+l_0xc58ebb                   $f94d13
+l_0xc58ed1                   $f94d29
+l_0xc58edd                   $f94d35
+l_0xc58f07                   $f94d5f
+l_0xc58f35                   $f94d8d
+l_0xc58f37                   $f94d8f
+l_0xc58f61                   $f94db9
+l_0xc58f93                   $f94deb
+l_0xc58fc1                   $f94e19
+l_0xc58feb                   $f94e43
+l_0xc59019                   $f94e71
 -----------------------------------------------------------------
 
 
@@ -2358,106 +2357,106 @@ l_0xc680c2                   $f2c38f
 Labels in module data_21
 Name                         Address
 -----------------------------------------------------------------
-l_0xc680dc                   $f93cc9
-l_0xc680e2                   $f93ccf
-l_0xc680e8                   $f93cd5
-l_0xc680ee                   $f93cdb
-l_0xc680f0                   $f93cdd
-l_0xc680f2                   $f93cdf
-l_0xc68139                   $f93d29
-l_0xc68174                   $f93d67
-l_0xc681b5                   $f93dac
-l_0xc681e6                   $f93de1
-l_0xc681eb                   $f93de6
-l_0xc681f0                   $f93deb
-l_0xc6822a                   $f93e29
-l_0xc68253                   $f93e59
-l_0xc68264                   $f93e6f
-l_0xc6829f                   $f93ead
-l_0xc682dd                   $f93ef4
-l_0xc6831b                   $f93f3b
-l_0xc68359                   $f93f82
-l_0xc68397                   $f93fc9
-l_0xc683d5                   $f94010
-l_0xc683d9                   $f94014
-l_0xc683de                   $f94019
-l_0xc683df                   $f9401a
-l_0xc683e6                   $f94021
-l_0xc683ed                   $f94028
-l_0xc683f4                   $f9402f
-l_0xc683fb                   $f94036
-l_0xc68402                   $f9403d
-l_0xc68409                   $f94044
-l_0xc68410                   $f9404b
-l_0xc68417                   $f94052
-l_0xc6841e                   $f94059
-l_0xc68425                   $f94060
-l_0xc6842c                   $f94067
-l_0xc68433                   $f9406e
-l_0xc6843a                   $f94075
-l_0xc68441                   $f9407c
-l_0xc68448                   $f94083
-l_0xc6844f                   $f9408a
-l_0xc68456                   $f94091
-l_0xc6845d                   $f94098
-l_0xc68464                   $f9409f
-l_0xc6846b                   $f940a6
-l_0xc68472                   $f940ad
-l_0xc68473                   $f940ae
-l_0xc6847a                   $f940b5
-l_0xc684a6                   $f940e1
-l_0xc684ce                   $f94109
-l_0xc68500                   $f9414d
-l_0xc68507                   $f94154
-l_0xc6850e                   $f9415b
-l_0xc68515                   $f94162
-l_0xc6851c                   $f94169
-l_0xc68523                   $f94170
-l_0xc6852a                   $f94177
-l_0xc68531                   $f9417e
-l_0xc68538                   $f94185
-l_0xc6853f                   $f9418c
-l_0xc68546                   $f94193
-l_0xc6854d                   $f9419a
-l_0xc68554                   $f941a1
-l_0xc6855b                   $f941a8
-l_0xc68562                   $f941af
-l_0xc68569                   $f941b6
-l_0xc68570                   $f941bd
-l_0xc68577                   $f941c4
-l_0xc6857c                   $f941c9
-l_0xc68583                   $f941d0
-l_0xc6858a                   $f941d7
-l_0xc68591                   $f941de
-l_0xc68598                   $f941e5
-l_0xc6859f                   $f941ec
-l_0xc685a6                   $f941f3
-l_0xc685ad                   $f941fa
-l_0xc685b4                   $f94201
-l_0xc685bb                   $f94208
-l_0xc685cb                   $f9422f
-l_0xc685da                   $f94249
-l_0xc685fa                   $f9426e
-l_0xc68650                   $f942ea
-l_0xc68651                   $f942eb
-l_0xc68659                   $f942f3
-l_0xc68661                   $f942fb
-l_0xc68662                   $f942fc
-l_0xc6866a                   $f94304
-l_0xc6866b                   $f94305
-l_0xc686c8                   $f9439e
-l_0xc68726                   $f9443a
-l_0xc687a5                   $f944f3
-l_0xc687e4                   $f9455e
-l_0xc6880b                   $f945a6
-l_0xc68815                   $f945b0
-l_0xc6881f                   $f945ba
-l_0xc68829                   $f945c4
-l_0xc68833                   $f945ce
-l_0xc6883d                   $f945d8
-l_0xc68847                   $f945e2
-l_0xc68851                   $f945ec
-l_0xc68858                   $f945f3
+l_0xc680dc                   $f93cf5
+l_0xc680e2                   $f93cfb
+l_0xc680e8                   $f93d01
+l_0xc680ee                   $f93d07
+l_0xc680f0                   $f93d09
+l_0xc680f2                   $f93d0b
+l_0xc68139                   $f93d55
+l_0xc68174                   $f93d93
+l_0xc681b5                   $f93dd8
+l_0xc681e6                   $f93e0d
+l_0xc681eb                   $f93e12
+l_0xc681f0                   $f93e17
+l_0xc6822a                   $f93e55
+l_0xc68253                   $f93e85
+l_0xc68264                   $f93e9b
+l_0xc6829f                   $f93ed9
+l_0xc682dd                   $f93f20
+l_0xc6831b                   $f93f67
+l_0xc68359                   $f93fae
+l_0xc68397                   $f93ff5
+l_0xc683d5                   $f9403c
+l_0xc683d9                   $f94040
+l_0xc683de                   $f94045
+l_0xc683df                   $f94046
+l_0xc683e6                   $f9404d
+l_0xc683ed                   $f94054
+l_0xc683f4                   $f9405b
+l_0xc683fb                   $f94062
+l_0xc68402                   $f94069
+l_0xc68409                   $f94070
+l_0xc68410                   $f94077
+l_0xc68417                   $f9407e
+l_0xc6841e                   $f94085
+l_0xc68425                   $f9408c
+l_0xc6842c                   $f94093
+l_0xc68433                   $f9409a
+l_0xc6843a                   $f940a1
+l_0xc68441                   $f940a8
+l_0xc68448                   $f940af
+l_0xc6844f                   $f940b6
+l_0xc68456                   $f940bd
+l_0xc6845d                   $f940c4
+l_0xc68464                   $f940cb
+l_0xc6846b                   $f940d2
+l_0xc68472                   $f940d9
+l_0xc68473                   $f940da
+l_0xc6847a                   $f940e1
+l_0xc684a6                   $f9410d
+l_0xc684ce                   $f94135
+l_0xc68500                   $f94179
+l_0xc68507                   $f94180
+l_0xc6850e                   $f94187
+l_0xc68515                   $f9418e
+l_0xc6851c                   $f94195
+l_0xc68523                   $f9419c
+l_0xc6852a                   $f941a3
+l_0xc68531                   $f941aa
+l_0xc68538                   $f941b1
+l_0xc6853f                   $f941b8
+l_0xc68546                   $f941bf
+l_0xc6854d                   $f941c6
+l_0xc68554                   $f941cd
+l_0xc6855b                   $f941d4
+l_0xc68562                   $f941db
+l_0xc68569                   $f941e2
+l_0xc68570                   $f941e9
+l_0xc68577                   $f941f0
+l_0xc6857c                   $f941f5
+l_0xc68583                   $f941fc
+l_0xc6858a                   $f94203
+l_0xc68591                   $f9420a
+l_0xc68598                   $f94211
+l_0xc6859f                   $f94218
+l_0xc685a6                   $f9421f
+l_0xc685ad                   $f94226
+l_0xc685b4                   $f9422d
+l_0xc685bb                   $f94234
+l_0xc685cb                   $f9425b
+l_0xc685da                   $f94275
+l_0xc685fa                   $f9429a
+l_0xc68650                   $f94316
+l_0xc68651                   $f94317
+l_0xc68659                   $f9431f
+l_0xc68661                   $f94327
+l_0xc68662                   $f94328
+l_0xc6866a                   $f94330
+l_0xc6866b                   $f94331
+l_0xc686c8                   $f943ca
+l_0xc68726                   $f94466
+l_0xc687a5                   $f9451f
+l_0xc687e4                   $f9458a
+l_0xc6880b                   $f945d2
+l_0xc68815                   $f945dc
+l_0xc6881f                   $f945e6
+l_0xc68829                   $f945f0
+l_0xc68833                   $f945fa
+l_0xc6883d                   $f94604
+l_0xc68847                   $f9460e
+l_0xc68851                   $f94618
+l_0xc68858                   $f9461f
 -----------------------------------------------------------------
 
 
@@ -6599,13 +6598,13 @@ l_0xefa0b7                   $f82d1a
 Labels in module data_61
 Name                         Address
 -----------------------------------------------------------------
-l_0xefa0dc                   $f960a5
-l_0xefa2ab                   $f96360
-l_0xefa2b5                   $f9636a
-l_0xefa2c9                   $f9638f
-l_0xefa2d5                   $f963a0
-l_0xefa2d6                   $f963a1
-l_0xefa379                   $f96444
+l_0xefa0dc                   $f960d1
+l_0xefa2ab                   $f9638c
+l_0xefa2b5                   $f96396
+l_0xefa2c9                   $f963bb
+l_0xefa2d5                   $f963cc
+l_0xefa2d6                   $f963cd
+l_0xefa379                   $f96470
 -----------------------------------------------------------------
 
 
@@ -6666,7 +6665,7 @@ ShowDesc                     $f839c9
 Labels in module _startup
 Name                         Address
 -----------------------------------------------------------------
-Config                       $f1ffe7
+Config                       $f1ffea
 Startup                      $f1ffc5
 -----------------------------------------------------------------
 
@@ -6760,20 +6759,63 @@ Name                         Address
 Labels in module configmenu
 Name                         Address
 -----------------------------------------------------------------
-ConfigMenu                   $f934fc
-ConfigMenuPrompt             $f93399
-ConfigMenuStart              $f932c1
-EndConfig                    $f93bea
-End_                         $f93cc8
-Selected_1                   $f932bb
-Selected_2                   $f932be
-Set_Count_1                  $f93436
-Set_Count_2                  $f93457
-Set_Count_3                  $f93478
-Set_Count_4                  $f93499
-Set_Count_5                  $f934ba
-Set_Count_6                  $f934db
-ShowDescription              $f938dd
+ConfigMenu                   $f93528
+ConfigMenuPrompt             $f933c5
+ConfigMenuStart              $f932ed
+EndConfig                    $f93c16
+End_                         $f93cf4
+Selected_1                   $f932e7
+Selected_2                   $f932ea
+Set_Count_1                  $f93462
+Set_Count_2                  $f93483
+Set_Count_3                  $f934a4
+Set_Count_4                  $f934c5
+Set_Count_5                  $f934e6
+Set_Count_6                  $f93507
+ShowDescription              $f93909
+-----------------------------------------------------------------
+
+
+Labels in module asm65816_2
+Name                         Address
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+
+
+Labels in module ccexpand
+Name                         Address
+-----------------------------------------------------------------
+CodeTable                    $f96471
+DoNothing                    $f9660f
+Original1A00                 $f965c9
+Original1A01                 $f965d0
+Original1A04                 $f965d7
+Original1A05                 $f965de
+Original1A06                 $f965e5
+Original1A07                 $f965ec
+Original1A08                 $f965f3
+Original1A09                 $f965fa
+Original1A0A                 $f96601
+Original1A0B                 $f96608
+R_Get_Argument_Memory        $f96565
+R_Get_Secondary_Memory       $f96573
+R_Get_Secondary_Memory_In_A  $f965a1
+R_Get_Working_Memory         $f9656c
+R_Increment_Secondary_Memory $f9659a
+R_Read_Parameter_Bytes       $f964f9
+R_Set_06_To_Argument_If_Zero $f96557
+R_Set_Argument_Memory        $f96583
+R_Set_Secondary_Memory       $f96591
+R_Set_Secondary_Memory_To_A  $f965a8
+R_Set_Working_Memory         $f9658a
+TableJumpUsing7E00BC         $f965af
+-----------------------------------------------------------------
+
+
+Labels in module cc_asmcall
+Name                         Address
+-----------------------------------------------------------------
+CC_code_AsmCall              $f3ff78
 -----------------------------------------------------------------
 
 
@@ -6794,9 +6836,9 @@ CC_code_settextspeed         $f1ff9e
 Labels in module bg_viewer
 Name                         Address
 -----------------------------------------------------------------
-InitEverything               $f96a30
-asm_HideBattleBG             $f96a07
-asm_ShowBattleBG             $f9697f
+InitEverything               $f966c1
+asm_HideBattleBG             $f96698
+asm_ShowBattleBG             $f96610
 -----------------------------------------------------------------
 
 
@@ -6806,69 +6848,14 @@ Name                         Address
 -----------------------------------------------------------------
 
 
-Labels in module asm65816_2
-Name                         Address
------------------------------------------------------------------
------------------------------------------------------------------
-
-
-Labels in module ccexpand
-Name                         Address
------------------------------------------------------------------
-CodeTable                    $f967e0
-DoNothing                    $f9697e
-Original1A00                 $f96938
-Original1A01                 $f9693f
-Original1A04                 $f96946
-Original1A05                 $f9694d
-Original1A06                 $f96954
-Original1A07                 $f9695b
-Original1A08                 $f96962
-Original1A09                 $f96969
-Original1A0A                 $f96970
-Original1A0B                 $f96977
-R_Get_Argument_Memory        $f968d4
-R_Get_Secondary_Memory       $f968e2
-R_Get_Secondary_Memory_In_A  $f96910
-R_Get_Working_Memory         $f968db
-R_Increment_Secondary_Memory $f96909
-R_Read_Parameter_Bytes       $f96868
-R_Set_06_To_Argument_If_Zero $f968c6
-R_Set_Argument_Memory        $f968f2
-R_Set_Secondary_Memory       $f96900
-R_Set_Secondary_Memory_To_A  $f96917
-R_Set_Working_Memory         $f968f9
-TableJumpUsing7E00BC         $f9691e
------------------------------------------------------------------
-
-
-Labels in module cc_asmcall
-Name                         Address
------------------------------------------------------------------
-CC_code_AsmCall              $f3ff78
------------------------------------------------------------------
-
-
-Labels in module asm65816
-Name                         Address
------------------------------------------------------------------
------------------------------------------------------------------
-
-
-Labels in module ASMRef
-Name                         Address
------------------------------------------------------------------
------------------------------------------------------------------
-
-
 Labels in module asm_code
 Name                         Address
 -----------------------------------------------------------------
-BootUpMusic                  $f96d0a
-Crying_EnemyMissRates        $f96d89
-FastYouWon1                  $f96d16
-FastYouWon2                  $f96d36
-FastYouWon3                  $f96d56
+BootUpMusic                  $f9699b
+Crying_EnemyMissRates        $f96a1a
+FastYouWon1                  $f969a7
+FastYouWon2                  $f969c7
+FastYouWon3                  $f969e7
 -----------------------------------------------------------------
 
 
@@ -6910,8 +6897,8 @@ HIJACK_NoClip                $f4ff61
 Labels in module fast_doors
 Name                         Address
 -----------------------------------------------------------------
-FastDiv400                   $f1fff4
-MonkeyPatch                  $f1ffed
+FastDiv400                   $f2fff3
+MonkeyPatch                  $f2ffec
 -----------------------------------------------------------------
 
 
@@ -6929,25 +6916,32 @@ extended_spawn_check         $f2ffcf
 -----------------------------------------------------------------
 
 
+Labels in module run_accelerating
+Name                         Address
+-----------------------------------------------------------------
+SpeedHijack                  $f1fff0
+-----------------------------------------------------------------
+
+
 Labels in module GoodsMenuEquip
 Name                         Address
 -----------------------------------------------------------------
-equipMessagePartOne          $f96b36
-equipMessagePartTwo          $f96ba0
-finalDefense                 $f96bb2
-finalOffense                 $f96bca
-initialDefense               $f96b4e
-initialOffense               $f96b77
-jeffDefenseStat              $f96bea
-jeffOffenseStat              $f96bfa
-nessDefenseStat              $f96be2
-nessOffenseStat              $f96bf2
-newCheck                     $f96b13
-newUse                       $f96acf
-paulaDefenseStat             $f96be6
-paulaOffenseStat             $f96bf6
-pooDefenseStat               $f96bee
-pooOffenseStat               $f96bfe
+equipMessagePartOne          $f967c7
+equipMessagePartTwo          $f96831
+finalDefense                 $f96843
+finalOffense                 $f9685b
+initialDefense               $f967df
+initialOffense               $f96808
+jeffDefenseStat              $f9687b
+jeffOffenseStat              $f9688b
+nessDefenseStat              $f96873
+nessOffenseStat              $f96883
+newCheck                     $f967a4
+newUse                       $f96760
+paulaDefenseStat             $f96877
+paulaOffenseStat             $f96887
+pooDefenseStat               $f9687f
+pooOffenseStat               $f9688f
 -----------------------------------------------------------------
 
 
@@ -6958,23 +6952,15 @@ M_SpriteOnScreen             $f91dd8
 -----------------------------------------------------------------
 
 
-Labels in module optimize_text_render_3
-Name                         Address
------------------------------------------------------------------
-RenderText                   $f96445
-TextDrawCharacter            $f966db
------------------------------------------------------------------
-
-
 Labels in module modmenu
 Name                         Address
 -----------------------------------------------------------------
-ModMenu                      $f95cbf
-ModMenu_AboutDlg             $f95ea3
-ModMenu_MainMenu             $f95cb9
-SetTxtSpeed                  $f9608a
-TestDlg                      $f95f04
-TextSpeed                    $f95fe6
+ModMenu                      $f95ceb
+ModMenu_AboutDlg             $f95ecf
+ModMenu_MainMenu             $f95ce5
+SetTxtSpeed                  $f960b6
+TestDlg                      $f95f30
+TextSpeed                    $f96012
 -----------------------------------------------------------------
 
 
@@ -6985,9 +6971,9 @@ ArmorEquipList               $f92f8e
 BodyEquipList                $f92f93
 ConsumableItemList           $f92a3d
 EquippableItemList           $f92ede
-GiveItemID                   $f931bd
+GiveItemID                   $f931e9
 GoodsMenu                    $f92880
-ItemID                       $f9311b
+ItemID                       $f93147
 ItemList                     $f92985
 KeyItemList                  $f92ed9
 OtherEquipList               $f92f98
@@ -7027,10 +7013,10 @@ StatsMenu                    $f70c1b
 Labels in module warpmenu
 Name                         Address
 -----------------------------------------------------------------
-WarpID                       $f95bd2
-WarpList                     $f9576d
-WarpMenu                     $f95615
-WarpToID                     $f95c75
+WarpID                       $f95bfe
+WarpList                     $f95799
+WarpMenu                     $f95641
+WarpToID                     $f95ca1
 -----------------------------------------------------------------
 
 
@@ -7051,15 +7037,15 @@ TownMenu                     $f909d2
 Labels in module battlemenu
 Name                         Address
 -----------------------------------------------------------------
-BattleID                     $f95560
-BattleList                   $f94ee7
-BattleMenu                   $f94e48
-BossBattleList               $f94f6a
-MidbossBattleList            $f951b9
-MidbossBattleList2           $f95402
-RegularFoeBattleList         $f94fff
-SanctuaryBossList            $f95004
-StartBattle                  $f95602
+BattleID                     $f9558c
+BattleList                   $f94f13
+BattleMenu                   $f94e74
+BossBattleList               $f94f96
+MidbossBattleList            $f951e5
+MidbossBattleList2           $f9542e
+RegularFoeBattleList         $f9502b
+SanctuaryBossList            $f95030
+StartBattle                  $f9562e
 -----------------------------------------------------------------
 
 
@@ -7137,6 +7123,12 @@ StatusGroup_3                $f28753
 StatusGroup_4                $f28b65
 StatusGroup_5                $f28f89
 StatusMenu                   $f269d0
+-----------------------------------------------------------------
+
+
+Labels in module asm65816
+Name                         Address
+-----------------------------------------------------------------
 -----------------------------------------------------------------
 
 
