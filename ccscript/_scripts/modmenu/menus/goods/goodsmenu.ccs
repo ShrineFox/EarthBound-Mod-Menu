@@ -31,7 +31,7 @@ ItemList:
 		"Equips": { goto(EquippableItemList) }
 		"Passives":   { goto(PassiveItemList) }
 		"Key Items":   { goto(KeyItemList) }
-		default "Back": { goto(modmenu.ModMenu_MainMenu) }
+		default "Back": { goto(GoodsMenu) }
 	}
 goto(ItemList)
 
@@ -103,14 +103,28 @@ StoreItemMenu:
 		"[1D 0C 00 00]"
 		if result_is(0) { LoadRAM() "{sound(118)}[1D 12 00 00]" }
 	}
+	window_close(wnd_Dialog)
 goto(StoreItemMenu)
 
 TakeItemMenu:
 	CloseAllModMenuWnd()
 	window_open(wnd_Dialog)
-	"[1A 07]" newline
-    "[1B 02 {e(data_18.l_0xc64916)}]{swap}{store_registers}[18 02]" call(data_14.l_0xc5e54a) "[1B 02 {e(data_18.l_0xc648da)}][1B 05]{window_switch(13)}{window_closetop}{window_switch(1)}[1B 06]{sound(116)}[1D 13 00 00]"
+	"{counter(1)}[19 14][1B 02 {e(NothingStored)}][1D 03 FF][1B 02 {e(InventoryFull)}]{open_hp}[18 02][1A 07][1B 02 {e(TakeItemMenu)}]{swap}{store_registers}[18 02]" call(data_14.l_0xc5e54a) "[1B 02 {e(DoNoth)}][1B 05]{window_switch(13)}{window_closetop}{window_switch(1)}[1B 06]{sound(116)}[1D 13 00 00][19 19 00 00]"
+	window_close(wnd_Dialog)
 goto(TakeItemMenu)
+
+NothingStored:
+	SystemWnd(wnd_Dialog, "No items are in storage.")
+goto(StorageMenu)
+
+InventoryFull:
+	NotifyInventoryFull()
+goto(StorageMenu)
+
+DoNoth:
+	window_close(13)
+	window_close(1)
+goto(StorageMenu)
 
 /* ID Entry */
 

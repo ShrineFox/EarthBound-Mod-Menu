@@ -68,6 +68,7 @@ command DebugWnd(prevWndType, string)
 {
 	if flg_Debug 
 	{
+		SetTextSpeed(0)
 		window_open(wnd_ModMenuDebug)
 		LoadRAM()
 		Lbl(lbl_Debug)
@@ -81,6 +82,7 @@ command DebugWnd(prevWndType, string)
 		"@Result: {number(argument)}"
 		window_switch(prevWndType)
 		LoadRAM()
+		SetTextSpeed(1)
 	}
 }
 
@@ -90,6 +92,7 @@ command SystemWnd(prevWndType, string)
 {
 	window_open(wnd_ModMenuNotification)
 	LoadRAM()
+	SetTextSpeed(0)
 	LoadCounter()
 	Lbl(lbl_System)
 	"{string}"
@@ -99,6 +102,7 @@ command SystemWnd(prevWndType, string)
 	window_switch(prevWndType)
 	LoadRAM()
 	LoadCounter()
+	SetTextSpeed(1)
 }
 
 // (Re)open/focus window
@@ -127,6 +131,7 @@ command ConfirmNumber(wndLabel, digits, string, yesLabel)
 	CloseModMenuConfirmWnd()
 	OpenModMenuConfirmWnd()
 	Lbl(wndLabel)
+	SetTextSpeed(0)
 	input(digits)
 	rtoarg
 	SaveRAM()
@@ -139,6 +144,7 @@ command ConfirmNumber(wndLabel, digits, string, yesLabel)
 		default "No": { }
 	}
 	CloseModMenuConfirmWnd()
+	SetTextSpeed(1)
 }
 
 // Asks the user something, then  go to procedure if Yes
@@ -147,6 +153,7 @@ command ConfirmYesNo(wndLabel, string, yesLabel)
 	CloseModMenuConfirmWnd()
 	OpenModMenuConfirmWnd()
 	Lbl(wndLabel)
+	SetTextSpeed(0)
 	"@{string}" newline
 	menu 2
 	{
@@ -154,6 +161,7 @@ command ConfirmYesNo(wndLabel, string, yesLabel)
 		default "No": { }
 	}
 	CloseModMenuConfirmWnd()
+	SetTextSpeed(1)
 }
 
 // Set the selected party member to the name of the new window

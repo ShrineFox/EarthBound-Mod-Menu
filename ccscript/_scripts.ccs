@@ -2,7 +2,6 @@
 import "_scripts/asm/asm_code.ccs"
 import "_scripts/asm/asm_controls.ccs"
 import "_scripts/asm/expand_flags.ccs"
-//import "_scripts/asm/expand_text_windows.ccs"
 /* Quality of Life improvements from CCScript Library */
 import "_scripts/asm/Title_Window.ccs"
 import "_scripts/asm/name_fun.ccs"
