@@ -185,6 +185,7 @@ command SetPartyLabel()
 
 // Give Item in argument register to party
 command GiveItem(charaID) {
+	SaveRAM()
 	window_open(wnd_Dialog)
 	sound(SND_BOXTAKE)
 	LoadRAM()
@@ -194,6 +195,7 @@ command GiveItem(charaID) {
 }
 
 command GiveKeyItem(charaID) {
+	SaveRAM()
 	window_open(wnd_Dialog)
 	sound(SND_SPECIALITEM)
 	LoadRAM()
@@ -202,9 +204,10 @@ command GiveKeyItem(charaID) {
 	window_close(wnd_Dialog)
 }
 
-command GiveItemToParty()
+command GiveItemToParty(itemID)
 {
-	LoadRAM()
+	SaveRAM()
+	arg(itemID)
 	if not full(0xFF)
 	{
 		if not full(1) { GiveItem(1) }
@@ -220,7 +223,7 @@ command GiveItemToParty()
 
 command NotifyInventoryFull()
 {
-	SystemWnd(wnd_ModMenu2, "Nobody has room for new items.")
+	SystemWnd(wnd_ModMenu2, "There's no room for new items.")
 }
 
 /* Sprites */

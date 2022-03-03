@@ -36,13 +36,20 @@ ItemList:
 goto(ItemList)
 
 ConsumableItemList:
+	show_hp
 	OpenKeyItemWnd()
 	Lbl(lbl_Consumables)
-		menu 2 {
-		"Cookie Swap": { counter(196) ctoarg swap GiveItemToParty() }
-		"Cookie": { counter(196) ctoarg GiveItemToParty() }
-		"Cookie Arg": { arg(196) GiveItemToParty() }
-		"Cookie ArgSw": { arg(196) swap GiveItemToParty() }
+	menu 2 {
+		"Cookie": { GiveItemToParty(item_Cookie) }
+		"Bag of Fries": { GiveItemToParty(item_Bag_Of_Fries) }
+		"Hamburger": { GiveItemToParty(item_Hamburger) }
+		"Croissant": { GiveItemToParty(item_Croissant) }
+		"Bread Roll": { GiveItemToParty(item_Bread_Roll) }
+		"Pizza": { GiveItemToParty(item_Pizza) }
+		"Large Pizza": { GiveItemToParty(item_Pizza_Large) }
+		"PSI Caramel": { GiveItemToParty(item_Psi_Caramel) }
+		"Magic Truffle": { GiveItemToParty(item_Magic_Truffle) }
+		"Brain Food Lunch": { GiveItemToParty(item_Lunch_Brain_Food) }
 		default "Back": { goto(ItemList) }
 	}
 goto(ConsumableItemList)
@@ -109,21 +116,24 @@ goto(StoreItemMenu)
 TakeItemMenu:
 	CloseAllModMenuWnd()
 	window_open(wnd_Dialog)
-	"{counter(1)}[19 14][1B 02 {e(NothingStored)}][1D 03 FF][1B 02 {e(InventoryFull)}]{open_hp}[18 02][1A 07][1B 02 {e(TakeItemMenu)}]{swap}{store_registers}[18 02]" call(data_14.l_0xc5e54a) "[1B 02 {e(DoNoth)}][1B 05]{window_switch(13)}{window_closetop}{window_switch(1)}[1B 06]{sound(116)}[1D 13 00 00][19 19 00 00]"
+	"{counter(1)}[19 14][1B 02 {e(NothingStored)}][1D 03 FF][1B 02 {e(InventoryFull)}][18 02][1A 07][1B 02 {e(GoBack)}]{swap}{store_registers}[18 02]" call(data_14.l_0xc5e54a) "[1B 02 {e(GoBack)}][1B 05]{window_switch(13)}{window_closetop}{window_switch(1)}[1B 06]{sound(116)}[1D 13 00 00][19 19 00 00]"
 	window_close(wnd_Dialog)
 goto(TakeItemMenu)
 
 NothingStored:
+	window_close(wnd_Dialog)
 	SystemWnd(wnd_Dialog, "No items are in storage.")
 goto(StorageMenu)
 
 InventoryFull:
+	window_close(13)
+	window_close(wnd_Dialog)
 	NotifyInventoryFull()
 goto(StorageMenu)
 
-DoNoth:
+GoBack:
 	window_close(13)
-	window_close(1)
+	window_close(wnd_Dialog)
 goto(StorageMenu)
 
 /* ID Entry */
@@ -133,4 +143,4 @@ ItemID:
 goto(GoodsMenu)
 
 GiveItemID:
-GiveItemToParty() eob
+GiveItemToParty(argument) eob
