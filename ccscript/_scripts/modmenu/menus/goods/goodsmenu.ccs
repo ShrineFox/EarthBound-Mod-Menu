@@ -24,6 +24,7 @@ goto(GoodsMenu)
 
 ItemList:
 	CloseModMenu2Wnd()
+	CloseKeyItemWnd()
 	OpenModMenu2Wnd()
 	Lbl(lbl_Goods)
 	menu 1 {
@@ -36,29 +37,83 @@ ItemList:
 goto(ItemList)
 
 ConsumableItemList:
-	show_hp
 	OpenKeyItemWnd()
 	Lbl(lbl_Consumables)
 	menu 2 {
-		"Cookie": { GiveItemToParty(item_Cookie) }
-		"Bag of Fries": { GiveItemToParty(item_Bag_Of_Fries) }
-		"Hamburger": { GiveItemToParty(item_Hamburger) }
-		"Croissant": { GiveItemToParty(item_Croissant) }
-		"Bread Roll": { GiveItemToParty(item_Bread_Roll) }
-		"Pizza": { GiveItemToParty(item_Pizza) }
-		"Large Pizza": { GiveItemToParty(item_Pizza_Large) }
-		"PSI Caramel": { GiveItemToParty(item_Psi_Caramel) }
-		"Magic Truffle": { GiveItemToParty(item_Magic_Truffle) }
-		"Brain Food Lunch": { GiveItemToParty(item_Lunch_Brain_Food) }
+		"Croissant": { counter(item_Croissant) call(GiveItemID) }
+		"Bag of Fries": { counter(item_Bag_Of_Fries) call(GiveItemID) }
+		"Hamburger": { counter(item_Hamburger) call(GiveItemID) }
+		"Double Burger": { counter(item_Burger_Double) call(GiveItemID) }
+		"Bread Roll": { counter(item_Bread_Roll) call(GiveItemID) }
+		"Pizza": { counter(item_Pizza) call(GiveItemID) }
+		"Large Pizza": { counter(item_Pizza_Large) call(GiveItemID) }
+		"PSI Caramel": { counter(item_Psi_Caramel) call(GiveItemID) }
+		"Magic Truffle": { counter(item_Magic_Truffle) call(GiveItemID) }
+		"Skip Sandwich DX": { counter(item_Skip_Sandwich_Dx) call(GiveItemID) }
+		"Water Bottle DX": { counter(item_Water_Bottle_Dx) call(GiveItemID) }
+		"Rice Gruel Bowl": { counter(item_Bowl_Rice_Gruel) call(GiveItemID) }
+		"Brain Food Lunch": { counter(item_Lunch_Brain_Food) call(GiveItemID) }
+		"Cup of Lifenoodles": { counter(item_Cup_Lifenoodles) call(GiveItemID) }
 		default "Back": { goto(ItemList) }
 	}
 goto(ConsumableItemList)
 
 PassiveItemList:
-goto(ItemList)
+	OpenKeyItemWnd()
+	Lbl(lbl_Passives)
+	menu 2 {
+		"Franklin Badge": { counter(item_Badge_Franklin) call(GiveItemID) }
+		"Teddy Bear": { counter(item_Bear_Teddy) call(GiveItemID) }
+		"Super Plush Bear": { counter(item_Bear_Super_Plush) call(GiveItemID) }
+		"Brain Stone": { counter(item_Brain_Stone) call(GiveItemID) }
+		"Bicycle": { counter(item_Bicycle) call(GiveItemID) }
+		"ATM Card": { counter(item_Atm_Card) call(GiveItemID) }
+		"Exit Mouse": { counter(item_Exit_Mouse) call(GiveItemID) }
+		"Town Map": { counter(item_Town_Map) call(GiveItemID) }
+		default "Back": { goto(ItemList) }
+	}
+goto(PassiveItemList)
 
 KeyItemList:
-goto(ItemList)
+	OpenKeyItemWnd()
+	Lbl(lbl_Passives)
+	menu 2 {
+		"Sound Stone": { counter(item_Sound_Stone) call(GiveKeyItemID) call(GiveKeyItemID) }
+		"Shack Key": { counter(item_Key_Shack) call(GiveKeyItemID) }
+		"Bicycle": { counter(item_Bicycle) call(GiveKeyItemID) }
+		"Town Map": { counter(item_Town_Map) call(GiveKeyItemID) }
+		"Receiver Phone": { counter(item_Receiver_Phone) call(GiveKeyItemID) }
+		"Pencil Eraser": { counter(item_Eraser_Pencil) call(GiveKeyItemID) }
+		"Cabin Key": { counter(item_Wad_Bills) call(GiveKeyItemID) }
+		"Wad of Bills": { counter(item_Key_Cabin) call(GiveKeyItemID) }
+		"Zombie Paper": { counter(item_Zombie_Paper) call(GiveKeyItemID) }
+		"Bad Key Machine": { counter(item_Bad_Key_Machine) call(GiveKeyItemID) }
+		"Eraser Eraser": { counter(item_Eraser_Eraser) call(GiveKeyItemID) }
+		"Diamond": { counter(item_Diamond) call(GiveKeyItemID) }
+		"More...": { goto(KeyItemList2) call(GiveKeyItemID) }
+		default "Back": { goto(ItemList) }
+	}
+goto(KeyItemList)
+
+KeyItemList2:
+	OpenKeyItemWnd()
+	Lbl(lbl_Passives)
+	menu 2 {
+		"Signed Banana": { counter(item_Signed_Banana) call(GiveKeyItemID) }
+		"Hieroglyph Copy": { counter(item_Hieroglyph_Copy) call(GiveKeyItemID) }
+		"Carrot Key": { counter(item_Key_Carrot) call(GiveKeyItemID) }
+		"Tower Key": { counter(item_Key_Tower) call(GiveKeyItemID) }
+		"Hawk Eye": { counter(item_Hawk_Eye) call(GiveKeyItemID) }
+		"Shyness Book": { counter(item_Shyness_Book) call(GiveKeyItemID) }
+		"Tendakraut": { counter(item_Tendakraut) call(GiveKeyItemID) }
+		"Meteorite Piece": { counter(item_Meteorite_Piece) call(GiveKeyItemID) }
+		"Bubble Gum": { counter(item_Bubble_Gum) call(GiveKeyItemID) }
+		"Backstage Pass": { counter(item_Pass_Backstage) call(GiveKeyItemID) }
+		"Yogurt Dispenser": { counter(item_Yogurt_Dispenser) call(GiveKeyItemID) }
+		"Show Ticket": { counter(item_Show_Ticket) call(GiveKeyItemID) }
+		default "Back": { goto(KeyItemList) }
+	}
+goto(KeyItemList2)
 	
 EquippableItemList:
 	CloseModMenu2Wnd()
@@ -143,4 +198,11 @@ ItemID:
 goto(GoodsMenu)
 
 GiveItemID:
-GiveItemToParty(argument) eob
+	ctoarg
+	GiveItemToParty(argument) 
+eob
+
+GiveKeyItemID:
+	ctoarg
+	GiveKeyItemToParty(argument) 
+eob

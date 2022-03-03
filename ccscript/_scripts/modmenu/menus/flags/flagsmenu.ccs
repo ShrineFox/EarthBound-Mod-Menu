@@ -4,12 +4,7 @@ import "../../enums/labels.ccs"
 import "../../enums/party.ccs"
 import "../../enums/windows.ccs"
 import "../../commands.ccs"
-
-command ToggleFlag(flagName) { 
-	toggle(flagName) 
-	if (flagName) { SystemWnd(wnd_ModMenu2, "@Flag is now ON.") } 
-	else { SystemWnd(wnd_ModMenu2, "@Flag is now OFF.") } 
-}
+import "../config/configmenu.ccs"
 
 FlagsMenu:
 	CloseModMenu2Wnd()
@@ -21,6 +16,7 @@ FlagsMenu:
 		"Appearance": { goto(AppearanceMenu) }
 		"Town Stuff": { goto(TownMenu) }
 		"Misc": { goto(MiscFlagsMenu) }
+		"Mod Config": { goto(ConfigMenu) }
 		default "Back": { goto(modmenu.ModMenu_MainMenu) }
 	}
 goto(FlagsMenu)

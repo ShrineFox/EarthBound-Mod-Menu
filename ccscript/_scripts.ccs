@@ -135,7 +135,7 @@ SetCount23: { SetDescription(23, wnd_KeyItems, ShowDesc) } SetCount24: { SetDesc
 SetCount25: { SetDescription(25, wnd_KeyItems, ShowDesc) } 
 
 KeyItems: {
-	if not flag flg_Ness or not flag flg_Jeff { eob }
+	if not flag flg_Ness and not flag flg_Jeff { eob }
 	CloseAllModMenuWnd()
 	OpenKeyItemWnd()
 	Lbl(lbl_KeyItems)
@@ -291,132 +291,132 @@ ShowDesc:
 		"<[1C 05 C4]>" newline 
 		"If you touch this to your forehead and" newline
 		"concentrate on your thoughts, Your" newline 
-		"Sanctuary melodies can be heard." eob
+		"Sanctuary melodies can be heard."
 	}
 	if counter_is(2) { //call(data_04.l_0xc5566b)  ATM Card
-		" <[1C 05 B1]>" newline 
+		"<[1C 05 B1]>" newline 
 		"You know, you shouldn't leave home" newline 
-		"without... It even works overseas!" eob
+		"without... It even works overseas!"
 	}
 	if counter_is(3) { //call(data_03.l_0xc55cce) Town Map
 		"<[1C 05 CA]>" newline
 		"A handy town map. It can be used in" newline
 		"Onett, as well as other towns. View" newline
-		"the map with the Start button." eob
+		"the map with the Start button."
 	}
 	if counter_is(4) { //call(data_04.l_0xc554f6) // Shack Key
-		" <[1C 05 AA]>" newline
-		"A key to the traveling entertainer"
-		"shack in Onett." eob
+		"<[1C 05 AA]>" newline
+		"A key to the traveling" newline
+		"entertainer shack in Onett."
 	}
 	if counter_is(5) { //call(data_04.l_0xc55627) // Bicycle
 		"<[1C 05 B0]>" newline 
 		"Riding this makes you feel like" newline
 		"whistling! You can even ring the" newline 
-		"bell by pressing the R button." eob
+		"bell by pressing the R button."
 	}
 	if counter_is(6) { //call(data_04.l_0xc5570b) Receiver Phone
 		"<[1C 05 B5]>" newline
 		"Apple Kid's invention. Now, you" newline
-		"can receive important calls." eob
+		"can receive important calls."
 	}
 	if counter_is(7) { //call(data_04.l_0xc55794) Pencil Eraser
 		"<[1C 05 B8]>" newline 
 		"Apple Kid's invention. It makes" newline
 		"something blocking your way that" newline
-		"looks like a pencil disappear." eob
+		"looks like a pencil disappear."
 	}
 	if counter_is(8) { //call(data_04.l_0xc55e28) Eraser Eraser
 		"<[1C 05 D2]>" newline 
 		"Apple Kid's invention. It erases" newline
 		"something that looks like an eraser" newline
-		"that might be blocking your way." eob
+		"that might be blocking your way."
 	}
 	if counter_is(9) { //call(data_04.l_0xc5551d) Cabin Key
 		"<[1C 05 AB]>" newline 
 		"A key to a holding cell made" newline
-		"specially for [1C 02 02]." eob
+		"specially for [1C 02 02]."
 	}
 	if counter_is(10) { //call(data_04.l_0xc556e3) Wad of Bills
 		"<[1C 05 B4]>" newline 
-		"A bundle of brand new, crisp bills." eob
+		"A bundle of brand new, crisp bills."
 	}
 	if counter_is(11) { //call(data_03.l_0xc548b2) Backstage Pass
 		"<[1C 05 7D]>" newline
 		"It allows you go back stage at the" newline
 		"Chaos Theater. Of course, you can" newline
-		"also watch the show using the pass." eob
+		"also watch the show using the pass."
 	}
 	if counter_is(12) { //call(data_04.l_0xc5569c) Show Ticket
 		"<[1C 05 B2]>" newline 
-		"It says, <Section B, seat 3D.>" eob
+		"It says, <Section B, seat 3D.>"
 	}
 	if counter_is(13) { //call(data_04.l_0xc555b8) Zombie Paper
 		"<[1C 05 AE]>" newline 
 		"Apple Kid's invention. Lay this out" newline
 		"in the tent, and the next day, a lot" newline
-		"of zombies may be stuck to it." eob
+		"of zombies may be stuck to it."
 	}
 	if counter_is(14) { //call(data_04.l_0xc55740) Diamond
 		"<[1C 05 B6]>" newline
 		"A big, beautiful, and expensive" newline
-		"looking gem." eob
+		"looking gem."
 	}
 	if counter_is(15) { //call(data_04.l_0xc54c6d) Yogurt Dispenser
 		"<[1C 05 8B]>" newline
 		"Invented by Apple Kid. If used during" newline
 		"combat, some damage will be dealt to" newline
-		"an enemy, but it's not understood why." eob
+		"an enemy, but it's not understood why."
 	}
 	if counter_is(16) { //call(data_04.l_0xc5576a) Signed Banana
 		"<[1C 05 B7]>" newline
-		"A banana skin with Venus's autograph." eob
+		"A banana skin with Venus's autograph."
 	}
 	if counter_is(17) { //call(data_04.l_0xc557e7) Hieroglyph Copy
 		"<[1C 05 B9]>" newline 
 		"A copy of a hieroglyph. Something" newline
 		"important is recorded in the ancient" newline
-		"characters." eob
+		"characters."
 	}
 	if counter_is(18) { //call(data_05.l_0xc5689f) Carrot Key
 		"<[1C 05 FD]>" newline
 		"A special type of bunny's favorite" newline
-		"carrot." eob
+		"carrot."
 	}
 	if counter_is(19) { //call(data_04.l_0xc55943) Tower Key
 		"<[1C 05 C0]>" 
-		newline "An old key." eob
+		newline "An old key."
 	}
 	if counter_is(20) { //call(data_04.l_0xc55602) Hawk Eye
 		"<[1C 05 AF]>" newline
 		"What a miracle! Now you can see" newline
-		"in the dark!" eob
+		"in the dark!"
 	}
 	if counter_is(21) { //call(data_04.l_0xc55409) Shyness Book
-		 "<[1C 05 A4]>" newline
+		"<[1C 05 A4]>" newline
 		"As the title says, it helps one" newline
-		"overcome shyness." eob
+		"overcome shyness."
 	}
 	if counter_is(22) { //call(data_04.l_0xc55e77) Tendakraut
 		"<[1C 05 D3]>" newline 
 		"A very strong-smelling dish. Those" newline
-		"who like it go nuts for it..." eob
+		"who like it go nuts for it..."
 	}
 	if counter_is(23) { //call(data_04.l_0xc55957) Meteorite Piece
-		" <[1C 05 C1]>" newline 
+		"<[1C 05 C1]>" newline 
 		"It looks like a plain old rock, but for" newline
 		"someone who knows about it, it is actually" newline
-		"a very precious, unusual element." eob
+		"a very precious, unusual element."
 	}
 	if counter_is(24) { //call(data_04.l_0xc55546) Bad Key Machine
 		"<[1C 05 AC]>" newline 
 		"The <Machine that Opens Doors, especially" newline
-		"when you have a slightly bad key> machine." eob
+		"when you have a slightly bad key> machine."
 	}
 	if counter_is(25) { //call(data_03.l_0xc544dd) Pak of bubble gum
 		"<[1C 05 68]>" newline 
 		"This is the Balloon Monkey's favorite. It" newline
 		"will not help you recover, but you'll never" newline
-		"run out, 'cause it's a super jumbo pack!" eob
+		"run out, 'cause it's a super jumbo pack!"
 	}
 eob

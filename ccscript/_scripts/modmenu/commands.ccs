@@ -5,6 +5,7 @@ import "../asm/bg_viewer.ccs"
 import "enums/flags.ccs"
 import "enums/labels.ccs"
 import "enums/party.ccs"
+import "enums/items.ccs"
 import "enums/windows.ccs"
 import "commands.ccs"
 
@@ -23,7 +24,7 @@ command SwitchGoto(n) "[09 {byte n}]"
 command SwitchCase(addr) long addr
 command MenuOptionWithCallback(text, callback) "[19 02 {text} 01 {long callback}]"
 command DisplayVertical(n) "[1C 0C {byte n}]"
-command SetDescription(countNo, prevWndType, DescLabel) { counter_zero ctoarg SetTextSpeed(0) counter(countNo) ctoarg call(DescLabel) SetTextSpeed(1) window_switch(prevWndType) eob }
+command SetDescription(countNo, prevWndType, DescLabel) { counter_zero ctoarg call(InstantTextSpeed) counter(countNo) ctoarg call(DescLabel) window_switch(prevWndType) call(RegularTextSpeed) eob }
 
 // Save current count/arg/result registers to RAM
 command SaveRAM() { "[1B 05]" }
@@ -33,6 +34,21 @@ command LoadRAM() { "[1B 06]" }
 command LoadCounter() { ctoarg }
 // Reset counter to zero
 command ResetCounter() { counter_zero }
+
+// Turn active flag off or vice versa
+command ToggleFlag(flagID) { 
+	toggle(flagID) 
+	if (flagID) { SystemWnd(wnd_ModMenu2, "@Flag is now ON.") } 
+	else { SystemWnd(wnd_ModMenu2, "@Flag is now OFF.") } 
+}
+
+InstantTextSpeed:
+SetTextSpeed(0)
+eob
+
+RegularTextSpeed:
+SetTextSpeed(1)
+eob
 
 // Closes a window if a flag is set that says it's open (to prevent crashing from attempting to close unopened windows)
 command CloseFlagWnd(wnd, flg) { LoadCounter() SaveRAM() if flg { window_close(wnd) unset(flg) } }
@@ -218,6 +234,54 @@ command GiveItemToParty(itemID)
 	else
 	{
 		NotifyInventoryFull()
+	}
+}
+
+command GiveKeyItemToParty(itemID)
+{
+	if flag flg_KeyItems
+	{
+		SaveRAM()
+		arg(itemID)
+		if not full(0xFF)
+		{
+			if not full(1) { GiveKeyItem(1) }
+			else if not full(2) { GiveKeyItem(2) }
+			else if not full(3) { GiveKeyItem(3) }
+			else if not full(4) { GiveKeyItem(4) }
+		}
+		else
+		{
+			NotifyInventoryFull()
+		}
+	}
+	else
+	{
+		counter(itemID)
+		if counter_is(item_Sound_Stone) { ToggleFlag(flg_BuzzBuzzDead) }
+		if counter_is(item_Key_Shack) { ToggleFlag(flg_KeyItem_ShackKey) }
+		if counter_is(item_Bicycle) { ToggleFlag(flg_KeyItem_Bicycle) }
+		if counter_is(item_Town_Map) { ToggleFlag(flg_KeyItem_TownMap) }
+		if counter_is(item_Receiver_Phone) { ToggleFlag(flg_KeyItem_ReceiverPhone) }
+		if counter_is(item_Eraser_Pencil) { ToggleFlag(flg_KeyItem_PencilEraser) }
+		if counter_is(item_Key_Cabin) { ToggleFlag(flg_KeyItem_CabinKey) }
+		if counter_is(item_Wad_Bills) { ToggleFlag(flg_KeyItem_WadofBills) }
+		if counter_is(item_Zombie_Paper) { ToggleFlag(flg_KeyItem_ZombiePaper) }
+		if counter_is(item_Bad_Key_Machine) { ToggleFlag(flg_KeyItem_BadKeyMachine) }
+		if counter_is(item_Eraser_Eraser) { ToggleFlag(flg_KeyItem_EraserEraser) }
+		if counter_is(item_Diamond) { ToggleFlag(flg_KeyItem_Diamond) }
+		if counter_is(item_Signed_Banana) { ToggleFlag(flg_KeyItem_SignedBanana) }
+		if counter_is(item_Hieroglyph_Copy) { ToggleFlag(flg_KeyItem_HieroglyphCopy) }
+		if counter_is(item_Key_Carrot) { ToggleFlag(flg_KeyItem_CarrotKey) }
+		if counter_is(item_Key_Tower) { ToggleFlag(flg_KeyItem_DungeonManKey) }
+		if counter_is(item_Hawk_Eye) { ToggleFlag(flg_KeyItem_HawkEye) }
+		if counter_is(item_Shyness_Book) { ToggleFlag(flg_KeyItem_ShynessBook) }
+		if counter_is(item_Tendakraut) { ToggleFlag(flg_KeyItem_Tendakraut) }
+		if counter_is(item_Meteorite_Piece) { ToggleFlag(flg_KeyItem_Meteorite) }
+		if counter_is(item_Bubble_Gum) { ToggleFlag(flg_KeyItem_BubbleGum) }
+		if counter_is(item_Pass_Backstage) { ToggleFlag(flg_KeyItem_BackstagePass) }
+		if counter_is(item_Yogurt_Dispenser) { ToggleFlag(flg_KeyItem_YogurtMachine) }
+		if counter_is(item_Show_Ticket) { ToggleFlag(flg_KeyItem_ShowTicket) }
 	}
 }
 

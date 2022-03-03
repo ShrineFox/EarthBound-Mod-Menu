@@ -32,6 +32,7 @@ lbl_Goods: "GOODS[00]"
 lbl_KeyItems: "KEY ITEMS[00]"
 lbl_Storage: "STORAGE[00]"
 lbl_Consumables: "CONSUMABLES[00]"
+lbl_Passives: "PASSIVES[00]"
 // NPC Follower Labels
 lbl_Pokey: "POKEY[00]"
 lbl_Picky: "PICKY[00]"

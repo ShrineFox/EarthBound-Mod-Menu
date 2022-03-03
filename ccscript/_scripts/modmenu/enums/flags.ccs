@@ -62,6 +62,8 @@ define flg_KeyItem_YogurtMachine = flag 0x648
 define flg_KeyItem_ShowTicket = flag 0x647
 // Whether Run Button is inverted or not
 define flg_RunButton_Inverted = flag 0x646
+// Whether Battle Background rendered or not
+define flg_SetBBG = flag 0x645
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12
