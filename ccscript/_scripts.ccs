@@ -18,6 +18,7 @@ import "_scripts/modmenu/commands.ccs"
 import "_scripts/modmenu/menus/goods/goodsmenu.ccs"
 import "_scripts/modmenu/enums/flags.ccs"
 import "_scripts/modmenu/enums/labels.ccs"
+import "_scripts/modmenu/enums/party.ccs"
 import "_scripts/modmenu/enums/windows.ccs"
 
 // Open the Mod Menu
@@ -30,30 +31,21 @@ ModMenu_About:
 	
 // Temporarily remove party if using unrestricted bike feature
 BicycleStart:
-	if flg_UnrestrictBike 
+	window_closeall
+	if flag flg_UnrestrictBike
 	{
-		party_add(1) 
-		party_remove(2)  party_remove(3)  party_remove(4) 
-		party_remove(5)  party_remove(6)  party_remove(7) 
-		party_remove(8)  party_remove(9)  party_remove(10) 
-		party_remove(11) party_remove(12) party_remove(13) 
-		party_remove(14)
-		window_open(wnd_FullScreen)
-		window_closeall
+		TempSoloPartyMember(pty_Ness)
 		"[1F F0]"
 	}
-	else { "@The bike cannot be used right now." next }
+	else if flg_BikeCantNormallyBeUsed { window_open(1) "@The bike cannot be used right now." unset(flg_BikeCantNormallyBeUsed) end }
+	else { "[1F F0]" }
 eob
 
 // Restore party if using unrestricted bike feature
 BicycleEnd:
 	if flg_UnrestrictBike 
 	{
-		if flg_Ness  { party_add(1) } if flg_Paula { party_add(2) } 
-		if flg_Jeff  { party_add(3) } if flg_Poo   { party_add(4) } 
-		if not flg_Ness { party_remove(1) } if not flg_Paula { party_remove(2) } 
-		if not flg_Jeff { party_remove(3) } if not flg_Poo { party_remove(4) }
-		window_open(wnd_FullScreen)
+		RestorePartyFromFlags()
 		window_closeall
 	}
 eob
@@ -366,7 +358,7 @@ ShowDesc:
 		"<[1C 05 8B]>" newline
 		"Invented by Apple Kid. If used during" newline
 		"combat, some damage will be dealt to" newline
-		"an enemy, but it's not understood why."
+		"an enemy but it's not understood why."
 	}
 	if counter_is(16) { //call(data_04.l_0xc5576a) Signed Banana
 		"<[1C 05 B7]>" newline
@@ -404,19 +396,20 @@ ShowDesc:
 	}
 	if counter_is(23) { //call(data_04.l_0xc55957) Meteorite Piece
 		"<[1C 05 C1]>" newline 
-		"It looks like a plain old rock, but for" newline
-		"someone who knows about it, it is actually" newline
+		"It looks like a plain old rock, but" newline
+		"to someone who knows about it, it's" newline
 		"a very precious, unusual element."
 	}
 	if counter_is(24) { //call(data_04.l_0xc55546) Bad Key Machine
 		"<[1C 05 AC]>" newline 
-		"The <Machine that Opens Doors, especially" newline
-		"when you have a slightly bad key> machine."
+		"The <Machine that Opens Doors," newline
+		"especially when you have a slightly" newline
+		"bad key> machine."
 	}
 	if counter_is(25) { //call(data_03.l_0xc544dd) Pak of bubble gum
 		"<[1C 05 68]>" newline 
-		"This is the Balloon Monkey's favorite. It" newline
-		"will not help you recover, but you'll never" newline
-		"run out, 'cause it's a super jumbo pack!"
+		"This is the Balloon Monkey's favorite." newline
+		"It won't help you recover, but you'll" newline
+		"never run out. It's a super jumbo pack!"
 	}
 eob

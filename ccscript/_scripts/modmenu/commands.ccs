@@ -13,6 +13,7 @@ import "commands.ccs"
 command GetTextSpeed() { gettextspeed }
 // Set Text Speed
 command SetTextSpeed(num) { settextspeed(num) }
+command SetTextSpeedInstant() { SaveRAM() counter_zero ctoarg SetTextSpeed(0) LoadRAM() }
 // Show Battle BG
 command ShowBattleBG(layerNumber, distortionNumber, letterBox) { show_battle_bg(layerNumber, distortionNumber, letterBox) }
 // Hide Battle BG
@@ -24,7 +25,7 @@ command SwitchGoto(n) "[09 {byte n}]"
 command SwitchCase(addr) long addr
 command MenuOptionWithCallback(text, callback) "[19 02 {text} 01 {long callback}]"
 command DisplayVertical(n) "[1C 0C {byte n}]"
-command SetDescription(countNo, prevWndType, DescLabel) { counter_zero ctoarg call(InstantTextSpeed) counter(countNo) ctoarg call(DescLabel) window_switch(prevWndType) call(RegularTextSpeed) eob }
+command SetDescription(countNo, prevWndType, DescLabel) { SetTextSpeedInstant() counter(countNo) ctoarg call(DescLabel) window_switch(prevWndType) SetTextSpeed(1) eob }
 
 // Save current count/arg/result registers to RAM
 command SaveRAM() { "[1B 05]" }
@@ -35,20 +36,129 @@ command LoadCounter() { ctoarg }
 // Reset counter to zero
 command ResetCounter() { counter_zero }
 
+// Check if a certain party member is in the party
+command get_char_at_pos(pos) { "[19 10 {byte pos}]" }
+command compare_register(num, reg) { "[18 07 {long num} {byte reg}]" }
+command compare_result(num)   { compare_register(num, 0) }
+command compare_argument(num) { compare_register(num, 1) }
+command compare_counter(num)  { compare_register(num, 2) }
+command party_size_smaller_than(n) { "[1D 19 {byte n}]" }
+
+command CheckIfCharacterInParty(charaID) 
+{
+    counter(1)
+_loop:
+    ctoarg
+    get_char_at_pos(argument)
+    if result_is(charaID) 
+	{
+		// Return result = 1
+        goto(_loopend)
+    }
+    inc
+    // Make sure we only check up to 6 party members lots
+    if compare_counter(7) { // Is counter >= 7?
+		party_size_smaller_than(1) // Set result to 0
+        goto(_loopend)
+    }
+    goto(_loop)
+	_loopend:
+}
+
+command SetFlagIfCharacterInParty(charaID, flgID) 
+{
+    counter(1)
+_loop:
+    ctoarg
+    get_char_at_pos(argument)
+    if result_is(charaID) 
+	{
+		set(flgID)
+        goto(_loopend)
+    }
+    inc
+    // Make sure we only check up to 6 party members lots
+    if compare_counter(7) { // Is counter >= 7?
+		unset(flgID)
+		goto(_loopend)
+    }
+    goto(_loop)
+	_loopend:
+}
+
+// Remove all members from party except one specified party leader 
+// (without updating flags so they can be restored later)
+command TempSoloPartyMember(ptyID) 
+{
+	party_add(ptyID)
+	counter(1)
+	_loop2:
+		if counter_is(18) { goto(_loop2end) }
+		else if not counter_is(ptyID) { ctoarg party_remove(argument) }
+		inc
+	goto(_loop2)
+	RefreshScreenNoRegisters()
+	_loop2end:
+}
+
+command RestorePartyFromFlags()
+{
+	store_registers
+	if flag flg_Ness  { party_add(pty_Ness)  } if flag flg_Paula { party_add(pty_Paula) } 
+	if flag flg_Jeff  { party_add(pty_Jeff)  } if flag flg_Poo   { party_add(pty_Poo)   } 
+	if flag flg_Pokey { party_add(pty_Pokey) } if flag flg_Picky { party_add(pty_Picky) } 
+	if flag flg_King  { party_add(pty_King)  } if flag flg_Tony  { party_add(pty_Tony)  } 
+	if flag flg_BubbleMonkey { party_add(pty_BubbleMonkey) } 
+	if flag flg_BrickRoad    { party_add(pty_BrickRoad) } 
+	if flag flg_FlyingMan  { party_add(pty_FlyingMan) } 
+	if flag flg_TeddyBear  { party_add(pty_TeddyBear) } 
+	if flag flg_PlushBear  { party_add(pty_PlushBear) }
+	
+	if not flag flg_Ness  { party_remove(pty_Ness)  } if not flag flg_Paula { party_remove(pty_Paula) } 
+	if not flag flg_Jeff  { party_remove(pty_Jeff)  } if not flag flg_Poo   { party_remove(pty_Poo)   } 
+	if not flag flg_Pokey { party_remove(pty_Pokey) } if not flag flg_Picky { party_remove(pty_Picky) } 
+	if not flag flg_King  { party_remove(pty_King)  } if not flag flg_Tony  { party_remove(pty_Tony)  } 
+	if not flag flg_BubbleMonkey { party_remove(pty_BubbleMonkey) } 
+	if not flag flg_BrickRoad    { party_remove(pty_BrickRoad) } 
+	if not flag flg_FlyingMan  { party_remove(pty_FlyingMan) } 
+	if not flag flg_TeddyBear  { party_remove(pty_TeddyBear) } 
+	if not flag flg_PlushBear  { party_remove(pty_PlushBear) }
+	RefreshScreenNoRegisters()
+	load_registers
+}
+
+command SetFlagByResult(flgID) 
+{
+	store_registers
+	if result_is(1) { set(flgID) } 
+	load_registers
+	if result_is(0) { unset(flgID) }
+}
+
+command SetPartyFlags()
+{
+	CheckIfCharacterInParty(pty_Ness)  SetFlagByResult(flg_Ness)
+	CheckIfCharacterInParty(pty_Paula) SetFlagByResult(flg_Paula)
+	CheckIfCharacterInParty(pty_Jeff)  SetFlagByResult(flg_Jeff)
+	CheckIfCharacterInParty(pty_Poo)   SetFlagByResult(flg_Poo)
+	CheckIfCharacterInParty(pty_Pokey) SetFlagByResult(flg_Pokey)
+	CheckIfCharacterInParty(pty_Picky) SetFlagByResult(flg_Picky)
+	CheckIfCharacterInParty(pty_King)  SetFlagByResult(flg_King)
+	CheckIfCharacterInParty(pty_Tony)  SetFlagByResult(flg_Tony)
+	CheckIfCharacterInParty(pty_BubbleMonkey) SetFlagByResult(flg_BubbleMonkey)
+	CheckIfCharacterInParty(pty_BrickRoad) SetFlagByResult(flg_BrickRoad)
+	CheckIfCharacterInParty(pty_FlyingMan) SetFlagByResult(flg_FlyingMan)
+	CheckIfCharacterInParty(pty_TeddyBear) SetFlagByResult(flg_TeddyBear)
+	CheckIfCharacterInParty(pty_PlushBear) SetFlagByResult(flg_PlushBear)
+}
+
 // Turn active flag off or vice versa
 command ToggleFlag(flagID) { 
-	toggle(flagID) 
+	ToggleWithSound(flagID) 
 	if (flagID) { SystemWnd(wnd_ModMenu2, "@Flag is now ON.") } 
 	else { SystemWnd(wnd_ModMenu2, "@Flag is now OFF.") } 
 }
-
-InstantTextSpeed:
-SetTextSpeed(0)
-eob
-
-RegularTextSpeed:
-SetTextSpeed(1)
-eob
+command ToggleWithSound(flgID) { toggle(flgID) if flag flgID { sound(SND_GIFTOPEN) } else { sound(SND_BOXTAKE) } }
 
 // Closes a window if a flag is set that says it's open (to prevent crashing from attempting to close unopened windows)
 command CloseFlagWnd(wnd, flg) { LoadCounter() SaveRAM() if flg { window_close(wnd) unset(flg) } }
@@ -84,7 +194,7 @@ command DebugWnd(prevWndType, string)
 {
 	if flg_Debug 
 	{
-		SetTextSpeed(0)
+		SetTextSpeedInstant()
 		window_open(wnd_ModMenuDebug)
 		LoadRAM()
 		Lbl(lbl_Debug)
@@ -107,18 +217,18 @@ command DebugWnd(prevWndType, string)
 command SystemWnd(prevWndType, string) 
 {
 	window_open(wnd_ModMenuNotification)
+	SetTextSpeedInstant()
 	LoadRAM()
-	SetTextSpeed(0)
 	LoadCounter()
 	Lbl(lbl_System)
 	"{string}"
+	SetTextSpeed(1)
 	"|||"
 	SaveRAM()
 	window_close(wnd_ModMenuNotification)
 	window_switch(prevWndType)
 	LoadRAM()
 	LoadCounter()
-	SetTextSpeed(1)
 }
 
 // (Re)open/focus window
@@ -141,13 +251,19 @@ command RefreshScreen(prevWndType)
 	LoadRAM()
 }
 
+command RefreshScreenNoRegisters()
+{ 
+	window_open(wnd_FullScreen)
+	window_close(wnd_FullScreen)
+}
+
 // Prompts user to enter a number, saves to argument register, then calls procedure if Yes
 command ConfirmNumber(wndLabel, digits, string, yesLabel)
 {
 	CloseModMenuConfirmWnd()
 	OpenModMenuConfirmWnd()
+	SetTextSpeedInstant()
 	Lbl(wndLabel)
-	SetTextSpeed(0)
 	input(digits)
 	rtoarg
 	SaveRAM()
@@ -169,7 +285,7 @@ command ConfirmYesNo(wndLabel, string, yesLabel)
 	CloseModMenuConfirmWnd()
 	OpenModMenuConfirmWnd()
 	Lbl(wndLabel)
-	SetTextSpeed(0)
+	SetTextSpeedInstant()
 	"@{string}" newline
 	menu 2
 	{
@@ -189,7 +305,7 @@ command SetPartyLabel()
 	else if counter_is(pty_Poo)   { PtyLbl(pty_Poo) }
 	else if counter_is(pty_Pokey) { Lbl(lbl_Pokey) }
 	else if counter_is(pty_Picky) { Lbl(lbl_Picky) }
-	else if counter_is(pty_King)  { PtyLbl(5) }
+	else if counter_is(pty_King)  { PtyLbl(pty_King) }
 	else if counter_is(pty_Tony)  { Lbl(lbl_Tony) }
 	else if counter_is(pty_BubbleMonkey) { Lbl(lbl_BubbleMonkey) }
 	else if counter_is(pty_BrickRoad) { Lbl(lbl_BrickRoad) }
@@ -239,7 +355,7 @@ command GiveItemToParty(itemID)
 
 command GiveKeyItemToParty(itemID)
 {
-	if flag flg_KeyItems
+	if not flag flg_KeyItems
 	{
 		SaveRAM()
 		arg(itemID)

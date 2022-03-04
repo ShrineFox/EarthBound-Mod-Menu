@@ -56,13 +56,25 @@ goto(ModMenu_MainMenu)
 
 
 TestDlg:
-	OpenKeyItemWnd()
-	"Test"
-	OpenKeyItemDescWnd()
-	"Test"
-	CreateSprite(3, 895, 1) // Jeff running script "M_SpriteOnScreen"
-    "[1F 61]" next
-	CloseAllModMenuWnd()
+	window_open(wnd_Dialog)
+	"@Flags: "
+	if flag flg_Ness { "Ness " next } else { " " newline }
+	if flag flg_Paula { "Paula " next }  else { " " newline }
+	if flag flg_Jeff { "Jeff " next }  else { " " newline }
+	if flag flg_Poo { "Poo " next }  else { " " newline }
+	next
+	if flag flg_Pokey { "Pokey " next }  else { " " newline }
+	if flag flg_Picky { "Picky " next }  else { " " newline }
+	if flag flg_King { "King " next }  else { " " newline }
+	if flag flg_Tony { "Tony " next } else { " " newline }
+	next
+	if flag flg_BubbleMonkey { "Monkey " next }  else { " " newline }
+	if flag flg_BrickRoad { "BrickRoad " next }  else { " " newline }
+	if flag flg_FlyingMan { "FlyMan " next }  else { " " newline }
+	if flag flg_TeddyBear { "Bear " next } else { " " newline }
+	if flag pty_PlushBear { "Bear2 " next } else { " " newline }
+	next
+	window_close(wnd_Dialog)
 goto(ModMenu_MainMenu)
 
 TextSpeed:

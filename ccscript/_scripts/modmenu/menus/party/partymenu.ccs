@@ -47,50 +47,68 @@ goto(PartyMenu_Followers)
 
 command AddToParty() 
 {
-	if counter_is(pty_Ness)       { set(flg_Ness)  }
-	else if counter_is(pty_Paula) { set(flg_Paula) }
-	else if counter_is(pty_Jeff)  { set(flg_Jeff)  }
-	else if counter_is(pty_Poo)   { set(flg_Poo)   }
-
-	RefreshScreen(wnd_ModMenu) 
-	party_add(0)
-	SystemWnd(wnd_ModMenu, "{music(0x7B)}@{name(argument)} joined the party.{pause(90)}{music_resume}.") 
+	SaveRAM()
+	// Prevent adding more than 2 followers, which causes graphical glitches
+	if not counter_is(1) and not counter_is(2) and not counter_is(3) and not counter_is(4)
+	{
+		if party_size_smaller_than(4) 
+		{
+			if party_size_smaller_than(3)
+			{
+				if party_size_smaller_than(2)
+				{
+					// 1
+					get_char_at_pos(2) if not result_is(0) { get_char_at_pos(3) if not result_is(0) { SystemWnd(wnd_ModMenu2, "@There are too many followers.") goto(PartyMenu)  } }
+				}
+				else // 2
+				{
+					get_char_at_pos(3) if not result_is(0) { get_char_at_pos(4) if not result_is(0) { SystemWnd(wnd_ModMenu2, "@There are too many followers.") goto(PartyMenu)  } }
+				}
+			}
+			else // 3
+			{
+				get_char_at_pos(4) if not result_is(0) { get_char_at_pos(5) if not result_is(0) { SystemWnd(wnd_ModMenu2, "@There are too many followers.") goto(PartyMenu)  } }
+			}
+		}
+		else // 4
+		{
+			get_char_at_pos(5) if not result_is(0) { get_char_at_pos(6) if not result_is(0) { SystemWnd(wnd_ModMenu2, "@There are too many followers.") goto(PartyMenu)  } }
+		}
+	}
+	LoadRAM()
+	LoadCounter()
+	party_add(argument)
+	RefreshScreen(wnd_ModMenu2)
+	LoadRAM()
+	SystemWnd(wnd_ModMenu2, "{music(0x7B)}@{name(argument)} joined the party.{pause(90)}{music_resume}.") 
+	SetPartyFlags()
+	goto(PartyMenu)
 }
 
 command RemoveFromParty() 
 {
 	// Check if you can remove from party without causing death loop
-	set(flg_Proceed)
-	
-	if counter_is(pty_Ness)
+	SaveRAM()
+	if counter_is(1) or counter_is(2) or counter_is(3) or counter_is(4)
 	{
-		if not flg_Paula and not flg_Jeff and not flg_Poo { unset(flg_Proceed) }
-		else { unset(flg_Ness) }
+		party_size_smaller_than(2) if result_is(1) { SystemWnd(wnd_ModMenu, "@Couldn't remove {name(argument)} from party.") }
+		else {
+			goto(_remove)
+		}
 	}
-	else if counter_is(pty_Paula)
+	else
 	{
-		if not flg_Ness and not flg_Jeff and not flg_Poo { unset(flg_Proceed) }
-		else { unset(flg_Paula) }
+		goto(_remove)
 	}
-	else if counter_is(pty_Jeff)
-	{
-		if not flg_Ness and not flg_Paula and not flg_Poo { unset(flg_Proceed) }
-		else { unset(flg_Jeff) }
-	}
-	else if counter_is(pty_Poo)
-	{
-		if not flg_Ness and not flg_Paula and not flg_Jeff { unset(flg_Proceed) }
-		else { unset(flg_Poo) }
-	}
-	
-	if flg_Proceed
-	{
+	goto(_remove_end)
+	_remove:
+		LoadRAM()
 		LoadCounter()
-		party_remove(0)
+		party_remove(argument)
 		RefreshScreen(wnd_ModMenu2) 
 		SystemWnd(wnd_ModMenu2, "{sound(SND_STATUSCHANGE)}@{name(argument)} left the party.")
-	}
-	else { SystemWnd(wnd_ModMenu, "@Couldn't remove {name(argument)} from party.") }
+		SetPartyFlags()
+	_remove_end:
 }
 
 
@@ -101,20 +119,33 @@ PartyMenu_All:
 	menu 1 {
 		"Health": { goto(HealthMenu) }
 		"Stats":  { goto(StatsMenu) }
-		//"Goods":  { goto(GoodsMenu) }
 		//"PSI":    { goto(PSIMenu) }
 		"Add":    
 		{ 
-			party_add(pty_Ness)  set(flg_Ness)
-			party_add(pty_Paula) set(flg_Paula)
-			party_add(pty_Jeff)  set(flg_Jeff)
-			party_add(pty_Poo)   set(flg_Poo)
+			party_add(pty_Ness)
+			party_add(pty_Paula)
+			party_add(pty_Jeff)
+			party_add(pty_Poo)
+			SetPartyFlags()
 			RefreshScreen(wnd_ModMenu)
 			SystemWnd(wnd_ModMenu, "{music(0x7B)}@Everyone joined the party.{pause(90)}{music_resume}") 
 			goto(PartyMenu_All) 
 		}
 		"Remove":
 		{
+			get_char_at_pos(1)
+			store_registers
+			if result_is(pty_Ness) { TempSoloPartyMember(pty_Ness) }
+			load_registers
+			if result_is(pty_Paula) { TempSoloPartyMember(pty_Paula) }
+			load_registers
+			if result_is(pty_Jeff) { TempSoloPartyMember(pty_Jeff) }
+			load_registers
+			if result_is(pty_Poo) { TempSoloPartyMember(pty_Poo) }
+			RefreshScreen(wnd_ModMenu)
+			SystemWnd(wnd_ModMenu, "{sound(SND_STATUSCHANGE)}@Everyone left the party.")
+			SetPartyFlags()
+			goto(PartyMenu_All)
 		}
 		default "Back": { goto(PartyMenu) 
 		}
@@ -128,7 +159,6 @@ PartyMenu_Main4:
 	menu 1 {
 		"Health": { goto(HealthMenu) }
 		"Stats":  { goto(StatsMenu) }
-		//"Goods":  { goto(GoodsMenu) }
 		//"PSI":    { goto(PSIMenu) }
 		"Add":    { AddToParty() }
 		"Remove": { RemoveFromParty() }

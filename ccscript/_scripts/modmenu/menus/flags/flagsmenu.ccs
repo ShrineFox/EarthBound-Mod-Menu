@@ -47,10 +47,30 @@ PartyFlagsMenu:
 		"Paula": { ToggleFlag(flg_Paula) }
 		"Jeff":  { ToggleFlag(flg_Jeff) }
 		"Poo":   { ToggleFlag(flg_Poo) }
+		"Followers":   { goto(FollowerFlagsMenu) }
 		"Buzz Buzz": { ToggleFlag(flg_BuzzBuzz) }
 		default "Back": { goto(FlagsMenu) }
 	}
 goto(PartyFlagsMenu)
+
+FollowerFlagsMenu:
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Flags)
+	menu 1 
+	{
+		"Pokey":  { ToggleFlag(flg_Pokey) }
+		"Picky": { ToggleFlag(flg_Picky) }
+		"King":  { ToggleFlag(flg_King) }
+		"Tony":   { ToggleFlag(flg_Tony) }
+		"B.Monkey":   { ToggleFlag(flg_BubbleMonkey) }
+		"BrickRoad": { ToggleFlag(flg_BrickRoad) }
+		"FlyingMan": { ToggleFlag(flg_FlyingMan) }
+		"TeddyBear": { ToggleFlag(flg_TeddyBear) }
+		"PlushBear": { ToggleFlag(flg_PlushBear) }
+		default "Back": { goto(PartyFlagsMenu) }
+	}
+goto(FollowerFlagsMenu)
 
 AppearanceMenu:
 	CloseModMenu2Wnd()

@@ -64,6 +64,18 @@ define flg_KeyItem_ShowTicket = flag 0x647
 define flg_RunButton_Inverted = flag 0x646
 // Whether Battle Background rendered or not
 define flg_SetBBG = flag 0x645
+// Whether followers are in your party or not
+define flg_Pokey = flag 0x644
+define flg_Picky = flag 0x643
+define flg_King = flag 0x642
+define flg_Tony = flag 0x641
+define flg_BubbleMonkey = flag 0x640
+define flg_BrickRoad = flag 0x63F
+define flg_FlyingMan = flag 0x63E
+define flg_TeddyBear = flag 0x63D
+define flg_PlushBear = flag 0x63C
+// Whether the Bicycle can't normally be used right now
+define flg_BikeCantNormallyBeUsed = flag 0x63B
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12

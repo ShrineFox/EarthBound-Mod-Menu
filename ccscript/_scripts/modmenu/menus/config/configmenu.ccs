@@ -115,18 +115,19 @@ ConfigMenu: {
     swap
     "@Error! No option {number(0)} in this menu." next goto(ConfigMenu)
 	chose_keyitems:
-		toggle(flg_KeyItems) goto(ConfigMenu)
+		ToggleWithSound(flg_KeyItems) goto(ConfigMenu)
 	chose_unrestrictbike:
-		toggle(flg_UnrestrictBike) goto(ConfigMenu)
+		ToggleWithSound(flg_UnrestrictBike) goto(ConfigMenu)
 	chose_nophotoguy:
-		toggle(flg_NoPhotoGuy) goto(ConfigMenu)
+		ToggleWithSound(flg_NoPhotoGuy) goto(ConfigMenu)
 	chose_nodadcalls:
-		toggle(flg_DadCantCall) goto(ConfigMenu)
+		ToggleWithSound(flg_DadCantCall) goto(ConfigMenu)
 	chose_autoadvance:
-		toggle(flg_AutoAdvStatIncMsgs) goto(ConfigMenu)
+		ToggleWithSound(flg_AutoAdvStatIncMsgs) goto(ConfigMenu)
 	chose_modmenu:
-		toggle(flg_ModMenu) goto(ConfigMenu)
+		ToggleWithSound(flg_ModMenu) goto(ConfigMenu)
 }
+
 
 ShowDescription:
 	CloseKeyItemDescWnd()
