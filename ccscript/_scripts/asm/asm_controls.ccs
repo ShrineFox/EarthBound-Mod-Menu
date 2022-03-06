@@ -4,6 +4,7 @@ import asm65816
 import cc_main_menu
 import "../../_scripts.ccs"
 import "../modmenu/menus/modmenu.ccs"
+import JSL_with_RTS
 
 /* Button values for remapping purposes:
 FOR RAM ADDRESSES LOADED FROM 006D/006F/0065
@@ -18,10 +19,12 @@ ROM[0xC0B8E3] = AND_i	(0x0040)	// AND operand check for Opening the Main Menu (A
 ROM[0xC0B907] = AND_i	(0x1000)	// AND operand check for Opening the Map (X button by default)
 ROM[0xC0B915] = AND_i	(0x00A0)	// AND operand check for A+L buttons. This determines which buttons can talk to people / Confirm selections at the Menus
 
-ROM[0xc134a9] = { MText(TextTest) JML(0xc09451) PLD RTL }
+ROM[0xc134a9] = { MText(TextTest) JML(0xc1ffdb) PLD RTL }
 
 TextTest:
 	call(Tesst)
+	window_closeall
+	"[1F ED]"
 eob
 
 Tesst:
@@ -45,7 +48,6 @@ Tesst:
 	}
 	window_closeall
 	"[1F ED]"
-	close_mainmenu
 	//unset(flg_CloseMainMenu)
 	unset(0x63A)
 eob

@@ -1,13 +1,7 @@
 import asm65816_2
 import cc_asmcall
 import ccexpand
-
-/*command open_goods { cc_asmcall(ASM_Goods, RET_NONE) }
-
-ASM_Goods: {
-   JMP(0xC13599)
-   RTL
-}*/
+import JSL_with_RTS
 
 // https://earthbound-rom-explorerr.herokuapp.com/address/$C134A7
 // https://github.com/Herringway/earthbound/blob/697516a778b4e0511adc0e942042fc218e3e21f0/source/earthbound/bank01.d#L1890
@@ -20,48 +14,64 @@ command open_psi { "[1A 15]" }
 command close_hp { "[1A 16]" }
 
 CC_Goods: M_EB_Function_Wrapper({
-	JML(Goods)
+	JSL(Goods)
 })
 
 Goods:
-	JML (0xC13599)
+	ASM_JSL_With_RTS(BANKC1_RTL, 0xC13599)
+	CMP_i (0x0000)
+	//JML (0xC13599)
+	RTL
 	
 CC_Equip: M_EB_Function_Wrapper({
-	JML(Equip)
+	JSL(Equip)
 })
 
 Equip:
-	JML(0xc13bad)
+	ASM_JSL_With_RTS(BANKC1_RTL, 0xC13BAD)
+	CMP_i (0x0000)
+	RTL
+	//JML(0xc13bad)
 	
 CC_Status: M_EB_Function_Wrapper({
-	JML(Status)
+	JSL(Status)
 })
 
 Status:
-	JML(0xc13c01)
+	ASM_JSL_With_RTS(BANKC1_RTL, 0xC13C01)
+	CMP_i (0x0000)
+	RTL
+	//JML(0xc13c01)
 	
 CC_PSI: M_EB_Function_Wrapper({
-	JML(PSI)
+	JSL(PSI)
 })
 
 PSI:
-	JML(0xc13b62)
+	ASM_JSL_With_RTS(BANKC1_RTL, 0xC13B62)
+	CMP_i (0x0000)
+	RTL
+	//JML(0xc13b62)
 	
 	
 CC_EndMainMenu: M_EB_Function_Wrapper({
-	JML(EndMenu)
+	JSL(EndMenu)
 })
 
 EndMenu:
-	JML(0xc13bff)
+	ASM_JSL_With_RTS (BANKC1_RTL, 0xC10BF8) // long version of C1008E
+	ASM_JSL_With_RTS (BANKC1_RTL, 0xC1DD41) // long version of hiding HP/PP windows
+	ASM_JSL_With_RTS (BANKC1_RTL, 0xC12DD5)
+	CMP_i (0x0000)
+	RTL
+	//JML(0xc13bff)
 	
 CC_Close_HP: M_EB_Function_Wrapper({
-	JML(Close_HP)
+	JSL(Close_HP)
 })
 
 Close_HP:
-	REP (0x31)
-	PHD
-	JMP(0xc10a1d)
-	PLD
+	ASM_JSL_With_RTS(BANKC1_RTL, 0xc10a1d)
+	CMP_i (0x0000)
 	RTL
+	//JML(0xC1DD41)
