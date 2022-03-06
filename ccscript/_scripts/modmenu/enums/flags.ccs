@@ -76,6 +76,8 @@ define flg_TeddyBear = flag 0x63D
 define flg_PlushBear = flag 0x63C
 // Whether the Bicycle can't normally be used right now
 define flg_BikeCantNormallyBeUsed = flag 0x63B
+// Whether to close the main menu
+define flg_CloseMainMenu = flag 0x63A
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12

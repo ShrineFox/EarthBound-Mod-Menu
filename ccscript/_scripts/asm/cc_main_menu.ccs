@@ -1,0 +1,67 @@
+import asm65816_2
+import cc_asmcall
+import ccexpand
+
+/*command open_goods { cc_asmcall(ASM_Goods, RET_NONE) }
+
+ASM_Goods: {
+   JMP(0xC13599)
+   RTL
+}*/
+
+// https://earthbound-rom-explorerr.herokuapp.com/address/$C134A7
+// https://github.com/Herringway/earthbound/blob/697516a778b4e0511adc0e942042fc218e3e21f0/source/earthbound/bank01.d#L1890
+// https://github.com/Herringway/ebsrc/blob/bb77a04c44a0a5b9e05b8cb1863c9f8845a9de13/src/overworld/open_menu.asm#L2
+command open_goods { "[1A 11]" }
+command open_equip { "[1A 12]" }
+command close_mainmenu { "[1A 13]" }
+command open_status { "[1A 14]" }
+command open_psi { "[1A 15]" }
+command close_hp { "[1A 16]" }
+
+CC_Goods: M_EB_Function_Wrapper({
+	JML(Goods)
+})
+
+Goods:
+	JML (0xC13599)
+	
+CC_Equip: M_EB_Function_Wrapper({
+	JML(Equip)
+})
+
+Equip:
+	JML(0xc13bad)
+	
+CC_Status: M_EB_Function_Wrapper({
+	JML(Status)
+})
+
+Status:
+	JML(0xc13c01)
+	
+CC_PSI: M_EB_Function_Wrapper({
+	JML(PSI)
+})
+
+PSI:
+	JML(0xc13b62)
+	
+	
+CC_EndMainMenu: M_EB_Function_Wrapper({
+	JML(EndMenu)
+})
+
+EndMenu:
+	JML(0xc13bff)
+	
+CC_Close_HP: M_EB_Function_Wrapper({
+	JML(Close_HP)
+})
+
+Close_HP:
+	REP (0x31)
+	PHD
+	JMP(0xc10a1d)
+	PLD
+	RTL

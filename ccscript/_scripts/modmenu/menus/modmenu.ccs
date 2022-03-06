@@ -15,6 +15,7 @@ import "music/musicmenu.ccs"
 import "party/health/healthcommands.ccs"
 import "../../asm/cc_text_speed.ccs"
 import "../../asm/movement_reloc.ccs"
+import "../../asm/cc_main_menu.ccs"
 
 // Procedures
 
@@ -50,7 +51,7 @@ ModMenu_AboutDlg:
 	Lbl(lbl_About)
 	"@EarthBound Mod Menu by ShrineFox." newline
 	"@Made using Coilsnake." newline
-	"@Updated 2-27-22." wait
+	"@Updated 3-5-22." wait
 	window_close(wnd_Dialog)
 goto(ModMenu_MainMenu)
 
@@ -62,11 +63,13 @@ TestDlg:
 	if flag flg_Paula { "Paula " next }  else { " " newline }
 	if flag flg_Jeff { "Jeff " next }  else { " " newline }
 	if flag flg_Poo { "Poo " next }  else { " " newline }
+	open_hp
 	next
 	if flag flg_Pokey { "Pokey " next }  else { " " newline }
 	if flag flg_Picky { "Picky " next }  else { " " newline }
 	if flag flg_King { "King " next }  else { " " newline }
 	if flag flg_Tony { "Tony " next } else { " " newline }
+	close_hp
 	next
 	if flag flg_BubbleMonkey { "Monkey " next }  else { " " newline }
 	if flag flg_BrickRoad { "BrickRoad " next }  else { " " newline }

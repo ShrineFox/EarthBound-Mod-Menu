@@ -1,4 +1,5 @@
 import asm65816_2
+import cc_letterbox
 
 // CCExpand v0.3 - Additional CCScript codes
 // Initial version by jtolmar
@@ -45,14 +46,14 @@ CodeTable: {
   long cc_asmcall.CC_code_AsmCall // [1A 0C]
   long cc_text_speed.CC_code_gettextspeed // [1A 0D]
   long cc_text_speed.CC_code_settextspeed // [1A 0E]
-  long DoNothing // [1A 0F]
-  long DoNothing // [1A 10]
-  long DoNothing // [1A 11]
-  long DoNothing // [1A 12]
-  long DoNothing // [1A 13]
-  long DoNothing // [1A 14]
-  long DoNothing // [1A 15]
-  long DoNothing // [1A 16]
+  long CC_movscr_Cutscene // [1A 0F]
+  long CC_movscr_Cutscene_Off // [1A 10]
+  long cc_main_menu.CC_Goods // [1A 11]
+  long cc_main_menu.CC_Equip // [1A 12]
+  long cc_main_menu.CC_EndMainMenu // [1A 13]
+  long cc_main_menu.CC_Status // [1A 14]
+  long cc_main_menu.CC_PSI // [1A 15]
+  long cc_main_menu.CC_Close_HP // [1A 16]
   long DoNothing // [1A 17]
   long DoNothing // [1A 18]
   long DoNothing // [1A 19]
