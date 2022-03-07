@@ -19,9 +19,8 @@ CC_Goods: M_EB_Function_Wrapper({
 
 Goods:
 	ASM_JSL_With_RTS(BANKC1_RTL, 0xC13599)
-	CMP_i (0x0000)
-	//JML (0xC13599)
 	RTL
+	
 	
 CC_Equip: M_EB_Function_Wrapper({
 	JSL(Equip)
@@ -29,9 +28,7 @@ CC_Equip: M_EB_Function_Wrapper({
 
 Equip:
 	ASM_JSL_With_RTS(BANKC1_RTL, 0xC13BAD)
-	CMP_i (0x0000)
 	RTL
-	//JML(0xc13bad)
 	
 CC_Status: M_EB_Function_Wrapper({
 	JSL(Status)
@@ -39,9 +36,7 @@ CC_Status: M_EB_Function_Wrapper({
 
 Status:
 	ASM_JSL_With_RTS(BANKC1_RTL, 0xC13C01)
-	CMP_i (0x0000)
 	RTL
-	//JML(0xc13c01)
 	
 CC_PSI: M_EB_Function_Wrapper({
 	JSL(PSI)
@@ -49,29 +44,12 @@ CC_PSI: M_EB_Function_Wrapper({
 
 PSI:
 	ASM_JSL_With_RTS(BANKC1_RTL, 0xC13B62)
-	CMP_i (0x0000)
 	RTL
-	//JML(0xc13b62)
-	
-	
-CC_EndMainMenu: M_EB_Function_Wrapper({
-	JSL(EndMenu)
-})
-
-EndMenu:
-	ASM_JSL_With_RTS (BANKC1_RTL, 0xC10BF8) // long version of C1008E
-	ASM_JSL_With_RTS (BANKC1_RTL, 0xC1DD41) // long version of hiding HP/PP windows
-	ASM_JSL_With_RTS (BANKC1_RTL, 0xC12DD5)
-	CMP_i (0x0000)
-	RTL
-	//JML(0xc13bff)
 	
 CC_Close_HP: M_EB_Function_Wrapper({
 	JSL(Close_HP)
 })
 
 Close_HP:
-	ASM_JSL_With_RTS(BANKC1_RTL, 0xc10a1d)
-	CMP_i (0x0000)
+	JML(0xC10A1D)
 	RTL
-	//JML(0xC1DD41)

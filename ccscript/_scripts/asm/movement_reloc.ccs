@@ -1,5 +1,7 @@
 import asm65816
 import movscr_codes
+import movement
+import letterbox
 
 /*
  *  Relocates the movement script pointer table, allowing
@@ -15,6 +17,8 @@ import movscr_codes
 // Custom script IDs start at 895
 command DEFINE_CUSTOM_POINTERS {
     adr24(M_SpriteOnScreen)    // 895
+	adr24(movscr_Cutscene)    // 896
+	adr24(movscr_Cutscene_Off)    // 897
 }
 
 
@@ -23,8 +27,8 @@ command DEFINE_CUSTOM_POINTERS {
 
 
 M_SpriteOnScreen: {
-	m_warp_to_leader    // This is because I'm creating a new sprite. You don't need this
-	m_disable_collision // This is because I'm creating a new sprite. You don't need this
+	m_warp_to_leader    // This is because I'm creating a new sprite
+	m_disable_collision // This is because I'm creating a new sprite
 	m_set_anim(0)       // This is because I'm creating a new sprite. Newly created sprites start with animation frame -1 (invisible)
 	m_add_xpos(-32)
 	m_add_ypos(32)

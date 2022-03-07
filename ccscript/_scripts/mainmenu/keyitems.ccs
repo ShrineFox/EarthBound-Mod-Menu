@@ -1,0 +1,311 @@
+import "../asm/cc_main_menu.ccs"
+import "../asm/asm65816.ccs"
+import "../../_scripts.ccs"
+import "../modmenu/menus/modmenu.ccs"
+import "../asm/JSL_with_RTS.ccs"
+import "../modmenu/enums/windows.ccs"
+import "../modmenu/enums/labels.ccs"
+import "../modmenu/enums/flags.ccs"
+import "../modmenu/commands.ccs"
+
+SetCount1: { SetDescription(1, wnd_KeyItems, ShowDesc) } SetCount2: { SetDescription(2, wnd_KeyItems, ShowDesc) } 
+SetCount3: { SetDescription(3, wnd_KeyItems, ShowDesc) } SetCount4: { SetDescription(4, wnd_KeyItems, ShowDesc) }
+SetCount5: { SetDescription(5, wnd_KeyItems, ShowDesc) } SetCount6: { SetDescription(6, wnd_KeyItems, ShowDesc) } 
+SetCount7: { SetDescription(7, wnd_KeyItems, ShowDesc) } SetCount8: { SetDescription(8, wnd_KeyItems, ShowDesc) }
+SetCount9: { SetDescription(9, wnd_KeyItems, ShowDesc) } SetCount10: { SetDescription(10, wnd_KeyItems, ShowDesc) } 
+SetCount11: { SetDescription(11, wnd_KeyItems, ShowDesc) } SetCount12: { SetDescription(12, wnd_KeyItems, ShowDesc) }
+SetCount13: { SetDescription(13, wnd_KeyItems, ShowDesc) } SetCount14: { SetDescription(14, wnd_KeyItems, ShowDesc) } 
+SetCount15: { SetDescription(15, wnd_KeyItems, ShowDesc) } SetCount16: { SetDescription(16, wnd_KeyItems, ShowDesc) }
+SetCount17: { SetDescription(17, wnd_KeyItems, ShowDesc) } SetCount18: { SetDescription(18, wnd_KeyItems, ShowDesc) }
+SetCount19: { SetDescription(19, wnd_KeyItems, ShowDesc) } SetCount20: { SetDescription(20, wnd_KeyItems, ShowDesc) }
+SetCount21: { SetDescription(21, wnd_KeyItems, ShowDesc) } SetCount22: { SetDescription(22, wnd_KeyItems, ShowDesc) }
+SetCount23: { SetDescription(23, wnd_KeyItems, ShowDesc) } SetCount24: { SetDescription(24, wnd_KeyItems, ShowDesc) }
+SetCount25: { SetDescription(25, wnd_KeyItems, ShowDesc) } 
+
+KeyItems: {
+	if not flag flg_Ness and not flag flg_Jeff { eob }
+	CloseAllModMenuWnd()
+	OpenKeyItemWnd()
+	Lbl(lbl_KeyItems)
+	ResetCounter()
+	ctoarg
+	if flag flg_Ness 
+	{
+		if flag flg_BuzzBuzzDead and not flag flg_Defeat_NessNightmare
+		{
+			MenuOptionWithCallback("Sound Stone", SetCount1)
+		}
+		MenuOptionWithCallback("ATM Card", SetCount2)
+		if flag flg_KeyItem_TownMap
+		{
+			MenuOptionWithCallback("Town Map", SetCount3)
+		}
+		if flag flg_KeyItem_ShackKey and not flag flg_OnettShackUnlocked
+		{
+			MenuOptionWithCallback("Shack Key", SetCount4)
+		}
+		if flag flg_KeyItem_Bicycle
+		{
+			MenuOptionWithCallback("Bicycle", SetCount5)
+		}
+		if flag flg_KeyItem_ReceiverPhone
+		{
+			MenuOptionWithCallback("Receiver Phone", SetCount6)
+		}
+		if flag flg_KeyItem_PencilEraser
+		{
+			MenuOptionWithCallback("Pencil Eraser", SetCount7)
+		}
+		if flag flg_KeyItem_EraserEraser
+		{
+			MenuOptionWithCallback("Eraser Eraser", SetCount8)
+		}
+		if flag flg_KeyItem_CabinKey and not flg_HappyHappyNotBlue
+		{
+			MenuOptionWithCallback("Cabin Key", SetCount9)
+		}
+		if flag flg_KeyItem_WadofBills and not flag flg_RunawayFiveTwosonDebtPaid
+		{
+			MenuOptionWithCallback("Wad of Bills", SetCount10)
+		}
+		if flag flg_KeyItem_BackstagePass
+		{
+			// TODO: Set/unset this in dialog
+			MenuOptionWithCallback("Backstage Pass", SetCount11)
+		}
+		if flag flg_KeyItem_ZombiePaper and not flag flg_ZombiePaperOnFloor and not flag flg_ZombiePaperUsed
+		{
+			MenuOptionWithCallback("Zombie Paper", SetCount12)
+		}
+		if flag flg_KeyItem_ShowTicket
+		{
+			// TODO: Set/unset this in dialog
+			MenuOptionWithCallback("Show Ticket", SetCount13)
+		}
+		if flag flg_KeyItem_Diamond and not flag flg_Venus
+		{
+			MenuOptionWithCallback("Diamond", SetCount14)
+		}
+		if flag flg_KeyItem_YogurtMachine and not flag flg_UsedYogurtMachine
+		{
+			// TODO: set/unset this in dialog
+			MenuOptionWithCallback("Yogurt Dispenser", SetCount15)
+		}
+		if flag flg_KeyItem_SignedBanana and not flag flg_FoursideSewerOpen
+		{
+			MenuOptionWithCallback("Signed Banana", SetCount16)
+		}
+		if flag flg_KeyItem_HieroglyphCopy and not flag flg_PyramidOpen
+		{
+			MenuOptionWithCallback("Hieroglyph Copy", SetCount17)
+		}
+		if flag flg_KeyItem_CarrotKey and not flag flg_CarrotKeyUsed
+		{
+			MenuOptionWithCallback("Carrot Key", SetCount18)
+		}
+		if flag flg_KeyItem_DungeonManKey and not flag flg_DungeonManOpen
+		{
+			MenuOptionWithCallback("Tower Key", SetCount19)
+		}
+		if flag flg_KeyItem_HawkEye and not flag flg_HawkEyeUsed
+		{
+			MenuOptionWithCallback("Hawk Eye", SetCount20)
+		}
+		if flag flg_KeyItem_ShynessBook and not flag flg_ShynessBookReturned
+		{
+			MenuOptionWithCallback("Shyness Book", SetCount21)
+		}
+		if flag flg_KeyItem_Tendakraut and not flag flg_UnderworldGateOpen
+		{
+			MenuOptionWithCallback("Tendakraut", SetCount22)
+		}
+		if flag flg_KeyItem_Meteorite and not flag flg_ZexonyteAndonuts
+		{
+			MenuOptionWithCallback("Meteorite Piece", SetCount23)
+		}
+	}
+	if flag flg_Jeff
+	{
+		if flag flg_KeyItem_BadKeyMachine
+		{
+			MenuOptionWithCallback("Bad Key Machine", SetCount24)
+		}
+		if flag flg_KeyItem_BubbleGum
+		{
+			MenuOptionWithCallback("Bubble Gum Pak", SetCount25)
+		}
+	}
+    DisplayVertical(2)
+    if not "[11]" {
+        // Exit
+        eob
+    }
+    ctoarg
+    swap
+    SwitchGoto(25)
+        SwitchCase(soundstone) SwitchCase(donothing) SwitchCase(donothing)
+        SwitchCase(donothing) SwitchCase(bike) SwitchCase(phone)
+		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing)
+        SwitchCase(donothing) SwitchCase(donothing) SwitchCase(zombiepaper)
+		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing)
+        SwitchCase(donothing) SwitchCase(heiroglyph) SwitchCase(donothing)
+		SwitchCase(hawkeye) SwitchCase(donothing) SwitchCase(donothing)
+		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(gum)
+    swap
+    "@Error! No option {number(0)} in this menu." next goto(KeyItems)
+	soundstone:
+		window_closeall window_open(1) call(data_55.l_0xc9fefd) goto(KeyItems)
+	bike:
+		goto(BicycleStart)
+	phone:
+		call(data_20.l_0xc68017) goto(KeyItems)
+	zombiepaper:
+		window_closeall window_open(1) call(data_55.l_0xc9fc48) goto(KeyItems)
+	gum:
+		window_closeall window_open(1) call(data_49.l_0xc97f72) goto(KeyItems)
+	hawkeye:
+		window_closeall window_open(1) call(data_55.l_0xc9fc6f) goto(KeyItems)
+	heiroglyph:
+		window_closeall window_open(1) call(data_61.l_0xefa0dc) goto(KeyItems)
+	donothing:
+		goto(KeyItems)
+}
+
+ShowDesc:
+	CloseKeyItemDescWnd()
+	OpenKeyItemDescWnd()
+	Lbl(lbl_Description)
+	if counter_is(1) { //call(data_04.l_0xc55ad5) Sound Stone
+		"<[1C 05 C4]>" newline 
+		"If you touch this to your forehead and" newline
+		"concentrate on your thoughts, Your" newline 
+		"Sanctuary melodies can be heard."
+	}
+	if counter_is(2) { //call(data_04.l_0xc5566b)  ATM Card
+		"<[1C 05 B1]>" newline 
+		"You know, you shouldn't leave home" newline 
+		"without... It even works overseas!"
+	}
+	if counter_is(3) { //call(data_03.l_0xc55cce) Town Map
+		"<[1C 05 CA]>" newline
+		"A handy town map. It can be used in" newline
+		"Onett, as well as other towns. View" newline
+		"the map with the Start button."
+	}
+	if counter_is(4) { //call(data_04.l_0xc554f6) // Shack Key
+		"<[1C 05 AA]>" newline
+		"A key to the traveling" newline
+		"entertainer shack in Onett."
+	}
+	if counter_is(5) { //call(data_04.l_0xc55627) // Bicycle
+		"<[1C 05 B0]>" newline 
+		"Riding this makes you feel like" newline
+		"whistling! You can even ring the" newline 
+		"bell by pressing the R button."
+	}
+	if counter_is(6) { //call(data_04.l_0xc5570b) Receiver Phone
+		"<[1C 05 B5]>" newline
+		"Apple Kid's invention. Now, you" newline
+		"can receive important calls."
+	}
+	if counter_is(7) { //call(data_04.l_0xc55794) Pencil Eraser
+		"<[1C 05 B8]>" newline 
+		"Apple Kid's invention. It makes" newline
+		"something blocking your way that" newline
+		"looks like a pencil disappear."
+	}
+	if counter_is(8) { //call(data_04.l_0xc55e28) Eraser Eraser
+		"<[1C 05 D2]>" newline 
+		"Apple Kid's invention. It erases" newline
+		"something that looks like an eraser" newline
+		"that might be blocking your way."
+	}
+	if counter_is(9) { //call(data_04.l_0xc5551d) Cabin Key
+		"<[1C 05 AB]>" newline 
+		"A key to a holding cell made" newline
+		"specially for [1C 02 02]."
+	}
+	if counter_is(10) { //call(data_04.l_0xc556e3) Wad of Bills
+		"<[1C 05 B4]>" newline 
+		"A bundle of brand new, crisp bills."
+	}
+	if counter_is(11) { //call(data_03.l_0xc548b2) Backstage Pass
+		"<[1C 05 7D]>" newline
+		"It allows you go back stage at the" newline
+		"Chaos Theater. Of course, you can" newline
+		"also watch the show using the pass."
+	}
+	if counter_is(12) { //call(data_04.l_0xc5569c) Show Ticket
+		"<[1C 05 B2]>" newline 
+		"It says, <Section B, seat 3D.>"
+	}
+	if counter_is(13) { //call(data_04.l_0xc555b8) Zombie Paper
+		"<[1C 05 AE]>" newline 
+		"Apple Kid's invention. Lay this out" newline
+		"in the tent, and the next day, a lot" newline
+		"of zombies may be stuck to it."
+	}
+	if counter_is(14) { //call(data_04.l_0xc55740) Diamond
+		"<[1C 05 B6]>" newline
+		"A big, beautiful, and expensive" newline
+		"looking gem."
+	}
+	if counter_is(15) { //call(data_04.l_0xc54c6d) Yogurt Dispenser
+		"<[1C 05 8B]>" newline
+		"Invented by Apple Kid. If used during" newline
+		"combat, some damage will be dealt to" newline
+		"an enemy but it's not understood why."
+	}
+	if counter_is(16) { //call(data_04.l_0xc5576a) Signed Banana
+		"<[1C 05 B7]>" newline
+		"A banana skin with Venus's autograph."
+	}
+	if counter_is(17) { //call(data_04.l_0xc557e7) Hieroglyph Copy
+		"<[1C 05 B9]>" newline 
+		"A copy of a hieroglyph. Something" newline
+		"important is recorded in the ancient" newline
+		"characters."
+	}
+	if counter_is(18) { //call(data_05.l_0xc5689f) Carrot Key
+		"<[1C 05 FD]>" newline
+		"A special type of bunny's favorite" newline
+		"carrot."
+	}
+	if counter_is(19) { //call(data_04.l_0xc55943) Tower Key
+		"<[1C 05 C0]>" 
+		newline "An old key."
+	}
+	if counter_is(20) { //call(data_04.l_0xc55602) Hawk Eye
+		"<[1C 05 AF]>" newline
+		"What a miracle! Now you can see" newline
+		"in the dark!"
+	}
+	if counter_is(21) { //call(data_04.l_0xc55409) Shyness Book
+		"<[1C 05 A4]>" newline
+		"As the title says, it helps one" newline
+		"overcome shyness."
+	}
+	if counter_is(22) { //call(data_04.l_0xc55e77) Tendakraut
+		"<[1C 05 D3]>" newline 
+		"A very strong-smelling dish. Those" newline
+		"who like it go nuts for it..."
+	}
+	if counter_is(23) { //call(data_04.l_0xc55957) Meteorite Piece
+		"<[1C 05 C1]>" newline 
+		"It looks like a plain old rock, but" newline
+		"to someone who knows about it, it's" newline
+		"a very precious, unusual element."
+	}
+	if counter_is(24) { //call(data_04.l_0xc55546) Bad Key Machine
+		"<[1C 05 AC]>" newline 
+		"The <Machine that Opens Doors," newline
+		"especially when you have a slightly" newline
+		"bad key> machine."
+	}
+	if counter_is(25) { //call(data_03.l_0xc544dd) Pak of bubble gum
+		"<[1C 05 68]>" newline 
+		"This is the Balloon Monkey's favorite." newline
+		"It won't help you recover, but you'll" newline
+		"never run out. It's a super jumbo pack!"
+	}
+eob

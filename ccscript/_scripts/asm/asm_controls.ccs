@@ -1,10 +1,6 @@
 /*ASM Code to implement the New/Improved Controls for EarthBound hack with CoilSnake made by ShadowOne333*/
 
 import asm65816
-import cc_main_menu
-import "../../_scripts.ccs"
-import "../modmenu/menus/modmenu.ccs"
-import JSL_with_RTS
 
 /* Button values for remapping purposes:
 FOR RAM ADDRESSES LOADED FROM 006D/006F/0065
@@ -19,49 +15,16 @@ ROM[0xC0B8E3] = AND_i	(0x0040)	// AND operand check for Opening the Main Menu (A
 ROM[0xC0B907] = AND_i	(0x1000)	// AND operand check for Opening the Map (X button by default)
 ROM[0xC0B915] = AND_i	(0x00A0)	// AND operand check for A+L buttons. This determines which buttons can talk to people / Confirm selections at the Menus
 
-ROM[0xc134a9] = { MText(TextTest) JML(0xc1ffdb) PLD RTL }
+ROM[0xC13199] = {
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+}
 
-TextTest:
-	call(Tesst)
-	window_closeall
-	"[1F ED]"
-eob
-
-Tesst:
-	//if flag flg_CloseMainMenu
-	//if not flag 0x63A
-	{
-		"[1F E5 FF]"
-		//set(flg_CloseMainMenu)
-		set(0x63A)
-		window_closeall
-		window_open(1)
-		menu 2
-		{
-			"Goods": { window_closeall open_hp open_goods }
-			"Equip": { window_closeall open_equip }
-			"PSI": { window_closeall open_hp open_psi }
-			"Key Items": { goto(KeyItems) }
-			"Mod Menu": { goto(ModMenu_MainMenu) }
-			"Status": { window_closeall open_status }
-		}
-	}
-	window_closeall
-	"[1F ED]"
-	//unset(flg_CloseMainMenu)
-	unset(0x63A)
-eob
-
-/*ROM[0xC13199] = {
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-}*/
-
-/*ROM[0xC1324D] = {	
+ROM[0xC1324D] = {	
 	JSL	(0xC04279)	// Jump to subroutine at $C04279
 
 	//The rest of the code up to Label 5 seems to be the same as in the original game, simply shifted due to the JSL
@@ -111,8 +74,7 @@ eob
 	JSR	(0x04EE)	// Jump to address $04EE
 }
 
-ROM[0xC13493] = CMP_i	(0x0005)// CMP #$0005
-*/
+ROM[0xC13493] = CMP_i	(0x0007)// CMP #$0007
 
 /* Open Menu subroutine modifications */
 ROM[0xC134E1] = {
@@ -140,7 +102,7 @@ ROM[0xC134FB] = {
 
 
 /* Talk/Check Button subroutine modifications.
-I believe this is the one that removes the "No problem here" dialog 
+I believe this is the one that removes the "No problem here" dialog */
 ROM[0xC13C3E] = {
 	NOP			// No operation
 	NOP			// No operation
@@ -159,7 +121,7 @@ ROM[0xC13C6D] = {
 	LDA_i	(0x0001)	// LDA #$0001 
 	JSR	(0x04EE)	// Jump to RAM address $04EE
 	NOP			// No operation
-}*/
+}
 
 
 /* THE FOLLOWING SECTIONS ARE NOT ASM CODE, BUT RATHER PART OF THE DIALOG WINDOW ATTRIBUTES TABLE AND TEXT.

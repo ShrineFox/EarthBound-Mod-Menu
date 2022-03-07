@@ -1,12 +1,8 @@
 import asm65816_2
-import cc_asmcall
 import movement
 
 // by cooprocks123e
-command cutscene_on { "[1A 0F]" }
-command cutscene_off { "[1A 10]" }
-  
-CC_movscr_Cutscene:
+movscr_Cutscene:
     ondraw(0x9ff0) // NOP - Don't draw us
     asmcall(asm_CutsceneInit)
     mov_var(7,0)
@@ -20,7 +16,7 @@ CC_movscr_Cutscene:
     asmcall (0xC020F1) // Delete entity
     mov_end
 
-CC_movscr_Cutscene_Off:
+movscr_Cutscene_Off:
     ondraw(0x9ff0) // NOP - Don't draw us
     mov_var(7,58)
     startloop(29) // 58px total / 2px per frame

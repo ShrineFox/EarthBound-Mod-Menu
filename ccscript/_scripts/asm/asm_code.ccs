@@ -25,7 +25,8 @@ BootUpMusic: {
         JSL   (0xC4FBBD) // Play our music!
         RTL
 }
-
+//Changing the creation and deletion control codes to accept diagonal frames [1F 1E] [1F 17] etc.
+//ROM[0xC428A9] = "[23 A6 C0]"
 // Title Screen music stop
 //ROM[0xc4dcb5] = {BRA(5) NOP NOP NOP NOP NOP}
 // Title Screen -> File Select

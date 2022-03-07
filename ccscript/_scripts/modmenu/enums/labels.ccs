@@ -11,6 +11,7 @@ lbl_Config: "CONFIG[00]"
 lbl_Confirm: "CONFIRM[00]"
 lbl_ShrineFox: "ShrineFox[00]"
 lbl_Description: "DESCRIPTION[00]"
+lbl_Action: "Action[00]"
 // Submenu Labels
 lbl_Warp: "WARP[00]"
 lbl_WarpID: "WARP ID[00]"

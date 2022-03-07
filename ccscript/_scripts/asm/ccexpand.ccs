@@ -1,67 +1,5 @@
 import asm65816_2
 import cc_asmcall
-import movement
-
-// by cooprocks123e
-command cutscene_on { "[1A 0F]" }
-command cutscene_off { "[1A 10]" }
-  
-CC_movscr_Cutscene:
-    ondraw(0x9ff0) // NOP - Don't draw us
-    asmcall(asm_CutsceneInit)
-    mov_var(7,0)
-    startloop(29) // 58px total / 2px per frame
-        var_add(7,2) // Add 2px per frame
-        mov_reg_var(7)
-        asmcall(asm_write_letterbox_regs)
-        mov_wait(1)
-    endloop
-    //asmcall (asm_Cutscene) // Turn on cutscene letterboxes
-    asmcall (0xC020F1) // Delete entity
-    mov_end
-
-CC_movscr_Cutscene_Off:
-    ondraw(0x9ff0) // NOP - Don't draw us
-    mov_var(7,58)
-    startloop(29) // 58px total / 2px per frame
-        var_add(7,-2) // Add 2px per frame
-        mov_reg_var(7)
-        asmcall(asm_write_letterbox_regs)
-        mov_wait(1)
-    endloop
-    asmcall (asm_CutsceneOff) // Turn on cutscene letterboxes
-    asmcall (0xC020F1) // Delete entity
-    mov_end
-
-asm_CutsceneInit: {
-    REP (0x30)
-    LDA_i (0x0017) // Enable sprites, layer 1, layer 2, layer 3 outside letterboxed region
-    STA_a (0xADAE)
-    LDA_i (0x0004) // Enable layer 3 inside letterboxed region
-    STA_a (0xADB0) 
-    LDA_i (0x0000) // No letterboxing at first
-    JSL   (asm_write_letterbox_regs)
-    LDA_i (2)
-    JSL   (0xC429E8) // Start letterbox HDMA on channel 2
-    RTL
-}
-asm_write_letterbox_regs: {
-    INC
-    STA_a(0xadb2)
-    DEC
-    EOR_i(0xffff)
-    SEC
-    ADC_i(224)
-    STA_a(0xadb4)
-    JSL(0xc2d0ac) // Update HDMA table
-    RTL
-}
-asm_CutsceneOff: {
-    REP   (0x30)
-    LDA_i (2)
-    JSL   (0xC0AE34) // Disable HDMA channel 2
-    RTL
-}
 
 // CCExpand v0.3 - Additional CCScript codes
 // Initial version by jtolmar
@@ -108,11 +46,11 @@ CodeTable: {
   long cc_asmcall.CC_code_AsmCall // [1A 0C]
   long cc_text_speed.CC_code_gettextspeed // [1A 0D]
   long cc_text_speed.CC_code_settextspeed // [1A 0E]
-  long CC_movscr_Cutscene // [1A 0F]
-  long CC_movscr_Cutscene_Off // [1A 10]
+  long DoNothing // [1A 0F]
+  long DoNothing // [1A 10]
   long cc_main_menu.CC_Goods // [1A 11]
   long cc_main_menu.CC_Equip // [1A 12]
-  long cc_main_menu.CC_EndMainMenu // [1A 13]
+  long DoNothing // [1A 13]
   long cc_main_menu.CC_Status // [1A 14]
   long cc_main_menu.CC_PSI // [1A 15]
   long cc_main_menu.CC_Close_HP // [1A 16]
