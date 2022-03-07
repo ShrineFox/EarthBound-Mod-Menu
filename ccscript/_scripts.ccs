@@ -1,17 +1,18 @@
-/* ASM Hacks */
+/* Dependencies (ASM Hacks) */
 import "_scripts/asm/asm_code.ccs"
 import "_scripts/asm/asm_controls.ccs"
 import "_scripts/asm/expand_flags.ccs"
-/* Quality of Life improvements from CCScript Library */
+import "_scripts/asm/expand_text_windows.ccs"
 import "_scripts/asm/Title_Window.ccs"
 import "_scripts/asm/name_fun.ccs"
+import "_scripts/asm/movement_reloc.ccs"
+/* Quality of Life improvements from CCScript Library */
 import "_scripts/asm/noclip.ccs"
 import "_scripts/asm/fast_doors.ccs"
 import "_scripts/asm/run_button_toggleable.ccs"
 import "_scripts/asm/repel_sandwiches.ccs"
 import "_scripts/asm/run_accelerating.ccs"
 import "_scripts/asm/GoodsMenuEquip.ccs"
-import "_scripts/asm/movement_reloc.ccs"
 /* Mod Menu */
 import "_scripts/modmenu/menus/modmenu.ccs"
 import "_scripts/modmenu/commands.ccs"
@@ -22,6 +23,8 @@ import "_scripts/modmenu/enums/party.ccs"
 import "_scripts/modmenu/enums/windows.ccs"
 /* Main Menu Override */
 import "_scripts/mainmenu/mainmenu.ccs"
+
+
 
 // Open the Mod Menu
 ModMenu:

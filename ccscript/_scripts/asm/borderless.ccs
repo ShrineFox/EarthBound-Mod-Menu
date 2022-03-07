@@ -1,0 +1,30 @@
+import asm65816_2
+
+// by JTolmar
+
+ROM[0xc107be] = JSL(BorderlessWindowMonkeyPatch)
+BorderlessWindowMonkeyPatch: {
+  JSL(0xc08ff7) // Multiplication we hijacked (offset into window data array)
+  TAY // Save result in Y. Also we could use the result in Y anyway
+  // Load the window's menu cursor callback.
+  // This isn't what it's for, but it's never going to actually equal 1, and
+  // we don't have cursors on the menus we do this with, so we can double purpose
+  // it as a flag to go borderless.
+  LDA_y(0x8687)
+  CMP_i(1)
+  BEQ(2) // Jump to horrible hack (if you thought the above was bad...)
+  // Okay we're not hijacking, put everything back
+  TYA
+  RTL
+_horribleHack:
+  // Call the thing we wanted
+  JSL(DisplayBorderlessWindow)
+  // We want to return all the way out of our parent function.
+  // So we need to remove the call to us from the stack. And it's 3 bytes
+  PHB // Add a byte we don't care about
+  PLA // PLA pulls two
+  PLA // PLA pulls two
+  // Now we're in the parent function's stack frame, so do their return
+  PLD
+  RTL
+}

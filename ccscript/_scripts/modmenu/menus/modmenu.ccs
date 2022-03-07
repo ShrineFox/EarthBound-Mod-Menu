@@ -70,7 +70,6 @@ TestDlg:
 	"@Testing letterbox..." next
 	window_closeall
 	sprite_spawn(106, 897, 1) // Invisible camera sprite running "Cutscene Off"
-	m_destroy_self
 eob
 
 TextSpeed:
