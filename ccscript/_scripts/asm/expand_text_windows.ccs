@@ -26,7 +26,7 @@ WindowDefinition(57, 8, 9, 22, 4) // Mod Menu Notification window
 WindowDefinition(58, 15, 15, 16, 13) // Mod Menu Debug window
 WindowDefinition(59, 7, 1, 24, 16) // Mod Menu Key Items window
 WindowDefinition(60, 7, 17, 24, 10) // Mod Menu Item Description window
-WindowDefinition(61, 0, 0, 36, 4) // Top LetterBox window
+WindowDefinition(61, 0, 0, 32, 4) // Top LetterBox window
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// PUT YOUR WINDOWS ABOVE
@@ -308,7 +308,7 @@ GetExistenceAtA: {
 // Literally only one reference to this table.. smh I thought this would be so easy
 _asmptr(0xc105c9, NewWindowTable)
 NewWindowTable:
-    WindowDefinition( 0, 0x0001, 0x0001, 0x000D, 0x0008) //
+    WindowDefinition( 0, 0x0001, 0x0001, 0x0010, 0x0008) //
     WindowDefinition( 1, 0x000C, 0x0001, 0x0013, 0x0008) // Out-of-battle text
     WindowDefinition( 2, 0x0007, 0x0001, 0x0018, 0x0010) // Main inventory window
     WindowDefinition( 3, 0x0001, 0x0001, 0x0006, 0x000A) // Inventory menu

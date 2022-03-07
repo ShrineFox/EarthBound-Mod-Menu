@@ -1,5 +1,6 @@
 import asm65816_2
 import cc_asmcall
+import JSL_with_RTS
 
 // CCExpand v0.3 - Additional CCScript codes
 // Initial version by jtolmar
@@ -46,7 +47,7 @@ CodeTable: {
   long cc_asmcall.CC_code_AsmCall // [1A 0C]
   long cc_text_speed.CC_code_gettextspeed // [1A 0D]
   long cc_text_speed.CC_code_settextspeed // [1A 0E]
-  long DoNothing // [1A 0F]
+  long CC_BreakEverything // [1A 0F]
   long DoNothing // [1A 10]
   long cc_main_menu.CC_Goods // [1A 11]
   long cc_main_menu.CC_Equip // [1A 12]
@@ -68,6 +69,16 @@ CodeTable: {
   // ...
   // You can keep adding them up to [1A FF].
 }
+
+CC_BreakEverything: M_EB_Function_Wrapper({
+  JSL(Brk)
+})
+
+Brk: {
+  //LDA_i(0x0420) // Junk values
+  //LDX_i(0x0069)
+  ASM_JSL_With_RTS(BANKC0_RTL, 0xC008C3)
+	RTL }
 
 // Here is documentation on the various helper functions and macros available
 // for use in your assembly code.

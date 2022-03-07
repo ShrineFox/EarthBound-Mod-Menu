@@ -58,18 +58,12 @@ ModMenu_AboutDlg:
 	Lbl(lbl_About)
 	"@EarthBound Mod Menu by ShrineFox." newline
 	"@Made using Coilsnake." newline
-	"@Updated 3-6-22." wait
+	"@Updated 3-7-22." wait
 	window_close(wnd_Dialog)
 goto(ModMenu_MainMenu)
 
-command sprite_spawn(sprite,move,style) "[1F 15 {short sprite} {short move} {byte style}]"
-
 TestDlg:
-	sprite_spawn(106, 896, 1) // Invisible camera sprite running "Cutscene On"
-	window_open(1)
-	"@Testing letterbox..." next
-	window_closeall
-	sprite_spawn(106, 897, 1) // Invisible camera sprite running "Cutscene Off"
+	"[1A 0F]"
 eob
 
 TextSpeed:

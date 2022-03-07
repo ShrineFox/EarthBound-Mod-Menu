@@ -12,18 +12,18 @@ import keyitems
 
 ROM[0xc134af] = { MText(MainMenu) NOP NOP NOP NOP NOP NOP NOP NOP NOP NOP NOP NOP NOP NOP NOP NOP NOP ASM_JSL_With_RTS(BANKC1_RTL, 0xC10A1D) JMP(0xc13c8c) }
 
-Selected_Goods: { counter(1) eob } Selected_Equip: { counter(2) eob }
-Selected_PSI: { counter(3) eob } Selected_KeyItems: { counter(4) eob }
-Selected_ModMenu: { counter(5) eob } Selected_Status: { counter(6) eob }
+Selected_Goods:   { counter(1) eob }  Selected_Equip:    { counter(2) eob }
+Selected_PSI:     { counter(3) eob }  Selected_KeyItems: { counter(4) eob }
+Selected_ModMenu: { counter(5) eob }  Selected_Status:   { counter(6) eob }
 
 MainMenu:
-	sprite_spawn(106, 896, 1) // Invisible camera sprite running "Cutscene On"
+	//sprite_spawn(106, 896, 1) // Invisible camera sprite running "Cutscene On"
 	// Stop player movement
 	"[1F E5 FF]"
 	// Open appropriately sized window
 	window_closeall
-	window_open(wnd_TopLetterBox)
-	//Lbl(lbl_Action)
+	window_open(wnd_Action)
+	Lbl(lbl_Action)
 	ResetCounter()
 	ctoarg
 	// Options
@@ -34,7 +34,7 @@ MainMenu:
 	if flg_ModMenu { MenuOptionWithCallback("Mod Menu", Selected_ModMenu) }
 	MenuOptionWithCallback("Status", Selected_Status)
 	// Width
-	DisplayVertical(6)
+	DisplayVertical(2)
 	// Exit by default
 	if not "[11]" { goto(goto_end) }
 	// Results
@@ -62,7 +62,7 @@ MainMenu:
 	goto_status:
 		window_closeall open_status goto(MainMenu)
 	goto_end:
-		sprite_spawn(106, 897, 1) // Invisible camera sprite running "Cutscene Off"
+		//sprite_spawn(106, 897, 1) // Invisible camera sprite running "Cutscene Off"
 		// Resume player movement
 		"[1F ED]"
 eob

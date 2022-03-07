@@ -9,6 +9,8 @@ import "enums/items.ccs"
 import "enums/windows.ccs"
 import "commands.ccs"
 
+command sprite_spawn(sprite,move,style) "[1F 15 {short sprite} {short move} {byte style}]"
+
 // Get Text Speed
 command GetTextSpeed() { gettextspeed }
 // Set Text Speed
