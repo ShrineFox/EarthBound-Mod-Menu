@@ -17,7 +17,7 @@ WarpMenu:
 		"Enter ID":     { goto(WarpID) }
 		"Set Anchor":   { anchor_set SystemWnd(wnd_ModMenu2, "{sound(SND_BOXOPEN1)}@Anchor set to current position.") }
 		"Go To Anchor": { anchor_warp WarpNotification("anchor position") }
-		default "Back": { goto(modmenu.ModMenu_MainMenu) }
+		default "Back": { goto(modmenu.ModMenu) }
 	}
 goto(WarpMenu)
 

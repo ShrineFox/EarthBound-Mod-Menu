@@ -17,7 +17,7 @@ FlagsMenu:
 		"Town Stuff": { goto(TownMenu) }
 		"Misc": { goto(MiscFlagsMenu) }
 		"Mod Config": { goto(ConfigMenu) }
-		default "Back": { goto(modmenu.ModMenu_MainMenu) }
+		default "Back": { goto(modmenu.ModMenu) }
 	}
 goto(FlagsMenu)
 

@@ -28,7 +28,7 @@ import "_scripts/mainmenu/mainmenu.ccs"
 
 // Open the Mod Menu
 ModMenu:
-	goto(ModMenu_MainMenu)
+	goto(ModMenu)
 	
 // Show information about the Mod Menu (item help text)
 ModMenu_About:
@@ -58,6 +58,7 @@ eob
 // Prevent your dad from calling you
 DadCall:
 	if not flg_DadCantCall { goto(data_32.l_0xc7d33e_original) }
+	SetPalette(38)
 eob
 
 // Prevent Photo Guy cutscene from happening

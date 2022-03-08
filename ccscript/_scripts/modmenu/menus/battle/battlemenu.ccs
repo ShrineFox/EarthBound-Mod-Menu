@@ -14,7 +14,7 @@ BattleMenu:
 	menu 1 {
 		"View List":    { goto(BattleList) }
 		"Enter ID":     { goto(BattleID) }
-		default "Back": { goto(modmenu.ModMenu_MainMenu) }
+		default "Back": { goto(modmenu.ModMenu) }
 	}
 goto(BattleMenu)
 

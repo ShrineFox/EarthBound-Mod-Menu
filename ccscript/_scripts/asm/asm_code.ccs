@@ -10,6 +10,15 @@ RandDoor:
   JSL(0xC2ABAD)
   STA_d(0x0a)
   RTL */
+
+/* Constant Dad Calls */
+// https://earthbound-rom-explorerr.herokuapp.com/address/$C0B67F
+//ROM[0xC0B6C2] = { LDA_i(0x0697) }
+ROM[0xC0B6C2] = { LDA_i(0x0002) }
+// https://earthbound-rom-explorerr.herokuapp.com/address/$C075DD
+//ROM[0xC0766C] = { LDA_i(0x0697) }
+ROM[0xC0766C] = { LDA_i(0x0002) }
+
 /* Disable Gas Station Sequence */
 ROM[0xC4DB33] = "[4C F9 DB]" 
 /* Disable Attract Mode */
@@ -107,7 +116,7 @@ ROM[0xC1C415] = byte [0] 0x26
 ROM[0xC1FE3D] = byte [0] 0x80
 ROM[0xC1FE42] = byte [0] 0x7B
 
-// Change "PSI [FAVTHING] " into "PK [FAVTHING] "
+// Change "PSI [FAVTHING] " into "PK [FAVTHING] " by Catador
 //
 // Reference: https://github.com/Herringway/ebsrc/blob/master/src/intro/file_select_menu_loop.asm#L628-L651
 ROM[0xC1FE37] = {
@@ -122,6 +131,7 @@ ROM[0xC1FE37] = {
     LDA_i (0x0003) // Length of "PK " string
     JMP   (0xFE50) // Back into original code
 }
+
 // Copy favorite thing string into $9828 instead of $9829
 ROM[0xC1FA7D] = LDX_i (0x9828)
 ROM[0xC1FBC7] = LDA_i (0x9828)

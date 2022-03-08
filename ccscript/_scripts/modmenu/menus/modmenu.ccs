@@ -3,6 +3,7 @@ import "../enums/flags.ccs"
 import "../enums/labels.ccs"
 import "../enums/party.ccs"
 import "../enums/windows.ccs"
+import "../enums/counter.ccs"
 import "../commands.ccs"
 /* Submenus */
 import "party/partymenu.ccs"
@@ -11,6 +12,7 @@ import "flags/flagsmenu.ccs"
 import "battle/battlemenu.ccs"
 import "goods/goodsmenu.ccs"
 import "music/musicmenu.ccs"
+import "map/palettemenu.ccs"
 /* Commands */
 import "party/health/healthcommands.ccs"
 import "../../asm/cc_text_speed.ccs"
@@ -24,11 +26,7 @@ import "../../asm/movscr_codes.ccs"
 
 // Procedures
 
-ModMenu_MainMenu:
-	call(ModMenu)
-eob
-
-ModMenu:
+ModMenu: {
 	// Close unnecessary windows
 	CloseAllModMenuWnd()
 	window_closeall
@@ -36,22 +34,50 @@ ModMenu:
 	OpenModMenuWnd()
 	// Set label to "MOD MENU"
 	Lbl(lbl_ModMenu)
+	ResetCounter() ctoarg
 	// Pick a menu option
-	menu 1 {
-		"Party": { call(PartyMenu) }
-		"Save":  { save SystemWnd(wnd_ModMenu, "@Game saved.") }
-		"BGM": 	 { call(MusicMenu) }
-		"Warp":  { call(WarpMenu) }
-		"Battle": { call(BattleMenu) }
-		"Goods": { call(GoodsMenu) }
-		"Flags": { call(FlagsMenu) }
-		"Test":  { call(TestDlg)  }
-		"Text Speed": { call(TextSpeed) }
-		default "Exit": { goto(_end) }
-	}
-	goto(ModMenu)
-	_end:
-eob
+	MenuOptionWithCallback("Party", Set_Count_1)
+	MenuOptionWithCallback("Save", Set_Count_2)
+	MenuOptionWithCallback("BGM", Set_Count_3)
+	MenuOptionWithCallback("Goods", Set_Count_4)
+	MenuOptionWithCallback("Warp", Set_Count_5)
+	MenuOptionWithCallback("Battle", Set_Count_6)
+	MenuOptionWithCallback("Flags", Set_Count_7)
+	MenuOptionWithCallback("Map", Set_Count_8)
+	MenuOptionWithCallback("Text Speed", Set_Count_9)
+	DisplayVertical(1) if not "[11]" { eob }
+	ctoarg swap
+    SwitchGoto(9)
+        SwitchCase(chose_party)
+        SwitchCase(chose_save)
+        SwitchCase(chose_bgm)
+        SwitchCase(chose_goods)
+		SwitchCase(chose_warp)
+		SwitchCase(chose_battle)
+		SwitchCase(chose_flags)
+		SwitchCase(chose_map)
+		SwitchCase(chose_textspeed)
+    swap
+	"@Error! No option {number(0)} in this menu." eob
+	chose_party:
+		goto(PartyMenu)
+	chose_save:
+		save SystemWnd(wnd_ModMenu, "@Game saved.") goto(ModMenu)
+	chose_bgm:
+		goto(MusicMenu)
+	chose_goods:
+		goto(GoodsMenu)
+	chose_warp:
+		clearline text_color(6) SetTextSpeedInstant() "Warp" sound(SND_CURSORCONFIRM) call(WarpMenu)
+	chose_battle:
+		goto(BattleMenu)
+	chose_flags:
+		goto(FlagsMenu)
+	chose_map:
+		goto(MapMenu)
+	chose_textspeed:
+		goto(TextSpeed)
+}
 
 ModMenu_AboutDlg:
 	window_open(wnd_Dialog)
@@ -60,15 +86,32 @@ ModMenu_AboutDlg:
 	"@Made using Coilsnake." newline
 	"@Updated 3-7-22." wait
 	window_close(wnd_Dialog)
-goto(ModMenu_MainMenu)
+goto(ModMenu)
 
-TestDlg:
-	"[1A 0F]"
-eob
+MapMenu: {
+	CloseModMenu2Wnd()
+	OpenModMenu2Wnd()
+	Lbl(lbl_Map)
+	ResetCounter() ctoarg
+	// Pick a menu option
+	MenuOptionWithCallback("Palette", Set_Count_1)
+	MenuOptionWithCallback("Corrupt", Set_Count_2)
+	DisplayVertical(1) if not "[11]" { goto(ModMenu) }
+	ctoarg swap
+    SwitchGoto(2)
+        SwitchCase(chose_palette)
+        SwitchCase(chose_corrupt)
+	swap
+	"@Error! No option {number(0)} in this menu." goto(ModMenu)
+	chose_palette:
+		call(PaletteMenu) goto(MapMenu)
+	chose_corrupt:
+		"[1A 0F]" goto(MapMenu)
+}
 
 TextSpeed:
 	ConfirmNumber(lbl_Test, 1, "Set this text speed?", SetTxtSpeed)
-goto(ModMenu_MainMenu)
+goto(ModMenu)
 
 SetTxtSpeed:
 	settextspeed(0)

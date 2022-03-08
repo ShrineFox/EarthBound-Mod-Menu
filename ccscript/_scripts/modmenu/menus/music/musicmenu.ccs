@@ -16,7 +16,7 @@ MusicMenu:
 		"Enter ID":     { goto(MusicID) }
 		"Stop Music":   { music_stop SystemWnd(wnd_ModMenu2, "{sound(SND_BOXTAKE)}@Music has been stopped.") }
 		"Resume Music": { music_resume SystemWnd(wnd_ModMenu2, "{sound(SND_BOXOPEN1)}@Music has resumed.") }
-		default "Back": { goto(modmenu.ModMenu_MainMenu) }
+		default "Back": { goto(modmenu.ModMenu) }
 	}
 goto(MusicMenu)
 

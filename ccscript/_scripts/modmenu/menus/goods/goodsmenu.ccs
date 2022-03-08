@@ -18,7 +18,7 @@ GoodsMenu:
 		"View List": { goto(ItemList) }
 		"Enter ID":  { goto(ItemID) }
 		"Storage":   { goto(StorageMenu) }
-		default "Back": { goto(modmenu.ModMenu_MainMenu) }
+		default "Back": { goto(modmenu.ModMenu) }
 	}
 goto(GoodsMenu)
 
