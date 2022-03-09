@@ -1,4 +1,4 @@
-C:/Users/Ryan/Documents/GitHub/Earthbound (Mod).smc
+D:/Games/Retroarch/ROMS/SNES/Mods/EarthBound/EarthBound (Mod).smc
 CCScript Compilation Summary
 ============================
 
@@ -6,9 +6,9 @@ CCScript Compilation Summary
 Compilation statistics
 =================================================================
 Compilation start:           $f10000
-Compilation end:             $f9d10b
-Total compiled size:         577803 bytes
-Fragmented space:            75 bytes
+Compilation end:             $f9d112
+Total compiled size:         577810 bytes
+Fragmented space:            60 bytes
 -----------------------------------------------------------------
 
 
@@ -80,8 +80,8 @@ data_60                      $f89595      5725   bytes
 data_61                      $f4fc5b      928    bytes
 data_62                      $f1fffe      0      bytes
 main                         $f1fffe      0      bytes
-_scripts                     $f9bea1      1017   bytes
-_startup                     $f6ffc1      43     bytes
+_scripts                     $f9bea1      1024   bytes
+_startup                     $f6ffc1      58     bytes
 stdarg                       $f1fffe      0      bytes
 std                          $f1fffe      0      bytes
 flags                        $f1fffe      0      bytes
@@ -90,34 +90,34 @@ labels                       $f2fe82      379    bytes
 commands                     $f1fffe      0      bytes
 configmenu                   $f98f69      2579   bytes
 asm65816_2                   $f1fffe      0      bytes
-ccexpand                     $f9c772      443    bytes
-cc_asmcall                   $f9d010      128    bytes
+ccexpand                     $f9c779      443    bytes
+cc_asmcall                   $f9d017      128    bytes
 JSL_with_RTS                 $f5ffe2      17     bytes
 windows                      $f1fffe      0      bytes
 cc_text_speed                $f3ffa5      63     bytes
-bg_viewer                    $f9c92d      336    bytes
+bg_viewer                    $f9c934      336    bytes
 party                        $f1fffe      0      bytes
 items                        $f1fffe      0      bytes
 asm_code                     $f1ff41      160    bytes
 asm_controls                 $f1fffe      0      bytes
 expand_flags                 $f1fffe      0      bytes
-expand_text_windows          $f9c525      589    bytes
-Title_Window                 $f9ca7d      320    bytes
+expand_text_windows          $f9c52c      589    bytes
+Title_Window                 $f9ca84      320    bytes
 name_fun                     $f1fffe      0      bytes
 movement_reloc               $f984bb      2734   bytes
 noclip                       $f3ffe4      27     bytes
 fast_doors                   $f7fff1      14     bytes
 run_button_toggleable        $f7ffce      35     bytes
 repel_sandwiches             $f1ffe1      29     bytes
-run_accelerating             $f6ffec      16     bytes
-GoodsMenuEquip               $f9ccf6      307    bytes
+run_accelerating             $f8ffd2      16     bytes
+GoodsMenuEquip               $f9ccfd      307    bytes
 modmenu                      $f9ba73      1070   bytes
 goodsmenu                    $f623fd      9112   bytes
-mainmenu                     $f9cbbd      313    bytes
+mainmenu                     $f9cbc4      313    bytes
 cc_main_menu                 $f5ff5d      133    bytes
 asm65816                     $f1fffe      0      bytes
 keyitems                     $f92921      4836   bytes
-counter                      $f9cf31      223    bytes
+counter                      $f9cf38      223    bytes
 partymenu                    $f10000      17124  bytes
 warpmenu                     $f9aa52      2108   bytes
 flagsmenu                    $f7b8dd      7395   bytes
@@ -125,12 +125,12 @@ battlemenu                   $f9b28e      2021   bytes
 musicmenu                    $f74033      7858   bytes
 palettemenu                  $f2f84a      1592   bytes
 healthcommands               $f1fffe      0      bytes
-movement                     $f9c29a      651    bytes
-movscr_codes                 $f9ce29      264    bytes
+movement                     $f9c2a1      651    bytes
+movscr_codes                 $f9ce30      264    bytes
 status                       $f1fffe      0      bytes
 battles                      $f1fffe      0      bytes
 healthmenu                   $f1bae3      15146  bytes
-letterbox                    $f9d090      123    bytes
+letterbox                    $f9d097      123    bytes
 -----------------------------------------------------------------
 
 
@@ -6635,16 +6635,17 @@ Name                         Address
 BicycleEnd                   $f9bf3a
 BicycleStart                 $f9beab
 DadCall                      $f9c12b
+MapReload                    $f9c141
 ModMenu                      $f9bea1
 ModMenu_About                $f9bea6
-PhotoGuy                     $f9c146
+PhotoGuy                     $f9c14d
 -----------------------------------------------------------------
 
 
 Labels in module _startup
 Name                         Address
 -----------------------------------------------------------------
-Config                       $f6ffe6
+Config                       $f6fff5
 Startup                      $f6ffc1
 -----------------------------------------------------------------
 
@@ -6768,39 +6769,39 @@ Name                         Address
 Labels in module ccexpand
 Name                         Address
 -----------------------------------------------------------------
-Brk                          $f9c80a
-CC_BreakEverything           $f9c7fa
-CodeTable                    $f9c772
-DoNothing                    $f9c92c
-Original1A00                 $f9c8e6
-Original1A01                 $f9c8ed
-Original1A04                 $f9c8f4
-Original1A05                 $f9c8fb
-Original1A06                 $f9c902
-Original1A07                 $f9c909
-Original1A08                 $f9c910
-Original1A09                 $f9c917
-Original1A0A                 $f9c91e
-Original1A0B                 $f9c925
-R_Get_Argument_Memory        $f9c882
-R_Get_Secondary_Memory       $f9c890
-R_Get_Secondary_Memory_In_A  $f9c8be
-R_Get_Working_Memory         $f9c889
-R_Increment_Secondary_Memory $f9c8b7
-R_Read_Parameter_Bytes       $f9c816
-R_Set_06_To_Argument_If_Zero $f9c874
-R_Set_Argument_Memory        $f9c8a0
-R_Set_Secondary_Memory       $f9c8ae
-R_Set_Secondary_Memory_To_A  $f9c8c5
-R_Set_Working_Memory         $f9c8a7
-TableJumpUsing7E00BC         $f9c8cc
+Brk                          $f9c811
+CC_BreakEverything           $f9c801
+CodeTable                    $f9c779
+DoNothing                    $f9c933
+Original1A00                 $f9c8ed
+Original1A01                 $f9c8f4
+Original1A04                 $f9c8fb
+Original1A05                 $f9c902
+Original1A06                 $f9c909
+Original1A07                 $f9c910
+Original1A08                 $f9c917
+Original1A09                 $f9c91e
+Original1A0A                 $f9c925
+Original1A0B                 $f9c92c
+R_Get_Argument_Memory        $f9c889
+R_Get_Secondary_Memory       $f9c897
+R_Get_Secondary_Memory_In_A  $f9c8c5
+R_Get_Working_Memory         $f9c890
+R_Increment_Secondary_Memory $f9c8be
+R_Read_Parameter_Bytes       $f9c81d
+R_Set_06_To_Argument_If_Zero $f9c87b
+R_Set_Argument_Memory        $f9c8a7
+R_Set_Secondary_Memory       $f9c8b5
+R_Set_Secondary_Memory_To_A  $f9c8cc
+R_Set_Working_Memory         $f9c8ae
+TableJumpUsing7E00BC         $f9c8d3
 -----------------------------------------------------------------
 
 
 Labels in module cc_asmcall
 Name                         Address
 -----------------------------------------------------------------
-CC_code_AsmCall              $f9d010
+CC_code_AsmCall              $f9d017
 -----------------------------------------------------------------
 
 
@@ -6828,9 +6829,9 @@ CC_code_settextspeed         $f3ffbd
 Labels in module bg_viewer
 Name                         Address
 -----------------------------------------------------------------
-InitEverything               $f9c9de
-asm_HideBattleBG             $f9c9b5
-asm_ShowBattleBG             $f9c92d
+InitEverything               $f9c9e5
+asm_HideBattleBG             $f9c9bc
+asm_ShowBattleBG             $f9c934
 -----------------------------------------------------------------
 
 
@@ -6872,28 +6873,28 @@ Name                         Address
 Labels in module expand_text_windows
 Name                         Address
 -----------------------------------------------------------------
-CustomWindows                $f9c72a
-GetExistenceAndLoadYWithSizeofStats $f9c562
-GetExistenceAtA              $f9c572
-NewWindowTable               $f9c582
-Patch_C11E94                 $f9c54c
-Patch_C11EA5                 $f9c557
-Patch_C1E1C1                 $f9c52f
-Patch_C1FB70                 $f9c535
-Patch_C1FC22                 $f9c53b
-Patch_C2BBD0                 $f9c525
-Patch_C3E5B3                 $f9c541
-SetExistenceAtXToA           $f9c56a
+CustomWindows                $f9c731
+GetExistenceAndLoadYWithSizeofStats $f9c569
+GetExistenceAtA              $f9c579
+NewWindowTable               $f9c589
+Patch_C11E94                 $f9c553
+Patch_C11EA5                 $f9c55e
+Patch_C1E1C1                 $f9c536
+Patch_C1FB70                 $f9c53c
+Patch_C1FC22                 $f9c542
+Patch_C2BBD0                 $f9c52c
+Patch_C3E5B3                 $f9c548
+SetExistenceAtXToA           $f9c571
 -----------------------------------------------------------------
 
 
 Labels in module Title_Window
 Name                         Address
 -----------------------------------------------------------------
-Title_Char_Name              $f9cadf
-Title_Str_Name               $f9cb5b
-Win_Title                    $f9ca7d
-r_0xC1866D                   $f9caab
+Title_Char_Name              $f9cae6
+Title_Str_Name               $f9cb62
+Win_Title                    $f9ca84
+r_0xC1866D                   $f9cab2
 -----------------------------------------------------------------
 
 
@@ -6942,29 +6943,29 @@ extended_spawn_check         $f1ffe1
 Labels in module run_accelerating
 Name                         Address
 -----------------------------------------------------------------
-SpeedHijack                  $f6ffec
+SpeedHijack                  $f8ffd2
 -----------------------------------------------------------------
 
 
 Labels in module GoodsMenuEquip
 Name                         Address
 -----------------------------------------------------------------
-equipMessagePartOne          $f9cd5d
-equipMessagePartTwo          $f9cdc7
-finalDefense                 $f9cdd9
-finalOffense                 $f9cdf1
-initialDefense               $f9cd75
-initialOffense               $f9cd9e
-jeffDefenseStat              $f9ce11
-jeffOffenseStat              $f9ce21
-nessDefenseStat              $f9ce09
-nessOffenseStat              $f9ce19
-newCheck                     $f9cd3a
-newUse                       $f9ccf6
-paulaDefenseStat             $f9ce0d
-paulaOffenseStat             $f9ce1d
-pooDefenseStat               $f9ce15
-pooOffenseStat               $f9ce25
+equipMessagePartOne          $f9cd64
+equipMessagePartTwo          $f9cdce
+finalDefense                 $f9cde0
+finalOffense                 $f9cdf8
+initialDefense               $f9cd7c
+initialOffense               $f9cda5
+jeffDefenseStat              $f9ce18
+jeffOffenseStat              $f9ce28
+nessDefenseStat              $f9ce10
+nessOffenseStat              $f9ce20
+newCheck                     $f9cd41
+newUse                       $f9ccfd
+paulaDefenseStat             $f9ce14
+paulaOffenseStat             $f9ce24
+pooDefenseStat               $f9ce1c
+pooOffenseStat               $f9ce2c
 -----------------------------------------------------------------
 
 
@@ -7008,20 +7009,20 @@ WeaponEquipList              $f62cfd
 Labels in module mainmenu
 Name                         Address
 -----------------------------------------------------------------
-MainMenu                     $f9cbcf
-Selected_Equip               $f9cbc0
-Selected_Goods               $f9cbbd
-Selected_KeyItems            $f9cbc6
-Selected_ModMenu             $f9cbc9
-Selected_PSI                 $f9cbc3
-Selected_Status              $f9cbcc
-goto_end                     $f9ccf3
-goto_equip                   $f9ccc3
-goto_goods                   $f9ccb8
-goto_keyitems                $f9ccd7
-goto_modmenu                 $f9cce3
-goto_psi                     $f9cccc
-goto_status                  $f9ccea
+MainMenu                     $f9cbd6
+Selected_Equip               $f9cbc7
+Selected_Goods               $f9cbc4
+Selected_KeyItems            $f9cbcd
+Selected_ModMenu             $f9cbd0
+Selected_PSI                 $f9cbca
+Selected_Status              $f9cbd3
+goto_end                     $f9ccfa
+goto_equip                   $f9ccca
+goto_goods                   $f9ccbf
+goto_keyitems                $f9ccde
+goto_modmenu                 $f9ccea
+goto_psi                     $f9ccd3
+goto_status                  $f9ccf1
 -----------------------------------------------------------------
 
 
@@ -7083,77 +7084,77 @@ ShowDesc                     $f9329e
 Labels in module counter
 Name                         Address
 -----------------------------------------------------------------
-Set_Count_0                  $f9cf31
-Set_Count_1                  $f9cf3e
-Set_Count_10                 $f9cf59
-Set_Count_11                 $f9cf5c
-Set_Count_12                 $f9cf5f
-Set_Count_13                 $f9cf62
-Set_Count_14                 $f9cf65
-Set_Count_15                 $f9cf68
-Set_Count_16                 $f9cf6b
-Set_Count_17                 $f9cf6e
-Set_Count_18                 $f9cf71
-Set_Count_19                 $f9cf74
-Set_Count_2                  $f9cf41
-Set_Count_20                 $f9cf77
-Set_Count_21                 $f9cf7a
-Set_Count_22                 $f9cf7d
-Set_Count_23                 $f9cf80
-Set_Count_24                 $f9cf83
-Set_Count_25                 $f9cf86
-Set_Count_26                 $f9cf89
-Set_Count_27                 $f9cf8c
-Set_Count_28                 $f9cf8f
-Set_Count_29                 $f9cf92
-Set_Count_3                  $f9cf44
-Set_Count_30                 $f9cf95
-Set_Count_31                 $f9cf98
-Set_Count_32                 $f9cf9b
-Set_Count_33                 $f9cf9e
-Set_Count_34                 $f9cfa1
-Set_Count_35                 $f9cfa4
-Set_Count_36                 $f9cfa7
-Set_Count_37                 $f9cfaa
-Set_Count_38                 $f9cfad
-Set_Count_39                 $f9cfb0
-Set_Count_4                  $f9cf47
-Set_Count_40                 $f9cfb3
-Set_Count_41                 $f9cfb6
-Set_Count_42                 $f9cfb9
-Set_Count_43                 $f9cfbc
-Set_Count_44                 $f9cfbf
-Set_Count_45                 $f9cfc2
-Set_Count_46                 $f9cfc5
-Set_Count_47                 $f9cfc8
-Set_Count_48                 $f9cfcb
-Set_Count_49                 $f9cfce
-Set_Count_5                  $f9cf4a
-Set_Count_50                 $f9cfd1
-Set_Count_51                 $f9cfd4
-Set_Count_52                 $f9cfd7
-Set_Count_53                 $f9cfda
-Set_Count_54                 $f9cfdd
-Set_Count_55                 $f9cfe0
-Set_Count_56                 $f9cfe3
-Set_Count_57                 $f9cfe6
-Set_Count_58                 $f9cfe9
-Set_Count_59                 $f9cfec
-Set_Count_6                  $f9cf4d
-Set_Count_60                 $f9cfef
-Set_Count_61                 $f9cff2
-Set_Count_62                 $f9cff5
-Set_Count_63                 $f9cff8
-Set_Count_64                 $f9cffb
-Set_Count_65                 $f9cffe
-Set_Count_66                 $f9d001
-Set_Count_67                 $f9d004
-Set_Count_68                 $f9d007
-Set_Count_69                 $f9d00a
-Set_Count_7                  $f9cf50
-Set_Count_70                 $f9d00d
-Set_Count_8                  $f9cf53
-Set_Count_9                  $f9cf56
+Set_Count_0                  $f9cf38
+Set_Count_1                  $f9cf45
+Set_Count_10                 $f9cf60
+Set_Count_11                 $f9cf63
+Set_Count_12                 $f9cf66
+Set_Count_13                 $f9cf69
+Set_Count_14                 $f9cf6c
+Set_Count_15                 $f9cf6f
+Set_Count_16                 $f9cf72
+Set_Count_17                 $f9cf75
+Set_Count_18                 $f9cf78
+Set_Count_19                 $f9cf7b
+Set_Count_2                  $f9cf48
+Set_Count_20                 $f9cf7e
+Set_Count_21                 $f9cf81
+Set_Count_22                 $f9cf84
+Set_Count_23                 $f9cf87
+Set_Count_24                 $f9cf8a
+Set_Count_25                 $f9cf8d
+Set_Count_26                 $f9cf90
+Set_Count_27                 $f9cf93
+Set_Count_28                 $f9cf96
+Set_Count_29                 $f9cf99
+Set_Count_3                  $f9cf4b
+Set_Count_30                 $f9cf9c
+Set_Count_31                 $f9cf9f
+Set_Count_32                 $f9cfa2
+Set_Count_33                 $f9cfa5
+Set_Count_34                 $f9cfa8
+Set_Count_35                 $f9cfab
+Set_Count_36                 $f9cfae
+Set_Count_37                 $f9cfb1
+Set_Count_38                 $f9cfb4
+Set_Count_39                 $f9cfb7
+Set_Count_4                  $f9cf4e
+Set_Count_40                 $f9cfba
+Set_Count_41                 $f9cfbd
+Set_Count_42                 $f9cfc0
+Set_Count_43                 $f9cfc3
+Set_Count_44                 $f9cfc6
+Set_Count_45                 $f9cfc9
+Set_Count_46                 $f9cfcc
+Set_Count_47                 $f9cfcf
+Set_Count_48                 $f9cfd2
+Set_Count_49                 $f9cfd5
+Set_Count_5                  $f9cf51
+Set_Count_50                 $f9cfd8
+Set_Count_51                 $f9cfdb
+Set_Count_52                 $f9cfde
+Set_Count_53                 $f9cfe1
+Set_Count_54                 $f9cfe4
+Set_Count_55                 $f9cfe7
+Set_Count_56                 $f9cfea
+Set_Count_57                 $f9cfed
+Set_Count_58                 $f9cff0
+Set_Count_59                 $f9cff3
+Set_Count_6                  $f9cf54
+Set_Count_60                 $f9cff6
+Set_Count_61                 $f9cff9
+Set_Count_62                 $f9cffc
+Set_Count_63                 $f9cfff
+Set_Count_64                 $f9d002
+Set_Count_65                 $f9d005
+Set_Count_66                 $f9d008
+Set_Count_67                 $f9d00b
+Set_Count_68                 $f9d00e
+Set_Count_69                 $f9d011
+Set_Count_7                  $f9cf57
+Set_Count_70                 $f9d014
+Set_Count_8                  $f9cf5a
+Set_Count_9                  $f9cf5d
 -----------------------------------------------------------------
 
 
@@ -7348,23 +7349,23 @@ Name                         Address
 Labels in module movement
 Name                         Address
 -----------------------------------------------------------------
-CreditsFinalJeffIntro        $f9c463
-CreditsFinalJeffReappear     $f9c4f9
-CreditsFinalNessIntro        $f9c3f4
-CreditsFinalNessReappear     $f9c4cd
-CreditsFinalPaulaIntro       $f9c42e
-CreditsFinalPaulaReappear    $f9c4e3
-CreditsFinalPooIntro         $f9c498
-CreditsFinalPooReappear      $f9c50f
-CreditsNPC                   $f9c2f4
-CreditsNPCBonker             $f9c360
-CreditsNPCBonkerEnd          $f9c3b2
-CreditsNPCBonkerToasted      $f9c3a0
-MoveTowardsDest              $f9c2d1
-MoveUntilAtDest              $f9c2e6
-Walking                      $f9c29a
-movement_sub_AA38            $f9c2a6
-movement_task_walking_anim_8frames $f9c2b4
+CreditsFinalJeffIntro        $f9c46a
+CreditsFinalJeffReappear     $f9c500
+CreditsFinalNessIntro        $f9c3fb
+CreditsFinalNessReappear     $f9c4d4
+CreditsFinalPaulaIntro       $f9c435
+CreditsFinalPaulaReappear    $f9c4ea
+CreditsFinalPooIntro         $f9c49f
+CreditsFinalPooReappear      $f9c516
+CreditsNPC                   $f9c2fb
+CreditsNPCBonker             $f9c367
+CreditsNPCBonkerEnd          $f9c3b9
+CreditsNPCBonkerToasted      $f9c3a7
+MoveTowardsDest              $f9c2d8
+MoveUntilAtDest              $f9c2ed
+Walking                      $f9c2a1
+movement_sub_AA38            $f9c2ad
+movement_task_walking_anim_8frames $f9c2bb
 -----------------------------------------------------------------
 
 
@@ -7403,11 +7404,11 @@ StatusMenu                   $f1c278
 Labels in module letterbox
 Name                         Address
 -----------------------------------------------------------------
-asm_CutsceneInit             $f9d0d0
-asm_CutsceneOff              $f9d101
-asm_write_letterbox_regs     $f9d0ed
-movscr_Cutscene              $f9d090
-movscr_Cutscene_Off          $f9d0b0
+asm_CutsceneInit             $f9d0d7
+asm_CutsceneOff              $f9d108
+asm_write_letterbox_regs     $f9d0f4
+movscr_Cutscene              $f9d097
+movscr_Cutscene_Off          $f9d0b7
 -----------------------------------------------------------------
 
 

@@ -11,13 +11,11 @@ RandDoor:
   STA_d(0x0a)
   RTL */
 
-/* Constant Dad Calls */
+/* Frequency of Dad Calls */
 // https://earthbound-rom-explorerr.herokuapp.com/address/$C0B67F
 //ROM[0xC0B6C2] = { LDA_i(0x0697) }
-ROM[0xC0B6C2] = { LDA_i(0x0002) }
 // https://earthbound-rom-explorerr.herokuapp.com/address/$C075DD
 //ROM[0xC0766C] = { LDA_i(0x0697) }
-ROM[0xC0766C] = { LDA_i(0x0002) }
 
 /* Disable Gas Station Sequence */
 ROM[0xC4DB33] = "[4C F9 DB]" 
@@ -120,15 +118,15 @@ ROM[0xC1FE42] = byte [0] 0x7B
 //
 // Reference: https://github.com/Herringway/ebsrc/blob/master/src/intro/file_select_menu_loop.asm#L628-L651
 ROM[0xC1FE37] = {
-    LDA_8 ("P")
-    STA_a (0x9825)
-    LDA_8 ("K")
-    STA_a (0x9826)
     LDA_8 (" ")
+    STA_a (0x9825)
+    LDA_8 ("P")
+    STA_a (0x9826)
+    LDA_8 ("K")
     STA_a (0x9827)
 
     REP   (0x20)
-    LDA_i (0x0003) // Length of "PK " string
+    LDA_i (0x0002) // Length of "PK " string
     JMP   (0xFE50) // Back into original code
 }
 

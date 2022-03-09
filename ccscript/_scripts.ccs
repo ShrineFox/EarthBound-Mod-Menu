@@ -6,6 +6,7 @@ import "_scripts/asm/expand_text_windows.ccs"
 import "_scripts/asm/Title_Window.ccs"
 import "_scripts/asm/name_fun.ccs"
 import "_scripts/asm/movement_reloc.ccs"
+import "_scripts/asm/asm65816_2.ccs"
 /* Quality of Life improvements from CCScript Library */
 import "_scripts/asm/noclip.ccs"
 import "_scripts/asm/fast_doors.ccs"
@@ -19,12 +20,11 @@ import "_scripts/modmenu/commands.ccs"
 import "_scripts/modmenu/menus/goods/goodsmenu.ccs"
 import "_scripts/modmenu/enums/flags.ccs"
 import "_scripts/modmenu/enums/labels.ccs"
+import "_scripts/modmenu/enums/bgm.ccs"
 import "_scripts/modmenu/enums/party.ccs"
 import "_scripts/modmenu/enums/windows.ccs"
 /* Main Menu Override */
 import "_scripts/mainmenu/mainmenu.ccs"
-
-
 
 // Open the Mod Menu
 ModMenu:
@@ -58,6 +58,26 @@ eob
 // Prevent your dad from calling you
 DadCall:
 	if not flg_DadCantCall { goto(data_32.l_0xc7d33e_original) }
+eob
+
+// Restore selected map palette/music on map load
+// ROM[0xc019a3] = { MText(MapReload) PLD RTL } // Loads label immediately after battle (white graphics if you lose, teleport bug)
+ROM[0xc26546] = { MText(MapReload) PLD RTL } // Loads label after Instant Win
+ROM[0xc0199a] = { QueuedText(MapReload) PLD RTL } // Loads label immediately after battle, doesn't work after teleport
+on_refresh(MapReload) // Loads label when map first loads
+
+command QueuedText (text) {
+    LDA_i    (short[0] text)
+    STA_d    (0x0E)
+    LDA_i    (short[1] text)
+    STA_d    (0x10)
+    JSL      (0xC46881)
+}
+
+MapReload:
+	//music_stop
+	music(bgm_Moonside)
+	music_switching_off
 	SetPalette(38)
 eob
 

@@ -18,25 +18,23 @@ newgame_startup(Startup)
 
 Startup:
 set(flg_Ness)
+
+/* Debug */
 set(flg_Debug)
-set(531) // Tracy downstairs
-set(flg_DisableCollision)
-set(flg_BuzzBuzzDead)
-set(flg_KeyItem_ShackKey)
-set(flg_ModMenu)
-set(flg_UnrestrictBike)
-set(flg_DadCantCall)
-set(flg_AutoAdvStatIncMsgs)
-set(flg_NoPhotoGuy)
-unset(flg_NoEnemies)
-/* Debug
-music(bgm_None)
-music_switching_off
+learnpsi (1, 1) learnpsi (4, 1)
+learnpsi (1, 2) learnpsi (4, 1)
+learnpsi (4, 3) learnpsi (4, 4)
+set(flg_Onett)
+//music(bgm_None)
+//music_switching_off
 unset(flg_Defeat_NessNightmare)
 unset(flg_NoOnettNPCs)
+unset(flg_NoEnemies)
+set(flg_DisableCollision)
 set(flg_OnettDaytime)
 set(flg_OnettDaytimeMusic)
 /* End Debug */
+
 eob
 
 /* Configuration on game load */
