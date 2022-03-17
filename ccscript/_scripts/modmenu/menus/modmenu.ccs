@@ -84,7 +84,7 @@ ModMenu_AboutDlg:
 	Lbl(lbl_About)
 	"@EarthBound Mod Menu by ShrineFox." newline
 	"@Made using Coilsnake." newline
-	"@Updated 3-7-22." wait
+	"@Updated 3-17-22." wait
 	window_close(wnd_Dialog)
 goto(ModMenu)
 

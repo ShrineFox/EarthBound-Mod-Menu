@@ -239,7 +239,10 @@ l_0xc631e3:
     "@I don't know where you are planning on sleeping, but have a good rest!" next
     "@Go ahead and turn the power OFF, and have a good night.[1F 50]" end
 
+import "_scripts/modmenu/enums/flags.ccs"
+
 l_0xc63229:
+	if (flg_FastSaving) { goto(_scripts.ShortDadCall) }
     "[06 04 03 {e(data_28.l_0xc75929)}][06 49 00 {e(l_0xc635bd)}]{ctoarg}[1B 05]" newline
     "[19 10 01]{result_is(1)}[1B 03 {e(l_0xc632c7)}]@Hello?" next
     "@...Is that you, [1C 01 08]{pause(10)}?" next

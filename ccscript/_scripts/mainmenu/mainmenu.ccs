@@ -53,11 +53,11 @@ MainMenu:
 	swap
     "@Error! No option {number(0)} in this menu." goto(goto_end)
 	goto_goods:
-		window_closeall open_hp open_goods goto(MainMenu)
+		window_closeall open_hp open_goods goto(goto_end)
 	goto_equip:
 		window_closeall open_equip goto(MainMenu)
 	goto_psi:
-		window_closeall open_hp open_psi goto(MainMenu)
+		window_closeall open_hp open_psi goto(goto_end)
 	goto_keyitems:
 		window_closeall call(KeyItems) goto(MainMenu)
 	goto_modmenu:

@@ -1,4 +1,4 @@
-/* Extra Flags (up to 0x8e8 */
+/* Extra Flags (up to 0x8e8) */
 
 // Whether a party member has been selected for editing
 define flg_NessEdit = flag 0x668
@@ -78,6 +78,10 @@ define flg_PlushBear = flag 0x63C
 define flg_BikeCantNormallyBeUsed = flag 0x63B
 // Whether to close the main menu
 define flg_CloseMainMenu = flag 0x63A
+// Whether Easy Deaths is enabled
+define flg_EasyDeaths = flag 0x639
+// Whether Fast Saving is enabled
+define flg_FastSaving = flag 0x638
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12

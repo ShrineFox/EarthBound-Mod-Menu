@@ -475,7 +475,9 @@ l_0xc6809e:
     "{counter(6)}" call(l_0xc68017) eob
 
 l_0xc680a6:
-    "[1D 05 FF B1][1B 03 {e(data_17.l_0xc62d30)}]@Please insert your ATM card." end
+    // "[1D 05 FF B1]"
+	counter(1) ctoarg swap ctoarg // always pass ATM card check
+	"[1B 03 {e(data_17.l_0xc62d30)}]@Please insert your ATM card." end
 
 l_0xc680c2:
     "[19 19 00 00]{swap}{result_is(177)}[1B 03 {e(data_21.l_0xc680dc)}]@Nothing happened." end goto(data_21.l_0xc680dc)

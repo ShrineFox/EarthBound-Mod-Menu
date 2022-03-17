@@ -34,8 +34,6 @@ if flg_ModConfigured {
 	chose_begin:
 		goto(EndConfig)
 	chose_configuremod:
-		ShowBattleBG(298, 298, 0)
-		set(flg_SetBBG)
 		goto(ConfigMenuPrompt)
 	goto(ConfigMenuStart)
 }
@@ -43,6 +41,8 @@ else { goto(ConfigMenuPrompt) }
 eob
 
 ConfigMenuPrompt:
+	set(flg_SetBBG)
+	ShowBattleBG(298, 298, 0)
 	CloseModMenuConfirmWnd()
 	if not flg_ModConfigured 
 	{
@@ -59,6 +59,7 @@ eob
 Set_Count_1: { SetDescription(1, wnd_KeyItems, ShowDescription) } Set_Count_2: { SetDescription(2, wnd_KeyItems, ShowDescription) } 
 Set_Count_3: { SetDescription(3, wnd_KeyItems, ShowDescription) } Set_Count_4: { SetDescription(4, wnd_KeyItems, ShowDescription) }
 Set_Count_5: { SetDescription(5, wnd_KeyItems, ShowDescription) } Set_Count_6: { SetDescription(6, wnd_KeyItems, ShowDescription) }
+Set_Count_7: { SetDescription(7, wnd_KeyItems, ShowDescription) } Set_Count_8: { SetDescription(8, wnd_KeyItems, ShowDescription) }
 
 ConfigMenu: {
 	set(flg_ModConfigured)
@@ -72,30 +73,40 @@ ConfigMenu: {
 	} else {
 		MenuOptionWithCallback("Key Items", Set_Count_1)
 	}
-	if flg_UnrestrictBike {
+	if flag flg_UnrestrictBike {
         MenuOptionWithCallback("[ac]Unrestrict Bike", Set_Count_2)
 	} else {
 		MenuOptionWithCallback("Unrestrict Bike", Set_Count_2)
 	}
-	if flg_NoPhotoGuy {
+	if flag flg_NoPhotoGuy {
         MenuOptionWithCallback("[ac]No Photo Guy", Set_Count_3)
 	} else {
 		MenuOptionWithCallback("No Photo Guy", Set_Count_3)
 	}
-	if flg_DadCantCall {
+	if flag flg_DadCantCall {
         MenuOptionWithCallback("[ac]No Dad Calls", Set_Count_4)
 	} else {
 		MenuOptionWithCallback("No Dad Calls", Set_Count_4)
 	}
-	if flg_AutoAdvStatIncMsgs {
+	if flag flg_AutoAdvStatIncMsgs {
 		MenuOptionWithCallback("[ac]Auto-Advance", Set_Count_5)
 	} else {
 		MenuOptionWithCallback("Auto-Advance", Set_Count_5)
 	}
-	if flg_ModMenu {
+	if flag flg_ModMenu {
 		MenuOptionWithCallback("[ac]Mod Menu", Set_Count_6)
 	} else {
 		MenuOptionWithCallback("Mod Menu", Set_Count_6)
+	}
+	if flag flg_EasyDeaths {
+		MenuOptionWithCallback("[ac]Easy Deaths", Set_Count_7)
+	} else {
+		MenuOptionWithCallback("Easy Deaths", Set_Count_7)
+	}
+	if flag flg_FastSaving {
+		MenuOptionWithCallback("[ac]Fast Saving", Set_Count_8)
+	} else {
+		MenuOptionWithCallback("Fast Saving", Set_Count_8)
 	}
     DisplayVertical(2)
     if not "[11]" {
@@ -105,13 +116,15 @@ ConfigMenu: {
     }
     ctoarg
     swap
-    SwitchGoto(6)
+    SwitchGoto(8)
         SwitchCase(chose_keyitems)
         SwitchCase(chose_unrestrictbike)
         SwitchCase(chose_nophotoguy)
         SwitchCase(chose_nodadcalls)
 		SwitchCase(chose_autoadvance)
 		SwitchCase(chose_modmenu)
+		SwitchCase(chose_easydeaths)
+		SwitchCase(chose_fastsaving)
     swap
     "@Error! No option {number(0)} in this menu." next goto(ConfigMenu)
 	chose_keyitems:
@@ -126,6 +139,10 @@ ConfigMenu: {
 		ToggleWithSound(flg_AutoAdvStatIncMsgs) goto(ConfigMenu)
 	chose_modmenu:
 		ToggleWithSound(flg_ModMenu) goto(ConfigMenu)
+	chose_easydeaths:
+		ToggleWithSound(flg_EasyDeaths) goto(ConfigMenu)
+	chose_fastsaving:
+		ToggleWithSound(flg_FastSaving) goto(ConfigMenu)
 }
 
 
@@ -139,11 +156,14 @@ ShowDescription:
 	if counter_is(4) { "<No Dad Calls>" newline "Prevents Ness's dad from calling" newline "you periodically during your" newline "adventure." }
 	if counter_is(5) { "<Auto-Advance>" newline "Advances Level Up text for you without" newline "having to spam the A button." }
 	if counter_is(6) { "<Mod Menu>" newline "Always have access to an in-game" newline "trainer, full of cheats and" newline "other fun stuff." }
+	if counter_is(7) { "<Easy Deaths> by JTolmar" newline "Fully revive and heal party after you" newline "lose a battle, without taking" newline "half of your money." }
+	if counter_is(8) { "<Fast Saving>" newline "Shorten the dialog you see when" newline "saving your game over the phone." }
 eob
 
 EndConfig:
 	CloseModMenuConfirmWnd()
 	if flag flg_SetBBG { unset(flg_SetBBG) HideBattleBG() }
+	SetTextSpeed(1)
 	CloseAllModMenuWnd()
 	window_closeall
 	goto(End_)

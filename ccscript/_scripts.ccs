@@ -10,6 +10,7 @@ import "_scripts/asm/asm65816_2.ccs"
 /* Quality of Life improvements from CCScript Library */
 import "_scripts/asm/noclip.ccs"
 import "_scripts/asm/fast_doors.ccs"
+import "_scripts/asm/easy_deaths.ccs"
 import "_scripts/asm/run_button_toggleable.ccs"
 import "_scripts/asm/repel_sandwiches.ccs"
 import "_scripts/asm/run_accelerating.ccs"
@@ -51,8 +52,8 @@ BicycleEnd:
 	if flg_UnrestrictBike 
 	{
 		RestorePartyFromFlags()
-		window_closeall
 	}
+	window_closeall
 eob
 
 // Prevent your dad from calling you
@@ -60,26 +61,17 @@ DadCall:
 	if not flg_DadCantCall { goto(data_32.l_0xc7d33e_original) }
 eob
 
-// Restore selected map palette/music on map load
-// ROM[0xc019a3] = { MText(MapReload) PLD RTL } // Loads label immediately after battle (white graphics if you lose, teleport bug)
-ROM[0xc26546] = { MText(MapReload) PLD RTL } // Loads label after Instant Win
-ROM[0xc0199a] = { QueuedText(MapReload) PLD RTL } // Loads label immediately after battle, doesn't work after teleport
-on_refresh(MapReload) // Loads label when map first loads
+// Restore specific map palette/music on map load
+/*on_refresh(MapReload) // Loads label when map first loads
 
-command QueuedText (text) {
-    LDA_i    (short[0] text)
-    STA_d    (0x0E)
-    LDA_i    (short[1] text)
-    STA_d    (0x10)
-    JSL      (0xC46881)
-}
 
 MapReload:
 	//music_stop
-	music(bgm_Moonside)
 	music_switching_off
-	SetPalette(38)
-eob
+	music(bgm_Moonside)
+	//SetPalette(38)
+	SetPalette(10)
+eob*/
 
 // Prevent Photo Guy cutscene from happening
 ROM[0xC7AB3F] = goto(PhotoGuy) // coilsnake didn't decompile it right...
@@ -99,4 +91,15 @@ PhotoGuy:
 		"{window_closeall}[1F EB 01 06][06 FD 01 {e(data_31.l_0xc7ac3a)}][1F 15 0E 00 C2 01 01]"
 		goto(data_31.l_0xc7ac42)
 	}
+eob
+
+ShortDadCall:
+	"@Would you like to save your game?" newline
+	menu
+	{
+		"Yes": { save "@All done." newline "@I have created a record of your adventure to this point." next }
+		default "No": { }
+	}
+	"@Good luck out there!" newline
+	goto(data_17.l_0xc634ea)
 eob

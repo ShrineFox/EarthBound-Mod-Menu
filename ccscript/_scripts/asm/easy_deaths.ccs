@@ -1,0 +1,42 @@
+import asm65816
+
+// Changes post gameover state to give all kids a full heal and not take half
+// your money.
+// By JTolmar
+
+define char_struct_size = 95
+define char_struct_start = 0x7E99CE
+define char_struct_max_hp = 0x7E99D8 // 0x7E99CE + 10
+define char_struct_max_pp = 0x7E99DA // 0x7E99CE + 12
+define char_struct_current_hp = 0x7E9A13 // 0x7E99CE + 69
+define char_struct_hp_target = 0x7E9A15 // 0x7E99CE + 71
+define char_struct_current_pp = 0x7E9A19 // 0x7E99CE + 75
+define char_struct_pp_target = 0x7E9A1B // 0x7E99CE + 77
+
+// Full heals a character. Arg is char_struct_size*index
+command heal_char_x(char_num) {
+  LDX_i(char_num)
+  LDA_x(char_struct_max_hp)
+  STA_x(char_struct_current_hp)
+  STA_x(char_struct_hp_target)
+  LDA_x(char_struct_max_pp)
+  STA_x(char_struct_current_pp)
+  STA_x(char_struct_pp_target)
+}
+
+// Code ref:
+// https://github.com/Herringway/ebsrc/blob/8b345f0b1a980f4a5a2c8bd0f1331f6c84e427df/src/overworld/spawn.asm#L63
+// https://earthbound-rom-explorerr.herokuapp.com/address/$c4c718
+ROM[0xc4c7d7] = { // Start of money removing routine
+  // Call this existing function, which heals all afflictions for all characters
+  JSL(0xC432B1)
+  // Restore HP/PP for all characters
+  // The money removing routine is so inefficient that we can just brute force it
+  // in the remaining space
+  heal_char_x(0)
+  heal_char_x(95)
+  heal_char_x(190)
+  heal_char_x(285)
+  // The money removing routine goes for ages, so jump to the end of it.
+  JMP(0xc4c845)
+}
