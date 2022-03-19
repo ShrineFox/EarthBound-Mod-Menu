@@ -7,37 +7,48 @@ import "_scripts/asm/asm65816_2.ccs"
 import "_scripts/asm/ccexpand.ccs"
 import "_scripts/asm/cc_asmcall.ccs"
 
-/* Setup testing environment */
+/* Setup File/Naming Screen */
 
 setup_background(302)
 setup_music(bgm_Moonside)
 setup_music2(bgm_Moonside)
-newgame_location(365, 7756)
-newgame_startup(Startup)
+
+/* As soon as you can control Ness on New Game */
+GameStart:
+{
+	set(flg_Ness)
+	eob
+}
+
+/* Debug - Testing Environment on New Game
+
 // Requires patches.yml - Show Sprites Without Flyover: enabled
+newgame_location(365, 7756)
 
-Startup:
-set(flg_Ness)
+newgame_startup(Startup)
 
-/* Debug */
-set(flg_Debug)
-learnpsi (1, 1) learnpsi (4, 1)
-learnpsi (1, 2) learnpsi (4, 1)
-learnpsi (4, 3) learnpsi (4, 4)
-party_add(2) party_add(3) party_add(4)
-set(flg_Onett)
-music(bgm_None)
-music_switching_off
-unset(flg_Defeat_NessNightmare)
-unset(flg_NoOnettNPCs)
-unset(flg_NoEnemies)
-set(flg_Phone_Dad)
-set(flg_DisableCollision)
-set(flg_OnettDaytime)
-set(flg_OnettDaytimeMusic)
+Startup: {
+	set(flg_Ness)
+	set(flg_Debug)
+	set(flg_Onett)
+	set(flg_Phone_Dad)
+	set(flg_DisableCollision)
+	set(flg_OnettDaytime)
+	set(flg_OnettDaytimeMusic)
+	unset(flg_Defeat_NessNightmare)
+	unset(flg_NoOnettNPCs)
+	unset(flg_NoEnemies)
+
+	learnpsi (1, 1) learnpsi (4, 1)
+	learnpsi (1, 2) learnpsi (4, 1)
+	learnpsi (4, 3) learnpsi (4, 4)
+	party_add(2) party_add(3) party_add(4)
+
+	music(bgm_None)
+	music_switching_off
+}
 /* End Debug */
 
-eob
 
 /* Configuration on game load */
 _asmptr(0xC1FF1C, Config)

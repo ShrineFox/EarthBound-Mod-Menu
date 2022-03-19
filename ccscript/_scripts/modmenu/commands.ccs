@@ -325,7 +325,7 @@ command GiveItem(charaID) {
 	sound(SND_BOXTAKE)
 	LoadRAM()
 	"[1D 0E {byte charaID} 00]"
-	call(0xc7dcda) next
+	call(0xc7dccf) next
 	window_close(wnd_Dialog)
 }
 
@@ -335,7 +335,7 @@ command GiveKeyItem(charaID) {
 	sound(SND_SPECIALITEM)
 	LoadRAM()
 	"[1D 0E {byte charaID} 00]" 
-	call(0xc7dcda) next
+	call(0xc7dcb6) next
 	window_close(wnd_Dialog)
 }
 
@@ -371,37 +371,55 @@ command GiveKeyItemToParty(itemID)
 		}
 		else
 		{
-			NotifyInventoryFull()
+			// Store key item with Escargot Express
+			"[1D 18 {byte itemID}]"
+			window_closeall
+			window_open(1)
+			"@(The {itemname(itemID)} was sent to Escargot Express.)" next
+			window_closeall
+			
+			// TODO: handle what to do when Escargot Express is full?
 		}
 	}
 	else
 	{
-		counter(itemID)
-		if counter_is(item_Sound_Stone) { ToggleFlag(flg_BuzzBuzzDead) }
-		if counter_is(item_Key_Shack) { ToggleFlag(flg_KeyItem_ShackKey) }
-		if counter_is(item_Bicycle) { ToggleFlag(flg_KeyItem_Bicycle) }
-		if counter_is(item_Town_Map) { ToggleFlag(flg_KeyItem_TownMap) }
-		if counter_is(item_Receiver_Phone) { ToggleFlag(flg_KeyItem_ReceiverPhone) }
-		if counter_is(item_Eraser_Pencil) { ToggleFlag(flg_KeyItem_PencilEraser) }
-		if counter_is(item_Key_Cabin) { ToggleFlag(flg_KeyItem_CabinKey) }
-		if counter_is(item_Wad_Bills) { ToggleFlag(flg_KeyItem_WadofBills) }
-		if counter_is(item_Zombie_Paper) { ToggleFlag(flg_KeyItem_ZombiePaper) }
-		if counter_is(item_Bad_Key_Machine) { ToggleFlag(flg_KeyItem_BadKeyMachine) }
-		if counter_is(item_Eraser_Eraser) { ToggleFlag(flg_KeyItem_EraserEraser) }
-		if counter_is(item_Diamond) { ToggleFlag(flg_KeyItem_Diamond) }
-		if counter_is(item_Signed_Banana) { ToggleFlag(flg_KeyItem_SignedBanana) }
-		if counter_is(item_Hieroglyph_Copy) { ToggleFlag(flg_KeyItem_HieroglyphCopy) }
-		if counter_is(item_Key_Carrot) { ToggleFlag(flg_KeyItem_CarrotKey) }
-		if counter_is(item_Key_Tower) { ToggleFlag(flg_KeyItem_DungeonManKey) }
-		if counter_is(item_Hawk_Eye) { ToggleFlag(flg_KeyItem_HawkEye) }
-		if counter_is(item_Shyness_Book) { ToggleFlag(flg_KeyItem_ShynessBook) }
-		if counter_is(item_Tendakraut) { ToggleFlag(flg_KeyItem_Tendakraut) }
-		if counter_is(item_Meteorite_Piece) { ToggleFlag(flg_KeyItem_Meteorite) }
-		if counter_is(item_Bubble_Gum) { ToggleFlag(flg_KeyItem_BubbleGum) }
-		if counter_is(item_Pass_Backstage) { ToggleFlag(flg_KeyItem_BackstagePass) }
-		if counter_is(item_Yogurt_Dispenser) { ToggleFlag(flg_KeyItem_YogurtMachine) }
-		if counter_is(item_Show_Ticket) { ToggleFlag(flg_KeyItem_ShowTicket) }
+		window_closeall
+		window_open(1)
+		GiveMenuKeyItem(itemID)
+		window_closeall
 	}
+}
+
+command GiveMenuKeyItem(itemID)
+{
+	counter(itemID)
+	if counter_is(item_Sound_Stone) { ToggleWithSound(flg_BuzzBuzzDead) }
+	if counter_is(item_Key_Shack) { ToggleWithSound(flg_KeyItem_ShackKey) }
+	if counter_is(item_Bicycle) { ToggleWithSound(flg_KeyItem_Bicycle) }
+	if counter_is(item_Town_Map) { ToggleWithSound(flg_KeyItem_TownMap) }
+	if counter_is(item_Receiver_Phone) { ToggleWithSound(flg_KeyItem_ReceiverPhone) }
+	if counter_is(item_Eraser_Pencil) { ToggleWithSound(flg_KeyItem_PencilEraser) }
+	if counter_is(item_Key_Cabin) { ToggleWithSound(flg_KeyItem_CabinKey) }
+	if counter_is(item_Wad_Bills) { ToggleWithSound(flg_KeyItem_WadofBills) }
+	if counter_is(item_Zombie_Paper) { ToggleWithSound(flg_KeyItem_ZombiePaper) }
+	if counter_is(item_Bad_Key_Machine) { ToggleWithSound(flg_KeyItem_BadKeyMachine) }
+	if counter_is(item_Eraser_Eraser) { ToggleWithSound(flg_KeyItem_EraserEraser) }
+	if counter_is(item_Diamond) { ToggleWithSound(flg_KeyItem_Diamond) }
+	if counter_is(item_Signed_Banana) { ToggleWithSound(flg_KeyItem_SignedBanana) }
+	if counter_is(item_Hieroglyph_Copy) { ToggleWithSound(flg_KeyItem_HieroglyphCopy) }
+	if counter_is(item_Key_Carrot) { ToggleWithSound(flg_KeyItem_CarrotKey) }
+	if counter_is(item_Key_Tower) { ToggleWithSound(flg_KeyItem_DungeonManKey) }
+	if counter_is(item_Hawk_Eye) { ToggleWithSound(flg_KeyItem_HawkEye) }
+	if counter_is(item_Shyness_Book) { ToggleWithSound(flg_KeyItem_ShynessBook) }
+	if counter_is(item_Tendakraut) { ToggleWithSound(flg_KeyItem_Tendakraut) }
+	if counter_is(item_Meteorite_Piece) { ToggleWithSound(flg_KeyItem_Meteorite) }
+	if counter_is(item_Bubble_Gum) { ToggleWithSound(flg_KeyItem_BubbleGum) }
+	if counter_is(item_Pass_Backstage) { ToggleWithSound(flg_KeyItem_BackstagePass) }
+	if counter_is(item_Yogurt_Dispenser) { ToggleWithSound(flg_KeyItem_YogurtMachine) }
+	if counter_is(item_Show_Ticket) { ToggleWithSound(flg_KeyItem_ShowTicket) }
+	
+	sound(SND_SPECIALITEM)
+	"@(The {itemname(itemID)} was added to your Key Items.)" next
 }
 
 command NotifyInventoryFull()

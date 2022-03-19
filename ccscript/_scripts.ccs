@@ -61,18 +61,6 @@ DadCall:
 	if not flg_DadCantCall { goto(data_32.l_0xc7d33e_original) }
 eob
 
-// Restore specific map palette/music on map load
-/*on_refresh(MapReload) // Loads label when map first loads
-
-
-MapReload:
-	//music_stop
-	music_switching_off
-	music(bgm_Moonside)
-	//SetPalette(38)
-	SetPalette(10)
-eob*/
-
 // Prevent Photo Guy cutscene from happening
 ROM[0xC7AB3F] = goto(PhotoGuy) // coilsnake didn't decompile it right...
 
@@ -103,3 +91,51 @@ ShortDadCall:
 	"@Good luck out there!" newline
 	goto(data_17.l_0xc634ea)
 eob
+
+
+on_refresh(MapReload)
+
+MapReload:
+{
+	// Spawn Buzz Buzz sprite if he's in party
+	if flag flg_BuzzBuzz { call(0xC5EA35) }
+	// Non-leader party members unconscious after continue
+	if not flag flg_EasyDeaths 
+	{ 
+		if flag flg_GameOverContinue 
+		{
+			call(NotEasyDeaths)
+		}
+		unset(flg_GameOverContinue)
+	}
+	window_closeall
+	eob
+}
+
+NotEasyDeaths: 
+{
+	if flg_Ness
+	{
+		if flg_Paula { inflict(pty_Paula, 0x201) }
+		if flg_Jeff  { inflict(pty_Jeff, 0x201) }
+		if flg_Poo   { inflict(pty_Poo, 0x201) }
+	}
+	else if flg_Paula
+	{
+		if flg_Ness { inflict(pty_Ness, 0x201) }
+		if flg_Jeff { inflict(pty_Jeff, 0x201) }
+		if flg_Poo  { inflict(pty_Poo, 0x201) }
+	}
+	else if flg_Jeff
+	{
+		if flg_Ness  { inflict(pty_Ness, 0x201) }
+		if flg_Paula { inflict(pty_Paula, 0x201) }
+		if flg_Poo   { inflict(pty_Poo, 0x201) }
+	}
+	else if flg_Poo
+	{
+		if flg_Ness  { inflict(pty_Ness, 0x201) }
+		if flg_Paula { inflict(pty_Paula, 0x201) }
+		if flg_Jeff  { inflict(pty_Jeff, 0x201) }
+	}
+}

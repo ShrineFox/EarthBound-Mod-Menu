@@ -119,11 +119,19 @@ l_0xc5f3d2:
     "@but did you want to hear the story one more time?" linebreak
     "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc5f564)} {e(l_0xc5f4f4)}]" goto(l_0xc5f4f4)
 
+import "_scripts/modmenu/enums/flags.ccs"
+import "_scripts/modmenu/enums/items.ccs"
+import "_scripts/modmenu/commands.ccs"
+
 l_0xc5f4f4:
     "@Good!" next
-    "[1D 03 FF][1B 02 {e(l_0xc5f575)}]@It's already dawn outside..." next
+	if not flg_KeyItems { "[1D 03 FF][1B 02 {e(l_0xc5f575)}]" } // Check if item has space to be carried
+	"@It's already dawn outside..." next
     "@But it doesn't matter to me.{pause(20)}  I'm fading fast..." next
-    "@Argh!{pause(15)} *Gasp*[03][1D 0E 00 C4]" call(data_33.l_0xc7dcb6) "{wait}" goto(l_0xc5f551)
+    "@Argh!{pause(15)} *Gasp*[03]"
+	if flg_KeyItems { newline GiveMenuKeyItem(item_Sound_Stone) } else { "[1D 0E 00 C4]" call(data_33.l_0xc7dcb6) } 
+	set(flg_BuzzBuzzDead)
+	"{wait}" goto(l_0xc5f551)
 
 l_0xc5f551:
     "{window_closeall}{pause(1)}[1F F1 2E 00 7B 02]{unset(flag 303)}[1F 67 01]{music_resume}" eob
