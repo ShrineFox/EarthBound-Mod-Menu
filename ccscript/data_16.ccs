@@ -59,6 +59,10 @@ l_0xc60dc4:
 l_0xc60e2a:
     call(data_12.l_0xc5d3cb) eob
 
+import "_scripts/modmenu/enums/flags.ccs"
+import "_scripts/modmenu/enums/items.ccs"
+import "_scripts/modmenu/commands.ccs"
+
 l_0xc60e30:
     "[06 49 00 {e(l_0xc611e2)}][06 FC 02 {e(l_0xc61139)}][06 2A 02 {e(l_0xc60ff3)}]{music(119)}@The truth of space and time moves through the universe like a wave..." next
     "@Truth speaks through space and matter and makes itself known to human beings." next
@@ -74,7 +78,9 @@ l_0xc60e30:
     "{pause(60)}" linebreak
     "@...Did you come in search of this?" next
     "@Someone left it behind in this hole." next
-    "[1D 03 FF][1B 02 {e(l_0xc610f1)}][1D 0E 00 8B]{set(flag 554)}" call(data_33.l_0xc7dcb6) next
+    if not flg_KeyItems { "[1D 03 FF][1B 02 {e(l_0xc610f1)}]" } // Check if item has space to be carried
+	if flg_KeyItems { newline GiveMenuKeyItem(item_Yogurt_Dispenser) } 
+	else { "[1D 03 FF][1D 0E 00 8B]{set(flag 554)}" call(data_33.l_0xc7dcb6) next }
     goto(l_0xc60ff3)
 
 l_0xc60ff3:

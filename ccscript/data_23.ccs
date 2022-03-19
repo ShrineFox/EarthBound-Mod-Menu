@@ -70,6 +70,10 @@ l_0xc6a9f9:
     "@Ah, [1C 02 03],{pause(15)} I just dreamt that you and I were taking a walk." next
     "@...What's wrong?" end
 
+import "_scripts/modmenu/enums/flags.ccs"
+import "_scripts/modmenu/enums/items.ccs"
+import "_scripts/modmenu/commands.ccs"
+	
 l_0xc6aa2f:
     "[06 58 00 {e(l_0xc6ad29)}][06 5D 02 {e(l_0xc6abd5)}][06 5C 02 {e(l_0xc6ad29)}]@Oh,{pause(15)} [1C 02 03] and Tony.{pause(20)}  You startled me." next
     "@Are you looking for a late night snack?" next
@@ -81,8 +85,11 @@ l_0xc6aa2f:
     "@I heard he's greater than Einstein or Heisenberg." next
     "@Rumor has it he's also very strange." next
     "@If you're heading to the locker room, take this key along." next
-    "@It's a little bent though.[03][1D 03 FF][1B 02 {e(l_0xc6acda)}][1D 0E 00 CD]" call(data_33.l_0xc7dcb6) next
-    "{set(flag 604)}@If you leave,{pause(15)} call me, and I'll record your adventure." next
+    "@It's a little bent though.[03]"
+	if not flg_KeyItems { "[1D 03 FF][1B 02 {e(l_0xc6acda)}]" } // Check if item has space to be carried
+	if flg_KeyItems { newline GiveMenuKeyItem(item_Key_Locker) }
+	else { "[1D 03 FF][1D 0E 00 CD]" call(data_33.l_0xc7dcb6) next set(flag 604) }
+    "@If you leave,{pause(15)} call me, and I'll record your adventure." next
     "@It's like saving the game.{pause(15)}" linebreak
     "  Ah, ha, ha, ha, ha.{wait}{window_closeall}" eob
 
@@ -91,8 +98,11 @@ l_0xc6abd5:
     "@I thought that might be the case.{pause(15)}  So I just invented{pause(10)} the..." next
     "@<Machine that Opens Doors, especially when you have a slightly bad key.>" next
     "@Sorry for" linebreak
-    "  the inconvenience.[03][1D 03 FF][1B 02 {e(l_0xc6acda)}][1D 0E 00 AC]" call(data_33.l_0xc7dcb6) next
-    "{set(flag 88)}@If you are Dr. Andonut's son," next
+    "  the inconvenience.[03]"
+	if not flg_KeyItems { "[1D 03 FF][1B 02 {e(l_0xc6acda)}]" } // Check if item has space to be carried
+	if flg_KeyItems { newline GiveMenuKeyItem(item_Bad_Key_Machine) }
+	else { "[1D 03 FF][1D 0E 00 AC]" call(data_33.l_0xc7dcb6) next "{set(flag 88)}" }
+	"@If you are Dr. Andonut's son," next
     "@you should be able to repair small tools and make them useful." next
     "@Just try to keep a positive attitude.{wait}{window_closeall}" eob
 

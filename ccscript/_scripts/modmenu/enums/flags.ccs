@@ -192,6 +192,7 @@ define flg_KeyItem_WadofBills = flag 0x55
 define flg_KeyItem_FranklinBadge = flag 0x56
 define flg_KeyItem_FlyHoney = flag 0x57
 define flg_KeyItem_ZombiePaper = flag 0x228
+define flg_KeyItem_LockerKey = flag 0x25C
 define flg_KeyItem_BadKeyMachine = flag 0x58
 define flg_KeyItem_EraserEraser = flag 0x26A
 define flg_KeyItem_Diamond = flag 0x5A

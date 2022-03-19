@@ -129,7 +129,7 @@ l_0xc5f4f4:
 	"@It's already dawn outside..." next
     "@But it doesn't matter to me.{pause(20)}  I'm fading fast..." next
     "@Argh!{pause(15)} *Gasp*[03]"
-	if flg_KeyItems { newline GiveMenuKeyItem(item_Sound_Stone) } else { "[1D 0E 00 C4]" call(data_33.l_0xc7dcb6) } 
+	if flg_KeyItems { newline GiveMenuKeyItem(item_Sound_Stone) } else { "[1D 03 FF][1D 0E 00 C4]" call(data_33.l_0xc7dcb6) } 
 	set(flg_BuzzBuzzDead)
 	"{wait}" goto(l_0xc5f551)
 

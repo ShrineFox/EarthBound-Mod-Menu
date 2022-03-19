@@ -11,12 +11,19 @@ l_0xc575f8:
     "@I stayed here the whole time you were gone." next
     "@But now I don't know why I did." end
 
+import "_scripts/modmenu/enums/flags.ccs"
+import "_scripts/modmenu/enums/items.ccs"
+import "_scripts/modmenu/commands.ccs"
+
 l_0xc5762c:
     "[06 50 01 {e(l_0xc576e0)}]@I am not sure if it was the <Dungeon Man,> but..." next
     "@there is a strange looking tower to the northwest." next
     "@...This key I picked up a little while ago shall maybe open the tower." next
-    "@You may have it, I do not need it.[1D 03 FF][1B 02 {e(l_0xc57718)}][03][1D 0E 00 C0][1B 05]" call(data_33.l_0xc7dcb6) "{set(flag 336)}{wait}{window_closeall}{isset(flag 691)}[1B 02 {e(data_50.l_0xc9992f)}]{pause(60)}" call(data_22.l_0xc692f7) eob
-
+    "@You may have it, I do not need it."
+	if not flag flg_KeyItems { "[1D 03 FF][1B 02 {e(l_0xc57718)}][03]" } // Check if item has space to be carried
+	if flag flg_KeyItems { newline GiveMenuKeyItem(item_Key_Tower) } else { "[1D 03 FF][1D 0E 00 C0][1B 05]" call(data_33.l_0xc7dcb6) set(flag 336) }
+	"{wait}{window_closeall}{isset(flag 691)}[1B 02 {e(data_50.l_0xc9992f)}]{pause(60)}" call(data_22.l_0xc692f7) eob
+	
 l_0xc576e0:
     "@I'm not sure if it was the <Dungeon Man>..." next
     "@There's a strange looking tower to the northwest." end
@@ -26,13 +33,18 @@ l_0xc57718:
     "@...But it seems that you have too many things." end
 
 l_0xc57730:
+	if flag flg_KeyItems and flag flg_KeyItem_DungeonManKey { goto(l_0xc57760) }
     "[06 5E 02 {e(l_0xc57753)}]@(Looks like you could enter, but it's locked.)" end
 
 l_0xc57753:
     "{window_closeall}{pause(1)}[1F 21 9F]" call(data_52.l_0xc9b112) eob
 
 l_0xc57760:
-    "{store_registers}[06 5E 02 {e(l_0xc577c5)}]{load_registers}" call(data_33.l_0xc7dd2c) "{result_is(192)}[1B 02 {e(l_0xc577b2)}]{load_registers}" call(data_33.l_0xc7dd37) newline
+	if not flag flg_KeyItems or not flag flg_KeyItem_DungeonManKey 
+	{
+		"{store_registers}[06 5E 02 {e(l_0xc577c5)}]{load_registers}" call(data_33.l_0xc7dd2c) "{result_is(192)}[1B 02 {e(l_0xc577b2)}]{load_registers}" 
+	}
+	else { counter(item_Key_Tower) ctoarg swap call(data_33.l_0xc7dd37) newline }
     "@(The key worked to open the door." next
     "@You may enter.){wait}{wait}{set(flag 606)}{sound(119)}{window_closeall}[1F 21 9F]" call(data_52.l_0xc9b112) eob
 

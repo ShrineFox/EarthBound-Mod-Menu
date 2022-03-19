@@ -6,6 +6,7 @@ import "../asm/JSL_with_RTS.ccs"
 import "../modmenu/enums/windows.ccs"
 import "../modmenu/enums/labels.ccs"
 import "../modmenu/enums/flags.ccs"
+import "../modmenu/enums/items.ccs"
 import "../modmenu/commands.ccs"
 
 SetCount1: { SetDescription(1, wnd_KeyItems, ShowDesc) } SetCount2: { SetDescription(2, wnd_KeyItems, ShowDesc) } 
@@ -20,7 +21,7 @@ SetCount17: { SetDescription(17, wnd_KeyItems, ShowDesc) } SetCount18: { SetDesc
 SetCount19: { SetDescription(19, wnd_KeyItems, ShowDesc) } SetCount20: { SetDescription(20, wnd_KeyItems, ShowDesc) }
 SetCount21: { SetDescription(21, wnd_KeyItems, ShowDesc) } SetCount22: { SetDescription(22, wnd_KeyItems, ShowDesc) }
 SetCount23: { SetDescription(23, wnd_KeyItems, ShowDesc) } SetCount24: { SetDescription(24, wnd_KeyItems, ShowDesc) }
-SetCount25: { SetDescription(25, wnd_KeyItems, ShowDesc) } 
+SetCount25: { SetDescription(25, wnd_KeyItems, ShowDesc) } SetCount26: { SetDescription(26, wnd_KeyItems, ShowDesc) } 
 
 KeyItems: {
 	if not flag flg_Ness and not flag flg_Jeff { eob }
@@ -31,11 +32,11 @@ KeyItems: {
 	ctoarg
 	if flag flg_Ness 
 	{
+		MenuOptionWithCallback("ATM Card", SetCount1)
 		if flag flg_BuzzBuzzDead and not flag flg_Defeat_NessNightmare
 		{
-			MenuOptionWithCallback("Sound Stone", SetCount1)
+			MenuOptionWithCallback("Sound Stone", SetCount2)
 		}
-		MenuOptionWithCallback("ATM Card", SetCount2)
 		if flag flg_KeyItem_TownMap
 		{
 			MenuOptionWithCallback("Town Map", SetCount3)
@@ -126,13 +127,17 @@ KeyItems: {
 	}
 	if flag flg_Jeff
 	{
+		if flag flg_KeyItem_LockerKey
+		{
+			MenuOptionWithCallback("Locker Key", SetCount24)
+		}
 		if flag flg_KeyItem_BadKeyMachine
 		{
-			MenuOptionWithCallback("Bad Key Machine", SetCount24)
+			MenuOptionWithCallback("Bad Key Machine", SetCount25)
 		}
 		if flag flg_KeyItem_BubbleGum
 		{
-			MenuOptionWithCallback("Bubble Gum Pak", SetCount25)
+			MenuOptionWithCallback("Bubble Gum Pak", SetCount26)
 		}
 	}
     DisplayVertical(2)
@@ -142,19 +147,20 @@ KeyItems: {
     }
     ctoarg
     swap
-    SwitchGoto(25)
-        SwitchCase(soundstone) SwitchCase(donothing) SwitchCase(donothing)
+    SwitchGoto(26)
+        SwitchCase(donothing) SwitchCase(soundstone) SwitchCase(donothing)
         SwitchCase(donothing) SwitchCase(bike) SwitchCase(phone)
 		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing)
         SwitchCase(donothing) SwitchCase(donothing) SwitchCase(zombiepaper)
 		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing)
         SwitchCase(donothing) SwitchCase(heiroglyph) SwitchCase(donothing)
-		SwitchCase(hawkeye) SwitchCase(donothing) SwitchCase(donothing)
-		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(gum)
+		SwitchCase(towerkey) SwitchCase(hawkeye) SwitchCase(donothing) 
+		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing) 
+		SwitchCase(donothing) SwitchCase(gum)
     swap
     "@Error! No option {number(0)} in this menu." next goto(KeyItems)
 	soundstone:
-		window_closeall window_open(1) call(data_55.l_0xc9fefd) goto(KeyItems)
+		window_closeall window_open(1) counter(item_Sound_Stone) ctoarg call(data_55.l_0xc9fefd) goto(KeyItems)
 	bike:
 		goto(BicycleStart)
 	phone:
@@ -167,6 +173,8 @@ KeyItems: {
 		window_closeall window_open(1) call(data_55.l_0xc9fc6f) goto(KeyItems)
 	heiroglyph:
 		window_closeall window_open(1) call(data_61.l_0xefa0dc) goto(KeyItems)
+	towerkey:
+		window_closeall window_open(1) counter(item_Key_Tower) ctoarg call(data_29.l_0xc77dce) goto(KeyItems)
 	donothing:
 		goto(KeyItems)
 }
@@ -175,16 +183,16 @@ ShowDesc:
 	CloseKeyItemDescWnd()
 	OpenKeyItemDescWnd()
 	Lbl(lbl_Description)
-	if counter_is(1) { //call(data_04.l_0xc55ad5) Sound Stone
+	if counter_is(1) { //call(data_04.l_0xc5566b)  ATM Card
+		"<[1C 05 B1]>" newline 
+		"You know, you shouldn't leave home" newline 
+		"without... It even works overseas!"
+	}
+	if counter_is(2) { //call(data_04.l_0xc55ad5) Sound Stone
 		"<[1C 05 C4]>" newline 
 		"If you touch this to your forehead and" newline
 		"concentrate on your thoughts, Your" newline 
 		"Sanctuary melodies can be heard."
-	}
-	if counter_is(2) { //call(data_04.l_0xc5566b)  ATM Card
-		"<[1C 05 B1]>" newline 
-		"You know, you shouldn't leave home" newline 
-		"without... It even works overseas!"
 	}
 	if counter_is(3) { //call(data_03.l_0xc55cce) Town Map
 		"<[1C 05 CA]>" newline
@@ -296,13 +304,17 @@ ShowDesc:
 		"to someone who knows about it, it's" newline
 		"a very precious, unusual element."
 	}
-	if counter_is(24) { //call(data_04.l_0xc55546) Bad Key Machine
+	if counter_is(24) { //call(data_04.l_0xc55546) Locker Key
 		"<[1C 05 AC]>" newline 
 		"The <Machine that Opens Doors," newline
 		"especially when you have a slightly" newline
 		"bad key> machine."
 	}
-	if counter_is(25) { //call(data_03.l_0xc544dd) Pak of bubble gum
+	if counter_is(25) { //call(data_04.l_0xc55d82) Locker Key
+		"<[1C 05 CD]>" newline 
+		"A key to a regular locker."
+	}
+	if counter_is(26) { //call(data_03.l_0xc544dd) Pak of bubble gum
 		"<[1C 05 68]>" newline 
 		"This is the Balloon Monkey's favorite." newline
 		"It won't help you recover, but you'll" newline
