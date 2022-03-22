@@ -3,25 +3,112 @@ import "../../enums/flags.ccs"
 import "../../enums/labels.ccs"
 import "../../enums/party.ccs"
 import "../../enums/windows.ccs"
+import "../../enums/counter.ccs"
 import "../../commands.ccs"
+import "../modmenu.ccs"
 /* Submenu */
 import "health/healthmenu.ccs"
 
-
-PartyMenu: {
-	ResetCounter()
-	OpenModMenuWnd()
+PartyMenu: 
+{
+	// Open main Mod Menu 2 Window
+	OpenModMenu2Wnd()
+	// Clear party editing flags
 	Lbl(lbl_Party)
-	menu 1 {
-		"All": { goto(PartyMenu_All) }
-		"Ness":  { counter(pty_Ness) goto(PartyMenu_Main4) }
-		"Paula": { counter(pty_Paula) goto(PartyMenu_Main4) }
-		"Jeff":  { counter(pty_Jeff) goto(PartyMenu_Main4) }
-		"Poo":   { counter(pty_Poo) goto(PartyMenu_Main4) }
-		"Followers": { goto(PartyMenu_Followers) }
-	}
+	ResetCounter() ctoarg
+	// Pick a menu option
+	MenuOptionWithCallback("All", Set_Count_0)
+	MenuOptionWithCallback("Ness", Set_Count_1)
+	MenuOptionWithCallback("Paula", Set_Count_2)
+	MenuOptionWithCallback("Jeff", Set_Count_3)
+	MenuOptionWithCallback("Poo", Set_Count_4)
+	MenuOptionWithCallback("NPCs", Set_Count_5)
+	DisplayVertical(1) if not "[11]" { goto(ModMenu) }
+	ctoarg swap
+	SwitchGoto(6)
+		SwitchCase(end_partymenu)
+		SwitchCase(end_partymenu)
+		SwitchCase(end_partymenu)
+		SwitchCase(end_partymenu)
+		SwitchCase(end_partymenu)
+		SwitchCase(end_partymenu)
+	end_partymenu:
+		goto(PartyEditMenu)
 }
 
+PartyEditMenu:
+{
+	// Open main Mod Menu 2 Window
+	OpenModMenu2Wnd()
+	SaveRAM()
+	swap
+	SetPartyLabel()
+	LoadRAM()
+	if not counter_is_greaterthan_orequal(4)
+	{
+		MenuOptionWithCallback("Health", Set_Count_1)
+		MenuOptionWithCallback("Stats", Set_Count_2)
+	}
+	LoadRAM()
+	if result_is(0)
+	{
+		MenuOptionWithCallback("Add All", Set_Count_3)
+		MenuOptionWithCallback("Remove All", Set_Count_4)
+	}
+	LoadRAM()
+	if result_not(0)
+	{
+		MenuOptionWithCallback("Add", Set_Count_5)
+		MenuOptionWithCallback("Remove", Set_Count_6)
+	}
+	ResetCounter() ctoarg
+	DisplayVertical(1) if not "[11]" { goto(PartyMenu) }
+	ctoarg swap
+	SwitchGoto(6)
+		SwitchCase(chose_health)
+		SwitchCase(chose_stats)
+		SwitchCase(chose_add_all)
+		SwitchCase(chose_remove_all)
+		SwitchCase(chose_add)
+		SwitchCase(chose_remove)
+	swap
+	chose_add_all:
+		party_add(pty_Ness)
+		party_add(pty_Paula)
+		party_add(pty_Jeff)
+		party_add(pty_Poo)
+		SetPartyFlags()
+		RefreshScreen(wnd_ModMenu2)
+		SystemWnd(wnd_ModMenu2, "{music(0x7B)}@Everyone joined the party.{pause(90)}{music_resume}")
+		goto(end_partyeditmenu)
+	chose_remove_all:
+		get_char_at_pos(1)
+		store_registers
+		if result_is(pty_Ness) { TempSoloPartyMember(pty_Ness) }
+		load_registers
+		if result_is(pty_Paula) { TempSoloPartyMember(pty_Paula) }
+		load_registers
+		if result_is(pty_Jeff) { TempSoloPartyMember(pty_Jeff) }
+		load_registers
+		if result_is(pty_Poo) { TempSoloPartyMember(pty_Poo) }
+		RefreshScreen(wnd_ModMenu2)
+		SystemWnd(wnd_ModMenu2, "{sound(SND_STATUSCHANGE)}@Everyone left the party.")
+		SetPartyFlags()
+		goto(end_partyeditmenu)
+	chose_health:
+		LoadRAM() goto(HealthMenu)
+	chose_stats:
+		LoadRAM() goto(StatsMenu)
+	chose_add:
+		AddToParty()
+		goto(end_partyeditmenu)
+	chose_remove:
+		RemoveFromParty()
+		goto(end_partyeditmenu)
+	end_partyeditmenu:
+		LoadRAM()
+		goto(PartyEditMenu)
+}
 
 PartyMenu_Followers:
 	ResetCounter()
@@ -120,30 +207,11 @@ PartyMenu_All:
 		//"PSI":    { goto(PSIMenu) }
 		"Add":    
 		{ 
-			party_add(pty_Ness)
-			party_add(pty_Paula)
-			party_add(pty_Jeff)
-			party_add(pty_Poo)
-			SetPartyFlags()
-			RefreshScreen(wnd_ModMenu)
-			SystemWnd(wnd_ModMenu, "{music(0x7B)}@Everyone joined the party.{pause(90)}{music_resume}") 
-			goto(PartyMenu_All) 
+			
 		}
 		"Remove":
 		{
-			get_char_at_pos(1)
-			store_registers
-			if result_is(pty_Ness) { TempSoloPartyMember(pty_Ness) }
-			load_registers
-			if result_is(pty_Paula) { TempSoloPartyMember(pty_Paula) }
-			load_registers
-			if result_is(pty_Jeff) { TempSoloPartyMember(pty_Jeff) }
-			load_registers
-			if result_is(pty_Poo) { TempSoloPartyMember(pty_Poo) }
-			RefreshScreen(wnd_ModMenu)
-			SystemWnd(wnd_ModMenu, "{sound(SND_STATUSCHANGE)}@Everyone left the party.")
-			SetPartyFlags()
-			goto(PartyMenu_All)
+			
 		}
 		default "Back": { goto(PartyMenu) 
 		}

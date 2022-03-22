@@ -18,37 +18,24 @@ namespace EBModMenu
         public static string input_rom = @"D:/Games/Retroarch/ROMS/SNES/Mods/EarthBound/EarthBound (Expanded).sfc";
         public static string output_rom = @"D:/Games/Retroarch/ROMS/SNES/Mods/EarthBound/EarthBound (Mod).smc";
         public static string emulator = @"D:\Games\Retroarch\Retroarch.exe";
+        public static bool openEmulator = true;
 
         static void Main(string[] args)
         {
-            while(true)
+            BuildROM();
+            if (openEmulator)
             {
-                CompileAndLaunch();
-                Console.WriteLine("\nGame launched! Press ENTER to compile again.\n\n");
-                while(!Console.ReadKey(true).Key.Equals(ConsoleKey.Enter)) { }
+                LaunchEmulator();
             }
+
+            Console.WriteLine("\nPress any key to exit.");
+            Console.ReadKey();
         }
 
-        static void CompileAndLaunch()
-        {
-            KillCMD();
-            Build();
-            Launch();
-        }
-
-        private static void KillCMD()
-        {
-            try
-            {
-                foreach (Process proc in Process.GetProcessesByName("coilsnake-cli"))
-                    proc.Kill();
-            }
-            catch { }
-        }
-
-        private static void Build()
+        private static void BuildROM()
         {
             string args = $"compile \"{proj_path}\" \"{input_rom}\" \"{output_rom}\"";
+            openEmulator = true;
 
             using (Process p = new Process())
             {
@@ -57,13 +44,18 @@ namespace EBModMenu
                 p.StartInfo.CreateNoWindow = true;
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.RedirectStandardOutput = true;
+                p.StartInfo.RedirectStandardError = true;
                 // Set event handler
                 p.OutputDataReceived += new DataReceivedEventHandler(OutputHandler);
                 // Start the process
+                p.EnableRaisingEvents = true;
+                p.Exited += ProcessEnded;
                 p.Start();
                 // Start the asynchronous read
                 p.BeginOutputReadLine();
                 p.WaitForExit();
+                p.Close();
+                p.Dispose();
             }
         }
 
@@ -72,7 +64,23 @@ namespace EBModMenu
             Console.WriteLine(e.Data);
         }
 
-        private static void Launch()
+        static void ProcessEnded(object sender, EventArgs e)
+        {
+            var process = sender as Process;
+            try
+            {
+                using (StreamReader sr = process.StandardError)
+                {
+                    string error = sr.ReadToEnd();
+                    Console.WriteLine(error);
+                    if (error != "")
+                        openEmulator = false;
+                }
+            }
+            catch { }
+        }
+
+        private static void LaunchEmulator()
         {
             string args = $"-L \"D:\\Games\\Retroarch\\cores\\snes9x_libretro.dll\" \"{output_rom}\"";
 
@@ -80,6 +88,8 @@ namespace EBModMenu
             p.StartInfo.FileName = emulator;
             p.StartInfo.Arguments = args;
             p.Start();
+
+            Console.WriteLine("\nGame launched!");
         }
     }
 }

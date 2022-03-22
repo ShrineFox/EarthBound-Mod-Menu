@@ -42,9 +42,9 @@ command ResetCounter() { counter_zero }
 // Check if a certain party member is in the party
 command get_char_at_pos(pos) { "[19 10 {byte pos}]" }
 command compare_register(num, reg) { "[18 07 {long num} {byte reg}]" }
-command compare_result(num)   { compare_register(num, 0) }
-command compare_argument(num) { compare_register(num, 1) }
-command compare_counter(num)  { compare_register(num, 2) }
+command result_is_greaterthan_orequal(num)   { compare_register(num, 0) }
+command arg_is_greaterthan_orequal(num) { compare_register(num, 1) }
+command counter_is_greaterthan_orequal(num)  { compare_register(num, 2) }
 command party_size_smaller_than(n) { "[1D 19 {byte n}]" }
 
 command CheckIfCharacterInParty(charaID) 
@@ -60,7 +60,7 @@ _loop:
     }
     inc
     // Make sure we only check up to 6 party members lots
-    if compare_counter(7) { // Is counter >= 7?
+    if counter_is_greaterthan_orequal(7) { // Is counter >= 7?
 		party_size_smaller_than(1) // Set result to 0
         goto(_loopend)
     }
@@ -81,7 +81,7 @@ _loop:
     }
     inc
     // Make sure we only check up to 6 party members lots
-    if compare_counter(7) { // Is counter >= 7?
+    if counter_is_greaterthan_orequal(7) { // Is counter >= 7?
 		unset(flgID)
 		goto(_loopend)
     }
@@ -179,13 +179,13 @@ command CloseAllModMenuWnd() { CloseModMenuWnd() CloseModMenu2Wnd() CloseModMenu
 // Open Mod Menu window and set flag that it's open
 command OpenFlagWnd(wnd, flg) { window_open(wnd) LoadRAM() LoadCounter() set(flg) }
 
-command OpenModMenuWnd() { OpenFlagWnd(wnd_ModMenu, flg_ModMenuWnd) }
-command OpenModMenu2Wnd() { OpenFlagWnd(wnd_ModMenu2, flg_ModMenuWnd2) }
-command OpenModMenuConfirmWnd() { OpenFlagWnd(wnd_ModMenuConfirm, flg_ModMenuConfirmWnd) }
-command OpenKeyItemWnd() { OpenFlagWnd(wnd_KeyItems, flg_KeyItemsWnd) }
-command OpenItemWnd() { OpenFlagWnd(wnd_Item, flg_ItemWnd) }
-command OpenDebugWnd() { OpenFlagWnd(wnd_ModMenuDebug, flg_ModMenuDebugWnd) }
-command OpenKeyItemDescWnd() { OpenFlagWnd(wnd_KeyItemDescription, flg_KeyItemDescWnd) }
+command OpenModMenuWnd() { CloseModMenuWnd() OpenFlagWnd(wnd_ModMenu, flg_ModMenuWnd) }
+command OpenModMenu2Wnd() { CloseModMenu2Wnd() OpenFlagWnd(wnd_ModMenu2, flg_ModMenuWnd2) }
+command OpenModMenuConfirmWnd() { CloseModMenuConfirmWnd() OpenFlagWnd(wnd_ModMenuConfirm, flg_ModMenuConfirmWnd) }
+command OpenKeyItemWnd() { CloseKeyItemWnd() OpenFlagWnd(wnd_KeyItems, flg_KeyItemsWnd) }
+command OpenItemWnd() { CloseItemWnd() OpenFlagWnd(wnd_Item, flg_ItemWnd) }
+command OpenDebugWnd() { CloseDebugWnd() OpenFlagWnd(wnd_ModMenuDebug, flg_ModMenuDebugWnd) }
+command OpenKeyItemDescWnd() { CloseKeyItemDescWnd() OpenFlagWnd(wnd_KeyItemDescription, flg_KeyItemDescWnd) }
 
 // Preset title commands for strings
 command Lbl(text)  { "[18 0C 00 {byte[0] text} {byte[1] text} {byte[2] text} 00]" clearline }
@@ -193,7 +193,7 @@ command PtyLbl(partyMemberID) { "[18 0B 00 {byte[0] partyMemberID} 05]" clearlin
 
 // Show debug info if Debug flag is on,
 // then switch back to active window
-command DebugWnd(prevWndType, string) 
+command DebugPrint(prevWndType, string) 
 {
 	if flg_Debug 
 	{
