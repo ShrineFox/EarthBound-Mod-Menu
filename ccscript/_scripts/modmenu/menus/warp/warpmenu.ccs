@@ -10,7 +10,7 @@ command WarpNotification(string) { SystemWnd(wnd_ModMenu, "{sound(SND_EDENWARP)}
 WarpMenu:
 	CloseModMenuConfirmWnd()
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Warp)
 	menu 1 {
 		"View List":    { goto(WarpList) }

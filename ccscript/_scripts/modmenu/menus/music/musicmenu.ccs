@@ -9,7 +9,7 @@ MusicMenu:
 	music_switching_off
 	CloseModMenuConfirmWnd()
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"View List":    { goto(MusicList) }
@@ -22,7 +22,7 @@ goto(MusicMenu)
 
 MusicList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Town":         { goto(TownBGMList) }
@@ -36,7 +36,7 @@ goto(MusicList)
 
 MoreBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Events":        { goto(EventBGMList) }
@@ -51,7 +51,7 @@ goto(MoreBGMList)
 
 TownBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Onett":         { goto(OnettBGMList) }
@@ -66,7 +66,7 @@ goto(TownBGMList)
 
 TownBGMList2:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Summers":          { music(bgm_Summers) }
@@ -80,7 +80,7 @@ goto(TownBGMList2)
 
 TownBGMList3:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Magicant":         { goto(MagicantBGMList) }
@@ -91,7 +91,7 @@ goto(TownBGMList3)
 
 OnettBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Onett Day":      { music(bgm_Onett) }
@@ -104,7 +104,7 @@ goto(OnettBGMList)
 
 TwosonBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Boy Meets Girl":  { music(bgm_Twoson) }
@@ -117,7 +117,7 @@ goto(TwosonBGMList)
 
 ThreedBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Peaceful Threed": { music(bgm_Threed) }
@@ -130,7 +130,7 @@ goto(ThreedBGMList)
 
 FoursideBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Fourside":      { music(bgm_Threed) }
@@ -144,7 +144,7 @@ goto(FoursideBGMList)
 
 WintersBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Snowman":       { music(bgm_SnowWood) }
@@ -157,7 +157,7 @@ goto(WintersBGMList)
 
 ScarabaBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Scaraba":         { music(bgm_Bazaar) }
@@ -169,7 +169,7 @@ goto(ScarabaBGMList)
 
 DeepDarknessBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Deep Darkness":   { music(bgm_DeepDarkness) }
@@ -182,7 +182,7 @@ goto(DeepDarknessBGMList)
 
 MagicantBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Magicant":   { music(bgm_Magicant) }
@@ -195,7 +195,7 @@ goto(MagicantBGMList)
 
 CaveofPastBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Cliff Time Forgot": { music(bgm_CliffTimeForgot) }
@@ -209,7 +209,7 @@ goto(CaveofPastBGMList)
 
 IndoorBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Houses":       { goto(HouseBGMList) }
@@ -220,7 +220,7 @@ goto(IndoorBGMList)
 
 HouseBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Home Sweet Home": { music(bgm_HomeSweetHome) }
@@ -234,7 +234,7 @@ goto(HouseBGMList)
 
 FacilityBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Dept. Store":  { music(bgm_DeptStore) }
@@ -248,7 +248,7 @@ goto(FacilityBGMList)
 
 FacilityBGMList2:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Chaos Theater":   { music(bgm_ChaosTheater) }
@@ -262,7 +262,7 @@ goto(FacilityBGMList2)
 
 DungeonBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Belch Factory":     { music(bgm_BelchFactory) }
@@ -277,7 +277,7 @@ goto(DungeonBGMList)
 /* Battle */
 BattleBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Regular Foes": { goto(FoeBGMList) }
@@ -288,7 +288,7 @@ goto(BattleBGMList)
 
 FoeBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Weird Opponent":  { music(bgm_Battle_WeirdOpponent) }
@@ -302,7 +302,7 @@ goto(FoeBGMList)
 
 BossBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Sanctuary Guardian": { music(bgm_Battle_SanctuaryGuardian) }
@@ -317,7 +317,7 @@ goto(BossBGMList)
 
 GiygasBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Devil's Machine": { music(bgm_Battle_Giygas) }
@@ -333,7 +333,7 @@ goto(GiygasBGMList)
 
 EventBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Vehicles":     { goto(VehicleBGMList) }
@@ -348,7 +348,7 @@ goto(EventBGMList)
 
 EventBGMList2:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Pokey": { music(bgm_Greeting_SancutaryBoss) }
@@ -363,7 +363,7 @@ goto(EventBGMList2)
 
 EventBGMList3:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Magicant Depart": { music(bgm_Magicant_Departure) }
@@ -378,7 +378,7 @@ goto(EventBGMList3)
 
 EventBGMList4:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Pokey Appears":  { music(bgm_Pokey_Appears) }
@@ -392,7 +392,7 @@ goto(EventBGMList4)
 
 VehicleBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Bicycle":        { music(bgm_Bicycle) }
@@ -406,7 +406,7 @@ goto(VehicleBGMList)
 
 RunawayFiveBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"At Chaos Theater": { music(bgm_RunawayFive_ChaosTheater) }
@@ -420,7 +420,7 @@ goto(RunawayFiveBGMList)
 
 FlyoverBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Onett Flyover":   { music(bgm_Onett_Flyover) }
@@ -432,7 +432,7 @@ goto(FlyoverBGMList)
 
 GoodMorningBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"GM Eagleland": { music(bgm_GoodMorning) }
@@ -448,7 +448,7 @@ goto(GoodMorningBGMList)
 
 FanfareBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"You Won!":        { music(bgm_YouWon) }
@@ -462,7 +462,7 @@ goto(FanfareBGMList)
 
 FanfareBGMList2:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Game Over":      { music(bgm_ABadDream) }
@@ -478,7 +478,7 @@ goto(FanfareBGMList2)
 
 AmbianceBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Cave":             { music(bgm_CaveAmbiance) }
@@ -493,7 +493,7 @@ goto(AmbianceBGMList)
 
 MiscBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Gas Station":      { music(bgm_GasStation) }
@@ -508,7 +508,7 @@ goto(MiscBGMList)
 
 MiscBGMList2:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Eight Melodies":     { music(bgm_EightMelodies) }

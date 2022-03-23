@@ -1,0 +1,67 @@
+import asm65816
+import "../modmenu/enums/flags.ccs"
+
+// Adds a flag that mutes music globally always, without muting sound effects
+// by JTolmar, with thanks to Phoenixbound for providing the right code pointer
+
+// Pick a flag you're not using
+//define mute_music = flag 0x123
+
+// Music is played by change_music, which handles all the pack loading
+// then, at the very end, plays a certain track.
+// Allow all the packs to load for sfx purposes, then hijack and play track
+// 4 (silence) when the flag is on.
+// https://github.com/Herringway/ebsrc/blob/master/src/audio/change_music.asm
+// https://earthbound-rom-explorerr.herokuapp.com/address/$c4fbbd
+// $c4fd12                     JSL $c0abbd
+ROM[0xc4fd12] = JSL(MuteMusic)
+MuteMusic:
+  PHA // Stash A
+  // Check for main mute
+  LDA_i(flg_MuteMusic)
+  JSL(0xC21628) // Flag A -> result in A
+  CMP_i(0)
+  BNE_a(_mute_whitelist) // If flag off, jump to mute
+  // No mute
+  PLA // restore A
+  JMP(_resume) // Jump to resume
+_mute_whitelist:
+  PLA // restore track number to A
+  // Start checking if this is a whitelisted
+  whitelist(0x05) // You win
+  whitelist(0x06) // Level up
+  whitelist(0x07) // You lose
+  whitelist(0x08) // Battle swirl boss
+  whitelist(0x09) // Battle swirl ambush
+  whitelist(0x0B) // Character join fanfare
+  whitelist(0x0D) // Teleport depart
+  whitelist(0x0E) // Teleport fail
+  whitelist(0x0F) // Falling down lumine hole?
+  whitelist(0x58) // Fuzzy pickles
+  whitelist(0x59) // Delivery
+  whitelist(0x5B) // Phase distorter III
+  whitelist(0x6D) // Explosion?
+  whitelist(0x6E) // Sky runner crash
+  whitelist(0x6F) // Magic cake
+  whitelist(0x73) // Phone call
+  whitelist(0x7B) // Supposed to be character join? Not the one I used
+  whitelist(0x7E) // Broken phase distorter
+  whitelist(0x7F) // Phase distorter II
+  whitelist(0x87) // Teleport arrive
+  whitelist(0x89) // Elevator down
+  whitelist(0x8A) // Elevator up
+  whitelist(0xB0) // Battle swirl normal
+  whitelist(0xB3) // LMAO ebmused calls this "robotomy"
+  whitelist(0xB7) // Instant victory
+  whitelist(0xB8) // Boss you win
+
+  // End of whitelist
+  LDA_i(0x0004) // This track is muted
+_resume:
+  JSL(0xc0abbd) // Go where we were supposed to go
+  RTL
+
+command whitelist(track) {
+  CMP_i(track)
+  BEQ_a(_resume)
+}

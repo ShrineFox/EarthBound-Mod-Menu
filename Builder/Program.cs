@@ -28,8 +28,12 @@ namespace EBModMenu
                 LaunchEmulator();
             }
 
-            Console.WriteLine("\nPress any key to exit.");
-            Console.ReadKey();
+            if (!openEmulator) 
+            {
+                Console.WriteLine("\nPress any key to exit.");
+                Console.ReadKey();
+            }
+            
         }
 
         private static void BuildROM()

@@ -45,9 +45,10 @@ ModMenu: {
 	MenuOptionWithCallback("Flags", Set_Count_7)
 	MenuOptionWithCallback("Map", Set_Count_8)
 	MenuOptionWithCallback("Text Speed", Set_Count_9)
+	MenuOptionWithCallback("About", Set_Count_10)
 	DisplayVertical(1) if not "[11]" { eob }
 	ctoarg swap
-    SwitchGoto(9)
+    SwitchGoto(10)
         SwitchCase(chose_party)
         SwitchCase(chose_save)
         SwitchCase(chose_bgm)
@@ -57,40 +58,43 @@ ModMenu: {
 		SwitchCase(chose_flags)
 		SwitchCase(chose_map)
 		SwitchCase(chose_textspeed)
-    swap
+		SwitchCase(chose_about)
+	swap
 	"@Error! No option {number(0)} in this menu." eob
 	chose_party:
-		goto(PartyMenu)
+		Highlight("Party") goto(PartyMenu)
 	chose_save:
-		save SystemWnd(wnd_ModMenu, "@Game saved.") goto(ModMenu)
+		Highlight("Save") save SystemWnd(wnd_ModMenu, "@Game saved.") goto(ModMenu)
 	chose_bgm:
-		goto(MusicMenu)
+		Highlight("BGM") goto(MusicMenu)
 	chose_goods:
-		goto(GoodsMenu)
+		Highlight("Goods") goto(GoodsMenu)
 	chose_warp:
-		clearline text_color(6) SetTextSpeedInstant() "Warp" sound(SND_CURSORCONFIRM) call(WarpMenu)
+		Highlight("Warp") goto(WarpMenu)
 	chose_battle:
-		goto(BattleMenu)
+		Highlight("Battle") goto(BattleMenu)
 	chose_flags:
-		goto(FlagsMenu)
+		Highlight("Flags") goto(FlagsMenu)
 	chose_map:
-		goto(MapMenu)
+		Highlight("Map") goto(MapMenu)
 	chose_textspeed:
-		goto(TextSpeed)
+		Highlight("Text Speed") goto(TextSpeed)
+	chose_about:
+		Highlight("About") goto(ModMenu_AboutDlg)
 }
 
 ModMenu_AboutDlg:
 	window_open(wnd_Dialog)
 	Lbl(lbl_About)
 	"@EarthBound Mod Menu by ShrineFox." newline
-	"@Made using Coilsnake." newline
-	"@Updated 3-21-22." wait
+	"@Made using Coilsnake." next
+	"@Updated 3[5F]22[5F]22." wait
 	window_close(wnd_Dialog)
 goto(ModMenu)
 
 MapMenu: {
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Map)
 	ResetCounter() ctoarg
 	// Pick a menu option

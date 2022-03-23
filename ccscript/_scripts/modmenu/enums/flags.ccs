@@ -86,6 +86,8 @@ define flg_FastSaving = flag 0x638
 define flg_GameOverContinue = flag 0x637
 // Whether Buzz Buzz has died
 define flg_BuzzBuzzDead = flag 0x636
+// Whether music should stay muted
+define flg_MuteMusic = flag 0x635
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12

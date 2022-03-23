@@ -1,6 +1,7 @@
 //import asm65816
 import "../asm/cc_text_speed.ccs"
 import "../asm/bg_viewer.ccs"
+import "../asm/custom_windows_standalone.ccs"
 /* Mod Menu */
 import "enums/flags.ccs"
 import "enums/labels.ccs"
@@ -9,6 +10,7 @@ import "enums/items.ccs"
 import "enums/windows.ccs"
 import "commands.ccs"
 
+command Highlight(text) { SetTextSpeedInstant() clearline sound(SND_CURSORCONFIRM) " " text_color(6) "  {text}" SetTextSpeed(1) }
 command sprite_spawn(sprite,move,style) "[1F 15 {short sprite} {short move} {byte style}]"
 command SetPalette(palette) { "[1F E1 01 {byte palette} 01]" }
 
@@ -180,7 +182,7 @@ command CloseAllModMenuWnd() { CloseModMenuWnd() CloseModMenu2Wnd() CloseModMenu
 command OpenFlagWnd(wnd, flg) { window_open(wnd) LoadRAM() LoadCounter() set(flg) }
 
 command OpenModMenuWnd() { CloseModMenuWnd() OpenFlagWnd(wnd_ModMenu, flg_ModMenuWnd) }
-command OpenModMenu2Wnd() { CloseModMenu2Wnd() OpenFlagWnd(wnd_ModMenu2, flg_ModMenuWnd2) }
+command OpenModMenu2Wnd(height) { CloseModMenu2Wnd() CustomWindow_open(wnd_ModMenu2, 7, 4, 12, height) LoadRAM() LoadCounter() set(flg_ModMenuWnd2) }
 command OpenModMenuConfirmWnd() { CloseModMenuConfirmWnd() OpenFlagWnd(wnd_ModMenuConfirm, flg_ModMenuConfirmWnd) }
 command OpenKeyItemWnd() { CloseKeyItemWnd() OpenFlagWnd(wnd_KeyItems, flg_KeyItemsWnd) }
 command OpenItemWnd() { CloseItemWnd() OpenFlagWnd(wnd_Item, flg_ItemWnd) }

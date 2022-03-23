@@ -8,8 +8,7 @@ import "../../commands.ccs"
 
 BattleMenu:
 	CloseModMenuConfirmWnd()
-	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(11)
 	Lbl(lbl_Battle)
 	menu 1 {
 		"View List":    { goto(BattleList) }
@@ -19,8 +18,7 @@ BattleMenu:
 goto(BattleMenu)
 
 BattleList:
-	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(10)
 	Lbl(lbl_Battle)
 	menu 1 
 	{
@@ -31,8 +29,7 @@ BattleList:
 goto(BattleList)
 
 BossBattleList:
-	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(9)
 	Lbl(lbl_Battle)
 	menu 1 {
 		"Sanctuary Guardians":    { goto(SanctuaryBossList) }

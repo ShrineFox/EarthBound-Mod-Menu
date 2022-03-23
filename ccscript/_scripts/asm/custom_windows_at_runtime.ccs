@@ -1,0 +1,121 @@
+// custom_windows_at_runtime.ccs - v1
+// Allows you to open windows with variable sizes
+// cooprocks123e 2021
+
+import asm65816_2
+import ccexpand
+import cc_asmcall
+import expand_text_windows
+
+// Summary:
+//   Use the command: CustomWindow_open(window number, X position, Y position, width, height)
+//   The position and size parameters are in 8x8 tile units, same as the normal window definitions in the window table.
+//   For window number, you must use windows from CustomWindow0 to CustomWindow9
+//   You need to also include the expand_text_windows.ccs file (imported in this file)
+// Examples:
+//   Open window the size of the screen:
+//     CustomWindow_open(CustomWindow0, 1, 1, 30, 26)
+//   Open window with same size and position as default text window:
+//     CustomWindow_open(CustomWindow0, 0x000C, 0x0001, 0x0013, 0x0008)
+
+// These are the 10 custom windows available.
+// Use them with the CustomWindow_open CCScript command,
+// or by setting MEM_CustomWindowParams_{X,Y,W,H} and then
+// creating one of these windows normally.
+// Note that custom sizes are only used with windows #96 and over.
+// This means that you also need expand_text_windows,
+// or you need to choose different windows to replace.
+
+define CustomWindow0 = 96
+define CustomWindow1 = 97
+define CustomWindow2 = 98
+define CustomWindow3 = 99
+define CustomWindow4 = 100
+define CustomWindow5 = 101
+define CustomWindow6 = 102
+define CustomWindow7 = 103
+define CustomWindow8 = 104
+define CustomWindow9 = 105
+
+command CustomWindow_open(num, x, y, w, h) {
+    cc_asmcall(ASM_CustomWindow_open, RET_NONE)
+    byte num
+    byte x
+    byte y
+    byte w
+    byte h
+}
+
+////////////
+// ASM stuff
+
+// Needs to be 4 sequential bytes in memory
+define MEM_CustomWindowParams_X = 0x7E965C
+define MEM_CustomWindowParams_Y = 0x7E965D
+define MEM_CustomWindowParams_W = 0x7E965E
+define MEM_CustomWindowParams_H = 0x7E965F
+
+define CreateWindowFar = 0xC1DD47
+
+ASM_CustomWindow_open: {
+    LDY_i(0x0005)
+    JSL(R_Read_Parameter_Bytes)
+
+    LDA_a(D_cc_argv_1)
+    STA_a(MEM_CustomWindowParams_X) // and Y
+    LDA_a(D_cc_argv_3)
+    STA_a(MEM_CustomWindowParams_W) // and H
+
+    LDA_a(D_cc_argv_0)
+    AND_i(0x00FF)
+    JML(CreateWindowFar)
+}
+
+// Partway through CreateWindow:
+ROM[0xC105D3] = {
+    // Orig: TYA ASL ASL ASL STA_d(0x02)
+    /* 5d3 */ JSL(ASM_CustomWindow_setupWindow)
+              // The function we call will either set or clear the carry to let us know
+              //   if we should skip the original parameter loading code or not.
+    /* 5d7 */ BCS(0x56)
+    /* 5d9 */ // STA_d(0x02) ...
+}
+
+ASM_CustomWindow_setupWindow: {
+    CPY_i(CustomWindow0)
+    BCC_a(_NoReplace)
+
+    // We're using the custom window stuff.
+    // Read the window parameters from the global variables.
+    LDA_a(MEM_CustomWindowParams_X)
+    AND_i(0x00FF)
+    LDX_d(0x10)
+    STA_x(0x0006)
+
+    LDA_a(MEM_CustomWindowParams_Y)
+    AND_i(0x00FF)
+    STA_x(0x0008)
+
+    LDA_a(MEM_CustomWindowParams_W)
+    AND_i(0x00FF)
+    DEC DEC
+    STA_x(0x000A)
+
+    LDA_a(MEM_CustomWindowParams_H)
+    AND_i(0x00FF)
+    DEC DEC
+    STA_x(0x000C)
+
+    // Set carry to skip the original code with the BCS instruction we return to.
+    SEC
+    RTL
+
+_NoReplace:
+    // We're using a built-in window. Finish computing the offset into the window table.
+    TYA ASL ASL ASL STA_d(0x02) // Code we replaced
+    // Note that we need to preserve this value in A! Don't overwrite it!
+    
+    // Clear carry to run the original code after we return.
+    CLC
+    RTL
+}

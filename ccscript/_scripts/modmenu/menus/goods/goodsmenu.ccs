@@ -12,7 +12,7 @@ GoodsMenu:
 	CloseItemWnd() 
 	CloseDebugWnd()
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Goods)
 	menu 1 {
 		"View List": { goto(ItemList) }
@@ -25,7 +25,7 @@ goto(GoodsMenu)
 ItemList:
 	CloseModMenu2Wnd()
 	CloseKeyItemWnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Goods)
 	menu 1 {
 		"Consumables": { goto(ConsumableItemList) }
@@ -117,7 +117,7 @@ goto(KeyItemList2)
 	
 EquippableItemList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Goods)
 	menu 1 {
 		"Weapons":  { goto(WeaponEquipList) }
@@ -142,7 +142,7 @@ goto(ItemList)
 
 StorageMenu:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Storage)
 	menu 1
 	{

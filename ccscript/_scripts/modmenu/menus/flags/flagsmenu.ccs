@@ -8,7 +8,7 @@ import "../config/configmenu.ccs"
 
 FlagsMenu:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Flags)
 	menu 1 {
 		"Menu Settings": { goto(MenuSettings) }
@@ -23,7 +23,7 @@ goto(FlagsMenu)
 
 MenuSettings:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Flags)
 	menu 1 {
 		"Debug Window":   { ToggleFlag(flg_Debug) }
@@ -39,7 +39,7 @@ goto(MenuSettings)
 
 PartyFlagsMenu:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Flags)
 	menu 1 
 	{
@@ -55,7 +55,7 @@ goto(PartyFlagsMenu)
 
 FollowerFlagsMenu:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Flags)
 	menu 1 
 	{
@@ -74,7 +74,7 @@ goto(FollowerFlagsMenu)
 
 AppearanceMenu:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Flags)
 	menu 1 
 	{
@@ -85,7 +85,7 @@ goto(AppearanceMenu)
 
 TownMenu:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Flags)
 	menu 1 
 	{
@@ -102,7 +102,7 @@ goto(TownMenu)
 
 MiscFlagsMenu:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Flags)
 	menu 1 
 	{

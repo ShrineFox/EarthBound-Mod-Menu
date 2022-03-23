@@ -9,7 +9,7 @@ import "../../../enums/status.ccs"
 import "healthcommands.ccs"
 
 HealthMenu:
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Health)
 	menu 1 {
 		"Heal":  { 
@@ -55,7 +55,7 @@ HealthMenu:
 goto(PartyMenu)
 
 StatusMenu:
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Status)
 	menu 1 {
 		"Group 0": { goto(StatusGroup_0) }
@@ -69,7 +69,7 @@ StatusMenu:
 goto(StatusMenu)
 
 StatusGroup_0:
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Group0)
 	menu 1 {
 		"Normal":   { InflictParty(sts_Normal_0, "Normal") }
@@ -84,7 +84,7 @@ StatusGroup_0:
 goto(StatusGroup_0)
 
 StatusGroup_1:
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Group1)
 	menu 1 {
 		"Normal": 	    { InflictParty(sts_Normal_1, "Normal") }
@@ -95,7 +95,7 @@ StatusGroup_1:
 goto(StatusGroup_1)
 
 StatusGroup_2:
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Group2)
 	menu 1 {
 		"Normal": 	 { InflictParty(sts_Normal_2, "Normal") }
@@ -108,7 +108,7 @@ StatusGroup_2:
 goto(StatusGroup_2)
 
 StatusGroup_3:
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Group3)
 	menu 1 {
 		"Normal":  { InflictParty(sts_Normal_3, "Normal") }
@@ -118,7 +118,7 @@ StatusGroup_3:
 goto(StatusGroup_3)
 
 StatusGroup_4:
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Group4)
 	menu 1 {
 		"Normal": 	    { InflictParty(sts_Normal_4, "Normal") }
@@ -128,7 +128,7 @@ StatusGroup_4:
 goto(StatusGroup_4)
 
 StatusGroup_5:
-	OpenModMenu2Wnd()
+	OpenModMenu2Wnd(18)
 	Lbl(lbl_Group5)
 	menu 1 {
 		"Normal": 	{ InflictParty(sts_Normal_5, "Normal") }
