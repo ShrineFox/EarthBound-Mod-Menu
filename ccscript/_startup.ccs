@@ -1,11 +1,15 @@
-import "_scripts/modmenu/enums/flags.ccs"
-import "_scripts/modmenu/enums/bgm.ccs"
-import "_scripts/modmenu/enums/labels.ccs"
-import "_scripts/modmenu/commands.ccs"
-import "_scripts/modmenu/menus/config/configmenu.ccs"
+import "_scripts/modmenu/config/configmenu.ccs"
+/* Enums */
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/bgm.ccs"
+import "_scripts/enums/labels.ccs"
+/* ASM */
 import "_scripts/asm/asm65816_2.ccs"
 import "_scripts/asm/ccexpand.ccs"
 import "_scripts/asm/cc_asmcall.ccs"
+/* Commands */
+import "_scripts/commands/window_cmds.ccs"
+
 
 /* Setup File/Naming Screen */
 

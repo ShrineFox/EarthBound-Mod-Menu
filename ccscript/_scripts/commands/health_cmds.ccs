@@ -1,10 +1,8 @@
-/* Mod Menu */
-import "../partymenu.ccs"
-import "../../../enums/labels.ccs"
-import "../../../enums/party.ccs"
-import "../../../enums/windows.ccs"
-import "../../../commands.ccs"
-import "../../../enums/status.ccs"
+import window_cmds
+import "../enums/labels.ccs"
+import "../enums/party.ccs"
+import "../enums/windows.ccs"
+import "../enums/status.ccs"
 
 // Clear a party member's status effects
 command ClearStatus(partyMember) 
@@ -13,20 +11,20 @@ command ClearStatus(partyMember)
 	inflict(partyMember, sts_Normal_3) inflict(partyMember, sts_Normal_4) inflict(partyMember, sts_Normal_5)
 }
 // Show message about status effect being cleared
-command ClearStatusNotification(string) { SystemWnd(wnd_ModMenu2, "{sound(SND_STATUSRECOVER)}@Cleared {string)}'s status.") }
+command ClearStatusNotification(string) { NotificationWnd(wnd_ModMenu2, "{sound(SND_STATUSRECOVER)}@Cleared {string)}'s status.") }
 
 // Give a party member 1 HP and set their primary status to Normal
 command Revive(partyMember) { heal(partyMember, 1) inflict(partyMember, sts_Normal_0) }
 // Show message about party member being revived
-command ReviveNotification(string) { SystemWnd(wnd_ModMenu2, "{sound(SND_STATUSRECOVER)}@Revived {string)}.") }
+command ReviveNotification(string) { NotificationWnd(wnd_ModMenu2, "{sound(SND_STATUSRECOVER)}@Revived {string)}.") }
 
 // Remove 100% of a party member's HP
-command Kill(PartyMember) { sound(SND_HERODEATH) hurt_percent(PartyMember, 100) }
+command Kill(partyMember) { sound(SND_HERODEATH) hurt_percent(partyMember, 100) }
 // Remove 99% of a party member's HP
-command AlmostKill(PartyMember) { sound(SND_CRITICAL) hurt_percent(PartyMember, 99) }
+command AlmostKill(partyMember) { sound(SND_CRITICAL) hurt_percent(partyMember, 100) heal(partyMember, 1) }
 
 // Give a party member a status effect
-command InflictNotification(partyName, statusName) { SystemWnd(wnd_ModMenu, "{sound(SND_AFFLICTED)}@Inflicted {partyName} with {statusName}.") }
+command InflictNotification(partyName, statusName) { NotificationWnd(wnd_ModMenu, "{sound(SND_AFFLICTED)}@Inflicted {partyName} with {statusName}.") }
 // Give the entire party a status effect
 command InflictParty(status, statusName)
 {

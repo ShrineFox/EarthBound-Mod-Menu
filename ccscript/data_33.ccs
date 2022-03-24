@@ -4,6 +4,8 @@
  * Generated using CCScriptWriter.
  */
 
+import "_scripts/enums/flags.ccs"
+
 command e(label) "{long label}"
 
 // Text Data
@@ -144,8 +146,6 @@ l_0xc7dee0:
     "@you'll begin where you last saved." next
     "@Is that okay?" linebreak
     "[19 02]No[02]  [19 02]Yes[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc7df3c)} {e(l_0xc7df78)}]" goto(l_0xc7df3c)
-
-import "_scripts/modmenu/enums/flags.ccs"
 
 l_0xc7df3c:
     "@[1C 02 00] decided to return after summoning all the courage and energy he had." next

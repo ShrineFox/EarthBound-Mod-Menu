@@ -1,0 +1,127 @@
+import window_cmds
+import flag_cmds
+/* ASM */
+import "../asm/cc_text_speed.ccs"
+import "../asm/bg_viewer.ccs"
+import "../asm/custom_windows_standalone.ccs"
+/* Enums */
+import "../enums/flags.ccs"
+import "../enums/labels.ccs"
+import "../enums/party.ccs"
+import "../enums/items.ccs"
+import "../enums/windows.ccs"
+
+
+/* Item Management */
+
+// Give Item in argument register to party
+command GiveItem(charaID)
+{
+	SaveRAM()
+	window_open(wnd_Dialog)
+	sound(SND_BOXTAKE)
+	LoadRAM()
+	"[1D 0E {byte charaID} 00]"
+	call(0xc7dccf) next
+	window_close(wnd_Dialog)
+}
+
+command GiveKeyItem(charaID)
+{
+	SaveRAM()
+	window_open(wnd_Dialog)
+	sound(SND_SPECIALITEM)
+	LoadRAM()
+	"[1D 0E {byte charaID} 00]"
+	call(0xc7dcb6) next
+	window_close(wnd_Dialog)
+}
+
+command GiveItemToParty(itemID)
+{
+	SaveRAM()
+	arg(itemID)
+	if not full(0xFF)
+	{
+		if not full(1) { GiveItem(1) }
+		else if not full(2) { GiveItem(2) }
+		else if not full(3) { GiveItem(3) }
+		else if not full(4) { GiveItem(4) }
+	}
+	else
+	{
+		NotifyInventoryFull()
+	}
+}
+
+command GiveKeyItemToParty(itemID)
+{
+	if not flag flg_KeyItems
+	{
+		SaveRAM()
+		arg(itemID)
+		if not full(0xFF)
+		{
+			if not full(1) { GiveKeyItem(1) }
+			else if not full(2) { GiveKeyItem(2) }
+			else if not full(3) { GiveKeyItem(3) }
+			else if not full(4) { GiveKeyItem(4) }
+		}
+		else
+		{
+			// Store key item with Escargot Express
+			"[1D 18 {byte itemID}]"
+			window_closeall
+			window_open(1)
+			"@(The {itemname(itemID)} was sent to Escargot Express.)" next
+			window_closeall
+
+			// TODO: handle what to do when Escargot Express is full?
+		}
+	}
+	else
+	{
+		window_closeall
+		window_open(1)
+		GiveMenuKeyItem(itemID)
+		window_closeall
+	}
+}
+
+// Set the flag for the corresponding Key Item
+command GiveMenuKeyItem(itemID)
+{
+	counter(itemID)
+	if counter_is(item_Sound_Stone) { ToggleWithSound(flg_BuzzBuzzDead) }
+	if counter_is(item_Key_Shack) { ToggleWithSound(flg_KeyItem_ShackKey) }
+	if counter_is(item_Bicycle) { ToggleWithSound(flg_KeyItem_Bicycle) }
+	if counter_is(item_Town_Map) { ToggleWithSound(flg_KeyItem_TownMap) }
+	if counter_is(item_Receiver_Phone) { ToggleWithSound(flg_KeyItem_ReceiverPhone) }
+	if counter_is(item_Eraser_Pencil) { ToggleWithSound(flg_KeyItem_PencilEraser) }
+	if counter_is(item_Key_Cabin) { ToggleWithSound(flg_KeyItem_CabinKey) }
+	if counter_is(item_Wad_Bills) { ToggleWithSound(flg_KeyItem_WadofBills) }
+	if counter_is(item_Zombie_Paper) { ToggleWithSound(flg_KeyItem_ZombiePaper) }
+	if counter_is(item_Bad_Key_Machine) { ToggleWithSound(flg_KeyItem_BadKeyMachine) }
+	if counter_is(item_Eraser_Eraser) { ToggleWithSound(flg_KeyItem_EraserEraser) }
+	if counter_is(item_Diamond) { ToggleWithSound(flg_KeyItem_Diamond) }
+	if counter_is(item_Signed_Banana) { ToggleWithSound(flg_KeyItem_SignedBanana) }
+	if counter_is(item_Hieroglyph_Copy) { ToggleWithSound(flg_KeyItem_HieroglyphCopy) }
+	if counter_is(item_Key_Carrot) { ToggleWithSound(flg_KeyItem_CarrotKey) }
+	if counter_is(item_Key_Tower) { ToggleWithSound(flg_KeyItem_DungeonManKey) }
+	if counter_is(item_Hawk_Eye) { ToggleWithSound(flg_KeyItem_HawkEye) }
+	if counter_is(item_Shyness_Book) { ToggleWithSound(flg_KeyItem_ShynessBook) }
+	if counter_is(item_Tendakraut) { ToggleWithSound(flg_KeyItem_Tendakraut) }
+	if counter_is(item_Meteorite_Piece) { ToggleWithSound(flg_KeyItem_Meteorite) }
+	if counter_is(item_Bubble_Gum) { ToggleWithSound(flg_KeyItem_BubbleGum) }
+	if counter_is(item_Pass_Backstage) { ToggleWithSound(flg_KeyItem_BackstagePass) }
+	if counter_is(item_Yogurt_Dispenser) { ToggleWithSound(flg_KeyItem_YogurtMachine) }
+	if counter_is(item_Show_Ticket) { ToggleWithSound(flg_KeyItem_ShowTicket) }
+
+	sound(SND_SPECIALITEM)
+	"@(The {itemname(itemID)} was added to your Key Items.)" next
+}
+
+command NotifyInventoryFull()
+{
+	NotificationWnd(wnd_ModMenu2, "There's no space for new items.")
+}

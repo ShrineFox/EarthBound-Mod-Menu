@@ -1,5 +1,5 @@
 import asm65816
-import "../modmenu/enums/flags.ccs"
+import "../enums/flags.ccs"
 
 // Adds a flag that mutes music globally always, without muting sound effects
 // by JTolmar, with thanks to Phoenixbound for providing the right code pointer

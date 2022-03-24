@@ -3,6 +3,8 @@ import movscr_codes
 import movement
 import letterbox
 
+command CreateSprite(sprite, move, style) "[1F 15 {short sprite} {short move} {byte style}]"
+
 /*
  *  Relocates the movement script pointer table, allowing
  *  for custom scripts to be inserted into the game

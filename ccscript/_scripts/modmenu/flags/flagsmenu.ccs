@@ -1,10 +1,13 @@
-/* Mod Menu */
+import "../config/configmenu.ccs"
+/* Enums */
 import "../../enums/flags.ccs"
 import "../../enums/labels.ccs"
 import "../../enums/party.ccs"
 import "../../enums/windows.ccs"
-import "../../commands.ccs"
-import "../config/configmenu.ccs"
+/* Commands */
+import "../../commands/window_cmds.ccs"
+import "../../commands/flag_cmds.ccs"
+import "../../commands/health_cmds.ccs"
 
 FlagsMenu:
 	CloseModMenu2Wnd()

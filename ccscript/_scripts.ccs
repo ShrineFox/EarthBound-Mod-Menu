@@ -23,17 +23,22 @@ import "_scripts/asm/run_button_toggleable.ccs"
 import "_scripts/asm/repel_sandwiches.ccs"
 import "_scripts/asm/run_accelerating.ccs"
 import "_scripts/asm/GoodsMenuEquip.ccs"
-/* Mod Menu */
-import "_scripts/modmenu/menus/modmenu.ccs"
-import "_scripts/modmenu/commands.ccs"
-import "_scripts/modmenu/menus/goods/goodsmenu.ccs"
-import "_scripts/modmenu/enums/flags.ccs"
-import "_scripts/modmenu/enums/labels.ccs"
-import "_scripts/modmenu/enums/bgm.ccs"
-import "_scripts/modmenu/enums/party.ccs"
-import "_scripts/modmenu/enums/windows.ccs"
+/* Enums */
+import "_scripts/modmenu/modmenu.ccs"
+import "_scripts/modmenu/goods/goodsmenu.ccs"
+/* Enums */
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/labels.ccs"
+import "_scripts/enums/bgm.ccs"
+import "_scripts/enums/party.ccs"
+import "_scripts/enums/windows.ccs"
+/* Commands */
+import "_scripts/commands/window_cmds.ccs"
+import "_scripts/commands/flag_cmds.ccs"
+import "_scripts/commands/health_cmds.ccs"
 /* Main Menu Override */
 import "_scripts/mainmenu/mainmenu.ccs"
+
 
 // Open the Mod Menu
 ModMenu:
@@ -57,7 +62,7 @@ eob
 
 // Restore party if using unrestricted bike feature
 BicycleEnd:
-	if flg_UnrestrictBike 
+	if flag flg_UnrestrictBike
 	{
 		RestorePartyFromFlags()
 	}

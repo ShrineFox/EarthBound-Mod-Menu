@@ -1,10 +1,14 @@
-/* Mod Menu */
+/* Enums */
 import "../../enums/flags.ccs"
 import "../../enums/labels.ccs"
 import "../../enums/items.ccs"
 import "../../enums/party.ccs"
 import "../../enums/windows.ccs"
-import "../../commands.ccs"
+/* Commands */
+import "../../commands/window_cmds.ccs"
+import "../../commands/flag_cmds.ccs"
+import "../../commands/item_cmds.ccs"
+import "../../commands/health_cmds.ccs"
 
 GoodsMenu:
 	CloseKeyItemDescWnd()
@@ -177,7 +181,7 @@ goto(TakeItemMenu)
 
 NothingStored:
 	window_close(wnd_Dialog)
-	SystemWnd(wnd_Dialog, "No items are in storage.")
+	NotificationWnd(wnd_Dialog, "No items are in storage.")
 goto(StorageMenu)
 
 InventoryFull:

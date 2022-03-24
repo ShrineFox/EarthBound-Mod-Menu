@@ -1,9 +1,10 @@
-/* Mod Menu */
+/* Enums */
 import "../../enums/flags.ccs"
 import "../../enums/labels.ccs"
 import "../../enums/bgm.ccs"
 import "../../enums/windows.ccs"
-import "../../commands.ccs"
+/* Commands */
+import "../../commands/window_cmds.ccs"
 
 MusicMenu:
 	music_switching_off
@@ -14,8 +15,8 @@ MusicMenu:
 	menu 1 {
 		"View List":    { goto(MusicList) }
 		"Enter ID":     { goto(MusicID) }
-		"Stop Music":   { music_stop SystemWnd(wnd_ModMenu2, "{sound(SND_BOXTAKE)}@Music has been stopped.") }
-		"Resume Music": { music_resume SystemWnd(wnd_ModMenu2, "{sound(SND_BOXOPEN1)}@Music has resumed.") }
+		"Stop Music":   { music_stop set(flg_MuteMusic) NotificationWnd(wnd_ModMenu2, "{sound(SND_BOXTAKE)}@Music has been stopped.") }
+		"Resume Music": { unset(flg_MuteMusic) music_resume NotificationWnd(wnd_ModMenu2, "{sound(SND_BOXOPEN1)}@Music has resumed.") }
 		default "Back": { goto(modmenu.ModMenu) }
 	}
 goto(MusicMenu)

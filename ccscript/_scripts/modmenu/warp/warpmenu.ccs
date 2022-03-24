@@ -1,11 +1,13 @@
-/* Mod Menu */
+/* Enums */
 import "../../enums/flags.ccs"
 import "../../enums/labels.ccs"
 import "../../enums/party.ccs"
 import "../../enums/windows.ccs"
-import "../../commands.ccs"
+/* Commands */
+import "../../commands/window_cmds.ccs"
+import "../../commands/flag_cmds.ccs"
 
-command WarpNotification(string) { SystemWnd(wnd_ModMenu, "{sound(SND_EDENWARP)}@Warped to {string}.") }
+command WarpNotification(string) { NotificationWnd(wnd_ModMenu, "{sound(SND_EDENWARP)}@Warped to {string}.") }
 
 WarpMenu:
 	CloseModMenuConfirmWnd()
@@ -15,7 +17,7 @@ WarpMenu:
 	menu 1 {
 		"View List":    { goto(WarpList) }
 		"Enter ID":     { goto(WarpID) }
-		"Set Anchor":   { anchor_set SystemWnd(wnd_ModMenu2, "{sound(SND_BOXOPEN1)}@Anchor set to current position.") }
+		"Set Anchor":   { anchor_set NotificationWnd(wnd_ModMenu2, "{sound(SND_BOXOPEN1)}@Anchor set to current position.") }
 		"Go To Anchor": { anchor_warp WarpNotification("anchor position") }
 		default "Back": { goto(modmenu.ModMenu) }
 	}

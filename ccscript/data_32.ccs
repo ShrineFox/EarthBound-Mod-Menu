@@ -3,7 +3,11 @@
  * Time: 09:28:30 - 12/02/2022
  * Generated using CCScriptWriter.
  */
-import "_scripts/modmenu/enums/flags.ccs"
+import "_scripts/enums/flags.ccs"
+import "_scripts/commands/window_cmds.ccs"
+import "_scripts/commands/flag_cmds.ccs"
+import "_scripts/commands/item_cmds.ccs"
+
 command e(label) "{long label}"
 
 // Text Data

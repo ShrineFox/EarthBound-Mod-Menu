@@ -4,16 +4,18 @@
  * Generated using CCScriptWriter.
  */
 
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/window_cmds.ccs"
+import "_scripts/commands/flag_cmds.ccs"
+import "_scripts/commands/item_cmds.ccs"
+
 command e(label) "{long label}"
 
 // Text Data
 l_0xc575f8:
     "@I stayed here the whole time you were gone." next
     "@But now I don't know why I did." end
-
-import "_scripts/modmenu/enums/flags.ccs"
-import "_scripts/modmenu/enums/items.ccs"
-import "_scripts/modmenu/commands.ccs"
 
 l_0xc5762c:
     "[06 50 01 {e(l_0xc576e0)}]@I am not sure if it was the <Dungeon Man,> but..." next

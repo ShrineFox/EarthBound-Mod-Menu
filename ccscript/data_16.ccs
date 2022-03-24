@@ -4,6 +4,12 @@
  * Generated using CCScriptWriter.
  */
 
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/window_cmds.ccs"
+import "_scripts/commands/flag_cmds.ccs"
+import "_scripts/commands/item_cmds.ccs"
+
 command e(label) "{long label}"
 
 // Text Data
@@ -58,10 +64,6 @@ l_0xc60dc4:
 
 l_0xc60e2a:
     call(data_12.l_0xc5d3cb) eob
-
-import "_scripts/modmenu/enums/flags.ccs"
-import "_scripts/modmenu/enums/items.ccs"
-import "_scripts/modmenu/commands.ccs"
 
 l_0xc60e30:
     "[06 49 00 {e(l_0xc611e2)}][06 FC 02 {e(l_0xc61139)}][06 2A 02 {e(l_0xc60ff3)}]{music(119)}@The truth of space and time moves through the universe like a wave..." next

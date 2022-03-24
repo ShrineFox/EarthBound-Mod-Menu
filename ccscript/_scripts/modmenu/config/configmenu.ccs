@@ -1,8 +1,11 @@
-/* Mod Menu */
+/* Enums */
 import "../../enums/flags.ccs"
 import "../../enums/windows.ccs"
 import "../../enums/labels.ccs"
-import "../../commands.ccs"
+/* Commands */
+import "../../commands/window_cmds.ccs"
+import "../../commands/flag_cmds.ccs"
+import "../../commands/health_cmds.ccs"
 
 Selected_1:
 counter(1) eob

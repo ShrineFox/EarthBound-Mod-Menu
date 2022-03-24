@@ -1,0 +1,151 @@
+import window_cmds
+/* Enums */
+import "../enums/flags.ccs"
+import "../enums/labels.ccs"
+import "../enums/party.ccs"
+import "../enums/windows.ccs"
+
+
+/* Flag Management */
+
+// Turn active flag off or vice versa and show notification about it
+command ToggleFlag(flg)
+{
+	store_registers
+	ToggleWithSound(flg)
+	if flag flg { sound(SND_GIFTOPEN) NotificationWnd(wnd_ModMenu2, "@Flag is now ON.") }
+	else { sound(SND_BOXTAKE) NotificationWnd(wnd_ModMenu2, "@Flag is now OFF.") }
+	load_registers
+}
+
+// Turn active flag off or vice versa
+command ToggleWithSound(flg)
+{
+	store_registers
+	toggle(flg)
+	if flag flg { sound(SND_GIFTOPEN) }
+	else { sound(SND_BOXTAKE) }
+	load_registers
+}
+
+/* Party Management */
+
+// Check if a certain party member is in the party
+command get_char_at_pos(pos) { "[19 10 {byte pos}]" }
+// Check how many of the main 4 are in the party (does not count follower NPCs)
+command party_size_smaller_than(n) { "[1D 19 {byte n}]" }
+// Check if you currently have a specific party member
+command CheckIfCharacterInParty(charaID)
+{
+	store_registers
+
+	counter(1)
+_loop:
+	ctoarg
+
+	get_char_at_pos(argument)
+
+	if result_is(charaID)
+	{
+		// Return result = 1
+		goto(_loopend)
+
+	}
+	inc
+	// Make sure we only check up to 6 party members lots
+	if counter_is_greaterthan_orequal(7) { // Is counter >= 7?
+		party_size_smaller_than(1) // Set result to 0
+
+		goto(_loopend)
+
+	}
+	goto(_loop)
+	_loopend:
+	load_registers
+}
+
+// Set or unset a flag depending on the presence of a certain party member
+command SetFlagIfCharacterInParty(charaID, flg)
+{
+	CheckIfCharacterInParty(charaID)
+	SetFlagByResult(flg)
+	load_registers
+}
+
+// Remove all members from party except one specified party leader 
+// (without necessarily updating flags, so they can be restored later)
+command TempSoloPartyMember(ptyID)
+{
+	store_registers
+	party_add(ptyID)
+	counter(1)
+	_loop2:
+	if counter_is(18) { goto(_loop2end) }
+	else if not counter_is(ptyID) { ctoarg party_remove(argument) }
+	inc
+	goto(_loop2)
+	RefreshScreen_NoPrevWnd()
+	_loop2end:
+	load_registers
+}
+
+command RestorePartyFromFlags()
+{
+	store_registers
+	if flag flg_Ness  { party_add(pty_Ness)  }
+	if flag flg_Paula { party_add(pty_Paula) }
+	if flag flg_Jeff  { party_add(pty_Jeff)  }
+	if flag flg_Poo   { party_add(pty_Poo)   }
+	if flag flg_Pokey { party_add(pty_Pokey) }
+	if flag flg_Picky { party_add(pty_Picky) }
+	if flag flg_King  { party_add(pty_King)  }
+	if flag flg_Tony  { party_add(pty_Tony)  }
+	if flag flg_BubbleMonkey { party_add(pty_BubbleMonkey) }
+	if flag flg_BrickRoad    { party_add(pty_BrickRoad) }
+	if flag flg_FlyingMan  { party_add(pty_FlyingMan) }
+	if flag flg_TeddyBear  { party_add(pty_TeddyBear) }
+	if flag flg_PlushBear  { party_add(pty_PlushBear) }
+
+	if not flag flg_Ness  { party_remove(pty_Ness)  }
+	if not flag flg_Paula { party_remove(pty_Paula) }
+	if not flag flg_Jeff  { party_remove(pty_Jeff)  }
+	if not flag flg_Poo   { party_remove(pty_Poo)   }
+	if not flag flg_Pokey { party_remove(pty_Pokey) }
+	if not flag flg_Picky { party_remove(pty_Picky) }
+	if not flag flg_King  { party_remove(pty_King)  }
+	if not flag flg_Tony  { party_remove(pty_Tony)  }
+	if not flag flg_BubbleMonkey { party_remove(pty_BubbleMonkey) }
+	if not flag flg_BrickRoad    { party_remove(pty_BrickRoad) }
+	if not flag flg_FlyingMan  { party_remove(pty_FlyingMan) }
+	if not flag flg_TeddyBear  { party_remove(pty_TeddyBear) }
+	if not flag flg_PlushBear  { party_remove(pty_PlushBear) }
+	RefreshScreen_NoPrevWnd()
+	load_registers
+}
+
+command SetFlagByResult(flg)
+{
+	store_registers
+	if result_is(1) { set(flg) }
+	load_registers
+	if result_is(0) { unset(flg) }
+	load_registers
+}
+
+// Update all party member flags to reflect current party 
+command SetPartyFlags()
+{
+	SetFlagIfCharacterInParty(pty_Ness, flg_Ness)
+	SetFlagIfCharacterInParty(pty_Paula, flg_Paula)
+	SetFlagIfCharacterInParty(pty_Jeff, flg_Jeff)
+	SetFlagIfCharacterInParty(pty_Poo, flg_Poo)
+	SetFlagIfCharacterInParty(pty_Pokey, flg_Pokey)
+	SetFlagIfCharacterInParty(pty_Picky, flg_Picky)
+	SetFlagIfCharacterInParty(pty_King, flg_King)
+	SetFlagIfCharacterInParty(pty_Tony, flg_Tony)
+	SetFlagIfCharacterInParty(pty_BubbleMonkey, flg_BubbleMonkey)
+	SetFlagIfCharacterInParty(pty_BrickRoad, flg_BrickRoad)
+	SetFlagIfCharacterInParty(pty_FlyingMan, flg_FlyingMan)
+	SetFlagIfCharacterInParty(pty_TeddyBear, flg_TeddyBear)
+	SetFlagIfCharacterInParty(pty_PlushBear, flg_PlushBear)
+}

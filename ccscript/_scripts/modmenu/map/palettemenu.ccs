@@ -1,8 +1,9 @@
-/* Mod Menu */
+import "../modmenu.ccs"
+/* Enums */
 import "../../enums/labels.ccs"
 import "../../enums/windows.ccs"
-import "../../commands.ccs"
-import "../modmenu.ccs"
+/* Commands */
+import "../../commands/window_cmds.ccs"
 
 PaletteMenu: {
 	window_open(wnd_FullScreen)
@@ -157,6 +158,8 @@ PaletteMenu: {
 	chose:
 		window_close(wnd_FullScreen) goto(MapMenu)
 }
+
+command SetPalette(palette) { "[1F E1 01 {byte palette} 01]" }
 
 Set_Palette_0: { counter(1) SetPalette(0) eob }
 Set_Palette_1: { counter(2) SetPalette(1) eob }

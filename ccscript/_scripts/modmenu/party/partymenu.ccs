@@ -1,13 +1,15 @@
-/* Mod Menu */
+import "../modmenu.ccs"
+import healthmenu
+/* Enums */
 import "../../enums/flags.ccs"
 import "../../enums/labels.ccs"
 import "../../enums/party.ccs"
 import "../../enums/windows.ccs"
 import "../../enums/counter.ccs"
-import "../../commands.ccs"
-import "../modmenu.ccs"
-/* Submenu */
-import "health/healthmenu.ccs"
+/* Commands */
+import "../../commands/window_cmds.ccs"
+import "../../commands/flag_cmds.ccs"
+import "../../commands/health_cmds.ccs"
 
 PartyMenu: 
 {
@@ -113,7 +115,7 @@ PartyEditMenu:
 		SetPartyFlags()
 		LoadRAM()
 		RefreshScreen(wnd_ModMenu2)
-		SystemWnd(wnd_ModMenu2, "{music(0x7B)}@Everyone joined the party.{pause(90)}{music_resume}")
+		NotificationWnd(wnd_ModMenu2, "{music(0x7B)}@Everyone joined the party.{pause(90)}{music_resume}")
 		LoadRAM()
 		goto(PartyEditMenu)
 	chose_remove_all:
@@ -130,7 +132,7 @@ PartyEditMenu:
 		SetPartyFlags()
 		LoadRAM()
 		RefreshScreen(wnd_ModMenu2)
-		SystemWnd(wnd_ModMenu2, "{sound(SND_STATUSCHANGE)}@Everyone left the party.")
+		NotificationWnd(wnd_ModMenu2, "{sound(SND_STATUSCHANGE)}@Everyone left the party.")
 		goto(PartyEditMenu)
 	chose_health:
 		LoadRAM() goto(HealthMenu)
@@ -162,21 +164,21 @@ command AddToParty()
 				if party_size_smaller_than(2)
 				{
 					// 1
-					get_char_at_pos(2) if not result_is(0) { get_char_at_pos(3) if not result_is(0) { SystemWnd(wnd_ModMenu2, "@There are too many followers.") goto(PartyMenu)  } }
+					get_char_at_pos(2) if not result_is(0) { get_char_at_pos(3) if not result_is(0) { NotificationWnd(wnd_ModMenu2, "@There are too many followers.") goto(PartyMenu)  } }
 				}
 				else // 2
 				{
-					get_char_at_pos(3) if not result_is(0) { get_char_at_pos(4) if not result_is(0) { SystemWnd(wnd_ModMenu2, "@There are too many followers.") goto(PartyMenu)  } }
+					get_char_at_pos(3) if not result_is(0) { get_char_at_pos(4) if not result_is(0) { NotificationWnd(wnd_ModMenu2, "@There are too many followers.") goto(PartyMenu)  } }
 				}
 			}
 			else // 3
 			{
-				get_char_at_pos(4) if not result_is(0) { get_char_at_pos(5) if not result_is(0) { SystemWnd(wnd_ModMenu2, "@There are too many followers.") goto(PartyMenu)  } }
+				get_char_at_pos(4) if not result_is(0) { get_char_at_pos(5) if not result_is(0) { NotificationWnd(wnd_ModMenu2, "@There are too many followers.") goto(PartyMenu)  } }
 			}
 		}
 		else // 4
 		{
-			get_char_at_pos(5) if not result_is(0) { get_char_at_pos(6) if not result_is(0) { SystemWnd(wnd_ModMenu2, "@There are too many followers.") goto(PartyMenu)  } }
+			get_char_at_pos(5) if not result_is(0) { get_char_at_pos(6) if not result_is(0) { NotificationWnd(wnd_ModMenu2, "@There are too many followers.") goto(PartyMenu)  } }
 		}
 	}
 	LoadRAM()
@@ -184,7 +186,7 @@ command AddToParty()
 	party_add(argument)
 	RefreshScreen(wnd_ModMenu2)
 	LoadRAM()
-	SystemWnd(wnd_ModMenu2, "{music(0x7B)}@{name(argument)} joined the party.{pause(90)}{music_resume}.")
+	NotificationWnd(wnd_ModMenu2, "{music(0x7B)}@{name(argument)} joined the party.{pause(90)}{music_resume}.")
 	LoadRAM()
 	SetPartyFlags()
 	LoadRAM()
@@ -196,7 +198,7 @@ command RemoveFromParty()
 	LoadRAM()
 	if counter_is(1) or counter_is(2) or counter_is(3) or counter_is(4)
 	{
-		party_size_smaller_than(2) if result_is(1) { SystemWnd(wnd_ModMenu, "@Couldn't remove {name(argument)} from party.") }
+		party_size_smaller_than(2) if result_is(1) { NotificationWnd(wnd_ModMenu, "@Couldn't remove {name(argument)} from party.") }
 		else { goto(_remove) }
 	}
 	else { goto(_remove) }
@@ -206,7 +208,7 @@ command RemoveFromParty()
 		LoadCounter()
 		party_remove(argument)
 		RefreshScreen(wnd_ModMenu2) 
-		SystemWnd(wnd_ModMenu2, "{sound(SND_STATUSCHANGE)}@{name(argument)} left the party.")
+		NotificationWnd(wnd_ModMenu2, "{sound(SND_STATUSCHANGE)}@{name(argument)} left the party.")
 		LoadRAM()
 		SetPartyFlags()
 		LoadRAM()
@@ -229,98 +231,98 @@ StatsMenu:
 	}
 goto(StatsMenu)
 
-command SetStatNotification(partyName, statName, amount) { SystemWnd(wnd_ModMenu2, "{sound(SND_STATSUP)}@Set {partyName)}'s {statName} to {amount}.") }
-command IncStatNotification(partyName, statName, amount) { SystemWnd(wnd_ModMenu2, "{sound(SND_STATSUP)}@{partyName)}'s {statName} went up by {amount}.") }
+command SetStatNotification(partyName, statName) { SaveRAM() NotificationWnd(wnd_ModMenu2, "{sound(SND_STATSUP)}@Set {partyName)}'s {statName} to {number(0)}.") }
+command IncStatNotification(partyName, statName) { SaveRAM() NotificationWnd(wnd_ModMenu2, "{sound(SND_STATSUP)}@{partyName)}'s {statName} went up by {number(0)}.") }
 
 SetLevel:
-if counter_is(pty_Ness) { change_level(pty_Ness, argument) SetStatNotification(name(pty_Ness), "Level", number(argument)) } 
-else if counter_is(pty_Paula) { change_level(pty_Paula, argument) SetStatNotification(name(pty_Paula), "Level", number(argument)) }
-else if counter_is(pty_Jeff)  { change_level(pty_Jeff, argument) SetStatNotification(name(pty_Jeff), "Level", number(argument))  } 
-else if counter_is(pty_Poo)   { change_level(pty_Poo, argument) SetStatNotification(name(pty_Poo), "Level", number(argument))   }
+if counter_is(pty_Ness) { change_level(pty_Ness, argument) SetStatNotification(name(pty_Ness), "Level") } 
+else if counter_is(pty_Paula) { change_level(pty_Paula, argument) SetStatNotification(name(pty_Paula), "Level") }
+else if counter_is(pty_Jeff)  { change_level(pty_Jeff, argument) SetStatNotification(name(pty_Jeff), "Level")  } 
+else if counter_is(pty_Poo)   { change_level(pty_Poo, argument) SetStatNotification(name(pty_Poo), "Level")   }
 else if counter_is(0)
 {
 	change_level(pty_Ness, argument) change_level(pty_Paula, argument)
 	change_level(pty_Jeff, argument) change_level(pty_Poo, argument)
-	SetStatNotification("everyone", "Level", number(argument))
+	SetStatNotification("everyone", "Level")
 }
 eob
 
 command boost_exp_fixed(char, n) { "[1E 09 {byte char} {long n}]{linebreak}{newline}" }
 
 BoostEXP:
-	if counter_is(pty_Ness) { boost_exp_fixed(pty_Ness, argument) IncStatNotification(name(pty_Ness), "EXP", number(argument)) } 
-	else if counter_is(pty_Paula) { boost_exp_fixed(pty_Paula, argument) IncStatNotification(name(pty_Paula), "EXP", number(argument)) }
-	else if counter_is(pty_Jeff)  { boost_exp_fixed(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "EXP", number(argument))  } 
-	else if counter_is(pty_Poo)   { boost_exp_fixed(pty_Poo, argument) IncStatNotification(name(pty_Poo), "EXP", number(argument))   }
+	if counter_is(pty_Ness) { boost_exp_fixed(pty_Ness, argument) IncStatNotification(name(pty_Ness), "EXP") } 
+	else if counter_is(pty_Paula) { boost_exp_fixed(pty_Paula, argument) IncStatNotification(name(pty_Paula), "EXP") }
+	else if counter_is(pty_Jeff)  { boost_exp_fixed(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "EXP")  } 
+	else if counter_is(pty_Poo)   { boost_exp_fixed(pty_Poo, argument) IncStatNotification(name(pty_Poo), "EXP")   }
 	else if counter_is(0)
 	{
 		boost_exp_fixed(pty_Ness, argument) boost_exp_fixed(pty_Paula, argument)
 		boost_exp_fixed(pty_Jeff, argument) boost_exp_fixed(pty_Poo, argument)
-		IncStatNotification("everyone", "EXP", number(argument))
+		IncStatNotification("everyone", "EXP")
 	}
 eob
 
 BoostIQ:
-	if counter_is(pty_Ness) { boost_iq(pty_Ness, argument) IncStatNotification(name(pty_Ness), "IQ", number(argument)) } 
-	else if counter_is(pty_Paula) { boost_iq(pty_Paula, argument) IncStatNotification(name(pty_Paula), "IQ", number(argument)) }
-	else if counter_is(pty_Jeff)  { boost_iq(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "IQ", number(argument))  } 
-	else if counter_is(pty_Poo)   { boost_iq(pty_Poo, argument) IncStatNotification(name(pty_Poo), "IQ", number(argument))   }
+	if counter_is(pty_Ness) { boost_iq(pty_Ness, argument) IncStatNotification(name(pty_Ness), "IQ") } 
+	else if counter_is(pty_Paula) { boost_iq(pty_Paula, argument) IncStatNotification(name(pty_Paula), "IQ") }
+	else if counter_is(pty_Jeff)  { boost_iq(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "IQ")  } 
+	else if counter_is(pty_Poo)   { boost_iq(pty_Poo, argument) IncStatNotification(name(pty_Poo), "IQ")   }
 	else if counter_is(0)
 	{
 		boost_iq(pty_Ness, argument) boost_iq(pty_Paula, argument)
 		boost_iq(pty_Jeff, argument) boost_iq(pty_Poo, argument)
-		IncStatNotification("everyone", "IQ", number(argument))
+		IncStatNotification("everyone", "IQ")
 	}
 eob
 
 BoostGuts:
-	if counter_is(pty_Ness) { boost_guts(pty_Ness, argument) IncStatNotification(name(pty_Ness), "Guts", number(argument)) } 
-	else if counter_is(pty_Paula) { boost_guts(pty_Paula, argument) IncStatNotification(name(pty_Paula), "Guts", number(argument)) }
-	else if counter_is(pty_Jeff)  { boost_guts(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "Guts", number(argument))  } 
-	else if counter_is(pty_Poo)   { boost_guts(pty_Poo, argument) IncStatNotification(name(pty_Poo), "Guts", number(argument))   }
+	if counter_is(pty_Ness) { boost_guts(pty_Ness, argument) IncStatNotification(name(pty_Ness), "Guts") } 
+	else if counter_is(pty_Paula) { boost_guts(pty_Paula, argument) IncStatNotification(name(pty_Paula), "Guts") }
+	else if counter_is(pty_Jeff)  { boost_guts(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "Guts")  } 
+	else if counter_is(pty_Poo)   { boost_guts(pty_Poo, argument) IncStatNotification(name(pty_Poo), "Guts")   }
 	else if counter_is(0)
 	{
 		boost_guts(pty_Ness, argument) boost_guts(pty_Paula, argument)
 		boost_guts(pty_Jeff, argument) boost_guts(pty_Poo, argument)
-		IncStatNotification("everyone", "Guts", number(argument))
+		IncStatNotification("everyone", "Guts")
 	}
 eob
 
 BoostSpeed:
-	if counter_is(pty_Ness) { boost_speed(pty_Ness, argument) IncStatNotification(name(pty_Ness), "Speed", number(argument)) } 
-	else if counter_is(pty_Paula) { boost_speed(pty_Paula, argument) IncStatNotification(name(pty_Paula), "Speed", number(argument)) }
-	else if counter_is(pty_Jeff)  { boost_speed(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "Speed", number(argument))  } 
-	else if counter_is(pty_Poo)   { boost_speed(pty_Poo, argument) IncStatNotification(name(pty_Poo), "Speed", number(argument))   }
+	if counter_is(pty_Ness) { boost_speed(pty_Ness, argument) IncStatNotification(name(pty_Ness), "Speed") } 
+	else if counter_is(pty_Paula) { boost_speed(pty_Paula, argument) IncStatNotification(name(pty_Paula), "Speed") }
+	else if counter_is(pty_Jeff)  { boost_speed(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "Speed")  } 
+	else if counter_is(pty_Poo)   { boost_speed(pty_Poo, argument) IncStatNotification(name(pty_Poo), "Speed")   }
 	else if counter_is(0)
 	{
 		boost_speed(pty_Ness, argument) boost_speed(pty_Paula, argument)
 		boost_speed(pty_Jeff, argument) boost_speed(pty_Poo, argument)
-		IncStatNotification("everyone", "Speed", number(argument))
+		IncStatNotification("everyone", "Speed")
 	}
 eob
 
 BoostVitality:
-	if counter_is(pty_Ness) { boost_vitality(pty_Ness, argument) IncStatNotification(name(pty_Ness), "Vitality", number(argument)) } 
-	else if counter_is(pty_Paula) { boost_vitality(pty_Paula, argument) IncStatNotification(name(pty_Paula), "Vitality", number(argument)) }
-	else if counter_is(pty_Jeff)  { boost_vitality(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "Vitality", number(argument))  } 
-	else if counter_is(pty_Poo)   { boost_vitality(pty_Poo, argument) IncStatNotification(name(pty_Poo), "Vitality", number(argument))   }
+	if counter_is(pty_Ness) { boost_vitality(pty_Ness, argument) IncStatNotification(name(pty_Ness), "Vitality") } 
+	else if counter_is(pty_Paula) { boost_vitality(pty_Paula, argument) IncStatNotification(name(pty_Paula), "Vitality") }
+	else if counter_is(pty_Jeff)  { boost_vitality(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "Vitality")  } 
+	else if counter_is(pty_Poo)   { boost_vitality(pty_Poo, argument) IncStatNotification(name(pty_Poo), "Vitality")   }
 	else if counter_is(0)
 	{
 		boost_vitality(pty_Ness, argument) boost_vitality(pty_Paula, argument)
 		boost_vitality(pty_Jeff, argument) boost_vitality(pty_Poo, argument)
-		IncStatNotification("everyone", "Vitality", number(argument))
+		IncStatNotification("everyone", "Vitality")
 	}
 eob
 
 BoostLuck:
-	if counter_is(pty_Ness) { boost_luck(pty_Ness, argument) IncStatNotification(name(pty_Ness), "Luck", number(argument)) } 
-	else if counter_is(pty_Paula) { boost_luck(pty_Paula, argument) IncStatNotification(name(pty_Paula), "Luck", number(argument)) }
-	else if counter_is(pty_Jeff)  { boost_luck(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "Luck", number(argument))  } 
-	else if counter_is(pty_Poo)   { boost_luck(pty_Poo, argument) IncStatNotification(name(pty_Poo), "Luck", number(argument))   }
+	if counter_is(pty_Ness) { boost_luck(pty_Ness, argument) IncStatNotification(name(pty_Ness), "Luck") } 
+	else if counter_is(pty_Paula) { boost_luck(pty_Paula, argument) IncStatNotification(name(pty_Paula), "Luck") }
+	else if counter_is(pty_Jeff)  { boost_luck(pty_Jeff, argument) IncStatNotification(name(pty_Jeff), "Luck")  } 
+	else if counter_is(pty_Poo)   { boost_luck(pty_Poo, argument) IncStatNotification(name(pty_Poo), "Luck")   }
 	else if counter_is(0)
 	{
 		boost_luck(pty_Ness, argument) boost_luck(pty_Paula, argument)
 		boost_luck(pty_Jeff, argument) boost_luck(pty_Poo, argument)
-		IncStatNotification("everyone", "Luck", number(argument))
+		IncStatNotification("everyone", "Luck")
 	}
 eob

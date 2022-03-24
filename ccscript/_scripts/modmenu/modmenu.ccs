@@ -1,11 +1,3 @@
-/* Mod Menu */
-import "../enums/flags.ccs"
-import "../enums/labels.ccs"
-import "../enums/party.ccs"
-import "../enums/windows.ccs"
-import "../enums/counter.ccs"
-import "../commands.ccs"
-/* Submenus */
 import "party/partymenu.ccs"
 import "warp/warpmenu.ccs"
 import "flags/flagsmenu.ccs"
@@ -13,18 +5,27 @@ import "battle/battlemenu.ccs"
 import "goods/goodsmenu.ccs"
 import "music/musicmenu.ccs"
 import "map/palettemenu.ccs"
+/* ASM */
+import "../asm/cc_text_speed.ccs"
+import "../asm/movement_reloc.ccs"
+import "../asm/cc_main_menu.ccs"
+import "../asm/ccexpand.ccs"
+import "../asm/cc_asmcall.ccs"
+import "../asm/movement.ccs"
+import "../asm/asm65816_2.ccs"
+import "../asm/movscr_codes.ccs"
+/* Enums */
+import "../enums/flags.ccs"
+import "../enums/labels.ccs"
+import "../enums/party.ccs"
+import "../enums/windows.ccs"
+import "../enums/counter.ccs"
 /* Commands */
-import "party/health/healthcommands.ccs"
-import "../../asm/cc_text_speed.ccs"
-import "../../asm/movement_reloc.ccs"
-import "../../asm/cc_main_menu.ccs"
-import "../../asm/ccexpand.ccs"
-import "../../asm/cc_asmcall.ccs"
-import "../../asm/movement.ccs"
-import "../../asm/asm65816_2.ccs"
-import "../../asm/movscr_codes.ccs"
+import "../commands/window_cmds.ccs"
+import "../commands/flag_cmds.ccs"
+import "../commands/health_cmds.ccs"
 
-// Procedures
+/* Procedures */
 
 ModMenu: {
 	// Close unnecessary windows
@@ -64,7 +65,7 @@ ModMenu: {
 	chose_party:
 		Highlight("Party") goto(PartyMenu)
 	chose_save:
-		Highlight("Save") save SystemWnd(wnd_ModMenu, "@Game saved.") goto(ModMenu)
+		Highlight("Save") save NotificationWnd(wnd_ModMenu, "@Game saved.") goto(ModMenu)
 	chose_bgm:
 		Highlight("BGM") goto(MusicMenu)
 	chose_goods:

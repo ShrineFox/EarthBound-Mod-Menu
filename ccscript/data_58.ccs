@@ -4,10 +4,11 @@
  * Generated using CCScriptWriter.
  */
 
-import "_scripts/modmenu/enums/flags.ccs"
+import "_scripts/enums/flags.ccs"
+
 command Advance()
 {
-	if (flg_AutoAdvStatIncMsgs) { "{newline}" } else { "{prompt}" }
+	if flag flg_AutoAdvStatIncMsgs { "{newline}" } else { "{prompt}" }
 }
 
 command e(label) "{long label}"

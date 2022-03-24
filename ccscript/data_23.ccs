@@ -4,6 +4,12 @@
  * Generated using CCScriptWriter.
  */
 
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/window_cmds.ccs"
+import "_scripts/commands/flag_cmds.ccs"
+import "_scripts/commands/item_cmds.ccs"
+
 command e(label) "{long label}"
 
 // Text Data
@@ -69,10 +75,6 @@ l_0xc6a9c8:
 l_0xc6a9f9:
     "@Ah, [1C 02 03],{pause(15)} I just dreamt that you and I were taking a walk." next
     "@...What's wrong?" end
-
-import "_scripts/modmenu/enums/flags.ccs"
-import "_scripts/modmenu/enums/items.ccs"
-import "_scripts/modmenu/commands.ccs"
 	
 l_0xc6aa2f:
     "[06 58 00 {e(l_0xc6ad29)}][06 5D 02 {e(l_0xc6abd5)}][06 5C 02 {e(l_0xc6ad29)}]@Oh,{pause(15)} [1C 02 03] and Tony.{pause(20)}  You startled me." next

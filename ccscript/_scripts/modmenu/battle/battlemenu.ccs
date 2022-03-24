@@ -1,10 +1,13 @@
-/* Mod Menu */
+/* Enums */
 import "../../enums/flags.ccs"
 import "../../enums/labels.ccs"
 import "../../enums/battles.ccs"
 import "../../enums/party.ccs"
 import "../../enums/windows.ccs"
-import "../../commands.ccs"
+/* Commands */
+import "../../commands/window_cmds.ccs"
+import "../../commands/flag_cmds.ccs"
+import "../../commands/health_cmds.ccs"
 
 BattleMenu:
 	CloseModMenuConfirmWnd()

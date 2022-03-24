@@ -1,20 +1,22 @@
-/* Mod Menu */
-import "../partymenu.ccs"
-import "../../../enums/labels.ccs"
-import "../../../enums/party.ccs"
-import "../../../enums/windows.ccs"
-import "../../../commands.ccs"
-import "../../../enums/status.ccs"
+/* Enums */
+import partymenu
+import "../../enums/labels.ccs"
+import "../../enums/party.ccs"
+import "../../enums/windows.ccs"
+import "../../enums/status.ccs"
 /* Commands */
-import "healthcommands.ccs"
+import "../../commands/window_cmds.ccs"
+import "../../commands/flag_cmds.ccs"
+import "../../commands/item_cmds.ccs"
+import "../../commands/health_cmds.ccs"
 
 HealthMenu:
 	OpenModMenu2Wnd(18)
 	Lbl(lbl_Health)
 	menu 1 {
 		"Heal":  { 
-			if (counter_is(0)) { healall SystemWnd(wnd_ModMenu2, "{sound(SND_RECOVER)}@Restored everyone's HP and PP.") }
-			else { SystemWnd(wnd_ModMenu2, "{call(data_45.l_0xc91675)}{sound(SND_RECOVER)}@{name(argument)}'s HP and PP are restored.") LoadRAM() } 
+			if (counter_is(0)) { healall NotificationWnd(wnd_ModMenu2, "{sound(SND_RECOVER)}@Restored everyone's HP and PP.") }
+			else { NotificationWnd(wnd_ModMenu2, "{call(data_45.l_0xc91675)}{sound(SND_RECOVER)}@{name(argument)}'s HP and PP are restored.") LoadRAM() } 
 		}
 		"Set Status":  { goto(StatusMenu) }
 		"Clear Status":
