@@ -5,6 +5,8 @@
 Build/
 
 # User-specific files
+*.smc
+*.sfc
 *.suo
 *.user
 *.userosscache

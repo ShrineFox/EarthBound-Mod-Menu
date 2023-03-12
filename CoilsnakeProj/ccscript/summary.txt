@@ -1,4 +1,4 @@
-D:/Games/Retroarch/ROMS/SNES/Mods/EarthBound/EarthBound (Mod).smc
+C:\Users\Ryan\Documents\GitHub\EarthBound-Mod-Menu\Output\EarthBound_Mod.smc
 CCScript Compilation Summary
 ============================
 

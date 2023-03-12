@@ -35,6 +35,9 @@
   <PropertyGroup>
     <ApplicationIcon>saturn.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,18 +54,40 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Dependencies\Emulator\Emulator.lnk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\Input\Earthbound_Expanded_6MB.smc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dependencies\Coilsnake\coilsnake-cli-script.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\Coilsnake\coilsnake-cli.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="saturn.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\**\**\*.ccs">
-        <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+    <Content Include="..\CoilSnakeProj\**\**\*.ccs">
+      <Link>CoilsnakeProj\%(RecursiveDir)%(FileName)%(Extension)</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\**\**\*.yml">
-        <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+    <Content Include="..\CoilSnakeProj\**\**\*.yml">
+      <Link>CoilsnakeProj\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".\Dependencies\**\**\*.exe">
+      <Link>Dependencies\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".\Dependencies\**\**\*.smc">
+      <Link>Dependencies\%(RecursiveDir)%(FileName)%(Extension)</Link>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

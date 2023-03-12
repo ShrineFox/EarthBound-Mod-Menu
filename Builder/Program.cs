@@ -13,12 +13,17 @@ namespace EBModMenu
 {
     class Program
     {
-        public static string coilsnake_cli = @"C:\Python38\Scripts\coilsnake-cli.exe";
-        public static string proj_path = @"C:/Users/ryans/Documents/GitHub/EarthBound-Mod-Menu";
-        public static string input_rom = @"D:/Games/Retroarch/ROMS/SNES/Mods/EarthBound/EarthBound (Expanded).sfc";
-        public static string output_rom = @"D:/Games/Retroarch/ROMS/SNES/Mods/EarthBound/EarthBound (Mod).smc";
-        public static string emulator = @"D:\Games\Retroarch\Retroarch.exe";
+        public static string proj_path = @"..\..\..\CoilSnakeProj\";
+        public static string input_rom = @".\Dependencies\Input\EarthBound_Expanded_6MB.smc";
+        public static string coilsnake_cli = @".\Dependencies\CoilSnake\coilsnake-cli.exe";
+        public static string output_rom = @"..\..\..\Output\EarthBound_Mod.smc";
+        public static string emulator_lnk = @".\Dependencies\Emulator\Emulator.lnk";
         public static bool openEmulator = true;
+
+        public static string GetAbsolutePath(string path)
+        {
+            return Path.GetFullPath(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), path));
+        }
 
         static void Main(string[] args)
         {
@@ -38,13 +43,15 @@ namespace EBModMenu
 
         private static void BuildROM()
         {
-            string args = $"compile \"{proj_path}\" \"{input_rom}\" \"{output_rom}\"";
+            string args = $"compile {GetAbsolutePath(proj_path)} " +
+                $"{GetAbsolutePath(input_rom)} {GetAbsolutePath(output_rom)}";
             openEmulator = true;
 
             using (Process p = new Process())
             {
                 p.StartInfo.FileName = coilsnake_cli;
                 p.StartInfo.Arguments = args;
+                Console.WriteLine(args);
                 p.StartInfo.CreateNoWindow = true;
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.RedirectStandardOutput = true;
@@ -86,10 +93,11 @@ namespace EBModMenu
 
         private static void LaunchEmulator()
         {
-            string args = $"-L \"D:\\Games\\Retroarch\\cores\\snes9x_libretro.dll\" \"{output_rom}\"";
+            //string args = $"-L \"D:\\Games\\Retroarch\\cores\\snes9x_libretro.dll\" \"{output_rom}\"";
+            string args = $"\"{GetAbsolutePath(output_rom)}\"";
 
             Process p = new Process();
-            p.StartInfo.FileName = emulator;
+            p.StartInfo.FileName = emulator_lnk;
             p.StartInfo.Arguments = args;
             p.Start();
 
