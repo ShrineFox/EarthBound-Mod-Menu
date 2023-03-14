@@ -160,6 +160,7 @@ l_0xef7b46:
 	eob
 
 l_0xef7b64:
+    set(flg_LearnedPSI)
 	if not flg_SkipStatIncMsgs {
 		newline
 		"{sound(103)}@{target} realized the power of" linebreak

@@ -37,7 +37,7 @@ MainMenu:
 	// Options
 	MenuOptionWithCallback("Goods", Selected_Goods)
 	if flg_KeyItems { MenuOptionWithCallback("Key Items", Selected_KeyItems) }
-	MenuOptionWithCallback("PSI", Selected_PSI)
+	if flg_LearnedPSI { MenuOptionWithCallback("PSI", Selected_PSI) }
 	MenuOptionWithCallback("Equip", Selected_Equip)
 	if flg_ModMenu { MenuOptionWithCallback("Mod Menu", Selected_ModMenu) }
 	MenuOptionWithCallback("Status", Selected_Status)
