@@ -37,18 +37,18 @@ command GetTextSpeed() { gettextspeed }
 // Set Text Speed
 command SetTextSpeed(num) { settextspeed(num) }
 // Set Text Speed to Zero
-command SetTextSpeedInstant() { store_registers counter_zero ctoarg SetTextSpeed(0) load_registers }
+command SetTextSpeedInstant() { SaveRAM() counter_zero ctoarg SetTextSpeed(0) LoadRAM() }
 // Show description of selected item in desc window
-command SetDescription(countNo, prevWndType, DescLabel) 
+command SetDescription(countNo, prevWndType, DescLabel)
 { 
-	SetTextSpeedInstant() 
+	SetTextSpeedInstant()
 	counter(countNo)
-	ctoarg 
+	ctoarg
 	call(DescLabel)
-	window_switch(prevWndType) 
+	window_switch(prevWndType)
 	SetTextSpeed(1)
+	eob
 }
-
 
 /* Register Management */
 
