@@ -26,7 +26,7 @@ SetCount23: { SetDescription(23, wnd_KeyItems, ShowDesc) } SetCount24: { SetDesc
 SetCount25: { SetDescription(25, wnd_KeyItems, ShowDesc) } SetCount26: { SetDescription(26, wnd_KeyItems, ShowDesc) } 
 
 KeyItems: {
-	if not flag flg_Ness and not flag flg_Jeff { eob }
+	if not flag flg_Ness and not flag flg_Jeff { NotificationWnd(wnd_ModMenuNotification, "@Error: No party flags set.") eob }
 	CloseAllModMenuWnd()
 	OpenKeyItemWnd()
 	Lbl(lbl_KeyItems)

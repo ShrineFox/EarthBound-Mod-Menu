@@ -19,10 +19,10 @@ command _CustomWindows {
 
 // Reminder:    ( #, X, Y,  W,  H)
 WindowDefinition(53, 1, 1, 30, 26) // "Full-screen" window
-WindowDefinition(54, 1, 1, 13, 27) // Mod Menu window
-WindowDefinition(55, 7, 4, 12, 18) // Mod Menu 2 window
-WindowDefinition(56, 10, 11, 14, 9) // Mod Menu Confirm window
-WindowDefinition(57, 8, 9, 22, 4) // Mod Menu Notification window
+WindowDefinition(54, 1, 1, 19, 8) // Mod Menu window
+WindowDefinition(55, 4, 1, 15, 16) // Mod Menu 2 window
+WindowDefinition(56, 7, 3, 14, 9) // Mod Menu Confirm window
+WindowDefinition(57, 7, 1, 22, 4) // Mod Menu Notification window
 WindowDefinition(58, 15, 15, 16, 13) // Mod Menu Debug window
 WindowDefinition(59, 7, 1, 24, 16) // Mod Menu Key Items window
 WindowDefinition(60, 7, 17, 24, 10) // Mod Menu Item Description window

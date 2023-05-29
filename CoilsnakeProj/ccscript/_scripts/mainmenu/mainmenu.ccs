@@ -66,8 +66,8 @@ MainMenu:
 	goto_keyitems:
 		window_closeall call(KeyItems) goto(MainMenu)
 	goto_modmenu:
-		window_closeall goto(modmenu.ModMenu)
-	goto_status:
+		window_closeall call(modmenu.ModMenu) goto(MainMenu)
+    goto_status:
 		window_closeall open_status goto(MainMenu)
 	goto_end:
 		//sprite_spawn(106, 897, 1) // Invisible camera sprite running "Cutscene Off"

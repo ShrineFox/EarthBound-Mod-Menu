@@ -45,11 +45,10 @@ ModMenu: {
 	MenuOptionWithCallback("Battle", Set_Count_6)
 	MenuOptionWithCallback("Flags", Set_Count_7)
 	MenuOptionWithCallback("Map", Set_Count_8)
-	MenuOptionWithCallback("Text Speed", Set_Count_9)
-	MenuOptionWithCallback("About", Set_Count_10)
-	DisplayVertical(1) if not "[11]" { eob }
+	MenuOptionWithCallback("About", Set_Count_9)
+	DisplayVertical(3) if not "[11]" { eob }
 	ctoarg swap
-    SwitchGoto(10)
+    SwitchGoto(9)
         SwitchCase(chose_party)
         SwitchCase(chose_save)
         SwitchCase(chose_bgm)
@@ -58,7 +57,6 @@ ModMenu: {
 		SwitchCase(chose_battle)
 		SwitchCase(chose_flags)
 		SwitchCase(chose_map)
-		SwitchCase(chose_textspeed)
 		SwitchCase(chose_about)
 	swap
 	"@Error! No option {number(0)} in this menu." eob
@@ -78,8 +76,6 @@ ModMenu: {
 		Highlight("Flags") goto(FlagsMenu)
 	chose_map:
 		Highlight("Map") goto(MapMenu)
-	chose_textspeed:
-		Highlight("Text Speed") goto(TextSpeed)
 	chose_about:
 		Highlight("About") goto(ModMenu_AboutDlg)
 }
@@ -88,8 +84,8 @@ ModMenu_AboutDlg:
 	window_open(wnd_Dialog)
 	Lbl(lbl_About)
 	"@EarthBound Mod Menu by ShrineFox." newline
-	"@Made using Coilsnake." next
-	"@Updated 3[5F]22[5F]22." wait
+	"@Made using Coilsnake." newline
+	"@Updated 3[5F]14[5F]23." next
 	window_close(wnd_Dialog)
 goto(ModMenu)
 
@@ -113,14 +109,3 @@ MapMenu: {
 	chose_corrupt:
 		"[1A 0F]" goto(MapMenu)
 }
-
-TextSpeed:
-	ConfirmNumber(lbl_Test, 1, "Set this text speed?", SetTxtSpeed)
-goto(ModMenu)
-
-SetTxtSpeed:
-	settextspeed(0)
-	window_open(1)
-	"T-e-s-t-i-n-g" next
-	window_close(1)
-eob

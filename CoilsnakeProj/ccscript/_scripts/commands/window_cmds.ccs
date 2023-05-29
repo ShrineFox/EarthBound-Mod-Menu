@@ -96,7 +96,7 @@ command CloseFlagWnd(wndType, flg)
 
 // Open a specific flag-dependent custom window
 command OpenModMenuWnd() { CloseModMenuWnd() OpenFlagWnd(wnd_ModMenu, flg_ModMenuWnd) }
-command OpenModMenu2Wnd(height) { CloseModMenu2Wnd() CustomWindow_open(wnd_ModMenu2, 7, 4, 12, height) LoadRAM() set(flg_ModMenuWnd2) }
+command OpenModMenu2Wnd(height) { CloseModMenu2Wnd() CustomWindow_open(wnd_ModMenu2, 4, 1, 15, height) LoadRAM() set(flg_ModMenuWnd2) }
 command OpenModMenuConfirmWnd() { CloseModMenuConfirmWnd() OpenFlagWnd(wnd_ModMenuConfirm, flg_ModMenuConfirmWnd) }
 command OpenKeyItemWnd() { CloseKeyItemWnd() OpenFlagWnd(wnd_KeyItems, flg_KeyItemsWnd) }
 command OpenItemWnd() { CloseItemWnd() OpenFlagWnd(wnd_Item, flg_ItemWnd) }
