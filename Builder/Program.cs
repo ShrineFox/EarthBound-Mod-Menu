@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shell32;
+using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,45 +14,59 @@ namespace EBModMenu
 {
     class Program
     {
-        public static string proj_path = @"..\..\..\CoilSnakeProj\";
-        public static string input_rom = @".\Dependencies\Input\EarthBound_Expanded_6MB.smc";
-        public static string coilsnake_cli = @".\Dependencies\CoilSnake\coilsnake-cli.exe";
-        public static string output_rom = @"..\..\..\Output\EarthBound_Mod.smc";
-        public static string emulator_lnk = @".\Dependencies\Emulator\Emulator.lnk";
-        public static bool openEmulator = true;
+        // How to set up builder
+        // 1. Install Python 3.9: https://www.python.org/downloads/release/python-392/
+        // 2. Install Microsoft Visual C++ 14.0 for Visual Studio: https://visualstudio.microsoft.com/downloads/
+        // 3. Git clone Coilsnake repository: https://github.com/pk-hack/CoilSnake
+        // 4. Add path similar to the following to your system environment PATH variable:
+        //      C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x86
+        // 5. In command prompt, run:
+        //      python -m pip install pip==18.1
+        // 6. cd into Coilsnake repo and run:
+        //      python setup.py develop
+        // 7. If successful, coilsnake-cli.exe should appear in:
+        //      C:\Python\Scripts
+        // 8. Replace the .lnk files with shortcuts to your Expanded 6 MB ROM, coilsnake-cli.exe & emulator
+        // 9. Run ModMenuBuilder.exe to generate new output ROM for testing.
+        // More info: https://github.com/pk-hack/CoilSnake/blob/master/DEVELOPMENT.md
 
-        public static string GetAbsolutePath(string path)
-        {
-            return Path.GetFullPath(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), path));
-        }
-
+        [STAThread]
         static void Main(string[] args)
         {
             BuildROM();
-            if (openEmulator)
+            if (openEmulatorWhenFinished)
             {
                 LaunchEmulator();
             }
 
-            if (!openEmulator) 
+            if (!openEmulatorWhenFinished)
             {
                 Console.WriteLine("\nPress any key to exit.");
                 Console.ReadKey();
             }
-            
+
         }
+
+        public static string proj_path = @"..\..\..\CoilSnakeProj";
+        public static string coilsnake_cli = @".\Dependencies\CoilSnakeCLI\coilsnake-cli.lnk";
+        public static string input_rom = @".\Dependencies\Rom\Rom.lnk";
+        public static string emulator_lnk = @".\Dependencies\Emulator\Emulator.lnk";
+        public static string output_rom = @"..\..\..\Output\EarthBound_Mod.smc";
+        public static bool openEmulatorWhenFinished = true;
 
         private static void BuildROM()
         {
+            string coilsnakeCLIPath = GetAbsolutePath(GetShortcutTargetFile(coilsnake_cli));
+
             string args = $"compile {GetAbsolutePath(proj_path)} " +
-                $"{GetAbsolutePath(input_rom)} {GetAbsolutePath(output_rom)}";
-            openEmulator = true;
+                $"{GetAbsolutePath(GetShortcutTargetFile(input_rom))} {GetAbsolutePath(output_rom)}";
+            openEmulatorWhenFinished = true;
 
             using (Process p = new Process())
             {
-                p.StartInfo.FileName = coilsnake_cli;
+                p.StartInfo.FileName = coilsnakeCLIPath;
                 p.StartInfo.Arguments = args;
-                Console.WriteLine(args);
+                Console.WriteLine($"{coilsnakeCLIPath} {args}");
                 p.StartInfo.CreateNoWindow = true;
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.RedirectStandardOutput = true;
@@ -85,7 +100,7 @@ namespace EBModMenu
                     string error = sr.ReadToEnd();
                     Console.WriteLine(error);
                     if (error != "")
-                        openEmulator = false;
+                        openEmulatorWhenFinished = false;
                 }
             }
             catch { }
@@ -102,6 +117,27 @@ namespace EBModMenu
             p.Start();
 
             Console.WriteLine("\nGame launched!");
+        }
+
+        public static string GetShortcutTargetFile(string shortcutPath)
+        {
+            Shell shell = new Shell();
+            Folder folder = shell.NameSpace(GetAbsolutePath(Path.GetDirectoryName(shortcutPath)));
+            FolderItem folderItem = folder.ParseName(Path.GetFileName(shortcutPath));
+            if (folderItem != null)
+            {
+                ShellLinkObject link = (ShellLinkObject)folderItem.GetLink;
+                return link.Path;
+            }
+            else
+                Console.WriteLine($"Error: Failed to get target from .lnk: {shortcutPath}");
+
+            return shortcutPath;
+        }
+
+        public static string GetAbsolutePath(string path)
+        {
+            return Path.GetFullPath(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), path));
         }
     }
 }
