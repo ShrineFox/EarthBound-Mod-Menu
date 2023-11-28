@@ -58,8 +58,8 @@ namespace EBModMenu
         {
             string coilsnakeCLIPath = GetAbsolutePath(GetShortcutTargetFile(coilsnake_cli));
 
-            string args = $"compile {GetAbsolutePath(proj_path)} " +
-                $"{GetAbsolutePath(GetShortcutTargetFile(input_rom))} {GetAbsolutePath(output_rom)}";
+            string args = $"compile \"{GetAbsolutePath(proj_path)}\" " +
+                $"\"{GetAbsolutePath(GetShortcutTargetFile(input_rom))}\" \"{GetAbsolutePath(output_rom)}\"";
             openEmulatorWhenFinished = true;
 
             using (Process p = new Process())

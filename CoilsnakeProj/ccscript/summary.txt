@@ -1,4 +1,4 @@
-C:\Users\Ryan\Documents\GitHub\EarthBound-Mod-Menu\Output\EarthBound_Mod.smc
+C:\Users\ShrineFox\Documents\GitHub\EarthBound-Mod-Menu\Output\EarthBound_Mod.smc
 CCScript Compilation Summary
 ============================
 
