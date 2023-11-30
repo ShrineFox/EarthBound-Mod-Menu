@@ -1,6 +1,7 @@
 import keyitems
 import "../../_scripts.ccs"
 import "../modmenu/modmenu.ccs"
+import "../modmenu/config/configmenu.ccs"
 /* ASM */
 import "../asm/asm65816.ccs"
 import "../asm/cc_main_menu.ccs"
@@ -40,6 +41,7 @@ MainMenu:
 	if flg_LearnedPSI { MenuOptionWithCallback("PSI", Selected_PSI) }
 	MenuOptionWithCallback("Equip", Selected_Equip)
 	if flg_ModMenu { MenuOptionWithCallback("Mod Menu", Selected_ModMenu) }
+	if not flg_ModMenu { MenuOptionWithCallback("Config", Selected_ModMenu) }
 	MenuOptionWithCallback("Status", Selected_Status)
 	// Width
 	DisplayVertical(2)
@@ -66,7 +68,7 @@ MainMenu:
 	goto_keyitems:
 		window_closeall call(KeyItems) goto(MainMenu)
 	goto_modmenu:
-		window_closeall call(modmenu.ModMenu) goto(MainMenu)
+		window_closeall if flg_ModMenu { call(modmenu.ModMenu) } if not flg_ModMenu { call(configmenu.ConfigMenu) } goto(MainMenu)
     goto_status:
 		window_closeall open_status goto(MainMenu)
 	goto_end:
