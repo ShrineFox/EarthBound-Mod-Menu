@@ -38,7 +38,6 @@ if flg_ModConfigured {
 		goto(EndConfig)
 	chose_configuremod:
 		goto(ConfigMenuPrompt)
-	goto(ConfigMenuStart)
 }
 else { goto(ConfigMenuPrompt) }
 eob

@@ -33,7 +33,9 @@ namespace EBModMenu
         [STAThread]
         static void Main(string[] args)
         {
+#if DEBUG
             BuildROM();
+#endif
             if (openEmulatorWhenFinished)
             {
                 LaunchEmulator();

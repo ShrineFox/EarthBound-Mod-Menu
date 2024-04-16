@@ -207,7 +207,7 @@ command ConfirmYesNo(wndLabel, string, yesLabel)
 	menu 2
 	{
 		"Yes": { goto(yesLabel) }
-default "No": { }
+		default "No": { }
 	}
 	CloseModMenuConfirmWnd()
 	SetTextSpeed(1)

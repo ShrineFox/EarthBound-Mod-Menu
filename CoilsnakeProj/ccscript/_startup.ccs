@@ -12,31 +12,47 @@ import "_scripts/commands/window_cmds.ccs"
 
 
 /* Setup File/Naming Screen */
-
 setup_background(302)
 setup_music(bgm_Moonside)
 setup_music2(bgm_Moonside)
 
-/* As soon as you can control Ness on New Game */
-GameStart:
+/* Configuration on New Game selected */
+_asmptr(0xC1FF1C, Config)
+Config:
+	goto(NewGameScreen)
+eob
+
+// Debug, Requires patches.yml - Show Sprites Without Flyover: enabled
+newgame_location(365, 7756) // debug only
+newgame_startup(DebugStartup) // debug only
+
+NewGameScreen:
 {
-	set(flg_Ness)
-	eob
+	call(DebugFlagSet) // debug only
+	goto(ConfigMenuStart)
 }
 
-/* Debug - Testing Environment on New Game
-
-// Requires patches.yml - Show Sprites Without Flyover: enabled
-newgame_location(365, 7756)
-
-newgame_startup(Startup)
-
-Startup: {
-	set(flg_Ness)
+DebugFlagSet:
+{
+	set(flg_ModMenu)
+	set(flg_KeyItems)
+	set(flg_EasyDeaths)
+	set(flg_FastSaving)
+	set(flg_NoPhotoGuy)
+	set(flg_DadCantCall)
+	set(flg_UnrestrictBike)
+	set(flg_DisableCollision)
+	set(flg_SkipStatIncMsgs)
+	set(flg_AutoAdvStatIncMsgs)
+	set(flg_RunButton_Inverted)
 	set(flg_Debug)
+	set(flg_ModConfigured)
+}
+
+DebugStartup: {
+	set(flg_Ness)
 	set(flg_Onett)
 	set(flg_Phone_Dad)
-	set(flg_DisableCollision)
 	set(flg_OnettDaytime)
 	set(flg_OnettDaytimeMusic)
 	unset(flg_Defeat_NessNightmare)
@@ -51,11 +67,10 @@ Startup: {
 	music(bgm_None)
 	music_switching_off
 }
-/* End Debug */
 
-
-/* Configuration on game load */
-_asmptr(0xC1FF1C, Config)
-Config:
-	goto(ConfigMenuStart)
-eob
+/* As soon as you can control Ness on New Game start */
+GameStart:
+{
+    set(flg_Ness)
+    eob
+}
