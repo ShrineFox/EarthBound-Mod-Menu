@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ShrineFox.IO;
 
 namespace EBModMenu
 {
@@ -33,15 +34,15 @@ namespace EBModMenu
         [STAThread]
         static void Main(string[] args)
         {
+            VerifyPaths();
 #if DEBUG
             BuildROM();
 #endif
-            if (openEmulatorWhenFinished)
+            if (config.LaunchEmuAfterBuild)
             {
                 LaunchEmulator();
             }
-
-            if (!openEmulatorWhenFinished)
+            else
             {
                 Console.WriteLine("\nPress any key to exit.");
                 Console.ReadKey();
@@ -49,20 +50,102 @@ namespace EBModMenu
 
         }
 
+        private static void VerifyPaths()
+        {
+            if (!File.Exists("./Config.json"))
+                config.SaveJson(config);
+            else
+                config = config.LoadJson();
+
+            if (GetPathFromShortcut(config.CoilsnakeCLIPath) == "")
+            {
+                string coilsnakeCLIPath = "";
+                while (!File.Exists(coilsnakeCLIPath))
+                {
+                    var selectedFiles = WinFormsDialogs.SelectFile("Choose coilsnake_cli.exe", false, new string[] { "Executable (.exe)" });
+                    if (selectedFiles.Count > 0)
+                        coilsnakeCLIPath = selectedFiles.First();
+                }
+                config.CoilsnakeCLIPath = coilsnakeCLIPath;
+                config.SaveJson(config);
+            }
+
+            if (GetPathFromShortcut(config.InputROMPath) == "")
+            {
+                string inputROM = "";
+                while (!File.Exists(inputROM))
+                {
+                    var selectedFiles = WinFormsDialogs.SelectFile("Choose Original EB ROM", false, new string[] { "Super Nintendo ROM (.smc)" });
+                    if (selectedFiles.Count > 0)
+                        inputROM = selectedFiles.First();
+                }
+                config.InputROMPath = inputROM;
+                config.SaveJson(config);
+            }
+
+            if (GetPathFromShortcut(config.OutputROMPath) == "")
+            {
+                string outROMDir = "";
+                while (!Directory.Exists(outROMDir))
+                {
+                    outROMDir = WinFormsDialogs.SelectFolder("Choose Destination for Modded ROM");
+                }
+                config.OutputROMPath = Path.Combine(outROMDir, "EarthBound_Mod_Menu.smc");
+                config.SaveJson(config);
+            }
+
+            if (GetPathFromShortcut(config.EmulatorPath) == "")
+            {
+                string emuPath = "";
+                while (!File.Exists(emuPath))
+                {
+                    var selectedFiles = WinFormsDialogs.SelectFile("Choose Emulator .exe", false, new string[] { "Executable (.exe)" });
+                    if (selectedFiles.Count > 0)
+                        emuPath = selectedFiles.First();
+                }
+                config.EmulatorPath = emuPath;
+                config.SaveJson(config);
+            }
+        }
+
+        private static string GetPathFromShortcut(string path)
+        {
+            if (path.EndsWith(".lnk"))
+                path = GetAbsolutePath(GetShortcutTargetFile(config.InputROMPath));
+
+            if (!Directory.Exists(path) && !File.Exists(path))
+                return "";
+
+            return path;
+        }
+
+        public static Config config = new Config();
         public static string proj_path = @"..\..\..\CoilSnakeProj";
-        public static string coilsnake_cli = @".\Dependencies\CoilSnakeCLI\coilsnake-cli.lnk";
-        public static string input_rom = @".\Dependencies\Rom\Rom.lnk";
-        public static string emulator_lnk = @".\Dependencies\Emulator\Emulator.lnk";
-        public static string output_rom = @"..\..\..\Output\EarthBound_Mod.smc";
-        public static bool openEmulatorWhenFinished = true;
 
         private static void BuildROM()
         {
-            string coilsnakeCLIPath = GetAbsolutePath(GetShortcutTargetFile(coilsnake_cli));
+            string coilsnakeCLIPath = GetAbsolutePath(config.CoilsnakeCLIPath);
+            string inputROM = GetAbsolutePath(config.InputROMPath);
+
+            // If ROM is 3MB, expand to 6MB and use as input ROM
+            if (new FileInfo(inputROM).Length == 3145728)
+            {
+                inputROM = ExpandROM(coilsnakeCLIPath, inputROM);
+                if (inputROM == "")
+                {
+                    Console.WriteLine("Failed to expand input ROM.");
+                    Console.ReadKey();
+                    return;
+                }
+                else
+                {
+                    config.InputROMPath = inputROM;
+                    config.SaveJson(config);
+                }
+            }
 
             string args = $"compile \"{GetAbsolutePath(proj_path)}\" " +
-                $"\"{GetAbsolutePath(GetShortcutTargetFile(input_rom))}\" \"{GetAbsolutePath(output_rom)}\"";
-            openEmulatorWhenFinished = true;
+                $"\"{inputROM}\" \"{GetAbsolutePath(config.OutputROMPath)}\"";
 
             using (Process p = new Process())
             {
@@ -87,6 +170,39 @@ namespace EBModMenu
             }
         }
 
+        private static string ExpandROM(string coilsnakeCLIPath, string inputROM)
+        {
+            string newPath = Path.Combine(Path.GetDirectoryName(inputROM), "EarthBound_Expanded.smc");
+            File.Copy(inputROM, newPath, true);
+
+            using (Process p = new Process())
+            {
+                p.StartInfo.FileName = coilsnakeCLIPath;
+                p.StartInfo.Arguments = $"expand \"{newPath}\" true";
+                Console.WriteLine($"{coilsnakeCLIPath} {p.StartInfo.Arguments}");
+                p.StartInfo.CreateNoWindow = true;
+                p.StartInfo.UseShellExecute = false;
+                p.StartInfo.RedirectStandardOutput = true;
+                p.StartInfo.RedirectStandardError = true;
+                // Set event handler
+                p.OutputDataReceived += new DataReceivedEventHandler(OutputHandler);
+                // Start the process
+                p.EnableRaisingEvents = true;
+                p.Exited += ProcessEnded;
+                p.Start();
+                // Start the asynchronous read
+                p.BeginOutputReadLine();
+                p.WaitForExit();
+                p.Close();
+                p.Dispose();
+            }
+
+            if (File.Exists(newPath))
+                return newPath;
+            else
+                return "";
+        }
+
         static void OutputHandler(object sender, DataReceivedEventArgs e)
         {
             Console.WriteLine(e.Data);
@@ -102,7 +218,7 @@ namespace EBModMenu
                     string error = sr.ReadToEnd();
                     Console.WriteLine(error);
                     if (error != "")
-                        openEmulatorWhenFinished = false;
+                        config.LaunchEmuAfterBuild = false;
                 }
             }
             catch { }
@@ -111,10 +227,10 @@ namespace EBModMenu
         private static void LaunchEmulator()
         {
             //string args = $"-L \"D:\\Games\\Retroarch\\cores\\snes9x_libretro.dll\" \"{output_rom}\"";
-            string args = $"\"{GetAbsolutePath(output_rom)}\"";
+            string args = $"\"{GetAbsolutePath(config.OutputROMPath)}\"";
 
             Process p = new Process();
-            p.StartInfo.FileName = emulator_lnk;
+            p.StartInfo.FileName = GetAbsolutePath(config.EmulatorPath);
             p.StartInfo.Arguments = args;
             p.Start();
 
