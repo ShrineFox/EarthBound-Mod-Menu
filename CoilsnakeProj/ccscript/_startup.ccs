@@ -23,12 +23,12 @@ Config:
 eob
 
 // Debug, Requires patches.yml - Show Sprites Without Flyover: enabled
-newgame_location(365, 7756) // debug only
-newgame_startup(DebugStartup) // debug only
+//newgame_location(365, 7756) // debug only
+//newgame_startup(DebugStartup) // debug only
 
 NewGameScreen:
 {
-	call(DebugFlagSet) // debug only
+	//call(DebugFlagSet) // debug only
 	goto(ConfigMenuStart)
 }
 

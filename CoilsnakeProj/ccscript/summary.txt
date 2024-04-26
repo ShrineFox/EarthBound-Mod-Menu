@@ -6,8 +6,8 @@ CCScript Compilation Summary
 Compilation statistics
 =================================================================
 Compilation start:           $f10000
-Compilation end:             $f9e3d2
-Total compiled size:         582610 bytes
+Compilation end:             $f9e3cd
+Total compiled size:         582605 bytes
 Fragmented space:            54 bytes
 -----------------------------------------------------------------
 
@@ -81,7 +81,7 @@ data_61                      $f9d161      928    bytes
 data_62                      $f1fff7      0      bytes
 main                         $f1fff7      0      bytes
 _scripts                     $f9c68b      1536   bytes
-_startup                     $f9e2a4      122    bytes
+_startup                     $f9e2a4      117    bytes
 stdarg                       $f1fff7      0      bytes
 std                          $f1fff7      0      bytes
 configmenu                   $f6f32b      3251   bytes
@@ -92,9 +92,9 @@ asm65816_2                   $f1fff7      0      bytes
 ccexpand                     $f9d9d9      443    bytes
 cc_asmcall                   $f9e1a9      128    bytes
 window_cmds                  $f1fff7      0      bytes
-cc_text_speed                $f9e393      63     bytes
+cc_text_speed                $f9e38e      63     bytes
 bg_viewer                    $f7fe8b      336    bytes
-custom_windows_standalone    $f9e31e      117    bytes
+custom_windows_standalone    $f9e319      117    bytes
 party                        $f1fff7      0      bytes
 items                        $f1fff7      0      bytes
 windows                      $f1fff7      0      bytes
@@ -6652,9 +6652,9 @@ Labels in module _startup
 Name                         Address
 -----------------------------------------------------------------
 Config                       $f9e2a4
-DebugFlagSet                 $f9e2b4
-DebugStartup                 $f9e2db
-GameStart                    $f9e31a
+DebugFlagSet                 $f9e2af
+DebugStartup                 $f9e2d6
+GameStart                    $f9e315
 NewGameScreen                $f9e2aa
 -----------------------------------------------------------------
 
@@ -6819,8 +6819,8 @@ Name                         Address
 Labels in module cc_text_speed
 Name                         Address
 -----------------------------------------------------------------
-CC_code_gettextspeed         $f9e393
-CC_code_settextspeed         $f9e3ab
+CC_code_gettextspeed         $f9e38e
+CC_code_settextspeed         $f9e3a6
 -----------------------------------------------------------------
 
 
@@ -6836,9 +6836,9 @@ asm_ShowBattleBG             $f7fe8b
 Labels in module custom_windows_standalone
 Name                         Address
 -----------------------------------------------------------------
-ASM_CustomWindow_open        $f9e329
-ASM_CustomWindow_setupWindow $f9e346
-CustomWindowList             $f9e31e
+ASM_CustomWindow_open        $f9e324
+ASM_CustomWindow_setupWindow $f9e341
+CustomWindowList             $f9e319
 -----------------------------------------------------------------
 
 
