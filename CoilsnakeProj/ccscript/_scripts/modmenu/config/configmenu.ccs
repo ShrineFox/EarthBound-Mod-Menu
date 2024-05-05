@@ -91,10 +91,10 @@ ConfigMenu: {
 	} else {
 		MenuOptionWithCallback("No Dad Calls", Set_Count_4)
 	}
-	if flag flg_AutoAdvStatIncMsgs {
-		MenuOptionWithCallback("[ac]Auto-Advance", Set_Count_5)
+	if flag flg_SkipStatIncMsgs {
+		MenuOptionWithCallback("[ac]Skip Levlup Text", Set_Count_5)
 	} else {
-		MenuOptionWithCallback("Auto-Advance", Set_Count_5)
+		MenuOptionWithCallback("Skip Levlup Text", Set_Count_5)
 	}
 	if flag flg_ModMenu {
 		MenuOptionWithCallback("[ac]Mod Menu", Set_Count_6)
@@ -129,7 +129,7 @@ ConfigMenu: {
         SwitchCase(chose_unrestrictbike)
         SwitchCase(chose_nophotoguy)
         SwitchCase(chose_nodadcalls)
-		SwitchCase(chose_autoadvance)
+		SwitchCase(chose_skiplvluptxt)
 		SwitchCase(chose_modmenu)
 		SwitchCase(chose_easydeaths)
 		SwitchCase(chose_fastsaving)
@@ -144,8 +144,8 @@ ConfigMenu: {
 		ToggleWithSound(flg_NoPhotoGuy) goto(ConfigMenu)
 	chose_nodadcalls:
 		ToggleWithSound(flg_DadCantCall) goto(ConfigMenu)
-	chose_autoadvance:
-		ToggleWithSound(flg_AutoAdvStatIncMsgs) goto(ConfigMenu)
+	chose_skiplvluptxt:
+		ToggleWithSound(flg_SkipStatIncMsgs) goto(ConfigMenu)
 	chose_modmenu:
 		ToggleWithSound(flg_ModMenu) goto(ConfigMenu)
 	chose_easydeaths:
@@ -165,7 +165,7 @@ ShowDescription:
 	if counter_is(2) { "<Unrestrict Bike>" newline "Use your bicycle anywhere, even when" newline "you have other characters in" newline "your party." }
 	if counter_is(3) { "<No Photo Guy>" newline "Replaces Photo Guy cutscenes with a" newline "quick, unobtrusive shutter effect." }
 	if counter_is(4) { "<No Dad Calls>" newline "Prevents Ness's dad from calling" newline "you periodically during your" newline "adventure." }
-	if counter_is(5) { "<Auto-Advance>" newline "Advances Level Up text for you without" newline "having to spam the A button." }
+	if counter_is(5) { "<Skip Levelup Text>" newline "Don't shpw the text after" newline "a level-up about stat increases." }
 	if counter_is(6) { "<Mod Menu>" newline "Always have access to an in-game" newline "trainer, full of cheats and" newline "other fun stuff." }
 	if counter_is(7) { "<Easy Deaths> by JTolmar" newline "Fully revive and heal party after you" newline "lose a battle, without taking" newline "half of your money." }
 	if counter_is(8) { "<Fast Saving>" newline "Shorten the dialog you see when" newline "saving your game over the phone." }
