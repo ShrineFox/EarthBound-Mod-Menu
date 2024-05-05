@@ -148,6 +148,7 @@ define flg_MagnetHill = flag 0xBA
 define flg_PinkCloud = flag 0xBB
 define flg_LumineHall = flag 0xBC
 define flg_FireSpring = flag 0xBD
+define flg_AllSoundStone = flag 0x180
 
 /* Defeated Bosses */
 define flg_Defeat_TitanicAnt = flag 0xBE

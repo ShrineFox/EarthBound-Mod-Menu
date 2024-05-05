@@ -121,15 +121,15 @@ command CloseAllModMenuWnd()
 
 // Show debug info if Debug flag is on,
 // then switch back to active window
-command DebugPrint(prevWndType, string)
+command DebugPrint(prevWndType)
 {
 	SaveRAM()
 	if flag flg_Debug
 	{
 		OpenDebugWnd()
 		Lbl(lbl_Debug)
-		"{string}" newline
-		"@Argument: {number(argument)}" newline
+        LoadRAM()
+        "@Argument: {number(argument)}" newline
 		LoadRAM() ctoarg
 		"@Counter: {number(argument)}" newline
 		LoadRAM() rtoarg
