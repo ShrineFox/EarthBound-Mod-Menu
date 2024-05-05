@@ -62,6 +62,7 @@ Set_Count_1: { SetDescription(1, wnd_KeyItems, ShowDescription) } Set_Count_2: {
 Set_Count_3: { SetDescription(3, wnd_KeyItems, ShowDescription) } Set_Count_4: { SetDescription(4, wnd_KeyItems, ShowDescription) }
 Set_Count_5: { SetDescription(5, wnd_KeyItems, ShowDescription) } Set_Count_6: { SetDescription(6, wnd_KeyItems, ShowDescription) }
 Set_Count_7: { SetDescription(7, wnd_KeyItems, ShowDescription) } Set_Count_8: { SetDescription(8, wnd_KeyItems, ShowDescription) }
+Set_Count_9: { SetDescription(9, wnd_KeyItems, ShowDescription) }
 
 ConfigMenu: {
 	set(flg_ModConfigured)
@@ -110,6 +111,11 @@ ConfigMenu: {
 	} else {
 		MenuOptionWithCallback("Fast Saving", Set_Count_8)
 	}
+	if flag flg_DisableHomesick {
+		MenuOptionWithCallback("[ac]No Homesickness", Set_Count_9)
+	} else {
+		MenuOptionWithCallback("No Homesickness", Set_Count_9)
+	}
     DisplayVertical(2)
     if not "[11]" {
         // Exit
@@ -118,7 +124,7 @@ ConfigMenu: {
     }
     ctoarg
     swap
-    SwitchGoto(8)
+    SwitchGoto(9)
         SwitchCase(chose_keyitems)
         SwitchCase(chose_unrestrictbike)
         SwitchCase(chose_nophotoguy)
@@ -127,6 +133,7 @@ ConfigMenu: {
 		SwitchCase(chose_modmenu)
 		SwitchCase(chose_easydeaths)
 		SwitchCase(chose_fastsaving)
+        SwitchCase(chose_nohomesick)
     swap
     "@Error! No option {number(0)} in this menu." next goto(ConfigMenu)
 	chose_keyitems:
@@ -145,6 +152,8 @@ ConfigMenu: {
 		ToggleWithSound(flg_EasyDeaths) goto(ConfigMenu)
 	chose_fastsaving:
 		ToggleWithSound(flg_FastSaving) goto(ConfigMenu)
+    chose_nohomesick:
+		ToggleWithSound(flg_DisableHomesick) goto(ConfigMenu)
 }
 
 
@@ -160,6 +169,7 @@ ShowDescription:
 	if counter_is(6) { "<Mod Menu>" newline "Always have access to an in-game" newline "trainer, full of cheats and" newline "other fun stuff." }
 	if counter_is(7) { "<Easy Deaths> by JTolmar" newline "Fully revive and heal party after you" newline "lose a battle, without taking" newline "half of your money." }
 	if counter_is(8) { "<Fast Saving>" newline "Shorten the dialog you see when" newline "saving your game over the phone." }
+	if counter_is(9) { "<Disable Homesickness>" newline "Skip the random chance of" newline "becoming homesick after battle." }
 eob
 
 EndConfig:

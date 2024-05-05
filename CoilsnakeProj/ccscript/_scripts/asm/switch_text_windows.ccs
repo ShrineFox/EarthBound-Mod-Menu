@@ -1,0 +1,46 @@
+import asm65816
+ 
+// Defines the text windows used by these commands
+define Talk_Window = 62
+define Check_Window = 62
+define Use_Window = 62
+define Give_Window = 62
+define Drop_Window = 62
+define Help_Window = 62
+define PSI_Use_Window = 62
+ 
+//Changes the text window used by Talk and Check commands
+ROM[0xC13199] = LDA_i (Talk_Window)
+ROM[0xC1324D] = LDA_i (Check_Window)
+ 
+//Changes the text window used by the Use command
+ROM[0xC1B2F6] = LDA_i (Use_Window)
+ 
+//Changes the text window used by the Give command
+ROM[0xC1389A] = LDA_i (Give_Window)
+ROM[0xC138CA] = LDA_i (Give_Window)
+ROM[0xC1394B] = LDA_i (Give_Window)
+ROM[0xC13AF8] = LDA_i (Give_Window)
+ 
+//Changes the text window used by the Drop command
+ROM[0xC13B10] = LDA_i (Drop_Window)
+ROM[0xC13B4A] = LDA_i (Drop_Window)
+ 
+//Changes the text window used by the Help! command
+ROM[0xC1378C] = LDA_i (Help_Window)
+ROM[0xC137E0] = LDA_i (Help_Window)
+
+//Changes the text window used by the PSI command
+ROM[0xC1B896] = {
+	JSL	(PSI_Use_Window_Code)
+	NOP
+	NOP
+}
+
+PSI_Use_Window_Code: {
+	LDA_i	(0x0001)
+	JSL	(0xC3E521)
+	LDA_i	(PSI_Use_Window)
+	JSL	(0xC1DD47)
+	RTL
+}

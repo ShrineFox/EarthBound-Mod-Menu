@@ -60,7 +60,7 @@ FastYouWon1:
   "{window_clear}{music(5)}" linebreak
   "              [1C 08 02]" linebreak
   "{pause(25)}" // Delay was 120
-  // goto(0xef79e6) // Original goes to homesick check
+  goto(0xef79e6) // Original goes to homesick check
   goto(0xef79ef) // Place after homesick check fails
  
 ROM[0xef7a14] = goto(FastYouWon2)
@@ -68,7 +68,7 @@ FastYouWon2:
     "{window_clear}{music(184)}" linebreak
     "              [1C 08 02]" linebreak
     "{pause(25)}" // Delay was 120
-  // goto(0xef79e6) // Original goes to homesick check
+  goto(0xef79e6) // Original goes to homesick check
   goto(0xef79ef) // Place after homesick check fails
 
 ROM[0xef7a28] = goto(FastYouWon3)

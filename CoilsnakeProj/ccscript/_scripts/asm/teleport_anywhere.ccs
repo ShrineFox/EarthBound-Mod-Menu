@@ -1,0 +1,10 @@
+import asm65816
+// Turns off every condition that prevents teleport.
+// By JTolmar
+// Thanks to Phoenixbound for finding the code pointer!
+
+// Everything that leads here skips teleporting:
+// https://github.com/Herringway/ebsrc/blob/40e224a92680bc47d3c64fa7b6998a257980ab9a/src/unknown/C1/C1B5B6.asm#L192
+// https://earthbound-rom-explorerr.herokuapp.com/address/$c1b5b6
+// So just jump all of them back to the "yes teleport" branch.
+ROM[0xc1b777] = JMP(0xc1b76e)

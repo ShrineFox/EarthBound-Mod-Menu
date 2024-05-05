@@ -59,8 +59,12 @@ l_0xef79d7:
     "              [1C 08 02]" linebreak
     "{pause(120)}" goto(l_0xef79e6)
 
+// Disable homesickness
 l_0xef79e6:
-    "[1F 41 11][1B 03 {e(l_0xef7a0a)}]" goto(l_0xef79ef)
+    if not flg_DisableHomesick {
+        "[1F 41 11][1B 03 {e(l_0xef7a0a)}]"
+    } 
+    goto(l_0xef79ef)
 
 l_0xef79ef:
     if not flg_SkipStatIncMsgs {

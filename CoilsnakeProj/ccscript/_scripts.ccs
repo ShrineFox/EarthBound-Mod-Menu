@@ -6,6 +6,7 @@ import "_scripts/asm/expand_text_windows.ccs"
 import "_scripts/asm/Title_Window.ccs"
 //import "_scripts/asm/custom_windows_at_runtime.ccs"
 import "_scripts/asm/custom_windows_standalone.ccs"
+//import "_scripts/asm/switch_text_windows.ccs"
 import "_scripts/asm/movement_reloc.ccs"
 import "_scripts/asm/asm65816_2.ccs"
 /* EarthBound++ */
@@ -14,8 +15,13 @@ import "_scripts/asm/asm65816_2.ccs"
 //import "_scripts/asm/ebpp_mem.ccs"
 //import "_scripts/asm/EBPP_Disassembly_HardwareCompatible_v1_1.ccs"
 /* Quality of Life improvements from CCScript Library */
+//import "_scripts/asm/optimize_text_render_3.ccs" (overwrites 1st line in main text window)
 import "_scripts/asm/noclip.ccs"
 import "_scripts/asm/mute_music.ccs"
+import "_scripts/asm/fix_oss_gameover.ccs"
+import "_scripts/asm/fix_teleport_hardlock.ccs"
+import "_scripts/asm/teleport_anywhere.ccs"
+import "_scripts/asm/y_mash.ccs"
 //import "_scripts/asm/New_Stats_Window.ccs" (too laggy)
 import "_scripts/asm/fast_doors.ccs"
 import "_scripts/asm/easy_deaths.ccs"

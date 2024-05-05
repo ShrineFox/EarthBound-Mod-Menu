@@ -90,6 +90,8 @@ define flg_BuzzBuzzDead = flag 0x636
 define flg_MuteMusic = flag 0x635
 // Whether Ness has learned PSI yet
 define flg_LearnedPSI = flag 0x634
+// Whether Homesickness is disabled
+define flg_DisableHomesick = flag 0x633
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12

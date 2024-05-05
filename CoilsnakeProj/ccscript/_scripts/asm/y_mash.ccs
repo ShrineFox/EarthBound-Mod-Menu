@@ -1,0 +1,49 @@
+// Makes holding the Y button equivalent to mashing, in text menus.
+// by JTolmar
+import asm65816
+
+// Here are the pad constants:
+// https://github.com/Herringway/ebsrc/blob/2839456c950dfe51498c04efbdd98198b2051ec7/src/enums.asm#L226
+define ABRYS = 0xE0A0 // A, B, R, Y, Select
+define ABYS = 0xA0A0 // A, B, R, Select
+define Y_ONLY = 0x4000 // Y
+// And the pad state in RAM
+define PAD_HELD = 0x7E0069
+define PAD_PRESS = 0x7E006D
+
+// Define a function that returns true if Y held or the normal ones pressed
+MashFunc:
+LDA_a(PAD_HELD)
+AND_i(Y_ONLY)
+BEQ(1)
+RTL
+LDA_a(PAD_PRESS)
+AND_i(ABRYS)
+RTL
+
+// The above function replaces
+// LDA_a(PAD_PRESS)
+// AND_i(ABYS)
+// Which is 6 bytes. So this is the replacement
+define REPLACE_CHECK = {
+    JSL(MashFunc) BRA(0) // Equivalent to NOP NOP, but ONE WHOLE CYCLE faster
+}
+
+// Here's the waits in the main "wait" function:
+// These loops update the blinking triangle.
+// I don't know why these are separate; one is a loop inside the other.
+// https://github.com/Herringway/ebsrc/blob/2839456c950dfe51498c04efbdd98198b2051ec7/src/text/ccs/halt.asm#L53
+// https://github.com/Herringway/ebsrc/blob/2839456c950dfe51498c04efbdd98198b2051ec7/src/text/ccs/halt.asm#L89
+ROM[0xC10224] = REPLACE_CHECK
+ROM[0xC10278] = REPLACE_CHECK
+
+// This version does not update the blinking triangle.
+// https://github.com/Herringway/ebsrc/blob/2839456c950dfe51498c04efbdd98198b2051ec7/src/text/ccs/halt.asm#L129
+ROM[0xC101D8] = REPLACE_CHECK
+
+// There's an "interruptable pause" function used in battles which has another:
+// (thanks phoenixbound for finding it)
+// https://github.com/Herringway/ebsrc/blob/8fc70d03d136c0eb6a19423a45d9f0864cfed19c/src/unknown/C1/C100FE.asm#L14
+// https://github.com/Herringway/ebsrc/blob/8fc70d03d136c0eb6a19423a45d9f0864cfed19c/src/unknown/C1/C100FE.asm#L50
+ROM[0xC10119] = REPLACE_CHECK
+ROM[0xC1015C] = REPLACE_CHECK
