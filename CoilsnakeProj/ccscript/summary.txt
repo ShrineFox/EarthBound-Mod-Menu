@@ -6,9 +6,9 @@ CCScript Compilation Summary
 Compilation statistics
 =================================================================
 Compilation start:           $f10000
-Compilation end:             $fa16ba
-Total compiled size:         595642 bytes
-Fragmented space:            67 bytes
+Compilation end:             $fa1816
+Total compiled size:         595990 bytes
+Fragmented space:            78 bytes
 -----------------------------------------------------------------
 
 
@@ -23,21 +23,21 @@ data_03                      $f1ea10      5590   bytes
 data_04                      $f7221a      8656   bytes
 data_05                      $f7e1c4      7507   bytes
 data_06                      $f80000      7483   bytes
-data_07                      $f9ed45      2123   bytes
+data_07                      $f9ef42      2123   bytes
 data_08                      $f8e63d      5478   bytes
 data_09                      $f7c3b5      7695   bytes
 data_10                      $f90000      5315   bytes
 data_11                      $f9660d      4429   bytes
 data_12                      $f3f763      2187   bytes
-data_13                      $f9b0e9      3177   bytes
-data_14                      $f9bd52      2876   bytes
+data_13                      $f9b2e6      3177   bytes
+data_14                      $f9bf4f      2876   bytes
 data_15                      $f23598      13708  bytes
 data_16                      $f48aad      11410  bytes
 data_17                      $f78588      8087   bytes
 data_18                      $f8389e      6876   bytes
 data_19                      $f886e1      6307   bytes
 data_20                      $f3c736      12333  bytes
-data_21                      $f9d33c      2356   bytes
+data_21                      $f9d539      2356   bytes
 data_22                      $f40000      12173  bytes
 data_23                      $f1b285      14219  bytes
 data_24                      $f45dd9      11476  bytes
@@ -57,13 +57,13 @@ data_37                      $f4e3bf      7043   bytes
 data_38                      $f70000      8730   bytes
 data_39                      $f6938e      9213   bytes
 data_40                      $f33262      12875  bytes
-data_41                      $f57b46      10029  bytes
-data_42                      $f5c96e      9931   bytes
+data_41                      $f57c8d      10029  bytes
+data_42                      $f5cab5      9931   bytes
 data_43                      $f8537a      6644   bytes
 data_44                      $f89f84      6233   bytes
 data_45                      $f8b7dd      6147   bytes
 data_46                      $f6265e      9418   bytes
-data_47                      $f5a273      9979   bytes
+data_47                      $f5a3ba      9979   bytes
 data_48                      $f64b28      9314   bytes
 data_49                      $f6db1b      8897   bytes
 data_50                      $f81d3b      7011   bytes
@@ -73,28 +73,28 @@ data_53                      $f39626      12560  bytes
 data_54                      $f764d9      8367   bytes
 data_55                      $f364ad      12665  bytes
 data_56                      $f7a51f      7830   bytes
-data_57                      $f9878f      3755   bytes
-data_58                      $f5f039      4010   bytes
-data_59                      $f9a3e7      3330   bytes
+data_57                      $f99739      3755   bytes
+data_58                      $f9878f      4010   bytes
+data_59                      $f9a5e4      3330   bytes
 data_60                      $f8cfe0      5725   bytes
 data_61                      $f8fba3      933    bytes
 data_62                      $f1ffff      0      bytes
 main                         $f1ffff      0      bytes
 _scripts                     $fa0000      1536   bytes
-_startup                     $fa1606      117    bytes
+_startup                     $fa1767      117    bytes
 stdarg                       $f1ffff      0      bytes
 std                          $f1ffff      0      bytes
-configmenu                   $f9963a      3501   bytes
+configmenu                   $f5f180      3501   bytes
 flags                        $f1ffff      0      bytes
 bgm                          $f1ffff      0      bytes
-labels                       $f6fddc      486    bytes
+labels                       $f6fddc      496    bytes
 asm65816_2                   $f1ffff      0      bytes
-ccexpand                     $fa0d23      443    bytes
-cc_asmcall                   $fa1496      128    bytes
+ccexpand                     $f9fdc5      443    bytes
+cc_asmcall                   $f8ff48      128    bytes
 window_cmds                  $f1ffff      0      bytes
-cc_text_speed                $fa167b      63     bytes
-bg_viewer                    $fa0ede      336    bytes
-custom_windows_standalone    $fa1591      117    bytes
+cc_text_speed                $f5ffb2      63     bytes
+bg_viewer                    $fa113a      336    bytes
+custom_windows_standalone    $fa16f2      117    bytes
 party                        $f1ffff      0      bytes
 items                        $f1ffff      0      bytes
 windows                      $f1ffff      0      bytes
@@ -106,39 +106,39 @@ status                       $f1ffff      0      bytes
 asm_code                     $f4ff42      170    bytes
 asm_controls                 $f1ffff      0      bytes
 expand_flags                 $f1ffff      0      bytes
-expand_text_windows          $fa0ad6      589    bytes
-Title_Window                 $fa102e      320    bytes
-movement_reloc               $f9c88e      2734   bytes
-noclip                       $f8ffcd      27     bytes
-mute_music                   $fa13a9      237    bytes
+expand_text_windows          $fa0d61      589    bytes
+Title_Window                 $fa128a      320    bytes
+movement_reloc               $f9ca8b      2734   bytes
+noclip                       $f8ffc8      27     bytes
+mute_music                   $fa1605      237    bytes
 fix_oss_gameover             $f1fff7      8      bytes
-fix_teleport_hardlock        $f6ffc2      58     bytes
+fix_teleport_hardlock        $fa17dc      58     bytes
 teleport_anywhere            $f1ffff      0      bytes
 y_mash                       $f3ffee      16     bytes
-fast_doors                   $f8ffe8      14     bytes
+fast_doors                   $f5fff1      14     bytes
 easy_deaths                  $f1ffff      0      bytes
 run_button_toggleable        $f2ffda      35     bytes
-repel_sandwiches             $f5ffe3      29     bytes
+repel_sandwiches             $f6ffcc      29     bytes
 run_accelerating             $f4ffec      16     bytes
-GoodsMenuEquip               $fa116e      307    bytes
+GoodsMenuEquip               $fa13ca      307    bytes
 modmenu                      $fa0600      1238   bytes
-goodsmenu                    $f55414      10034  bytes
-mainmenu                     $f9fe53      396    bytes
+goodsmenu                    $f55414      10361  bytes
+mainmenu                     $fa0fae      396    bytes
 keyitems                     $f93de4      5192   bytes
-cc_main_menu                 $f8ff48      133    bytes
+cc_main_menu                 $f5ff2d      133    bytes
 item_cmds                    $f1ffff      0      bytes
 partymenu                    $f20000      13720  bytes
-warpmenu                     $f9e4e7      2142   bytes
+warpmenu                     $f9e6e4      2142   bytes
 flagsmenu                    $f30000      12898  bytes
-battlemenu                   $f9dc70      2167   bytes
+battlemenu                   $f9de6d      2167   bytes
 musicmenu                    $f66f8a      9220   bytes
-palettemenu                  $f9f590      1592   bytes
-movement                     $f9fbc8      651    bytes
-movscr_codes                 $fa12a1      264    bytes
+palettemenu                  $f9f78d      1592   bytes
+movement                     $fa0ad6      651    bytes
+movscr_codes                 $fa14fd      264    bytes
 counter                      $f7ff17      223    bytes
 battles                      $f1ffff      0      bytes
 healthmenu                   $f177ff      14982  bytes
-letterbox                    $fa1516      123    bytes
+letterbox                    $f9ff80      123    bytes
 -----------------------------------------------------------------
 
 
@@ -890,106 +890,106 @@ l_0xc587f3                   $f81d1b
 Labels in module data_07
 Name                         Address
 -----------------------------------------------------------------
-l_0xc58813                   $f9ed45
-l_0xc5882e                   $f9ed60
-l_0xc5882f                   $f9ed61
-l_0xc58840                   $f9ed72
-l_0xc58841                   $f9ed73
-l_0xc5884d                   $f9ed7f
-l_0xc5884e                   $f9ed80
-l_0xc5885a                   $f9ed8c
-l_0xc5885b                   $f9ed8d
-l_0xc58867                   $f9ed99
-l_0xc58868                   $f9ed9a
-l_0xc58874                   $f9eda6
-l_0xc58875                   $f9eda7
-l_0xc58881                   $f9edb3
-l_0xc58882                   $f9edb4
-l_0xc5888e                   $f9edc0
-l_0xc5888f                   $f9edc1
-l_0xc5889b                   $f9edcd
-l_0xc5889c                   $f9edce
-l_0xc588a8                   $f9edda
-l_0xc588a9                   $f9eddb
-l_0xc588ba                   $f9edec
-l_0xc588bb                   $f9eded
-l_0xc588cc                   $f9edfe
-l_0xc588cd                   $f9edff
-l_0xc589e6                   $f9ef18
-l_0xc589ea                   $f9ef1c
-l_0xc589ee                   $f9ef20
-l_0xc589f2                   $f9ef24
-l_0xc589f6                   $f9ef28
-l_0xc589fa                   $f9ef2c
-l_0xc589fe                   $f9ef30
-l_0xc58a02                   $f9ef34
-l_0xc58a06                   $f9ef38
-l_0xc58a0a                   $f9ef3c
-l_0xc58a0e                   $f9ef40
-l_0xc58a12                   $f9ef44
-l_0xc58a16                   $f9ef48
-l_0xc58a1a                   $f9ef4c
-l_0xc58a1e                   $f9ef50
-l_0xc58a22                   $f9ef54
-l_0xc58a26                   $f9ef58
-l_0xc58a2a                   $f9ef5c
-l_0xc58a2e                   $f9ef60
-l_0xc58a32                   $f9ef64
-l_0xc58a36                   $f9ef68
-l_0xc58a61                   $f9ef93
-l_0xc58a8d                   $f9efc4
-l_0xc58a92                   $f9efc9
-l_0xc58a93                   $f9efca
-l_0xc58ad7                   $f9f00e
-l_0xc58adc                   $f9f013
-l_0xc58add                   $f9f014
-l_0xc58afb                   $f9f033
-l_0xc58b6c                   $f9f0a4
-l_0xc58b88                   $f9f0c5
-l_0xc58ba0                   $f9f0dd
-l_0xc58bab                   $f9f0e8
-l_0xc58bac                   $f9f0e9
-l_0xc58bd1                   $f9f10e
-l_0xc58bd2                   $f9f10f
-l_0xc58c2a                   $f9f16c
-l_0xc58c2f                   $f9f171
-l_0xc58c30                   $f9f172
-l_0xc58c54                   $f9f196
-l_0xc58c55                   $f9f197
-l_0xc58c5f                   $f9f1a6
-l_0xc58c69                   $f9f1b5
-l_0xc58c73                   $f9f1c4
-l_0xc58c7d                   $f9f1d3
-l_0xc58c88                   $f9f1de
-l_0xc58d09                   $f9f25f
-l_0xc58d46                   $f9f29c
-l_0xc58d58                   $f9f2b3
-l_0xc58d70                   $f9f2cc
-l_0xc58d80                   $f9f2e1
-l_0xc58d96                   $f9f2fa
-l_0xc58da9                   $f9f312
-l_0xc58dbf                   $f9f32b
-l_0xc58df1                   $f9f35d
-l_0xc58e02                   $f9f36e
-l_0xc58e13                   $f9f37f
-l_0xc58e31                   $f9f3a2
-l_0xc58e4a                   $f9f3be
-l_0xc58e73                   $f9f3e7
-l_0xc58e9f                   $f9f413
-l_0xc58ea6                   $f9f41a
-l_0xc58ead                   $f9f421
-l_0xc58eb4                   $f9f428
-l_0xc58ebb                   $f9f42f
-l_0xc58ed1                   $f9f445
-l_0xc58edd                   $f9f451
-l_0xc58f07                   $f9f47b
-l_0xc58f35                   $f9f4a9
-l_0xc58f37                   $f9f4ab
-l_0xc58f61                   $f9f4d5
-l_0xc58f93                   $f9f507
-l_0xc58fc1                   $f9f535
-l_0xc58feb                   $f9f55f
-l_0xc59019                   $f9f58d
+l_0xc58813                   $f9ef42
+l_0xc5882e                   $f9ef5d
+l_0xc5882f                   $f9ef5e
+l_0xc58840                   $f9ef6f
+l_0xc58841                   $f9ef70
+l_0xc5884d                   $f9ef7c
+l_0xc5884e                   $f9ef7d
+l_0xc5885a                   $f9ef89
+l_0xc5885b                   $f9ef8a
+l_0xc58867                   $f9ef96
+l_0xc58868                   $f9ef97
+l_0xc58874                   $f9efa3
+l_0xc58875                   $f9efa4
+l_0xc58881                   $f9efb0
+l_0xc58882                   $f9efb1
+l_0xc5888e                   $f9efbd
+l_0xc5888f                   $f9efbe
+l_0xc5889b                   $f9efca
+l_0xc5889c                   $f9efcb
+l_0xc588a8                   $f9efd7
+l_0xc588a9                   $f9efd8
+l_0xc588ba                   $f9efe9
+l_0xc588bb                   $f9efea
+l_0xc588cc                   $f9effb
+l_0xc588cd                   $f9effc
+l_0xc589e6                   $f9f115
+l_0xc589ea                   $f9f119
+l_0xc589ee                   $f9f11d
+l_0xc589f2                   $f9f121
+l_0xc589f6                   $f9f125
+l_0xc589fa                   $f9f129
+l_0xc589fe                   $f9f12d
+l_0xc58a02                   $f9f131
+l_0xc58a06                   $f9f135
+l_0xc58a0a                   $f9f139
+l_0xc58a0e                   $f9f13d
+l_0xc58a12                   $f9f141
+l_0xc58a16                   $f9f145
+l_0xc58a1a                   $f9f149
+l_0xc58a1e                   $f9f14d
+l_0xc58a22                   $f9f151
+l_0xc58a26                   $f9f155
+l_0xc58a2a                   $f9f159
+l_0xc58a2e                   $f9f15d
+l_0xc58a32                   $f9f161
+l_0xc58a36                   $f9f165
+l_0xc58a61                   $f9f190
+l_0xc58a8d                   $f9f1c1
+l_0xc58a92                   $f9f1c6
+l_0xc58a93                   $f9f1c7
+l_0xc58ad7                   $f9f20b
+l_0xc58adc                   $f9f210
+l_0xc58add                   $f9f211
+l_0xc58afb                   $f9f230
+l_0xc58b6c                   $f9f2a1
+l_0xc58b88                   $f9f2c2
+l_0xc58ba0                   $f9f2da
+l_0xc58bab                   $f9f2e5
+l_0xc58bac                   $f9f2e6
+l_0xc58bd1                   $f9f30b
+l_0xc58bd2                   $f9f30c
+l_0xc58c2a                   $f9f369
+l_0xc58c2f                   $f9f36e
+l_0xc58c30                   $f9f36f
+l_0xc58c54                   $f9f393
+l_0xc58c55                   $f9f394
+l_0xc58c5f                   $f9f3a3
+l_0xc58c69                   $f9f3b2
+l_0xc58c73                   $f9f3c1
+l_0xc58c7d                   $f9f3d0
+l_0xc58c88                   $f9f3db
+l_0xc58d09                   $f9f45c
+l_0xc58d46                   $f9f499
+l_0xc58d58                   $f9f4b0
+l_0xc58d70                   $f9f4c9
+l_0xc58d80                   $f9f4de
+l_0xc58d96                   $f9f4f7
+l_0xc58da9                   $f9f50f
+l_0xc58dbf                   $f9f528
+l_0xc58df1                   $f9f55a
+l_0xc58e02                   $f9f56b
+l_0xc58e13                   $f9f57c
+l_0xc58e31                   $f9f59f
+l_0xc58e4a                   $f9f5bb
+l_0xc58e73                   $f9f5e4
+l_0xc58e9f                   $f9f610
+l_0xc58ea6                   $f9f617
+l_0xc58ead                   $f9f61e
+l_0xc58eb4                   $f9f625
+l_0xc58ebb                   $f9f62c
+l_0xc58ed1                   $f9f642
+l_0xc58edd                   $f9f64e
+l_0xc58f07                   $f9f678
+l_0xc58f35                   $f9f6a6
+l_0xc58f37                   $f9f6a8
+l_0xc58f61                   $f9f6d2
+l_0xc58f93                   $f9f704
+l_0xc58fc1                   $f9f732
+l_0xc58feb                   $f9f75c
+l_0xc59019                   $f9f78a
 -----------------------------------------------------------------
 
 
@@ -1526,212 +1526,212 @@ l_0xc5d7b1                   $f3ffea
 Labels in module data_13
 Name                         Address
 -----------------------------------------------------------------
-l_0xc5d7b5                   $f9b0e9
-l_0xc5d7b9                   $f9b0ed
-l_0xc5d7bd                   $f9b0f1
-l_0xc5d7c1                   $f9b0f5
-l_0xc5d7c5                   $f9b0f9
-l_0xc5d7c9                   $f9b0fd
-l_0xc5d7cd                   $f9b101
-l_0xc5d7d1                   $f9b105
-l_0xc5d7d5                   $f9b109
-l_0xc5d7d9                   $f9b10d
-l_0xc5d7dd                   $f9b111
-l_0xc5d7e1                   $f9b115
-l_0xc5d7e5                   $f9b119
-l_0xc5d7e9                   $f9b11d
-l_0xc5d7ed                   $f9b121
-l_0xc5d7f1                   $f9b125
-l_0xc5d7f5                   $f9b129
-l_0xc5d7f9                   $f9b12d
-l_0xc5d7fd                   $f9b131
-l_0xc5d801                   $f9b135
-l_0xc5d805                   $f9b139
-l_0xc5d809                   $f9b13d
-l_0xc5d80d                   $f9b141
-l_0xc5d811                   $f9b145
-l_0xc5d815                   $f9b149
-l_0xc5d819                   $f9b14d
-l_0xc5d81d                   $f9b151
-l_0xc5d821                   $f9b155
-l_0xc5d825                   $f9b159
-l_0xc5d829                   $f9b15d
-l_0xc5d82d                   $f9b161
-l_0xc5d831                   $f9b165
-l_0xc5d835                   $f9b169
-l_0xc5d840                   $f9b174
-l_0xc5d844                   $f9b178
-l_0xc5d858                   $f9b18c
-l_0xc5d86c                   $f9b1a0
-l_0xc5d880                   $f9b1b4
-l_0xc5d894                   $f9b1c8
-l_0xc5d89e                   $f9b1d7
-l_0xc5d8d0                   $f9b20e
-l_0xc5d8da                   $f9b218
-l_0xc5d8fb                   $f9b239
-l_0xc5d905                   $f9b243
-l_0xc5d917                   $f9b255
-l_0xc5d936                   $f9b274
-l_0xc5d955                   $f9b293
-l_0xc5d974                   $f9b2b2
-l_0xc5d993                   $f9b2d1
-l_0xc5d9b2                   $f9b2f0
-l_0xc5d9d1                   $f9b30f
-l_0xc5da27                   $f9b386
-l_0xc5da58                   $f9b3d4
-l_0xc5da85                   $f9b416
-l_0xc5dab3                   $f9b45a
-l_0xc5dacb                   $f9b49c
-l_0xc5db01                   $f9b4f3
-l_0xc5db32                   $f9b53a
-l_0xc5db54                   $f9b571
-l_0xc5db7f                   $f9b5b8
-l_0xc5dbbf                   $f9b60a
-l_0xc5dbeb                   $f9b65d
-l_0xc5dc17                   $f9b6a2
-l_0xc5dc3c                   $f9b6de
-l_0xc5dc63                   $f9b724
-l_0xc5dc91                   $f9b771
-l_0xc5dcc1                   $f9b7b0
-l_0xc5dcdf                   $f9b7ed
-l_0xc5dcf9                   $f9b81f
-l_0xc5dd29                   $f9b874
-l_0xc5dd52                   $f9b8be
-l_0xc5dd6c                   $f9b8ef
-l_0xc5dda3                   $f9b935
-l_0xc5ddcc                   $f9b97d
-l_0xc5ddf1                   $f9b9c5
-l_0xc5decb                   $f9bb29
-l_0xc5ded3                   $f9bb36
-l_0xc5deef                   $f9bb57
-l_0xc5defc                   $f9bb64
-l_0xc5df05                   $f9bb6d
-l_0xc5df3a                   $f9bba2
-l_0xc5df56                   $f9bbbe
-l_0xc5df61                   $f9bbce
-l_0xc5df7f                   $f9bbec
-l_0xc5df89                   $f9bbf6
-l_0xc5dfa7                   $f9bc14
-l_0xc5dfb1                   $f9bc1e
-l_0xc5dfba                   $f9bc2c
-l_0xc5dfef                   $f9bc61
-l_0xc5dffa                   $f9bc71
-l_0xc5e013                   $f9bc8f
-l_0xc5e020                   $f9bc9c
-l_0xc5e029                   $f9bca5
-l_0xc5e02f                   $f9bcab
-l_0xc5e038                   $f9bcb9
-l_0xc5e069                   $f9bcea
-l_0xc5e08d                   $f9bd13
-l_0xc5e09a                   $f9bd20
-l_0xc5e0a3                   $f9bd29
-l_0xc5e0a9                   $f9bd2f
+l_0xc5d7b5                   $f9b2e6
+l_0xc5d7b9                   $f9b2ea
+l_0xc5d7bd                   $f9b2ee
+l_0xc5d7c1                   $f9b2f2
+l_0xc5d7c5                   $f9b2f6
+l_0xc5d7c9                   $f9b2fa
+l_0xc5d7cd                   $f9b2fe
+l_0xc5d7d1                   $f9b302
+l_0xc5d7d5                   $f9b306
+l_0xc5d7d9                   $f9b30a
+l_0xc5d7dd                   $f9b30e
+l_0xc5d7e1                   $f9b312
+l_0xc5d7e5                   $f9b316
+l_0xc5d7e9                   $f9b31a
+l_0xc5d7ed                   $f9b31e
+l_0xc5d7f1                   $f9b322
+l_0xc5d7f5                   $f9b326
+l_0xc5d7f9                   $f9b32a
+l_0xc5d7fd                   $f9b32e
+l_0xc5d801                   $f9b332
+l_0xc5d805                   $f9b336
+l_0xc5d809                   $f9b33a
+l_0xc5d80d                   $f9b33e
+l_0xc5d811                   $f9b342
+l_0xc5d815                   $f9b346
+l_0xc5d819                   $f9b34a
+l_0xc5d81d                   $f9b34e
+l_0xc5d821                   $f9b352
+l_0xc5d825                   $f9b356
+l_0xc5d829                   $f9b35a
+l_0xc5d82d                   $f9b35e
+l_0xc5d831                   $f9b362
+l_0xc5d835                   $f9b366
+l_0xc5d840                   $f9b371
+l_0xc5d844                   $f9b375
+l_0xc5d858                   $f9b389
+l_0xc5d86c                   $f9b39d
+l_0xc5d880                   $f9b3b1
+l_0xc5d894                   $f9b3c5
+l_0xc5d89e                   $f9b3d4
+l_0xc5d8d0                   $f9b40b
+l_0xc5d8da                   $f9b415
+l_0xc5d8fb                   $f9b436
+l_0xc5d905                   $f9b440
+l_0xc5d917                   $f9b452
+l_0xc5d936                   $f9b471
+l_0xc5d955                   $f9b490
+l_0xc5d974                   $f9b4af
+l_0xc5d993                   $f9b4ce
+l_0xc5d9b2                   $f9b4ed
+l_0xc5d9d1                   $f9b50c
+l_0xc5da27                   $f9b583
+l_0xc5da58                   $f9b5d1
+l_0xc5da85                   $f9b613
+l_0xc5dab3                   $f9b657
+l_0xc5dacb                   $f9b699
+l_0xc5db01                   $f9b6f0
+l_0xc5db32                   $f9b737
+l_0xc5db54                   $f9b76e
+l_0xc5db7f                   $f9b7b5
+l_0xc5dbbf                   $f9b807
+l_0xc5dbeb                   $f9b85a
+l_0xc5dc17                   $f9b89f
+l_0xc5dc3c                   $f9b8db
+l_0xc5dc63                   $f9b921
+l_0xc5dc91                   $f9b96e
+l_0xc5dcc1                   $f9b9ad
+l_0xc5dcdf                   $f9b9ea
+l_0xc5dcf9                   $f9ba1c
+l_0xc5dd29                   $f9ba71
+l_0xc5dd52                   $f9babb
+l_0xc5dd6c                   $f9baec
+l_0xc5dda3                   $f9bb32
+l_0xc5ddcc                   $f9bb7a
+l_0xc5ddf1                   $f9bbc2
+l_0xc5decb                   $f9bd26
+l_0xc5ded3                   $f9bd33
+l_0xc5deef                   $f9bd54
+l_0xc5defc                   $f9bd61
+l_0xc5df05                   $f9bd6a
+l_0xc5df3a                   $f9bd9f
+l_0xc5df56                   $f9bdbb
+l_0xc5df61                   $f9bdcb
+l_0xc5df7f                   $f9bde9
+l_0xc5df89                   $f9bdf3
+l_0xc5dfa7                   $f9be11
+l_0xc5dfb1                   $f9be1b
+l_0xc5dfba                   $f9be29
+l_0xc5dfef                   $f9be5e
+l_0xc5dffa                   $f9be6e
+l_0xc5e013                   $f9be8c
+l_0xc5e020                   $f9be99
+l_0xc5e029                   $f9bea2
+l_0xc5e02f                   $f9bea8
+l_0xc5e038                   $f9beb6
+l_0xc5e069                   $f9bee7
+l_0xc5e08d                   $f9bf10
+l_0xc5e09a                   $f9bf1d
+l_0xc5e0a3                   $f9bf26
+l_0xc5e0a9                   $f9bf2c
 -----------------------------------------------------------------
 
 
 Labels in module data_14
 Name                         Address
 -----------------------------------------------------------------
-l_0xc5e0cc                   $f9bd52
-l_0xc5e0de                   $f9bd69
-l_0xc5e136                   $f9bdc1
-l_0xc5e17e                   $f9be09
-l_0xc5e188                   $f9be18
-l_0xc5e18b                   $f9be20
-l_0xc5e18f                   $f9be24
-l_0xc5e1ad                   $f9be47
-l_0xc5e1b7                   $f9be51
-l_0xc5e1d6                   $f9be70
-l_0xc5e1e0                   $f9be7a
-l_0xc5e1ef                   $f9be89
-l_0xc5e22c                   $f9bec6
-l_0xc5e236                   $f9bed5
-l_0xc5e237                   $f9bed6
-l_0xc5e241                   $f9bee0
-l_0xc5e24b                   $f9beea
-l_0xc5e25b                   $f9befa
-l_0xc5e269                   $f9bf0d
-l_0xc5e26a                   $f9bf0e
-l_0xc5e277                   $f9bf1b
-l_0xc5e2b0                   $f9bf5e
-l_0xc5e2b5                   $f9bf63
-l_0xc5e2ba                   $f9bf68
-l_0xc5e2bf                   $f9bf6d
-l_0xc5e2c4                   $f9bf72
-l_0xc5e2e3                   $f9bf9c
-l_0xc5e2e8                   $f9bfa1
-l_0xc5e2ed                   $f9bfa6
-l_0xc5e2f2                   $f9bfab
-l_0xc5e2f7                   $f9bfb0
-l_0xc5e314                   $f9bfd3
-l_0xc5e31d                   $f9bfdc
-l_0xc5e326                   $f9bfe5
-l_0xc5e32f                   $f9bfee
-l_0xc5e338                   $f9bff7
-l_0xc5e34a                   $f9c00e
-l_0xc5e353                   $f9c017
-l_0xc5e35c                   $f9c020
-l_0xc5e365                   $f9c029
-l_0xc5e36e                   $f9c032
-l_0xc5e37a                   $f9c043
-l_0xc5e387                   $f9c050
-l_0xc5e392                   $f9c05b
-l_0xc5e3a5                   $f9c06e
-l_0xc5e3bc                   $f9c085
-l_0xc5e3c9                   $f9c092
-l_0xc5e412                   $f9c0db
-l_0xc5e419                   $f9c0e2
-l_0xc5e420                   $f9c0e9
-l_0xc5e427                   $f9c0f0
-l_0xc5e42e                   $f9c0f7
-l_0xc5e431                   $f9c0fa
-l_0xc5e433                   $f9c101
-l_0xc5e453                   $f9c121
-l_0xc5e455                   $f9c128
-l_0xc5e456                   $f9c129
-l_0xc5e48e                   $f9c166
-l_0xc5e499                   $f9c176
-l_0xc5e4c2                   $f9c1a4
-l_0xc5e4c3                   $f9c1a5
-l_0xc5e4f9                   $f9c1e0
-l_0xc5e504                   $f9c1f0
-l_0xc5e52d                   $f9c21e
-l_0xc5e52e                   $f9c21f
-l_0xc5e54a                   $f9c23b
-l_0xc5e579                   $f9c26a
-l_0xc5e584                   $f9c275
-l_0xc5e58b                   $f9c27c
-l_0xc5e592                   $f9c283
-l_0xc5e599                   $f9c28a
-l_0xc5e5a0                   $f9c291
-l_0xc5e5a7                   $f9c298
-l_0xc5e5ae                   $f9c29f
-l_0xc5e5b5                   $f9c2a6
-l_0xc5e5bc                   $f9c2ad
-l_0xc5e5df                   $f9c2d0
-l_0xc5e5eb                   $f9c2dc
-l_0xc5e605                   $f9c2f6
-l_0xc5e62c                   $f9c31d
-l_0xc5e633                   $f9c324
-l_0xc5e655                   $f9c346
-l_0xc5e675                   $f9c366
-l_0xc5e691                   $f9c36b
-l_0xc5e6ae                   $f9c388
-l_0xc5e6cb                   $f9c3a5
-l_0xc5e6d7                   $f9c3b1
-l_0xc5e6f4                   $f9c3ce
-l_0xc5e70b                   $f9c3e5
-l_0xc5e79f                   $f9c47e
-l_0xc5e7ac                   $f9c48b
-l_0xc5e812                   $f9c4f6
-l_0xc5e819                   $f9c4fd
-l_0xc5e820                   $f9c504
-l_0xc5e832                   $f9c516
-l_0xc5e833                   $f9c517
-l_0xc5e840                   $f9c524
-l_0xc5e8a0                   $f9c5c2
-l_0xc5ea3d                   $f9c807
-l_0xc5ea45                   $f9c80f
+l_0xc5e0cc                   $f9bf4f
+l_0xc5e0de                   $f9bf66
+l_0xc5e136                   $f9bfbe
+l_0xc5e17e                   $f9c006
+l_0xc5e188                   $f9c015
+l_0xc5e18b                   $f9c01d
+l_0xc5e18f                   $f9c021
+l_0xc5e1ad                   $f9c044
+l_0xc5e1b7                   $f9c04e
+l_0xc5e1d6                   $f9c06d
+l_0xc5e1e0                   $f9c077
+l_0xc5e1ef                   $f9c086
+l_0xc5e22c                   $f9c0c3
+l_0xc5e236                   $f9c0d2
+l_0xc5e237                   $f9c0d3
+l_0xc5e241                   $f9c0dd
+l_0xc5e24b                   $f9c0e7
+l_0xc5e25b                   $f9c0f7
+l_0xc5e269                   $f9c10a
+l_0xc5e26a                   $f9c10b
+l_0xc5e277                   $f9c118
+l_0xc5e2b0                   $f9c15b
+l_0xc5e2b5                   $f9c160
+l_0xc5e2ba                   $f9c165
+l_0xc5e2bf                   $f9c16a
+l_0xc5e2c4                   $f9c16f
+l_0xc5e2e3                   $f9c199
+l_0xc5e2e8                   $f9c19e
+l_0xc5e2ed                   $f9c1a3
+l_0xc5e2f2                   $f9c1a8
+l_0xc5e2f7                   $f9c1ad
+l_0xc5e314                   $f9c1d0
+l_0xc5e31d                   $f9c1d9
+l_0xc5e326                   $f9c1e2
+l_0xc5e32f                   $f9c1eb
+l_0xc5e338                   $f9c1f4
+l_0xc5e34a                   $f9c20b
+l_0xc5e353                   $f9c214
+l_0xc5e35c                   $f9c21d
+l_0xc5e365                   $f9c226
+l_0xc5e36e                   $f9c22f
+l_0xc5e37a                   $f9c240
+l_0xc5e387                   $f9c24d
+l_0xc5e392                   $f9c258
+l_0xc5e3a5                   $f9c26b
+l_0xc5e3bc                   $f9c282
+l_0xc5e3c9                   $f9c28f
+l_0xc5e412                   $f9c2d8
+l_0xc5e419                   $f9c2df
+l_0xc5e420                   $f9c2e6
+l_0xc5e427                   $f9c2ed
+l_0xc5e42e                   $f9c2f4
+l_0xc5e431                   $f9c2f7
+l_0xc5e433                   $f9c2fe
+l_0xc5e453                   $f9c31e
+l_0xc5e455                   $f9c325
+l_0xc5e456                   $f9c326
+l_0xc5e48e                   $f9c363
+l_0xc5e499                   $f9c373
+l_0xc5e4c2                   $f9c3a1
+l_0xc5e4c3                   $f9c3a2
+l_0xc5e4f9                   $f9c3dd
+l_0xc5e504                   $f9c3ed
+l_0xc5e52d                   $f9c41b
+l_0xc5e52e                   $f9c41c
+l_0xc5e54a                   $f9c438
+l_0xc5e579                   $f9c467
+l_0xc5e584                   $f9c472
+l_0xc5e58b                   $f9c479
+l_0xc5e592                   $f9c480
+l_0xc5e599                   $f9c487
+l_0xc5e5a0                   $f9c48e
+l_0xc5e5a7                   $f9c495
+l_0xc5e5ae                   $f9c49c
+l_0xc5e5b5                   $f9c4a3
+l_0xc5e5bc                   $f9c4aa
+l_0xc5e5df                   $f9c4cd
+l_0xc5e5eb                   $f9c4d9
+l_0xc5e605                   $f9c4f3
+l_0xc5e62c                   $f9c51a
+l_0xc5e633                   $f9c521
+l_0xc5e655                   $f9c543
+l_0xc5e675                   $f9c563
+l_0xc5e691                   $f9c568
+l_0xc5e6ae                   $f9c585
+l_0xc5e6cb                   $f9c5a2
+l_0xc5e6d7                   $f9c5ae
+l_0xc5e6f4                   $f9c5cb
+l_0xc5e70b                   $f9c5e2
+l_0xc5e79f                   $f9c67b
+l_0xc5e7ac                   $f9c688
+l_0xc5e812                   $f9c6f3
+l_0xc5e819                   $f9c6fa
+l_0xc5e820                   $f9c701
+l_0xc5e832                   $f9c713
+l_0xc5e833                   $f9c714
+l_0xc5e840                   $f9c721
+l_0xc5e8a0                   $f9c7bf
+l_0xc5ea3d                   $f9ca04
+l_0xc5ea45                   $f9ca0c
 -----------------------------------------------------------------
 
 
@@ -2374,106 +2374,106 @@ l_0xc680c2                   $f3f73c
 Labels in module data_21
 Name                         Address
 -----------------------------------------------------------------
-l_0xc680dc                   $f9d33c
-l_0xc680e2                   $f9d342
-l_0xc680e8                   $f9d348
-l_0xc680ee                   $f9d34e
-l_0xc680f0                   $f9d350
-l_0xc680f2                   $f9d352
-l_0xc68139                   $f9d39c
-l_0xc68174                   $f9d3da
-l_0xc681b5                   $f9d41f
-l_0xc681e6                   $f9d454
-l_0xc681eb                   $f9d459
-l_0xc681f0                   $f9d45e
-l_0xc6822a                   $f9d49c
-l_0xc68253                   $f9d4cc
-l_0xc68264                   $f9d4e2
-l_0xc6829f                   $f9d520
-l_0xc682dd                   $f9d567
-l_0xc6831b                   $f9d5ae
-l_0xc68359                   $f9d5f5
-l_0xc68397                   $f9d63c
-l_0xc683d5                   $f9d683
-l_0xc683d9                   $f9d687
-l_0xc683de                   $f9d68c
-l_0xc683df                   $f9d68d
-l_0xc683e6                   $f9d694
-l_0xc683ed                   $f9d69b
-l_0xc683f4                   $f9d6a2
-l_0xc683fb                   $f9d6a9
-l_0xc68402                   $f9d6b0
-l_0xc68409                   $f9d6b7
-l_0xc68410                   $f9d6be
-l_0xc68417                   $f9d6c5
-l_0xc6841e                   $f9d6cc
-l_0xc68425                   $f9d6d3
-l_0xc6842c                   $f9d6da
-l_0xc68433                   $f9d6e1
-l_0xc6843a                   $f9d6e8
-l_0xc68441                   $f9d6ef
-l_0xc68448                   $f9d6f6
-l_0xc6844f                   $f9d6fd
-l_0xc68456                   $f9d704
-l_0xc6845d                   $f9d70b
-l_0xc68464                   $f9d712
-l_0xc6846b                   $f9d719
-l_0xc68472                   $f9d720
-l_0xc68473                   $f9d721
-l_0xc6847a                   $f9d728
-l_0xc684a6                   $f9d754
-l_0xc684ce                   $f9d77c
-l_0xc68500                   $f9d7c0
-l_0xc68507                   $f9d7c7
-l_0xc6850e                   $f9d7ce
-l_0xc68515                   $f9d7d5
-l_0xc6851c                   $f9d7dc
-l_0xc68523                   $f9d7e3
-l_0xc6852a                   $f9d7ea
-l_0xc68531                   $f9d7f1
-l_0xc68538                   $f9d7f8
-l_0xc6853f                   $f9d7ff
-l_0xc68546                   $f9d806
-l_0xc6854d                   $f9d80d
-l_0xc68554                   $f9d814
-l_0xc6855b                   $f9d81b
-l_0xc68562                   $f9d822
-l_0xc68569                   $f9d829
-l_0xc68570                   $f9d830
-l_0xc68577                   $f9d837
-l_0xc6857c                   $f9d83c
-l_0xc68583                   $f9d843
-l_0xc6858a                   $f9d84a
-l_0xc68591                   $f9d851
-l_0xc68598                   $f9d858
-l_0xc6859f                   $f9d85f
-l_0xc685a6                   $f9d866
-l_0xc685ad                   $f9d86d
-l_0xc685b4                   $f9d874
-l_0xc685bb                   $f9d87b
-l_0xc685cb                   $f9d8a2
-l_0xc685da                   $f9d8bc
-l_0xc685fa                   $f9d8e1
-l_0xc68650                   $f9d95d
-l_0xc68651                   $f9d95e
-l_0xc68659                   $f9d966
-l_0xc68661                   $f9d96e
-l_0xc68662                   $f9d96f
-l_0xc6866a                   $f9d977
-l_0xc6866b                   $f9d978
-l_0xc686c8                   $f9da11
-l_0xc68726                   $f9daad
-l_0xc687a5                   $f9db66
-l_0xc687e4                   $f9dbd1
-l_0xc6880b                   $f9dc19
-l_0xc68815                   $f9dc23
-l_0xc6881f                   $f9dc2d
-l_0xc68829                   $f9dc37
-l_0xc68833                   $f9dc41
-l_0xc6883d                   $f9dc4b
-l_0xc68847                   $f9dc55
-l_0xc68851                   $f9dc5f
-l_0xc68858                   $f9dc66
+l_0xc680dc                   $f9d539
+l_0xc680e2                   $f9d53f
+l_0xc680e8                   $f9d545
+l_0xc680ee                   $f9d54b
+l_0xc680f0                   $f9d54d
+l_0xc680f2                   $f9d54f
+l_0xc68139                   $f9d599
+l_0xc68174                   $f9d5d7
+l_0xc681b5                   $f9d61c
+l_0xc681e6                   $f9d651
+l_0xc681eb                   $f9d656
+l_0xc681f0                   $f9d65b
+l_0xc6822a                   $f9d699
+l_0xc68253                   $f9d6c9
+l_0xc68264                   $f9d6df
+l_0xc6829f                   $f9d71d
+l_0xc682dd                   $f9d764
+l_0xc6831b                   $f9d7ab
+l_0xc68359                   $f9d7f2
+l_0xc68397                   $f9d839
+l_0xc683d5                   $f9d880
+l_0xc683d9                   $f9d884
+l_0xc683de                   $f9d889
+l_0xc683df                   $f9d88a
+l_0xc683e6                   $f9d891
+l_0xc683ed                   $f9d898
+l_0xc683f4                   $f9d89f
+l_0xc683fb                   $f9d8a6
+l_0xc68402                   $f9d8ad
+l_0xc68409                   $f9d8b4
+l_0xc68410                   $f9d8bb
+l_0xc68417                   $f9d8c2
+l_0xc6841e                   $f9d8c9
+l_0xc68425                   $f9d8d0
+l_0xc6842c                   $f9d8d7
+l_0xc68433                   $f9d8de
+l_0xc6843a                   $f9d8e5
+l_0xc68441                   $f9d8ec
+l_0xc68448                   $f9d8f3
+l_0xc6844f                   $f9d8fa
+l_0xc68456                   $f9d901
+l_0xc6845d                   $f9d908
+l_0xc68464                   $f9d90f
+l_0xc6846b                   $f9d916
+l_0xc68472                   $f9d91d
+l_0xc68473                   $f9d91e
+l_0xc6847a                   $f9d925
+l_0xc684a6                   $f9d951
+l_0xc684ce                   $f9d979
+l_0xc68500                   $f9d9bd
+l_0xc68507                   $f9d9c4
+l_0xc6850e                   $f9d9cb
+l_0xc68515                   $f9d9d2
+l_0xc6851c                   $f9d9d9
+l_0xc68523                   $f9d9e0
+l_0xc6852a                   $f9d9e7
+l_0xc68531                   $f9d9ee
+l_0xc68538                   $f9d9f5
+l_0xc6853f                   $f9d9fc
+l_0xc68546                   $f9da03
+l_0xc6854d                   $f9da0a
+l_0xc68554                   $f9da11
+l_0xc6855b                   $f9da18
+l_0xc68562                   $f9da1f
+l_0xc68569                   $f9da26
+l_0xc68570                   $f9da2d
+l_0xc68577                   $f9da34
+l_0xc6857c                   $f9da39
+l_0xc68583                   $f9da40
+l_0xc6858a                   $f9da47
+l_0xc68591                   $f9da4e
+l_0xc68598                   $f9da55
+l_0xc6859f                   $f9da5c
+l_0xc685a6                   $f9da63
+l_0xc685ad                   $f9da6a
+l_0xc685b4                   $f9da71
+l_0xc685bb                   $f9da78
+l_0xc685cb                   $f9da9f
+l_0xc685da                   $f9dab9
+l_0xc685fa                   $f9dade
+l_0xc68650                   $f9db5a
+l_0xc68651                   $f9db5b
+l_0xc68659                   $f9db63
+l_0xc68661                   $f9db6b
+l_0xc68662                   $f9db6c
+l_0xc6866a                   $f9db74
+l_0xc6866b                   $f9db75
+l_0xc686c8                   $f9dc0e
+l_0xc68726                   $f9dcaa
+l_0xc687a5                   $f9dd63
+l_0xc687e4                   $f9ddce
+l_0xc6880b                   $f9de16
+l_0xc68815                   $f9de20
+l_0xc6881f                   $f9de2a
+l_0xc68829                   $f9de34
+l_0xc68833                   $f9de3e
+l_0xc6883d                   $f9de48
+l_0xc68847                   $f9de52
+l_0xc68851                   $f9de5c
+l_0xc68858                   $f9de63
 -----------------------------------------------------------------
 
 
@@ -4496,212 +4496,212 @@ l_0xc8a50c                   $f364ac
 Labels in module data_41
 Name                         Address
 -----------------------------------------------------------------
-l_0xc8a50d                   $f57b46
-l_0xc8a58f                   $f57c10
-l_0xc8a595                   $f57c16
-l_0xc8a5bc                   $f57c4e
-l_0xc8a5c8                   $f57c5a
-l_0xc8a5ce                   $f57c60
-l_0xc8a5d4                   $f57c66
-l_0xc8a5fc                   $f57ca0
-l_0xc8a691                   $f57d92
-l_0xc8a6bf                   $f57ddb
-l_0xc8a6f9                   $f57e2e
-l_0xc8a737                   $f57e8a
-l_0xc8a792                   $f57f12
-l_0xc8a7c5                   $f57f5e
-l_0xc8a805                   $f57fa8
-l_0xc8a82e                   $f57fd1
-l_0xc8a88c                   $f58075
-l_0xc8a8bf                   $f580c1
-l_0xc8a8e7                   $f5810a
-l_0xc8a976                   $f581e2
-l_0xc8a996                   $f58202
-l_0xc8a997                   $f58203
-l_0xc8a9ec                   $f58272
-l_0xc8aa7e                   $f58359
-l_0xc8aa7f                   $f5835a
-l_0xc8aabd                   $f583b9
-l_0xc8aabe                   $f583ba
-l_0xc8aacc                   $f583cd
-l_0xc8aacf                   $f583d1
-l_0xc8aae6                   $f583e8
-l_0xc8abb0                   $f58521
-l_0xc8ac30                   $f585d6
-l_0xc8ac6f                   $f5864e
-l_0xc8ad22                   $f5873a
-l_0xc8ad69                   $f587ba
-l_0xc8ae3b                   $f58901
-l_0xc8ae72                   $f58964
-l_0xc8aec1                   $f589e0
-l_0xc8af0f                   $f58a55
-l_0xc8af57                   $f58aca
-l_0xc8af5d                   $f58ad0
-l_0xc8af63                   $f58ad6
-l_0xc8afad                   $f58b44
-l_0xc8b008                   $f58bc9
-l_0xc8b038                   $f58c15
-l_0xc8b07f                   $f58c91
-l_0xc8b0d4                   $f58d19
-l_0xc8b130                   $f58db5
-l_0xc8b137                   $f58dc1
-l_0xc8b158                   $f58df4
-l_0xc8b191                   $f58e47
-l_0xc8b22e                   $f58f3f
-l_0xc8b22f                   $f58f40
-l_0xc8b292                   $f58fe3
-l_0xc8b2bc                   $f5903b
-l_0xc8b2f8                   $f59097
-l_0xc8b342                   $f5910e
-l_0xc8b39d                   $f59192
-l_0xc8b3c0                   $f591c7
-l_0xc8b3c6                   $f591cd
-l_0xc8b3f7                   $f59201
-l_0xc8b3f8                   $f59202
-l_0xc8b460                   $f592aa
-l_0xc8b4c9                   $f59342
-l_0xc8b52a                   $f593d2
-l_0xc8b568                   $f59423
-l_0xc8b57c                   $f59440
-l_0xc8b57e                   $f59447
-l_0xc8b64e                   $f5958f
-l_0xc8b680                   $f595d7
-l_0xc8b6d5                   $f5965f
-l_0xc8b77b                   $f5977a
-l_0xc8b7b4                   $f597c5
-l_0xc8b7e4                   $f5981a
-l_0xc8b82d                   $f5986b
-l_0xc8b82e                   $f5986c
-l_0xc8b851                   $f598b2
-l_0xc8b8c0                   $f59965
-l_0xc8b8cd                   $f59972
-l_0xc8b8d5                   $f5997a
-l_0xc8b9c4                   $f59afd
-l_0xc8ba12                   $f59b6e
-l_0xc8ba45                   $f59bc1
-l_0xc8ba82                   $f59c26
-l_0xc8bab9                   $f59c7e
-l_0xc8bae0                   $f59cc0
-l_0xc8bb5b                   $f59d68
-l_0xc8bb91                   $f59dbc
-l_0xc8bbd2                   $f59e19
-l_0xc8d9ed                   $f59e9d
-l_0xc8da31                   $f59eff
-l_0xc8da5d                   $f59f4e
-l_0xc8daa0                   $f59fab
-l_0xc8dad5                   $f59ff6
-l_0xc8daee                   $f5a022
-l_0xc8db32                   $f5a088
-l_0xc8db92                   $f5a129
-l_0xc8dbbe                   $f5a178
-l_0xc8dbf8                   $f5a1d8
-l_0xc8dc2f                   $f5a23d
+l_0xc8a50d                   $f57c8d
+l_0xc8a58f                   $f57d57
+l_0xc8a595                   $f57d5d
+l_0xc8a5bc                   $f57d95
+l_0xc8a5c8                   $f57da1
+l_0xc8a5ce                   $f57da7
+l_0xc8a5d4                   $f57dad
+l_0xc8a5fc                   $f57de7
+l_0xc8a691                   $f57ed9
+l_0xc8a6bf                   $f57f22
+l_0xc8a6f9                   $f57f75
+l_0xc8a737                   $f57fd1
+l_0xc8a792                   $f58059
+l_0xc8a7c5                   $f580a5
+l_0xc8a805                   $f580ef
+l_0xc8a82e                   $f58118
+l_0xc8a88c                   $f581bc
+l_0xc8a8bf                   $f58208
+l_0xc8a8e7                   $f58251
+l_0xc8a976                   $f58329
+l_0xc8a996                   $f58349
+l_0xc8a997                   $f5834a
+l_0xc8a9ec                   $f583b9
+l_0xc8aa7e                   $f584a0
+l_0xc8aa7f                   $f584a1
+l_0xc8aabd                   $f58500
+l_0xc8aabe                   $f58501
+l_0xc8aacc                   $f58514
+l_0xc8aacf                   $f58518
+l_0xc8aae6                   $f5852f
+l_0xc8abb0                   $f58668
+l_0xc8ac30                   $f5871d
+l_0xc8ac6f                   $f58795
+l_0xc8ad22                   $f58881
+l_0xc8ad69                   $f58901
+l_0xc8ae3b                   $f58a48
+l_0xc8ae72                   $f58aab
+l_0xc8aec1                   $f58b27
+l_0xc8af0f                   $f58b9c
+l_0xc8af57                   $f58c11
+l_0xc8af5d                   $f58c17
+l_0xc8af63                   $f58c1d
+l_0xc8afad                   $f58c8b
+l_0xc8b008                   $f58d10
+l_0xc8b038                   $f58d5c
+l_0xc8b07f                   $f58dd8
+l_0xc8b0d4                   $f58e60
+l_0xc8b130                   $f58efc
+l_0xc8b137                   $f58f08
+l_0xc8b158                   $f58f3b
+l_0xc8b191                   $f58f8e
+l_0xc8b22e                   $f59086
+l_0xc8b22f                   $f59087
+l_0xc8b292                   $f5912a
+l_0xc8b2bc                   $f59182
+l_0xc8b2f8                   $f591de
+l_0xc8b342                   $f59255
+l_0xc8b39d                   $f592d9
+l_0xc8b3c0                   $f5930e
+l_0xc8b3c6                   $f59314
+l_0xc8b3f7                   $f59348
+l_0xc8b3f8                   $f59349
+l_0xc8b460                   $f593f1
+l_0xc8b4c9                   $f59489
+l_0xc8b52a                   $f59519
+l_0xc8b568                   $f5956a
+l_0xc8b57c                   $f59587
+l_0xc8b57e                   $f5958e
+l_0xc8b64e                   $f596d6
+l_0xc8b680                   $f5971e
+l_0xc8b6d5                   $f597a6
+l_0xc8b77b                   $f598c1
+l_0xc8b7b4                   $f5990c
+l_0xc8b7e4                   $f59961
+l_0xc8b82d                   $f599b2
+l_0xc8b82e                   $f599b3
+l_0xc8b851                   $f599f9
+l_0xc8b8c0                   $f59aac
+l_0xc8b8cd                   $f59ab9
+l_0xc8b8d5                   $f59ac1
+l_0xc8b9c4                   $f59c44
+l_0xc8ba12                   $f59cb5
+l_0xc8ba45                   $f59d08
+l_0xc8ba82                   $f59d6d
+l_0xc8bab9                   $f59dc5
+l_0xc8bae0                   $f59e07
+l_0xc8bb5b                   $f59eaf
+l_0xc8bb91                   $f59f03
+l_0xc8bbd2                   $f59f60
+l_0xc8d9ed                   $f59fe4
+l_0xc8da31                   $f5a046
+l_0xc8da5d                   $f5a095
+l_0xc8daa0                   $f5a0f2
+l_0xc8dad5                   $f5a13d
+l_0xc8daee                   $f5a169
+l_0xc8db32                   $f5a1cf
+l_0xc8db92                   $f5a270
+l_0xc8dbbe                   $f5a2bf
+l_0xc8dbf8                   $f5a31f
+l_0xc8dc2f                   $f5a384
 -----------------------------------------------------------------
 
 
 Labels in module data_42
 Name                         Address
 -----------------------------------------------------------------
-l_0xc8dc4f                   $f5c96e
-l_0xc8dc8d                   $f5c9c9
-l_0xc8dcb2                   $f5ca0c
-l_0xc8dcd6                   $f5ca4d
-l_0xc8dcf9                   $f5ca91
-l_0xc8dd12                   $f5cac7
-l_0xc8dd35                   $f5caff
-l_0xc8dd98                   $f5cb8b
-l_0xc8de13                   $f5cc51
-l_0xc8de2c                   $f5cc81
-l_0xc8de4a                   $f5ccb5
-l_0xc8de88                   $f5cd12
-l_0xc8def6                   $f5cdb0
-l_0xc8df0d                   $f5cdd9
-l_0xc8df28                   $f5ce0f
-l_0xc8df51                   $f5ce57
-l_0xc8df8a                   $f5cebe
-l_0xc8dfbb                   $f5cf18
-l_0xc8dfc1                   $f5cf1e
-l_0xc8dff7                   $f5cf71
-l_0xc8e044                   $f5cfea
-l_0xc8e04a                   $f5cff0
-l_0xc8e07c                   $f5d03f
-l_0xc8e0ad                   $f5d0a0
-l_0xc8e0d8                   $f5d0ed
-l_0xc8e132                   $f5d180
-l_0xc8e138                   $f5d186
-l_0xc8e13e                   $f5d18c
-l_0xc8e144                   $f5d192
-l_0xc8e14a                   $f5d198
-l_0xc8e176                   $f5d1e1
-l_0xc8e1bd                   $f5d253
-l_0xc8e218                   $f5d2e7
-l_0xc8e251                   $f5d343
-l_0xc8e275                   $f5d38e
-l_0xc8e2c7                   $f5d42c
-l_0xc8e2ea                   $f5d46f
-l_0xc8e33b                   $f5d502
-l_0xc8e388                   $f5d57a
-l_0xc8e3fb                   $f5d626
-l_0xc8e42a                   $f5d67f
-l_0xc8e467                   $f5d6d2
-l_0xc8e501                   $f5d7cd
-l_0xc8e515                   $f5d7f7
-l_0xc8e576                   $f5d890
-l_0xc8e5a4                   $f5d8db
-l_0xc8e5b1                   $f5d8f1
-l_0xc8e5f7                   $f5d962
-l_0xc8e62c                   $f5d9bd
-l_0xc8e6a9                   $f5daa2
-l_0xc8e6e3                   $f5daf7
-l_0xc8e6ed                   $f5db01
-l_0xc8e715                   $f5db46
-l_0xc8e734                   $f5db88
-l_0xc8e7b3                   $f5dc57
-l_0xc8e804                   $f5dce3
-l_0xc8e95b                   $f5df15
-l_0xc8e95d                   $f5df17
-l_0xc8e9e8                   $f5e004
-l_0xc8ea6a                   $f5e0d5
-l_0xc8ea79                   $f5e0f4
-l_0xc8ea8b                   $f5e11b
-l_0xc8eace                   $f5e18d
-l_0xc8eb2c                   $f5e21f
-l_0xc8eb75                   $f5e291
-l_0xc8ebdd                   $f5e2f9
-l_0xc8ebe4                   $f5e300
-l_0xc8ec0f                   $f5e333
-l_0xc8ec90                   $f5e3c9
-l_0xc8ecb4                   $f5e3f5
-l_0xc8ecba                   $f5e3fb
-l_0xc8ed1e                   $f5e4a1
-l_0xc8ed87                   $f5e544
-l_0xc8edcc                   $f5e5a8
-l_0xc8ee02                   $f5e607
-l_0xc8ee6e                   $f5e6aa
-l_0xc8eeb4                   $f5e708
-l_0xc8eee5                   $f5e752
-l_0xc8ef99                   $f5e880
-l_0xc8efb9                   $f5e8c1
-l_0xc8f031                   $f5e973
-l_0xc8f066                   $f5e9c4
-l_0xc8f086                   $f5e9ef
-l_0xc8f0d2                   $f5ea6c
-l_0xc8f11b                   $f5eae0
-l_0xc8f193                   $f5eb99
-l_0xc8f1b5                   $f5ebcf
-l_0xc8f208                   $f5ec6b
-l_0xc8f240                   $f5ecc3
-l_0xc8f296                   $f5ed41
-l_0xc8f2b7                   $f5ed73
-l_0xc8f2ef                   $f5edcb
-l_0xc8f324                   $f5ee2c
-l_0xc8f344                   $f5ee6c
-l_0xc8f392                   $f5eef1
-l_0xc8f3eb                   $f5ef8e
-l_0xc8f41f                   $f5efeb
-l_0xc8f42a                   $f5f002
-l_0xc8f43f                   $f5f022
-l_0xc8f448                   $f5f02b
+l_0xc8dc4f                   $f5cab5
+l_0xc8dc8d                   $f5cb10
+l_0xc8dcb2                   $f5cb53
+l_0xc8dcd6                   $f5cb94
+l_0xc8dcf9                   $f5cbd8
+l_0xc8dd12                   $f5cc0e
+l_0xc8dd35                   $f5cc46
+l_0xc8dd98                   $f5ccd2
+l_0xc8de13                   $f5cd98
+l_0xc8de2c                   $f5cdc8
+l_0xc8de4a                   $f5cdfc
+l_0xc8de88                   $f5ce59
+l_0xc8def6                   $f5cef7
+l_0xc8df0d                   $f5cf20
+l_0xc8df28                   $f5cf56
+l_0xc8df51                   $f5cf9e
+l_0xc8df8a                   $f5d005
+l_0xc8dfbb                   $f5d05f
+l_0xc8dfc1                   $f5d065
+l_0xc8dff7                   $f5d0b8
+l_0xc8e044                   $f5d131
+l_0xc8e04a                   $f5d137
+l_0xc8e07c                   $f5d186
+l_0xc8e0ad                   $f5d1e7
+l_0xc8e0d8                   $f5d234
+l_0xc8e132                   $f5d2c7
+l_0xc8e138                   $f5d2cd
+l_0xc8e13e                   $f5d2d3
+l_0xc8e144                   $f5d2d9
+l_0xc8e14a                   $f5d2df
+l_0xc8e176                   $f5d328
+l_0xc8e1bd                   $f5d39a
+l_0xc8e218                   $f5d42e
+l_0xc8e251                   $f5d48a
+l_0xc8e275                   $f5d4d5
+l_0xc8e2c7                   $f5d573
+l_0xc8e2ea                   $f5d5b6
+l_0xc8e33b                   $f5d649
+l_0xc8e388                   $f5d6c1
+l_0xc8e3fb                   $f5d76d
+l_0xc8e42a                   $f5d7c6
+l_0xc8e467                   $f5d819
+l_0xc8e501                   $f5d914
+l_0xc8e515                   $f5d93e
+l_0xc8e576                   $f5d9d7
+l_0xc8e5a4                   $f5da22
+l_0xc8e5b1                   $f5da38
+l_0xc8e5f7                   $f5daa9
+l_0xc8e62c                   $f5db04
+l_0xc8e6a9                   $f5dbe9
+l_0xc8e6e3                   $f5dc3e
+l_0xc8e6ed                   $f5dc48
+l_0xc8e715                   $f5dc8d
+l_0xc8e734                   $f5dccf
+l_0xc8e7b3                   $f5dd9e
+l_0xc8e804                   $f5de2a
+l_0xc8e95b                   $f5e05c
+l_0xc8e95d                   $f5e05e
+l_0xc8e9e8                   $f5e14b
+l_0xc8ea6a                   $f5e21c
+l_0xc8ea79                   $f5e23b
+l_0xc8ea8b                   $f5e262
+l_0xc8eace                   $f5e2d4
+l_0xc8eb2c                   $f5e366
+l_0xc8eb75                   $f5e3d8
+l_0xc8ebdd                   $f5e440
+l_0xc8ebe4                   $f5e447
+l_0xc8ec0f                   $f5e47a
+l_0xc8ec90                   $f5e510
+l_0xc8ecb4                   $f5e53c
+l_0xc8ecba                   $f5e542
+l_0xc8ed1e                   $f5e5e8
+l_0xc8ed87                   $f5e68b
+l_0xc8edcc                   $f5e6ef
+l_0xc8ee02                   $f5e74e
+l_0xc8ee6e                   $f5e7f1
+l_0xc8eeb4                   $f5e84f
+l_0xc8eee5                   $f5e899
+l_0xc8ef99                   $f5e9c7
+l_0xc8efb9                   $f5ea08
+l_0xc8f031                   $f5eaba
+l_0xc8f066                   $f5eb0b
+l_0xc8f086                   $f5eb36
+l_0xc8f0d2                   $f5ebb3
+l_0xc8f11b                   $f5ec27
+l_0xc8f193                   $f5ece0
+l_0xc8f1b5                   $f5ed16
+l_0xc8f208                   $f5edb2
+l_0xc8f240                   $f5ee0a
+l_0xc8f296                   $f5ee88
+l_0xc8f2b7                   $f5eeba
+l_0xc8f2ef                   $f5ef12
+l_0xc8f324                   $f5ef73
+l_0xc8f344                   $f5efb3
+l_0xc8f392                   $f5f038
+l_0xc8f3eb                   $f5f0d5
+l_0xc8f41f                   $f5f132
+l_0xc8f42a                   $f5f149
+l_0xc8f43f                   $f5f169
+l_0xc8f448                   $f5f172
 -----------------------------------------------------------------
 
 
@@ -5132,106 +5132,106 @@ l_0xc94096                   $f64a98
 Labels in module data_47
 Name                         Address
 -----------------------------------------------------------------
-l_0xc940e3                   $f5a273
-l_0xc94143                   $f5a2f5
-l_0xc9419f                   $f5a382
-l_0xc941cd                   $f5a3d1
-l_0xc94231                   $f5a459
-l_0xc94270                   $f5a4a8
-l_0xc94288                   $f5a4d1
-l_0xc942c7                   $f5a542
-l_0xc9432b                   $f5a5c8
-l_0xc94359                   $f5a614
-l_0xc943bd                   $f5a6b7
-l_0xc94402                   $f5a718
-l_0xc9442c                   $f5a763
-l_0xc94479                   $f5a7ea
-l_0xc9447f                   $f5a7f0
-l_0xc944ab                   $f5a834
-l_0xc94503                   $f5a8b8
-l_0xc94509                   $f5a8be
-l_0xc9455f                   $f5a946
-l_0xc94560                   $f5a947
-l_0xc94594                   $f5a983
-l_0xc945a9                   $f5a9a2
-l_0xc945f4                   $f5aa0f
-l_0xc9461f                   $f5aa51
-l_0xc9466c                   $f5aabf
-l_0xc946b1                   $f5ab1f
-l_0xc946e6                   $f5ab78
-l_0xc94730                   $f5abdd
-l_0xc94769                   $f5ac32
-l_0xc9477d                   $f5ac4d
-l_0xc947e7                   $f5acf1
-l_0xc9484c                   $f5ad84
-l_0xc94870                   $f5adcb
-l_0xc94883                   $f5adf0
-l_0xc948dc                   $f5ae81
-l_0xc94966                   $f5af37
-l_0xc949a2                   $f5af9b
-l_0xc949ce                   $f5afe4
-l_0xc94a1c                   $f5b064
-l_0xc94a63                   $f5b0d2
-l_0xc94a95                   $f5b126
-l_0xc94abc                   $f5b16b
-l_0xc94b15                   $f5b1ee
-l_0xc94b32                   $f5b21d
-l_0xc94b57                   $f5b24e
-l_0xc94b8e                   $f5b29c
-l_0xc94bad                   $f5b2c9
-l_0xc94bc9                   $f5b2fd
-l_0xc94c2e                   $f5b38d
-l_0xc94c6d                   $f5b3ed
-l_0xc94cc8                   $f5b479
-l_0xc94d0c                   $f5b4db
-l_0xc94d5b                   $f5b552
-l_0xc94d7a                   $f5b591
-l_0xc94df6                   $f5b66d
-l_0xc94e44                   $f5b6d6
-l_0xc94ed9                   $f5b7bc
-l_0xc94f01                   $f5b7fc
-l_0xc94f42                   $f5b866
-l_0xc94f49                   $f5b872
-l_0xc94f88                   $f5b8df
-l_0xc94fe8                   $f5b97a
-l_0xc94ff9                   $f5b996
-l_0xc95019                   $f5b9c2
-l_0xc950b2                   $f5bac0
-l_0xc950e8                   $f5bb19
-l_0xc95124                   $f5bb77
-l_0xc95147                   $f5bba0
-l_0xc9514f                   $f5bba9
-l_0xc951b7                   $f5bc5e
-l_0xc9522b                   $f5bd19
-l_0xc95257                   $f5bd6b
-l_0xc9527c                   $f5bda9
-l_0xc952b2                   $f5be04
-l_0xc95306                   $f5be83
-l_0xc95324                   $f5bea8
-l_0xc95365                   $f5bef5
-l_0xc95393                   $f5bf3b
-l_0xc953bf                   $f5bf81
-l_0xc953f7                   $f5bfd3
-l_0xc954b3                   $f5c0d5
-l_0xc954e1                   $f5c124
-l_0xc95532                   $f5c1a7
-l_0xc9560b                   $f5c2ee
-l_0xc9564f                   $f5c346
-l_0xc95673                   $f5c387
-l_0xc9569a                   $f5c3c3
-l_0xc956d6                   $f5c415
-l_0xc9571e                   $f5c478
-l_0xc9575e                   $f5c4d2
-l_0xc95786                   $f5c519
-l_0xc957cb                   $f5c58c
-l_0xc957ff                   $f5c5de
-l_0xc95881                   $f5c6a0
-l_0xc958d7                   $f5c720
-l_0xc9594d                   $f5c7bc
-l_0xc95988                   $f5c817
-l_0xc959a5                   $f5c845
-l_0xc959db                   $f5c8a4
-l_0xc959e2                   $f5c8b0
+l_0xc940e3                   $f5a3ba
+l_0xc94143                   $f5a43c
+l_0xc9419f                   $f5a4c9
+l_0xc941cd                   $f5a518
+l_0xc94231                   $f5a5a0
+l_0xc94270                   $f5a5ef
+l_0xc94288                   $f5a618
+l_0xc942c7                   $f5a689
+l_0xc9432b                   $f5a70f
+l_0xc94359                   $f5a75b
+l_0xc943bd                   $f5a7fe
+l_0xc94402                   $f5a85f
+l_0xc9442c                   $f5a8aa
+l_0xc94479                   $f5a931
+l_0xc9447f                   $f5a937
+l_0xc944ab                   $f5a97b
+l_0xc94503                   $f5a9ff
+l_0xc94509                   $f5aa05
+l_0xc9455f                   $f5aa8d
+l_0xc94560                   $f5aa8e
+l_0xc94594                   $f5aaca
+l_0xc945a9                   $f5aae9
+l_0xc945f4                   $f5ab56
+l_0xc9461f                   $f5ab98
+l_0xc9466c                   $f5ac06
+l_0xc946b1                   $f5ac66
+l_0xc946e6                   $f5acbf
+l_0xc94730                   $f5ad24
+l_0xc94769                   $f5ad79
+l_0xc9477d                   $f5ad94
+l_0xc947e7                   $f5ae38
+l_0xc9484c                   $f5aecb
+l_0xc94870                   $f5af12
+l_0xc94883                   $f5af37
+l_0xc948dc                   $f5afc8
+l_0xc94966                   $f5b07e
+l_0xc949a2                   $f5b0e2
+l_0xc949ce                   $f5b12b
+l_0xc94a1c                   $f5b1ab
+l_0xc94a63                   $f5b219
+l_0xc94a95                   $f5b26d
+l_0xc94abc                   $f5b2b2
+l_0xc94b15                   $f5b335
+l_0xc94b32                   $f5b364
+l_0xc94b57                   $f5b395
+l_0xc94b8e                   $f5b3e3
+l_0xc94bad                   $f5b410
+l_0xc94bc9                   $f5b444
+l_0xc94c2e                   $f5b4d4
+l_0xc94c6d                   $f5b534
+l_0xc94cc8                   $f5b5c0
+l_0xc94d0c                   $f5b622
+l_0xc94d5b                   $f5b699
+l_0xc94d7a                   $f5b6d8
+l_0xc94df6                   $f5b7b4
+l_0xc94e44                   $f5b81d
+l_0xc94ed9                   $f5b903
+l_0xc94f01                   $f5b943
+l_0xc94f42                   $f5b9ad
+l_0xc94f49                   $f5b9b9
+l_0xc94f88                   $f5ba26
+l_0xc94fe8                   $f5bac1
+l_0xc94ff9                   $f5badd
+l_0xc95019                   $f5bb09
+l_0xc950b2                   $f5bc07
+l_0xc950e8                   $f5bc60
+l_0xc95124                   $f5bcbe
+l_0xc95147                   $f5bce7
+l_0xc9514f                   $f5bcf0
+l_0xc951b7                   $f5bda5
+l_0xc9522b                   $f5be60
+l_0xc95257                   $f5beb2
+l_0xc9527c                   $f5bef0
+l_0xc952b2                   $f5bf4b
+l_0xc95306                   $f5bfca
+l_0xc95324                   $f5bfef
+l_0xc95365                   $f5c03c
+l_0xc95393                   $f5c082
+l_0xc953bf                   $f5c0c8
+l_0xc953f7                   $f5c11a
+l_0xc954b3                   $f5c21c
+l_0xc954e1                   $f5c26b
+l_0xc95532                   $f5c2ee
+l_0xc9560b                   $f5c435
+l_0xc9564f                   $f5c48d
+l_0xc95673                   $f5c4ce
+l_0xc9569a                   $f5c50a
+l_0xc956d6                   $f5c55c
+l_0xc9571e                   $f5c5bf
+l_0xc9575e                   $f5c619
+l_0xc95786                   $f5c660
+l_0xc957cb                   $f5c6d3
+l_0xc957ff                   $f5c725
+l_0xc95881                   $f5c7e7
+l_0xc958d7                   $f5c867
+l_0xc9594d                   $f5c903
+l_0xc95988                   $f5c95e
+l_0xc959a5                   $f5c98c
+l_0xc959db                   $f5c9eb
+l_0xc959e2                   $f5c9f7
 -----------------------------------------------------------------
 
 
@@ -6192,318 +6192,318 @@ l_0xef6df0                   $f7c39e
 Labels in module data_57
 Name                         Address
 -----------------------------------------------------------------
-l_0xef6e03                   $f9878f
-l_0xef6e19                   $f987ad
-l_0xef6e31                   $f987cc
-l_0xef6e4a                   $f987f7
-l_0xef6e67                   $f9881d
-l_0xef6e81                   $f9883c
-l_0xef6e97                   $f98859
-l_0xef6ebc                   $f98888
-l_0xef6ed1                   $f988a6
-l_0xef6eed                   $f988cb
-l_0xef6f0b                   $f988f1
-l_0xef6f1e                   $f9890e
-l_0xef6f38                   $f9892e
-l_0xef6f54                   $f98950
-l_0xef6f64                   $f98962
-l_0xef6f7c                   $f98986
-l_0xef6f8e                   $f9899c
-l_0xef6f9a                   $f989b1
-l_0xef6fbd                   $f989e4
-l_0xef6fd3                   $f98a04
-l_0xef6ff4                   $f98a34
-l_0xef700c                   $f98a5a
-l_0xef7032                   $f98a8c
-l_0xef7050                   $f98ab4
-l_0xef707a                   $f98aef
-l_0xef7099                   $f98b1d
-l_0xef70b1                   $f98b3b
-l_0xef70d2                   $f98b6c
-l_0xef7142                   $f98bf9
-l_0xef7160                   $f98c21
-l_0xef7186                   $f98c55
-l_0xef7192                   $f98c68
-l_0xef71b4                   $f98c95
-l_0xef71cc                   $f98cb7
-l_0xef71df                   $f98ccc
-l_0xef71f6                   $f98ce7
-l_0xef720c                   $f98d03
-l_0xef721e                   $f98d15
-l_0xef7221                   $f98d1d
-l_0xef725a                   $f98d6b
-l_0xef727f                   $f98d9e
-l_0xef72a0                   $f98dc2
-l_0xef72b9                   $f98de8
-l_0xef72db                   $f98e24
-l_0xef72f6                   $f98e4b
-l_0xef72f7                   $f98e4c
-l_0xef733d                   $f98eb2
-l_0xef7415                   $f98fe3
-l_0xef743b                   $f99014
-l_0xef745f                   $f99041
-l_0xef749d                   $f99087
-l_0xef74b0                   $f9909d
-l_0xef74c9                   $f990ba
-l_0xef74e6                   $f990db
-l_0xef74fa                   $f990fa
-l_0xef7514                   $f99119
-l_0xef7530                   $f99138
-l_0xef7548                   $f99156
-l_0xef7569                   $f99184
-l_0xef7579                   $f99198
-l_0xef7591                   $f991bb
-l_0xef7593                   $f991bd
-l_0xef75ab                   $f991dd
-l_0xef75c2                   $f991fc
-l_0xef75d9                   $f9921b
-l_0xef75f0                   $f9923a
-l_0xef7607                   $f99259
-l_0xef7624                   $f9927f
-l_0xef7630                   $f9928b
-l_0xef763c                   $f99297
-l_0xef7655                   $f992b2
-l_0xef766e                   $f992cd
-l_0xef7682                   $f992e9
-l_0xef7696                   $f99305
-l_0xef76b3                   $f9932a
-l_0xef76c7                   $f99346
-l_0xef76d8                   $f99359
-l_0xef76fd                   $f99388
-l_0xef7710                   $f993a8
-l_0xef7729                   $f993c4
-l_0xef773f                   $f993e0
-l_0xef7755                   $f993fc
-l_0xef7768                   $f99410
-l_0xef7787                   $f99439
-l_0xef77b1                   $f99475
-l_0xef77db                   $f994ac
-l_0xef77fd                   $f994d7
-l_0xef7810                   $f994f2
-l_0xef7824                   $f9950b
-l_0xef7830                   $f9951f
-l_0xef7843                   $f9953f
-l_0xef7858                   $f9955a
-l_0xef7866                   $f9956d
-l_0xef7879                   $f99587
-l_0xef788b                   $f995a0
-l_0xef789c                   $f995b6
-l_0xef78ab                   $f995cc
-l_0xef78b8                   $f995dd
-l_0xef78c7                   $f995f0
-l_0xef78d8                   $f99605
+l_0xef6e03                   $f99739
+l_0xef6e19                   $f99757
+l_0xef6e31                   $f99776
+l_0xef6e4a                   $f997a1
+l_0xef6e67                   $f997c7
+l_0xef6e81                   $f997e6
+l_0xef6e97                   $f99803
+l_0xef6ebc                   $f99832
+l_0xef6ed1                   $f99850
+l_0xef6eed                   $f99875
+l_0xef6f0b                   $f9989b
+l_0xef6f1e                   $f998b8
+l_0xef6f38                   $f998d8
+l_0xef6f54                   $f998fa
+l_0xef6f64                   $f9990c
+l_0xef6f7c                   $f99930
+l_0xef6f8e                   $f99946
+l_0xef6f9a                   $f9995b
+l_0xef6fbd                   $f9998e
+l_0xef6fd3                   $f999ae
+l_0xef6ff4                   $f999de
+l_0xef700c                   $f99a04
+l_0xef7032                   $f99a36
+l_0xef7050                   $f99a5e
+l_0xef707a                   $f99a99
+l_0xef7099                   $f99ac7
+l_0xef70b1                   $f99ae5
+l_0xef70d2                   $f99b16
+l_0xef7142                   $f99ba3
+l_0xef7160                   $f99bcb
+l_0xef7186                   $f99bff
+l_0xef7192                   $f99c12
+l_0xef71b4                   $f99c3f
+l_0xef71cc                   $f99c61
+l_0xef71df                   $f99c76
+l_0xef71f6                   $f99c91
+l_0xef720c                   $f99cad
+l_0xef721e                   $f99cbf
+l_0xef7221                   $f99cc7
+l_0xef725a                   $f99d15
+l_0xef727f                   $f99d48
+l_0xef72a0                   $f99d6c
+l_0xef72b9                   $f99d92
+l_0xef72db                   $f99dce
+l_0xef72f6                   $f99df5
+l_0xef72f7                   $f99df6
+l_0xef733d                   $f99e5c
+l_0xef7415                   $f99f8d
+l_0xef743b                   $f99fbe
+l_0xef745f                   $f99feb
+l_0xef749d                   $f9a031
+l_0xef74b0                   $f9a047
+l_0xef74c9                   $f9a064
+l_0xef74e6                   $f9a085
+l_0xef74fa                   $f9a0a4
+l_0xef7514                   $f9a0c3
+l_0xef7530                   $f9a0e2
+l_0xef7548                   $f9a100
+l_0xef7569                   $f9a12e
+l_0xef7579                   $f9a142
+l_0xef7591                   $f9a165
+l_0xef7593                   $f9a167
+l_0xef75ab                   $f9a187
+l_0xef75c2                   $f9a1a6
+l_0xef75d9                   $f9a1c5
+l_0xef75f0                   $f9a1e4
+l_0xef7607                   $f9a203
+l_0xef7624                   $f9a229
+l_0xef7630                   $f9a235
+l_0xef763c                   $f9a241
+l_0xef7655                   $f9a25c
+l_0xef766e                   $f9a277
+l_0xef7682                   $f9a293
+l_0xef7696                   $f9a2af
+l_0xef76b3                   $f9a2d4
+l_0xef76c7                   $f9a2f0
+l_0xef76d8                   $f9a303
+l_0xef76fd                   $f9a332
+l_0xef7710                   $f9a352
+l_0xef7729                   $f9a36e
+l_0xef773f                   $f9a38a
+l_0xef7755                   $f9a3a6
+l_0xef7768                   $f9a3ba
+l_0xef7787                   $f9a3e3
+l_0xef77b1                   $f9a41f
+l_0xef77db                   $f9a456
+l_0xef77fd                   $f9a481
+l_0xef7810                   $f9a49c
+l_0xef7824                   $f9a4b5
+l_0xef7830                   $f9a4c9
+l_0xef7843                   $f9a4e9
+l_0xef7858                   $f9a504
+l_0xef7866                   $f9a517
+l_0xef7879                   $f9a531
+l_0xef788b                   $f9a54a
+l_0xef789c                   $f9a560
+l_0xef78ab                   $f9a576
+l_0xef78b8                   $f9a587
+l_0xef78c7                   $f9a59a
+l_0xef78d8                   $f9a5af
 -----------------------------------------------------------------
 
 
 Labels in module data_58
 Name                         Address
 -----------------------------------------------------------------
-l_0xef78f7                   $f5f039
-l_0xef790b                   $f5f05a
-l_0xef792b                   $f5f07e
-l_0xef792e                   $f5f081
-l_0xef793c                   $f5f093
-l_0xef794b                   $f5f0a6
-l_0xef796c                   $f5f0cb
-l_0xef7970                   $f5f0cf
-l_0xef797f                   $f5f0e2
-l_0xef798f                   $f5f0f6
-l_0xef79b1                   $f5f11c
-l_0xef79b6                   $f5f121
-l_0xef79c6                   $f5f135
-l_0xef79d7                   $f5f14a
-l_0xef79e6                   $f5f16a
-l_0xef79ef                   $f5f188
-l_0xef7a0a                   $f5f1c4
-l_0xef7a14                   $f5f1ce
-l_0xef7a28                   $f5f1ee
-l_0xef7a4d                   $f5f240
-l_0xef7a66                   $f5f262
-l_0xef7a7d                   $f5f29c
-l_0xef7a97                   $f5f2da
-l_0xef7ab1                   $f5f318
-l_0xef7ac9                   $f5f354
-l_0xef7ae0                   $f5f38f
-l_0xef7afb                   $f5f3ce
-l_0xef7b11                   $f5f407
-l_0xef7b28                   $f5f442
-l_0xef7b46                   $f5f483
-l_0xef7b64                   $f5f4c4
-l_0xef7b83                   $f5f515
-l_0xef7b9d                   $f5f534
-l_0xef7ba0                   $f5f53c
-l_0xef7bbc                   $f5f560
-l_0xef7bbf                   $f5f568
-l_0xef7bdc                   $f5f58a
-l_0xef7c42                   $f5f592
-l_0xef7c73                   $f5f5d0
-l_0xef7c89                   $f5f5fe
-l_0xef7cb4                   $f5f648
-l_0xef7ced                   $f5f694
-l_0xef7cf8                   $f5f6a1
-l_0xef7d0f                   $f5f6be
-l_0xef7d83                   $f5f757
-l_0xef7dbe                   $f5f7a2
-l_0xef7dd5                   $f5f7c3
-l_0xef7e25                   $f5f837
-l_0xef7e3e                   $f5f85e
-l_0xef7e55                   $f5f87a
-l_0xef7e70                   $f5f8a0
-l_0xef7e88                   $f5f8c1
-l_0xef7eac                   $f5f8ea
-l_0xef7ed5                   $f5f91c
-l_0xef7f02                   $f5f952
-l_0xef7f1e                   $f5f97a
-l_0xef7f32                   $f5f992
-l_0xef7f5a                   $f5f9c1
-l_0xef7f7b                   $f5f9f1
-l_0xef7f9a                   $f5fa1b
-l_0xef7fc3                   $f5fa4d
-l_0xef7fe0                   $f5fa6f
-l_0xef7ffc                   $f5fa8e
-l_0xef8010                   $f5faa8
-l_0xef8026                   $f5fac9
-l_0xef804b                   $f5faf3
-l_0xef806d                   $f5fb1a
-l_0xef808d                   $f5fb41
-l_0xef80ac                   $f5fb64
-l_0xef80c4                   $f5fb7d
-l_0xef80e4                   $f5fba0
-l_0xef8109                   $f5fbcd
-l_0xef812b                   $f5fbf2
-l_0xef814f                   $f5fc1c
-l_0xef8167                   $f5fc35
-l_0xef8186                   $f5fc56
-l_0xef81a5                   $f5fc77
-l_0xef81c4                   $f5fc99
-l_0xef81d7                   $f5fcb0
-l_0xef81f1                   $f5fcd2
-l_0xef8211                   $f5fcf9
-l_0xef8226                   $f5fd0f
-l_0xef8239                   $f5fd26
-l_0xef825c                   $f5fd4f
-l_0xef8281                   $f5fd86
-l_0xef8299                   $f5fda3
-l_0xef82bc                   $f5fdcf
-l_0xef82d7                   $f5fdf1
-l_0xef82f7                   $f5fe16
-l_0xef8317                   $f5fe42
-l_0xef833e                   $f5fe6f
-l_0xef835c                   $f5fe99
-l_0xef838a                   $f5fed0
-l_0xef83a8                   $f5fef1
-l_0xef83ca                   $f5ff19
-l_0xef83ed                   $f5ff45
-l_0xef8413                   $f5ff75
-l_0xef843f                   $f5ffb5
-l_0xef8444                   $f5ffba
-l_0xef8445                   $f5ffbb
+l_0xef78f7                   $f9878f
+l_0xef790b                   $f987b0
+l_0xef792b                   $f987d4
+l_0xef792e                   $f987d7
+l_0xef793c                   $f987e9
+l_0xef794b                   $f987fc
+l_0xef796c                   $f98821
+l_0xef7970                   $f98825
+l_0xef797f                   $f98838
+l_0xef798f                   $f9884c
+l_0xef79b1                   $f98872
+l_0xef79b6                   $f98877
+l_0xef79c6                   $f9888b
+l_0xef79d7                   $f988a0
+l_0xef79e6                   $f988c0
+l_0xef79ef                   $f988de
+l_0xef7a0a                   $f9891a
+l_0xef7a14                   $f98924
+l_0xef7a28                   $f98944
+l_0xef7a4d                   $f98996
+l_0xef7a66                   $f989b8
+l_0xef7a7d                   $f989f2
+l_0xef7a97                   $f98a30
+l_0xef7ab1                   $f98a6e
+l_0xef7ac9                   $f98aaa
+l_0xef7ae0                   $f98ae5
+l_0xef7afb                   $f98b24
+l_0xef7b11                   $f98b5d
+l_0xef7b28                   $f98b98
+l_0xef7b46                   $f98bd9
+l_0xef7b64                   $f98c1a
+l_0xef7b83                   $f98c6b
+l_0xef7b9d                   $f98c8a
+l_0xef7ba0                   $f98c92
+l_0xef7bbc                   $f98cb6
+l_0xef7bbf                   $f98cbe
+l_0xef7bdc                   $f98ce0
+l_0xef7c42                   $f98ce8
+l_0xef7c73                   $f98d26
+l_0xef7c89                   $f98d54
+l_0xef7cb4                   $f98d9e
+l_0xef7ced                   $f98dea
+l_0xef7cf8                   $f98df7
+l_0xef7d0f                   $f98e14
+l_0xef7d83                   $f98ead
+l_0xef7dbe                   $f98ef8
+l_0xef7dd5                   $f98f19
+l_0xef7e25                   $f98f8d
+l_0xef7e3e                   $f98fb4
+l_0xef7e55                   $f98fd0
+l_0xef7e70                   $f98ff6
+l_0xef7e88                   $f99017
+l_0xef7eac                   $f99040
+l_0xef7ed5                   $f99072
+l_0xef7f02                   $f990a8
+l_0xef7f1e                   $f990d0
+l_0xef7f32                   $f990e8
+l_0xef7f5a                   $f99117
+l_0xef7f7b                   $f99147
+l_0xef7f9a                   $f99171
+l_0xef7fc3                   $f991a3
+l_0xef7fe0                   $f991c5
+l_0xef7ffc                   $f991e4
+l_0xef8010                   $f991fe
+l_0xef8026                   $f9921f
+l_0xef804b                   $f99249
+l_0xef806d                   $f99270
+l_0xef808d                   $f99297
+l_0xef80ac                   $f992ba
+l_0xef80c4                   $f992d3
+l_0xef80e4                   $f992f6
+l_0xef8109                   $f99323
+l_0xef812b                   $f99348
+l_0xef814f                   $f99372
+l_0xef8167                   $f9938b
+l_0xef8186                   $f993ac
+l_0xef81a5                   $f993cd
+l_0xef81c4                   $f993ef
+l_0xef81d7                   $f99406
+l_0xef81f1                   $f99428
+l_0xef8211                   $f9944f
+l_0xef8226                   $f99465
+l_0xef8239                   $f9947c
+l_0xef825c                   $f994a5
+l_0xef8281                   $f994dc
+l_0xef8299                   $f994f9
+l_0xef82bc                   $f99525
+l_0xef82d7                   $f99547
+l_0xef82f7                   $f9956c
+l_0xef8317                   $f99598
+l_0xef833e                   $f995c5
+l_0xef835c                   $f995ef
+l_0xef838a                   $f99626
+l_0xef83a8                   $f99647
+l_0xef83ca                   $f9966f
+l_0xef83ed                   $f9969b
+l_0xef8413                   $f996cb
+l_0xef843f                   $f9970b
+l_0xef8444                   $f99710
+l_0xef8445                   $f99711
 -----------------------------------------------------------------
 
 
 Labels in module data_59
 Name                         Address
 -----------------------------------------------------------------
-l_0xef845d                   $f9a3e7
-l_0xef8477                   $f9a408
-l_0xef848c                   $f9a422
-l_0xef84a7                   $f9a445
-l_0xef84b6                   $f9a459
-l_0xef84c6                   $f9a46e
-l_0xef84d4                   $f9a480
-l_0xef84f3                   $f9a4a8
-l_0xef8511                   $f9a4d1
-l_0xef8530                   $f9a4ff
-l_0xef8543                   $f9a514
-l_0xef8568                   $f9a53b
-l_0xef857e                   $f9a558
-l_0xef864c                   $f9a62b
-l_0xef866e                   $f9a64d
-l_0xef8698                   $f9a677
-l_0xef86e2                   $f9a6c1
-l_0xef874a                   $f9a729
-l_0xef875f                   $f9a73e
-l_0xef8777                   $f9a756
-l_0xef878f                   $f9a76e
-l_0xef87ac                   $f9a78b
-l_0xef87c3                   $f9a7a2
-l_0xef87da                   $f9a7b9
-l_0xef87f4                   $f9a7d3
-l_0xef8813                   $f9a7f2
-l_0xef8814                   $f9a7f3
-l_0xef8823                   $f9a802
-l_0xef8837                   $f9a816
-l_0xef883d                   $f9a81c
-l_0xef8847                   $f9a826
-l_0xef8851                   $f9a830
-l_0xef8868                   $f9a847
-l_0xef8882                   $f9a861
-l_0xef88b8                   $f9a897
-l_0xef88e9                   $f9a8c8
-l_0xef88ec                   $f9a8cb
-l_0xef88f6                   $f9a8d5
-l_0xef8900                   $f9a8df
-l_0xef890a                   $f9a8e9
-l_0xef8914                   $f9a8f3
-l_0xef891e                   $f9a8fd
-l_0xef8928                   $f9a907
-l_0xef8932                   $f9a911
-l_0xef893c                   $f9a91b
-l_0xef894c                   $f9a92b
-l_0xef895c                   $f9a93b
-l_0xef896c                   $f9a94b
-l_0xef897c                   $f9a95b
-l_0xef898c                   $f9a96b
-l_0xef899c                   $f9a97b
-l_0xef89ac                   $f9a98b
-l_0xef89bc                   $f9a99b
-l_0xef89ce                   $f9a9ad
-l_0xef89e0                   $f9a9bf
-l_0xef89fe                   $f9a9e7
-l_0xef8a18                   $f9aa06
-l_0xef8a33                   $f9aa2b
-l_0xef8a52                   $f9aa56
-l_0xef8a6f                   $f9aa7b
-l_0xef8a8c                   $f9aa9f
-l_0xef8aa3                   $f9aabd
-l_0xef8ac2                   $f9aae2
-l_0xef8add                   $f9ab02
-l_0xef8af8                   $f9ab24
-l_0xef8b11                   $f9ab3e
-l_0xef8b2f                   $f9ab61
-l_0xef8b4a                   $f9ab7f
-l_0xef8b65                   $f9ab9f
-l_0xef8b89                   $f9abc8
-l_0xef8ba8                   $f9abeb
-l_0xef8bc0                   $f9ac07
-l_0xef8be8                   $f9ac35
-l_0xef8bfb                   $f9ac4e
-l_0xef8c1d                   $f9ac7a
-l_0xef8c3a                   $f9ac9f
-l_0xef8c58                   $f9acbe
-l_0xef8c75                   $f9ace1
-l_0xef8c92                   $f9ad05
-l_0xef8cac                   $f9ad22
-l_0xef8cc7                   $f9ad3f
-l_0xef8cdd                   $f9ad55
-l_0xef8cfb                   $f9ad7c
-l_0xef8d17                   $f9ad9d
-l_0xef8d2f                   $f9adba
-l_0xef8d4c                   $f9ade5
-l_0xef8d72                   $f9ae0e
-l_0xef8d9f                   $f9ae48
-l_0xef8dc1                   $f9ae6f
-l_0xef8dde                   $f9ae9a
-l_0xef8e27                   $f9aeed
-l_0xef8e3c                   $f9af0c
-l_0xef8e5e                   $f9af38
-l_0xef8e7e                   $f9af62
-l_0xef8e9e                   $f9af8c
-l_0xef8ebe                   $f9afb6
-l_0xef8ee2                   $f9afdf
-l_0xef8f17                   $f9b029
-l_0xef8f4a                   $f9b071
-l_0xef8f91                   $f9b0cd
+l_0xef845d                   $f9a5e4
+l_0xef8477                   $f9a605
+l_0xef848c                   $f9a61f
+l_0xef84a7                   $f9a642
+l_0xef84b6                   $f9a656
+l_0xef84c6                   $f9a66b
+l_0xef84d4                   $f9a67d
+l_0xef84f3                   $f9a6a5
+l_0xef8511                   $f9a6ce
+l_0xef8530                   $f9a6fc
+l_0xef8543                   $f9a711
+l_0xef8568                   $f9a738
+l_0xef857e                   $f9a755
+l_0xef864c                   $f9a828
+l_0xef866e                   $f9a84a
+l_0xef8698                   $f9a874
+l_0xef86e2                   $f9a8be
+l_0xef874a                   $f9a926
+l_0xef875f                   $f9a93b
+l_0xef8777                   $f9a953
+l_0xef878f                   $f9a96b
+l_0xef87ac                   $f9a988
+l_0xef87c3                   $f9a99f
+l_0xef87da                   $f9a9b6
+l_0xef87f4                   $f9a9d0
+l_0xef8813                   $f9a9ef
+l_0xef8814                   $f9a9f0
+l_0xef8823                   $f9a9ff
+l_0xef8837                   $f9aa13
+l_0xef883d                   $f9aa19
+l_0xef8847                   $f9aa23
+l_0xef8851                   $f9aa2d
+l_0xef8868                   $f9aa44
+l_0xef8882                   $f9aa5e
+l_0xef88b8                   $f9aa94
+l_0xef88e9                   $f9aac5
+l_0xef88ec                   $f9aac8
+l_0xef88f6                   $f9aad2
+l_0xef8900                   $f9aadc
+l_0xef890a                   $f9aae6
+l_0xef8914                   $f9aaf0
+l_0xef891e                   $f9aafa
+l_0xef8928                   $f9ab04
+l_0xef8932                   $f9ab0e
+l_0xef893c                   $f9ab18
+l_0xef894c                   $f9ab28
+l_0xef895c                   $f9ab38
+l_0xef896c                   $f9ab48
+l_0xef897c                   $f9ab58
+l_0xef898c                   $f9ab68
+l_0xef899c                   $f9ab78
+l_0xef89ac                   $f9ab88
+l_0xef89bc                   $f9ab98
+l_0xef89ce                   $f9abaa
+l_0xef89e0                   $f9abbc
+l_0xef89fe                   $f9abe4
+l_0xef8a18                   $f9ac03
+l_0xef8a33                   $f9ac28
+l_0xef8a52                   $f9ac53
+l_0xef8a6f                   $f9ac78
+l_0xef8a8c                   $f9ac9c
+l_0xef8aa3                   $f9acba
+l_0xef8ac2                   $f9acdf
+l_0xef8add                   $f9acff
+l_0xef8af8                   $f9ad21
+l_0xef8b11                   $f9ad3b
+l_0xef8b2f                   $f9ad5e
+l_0xef8b4a                   $f9ad7c
+l_0xef8b65                   $f9ad9c
+l_0xef8b89                   $f9adc5
+l_0xef8ba8                   $f9ade8
+l_0xef8bc0                   $f9ae04
+l_0xef8be8                   $f9ae32
+l_0xef8bfb                   $f9ae4b
+l_0xef8c1d                   $f9ae77
+l_0xef8c3a                   $f9ae9c
+l_0xef8c58                   $f9aebb
+l_0xef8c75                   $f9aede
+l_0xef8c92                   $f9af02
+l_0xef8cac                   $f9af1f
+l_0xef8cc7                   $f9af3c
+l_0xef8cdd                   $f9af52
+l_0xef8cfb                   $f9af79
+l_0xef8d17                   $f9af9a
+l_0xef8d2f                   $f9afb7
+l_0xef8d4c                   $f9afe2
+l_0xef8d72                   $f9b00b
+l_0xef8d9f                   $f9b045
+l_0xef8dc1                   $f9b06c
+l_0xef8dde                   $f9b097
+l_0xef8e27                   $f9b0ea
+l_0xef8e3c                   $f9b109
+l_0xef8e5e                   $f9b135
+l_0xef8e7e                   $f9b15f
+l_0xef8e9e                   $f9b189
+l_0xef8ebe                   $f9b1b3
+l_0xef8ee2                   $f9b1dc
+l_0xef8f17                   $f9b226
+l_0xef8f4a                   $f9b26e
+l_0xef8f91                   $f9b2ca
 -----------------------------------------------------------------
 
 
@@ -6657,11 +6657,11 @@ ShortDadCall                 $fa03f8
 Labels in module _startup
 Name                         Address
 -----------------------------------------------------------------
-Config                       $fa1606
-DebugFlagSet                 $fa1611
-DebugStartup                 $fa1638
-GameStart                    $fa1677
-NewGameScreen                $fa160c
+Config                       $fa1767
+DebugFlagSet                 $fa1772
+DebugStartup                 $fa1799
+GameStart                    $fa17d8
+NewGameScreen                $fa176d
 -----------------------------------------------------------------
 
 
@@ -6680,23 +6680,23 @@ Name                         Address
 Labels in module configmenu
 Name                         Address
 -----------------------------------------------------------------
-ConfigMenu                   $f9991e
-ConfigMenuPrompt             $f9972f
-ConfigMenuStart              $f99640
-EndConfig                    $f9a2e4
-End_                         $f9a3e6
-Selected_1                   $f9963a
-Selected_2                   $f9963d
-Set_Count_1                  $f997d1
-Set_Count_2                  $f997f6
-Set_Count_3                  $f9981b
-Set_Count_4                  $f99840
-Set_Count_5                  $f99865
-Set_Count_6                  $f9988a
-Set_Count_7                  $f998af
-Set_Count_8                  $f998d4
-Set_Count_9                  $f998f9
-ShowDescription              $f99ee4
+ConfigMenu                   $f5f464
+ConfigMenuPrompt             $f5f275
+ConfigMenuStart              $f5f186
+EndConfig                    $f5fe2a
+End_                         $f5ff2c
+Selected_1                   $f5f180
+Selected_2                   $f5f183
+Set_Count_1                  $f5f317
+Set_Count_2                  $f5f33c
+Set_Count_3                  $f5f361
+Set_Count_4                  $f5f386
+Set_Count_5                  $f5f3ab
+Set_Count_6                  $f5f3d0
+Set_Count_7                  $f5f3f5
+Set_Count_8                  $f5f41a
+Set_Count_9                  $f5f43f
+ShowDescription              $f5fa2a
 -----------------------------------------------------------------
 
 
@@ -6717,13 +6717,14 @@ Name                         Address
 -----------------------------------------------------------------
 lbl_About                    $f6fde5
 lbl_Action                   $f6fe39
+lbl_AddMoney                 $f6ff40
 lbl_ArmsEquips               $f6ff03
 lbl_BGM                      $f6fe66
 lbl_Battle                   $f6fe6a
 lbl_BodyEquips               $f6ff0f
-lbl_BrickRoad                $f6ff5d
+lbl_BrickRoad                $f6ff67
 lbl_Broken                   $f6ff28
-lbl_BubbleMonkey             $f6ff56
+lbl_BubbleMonkey             $f6ff60
 lbl_Config                   $f6fe14
 lbl_Confirm                  $f6fe1b
 lbl_Consumables              $f6fed5
@@ -6733,20 +6734,20 @@ lbl_EXP                      $f6fea3
 lbl_Equips                   $f6fef4
 lbl_FlagID                   $f6fe53
 lbl_Flags                    $f6fe4d
-lbl_FlyingMan                $f6ff64
+lbl_FlyingMan                $f6ff6e
 lbl_Goods                    $f6fe71
-lbl_Group0                   $f6ff92
-lbl_Group1                   $f6ff9a
-lbl_Group2                   $f6ffa2
-lbl_Group3                   $f6ffaa
-lbl_Group4                   $f6ffb2
-lbl_Group5                   $f6ffba
+lbl_Group0                   $f6ff9c
+lbl_Group1                   $f6ffa4
+lbl_Group2                   $f6ffac
+lbl_Group3                   $f6ffb4
+lbl_Group4                   $f6ffbc
+lbl_Group5                   $f6ffc4
 lbl_Guts                     $f6feaa
-lbl_Health                   $f6ff7a
+lbl_Health                   $f6ff84
 lbl_IQ                       $f6fea7
 lbl_Inventions               $f6ff35
 lbl_KeyItems                 $f6fec3
-lbl_King                     $f6ff4c
+lbl_King                     $f6ff56
 lbl_Level                    $f6fe9d
 lbl_Luck                     $f6febe
 lbl_Map                      $f6fe77
@@ -6756,26 +6757,26 @@ lbl_NPCs                     $f6fe61
 lbl_None                     $f6fdeb
 lbl_Offensive                $f6feea
 lbl_OtherEquips              $f6ff1b
-lbl_PSI                      $f6ff87
+lbl_PSI                      $f6ff91
 lbl_Palette                  $f6fe7b
 lbl_Party                    $f6fe5b
 lbl_Passives                 $f6fee1
 lbl_Phone                    $f6fe83
-lbl_Picky                    $f6ff46
-lbl_PlushBear                $f6ff73
-lbl_Pokey                    $f6ff40
+lbl_Picky                    $f6ff50
+lbl_PlushBear                $f6ff7d
+lbl_Pokey                    $f6ff4a
 lbl_ShrineFox                $f6fe23
 lbl_SoundStone               $f6fe92
 lbl_Speed                    $f6feaf
-lbl_Stats                    $f6ff81
-lbl_Status                   $f6ff8b
+lbl_Stats                    $f6ff8b
+lbl_Status                   $f6ff95
 lbl_Storage                  $f6fecd
 lbl_System                   $f6fdf2
-lbl_TeddyBear                $f6ff6c
+lbl_TeddyBear                $f6ff76
 lbl_Teleport                 $f6fe89
 lbl_Test                     $f6fe0f
 lbl_ToggleMods               $f6fe03
-lbl_Tony                     $f6ff51
+lbl_Tony                     $f6ff5b
 lbl_Vitality                 $f6feb5
 lbl_Warp                     $f6fe40
 lbl_WarpID                   $f6fe45
@@ -6792,39 +6793,39 @@ Name                         Address
 Labels in module ccexpand
 Name                         Address
 -----------------------------------------------------------------
-Brk                          $fa0dbb
-CC_BreakEverything           $fa0dab
-CodeTable                    $fa0d23
-DoNothing                    $fa0edd
-Original1A00                 $fa0e97
-Original1A01                 $fa0e9e
-Original1A04                 $fa0ea5
-Original1A05                 $fa0eac
-Original1A06                 $fa0eb3
-Original1A07                 $fa0eba
-Original1A08                 $fa0ec1
-Original1A09                 $fa0ec8
-Original1A0A                 $fa0ecf
-Original1A0B                 $fa0ed6
-R_Get_Argument_Memory        $fa0e33
-R_Get_Secondary_Memory       $fa0e41
-R_Get_Secondary_Memory_In_A  $fa0e6f
-R_Get_Working_Memory         $fa0e3a
-R_Increment_Secondary_Memory $fa0e68
-R_Read_Parameter_Bytes       $fa0dc7
-R_Set_06_To_Argument_If_Zero $fa0e25
-R_Set_Argument_Memory        $fa0e51
-R_Set_Secondary_Memory       $fa0e5f
-R_Set_Secondary_Memory_To_A  $fa0e76
-R_Set_Working_Memory         $fa0e58
-TableJumpUsing7E00BC         $fa0e7d
+Brk                          $f9fe5d
+CC_BreakEverything           $f9fe4d
+CodeTable                    $f9fdc5
+DoNothing                    $f9ff7f
+Original1A00                 $f9ff39
+Original1A01                 $f9ff40
+Original1A04                 $f9ff47
+Original1A05                 $f9ff4e
+Original1A06                 $f9ff55
+Original1A07                 $f9ff5c
+Original1A08                 $f9ff63
+Original1A09                 $f9ff6a
+Original1A0A                 $f9ff71
+Original1A0B                 $f9ff78
+R_Get_Argument_Memory        $f9fed5
+R_Get_Secondary_Memory       $f9fee3
+R_Get_Secondary_Memory_In_A  $f9ff11
+R_Get_Working_Memory         $f9fedc
+R_Increment_Secondary_Memory $f9ff0a
+R_Read_Parameter_Bytes       $f9fe69
+R_Set_06_To_Argument_If_Zero $f9fec7
+R_Set_Argument_Memory        $f9fef3
+R_Set_Secondary_Memory       $f9ff01
+R_Set_Secondary_Memory_To_A  $f9ff18
+R_Set_Working_Memory         $f9fefa
+TableJumpUsing7E00BC         $f9ff1f
 -----------------------------------------------------------------
 
 
 Labels in module cc_asmcall
 Name                         Address
 -----------------------------------------------------------------
-CC_code_AsmCall              $fa1496
+CC_code_AsmCall              $f8ff48
 -----------------------------------------------------------------
 
 
@@ -6837,26 +6838,26 @@ Name                         Address
 Labels in module cc_text_speed
 Name                         Address
 -----------------------------------------------------------------
-CC_code_gettextspeed         $fa167b
-CC_code_settextspeed         $fa1693
+CC_code_gettextspeed         $f5ffb2
+CC_code_settextspeed         $f5ffca
 -----------------------------------------------------------------
 
 
 Labels in module bg_viewer
 Name                         Address
 -----------------------------------------------------------------
-InitEverything               $fa0f8f
-asm_HideBattleBG             $fa0f66
-asm_ShowBattleBG             $fa0ede
+InitEverything               $fa11eb
+asm_HideBattleBG             $fa11c2
+asm_ShowBattleBG             $fa113a
 -----------------------------------------------------------------
 
 
 Labels in module custom_windows_standalone
 Name                         Address
 -----------------------------------------------------------------
-ASM_CustomWindow_open        $fa159c
-ASM_CustomWindow_setupWindow $fa15b9
-CustomWindowList             $fa1591
+ASM_CustomWindow_open        $fa16fd
+ASM_CustomWindow_setupWindow $fa171a
+CustomWindowList             $fa16f2
 -----------------------------------------------------------------
 
 
@@ -6935,49 +6936,49 @@ Name                         Address
 Labels in module expand_text_windows
 Name                         Address
 -----------------------------------------------------------------
-CustomWindows                $fa0cdb
-GetExistenceAndLoadYWithSizeofStats $fa0b13
-GetExistenceAtA              $fa0b23
-NewWindowTable               $fa0b33
-Patch_C11E94                 $fa0afd
-Patch_C11EA5                 $fa0b08
-Patch_C1E1C1                 $fa0ae0
-Patch_C1FB70                 $fa0ae6
-Patch_C1FC22                 $fa0aec
-Patch_C2BBD0                 $fa0ad6
-Patch_C3E5B3                 $fa0af2
-SetExistenceAtXToA           $fa0b1b
+CustomWindows                $fa0f66
+GetExistenceAndLoadYWithSizeofStats $fa0d9e
+GetExistenceAtA              $fa0dae
+NewWindowTable               $fa0dbe
+Patch_C11E94                 $fa0d88
+Patch_C11EA5                 $fa0d93
+Patch_C1E1C1                 $fa0d6b
+Patch_C1FB70                 $fa0d71
+Patch_C1FC22                 $fa0d77
+Patch_C2BBD0                 $fa0d61
+Patch_C3E5B3                 $fa0d7d
+SetExistenceAtXToA           $fa0da6
 -----------------------------------------------------------------
 
 
 Labels in module Title_Window
 Name                         Address
 -----------------------------------------------------------------
-Title_Char_Name              $fa1090
-Title_Str_Name               $fa110c
-Win_Title                    $fa102e
-r_0xC1866D                   $fa105c
+Title_Char_Name              $fa12ec
+Title_Str_Name               $fa1368
+Win_Title                    $fa128a
+r_0xC1866D                   $fa12b8
 -----------------------------------------------------------------
 
 
 Labels in module movement_reloc
 Name                         Address
 -----------------------------------------------------------------
-M_SpriteOnScreen             $f9c88e
+M_SpriteOnScreen             $f9ca8b
 -----------------------------------------------------------------
 
 
 Labels in module noclip
 Name                         Address
 -----------------------------------------------------------------
-HIJACK_NoClip                $f8ffcd
+HIJACK_NoClip                $f8ffc8
 -----------------------------------------------------------------
 
 
 Labels in module mute_music
 Name                         Address
 -----------------------------------------------------------------
-MuteMusic                    $fa13a9
+MuteMusic                    $fa1605
 -----------------------------------------------------------------
 
 
@@ -6991,7 +6992,7 @@ LostScriptedBattle           $f1fff7
 Labels in module fix_teleport_hardlock
 Name                         Address
 -----------------------------------------------------------------
-TeleportSpriteDespawn        $f6ffc2
+TeleportSpriteDespawn        $fa17dc
 -----------------------------------------------------------------
 
 
@@ -7011,8 +7012,8 @@ MashFunc                     $f3ffee
 Labels in module fast_doors
 Name                         Address
 -----------------------------------------------------------------
-FastDiv400                   $f8ffef
-MonkeyPatch                  $f8ffe8
+FastDiv400                   $f5fff8
+MonkeyPatch                  $f5fff1
 -----------------------------------------------------------------
 
 
@@ -7032,7 +7033,7 @@ InRunMode                    $f2ffda
 Labels in module repel_sandwiches
 Name                         Address
 -----------------------------------------------------------------
-extended_spawn_check         $f5ffe3
+extended_spawn_check         $f6ffcc
 -----------------------------------------------------------------
 
 
@@ -7046,22 +7047,22 @@ SpeedHijack                  $f4ffec
 Labels in module GoodsMenuEquip
 Name                         Address
 -----------------------------------------------------------------
-equipMessagePartOne          $fa11d5
-equipMessagePartTwo          $fa123f
-finalDefense                 $fa1251
-finalOffense                 $fa1269
-initialDefense               $fa11ed
-initialOffense               $fa1216
-jeffDefenseStat              $fa1289
-jeffOffenseStat              $fa1299
-nessDefenseStat              $fa1281
-nessOffenseStat              $fa1291
-newCheck                     $fa11b2
-newUse                       $fa116e
-paulaDefenseStat             $fa1285
-paulaOffenseStat             $fa1295
-pooDefenseStat               $fa128d
-pooOffenseStat               $fa129d
+equipMessagePartOne          $fa1431
+equipMessagePartTwo          $fa149b
+finalDefense                 $fa14ad
+finalOffense                 $fa14c5
+initialDefense               $fa1449
+initialOffense               $fa1472
+jeffDefenseStat              $fa14e5
+jeffOffenseStat              $fa14f5
+nessDefenseStat              $fa14dd
+nessOffenseStat              $fa14ed
+newCheck                     $fa140e
+newUse                       $fa13ca
+paulaDefenseStat             $fa14e1
+paulaOffenseStat             $fa14f1
+pooDefenseStat               $fa14e9
+pooOffenseStat               $fa14f9
 -----------------------------------------------------------------
 
 
@@ -7077,53 +7078,56 @@ ModMenu_AboutDlg             $fa0998
 Labels in module goodsmenu
 Name                         Address
 -----------------------------------------------------------------
-ArmsEquipList                $f56720
-BodyEquipList                $f568b2
-BrokenItemList               $f56c39
-ConsumableItemList           $f556c2
-EquipItemTypeList            $f55fb9
-GiveItemID                   $f57329
-GiveKeyItemID                $f5744a
-GoBack                       $f57242
+ATMMachine                   $f555b4
+AddMoney                     $f555e7
+AddMoneyConfirm              $f556bd
+ArmsEquipList                $f56867
+BodyEquipList                $f569f9
+BrokenItemList               $f56d80
+ConsumableItemList           $f55809
+EquipItemTypeList            $f56100
+GiveItemID                   $f57470
+GiveKeyItemID                $f57591
+GoBack                       $f57389
 GoodsMenu                    $f55414
-InventionsItemList           $f56e11
-InventoryFull                $f571dd
-ItemID                       $f57251
-ItemTypeList                 $f5557e
-JeffWeaponList               $f5643e
-KeyItemList                  $f55c1f
-KeyItemList2                 $f55df4
-NessWeaponList               $f5612d
-NothingStored                $f57184
-OffensiveItemList            $f55a09
-OtherEquipList               $f56a3e
-PassiveItemList              $f558cb
-PaulaWeaponList              $f56312
-PooWeaponList                $f56609
-StorageMenu                  $f56f86
-StoreItemMenu                $f57027
-TakeItemMenu                 $f5706e
-WeaponPartyList              $f56087
+InventionsItemList           $f56f58
+InventoryFull                $f57324
+ItemID                       $f57398
+ItemTypeList                 $f556c5
+JeffWeaponList               $f56585
+KeyItemList                  $f55d66
+KeyItemList2                 $f55f3b
+NessWeaponList               $f56274
+NothingStored                $f572cb
+OffensiveItemList            $f55b50
+OtherEquipList               $f56b85
+PassiveItemList              $f55a12
+PaulaWeaponList              $f56459
+PooWeaponList                $f56750
+StorageMenu                  $f570cd
+StoreItemMenu                $f5716e
+TakeItemMenu                 $f571b5
+WeaponPartyList              $f561ce
 -----------------------------------------------------------------
 
 
 Labels in module mainmenu
 Name                         Address
 -----------------------------------------------------------------
-MainMenu                     $f9fe65
-Selected_Equip               $f9fe56
-Selected_Goods               $f9fe53
-Selected_KeyItems            $f9fe5c
-Selected_ModMenu             $f9fe5f
-Selected_PSI                 $f9fe59
-Selected_Status              $f9fe62
-goto_end                     $f9ffdc
-goto_equip                   $f9ff84
-goto_goods                   $f9ff79
-goto_keyitems                $f9ff98
-goto_modmenu                 $f9ffa4
-goto_psi                     $f9ff8d
-goto_status                  $f9ffd3
+MainMenu                     $fa0fc0
+Selected_Equip               $fa0fb1
+Selected_Goods               $fa0fae
+Selected_KeyItems            $fa0fb7
+Selected_ModMenu             $fa0fba
+Selected_PSI                 $fa0fb4
+Selected_Status              $fa0fbd
+goto_end                     $fa1137
+goto_equip                   $fa10df
+goto_goods                   $fa10d4
+goto_keyitems                $fa10f3
+goto_modmenu                 $fa10ff
+goto_psi                     $fa10e8
+goto_status                  $fa112e
 -----------------------------------------------------------------
 
 
@@ -7164,16 +7168,16 @@ ShowDesc                     $f94878
 Labels in module cc_main_menu
 Name                         Address
 -----------------------------------------------------------------
-CC_Close_HP                  $f8ffb8
-CC_Equip                     $f8ff64
-CC_Goods                     $f8ff48
-CC_PSI                       $f8ff9c
-CC_Status                    $f8ff80
-Close_HP                     $f8ffc8
-Equip                        $f8ff74
-Goods                        $f8ff58
-PSI                          $f8ffac
-Status                       $f8ff90
+CC_Close_HP                  $f5ff9d
+CC_Equip                     $f5ff49
+CC_Goods                     $f5ff2d
+CC_PSI                       $f5ff81
+CC_Status                    $f5ff65
+Close_HP                     $f5ffad
+Equip                        $f5ff59
+Goods                        $f5ff3d
+PSI                          $f5ff91
+Status                       $f5ff75
 -----------------------------------------------------------------
 
 
@@ -7203,10 +7207,10 @@ StatsMenu                    $f21efa
 Labels in module warpmenu
 Name                         Address
 -----------------------------------------------------------------
-WarpID                       $f9ec14
-WarpList                     $f9e68d
-WarpMenu                     $f9e4e7
-WarpToID                     $f9eced
+WarpID                       $f9ee11
+WarpList                     $f9e88a
+WarpMenu                     $f9e6e4
+WarpToID                     $f9eeea
 -----------------------------------------------------------------
 
 
@@ -7228,15 +7232,15 @@ TownMenu                     $f313dd
 Labels in module battlemenu
 Name                         Address
 -----------------------------------------------------------------
-BattleID                     $f9e3fc
-BattleList                   $f9dd19
-BattleMenu                   $f9dc70
-BossBattleList               $f9dda4
-MidbossBattleList            $f9e019
-MidbossBattleList2           $f9e280
-RegularFoeBattleList         $f9de41
-SanctuaryBossList            $f9de46
-StartBattle                  $f9e4d4
+BattleID                     $f9e5f9
+BattleList                   $f9df16
+BattleMenu                   $f9de6d
+BossBattleList               $f9dfa1
+MidbossBattleList            $f9e216
+MidbossBattleList2           $f9e47d
+RegularFoeBattleList         $f9e03e
+SanctuaryBossList            $f9e043
+StartBattle                  $f9e6d1
 -----------------------------------------------------------------
 
 
@@ -7288,101 +7292,101 @@ WintersBGMList               $f6794a
 Labels in module palettemenu
 Name                         Address
 -----------------------------------------------------------------
-PaletteMenu                  $f9f590
-Set_Palette_0                $f9f990
-Set_Palette_1                $f9f998
-Set_Palette_10               $f9f9e0
-Set_Palette_11               $f9f9e8
-Set_Palette_12               $f9f9f0
-Set_Palette_13               $f9f9f8
-Set_Palette_14               $f9fa00
-Set_Palette_15               $f9fa08
-Set_Palette_16               $f9fa10
-Set_Palette_17               $f9fa18
-Set_Palette_18               $f9fa20
-Set_Palette_19               $f9fa28
-Set_Palette_2                $f9f9a0
-Set_Palette_20               $f9fa30
-Set_Palette_21               $f9fa38
-Set_Palette_22               $f9fa40
-Set_Palette_23               $f9fa48
-Set_Palette_24               $f9fa50
-Set_Palette_25               $f9fa58
-Set_Palette_26               $f9fa60
-Set_Palette_27               $f9fa68
-Set_Palette_28               $f9fa70
-Set_Palette_29               $f9fa78
-Set_Palette_3                $f9f9a8
-Set_Palette_30               $f9fa80
-Set_Palette_31               $f9fa88
-Set_Palette_32               $f9fa90
-Set_Palette_33               $f9fa98
-Set_Palette_34               $f9faa0
-Set_Palette_35               $f9faa8
-Set_Palette_36               $f9fab0
-Set_Palette_37               $f9fab8
-Set_Palette_38               $f9fac0
-Set_Palette_39               $f9fac8
-Set_Palette_4                $f9f9b0
-Set_Palette_40               $f9fad0
-Set_Palette_41               $f9fad8
-Set_Palette_42               $f9fae0
-Set_Palette_43               $f9fae8
-Set_Palette_44               $f9faf0
-Set_Palette_45               $f9faf8
-Set_Palette_46               $f9fb00
-Set_Palette_47               $f9fb08
-Set_Palette_48               $f9fb10
-Set_Palette_49               $f9fb18
-Set_Palette_5                $f9f9b8
-Set_Palette_50               $f9fb20
-Set_Palette_51               $f9fb28
-Set_Palette_52               $f9fb30
-Set_Palette_53               $f9fb38
-Set_Palette_54               $f9fb40
-Set_Palette_55               $f9fb48
-Set_Palette_56               $f9fb50
-Set_Palette_57               $f9fb58
-Set_Palette_58               $f9fb60
-Set_Palette_59               $f9fb68
-Set_Palette_6                $f9f9c0
-Set_Palette_60               $f9fb70
-Set_Palette_61               $f9fb78
-Set_Palette_62               $f9fb80
-Set_Palette_63               $f9fb88
-Set_Palette_64               $f9fb90
-Set_Palette_65               $f9fb98
-Set_Palette_66               $f9fba0
-Set_Palette_67               $f9fba8
-Set_Palette_68               $f9fbb0
-Set_Palette_69               $f9fbb8
-Set_Palette_7                $f9f9c8
-Set_Palette_70               $f9fbc0
-Set_Palette_8                $f9f9d0
-Set_Palette_9                $f9f9d8
+PaletteMenu                  $f9f78d
+Set_Palette_0                $f9fb8d
+Set_Palette_1                $f9fb95
+Set_Palette_10               $f9fbdd
+Set_Palette_11               $f9fbe5
+Set_Palette_12               $f9fbed
+Set_Palette_13               $f9fbf5
+Set_Palette_14               $f9fbfd
+Set_Palette_15               $f9fc05
+Set_Palette_16               $f9fc0d
+Set_Palette_17               $f9fc15
+Set_Palette_18               $f9fc1d
+Set_Palette_19               $f9fc25
+Set_Palette_2                $f9fb9d
+Set_Palette_20               $f9fc2d
+Set_Palette_21               $f9fc35
+Set_Palette_22               $f9fc3d
+Set_Palette_23               $f9fc45
+Set_Palette_24               $f9fc4d
+Set_Palette_25               $f9fc55
+Set_Palette_26               $f9fc5d
+Set_Palette_27               $f9fc65
+Set_Palette_28               $f9fc6d
+Set_Palette_29               $f9fc75
+Set_Palette_3                $f9fba5
+Set_Palette_30               $f9fc7d
+Set_Palette_31               $f9fc85
+Set_Palette_32               $f9fc8d
+Set_Palette_33               $f9fc95
+Set_Palette_34               $f9fc9d
+Set_Palette_35               $f9fca5
+Set_Palette_36               $f9fcad
+Set_Palette_37               $f9fcb5
+Set_Palette_38               $f9fcbd
+Set_Palette_39               $f9fcc5
+Set_Palette_4                $f9fbad
+Set_Palette_40               $f9fccd
+Set_Palette_41               $f9fcd5
+Set_Palette_42               $f9fcdd
+Set_Palette_43               $f9fce5
+Set_Palette_44               $f9fced
+Set_Palette_45               $f9fcf5
+Set_Palette_46               $f9fcfd
+Set_Palette_47               $f9fd05
+Set_Palette_48               $f9fd0d
+Set_Palette_49               $f9fd15
+Set_Palette_5                $f9fbb5
+Set_Palette_50               $f9fd1d
+Set_Palette_51               $f9fd25
+Set_Palette_52               $f9fd2d
+Set_Palette_53               $f9fd35
+Set_Palette_54               $f9fd3d
+Set_Palette_55               $f9fd45
+Set_Palette_56               $f9fd4d
+Set_Palette_57               $f9fd55
+Set_Palette_58               $f9fd5d
+Set_Palette_59               $f9fd65
+Set_Palette_6                $f9fbbd
+Set_Palette_60               $f9fd6d
+Set_Palette_61               $f9fd75
+Set_Palette_62               $f9fd7d
+Set_Palette_63               $f9fd85
+Set_Palette_64               $f9fd8d
+Set_Palette_65               $f9fd95
+Set_Palette_66               $f9fd9d
+Set_Palette_67               $f9fda5
+Set_Palette_68               $f9fdad
+Set_Palette_69               $f9fdb5
+Set_Palette_7                $f9fbc5
+Set_Palette_70               $f9fdbd
+Set_Palette_8                $f9fbcd
+Set_Palette_9                $f9fbd5
 -----------------------------------------------------------------
 
 
 Labels in module movement
 Name                         Address
 -----------------------------------------------------------------
-CreditsFinalJeffIntro        $f9fd91
-CreditsFinalJeffReappear     $f9fe27
-CreditsFinalNessIntro        $f9fd22
-CreditsFinalNessReappear     $f9fdfb
-CreditsFinalPaulaIntro       $f9fd5c
-CreditsFinalPaulaReappear    $f9fe11
-CreditsFinalPooIntro         $f9fdc6
-CreditsFinalPooReappear      $f9fe3d
-CreditsNPC                   $f9fc22
-CreditsNPCBonker             $f9fc8e
-CreditsNPCBonkerEnd          $f9fce0
-CreditsNPCBonkerToasted      $f9fcce
-MoveTowardsDest              $f9fbff
-MoveUntilAtDest              $f9fc14
-Walking                      $f9fbc8
-movement_sub_AA38            $f9fbd4
-movement_task_walking_anim_8frames $f9fbe2
+CreditsFinalJeffIntro        $fa0c9f
+CreditsFinalJeffReappear     $fa0d35
+CreditsFinalNessIntro        $fa0c30
+CreditsFinalNessReappear     $fa0d09
+CreditsFinalPaulaIntro       $fa0c6a
+CreditsFinalPaulaReappear    $fa0d1f
+CreditsFinalPooIntro         $fa0cd4
+CreditsFinalPooReappear      $fa0d4b
+CreditsNPC                   $fa0b30
+CreditsNPCBonker             $fa0b9c
+CreditsNPCBonkerEnd          $fa0bee
+CreditsNPCBonkerToasted      $fa0bdc
+MoveTowardsDest              $fa0b0d
+MoveUntilAtDest              $fa0b22
+Walking                      $fa0ad6
+movement_sub_AA38            $fa0ae2
+movement_task_walking_anim_8frames $fa0af0
 -----------------------------------------------------------------
 
 
@@ -7492,11 +7496,11 @@ StatusMenu                   $f17fa6
 Labels in module letterbox
 Name                         Address
 -----------------------------------------------------------------
-asm_CutsceneInit             $fa1556
-asm_CutsceneOff              $fa1587
-asm_write_letterbox_regs     $fa1573
-movscr_Cutscene              $fa1516
-movscr_Cutscene_Off          $fa1536
+asm_CutsceneInit             $f9ffc0
+asm_CutsceneOff              $f9fff1
+asm_write_letterbox_regs     $f9ffdd
+movscr_Cutscene              $f9ff80
+movscr_Cutscene_Off          $f9ffa0
 -----------------------------------------------------------------
 
 

@@ -10,6 +10,8 @@ import "../../commands/flag_cmds.ccs"
 import "../../commands/item_cmds.ccs"
 import "../../commands/health_cmds.ccs"
 
+command e(label) "{long label}"
+
 GoodsMenu:
 	CloseAllModMenuWnd()
     OpenModMenu2Wnd(18)
@@ -18,9 +20,23 @@ GoodsMenu:
 		"View Lists": { goto(ItemTypeList) }
 		"Enter ID":  { goto(ItemID) }
 		"Storage":   { goto(StorageMenu) }
+		"ATM Machine": { goto(ATMMachine) }
+		"Add Money": { goto(AddMoney) }
 		default "Back": { goto(modmenu.ModMenu) }
 	}
 goto(GoodsMenu)
+
+ATMMachine:
+	window_open(1) "[19 02]Withdrawal[02][19 02]Deposit[02][1C 07 02][11]{clearline}[09 02 {e(data_17.l_0xc62e6d)} {e(data_17.l_0xc62d93)}]" window_close(1)
+goto(GoodsMenu)
+
+AddMoney:
+	ConfirmNumber(lbl_AddMoney, 4, "Add this amount?", AddMoneyConfirm)
+goto(GoodsMenu)
+
+AddMoneyConfirm:
+	givemoney(0) sound(SND_KACHING)
+eob
 
 ItemTypeList:
 	CloseModMenu2Wnd()
@@ -342,8 +358,6 @@ StorageMenu:
 		default "Back": { goto(GoodsMenu) }
 	}
 goto(StorageMenu)
-
-command e(label) "{long label}"
 
 // Check If Item Can Be Stored By Escargo Express
 // checks the $YYth item in character $XX's inventory.

@@ -48,6 +48,7 @@ lbl_BodyEquips: "BODY EQUIPS[00]"
 lbl_OtherEquips: "OTHER EQUIPS[00]"
 lbl_Broken: "BROKEN STUFF[00]"
 lbl_Inventions: "INVENTIONS[00]"
+lbl_AddMoney: "ADD MONEY[00]"
 // NPC Follower Labels
 lbl_Pokey: "POKEY[00]"
 lbl_Picky: "PICKY[00]"
