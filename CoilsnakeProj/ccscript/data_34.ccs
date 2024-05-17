@@ -5,6 +5,9 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc7e890:
@@ -529,7 +532,14 @@ l_0xc800f5:
 l_0xc8015a:
     "@I really like your straight-forward style." next
     "@I'll tell you what,{pause(15)} I'll let you borrow a bike for free." next
-    "[1D 03 FF][1B 02 {e(l_0xc80277)}][1D 0E 00 B0]" call(data_33.l_0xc7dccf) next
+    if flag flg_KeyItem
+    {
+        GiveMenuKeyItem(item_Bicycle)
+    }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc80277)}][1D 0E 00 B0]" call(data_33.l_0xc7dccf) next
+    }
     "{set(flag 81)}@You know that two people can't ride on one bicycle," next
     "@so of course three or four people on a bike would be impossible!" next
     "@Did you also know that you can't ride a bike with anything following you?" next
