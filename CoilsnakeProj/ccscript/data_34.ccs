@@ -532,7 +532,7 @@ l_0xc800f5:
 l_0xc8015a:
     "@I really like your straight-forward style." next
     "@I'll tell you what,{pause(15)} I'll let you borrow a bike for free." next
-    if flag flg_KeyItem
+    if flag flg_KeyItems
     {
         GiveMenuKeyItem(item_Bicycle)
     }
