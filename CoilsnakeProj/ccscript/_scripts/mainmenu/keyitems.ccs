@@ -151,7 +151,7 @@ KeyItems: {
     swap
     SwitchGoto(26)
         SwitchCase(donothing) SwitchCase(soundstone) SwitchCase(donothing)
-        SwitchCase(shackkey) SwitchCase(bike) SwitchCase(phone)
+        SwitchCase(key) SwitchCase(bike) SwitchCase(phone)
 		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing)
         SwitchCase(donothing) SwitchCase(donothing) SwitchCase(zombiepaper)
 		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing)
@@ -163,9 +163,9 @@ KeyItems: {
     "@Error! No option {number(0)} in this menu." next goto(KeyItems)
 	soundstone:
 		window_closeall window_open(1) counter(item_Sound_Stone) ctoarg call(data_55.l_0xc9fefd) goto(KeyItems)
-	shackkey:
-		window_closeall window_open(1) goto(data_61.ShackKeyUnlock)
-	bike:
+	key:
+		window_closeall window_open(1) "@(Interact with a locked door" newline "to use the key.)" next goto(KeyItems)
+    bike:
 		goto(BicycleStart)
 	phone:
 		call(data_20.l_0xc68017) goto(KeyItems)

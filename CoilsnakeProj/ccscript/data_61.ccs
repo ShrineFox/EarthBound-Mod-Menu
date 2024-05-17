@@ -30,6 +30,7 @@ l_0xefa2ab:
 l_0xefa2b5:
     "@This town is not shown on the map." end
 
+// Door to Shack
 l_0xefa2c9:
     "[06 6C 00 {e(l_0xefa2d5)}]" call(data_25.l_0xc6fb20) goto(l_0xefa2d5)
 

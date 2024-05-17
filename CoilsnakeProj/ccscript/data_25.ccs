@@ -5,6 +5,7 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
 
 // Text Data
 l_0xc6e298:
@@ -396,8 +397,24 @@ l_0xc6fae5:
 l_0xc6fb02:
     "{store_registers}[19 19 00 00]{swap}{result_is(172)}[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fb33) "[1F 1E DF 01 06]{set(flag 541)}" eob goto(l_0xc6fb20)
 
+// Locked door
 l_0xc6fb20:
-    "{window_open(1)}@The door is locked.{wait}{window_closeall}" eob
+    goto(lockeddoor)
+
+lockeddoor:
+    if flag flg_KeyItems and flag flg_KeyItem_ShackKey and not flag flg_OnettShackUnlocked
+    {
+        window_closeall window_open(1)
+        set(flg_OnettShackUnlocked)
+        "@{name(1)} used" linebreak
+        "  the Shack Key." next
+        "@The door opened.{wait}{sound(119)}"
+    }
+    else
+    {
+        window_open(1) "@The door is locked." wait window_closeall
+    }
+    eob
 
 l_0xc6fb33:
     "{load_registers}[19 19 00 00]{swap}@[1C 02 00]{swap} used" linebreak
