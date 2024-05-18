@@ -5,6 +5,9 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc9720d:
@@ -438,7 +441,16 @@ l_0xc981c6:
     "@I apologize{pause(20)} to everyone." next
     "@Here's the key to open the jail in the mountain cabin where [1C 02 02] is being held." next
     "@Take the key and go." next
-    "{set(flag 68)}{unset(flag 175)}{unset(flag 45)}{set(flag 351)}{set(flag 352)}{set(flag 353)}{set(flag 354)}{set(flag 355)}{set(flag 356)}[1D 03 FF][1B 02 {e(l_0xc9827c)}][1D 0E 00 AB]" call(data_33.l_0xc7dcb6) "{wait}{window_closeall}{unset(flag 122)}" eob
+    "{set(flag 68)}{unset(flag 175)}{unset(flag 45)}{set(flag 351)}{set(flag 352)}{set(flag 353)}{set(flag 354)}{set(flag 355)}{set(flag 356)}"
+    if flag flg_KeyItems
+    {
+        GiveMenuKeyItem(item_Key_Cabin)
+    }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc9827c)}][1D 0E 00 AB]" call(data_33.l_0xc7dcb6) "{wait}{window_closeall}{unset(flag 122)}" 
+    }
+eob
 
 l_0xc9827c:
     "{set(flag 122)}@Your backpack is full..." next

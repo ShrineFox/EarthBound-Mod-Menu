@@ -63,8 +63,8 @@ KeyItems: {
 		{
 			MenuOptionWithCallback("Eraser Eraser", SetCount8)
 		}
-		if flag flg_KeyItem_CabinKey and not flg_HappyHappyNotBlue
-		{
+		if flag flg_KeyItem_CabinKey and not flag flg_PaulaRescued
+        {
 			MenuOptionWithCallback("Cabin Key", SetCount9)
 		}
 		if flag flg_KeyItem_WadofBills and not flag flg_RunawayFiveTwosonDebtPaid
@@ -152,7 +152,7 @@ KeyItems: {
     SwitchGoto(26)
         SwitchCase(donothing) SwitchCase(soundstone) SwitchCase(donothing)
         SwitchCase(key) SwitchCase(bike) SwitchCase(phone)
-		SwitchCase(pencileraser) SwitchCase(erasereraser) SwitchCase(donothing)
+		SwitchCase(pencileraser) SwitchCase(erasereraser) SwitchCase(key)
         SwitchCase(donothing) SwitchCase(donothing) SwitchCase(zombiepaper)
 		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing)
         SwitchCase(donothing) SwitchCase(heiroglyph) SwitchCase(donothing)

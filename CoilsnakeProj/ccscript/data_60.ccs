@@ -5,6 +5,9 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xef8fad:
@@ -173,10 +176,18 @@ l_0xef970f:
     "@If you didn't come,{pause(15)} I would have had to try to bust out of here." next
     eob
 
+// Interacting with locked cabin door
 l_0xef9737:
     "@[1C 02 01]!  You got the key!" next
-    "@Are you hurt?" linebreak
-    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xef976b)} {e(l_0xef976b)}]" goto(l_0xef976b)
+    "@Are you hurt?" next
+    if flag flg_KeyItems and flag flg_KeyItem_PencilEraser
+    {
+        goto(data_30.rescuepaula)
+    }
+    else
+    {
+        "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xef976b)} {e(l_0xef976b)}]" goto(l_0xef976b)
+    }
 
 l_0xef976b:
     "@I'm sorry for all the trouble I've caused you." end
