@@ -428,7 +428,14 @@ l_0xc81f56:
     "@This machine will eradicate all pencil-shaped figures in just one second." next
     "@It's incredibly powerful.{pause(20)}  Just don't use it near a shop that sells pencils." next
     "@Here, it's yours now." next
-    "[1D 03 FF][1B 02 {e(l_0xc82049)}][1D 0E 00 B8]" call(data_33.l_0xc7dcb6) next
+     if flag flg_KeyItems
+    {
+        GiveMenuKeyItem(item_Eraser_Pencil)
+    }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc82049)}][1D 0E 00 B8]" call(data_33.l_0xc7dcb6) next
+    }
     "@If I invent some other brilliant item,{pause(15)} I'll call you.{wait}{window_closeall}{unset(flag 42)}{set(flag 175)}{set(flag 83)}" eob
 
 l_0xc82049:

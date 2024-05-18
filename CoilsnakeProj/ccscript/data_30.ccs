@@ -5,6 +5,9 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc78033:
@@ -280,16 +283,41 @@ l_0xc7907a:
 l_0xc79081:
     "[1F F1 A4 01 87 00]" eob
 
+// Interact with Pencil Statue
 l_0xc79088:
     "@(For some weird reason," next
-    "@a pencil-shaped iron statue is blocking the path.)" end
+    "@a pencil-shaped iron statue is blocking the path.)" next
+    if flag flg_KeyItems and flag flg_KeyItem_PencilEraser
+    {
+        "@{name(1)} used" linebreak
+        "  the Pencil Eraser." next
+        "@For some weird reason, the iron pencil statue" linebreak
+        "  was erased![03]{sound(33)}" next
+        
+        if not flag 482
+        {
+            "[1F 1E C2 01 0A]{window_closeall}{set(flag 284)}{set(flag 482)}" eob
+        }
+        else if not flag 516
+        {
+            "[1F 1E 3B 03 0A]{window_closeall}{set(flag 516)}" eob
+        }
+        else if not flag 609
+        {
+            "[1F 1E 85 02 0A]{window_closeall}{set(flag 609)}" eob
+        }
+    }
+    eob
 
+// Peaceful Rest Valley Pencil Statue Erased
 l_0xc790c4:
     call(data_33.l_0xc7dd2c) "{result_is(184)}[1B 02 {e(data_32.l_0xc7c6f1)}]" call(l_0xc7911e) "[1F 1E C2 01 0A]{window_closeall}{set(flag 284)}{set(flag 482)}" eob
 
+// Monkey Caves Pencil Statue Erased
 l_0xc790e4:
     call(data_33.l_0xc7dd2c) "{result_is(184)}[1B 02 {e(data_32.l_0xc7c6f1)}]" call(l_0xc7911e) "[1F 1E 3B 03 0A]{window_closeall}{set(flag 516)}" eob
 
+// Winters Pencil Statue Erased
 l_0xc79101:
     call(data_33.l_0xc7dd2c) "{result_is(184)}[1B 02 {e(data_32.l_0xc7c6f1)}]" call(l_0xc7911e) "[1F 1E 85 02 0A]{window_closeall}{set(flag 609)}" eob
 

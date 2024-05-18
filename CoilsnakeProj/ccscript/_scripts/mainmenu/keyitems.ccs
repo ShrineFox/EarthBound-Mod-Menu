@@ -152,7 +152,7 @@ KeyItems: {
     SwitchGoto(26)
         SwitchCase(donothing) SwitchCase(soundstone) SwitchCase(donothing)
         SwitchCase(key) SwitchCase(bike) SwitchCase(phone)
-		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing)
+		SwitchCase(pencileraser) SwitchCase(erasereraser) SwitchCase(donothing)
         SwitchCase(donothing) SwitchCase(donothing) SwitchCase(zombiepaper)
 		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing)
         SwitchCase(donothing) SwitchCase(heiroglyph) SwitchCase(donothing)
@@ -169,7 +169,11 @@ KeyItems: {
 		goto(BicycleStart)
 	phone:
 		window_closeall window_open(1) call(data_20.l_0xc68017) goto(KeyItems)
-	zombiepaper:
+	pencileraser:
+		window_closeall window_open(1) "@(Interact with a pencil-shaped" newline "object to use the eraser.)" next goto(KeyItems)
+	erasereraser:
+		window_closeall window_open(1) "@(Interact with an eraser-shaped" newline "object to use the eraser.)" next goto(KeyItems)
+    zombiepaper:
 		window_closeall window_open(1) call(data_55.l_0xc9fc48) goto(KeyItems)
 	gum:
 		window_closeall window_open(1) call(data_49.l_0xc97f72) goto(KeyItems)
