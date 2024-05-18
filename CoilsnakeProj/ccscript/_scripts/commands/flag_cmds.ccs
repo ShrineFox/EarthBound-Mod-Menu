@@ -34,34 +34,29 @@ command ToggleWithSound(flg)
 command get_char_at_pos(pos) { "[19 10 {byte pos}]" }
 // Check how many of the main 4 are in the party (does not count follower NPCs)
 command party_size_smaller_than(n) { "[1D 19 {byte n}]" }
+command compare_register(n, reg) "[18 07 {long n} {byte reg}]"
+command compare_counter(n) compare_register(n, 2)
+
 // Check if you currently have a specific party member
 command CheckIfCharacterInParty(charaID)
 {
-	store_registers
-
-	counter(1)
+    counter(1)
 _loop:
-	ctoarg
-
-	get_char_at_pos(argument)
-
-	if result_is(charaID)
-	{
-		// Return result = 1
-		goto(_loopend)
-
-	}
-	inc
-	// Make sure we only check up to 6 party members lots
-	if counter_is_greaterthan_orequal(7) { // Is counter >= 7?
-		party_size_smaller_than(1) // Set result to 0
-
-		goto(_loopend)
-
-	}
-	goto(_loop)
-	_loopend:
-	load_registers
+    ctoarg
+    get_char_at_pos(0)
+    if result_is(charaID)
+    {
+        party_size_smaller_than(9)
+        goto(_loopend) // Return result = 1
+    }
+    inc
+    // Make sure we only check up to 6 party members lots
+    if counter_is(7) { // Is counter >= 7?
+        party_size_smaller_than(1) // Set result to 0
+        goto(_loopend)
+    }
+    goto(_loop)
+_loopend:
 }
 
 // Set or unset a flag depending on the presence of a certain party member
@@ -69,7 +64,6 @@ command SetFlagIfCharacterInParty(charaID, flg)
 {
 	CheckIfCharacterInParty(charaID)
 	SetFlagByResult(flg)
-	load_registers
 }
 
 // Remove all members from party except one specified party leader 

@@ -5,6 +5,7 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
 
 // Text Data
 l_0xc5e0cc:
@@ -320,10 +321,10 @@ l_0xc5e8a0:
     "@Pokey!{pause(15)}  I've been looking all over for you..." next
     "@You see,{pause(15)} Pokey got scared and ran away..." next
     "@Well, I'm glad that you're okay at least..." next
-    "@Let's go home now.{pause(20)}  I bet Mom and Dad are worried sick about us." next
+    "@Let's go home now.{pause(20)}  I bet Mom and Dad are worried sick about us." next set(flg_Picky)
     "@Geez!{pause(15)}  Sometimes I wonder which one of us is the real big brother.[03]{sound(16)}" call(data_21.l_0xc681f0) "{set(flag 20)}{set(flag 37)}{set(flag 742)}[1F 66 01 0F 45 EA C5 00]{set(flag 100)}{unset(flag 466)}{unset(flag 468)}{set(flag 11)}[02][19 10 03]{result_is(7)}[1B 02 {e(data_50.l_0xc9992f)}]{window_open(1)}[19 22 01 01 07 00][1F 13 01 00][19 22 05 01 07 00][1F 13 05 00]@Awo{pause(5)}o{pause(5)}o{pause(5)}o{pause(5)}of!" next
-    "@(If I knew this was going to be such a scary place," next
-    "@I wouldn't have come along...{pause(20)}  I'm outta here!){wait}" call(data_21.l_0xc683d5) "{window_closeall}[1F 15 28 00 2E 00 01][1F 61][1F F1 7C 00 73 02]{set(flag 304)}[02][06 12 00 {e(l_0xc5ea3d)}]" eob
+    "@(If I knew this was going to be such a scary place," next 
+    "@I wouldn't have come along...{pause(20)}  I'm outta here!){wait}" unset(flg_King) call(data_21.l_0xc683d5) "{window_closeall}[1F 15 28 00 2E 00 01][1F 61][1F F1 7C 00 73 02]{set(flag 304)}[02][06 12 00 {e(l_0xc5ea3d)}]" eob
 
 l_0xc5ea3d:
     "[1F 15 5B 01 33 00 01]" eob

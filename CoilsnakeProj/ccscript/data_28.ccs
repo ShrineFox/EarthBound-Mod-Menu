@@ -5,6 +5,7 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
 
 // Text Data
 l_0xc74787:
@@ -266,7 +267,7 @@ l_0xc757cd:
     "@(Oh,{pause(10)} I get it.{pause(20)}  You just wanted to talk to me because I'm so lovable.)" end
 
 l_0xc757fb:
-    "@(I guess I have no choice.{pause(20)}  Let's go.)[03]{sound(16)}" call(data_21.l_0xc680f2) "{unset(flag 304)}{set(flag 444)}" eob
+    "@(I guess I have no choice.{pause(20)}  Let's go.)[03]{sound(16)}" set(flg_King) call(data_21.l_0xc680f2) "{unset(flag 304)}{set(flag 444)}" eob
 
 l_0xc75827:
     "{isset(flag 444)}[1B 02 {e(l_0xc758cc)}]@(I don't wanna go out anymore." next
@@ -372,6 +373,7 @@ l_0xc76080:
 
 l_0xc760b7:
     newline
+    set(flg_Pokey)
     "@All right!{pause(20)}  You go out in front,{pause(15)} and I'll follow at a safe distance." next
     "@Let's get going![03]{window_closeall}{set(flag 30)}{set(flag 21)}{set(flag 466)}" call(data_21.l_0xc68174) "{unset(flag 310)}{unset(flag 301)}{unset(flag 530)}{unset(flag 531)}" eob
 

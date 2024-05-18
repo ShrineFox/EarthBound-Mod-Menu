@@ -35,8 +35,51 @@ GameSettings:
 		"Ness Pajamas":  { ToggleFlag(flg_PajamaNess) }
 		"Skip Lvlup Msgs": { ToggleFlag(flg_SkipStatIncMsgs) }
 		"Debug Window":   { ToggleFlag(flg_Debug) }
+		"Party Flag Test": { goto(PartyFlagTest) }
 		default "Back": { goto(FlagsMenu) }
 	}
+goto(GameSettings)
+
+PartyFlagTest:
+	OpenKeyItemWnd()
+	Lbl(lbl_Flags)
+	SetTextSpeedInstant()
+	unset(flg_Ness)
+	unset(flg_Paula)
+	unset(flg_Jeff)
+	unset(flg_Poo)
+	unset(flg_Pokey)
+	unset(flg_Picky)
+	unset(flg_King)
+	unset(flg_Tony)
+	unset(flg_BubbleMonkey)
+	unset(flg_BrickRoad)
+	unset(flg_FlyingMan)
+	unset(flg_TeddyBear)
+	unset(flg_PlushBear)
+
+	SetPartyFlags()
+	// RestorePartyFromFlags()
+
+	"Ness" if flag flg_Ness  { "[ac]"  } " "
+	"Paula" if flag flg_Paula { "[ac]"  } " "
+	"Jeff" if flag flg_Jeff  { "[ac]"  } " "
+	"Poo" if flag flg_Poo   { "[ac]"  }
+	newline
+	"Pokey" if flag flg_Pokey { "[ac]"  } " "
+	"Picky" if flag flg_Picky { "[ac]"  } " "
+	"King" if flag flg_King  { "[ac]"  } " "
+	"Tony" if flag flg_Tony  { "[ac]"  }
+	newline
+	"Monkey" if flag flg_BubbleMonkey { "[ac]"  } " "
+	"BrickRoad" if flag flg_BrickRoad    { "[ac]"  } " "
+	"FlyMan" if flag flg_FlyingMan  { "[ac]"  }
+	newline
+	"Teddy" if flag flg_TeddyBear  { "[ac]"  } " "
+	"PlushBear" if flag flg_PlushBear  { "[ac]"  }
+	next
+	SetTextSpeed(1)
+    CloseKeyItemWnd()
 goto(GameSettings)
 
 PartyFlagsMenu:

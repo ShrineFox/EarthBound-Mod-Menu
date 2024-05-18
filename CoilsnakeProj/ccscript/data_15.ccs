@@ -69,6 +69,8 @@ l_0xc5ee13:
     "@Geez.{pause(20)}  My heart is almost pounding right out of my chest!...[03]{window_closeall}[1F 66 01 2B 01 75 C6 00]" eob
 
 l_0xc5ef3e:
+    unset(flg_Picky)
+    unset(flg_Pokey)
     "[06 68 00 {e(l_0xc5f1d1)}]@I'm really sorry that my kids troubled you so much..." next
     "@Both of you are really going to get it now![03]{window_closeall}[1F EA 5B 01][1F E9 2D 00][1F 12 05][1F 15 2C 00 51 00 01][1F 12 06][1F 15 2D 00 52 00 01][1F 61][1F F1 2C 00 53 00][1F 61][1F E6 2D 00][19 22 01 02 2C 00][1F 13 01 00]{window_open(1)}@By the way, I would be happy if you left sometime soon." next
     "@I'm tired of your family living next door." next

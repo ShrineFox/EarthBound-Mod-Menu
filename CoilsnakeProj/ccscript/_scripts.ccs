@@ -62,7 +62,7 @@ BicycleStart:
 		TempSoloPartyMember(pty_Ness)
 		"[1F F0]"
 	}
-	else if flg_BikeCantNormallyBeUsed { window_open(1) "@The bike cannot be used right now." unset(flg_BikeCantNormallyBeUsed) end }
+    else if flg_BikeCantNormallyBeUsed { window_open(1) "@The bike cannot be used right now." unset(flg_BikeCantNormallyBeUsed) end }
 	else { "[1F F0]" }
 eob
 

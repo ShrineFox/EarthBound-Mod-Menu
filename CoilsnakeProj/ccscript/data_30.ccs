@@ -391,6 +391,7 @@ l_0xc795c1:
     goto(rescuepaula)
 
 rescuepaula:
+    set(flg_Paula)
     "{window_closeall}{sound(119)}[1F 1E B4 01 06]{pause(60)}{window_open(1)}@Thank you, [1C 02 01]!" next
     "@You're just like I imagined you would be..." next
     "@I'm sure that some people in Twoson are worried about me..." next
