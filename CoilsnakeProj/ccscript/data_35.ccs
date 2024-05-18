@@ -338,7 +338,12 @@ l_0xc81a84:
     "{set(flag 522)}" eob
 
 l_0xc81a88:
-    "[06 D3 00 {e(l_0xc81ac4)}][06 02 00 {e(l_0xc81b04)}][06 77 00 {e(l_0xc81ade)}][19 22 FF 02 E2 00]" call(data_33.l_0xc7dc9b) "[1B 02 {e(l_0xc81ade)}]@Hello,{pause(15)} please present your ticket." end goto(l_0xc81ac4)
+    "[06 D3 00 {e(l_0xc81ac4)}][06 02 00 {e(l_0xc81b04)}][06 77 00 {e(l_0xc81ade)}][19 22 FF 02 E2 00]" call(data_33.l_0xc7dc9b) "[1B 02 {e(l_0xc81ade)}]@Hello,{pause(15)} please present your ticket." next
+    if flag flg_KeyItems and flag flg_KeyItem_BackstagePass
+    {
+        goto(chaostheaterticket)
+    }
+    eob
 
 l_0xc81ac4:
     "@Sorry,{pause(15)} the show is on hold for a while." end
@@ -356,7 +361,11 @@ l_0xc81b0c:
     "{store_registers}[06 02 00 {e(l_0xc81baf)}][06 77 00 {e(l_0xc81b9b)}]{load_registers}[19 19 00 00]{swap}{store_registers}{result_is(125)}[1B 03 {e(l_0xc81b50)}][19 22 FF 02 E2 00]" call(data_33.l_0xc7dc9b) "[1B 02 {e(l_0xc81ade)}]@Please show me your ticket." end goto(l_0xc81b50)
 
 l_0xc81b50:
-    "[19 22 FF 02 E2 00]" call(data_33.l_0xc7dc9b) "[1B 02 {e(l_0xc81ade)}]{sound(118)}@Here you go.{pause(15)}  Hurry!{pause(20)}  You're just in time to see the Runaway Five show![03]" call(data_30.l_0xc79211) "{set(flag 549)}{set(flag 2)}" eob goto(l_0xc81b9b)
+    "[19 22 FF 02 E2 00]" call(data_33.l_0xc7dc9b) "[1B 02 {e(l_0xc81ade)}]" 
+    goto(chaostheaterticket)
+
+chaostheaterticket:
+    "{sound(118)}@Here you go.{pause(15)}  Hurry!{pause(20)}  You're just in time to see the Runaway Five show![03]" call(data_30.l_0xc79211) "{set(flag 549)}{set(flag 2)}" eob
 
 l_0xc81b9b:
     "@The show is on hold for a while." end

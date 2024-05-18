@@ -5,6 +5,9 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc95a5f:
@@ -15,7 +18,11 @@ l_0xc95a8d:
     "[19 19 00 00]{swap}{result_is(180)}[1B 03 {e(l_0xc95aa0)}]" goto(data_32.l_0xc7c6b6)
 
 l_0xc95aa0:
-    "{isset(flag 319)}[1B 02 {e(l_0xc95ba0)}][19 10 01][19 22 00 02 FD 00]{swap}{store_registers}{result_is(1)}[1B 03 {e(l_0xc95b64)}]{load_registers}{result_is(2)}[1B 03 {e(l_0xc95b64)}]{load_registers}{result_is(8)}[1B 03 {e(l_0xc95b64)}]{sound(118)}[19 23 FD 00 01 01 00][1F 16 FD 00 00]@Yipes!{pause(60)}  You surprised me.{pause(20)}  Now I'm not sure what to do." next
+    "{isset(flag 319)}[1B 02 {e(l_0xc95ba0)}][19 10 01][19 22 00 02 FD 00]{swap}{store_registers}{result_is(1)}[1B 03 {e(l_0xc95b64)}]{load_registers}{result_is(2)}[1B 03 {e(l_0xc95b64)}]{load_registers}{result_is(8)}[1B 03 {e(l_0xc95b64)}]"
+    goto(chaostheatermanager_paid)
+
+chaostheatermanager_paid:
+    "{sound(118)}[19 23 FD 00 01 01 00][1F 16 FD 00 00]@Yipes!{pause(60)}  You surprised me.{pause(20)}  Now I'm not sure what to do." next
     "[1D 01 FF B4]@I got the money, of course,{pause(15)} and now the Runaway Five are free to leave." next
     "@I've got no complaints now that I have my money.[03]{set(flag 119)}{set(flag 309)}{unset(flag 624)}" goto(data_31.l_0xc799d7)
 
@@ -73,7 +80,16 @@ l_0xc95f0a:
     "@Use the money any way you like.{pause(20)}  You cannot refuse my generosity.{pause(20)}  Just accept it." next
     "@Now I plan on looking for the evil Mani Mani Statue" next
     "@that Lier X. Agerate unearthed in Onett." next
-    "@I'll see you at another time, in another space.[03][1D 03 FF][1B 02 {e(l_0xc9605d)}][1D 0E 00 B4]" call(data_33.l_0xc7dcb6) "{set(flag 85)}" end
+    "@I'll see you at another time, in another space." next
+    if flag flg_KeyItems
+    {
+        GiveMenuKeyItem(item_Wad_Bills)
+    }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc9605d)}][1D 0E 00 B4] " call(data_33.l_0xc7dcb6) next
+    }
+    "{set(flag 85)}" eob
 
 l_0xc9605d:
     "{pause(60)}" linebreak

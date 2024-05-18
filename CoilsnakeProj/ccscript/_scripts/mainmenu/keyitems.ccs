@@ -150,10 +150,10 @@ KeyItems: {
     ctoarg
     swap
     SwitchGoto(26)
-        SwitchCase(donothing) SwitchCase(soundstone) SwitchCase(donothing)
+        SwitchCase(atm) SwitchCase(soundstone) SwitchCase(townmap)
         SwitchCase(key) SwitchCase(bike) SwitchCase(phone)
 		SwitchCase(pencileraser) SwitchCase(erasereraser) SwitchCase(key)
-        SwitchCase(donothing) SwitchCase(donothing) SwitchCase(zombiepaper)
+        SwitchCase(wadofbills) SwitchCase(backstagepass) SwitchCase(zombiepaper)
 		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing)
         SwitchCase(donothing) SwitchCase(heiroglyph) SwitchCase(donothing)
 		SwitchCase(towerkey) SwitchCase(hawkeye) SwitchCase(donothing) 
@@ -161,18 +161,26 @@ KeyItems: {
 		SwitchCase(donothing) SwitchCase(gum)
     swap
     "@Error! No option {number(0)} in this menu." next goto(KeyItems)
-	soundstone:
+	atm:
+		window_closeall window_open(1) "@(Interact with an Automated" newline "  Teller Machine to withdraw" newline "  or deposit cash.)" next goto(KeyItems)
+    soundstone:
 		window_closeall window_open(1) counter(item_Sound_Stone) ctoarg call(data_55.l_0xc9fefd) goto(KeyItems)
-	key:
-		window_closeall window_open(1) "@(Interact with a locked door" newline "to use the key.)" next goto(KeyItems)
+	townmap:
+		window_closeall event(7) goto(KeyItems)
+    key:
+		window_closeall window_open(1) "@(Interact with a locked door" newline "  to use the key.)" next goto(KeyItems)
     bike:
 		goto(BicycleStart)
 	phone:
 		window_closeall window_open(1) call(data_20.l_0xc68017) goto(KeyItems)
 	pencileraser:
-		window_closeall window_open(1) "@(Interact with a pencil-shaped" newline "object to use the eraser.)" next goto(KeyItems)
+		window_closeall window_open(1) "@(Interact with a pencil-shaped" newline "  object to use the eraser.)" next goto(KeyItems)
 	erasereraser:
-		window_closeall window_open(1) "@(Interact with an eraser-shaped" newline "object to use the eraser.)" next goto(KeyItems)
+		window_closeall window_open(1) "@(Interact with an eraser-shaped" newline "  object to use the eraser.)" next goto(KeyItems)
+    wadofbills:
+		window_closeall window_open(1) "@(Talk to the Chaos Theater" newline "  manager to help the Runaway" newline "  Five with their debt.)" next goto(KeyItems)
+    backstagepass:
+		window_closeall window_open(1) "@(Talk to the Chaos Theater" newline "  receptionist to go watch" newline "  the Runaway Five's show.)" next goto(KeyItems)
     zombiepaper:
 		window_closeall window_open(1) call(data_55.l_0xc9fc48) goto(KeyItems)
 	gum:

@@ -5,6 +5,9 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc940e3:
@@ -145,7 +148,15 @@ l_0xc948dc:
     "{counter(1)}" call(data_33.l_0xc7dc7f) "[1B 03 {e(l_0xc949a2)}]{counter(2)}" call(data_33.l_0xc7dc7f) "[1B 03 {e(l_0xc949ce)}][06 29 02 {e(l_0xc94a1c)}]@Hey,{pause(15)} ya came with [1C 02 02]!" next
     "@Then you deserve a present, playboy." next
     "@Here's a [1C 05 7D].{pause(20)}  You can get into our shows with this!" next
-    "[1D 03 FF][1B 02 {e(l_0xc94966)}][1D 0E 00 7D]" call(data_33.l_0xc7dccf) "{wait}{set(flag 553)}{set(flag 484)}" eob
+    if flag flg_KeyItems
+    {
+        GiveMenuKeyItem(item_Pass_Backstage)
+    }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc94966)}][1D 0E 00 7D]" call(data_33.l_0xc7dccf) next
+    }
+    "{wait}{set(flag 553)}{set(flag 484)}" eob
 
 l_0xc94966:
     "@It seems like you've got an awful lot of junk." next
@@ -416,5 +427,11 @@ l_0xc959e2:
     "[06 77 00 {e(data_48.l_0xc95a5f)}]@The Runaway Five owe me a lot of money." next
     "@They'll stay here until they pay me back." next
     "@They might be here for 100 years," next
-    "@unless you decide to pay off their debt...  Heh, heh, heh." end
-
+    "@unless you decide to pay off their debt...  Heh, heh, heh." next
+    if flag flg_KeyItems and flag flg_KeyItem_WadofBills
+    {
+        unset(flg_KeyItem_WadofBills)
+        unset(flg_KeyItem_BackstagePass)
+        goto(data_48.chaostheatermanager_paid)
+    }
+    eob
