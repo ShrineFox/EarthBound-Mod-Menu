@@ -5,6 +5,9 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc805ba:
@@ -309,7 +312,16 @@ l_0xc81945:
 l_0xc81970:
     "[1F 41 06]@I am a mouse.{pause(20)}  No one has given me a name yet." next
     "@You took care of my master." next
-    "@In return,{pause(15)} I want to give you this.{pause(20)}  Please take it and say nothing.[03][1D 03 FF][1B 02 {e(l_0xc81a26)}][1D 0E 00 B5]" call(data_33.l_0xc7dcb6) "{set(flag 82)}[06 04 00 {e(l_0xc819f1)}]" end
+    "@In return,{pause(15)} I want to give you this.{pause(20)}  Please take it and say nothing." next
+    if flag flg_KeyItems
+    {
+        GiveMenuKeyItem(item_Receiver_Phone)
+    }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc81a26)}][1D 0E 00 B5]" call(data_33.l_0xc7dcb6)
+    }
+    "{set(flag 82)}[06 04 00 {e(l_0xc819f1)}]" end
 
 l_0xc819f1:
     next

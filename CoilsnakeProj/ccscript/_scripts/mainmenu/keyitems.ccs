@@ -168,7 +168,7 @@ KeyItems: {
     bike:
 		goto(BicycleStart)
 	phone:
-		call(data_20.l_0xc68017) goto(KeyItems)
+		window_closeall window_open(1) call(data_20.l_0xc68017) goto(KeyItems)
 	zombiepaper:
 		window_closeall window_open(1) call(data_55.l_0xc9fc48) goto(KeyItems)
 	gum:
