@@ -70,22 +70,27 @@ command SetFlagIfCharacterInParty(charaID, flg)
 // (without necessarily updating flags, so they can be restored later)
 command TempSoloPartyMember(ptyID)
 {
-	store_registers
-	party_add(ptyID)
+	call(tempnessonly)
+}
+
+tempnessonly:
+	party_add(1)
 	counter(1)
 	_loop2:
 	if counter_is(18) { goto(_loop2end) }
-	else if not counter_is(ptyID) { ctoarg party_remove(argument) }
+	else if not counter_is(1) { ctoarg party_remove(0) }
 	inc
 	goto(_loop2)
 	RefreshScreen_NoPrevWnd()
 	_loop2end:
-	load_registers
-}
+	eob
 
 command RestorePartyFromFlags()
 {
-	store_registers
+	call(restoreparty)
+}
+
+restoreparty:
 	if flag flg_Ness  { party_add(pty_Ness)  }
 	if flag flg_Paula { party_add(pty_Paula) }
 	if flag flg_Jeff  { party_add(pty_Jeff)  }
@@ -99,7 +104,6 @@ command RestorePartyFromFlags()
 	if flag flg_FlyingMan  { party_add(pty_FlyingMan) }
 	if flag flg_TeddyBear  { party_add(pty_TeddyBear) }
 	if flag flg_PlushBear  { party_add(pty_PlushBear) }
-
 	if not flag flg_Ness  { party_remove(pty_Ness)  }
 	if not flag flg_Paula { party_remove(pty_Paula) }
 	if not flag flg_Jeff  { party_remove(pty_Jeff)  }
@@ -113,22 +117,22 @@ command RestorePartyFromFlags()
 	if not flag flg_FlyingMan  { party_remove(pty_FlyingMan) }
 	if not flag flg_TeddyBear  { party_remove(pty_TeddyBear) }
 	if not flag flg_PlushBear  { party_remove(pty_PlushBear) }
-	RefreshScreen_NoPrevWnd()
-	load_registers
-}
+    RefreshScreen_NoPrevWnd()
+eob
 
 command SetFlagByResult(flg)
 {
-	store_registers
 	if result_is(1) { set(flg) }
-	load_registers
-	if result_is(0) { unset(flg) }
-	load_registers
+	else { unset(flg) }
 }
 
 // Update all party member flags to reflect current party 
 command SetPartyFlags()
 {
+	call(setptyflags)
+}
+
+setptyflags:
 	SetFlagIfCharacterInParty(pty_Ness, flg_Ness)
 	SetFlagIfCharacterInParty(pty_Paula, flg_Paula)
 	SetFlagIfCharacterInParty(pty_Jeff, flg_Jeff)
@@ -142,4 +146,4 @@ command SetPartyFlags()
 	SetFlagIfCharacterInParty(pty_FlyingMan, flg_FlyingMan)
 	SetFlagIfCharacterInParty(pty_TeddyBear, flg_TeddyBear)
 	SetFlagIfCharacterInParty(pty_PlushBear, flg_PlushBear)
-}
+	eob

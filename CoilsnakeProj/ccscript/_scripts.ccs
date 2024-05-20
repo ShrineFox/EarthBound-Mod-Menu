@@ -60,6 +60,7 @@ BicycleStart:
 	if flag flg_UnrestrictBike
 	{
 		TempSoloPartyMember(pty_Ness)
+		set(flg_RidingBike)
 		"[1F F0]"
 	}
     else if flg_BikeCantNormallyBeUsed { window_open(1) "@The bike cannot be used right now." unset(flg_BikeCantNormallyBeUsed) end }
@@ -71,7 +72,8 @@ BicycleEnd:
 	if flag flg_UnrestrictBike
 	{
 		RestorePartyFromFlags()
-	}
+        unset(flg_RidingBike)
+    }
 	window_closeall
 eob
 

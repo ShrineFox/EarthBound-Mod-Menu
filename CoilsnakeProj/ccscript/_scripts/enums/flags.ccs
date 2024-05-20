@@ -92,6 +92,8 @@ define flg_MuteMusic = flag 0x635
 define flg_LearnedPSI = flag 0x634
 // Whether Homesickness is disabled
 define flg_DisableHomesick = flag 0x633
+// Whether player is riding bike (with unrestricted bike enabled)
+define flg_RidingBike = flag 0x632
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12

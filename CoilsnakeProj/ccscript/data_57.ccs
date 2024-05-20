@@ -5,6 +5,8 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/commands/flag_cmds.ccs"
+import "_scripts/enums/flags.ccs"
 
 // Text Data
 l_0xef6e03:
@@ -448,34 +450,43 @@ l_0xef7843:
     "@Time started again.[03]" eob
 
 l_0xef7858:
+    if flag flg_RidingBike { RestorePartyFromFlags() }
     newline
     "@" call(data_58.l_0xef790b) " attacked![03]" eob
 
 l_0xef7866:
+    if flag flg_RidingBike { RestorePartyFromFlags() }
     newline
     "@" call(data_58.l_0xef790b) " blocked the way![03]" eob
 
 l_0xef7879:
+    if flag flg_RidingBike { RestorePartyFromFlags() }
     newline
     "@" call(data_58.l_0xef790b) " came after you![03]" eob
 
 l_0xef788b:
+    if flag flg_RidingBike { RestorePartyFromFlags() }
     newline
     "@" call(data_58.l_0xef790b) " trapped you![03]" eob
 
 l_0xef789c:
+    if flag flg_RidingBike { RestorePartyFromFlags() }
     "@You encounter " call(data_58.l_0xef794b) "[03]" eob
 
 l_0xef78ab:
+    if flag flg_RidingBike { RestorePartyFromFlags() }
     "@You meet " call(data_58.l_0xef794b) "[03]" eob
 
 l_0xef78b8:
+    if flag flg_RidingBike { RestorePartyFromFlags() }
     "@You engage " call(data_58.l_0xef794b) "[03]" eob
 
 l_0xef78c7:
+    if flag flg_RidingBike { RestorePartyFromFlags() }
     "@You confront " call(data_58.l_0xef794b) "[03]" eob
 
 l_0xef78d8:
+    if flag flg_RidingBike { RestorePartyFromFlags() }
     newline
     "@Here is a chance" linebreak
     "  for a surprise opening attack![03]" eob
