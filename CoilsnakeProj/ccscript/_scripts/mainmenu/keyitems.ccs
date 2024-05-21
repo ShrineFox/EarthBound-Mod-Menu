@@ -11,19 +11,19 @@ import "../commands/flag_cmds.ccs"
 import "../commands/item_cmds.ccs"
 
 
-SetCount1: { SetDescription(1, wnd_KeyItems, ShowDesc1) } SetCount2: { SetDescription(2, wnd_KeyItems, ShowDesc2) } 
-SetCount3: { SetDescription(3, wnd_KeyItems, ShowDesc3) } SetCount4: { SetDescription(4, wnd_KeyItems, ShowDesc4) }
-SetCount5: { SetDescription(5, wnd_KeyItems, ShowDesc5) } SetCount6: { SetDescription(6, wnd_KeyItems, ShowDesc6) } 
-SetCount7: { SetDescription(7, wnd_KeyItems, ShowDesc7) } SetCount8: { SetDescription(8, wnd_KeyItems, ShowDesc8) }
-SetCount9: { SetDescription(9, wnd_KeyItems, ShowDesc9) } SetCount10: { SetDescription(10, wnd_KeyItems, ShowDesc10) } 
-SetCount11: { SetDescription(11, wnd_KeyItems, ShowDesc11) } SetCount12: { SetDescription(12, wnd_KeyItems, ShowDesc12) }
-SetCount13: { SetDescription(13, wnd_KeyItems, ShowDesc13) } SetCount14: { SetDescription(14, wnd_KeyItems, ShowDesc14) } 
-SetCount15: { SetDescription(15, wnd_KeyItems, ShowDesc15) } SetCount16: { SetDescription(16, wnd_KeyItems, ShowDesc16) }
-SetCount17: { SetDescription(17, wnd_KeyItems, ShowDesc17) } SetCount18: { SetDescription(18, wnd_KeyItems, ShowDesc18) }
-SetCount19: { SetDescription(19, wnd_KeyItems, ShowDesc19) } SetCount20: { SetDescription(20, wnd_KeyItems, ShowDesc20) }
-SetCount21: { SetDescription(21, wnd_KeyItems, ShowDesc21) } SetCount22: { SetDescription(22, wnd_KeyItems, ShowDesc22) }
-SetCount23: { SetDescription(23, wnd_KeyItems, ShowDesc23) } SetCount24: { SetDescription(24, wnd_KeyItems, ShowDesc24) }
-SetCount25: { SetDescription(25, wnd_KeyItems, ShowDesc25) } SetCount26: { SetDescription(26, wnd_KeyItems, ShowDesc26) } 
+SetCount1: { counter(1) ctoarg eob } SetCount2: { counter(2) ctoarg eob } 
+SetCount3: { counter(3) ctoarg eob } SetCount4: { counter(4) ctoarg eob }
+SetCount5: { counter(5) ctoarg eob } SetCount6: { counter(6) ctoarg eob } 
+SetCount7: { counter(7) ctoarg eob } SetCount8: { counter(8) ctoarg eob }
+SetCount9: { counter(9) ctoarg eob } SetCount10: { counter(10) ctoarg eob } 
+SetCount11: { counter(11) ctoarg eob } SetCount12: { counter(12) ctoarg eob }
+SetCount13: { counter(13) ctoarg eob } SetCount14: { counter(14) ctoarg eob }
+SetCount15: { counter(15) ctoarg eob } SetCount16: { counter(16) ctoarg eob }
+SetCount17: { counter(17) ctoarg eob } SetCount18: { counter(18) ctoarg eob }
+SetCount19: { counter(19) ctoarg eob } SetCount20: { counter(20) ctoarg eob }
+SetCount21: { counter(21) ctoarg eob } SetCount22: { counter(22) ctoarg eob }
+SetCount23: { counter(23) ctoarg eob } SetCount24: { counter(24) ctoarg eob }
+SetCount25: { counter(25) ctoarg eob } SetCount26: { counter(26) ctoarg eob } 
 
 KeyItems: {
 	if not flag flg_Ness and not flag flg_Jeff { NotificationWnd(wnd_ModMenuNotification, "@Error: No party flags set.") eob }
@@ -151,64 +151,83 @@ KeyItems: {
     swap
     SwitchGoto(26)
         SwitchCase(atm) SwitchCase(soundstone) SwitchCase(townmap)
-        SwitchCase(key) SwitchCase(bike) SwitchCase(phone)
-		SwitchCase(pencileraser) SwitchCase(erasereraser) SwitchCase(key)
+        SwitchCase(shackkey) SwitchCase(bike) SwitchCase(phone)
+		SwitchCase(pencileraser) SwitchCase(erasereraser) SwitchCase(cabinkey)
         SwitchCase(wadofbills) SwitchCase(backstagepass) SwitchCase(zombiepaper)
-		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing)
-        SwitchCase(donothing) SwitchCase(heiroglyph) SwitchCase(donothing)
-		SwitchCase(towerkey) SwitchCase(hawkeye) SwitchCase(donothing) 
-		SwitchCase(donothing) SwitchCase(donothing) SwitchCase(donothing) 
-		SwitchCase(donothing) SwitchCase(gum)
+		SwitchCase(showticket) SwitchCase(diamond) SwitchCase(yogurtdisp)
+        SwitchCase(signedbanana) SwitchCase(heiroglyph) SwitchCase(carrotkey)
+		SwitchCase(towerkey) SwitchCase(hawkeye) SwitchCase(shynessbook) 
+		SwitchCase(tendakraut) SwitchCase(meteoritepiece) SwitchCase(lockerkey) 
+		SwitchCase(badkeymachine) SwitchCase(gum)
     swap
     "@Error! No option {number(0)} in this menu." next goto(KeyItems)
 	atm:
-		window_closeall window_open(1) "@(Interact with an Automated" newline "  Teller Machine to withdraw" newline "  or deposit cash.)" next goto(KeyItems)
+		call(DescATM) goto(KeyItems)
     soundstone:
 		window_closeall window_open(1) counter(item_Sound_Stone) ctoarg call(data_55.l_0xc9fefd) goto(KeyItems)
 	townmap:
 		window_closeall event(7) goto(KeyItems)
-    key:
-		window_closeall window_open(1) "@(Interact with a locked door" newline "  to use the key.)" next goto(KeyItems)
+    shackkey:
+		call(DescShackKey) goto(KeyItems)
     bike:
 		goto(BicycleStart)
 	phone:
 		window_closeall window_open(1) call(data_20.l_0xc68017) goto(KeyItems)
 	pencileraser:
-		window_closeall window_open(1) "@(Interact with a pencil-shaped" newline "  object to use the eraser.)" next goto(KeyItems)
+		call(DescPencilEraser) goto(KeyItems)
 	erasereraser:
-		window_closeall window_open(1) "@(Interact with an eraser-shaped" newline "  object to use the eraser.)" next goto(KeyItems)
+		call(DescEraserEraser) goto(KeyItems)
+	cabinkey:
+		call(DescCabinKey) goto(KeyItems)
     wadofbills:
-		window_closeall window_open(1) "@(Talk to the Chaos Theater" newline "  manager to help the Runaway" newline "  Five with their debt.)" next goto(KeyItems)
+		call(DescWadBills) goto(KeyItems)
     backstagepass:
-		window_closeall window_open(1) "@(Talk to the Chaos Theater" newline "  receptionist to go watch" newline "  the Runaway Five's show.)" next goto(KeyItems)
+		call(DescBackstagePass) goto(KeyItems)
     zombiepaper:
 		window_closeall window_open(1) call(data_55.l_0xc9fc48) goto(KeyItems)
-	gum:
-		window_closeall window_open(1) call(data_49.l_0xc97f72) goto(KeyItems)
-	hawkeye:
+    showticket:
+		call(DescShowTicket) goto(KeyItems)
+    diamond:
+		call(DescDiamond) goto(KeyItems)
+    yogurtdisp:
+		call(DescYogurtDisp) goto(KeyItems)
+    signedbanana:
+		call(DescSignedBanana) goto(KeyItems)
+    heiroglyph:
+		call(DescHeiroglyph) goto(KeyItems)
+    carrotkey:
+		call(DescCarrotKey) goto(KeyItems)
+    towerkey:
+		call(DescTowerKey) goto(KeyItems)
+    hawkeye:
 		window_closeall window_open(1) call(data_55.l_0xc9fc6f) goto(KeyItems)
-	heiroglyph:
-		window_closeall window_open(1) call(data_61.l_0xefa0dc) goto(KeyItems)
-	towerkey:
-		window_closeall window_open(1) counter(item_Key_Tower) ctoarg call(data_29.l_0xc77dce) goto(KeyItems)
-	donothing:
-		goto(KeyItems)
+    shynessbook:
+		call(DescShynessBook) goto(KeyItems)
+    tendakraut:
+		call(DescTendakraut) goto(KeyItems)
+    meteoritepiece:
+		call(DescMeteoritePiece) goto(KeyItems)
+    lockerkey:
+		call(DescLockerKey) goto(KeyItems)
+    badkeymachine:
+		call(DescBadKeyMachine) goto(KeyItems)
+    gum:
+		window_closeall window_open(1) call(data_49.l_0xc97f72) goto(KeyItems)
 }
 
+
 descwndlbl:
-CloseKeyItemDescWnd()
-
+	CloseKeyItemDescWnd()
     OpenKeyItemDescWnd()
-
     Lbl(lbl_Description)
 eob
 
-ShowDesc1:
+DescATM:
 	call(descwndlbl)
     //if counter_is(1) { //call(data_04.l_0xc5566b)  ATM Card
         "<[1C 05 B1]>" newline
 		"You know, you shouldn't leave home" newline 
-		"without... It even works overseas!"
+		"without... It even works overseas!" next
 eob
 
 ShowDesc2:
@@ -217,7 +236,7 @@ ShowDesc2:
         "<[1C 05 C4]>" newline
 		"If you touch this to your forehead and" newline
 		"concentrate on your thoughts, Your" newline 
-		"Sanctuary melodies can be heard."
+		"Sanctuary melodies can be heard." next
 eob
 
 ShowDesc3:
@@ -226,15 +245,15 @@ ShowDesc3:
         "<[1C 05 CA]>" newline
 		"A handy town map. It can be used in" newline
 		"Onett, as well as other towns. View" newline
-		"the map with the Start button."
+		"the map with the Start button." next
 eob
 
-ShowDesc4:
+DescShackKey:
 	call(descwndlbl)
     //if counter_is(4) { //call(data_04.l_0xc554f6) // Shack Key
         "<[1C 05 AA]>" newline
 		"A key to the traveling" newline
-		"entertainer shack in Onett."
+		"entertainer shack in Onett." next
 eob
 
 ShowDesc5:
@@ -243,7 +262,7 @@ ShowDesc5:
         "<[1C 05 B0]>" newline
 		"Riding this makes you feel like" newline
 		"whistling! You can even ring the" newline 
-		"bell by pressing the R button."
+		"bell by pressing the R button." next
 eob
 
 ShowDesc6:
@@ -251,170 +270,169 @@ ShowDesc6:
     //if counter_is(6) { //call(data_04.l_0xc5570b) Receiver Phone
         "<[1C 05 B5]>" newline
 		"Apple Kid's invention. Now, you" newline
-		"can receive important calls."
+		"can receive important calls." next
 eob
 
-ShowDesc7:
+DescPencilEraser:
 	call(descwndlbl)
     //if counter_is(7) { //call(data_04.l_0xc55794) Pencil Eraser
         "<[1C 05 B8]>" newline
 		"Apple Kid's invention. It makes" newline
 		"something blocking your way that" newline
-		"looks like a pencil disappear."
+		"looks like a pencil disappear." next
 eob
 
-ShowDesc8:
+DescEraserEraser:
 	call(descwndlbl)
     //if counter_is(8) { //call(data_04.l_0xc55e28) Eraser Eraser
         "<[1C 05 D2]>" newline
 		"Apple Kid's invention. It erases" newline
 		"something that looks like an eraser" newline
-		"that might be blocking your way."
+		"that might be blocking your way." next
 eob
 
-ShowDesc9:
+DescCabinKey:
 	call(descwndlbl)
     //if counter_is(9) { //call(data_04.l_0xc5551d) Cabin Key
         "<[1C 05 AB]>" newline
 		"A key to a holding cell made" newline
-		"specially for [1C 02 02]."
+		"specially for [1C 02 02]." next
 eob
 
-ShowDesc10:
+DescWadBills:
 	call(descwndlbl)
     //if counter_is(10) { //call(data_04.l_0xc556e3) Wad of Bills
         "<[1C 05 B4]>" newline
-		"A bundle of brand new, crisp bills."
+		"A bundle of brand new, crisp bills." next
 eob
 
-ShowDesc11:
+DescBackstagePass:
 	call(descwndlbl)
     //if counter_is(11) { //call(data_03.l_0xc548b2) Backstage Pass
         "<[1C 05 7D]>" newline
 		"It allows you go back stage at the" newline
 		"Chaos Theater. Of course, you can" newline
-		"also watch the show using the pass."
+		"also watch the show using the pass." next
 eob
 
-ShowDesc12:
+DescShowTicket:
 	call(descwndlbl)
     //if counter_is(12) { //call(data_04.l_0xc5569c) Show Ticket
         "<[1C 05 B2]>" newline
-		"It says, <Section B, seat 3D.>"
+		"It says, <Section B, seat 3D.>" next
 eob
 
-ShowDesc13:
+DescZombiePaper:
 	call(descwndlbl)
     //if counter_is(13) { //call(data_04.l_0xc555b8) Zombie Paper
         "<[1C 05 AE]>" newline
 		"Apple Kid's invention. Lay this out" newline
 		"in the tent, and the next day, a lot" newline
-		"of zombies may be stuck to it."
+		"of zombies may be stuck to it." next
 eob
 
-ShowDesc14:
+DescDiamond:
 	call(descwndlbl)
     //if counter_is(14) { //call(data_04.l_0xc55740) Diamond
         "<[1C 05 B6]>" newline
 		"A big, beautiful, and expensive" newline
-		"looking gem."
+		"looking gem." next
 eob
 
-ShowDesc15:
+DescYogurtDisp:
 	call(descwndlbl)
     //if counter_is(15) { //call(data_04.l_0xc54c6d) Yogurt Dispenser
         "<[1C 05 8B]>" newline
 		"Invented by Apple Kid. If used during" newline
 		"combat, some damage will be dealt to" newline
-		"an enemy but it's not understood why."
+		"an enemy but it's not understood why." next
 eob
 
-ShowDesc16:
+DescSignedBanana:
 	call(descwndlbl)
     //if counter_is(16) { //call(data_04.l_0xc5576a) Signed Banana
         "<[1C 05 B7]>" newline
-		"A banana skin with Venus's autograph."
+		"A banana skin with Venus's autograph." next
 eob
 
-ShowDesc17:
+DescHeiroglyph:
 	call(descwndlbl)
     //if counter_is(17) { //call(data_04.l_0xc557e7) Hieroglyph Copy
         "<[1C 05 B9]>" newline
 		"A copy of a hieroglyph. Something" newline
 		"important is recorded in the ancient" newline
-		"characters."
+		"characters." next
 eob
 
-ShowDesc18:
+DescCarrotKey:
 	call(descwndlbl)
     //if counter_is(18) { //call(data_05.l_0xc5689f) Carrot Key
         "<[1C 05 FD]>" newline
 		"A special type of bunny's favorite" newline
-		"carrot."
+		"carrot." next
 eob
 
-ShowDesc19:
+DescTowerKey:
 	call(descwndlbl)
     //if counter_is(19) { //call(data_04.l_0xc55943) Tower Key
-        "<[1C 05 C0]>"
-
-        newline "An old key."
+        "<[1C 05 C0]>" newline
+		"An old key." next
 eob
 
-ShowDesc20:
+DescHawkEye:
 	call(descwndlbl)
     //if counter_is(20) { //call(data_04.l_0xc55602) Hawk Eye
         "<[1C 05 AF]>" newline
 		"What a miracle! Now you can see" newline
-		"in the dark!"
+		"in the dark!" next
 eob
 
-ShowDesc21:
+DescShynessBook:
 	call(descwndlbl)
     //if counter_is(21) { //call(data_04.l_0xc55409) Shyness Book
         "<[1C 05 A4]>" newline
 		"As the title says, it helps one" newline
-		"overcome shyness."
+		"overcome shyness." next
 eob
 
-ShowDesc22:
+DescTendakraut:
 	call(descwndlbl)
     //if counter_is(22) { //call(data_04.l_0xc55e77) Tendakraut
         "<[1C 05 D3]>" newline
 		"A very strong-smelling dish. Those" newline
-		"who like it go nuts for it..."
+		"who like it go nuts for it..." next
 eob
 
-ShowDesc23:
+DescMeteoritePiece:
 	call(descwndlbl)
     //if counter_is(23) { //call(data_04.l_0xc55957) Meteorite Piece
         "<[1C 05 C1]>" newline
 		"It looks like a plain old rock, but" newline
 		"to someone who knows about it, it's" newline
-		"a very precious, unusual element."
+		"a very precious, unusual element." next
 eob
 
-ShowDesc24:
+DescBadKeyMachine:
 	call(descwndlbl)
     //if counter_is(24) { //call(data_04.l_0xc55546) Locker Key
         "<[1C 05 AC]>" newline
 		"The <Machine that Opens Doors," newline
 		"especially when you have a slightly" newline
-		"bad key> machine."
+		"bad key> machine." next
 eob
 
-ShowDesc25:
+DescLockerKey:
 	call(descwndlbl)
     //if counter_is(25) { //call(data_04.l_0xc55d82) Locker Key
         "<[1C 05 CD]>" newline
-		"A key to a regular locker."
+		"A key to a regular locker." next
 eob
 
-ShowDesc26:
+DescBubbleGum:
 	call(descwndlbl)
     //if counter_is(26) { //call(data_03.l_0xc544dd) Pak of bubble gum
         "<[1C 05 68]>" newline
 		"This is the Balloon Monkey's favorite." newline
 		"It won't help you recover, but you'll" newline
-		"never run out. It's a super jumbo pack!"
+		"never run out. It's a super jumbo pack!" next
 eob
