@@ -15,7 +15,7 @@ import "_scripts/asm/asm65816_2.ccs"
 //import "_scripts/asm/ebpp_mem.ccs"
 //import "_scripts/asm/EBPP_Disassembly_HardwareCompatible_v1_1.ccs"
 /* Quality of Life improvements from CCScript Library */
-//import "_scripts/asm/optimize_text_render_3.ccs" (overwrites 1st line in main text window)
+//import "_scripts/asm/optimize_text_render_3.ccs" // Issue: overwrites 1st line in main text window
 import "_scripts/asm/noclip.ccs"
 import "_scripts/asm/mute_music.ccs"
 import "_scripts/asm/fix_oss_gameover.ccs"

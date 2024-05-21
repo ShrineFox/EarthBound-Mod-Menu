@@ -11,19 +11,19 @@ import "../commands/flag_cmds.ccs"
 import "../commands/item_cmds.ccs"
 
 
-SetCount1: { SetDescription(1, wnd_KeyItems, ShowDesc) } SetCount2: { SetDescription(2, wnd_KeyItems, ShowDesc) } 
-SetCount3: { SetDescription(3, wnd_KeyItems, ShowDesc) } SetCount4: { SetDescription(4, wnd_KeyItems, ShowDesc) }
-SetCount5: { SetDescription(5, wnd_KeyItems, ShowDesc) } SetCount6: { SetDescription(6, wnd_KeyItems, ShowDesc) } 
-SetCount7: { SetDescription(7, wnd_KeyItems, ShowDesc) } SetCount8: { SetDescription(8, wnd_KeyItems, ShowDesc) }
-SetCount9: { SetDescription(9, wnd_KeyItems, ShowDesc) } SetCount10: { SetDescription(10, wnd_KeyItems, ShowDesc) } 
-SetCount11: { SetDescription(11, wnd_KeyItems, ShowDesc) } SetCount12: { SetDescription(12, wnd_KeyItems, ShowDesc) }
-SetCount13: { SetDescription(13, wnd_KeyItems, ShowDesc) } SetCount14: { SetDescription(14, wnd_KeyItems, ShowDesc) } 
-SetCount15: { SetDescription(15, wnd_KeyItems, ShowDesc) } SetCount16: { SetDescription(16, wnd_KeyItems, ShowDesc) }
-SetCount17: { SetDescription(17, wnd_KeyItems, ShowDesc) } SetCount18: { SetDescription(18, wnd_KeyItems, ShowDesc) }
-SetCount19: { SetDescription(19, wnd_KeyItems, ShowDesc) } SetCount20: { SetDescription(20, wnd_KeyItems, ShowDesc) }
-SetCount21: { SetDescription(21, wnd_KeyItems, ShowDesc) } SetCount22: { SetDescription(22, wnd_KeyItems, ShowDesc) }
-SetCount23: { SetDescription(23, wnd_KeyItems, ShowDesc) } SetCount24: { SetDescription(24, wnd_KeyItems, ShowDesc) }
-SetCount25: { SetDescription(25, wnd_KeyItems, ShowDesc) } SetCount26: { SetDescription(26, wnd_KeyItems, ShowDesc) } 
+SetCount1: { SetDescription(1, wnd_KeyItems, ShowDesc1) } SetCount2: { SetDescription(2, wnd_KeyItems, ShowDesc2) } 
+SetCount3: { SetDescription(3, wnd_KeyItems, ShowDesc3) } SetCount4: { SetDescription(4, wnd_KeyItems, ShowDesc4) }
+SetCount5: { SetDescription(5, wnd_KeyItems, ShowDesc5) } SetCount6: { SetDescription(6, wnd_KeyItems, ShowDesc6) } 
+SetCount7: { SetDescription(7, wnd_KeyItems, ShowDesc7) } SetCount8: { SetDescription(8, wnd_KeyItems, ShowDesc8) }
+SetCount9: { SetDescription(9, wnd_KeyItems, ShowDesc9) } SetCount10: { SetDescription(10, wnd_KeyItems, ShowDesc10) } 
+SetCount11: { SetDescription(11, wnd_KeyItems, ShowDesc11) } SetCount12: { SetDescription(12, wnd_KeyItems, ShowDesc12) }
+SetCount13: { SetDescription(13, wnd_KeyItems, ShowDesc13) } SetCount14: { SetDescription(14, wnd_KeyItems, ShowDesc14) } 
+SetCount15: { SetDescription(15, wnd_KeyItems, ShowDesc15) } SetCount16: { SetDescription(16, wnd_KeyItems, ShowDesc16) }
+SetCount17: { SetDescription(17, wnd_KeyItems, ShowDesc17) } SetCount18: { SetDescription(18, wnd_KeyItems, ShowDesc18) }
+SetCount19: { SetDescription(19, wnd_KeyItems, ShowDesc19) } SetCount20: { SetDescription(20, wnd_KeyItems, ShowDesc20) }
+SetCount21: { SetDescription(21, wnd_KeyItems, ShowDesc21) } SetCount22: { SetDescription(22, wnd_KeyItems, ShowDesc22) }
+SetCount23: { SetDescription(23, wnd_KeyItems, ShowDesc23) } SetCount24: { SetDescription(24, wnd_KeyItems, ShowDesc24) }
+SetCount25: { SetDescription(25, wnd_KeyItems, ShowDesc25) } SetCount26: { SetDescription(26, wnd_KeyItems, ShowDesc26) } 
 
 KeyItems: {
 	if not flag flg_Ness and not flag flg_Jeff { NotificationWnd(wnd_ModMenuNotification, "@Error: No party flags set.") eob }
@@ -195,145 +195,226 @@ KeyItems: {
 		goto(KeyItems)
 }
 
-ShowDesc:
-	CloseKeyItemDescWnd()
-	OpenKeyItemDescWnd()
-	Lbl(lbl_Description)
-	if counter_is(1) { //call(data_04.l_0xc5566b)  ATM Card
-		"<[1C 05 B1]>" newline 
+descwndlbl:
+CloseKeyItemDescWnd()
+
+    OpenKeyItemDescWnd()
+
+    Lbl(lbl_Description)
+eob
+
+ShowDesc1:
+	call(descwndlbl)
+    //if counter_is(1) { //call(data_04.l_0xc5566b)  ATM Card
+        "<[1C 05 B1]>" newline
 		"You know, you shouldn't leave home" newline 
 		"without... It even works overseas!"
-	}
-	if counter_is(2) { //call(data_04.l_0xc55ad5) Sound Stone
-		"<[1C 05 C4]>" newline 
+eob
+
+ShowDesc2:
+	call(descwndlbl)
+    //if counter_is(2) { //call(data_04.l_0xc55ad5) Sound Stone
+        "<[1C 05 C4]>" newline
 		"If you touch this to your forehead and" newline
 		"concentrate on your thoughts, Your" newline 
 		"Sanctuary melodies can be heard."
-	}
-	if counter_is(3) { //call(data_03.l_0xc55cce) Town Map
-		"<[1C 05 CA]>" newline
+eob
+
+ShowDesc3:
+	call(descwndlbl)
+    //if counter_is(3) { //call(data_03.l_0xc55cce) Town Map
+        "<[1C 05 CA]>" newline
 		"A handy town map. It can be used in" newline
 		"Onett, as well as other towns. View" newline
 		"the map with the Start button."
-	}
-	if counter_is(4) { //call(data_04.l_0xc554f6) // Shack Key
-		"<[1C 05 AA]>" newline
+eob
+
+ShowDesc4:
+	call(descwndlbl)
+    //if counter_is(4) { //call(data_04.l_0xc554f6) // Shack Key
+        "<[1C 05 AA]>" newline
 		"A key to the traveling" newline
 		"entertainer shack in Onett."
-	}
-	if counter_is(5) { //call(data_04.l_0xc55627) // Bicycle
-		"<[1C 05 B0]>" newline 
+eob
+
+ShowDesc5:
+	call(descwndlbl)
+    //if counter_is(5) { //call(data_04.l_0xc55627) // Bicycle
+        "<[1C 05 B0]>" newline
 		"Riding this makes you feel like" newline
 		"whistling! You can even ring the" newline 
 		"bell by pressing the R button."
-	}
-	if counter_is(6) { //call(data_04.l_0xc5570b) Receiver Phone
-		"<[1C 05 B5]>" newline
+eob
+
+ShowDesc6:
+	call(descwndlbl)
+    //if counter_is(6) { //call(data_04.l_0xc5570b) Receiver Phone
+        "<[1C 05 B5]>" newline
 		"Apple Kid's invention. Now, you" newline
 		"can receive important calls."
-	}
-	if counter_is(7) { //call(data_04.l_0xc55794) Pencil Eraser
-		"<[1C 05 B8]>" newline 
+eob
+
+ShowDesc7:
+	call(descwndlbl)
+    //if counter_is(7) { //call(data_04.l_0xc55794) Pencil Eraser
+        "<[1C 05 B8]>" newline
 		"Apple Kid's invention. It makes" newline
 		"something blocking your way that" newline
 		"looks like a pencil disappear."
-	}
-	if counter_is(8) { //call(data_04.l_0xc55e28) Eraser Eraser
-		"<[1C 05 D2]>" newline 
+eob
+
+ShowDesc8:
+	call(descwndlbl)
+    //if counter_is(8) { //call(data_04.l_0xc55e28) Eraser Eraser
+        "<[1C 05 D2]>" newline
 		"Apple Kid's invention. It erases" newline
 		"something that looks like an eraser" newline
 		"that might be blocking your way."
-	}
-	if counter_is(9) { //call(data_04.l_0xc5551d) Cabin Key
-		"<[1C 05 AB]>" newline 
+eob
+
+ShowDesc9:
+	call(descwndlbl)
+    //if counter_is(9) { //call(data_04.l_0xc5551d) Cabin Key
+        "<[1C 05 AB]>" newline
 		"A key to a holding cell made" newline
 		"specially for [1C 02 02]."
-	}
-	if counter_is(10) { //call(data_04.l_0xc556e3) Wad of Bills
-		"<[1C 05 B4]>" newline 
+eob
+
+ShowDesc10:
+	call(descwndlbl)
+    //if counter_is(10) { //call(data_04.l_0xc556e3) Wad of Bills
+        "<[1C 05 B4]>" newline
 		"A bundle of brand new, crisp bills."
-	}
-	if counter_is(11) { //call(data_03.l_0xc548b2) Backstage Pass
-		"<[1C 05 7D]>" newline
+eob
+
+ShowDesc11:
+	call(descwndlbl)
+    //if counter_is(11) { //call(data_03.l_0xc548b2) Backstage Pass
+        "<[1C 05 7D]>" newline
 		"It allows you go back stage at the" newline
 		"Chaos Theater. Of course, you can" newline
 		"also watch the show using the pass."
-	}
-	if counter_is(12) { //call(data_04.l_0xc5569c) Show Ticket
-		"<[1C 05 B2]>" newline 
+eob
+
+ShowDesc12:
+	call(descwndlbl)
+    //if counter_is(12) { //call(data_04.l_0xc5569c) Show Ticket
+        "<[1C 05 B2]>" newline
 		"It says, <Section B, seat 3D.>"
-	}
-	if counter_is(13) { //call(data_04.l_0xc555b8) Zombie Paper
-		"<[1C 05 AE]>" newline 
+eob
+
+ShowDesc13:
+	call(descwndlbl)
+    //if counter_is(13) { //call(data_04.l_0xc555b8) Zombie Paper
+        "<[1C 05 AE]>" newline
 		"Apple Kid's invention. Lay this out" newline
 		"in the tent, and the next day, a lot" newline
 		"of zombies may be stuck to it."
-	}
-	if counter_is(14) { //call(data_04.l_0xc55740) Diamond
-		"<[1C 05 B6]>" newline
+eob
+
+ShowDesc14:
+	call(descwndlbl)
+    //if counter_is(14) { //call(data_04.l_0xc55740) Diamond
+        "<[1C 05 B6]>" newline
 		"A big, beautiful, and expensive" newline
 		"looking gem."
-	}
-	if counter_is(15) { //call(data_04.l_0xc54c6d) Yogurt Dispenser
-		"<[1C 05 8B]>" newline
+eob
+
+ShowDesc15:
+	call(descwndlbl)
+    //if counter_is(15) { //call(data_04.l_0xc54c6d) Yogurt Dispenser
+        "<[1C 05 8B]>" newline
 		"Invented by Apple Kid. If used during" newline
 		"combat, some damage will be dealt to" newline
 		"an enemy but it's not understood why."
-	}
-	if counter_is(16) { //call(data_04.l_0xc5576a) Signed Banana
-		"<[1C 05 B7]>" newline
+eob
+
+ShowDesc16:
+	call(descwndlbl)
+    //if counter_is(16) { //call(data_04.l_0xc5576a) Signed Banana
+        "<[1C 05 B7]>" newline
 		"A banana skin with Venus's autograph."
-	}
-	if counter_is(17) { //call(data_04.l_0xc557e7) Hieroglyph Copy
-		"<[1C 05 B9]>" newline 
+eob
+
+ShowDesc17:
+	call(descwndlbl)
+    //if counter_is(17) { //call(data_04.l_0xc557e7) Hieroglyph Copy
+        "<[1C 05 B9]>" newline
 		"A copy of a hieroglyph. Something" newline
 		"important is recorded in the ancient" newline
 		"characters."
-	}
-	if counter_is(18) { //call(data_05.l_0xc5689f) Carrot Key
-		"<[1C 05 FD]>" newline
+eob
+
+ShowDesc18:
+	call(descwndlbl)
+    //if counter_is(18) { //call(data_05.l_0xc5689f) Carrot Key
+        "<[1C 05 FD]>" newline
 		"A special type of bunny's favorite" newline
 		"carrot."
-	}
-	if counter_is(19) { //call(data_04.l_0xc55943) Tower Key
-		"<[1C 05 C0]>" 
-		newline "An old key."
-	}
-	if counter_is(20) { //call(data_04.l_0xc55602) Hawk Eye
-		"<[1C 05 AF]>" newline
+eob
+
+ShowDesc19:
+	call(descwndlbl)
+    //if counter_is(19) { //call(data_04.l_0xc55943) Tower Key
+        "<[1C 05 C0]>"
+
+        newline "An old key."
+eob
+
+ShowDesc20:
+	call(descwndlbl)
+    //if counter_is(20) { //call(data_04.l_0xc55602) Hawk Eye
+        "<[1C 05 AF]>" newline
 		"What a miracle! Now you can see" newline
 		"in the dark!"
-	}
-	if counter_is(21) { //call(data_04.l_0xc55409) Shyness Book
-		"<[1C 05 A4]>" newline
+eob
+
+ShowDesc21:
+	call(descwndlbl)
+    //if counter_is(21) { //call(data_04.l_0xc55409) Shyness Book
+        "<[1C 05 A4]>" newline
 		"As the title says, it helps one" newline
 		"overcome shyness."
-	}
-	if counter_is(22) { //call(data_04.l_0xc55e77) Tendakraut
-		"<[1C 05 D3]>" newline 
+eob
+
+ShowDesc22:
+	call(descwndlbl)
+    //if counter_is(22) { //call(data_04.l_0xc55e77) Tendakraut
+        "<[1C 05 D3]>" newline
 		"A very strong-smelling dish. Those" newline
 		"who like it go nuts for it..."
-	}
-	if counter_is(23) { //call(data_04.l_0xc55957) Meteorite Piece
-		"<[1C 05 C1]>" newline 
+eob
+
+ShowDesc23:
+	call(descwndlbl)
+    //if counter_is(23) { //call(data_04.l_0xc55957) Meteorite Piece
+        "<[1C 05 C1]>" newline
 		"It looks like a plain old rock, but" newline
 		"to someone who knows about it, it's" newline
 		"a very precious, unusual element."
-	}
-	if counter_is(24) { //call(data_04.l_0xc55546) Locker Key
-		"<[1C 05 AC]>" newline 
+eob
+
+ShowDesc24:
+	call(descwndlbl)
+    //if counter_is(24) { //call(data_04.l_0xc55546) Locker Key
+        "<[1C 05 AC]>" newline
 		"The <Machine that Opens Doors," newline
 		"especially when you have a slightly" newline
 		"bad key> machine."
-	}
-	if counter_is(25) { //call(data_04.l_0xc55d82) Locker Key
-		"<[1C 05 CD]>" newline 
+eob
+
+ShowDesc25:
+	call(descwndlbl)
+    //if counter_is(25) { //call(data_04.l_0xc55d82) Locker Key
+        "<[1C 05 CD]>" newline
 		"A key to a regular locker."
-	}
-	if counter_is(26) { //call(data_03.l_0xc544dd) Pak of bubble gum
-		"<[1C 05 68]>" newline 
+eob
+
+ShowDesc26:
+	call(descwndlbl)
+    //if counter_is(26) { //call(data_03.l_0xc544dd) Pak of bubble gum
+        "<[1C 05 68]>" newline
 		"This is the Balloon Monkey's favorite." newline
 		"It won't help you recover, but you'll" newline
 		"never run out. It's a super jumbo pack!"
-	}
 eob
