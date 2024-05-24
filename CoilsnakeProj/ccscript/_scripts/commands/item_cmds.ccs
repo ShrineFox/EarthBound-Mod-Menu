@@ -92,6 +92,13 @@ command GiveKeyItemToParty(itemID)
 command GiveMenuKeyItem(itemID)
 {
 	counter(itemID)
+	call(keyitemcounter)
+
+	sound(SND_SPECIALITEM)
+	"@(The {itemname(itemID)} was added to your Key Items.)" next
+}
+
+keyitemcounter:
 	if counter_is(item_Sound_Stone) { ToggleWithSound(flg_BuzzBuzzDead) }
 	if counter_is(item_Key_Shack) { ToggleWithSound(flg_KeyItem_ShackKey) }
 	if counter_is(item_Bicycle) { ToggleWithSound(flg_KeyItem_Bicycle) }
@@ -101,6 +108,7 @@ command GiveMenuKeyItem(itemID)
 	if counter_is(item_Key_Cabin) { ToggleWithSound(flg_KeyItem_CabinKey) }
 	if counter_is(item_Wad_Bills) { ToggleWithSound(flg_KeyItem_WadofBills) }
 	if counter_is(item_Zombie_Paper) { ToggleWithSound(flg_KeyItem_ZombiePaper) }
+	if counter_is(item_Key_Locker) { ToggleWithSound(flg_KeyItem_LockerKey) }
 	if counter_is(item_Bad_Key_Machine) { ToggleWithSound(flg_KeyItem_BadKeyMachine) }
 	if counter_is(item_Eraser_Eraser) { ToggleWithSound(flg_KeyItem_EraserEraser) }
 	if counter_is(item_Diamond) { ToggleWithSound(flg_KeyItem_Diamond) }
@@ -116,10 +124,7 @@ command GiveMenuKeyItem(itemID)
 	if counter_is(item_Pass_Backstage) { ToggleWithSound(flg_KeyItem_BackstagePass) }
 	if counter_is(item_Yogurt_Dispenser) { ToggleWithSound(flg_KeyItem_YogurtMachine) }
 	if counter_is(item_Show_Ticket) { ToggleWithSound(flg_KeyItem_ShowTicket) }
-
-	sound(SND_SPECIALITEM)
-	"@(The {itemname(itemID)} was added to your Key Items.)" next
-}
+eob
 
 command NotifyInventoryFull()
 {

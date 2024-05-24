@@ -6,6 +6,8 @@
 
 command e(label) "{long label}"
 import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc6e298:
@@ -341,27 +343,119 @@ l_0xc6f881:
 l_0xc6f8bf:
     "@Seems like it's just for decoration." end
 
+// Jeff Lockers
 l_0xc6f8d9:
     "@This one is locked." end
 
+// CALL l_0xc6f9fd - check if locker key used
+// 1B 03 (bool true) l_0xc6fa68 - locker key bent in the locker
+// CALL l_0xc6fa05 - check if bad key machine used
+// 1B 02 (bool false) l_0xc6fb5d - wasn't the right key
+// CALL l_0xc6fa0c - x opened the locker using the x
+// 1B 03 (bool true) l_0xc6fa93 - nothing was in the locker
+// CALL l_0xc6fa2e - give item
+
+// Locker 1 - item_Gun_Pop
 l_0xc6f8e6:
-    call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) "[1D 05 FF 24][1B 03 {e(l_0xc6fa93)}]{counter(36)}" call(l_0xc6fa2e) eob
+    if flag flg_KeyItems and flag flg_KeyItem_BadKeyMachine
+    {
+        goto(givepopgun)
+    }
+    else if flag flg_KeyItems and flag flg_KeyItem_LockerKey
+    {
+        goto(l_0xc6fa68) // locker key bent in the locker
+    }
+    else if hasitem(3, item_Key_Locker)
+    {
+        goto(l_0xc6fa68) // locker key bent in the locker
+    }
+    else if hasitem(3, item_Bad_Key_Machine)
+    {
+        goto(givepopgun)
+    }
+    //call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" goto(givepopgun)
 
+givepopgun:
+     counter(item_Bad_Key_Machine) ctoarg call(l_0xc6fa0c) "[1D 05 FF 24][1B 03 {e(l_0xc6fa93)}]{counter(36)}" call(l_0xc6fa2e) eob
+
+// Locker 2 - item_Hat_Holmes
 l_0xc6f913:
-    call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) "[1D 05 FF 4B][1B 03 {e(l_0xc6fa93)}]{counter(75)}" call(l_0xc6fa2e) eob
+    if flag flg_KeyItems and flag flg_KeyItem_BadKeyMachine
+    {
+        goto(giveholmeshat)
+    }
+    else if flag flg_KeyItems and flag flg_KeyItem_LockerKey
+    {
+        goto(l_0xc6fa68) // locker key bent in the locker
+    }
+    else if hasitem(3, item_Key_Locker)
+    {
+        goto(l_0xc6fa68) // locker key bent in the locker
+    }
+    else if hasitem(3, item_Bad_Key_Machine)
+    {
+        goto(giveholmeshat)
+    }
+    // call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" goto(giveholmeshat)
 
+giveholmeshat:
+    counter(item_Bad_Key_Machine) ctoarg call(l_0xc6fa0c) "[1D 05 FF 4B][1B 03 {e(l_0xc6fa93)}]{counter(75)}" call(l_0xc6fa2e) eob
+
+// Locker 3 - item_Broken_Air_Gun
 l_0xc6f940:
-    call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) "[1D 05 FF 06][1B 03 {e(l_0xc6fa93)}]{counter(6)}" call(l_0xc6fa2e) eob
+    if flag flg_KeyItems and flag flg_KeyItem_BadKeyMachine
+    {
+        goto(givebrokenairgun)
+    }
+    else if flag flg_KeyItems and flag flg_KeyItem_LockerKey
+    {
+        goto(l_0xc6fa68) // locker key bent in the locker
+    }
+    else if hasitem(3, item_Key_Locker)
+    {
+        goto(l_0xc6fa68) // locker key bent in the locker
+    }
+    else if hasitem(3, item_Bad_Key_Machine)
+    {
+        goto(givebrokenairgun)
+    }
+    // call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]"  goto(givebrokenairgun)
 
+givebrokenairgun:
+    counter(item_Bad_Key_Machine) ctoarg call(l_0xc6fa0c) "[1D 05 FF 06][1B 03 {e(l_0xc6fa93)}]{counter(6)}" call(l_0xc6fa2e) eob
+
+// Locker 4 - item_Broken_Spray_Can
 l_0xc6f96d:
-    call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) "[1D 05 FF 07][1B 03 {e(l_0xc6fa93)}]{counter(7)}" call(l_0xc6fa2e) eob
+    if flag flg_KeyItems and flag flg_KeyItem_BadKeyMachine
+    {
+        goto(givebrokenspraycan)
+    }
+    else if flag flg_KeyItems and flag flg_KeyItem_LockerKey
+    {
+        goto(l_0xc6fa68) // locker key bent in the locker
+    }
+    else if hasitem(3, item_Key_Locker)
+    {
+        goto(l_0xc6fa68) // locker key bent in the locker
+    }
+    else if hasitem(3, item_Bad_Key_Machine)
+    {
+        goto(givebrokenspraycan)
+    }
+    // call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" goto(givebrokenspraycan)
 
+givebrokenspraycan:
+    counter(item_Bad_Key_Machine) ctoarg call(l_0xc6fa0c) "[1D 05 FF 07][1B 03 {e(l_0xc6fa93)}]{counter(7)}" call(l_0xc6fa2e) eob
+
+// Locker 5
 l_0xc6f99a:
     call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) call(l_0xc6fa93) eob
 
+// Locker 6
 l_0xc6f9bb:
     call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) call(l_0xc6fa93) eob
 
+// Locker 7
 l_0xc6f9dc:
     call(l_0xc6f9fd) "[1B 03 {e(l_0xc6fa68)}]" call(l_0xc6fa05) "[1B 02 {e(l_0xc6fb5d)}]" call(l_0xc6fa0c) call(l_0xc6fa93) eob
 
@@ -379,6 +473,7 @@ l_0xc6fa2e:
     "{ctoarg}@There was a [1C 05 00] in the locker." next
     "[1D 03 FF][1B 02 {e(l_0xc6fab4)}]{store_registers}[1D 0E 00 00]{load_registers}{swap}@[1C 02 00]{swap} got it.{wait}{sound(116)}{pause(1)}" eob
 
+// Using Locker Key
 l_0xc6fa68:
     "{load_registers}" newline
     "@(The key is bent and doesn't fit into the key hole!){wait}{set(flag 605)}" eob
@@ -421,8 +516,9 @@ l_0xc6fb33:
     "  the [1C 05 00]." next
     "@The door opened.{wait}{sound(119)}" eob goto(l_0xc6fb5d)
 
+// It wasn't the right key - rephrased to accomodate using key items
 l_0xc6fb5d:
-    "@It wasn't the right key." end
+    "@(It's still locked.)" end
 
 l_0xc6fb6d:
     newline

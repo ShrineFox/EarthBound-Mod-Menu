@@ -5,6 +5,9 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc798bf:
@@ -65,6 +68,7 @@ l_0xc79c46:
     "[1F ED][1F 15 6A 00 4A 00 01][1F EF 6A 00][1F EC FF 01][1F E8 FF][1F 61][1F 13 01 05][1F 13 02 05]{unset(flag 535)}{music_resume}[1F ED][1F E5 FF][1F 15 95 00 4B 00 01][1F 61]{pause(30)}" call(l_0xc79cc8) "{pause(20)}[1F F2 95 00 4C 00][1F 61]{pause(30)}[1F F3 F3 00 08]{pause(30)}[1F 13 01 01][1F 13 02 01]{pause(30)}" call(l_0xc79d27) "{pause(30)}[1F F4 F3 00]{pause(30)}[1F EA F3 00][1F 61][1F 67 01][19 26 03]{set(flag 211)}{set(flag 761)}{unset(flag 11)}[1F 41 06][1F 15 B9 01 0A 03 01]" eob goto(l_0xc79cc8)
 
 l_0xc79cc8:
+    unset(flg_Tony)
     "{window_open(1)}@Looks like we have to say goodbye for now." next
     "@This town seems pretty gloomy," next
     "@but I'm sure you can light up the place with your own little brand of sunshine...[03]{window_closeall}" eob
@@ -107,6 +111,11 @@ l_0xc79f33:
     "@Only you,{pause(15)} though far away,{pause(15)} can save us, [1C 02 03]..." next
     "@Please hear my call and begin heading south..." next
     "@[1C 02 03]!{pause(20)}  You are a friend who we've never met..." next
+    set(flg_Jeff)
+    set(flg_Tony)
+    unset(flg_Ness)
+    unset(flg_Paula)
+    unset(flg_TeddyBear)
     "@But you are our one and only hope!...[03]{window_closeall}[1F 07 03]{pause(120)}{pause(180)}[1F 1E 50 02 06][1F EC FF 01][1F E8 FF]{set(flag 128)}[19 26 06]{unset(flag 297)}{unset(flag 11)}{set(flag 212)}[02][1F 1A 4F 02 03]{pause(60)}[1F 1B 4F 02]{pause(30)}[1F 1E 4F 02 06][1F 15 B6 00 72 00 01]{pause(1)}[1F E7 B6 00]{window_open(1)}@[1C 02 03],{pause(20)} where are you going in the middle of the night?" next
     "{window_closeall}[1F EA B6 00][1F 61][1F E7 B6 00]{window_open(1)}@You know the dorm rules, right?" next
     "@If you get caught,{pause(15)} you'll get punished big time..." next

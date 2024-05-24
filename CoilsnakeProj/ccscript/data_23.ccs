@@ -102,7 +102,7 @@ l_0xc6abd5:
     "@Sorry for" linebreak
     "  the inconvenience.[03]"
 	if not flg_KeyItems { "[1D 03 FF][1B 02 {e(l_0xc6acda)}]" } // Check if item has space to be carried
-	if flg_KeyItems { newline GiveMenuKeyItem(item_Bad_Key_Machine) }
+	if flg_KeyItems { newline GiveMenuKeyItem(item_Bad_Key_Machine) unset(flg_KeyItem_LockerKey) }
 	else { "[1D 03 FF][1D 0E 00 AC]" call(data_33.l_0xc7dcb6) next "{set(flag 88)}" }
 	"@If you are Dr. Andonut's son," next
     "@you should be able to repair small tools and make them useful." next

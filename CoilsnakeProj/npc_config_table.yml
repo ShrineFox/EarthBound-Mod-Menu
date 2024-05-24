@@ -5359,7 +5359,7 @@
   Movement: 8
   Show Sprite: always
   Sprite: 381
-  Text Pointer 1: data_25.l_0xc6f8d9
+  Text Pointer 1: data_25.l_0xc6f8e6
   Text Pointer 2: data_25.l_0xc6f8e6
   Type: object
 596:
@@ -5368,7 +5368,7 @@
   Movement: 8
   Show Sprite: always
   Sprite: 381
-  Text Pointer 1: data_25.l_0xc6f8d9
+  Text Pointer 1: data_25.l_0xc6f940
   Text Pointer 2: data_25.l_0xc6f940
   Type: object
 597:
@@ -5377,7 +5377,7 @@
   Movement: 8
   Show Sprite: always
   Sprite: 381
-  Text Pointer 1: data_25.l_0xc6f8d9
+  Text Pointer 1: data_25.l_0xc6f96d
   Text Pointer 2: data_25.l_0xc6f96d
   Type: object
 598:
@@ -5386,7 +5386,7 @@
   Movement: 8
   Show Sprite: always
   Sprite: 381
-  Text Pointer 1: data_25.l_0xc6f8d9
+  Text Pointer 1: data_25.l_0xc6f99a
   Text Pointer 2: data_25.l_0xc6f99a
   Type: object
 599:
@@ -5395,7 +5395,7 @@
   Movement: 8
   Show Sprite: always
   Sprite: 381
-  Text Pointer 1: data_25.l_0xc6f8d9
+  Text Pointer 1: data_25.l_0xc6f913
   Text Pointer 2: data_25.l_0xc6f913
   Type: object
 600:
