@@ -4,9 +4,10 @@
  * Generated using CCScriptWriter.
  */
 
-import "_scripts/enums/flags.ccs"
-
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc7dc29:
@@ -49,7 +50,8 @@ l_0xc7dcb5:
     eob
 
 l_0xc7dcb6:
-    "{sound(116)}{pause(60)}[1B 05]{window_closeall}{sound(102)}{pause(100)}{window_open(1)}[1B 06]" call(l_0xc7dcda) eob
+    if flg_KeyItems { GiveMenuKeyItem(item_Bubble_Gum) }
+    else { "{sound(116)}{pause(60)}[1B 05]{window_closeall}{sound(102)}{pause(100)}{window_open(1)}[1B 06]" call(l_0xc7dcda) } eob
 
 l_0xc7dccf:
     "{sound(116)}{pause(60)}" call(l_0xc7dcda) eob

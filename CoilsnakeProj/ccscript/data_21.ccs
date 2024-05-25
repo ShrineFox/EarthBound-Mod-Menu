@@ -5,6 +5,9 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc680dc:
@@ -48,6 +51,7 @@ l_0xc681f0:
     "{window_closeall}[1F 11 06][1F EB 06 06][1F F2 2D 00 30 00][1F 61][1F 1F 2D 00 06][1F EC 06 01]{music(123)}{pause(120)}{pause(60)}{music_resume}{window_open(1)}@(Picky joins you.)[03]{window_closeall}" eob
 
 l_0xc6822a:
+    set(flg_BubbleMonkey)
     "{music(123)}{pause(120)}{pause(60)}{music_resume}{window_open(1)}@(The Bubble Monkey joins you.)[03]{window_closeall}" eob
 
 l_0xc68253:
