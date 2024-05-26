@@ -68,7 +68,6 @@ l_0xc79c46:
     "[1F ED][1F 15 6A 00 4A 00 01][1F EF 6A 00][1F EC FF 01][1F E8 FF][1F 61][1F 13 01 05][1F 13 02 05]{unset(flag 535)}{music_resume}[1F ED][1F E5 FF][1F 15 95 00 4B 00 01][1F 61]{pause(30)}" call(l_0xc79cc8) "{pause(20)}[1F F2 95 00 4C 00][1F 61]{pause(30)}[1F F3 F3 00 08]{pause(30)}[1F 13 01 01][1F 13 02 01]{pause(30)}" call(l_0xc79d27) "{pause(30)}[1F F4 F3 00]{pause(30)}[1F EA F3 00][1F 61][1F 67 01][19 26 03]{set(flag 211)}{set(flag 761)}{unset(flag 11)}[1F 41 06][1F 15 B9 01 0A 03 01]" eob goto(l_0xc79cc8)
 
 l_0xc79cc8:
-    unset(flg_Tony)
     "{window_open(1)}@Looks like we have to say goodbye for now." next
     "@This town seems pretty gloomy," next
     "@but I'm sure you can light up the place with your own little brand of sunshine...[03]{window_closeall}" eob
@@ -131,6 +130,7 @@ l_0xc7a20c:
     call(data_21.l_0xc683d9) "[1F 15 B6 00 0A 01 01][1F 61][1F 1F B6 00 06][1F 17 7A 02 08 00 01]{set(flag 335)}" eob
 
 l_0xc7a22a:
+    unset(flg_Tony)
     "@Okay,{pause(15)} now use me as a step and climb over the gate.[03]{window_closeall}[1F EB FF 06][1F 15 51 01 0B 01 01] [1F 15 58 01 0C 01 01]{pause(1)}[1F EF 58 01][1F E8 FF][1F 61][1F E7 51 01][1F E7 58 01]{window_open(1)}@Well...{pause(15)} I'll say goodbye for now." next
     "@I don't know where you're going or why," next
     "@but remember,{pause(20)} we are best friends{pause(5)} forever.[03]{window_closeall}[1F EA 51 01][1F EA 58 01][1F 61][1F ED][1F EC FF 01][1F 1E 7A 02 06][1F 15 B6 00 0D 01 01][1F 67 01][19 26 06]{unset(flag 335)}[1F 07 03]{pause(120)}{set(flag 544)}{music_resume}{unset(flag 11)}" eob goto(l_0xc7a2f7)
