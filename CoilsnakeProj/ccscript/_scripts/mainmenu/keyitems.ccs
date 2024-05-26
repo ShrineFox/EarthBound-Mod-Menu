@@ -184,7 +184,7 @@ KeyItems: {
     backstagepass:
 		call(DescBackstagePass) goto(KeyItems)
     zombiepaper:
-		window_closeall window_open(1) call(data_55.l_0xc9fc48) goto(KeyItems)
+		call(DescZombiePaper) goto(KeyItems)
     showticket:
 		call(DescShowTicket) goto(KeyItems)
     diamond:

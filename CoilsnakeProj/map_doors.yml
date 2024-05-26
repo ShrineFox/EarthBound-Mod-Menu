@@ -12653,7 +12653,7 @@
     Direction: left
     Event Flag: 0x0
     Style: 1
-    Text Pointer: $0
+    Text Pointer: _scripts.threedtent
     Type: door
     X: 27
     Y: 21
@@ -12662,7 +12662,7 @@
     Direction: left
     Event Flag: 0x0
     Style: 1
-    Text Pointer: $0
+    Text Pointer: _scripts.threedtent
     Type: door
     X: 28
     Y: 21

@@ -34,6 +34,7 @@ import "_scripts/modmenu/modmenu.ccs"
 import "_scripts/modmenu/goods/goodsmenu.ccs"
 /* Enums */
 import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
 import "_scripts/enums/labels.ccs"
 import "_scripts/enums/bgm.ccs"
 import "_scripts/enums/party.ccs"
@@ -160,3 +161,16 @@ NotEasyDeaths:
 		if flg_Jeff  { inflict(pty_Jeff, 0x201) }
 	}
 }
+
+threedtent:
+	// Set screen reload pointer.
+	"[1F 63 {long threedtentafterdoor}]"
+eob
+
+threedtentafterdoor:
+	if flag flg_KeyItems and flag flg_KeyItem_ZombiePaper and not flag flg_ZombiePaperOnFloor and not flag flg_ZombiePaperUsed
+	{ 
+		"[1F E5 FF]" // Locks player movement until an eob
+		window_open(1) call(data_55.l_0xc9fc48) window_close(1) 
+	}
+eob

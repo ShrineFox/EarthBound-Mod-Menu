@@ -5,6 +5,9 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc9f99e:
@@ -91,7 +94,7 @@ l_0xc9fc32:
 
 l_0xc9fc48:
     newline
-    "@{user}[19 1F]{swap} placed the [1C 05 00] on the floor.{sound(115)}{pause(1)}" next
+    "@{name(1)}[19 1F]{swap} placed the {itemname(item_Zombie_Paper)} on the floor.{sound(115)}{pause(1)}" next
     "{set(flag 124)}[1D 01 FF AE]" eob goto(l_0xc9fc6f)
 
 l_0xc9fc6f:
