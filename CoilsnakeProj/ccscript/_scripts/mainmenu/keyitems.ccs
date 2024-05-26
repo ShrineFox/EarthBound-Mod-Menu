@@ -76,8 +76,9 @@ KeyItems: {
 			// TODO: Set/unset this in dialog
 			MenuOptionWithCallback("Backstage Pass", SetCount11)
 		}
-		if flag flg_KeyItem_ZombiePaper and not flag flg_ZombiePaperOnFloor and not flag flg_ZombiePaperUsed
-		{
+		if flag flg_KeyItem_ZombiePaper and not flag flg_ZombiePaperOnFloor and not flag flg_ZombiePaperUsed and not flag flg_Defeat_MasterBelch
+
+        {
 			MenuOptionWithCallback("Zombie Paper", SetCount12)
 		}
 		if flag flg_KeyItem_ShowTicket

@@ -168,7 +168,7 @@ threedtent:
 eob
 
 threedtentafterdoor:
-	if flag flg_KeyItems and flag flg_KeyItem_ZombiePaper and not flag flg_ZombiePaperOnFloor and not flag flg_ZombiePaperUsed
+	if flag flg_KeyItems and flag flg_KeyItem_ZombiePaper and not flag flg_ZombiePaperOnFloor and not flag flg_ZombiePaperUsed and not flag flg_Defeat_MasterBelch
 	{ 
 		"[1F E5 FF]" // Locks player movement until an eob
 		window_open(1) call(data_55.l_0xc9fc48) window_close(1) 
