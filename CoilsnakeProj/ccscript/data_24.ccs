@@ -210,7 +210,17 @@ l_0xc6d19c:
     "@You'd have to find buried gold," next
     "@or you would never be able to pay such a huge sum of money." next
     "@Ho ho ho..." next
-    "@Ho ho ho ho ho ho ho!{wait}{set(flag 607)}[06 89 00 {e(l_0xc6d2e4)}]" eob
+    "@Ho ho ho ho ho ho ho!{wait}{set(flag 607)}" 
+    if flag flg_KeyItems and flg_KeyItem_Diamond
+    {
+        next
+        goto(usediamond)
+    }
+    else
+    {
+        "[06 89 00 {e(l_0xc6d2e4)}]"
+    }
+    eob
 
 l_0xc6d2e4:
     "{set(flag 174)}" eob
@@ -230,7 +240,11 @@ l_0xc6d37e:
     "[19 19 00 00]{swap}{result_is(182)}[1B 03 {e(l_0xc6d391)}]" goto(data_32.l_0xc7c6b6)
 
 l_0xc6d391:
-    "[19 10 01][19 22 00 02 47 03]{swap}{store_registers}{result_is(1)}[1B 03 {e(l_0xc6d4d6)}]{load_registers}{result_is(2)}[1B 03 {e(l_0xc6d4d6)}]{load_registers}{result_is(8)}[1B 03 {e(l_0xc6d4d6)}][1D 01 FF B6][1F 41 05]{sound(118)}[19 23 47 03 01 01 00][1F 16 47 03 00]@Yaaaieeee!!" next
+    "[19 10 01][19 22 00 02 47 03]{swap}{store_registers}{result_is(1)}[1B 03 {e(l_0xc6d4d6)}]{load_registers}{result_is(2)}[1B 03 {e(l_0xc6d4d6)}]{load_registers}{result_is(8)}[1B 03 {e(l_0xc6d4d6)}][1D 01 FF B6][1F 41 05]"
+    goto(usediamond)
+
+usediamond:
+    "{sound(118)}[19 23 47 03 01 01 00][1F 16 47 03 00]@Yaaaieeee!!" next
     "@That that that [1C 05 B6]... you're going to pay with that [1C 05 B6]?!" next
     "@O... o... okay, th... that's fine.{pause(20)}  I'll rip up this contract." next
     "@*rrrrrip!*" next
@@ -242,6 +256,8 @@ l_0xc6d391:
     "@(Thump, thump..." linebreak
     "  Thump, thump!" next
     "@I made lots of money...){wait}{set(flag 146)}{set(flag 594)}" goto(data_40.l_0xc88b6d)
+eob
+
 
 l_0xc6d4d5:
     eob

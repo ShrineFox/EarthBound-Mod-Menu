@@ -171,7 +171,12 @@ l_0xc89078:
     "@but he hasn't found any buried treasure yet." next
     "@We did, however,{pause(15)} find a Diamond instead." next
     "@Gerardo told me to give it to [1C 02 01]." next
-    "@Here it is... please take it.[03][1D 03 FF][1B 02 {e(l_0xc891b7)}][1D 0E 00 B6]" call(data_33.l_0xc7dcb6) next
+    "@Here it is... please take it.[03]"
+    if flag flg_KeyItems { GiveMenuKeyItem(item_Diamond) }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc891b7)}][1D 0E 00 B6]" call(data_33.l_0xc7dcb6) next
+    }
     "{set(flag 90)}@Well, I've got to go..." next
     "@I'm busy working at the other mine...{pause(15)} busy, busy, busy![03]{window_closeall}" goto(l_0xc89160)
 

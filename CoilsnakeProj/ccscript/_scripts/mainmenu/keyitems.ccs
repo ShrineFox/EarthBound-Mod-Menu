@@ -86,7 +86,7 @@ KeyItems: {
 			// TODO: Set/unset this in dialog
 			MenuOptionWithCallback("Show Ticket", SetCount13)
 		}
-		if flag flg_KeyItem_Diamond and not flag flg_Venus
+		if flag flg_KeyItem_Diamond and not flag 607
 		{
 			MenuOptionWithCallback("Diamond", SetCount14)
 		}
