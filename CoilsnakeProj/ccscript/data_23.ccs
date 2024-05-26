@@ -130,8 +130,16 @@ l_0xc6ad6e:
 l_0xc6ae07:
     "@You absolutely,{pause(15)} positively should buy him.{pause(20)}  You know what I mean?" end
 
+// Get Gum
 l_0xc6ae36:
-    "[1D 14 01 00 00 00][1B 03 {e(l_0xc6ae77)}][1D 03 FF][1B 02 {e(l_0xc6aee1)}]{pause(1)}[1D 09 01 00][1D 0E 03 68]{store_registers}{sound(118)}{open_wallet}@Thanks!{pause(15)}  The monkey's yours." call(data_33.l_0xc7dcb6) "{set(flag 323)}" end
+    if flg_KeyItems { GiveMenuKeyItem(item_Bubble_Gum) "{set(flag 323)}" }
+    else 
+    {
+        "[1D 14 01 00 00 00][1B 03 {e(l_0xc6ae77)}][1D 03 FF][1B 02 {e(l_0xc6aee1)}]{pause(1)}[1D 09 01 00][1D 0E 03 68]{store_registers}" call(data_33.l_0xc7dcb6) 
+    }
+    "{sound(118)}{open_wallet}"
+    "@Thanks!{pause(15)}  The monkey's yours."
+    "{set(flag 323)}" end
 
 l_0xc6ae77:
     "@What?{pause(20)}  You don't even have a buck?" next

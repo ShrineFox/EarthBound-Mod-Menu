@@ -169,10 +169,21 @@ l_0xc7a542:
     "@Oh!{pause(15)}  Hello, [1C 02 01]!" next
     "@Just go along with me on this one, okay." next
     "@I made the decision that you're [1C 02 01],{pause(15)} no matter what..." next
-    "[1D 03 FF][1B 02 {e(l_0xc7a6a9)}]" goto(l_0xc7a63e)
+    goto(getzombiepaper)
+
+getzombiepaper:
+    if flag flg_KeyItems
+    {
+        GiveMenuKeyItem(item_Zombie_Paper)
+    }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc7a6a9)}]"
+        "[1D 0E 00 AE]" call(data_33.l_0xc7dcb6) next
+    }
+    goto(l_0xc7a63e)
 
 l_0xc7a63e:
-    "[1D 0E 00 AE]" call(data_33.l_0xc7dcb6) next
     "@That's right, [1C 02 01]... *wink, wink*" next
     "@I've done my duty and given you Apple Kid's thingamajig..." next
     "@Well, goodbye!...[03]{window_closeall}{unset(flag 675)}{set(flag 552)}" call(data_33.l_0xc7dde8) "{unset(flag 754)}" eob
