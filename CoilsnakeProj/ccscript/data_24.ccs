@@ -5,6 +5,9 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc6c479:
@@ -355,7 +358,10 @@ l_0xc6da3f:
     "{open_wallet}[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc6da6d)} {e(l_0xc6da37)}]" goto(l_0xc6da37)
 
 l_0xc6da6d:
-    "[1D 03 FF][1B 02 {e(l_0xc6daa0)}]{store_registers}[1D 14 1E 00 00 00][1B 03 {e(l_0xc6dac0)}]{sound(118)}{pause(1)}[1D 09 1E 00]{open_wallet}@Thanks a lot.{wait}{sound(116)}{load_registers}[1D 0E 00 B2]" eob
+    if flag flg_KeyItems { GiveMenuKeyItem(item_Show_Ticket) }
+    else { "[1D 03 FF][1B 02 {e(l_0xc6daa0)}]{store_registers}[1D 14 1E 00 00 00][1B 03 {e(l_0xc6dac0)}]" }
+    "{sound(118)}{pause(1)}[1D 09 1E 00]{open_wallet}@Thanks a lot.{wait}{sound(116)}{load_registers}[1D 0E 00 B2]"
+eob
 
 l_0xc6daa0:
     "@Excuse me [19 10 01]" call(data_33.l_0xc7e6b3) ", but your hands are full..." end goto(l_0xc6dac0)
@@ -368,7 +374,15 @@ l_0xc6daf5:
     "[06 02 00 {e(l_0xc6dbbf)}][06 93 00 {e(l_0xc6db0a)}][06 92 00 {e(l_0xc6db2e)}]" goto(l_0xc6db0a)
 
 l_0xc6db0a:
-    "[19 22 FF 02 51 03]" call(data_33.l_0xc7dc9b) "[1B 02 {e(l_0xc6dbae)}]@Please have your tickets ready..." end goto(l_0xc6db2e)
+    if flag flg_KeyItems and flag flg_KeyItem_ShowTicket
+    {
+        goto(l_0xc6dc0c)
+    }
+    else
+    {
+        "[19 22 FF 02 51 03]" call(data_33.l_0xc7dc9b) "[1B 02 {e(l_0xc6dbae)}]@Please have your tickets ready..." end goto(l_0xc6db2e)
+    }
+    eob
 
 l_0xc6db2e:
     "[06 93 00 {e(l_0xc6dbd5)}]@Boys and girls, ladies and gents... this is a very special show," next
@@ -388,7 +402,16 @@ l_0xc6dbd5:
     "[06 02 00 {e(l_0xc6dbbf)}]{store_registers}{load_registers}[19 19 00 00]{swap}{store_registers}{result_is(178)}[1B 03 {e(l_0xc6dc0c)}][19 22 FF 02 51 03]" call(data_33.l_0xc7dc9b) "[1B 02 {e(l_0xc6dbae)}]@No kidding..." end goto(l_0xc6dc0c)
 
 l_0xc6dc0c:
-    "[19 22 FF 02 51 03]" call(data_33.l_0xc7dc9b) "[1B 02 {e(l_0xc6dbae)}][06 02 00 {e(l_0xc6dbbf)}]{sound(118)}{pause(1)}[1D 01 FF B2]@Thanks a lot." next
+    if flag flg_KeyItems and flag flg_KeyItem_ShowTicket
+    {
+        goto(useshowticket)
+    }
+    "[19 22 FF 02 51 03]" call(data_33.l_0xc7dc9b) "[1B 02 {e(l_0xc6dbae)}][06 02 00 {e(l_0xc6dbbf)}]{pause(1)}[1D 01 FF B2]"
+    goto(useshowticket)
+
+useshowticket:
+    "{sound(118)}"
+    "@Thanks a lot." next
     "@Please hurry.{pause(20)}  The show will be starting at any moment.{wait}{window_closeall}" call(data_40.l_0xc8897f) "{set(flag 2)}" eob goto(l_0xc6dc62)
 
 l_0xc6dc62:
