@@ -100,7 +100,7 @@ KeyItems: {
 		{
 			MenuOptionWithCallback("Hieroglyph Copy", SetCount17)
 		}
-		if flag flg_KeyItem_CarrotKey and not flag flg_CarrotKeyUsed
+		if flag flg_KeyItem_CarrotKey
 		{
 			MenuOptionWithCallback("Carrot Key", SetCount18)
 		}

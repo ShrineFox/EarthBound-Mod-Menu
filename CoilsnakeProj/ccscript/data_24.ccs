@@ -309,7 +309,11 @@ l_0xc6d707:
     "@Oh, you want an autograph?" next
     "@Okay,{pause(15)} I'll give you my autograph on this banana peel..." next
     "@{pause(20)}Here you go." next
-    "[1D 03 FF][1B 02 {e(l_0xc6d786)}][1D 0E 00 B7]" call(data_33.l_0xc7dcb6) next
+    if flag flg_KeyItems { GiveMenuKeyItem(item_Signed_Banana) }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc6d786)}][1D 0E 00 B7]" call(data_33.l_0xc7dcb6) next
+    }
     "@Oh, and this is a bonus..." next
     "@Smack!{wait}{window_closeall}{set(flag 91)}{set(flag 10)}" eob
 

@@ -4,6 +4,7 @@
  * Generated using CCScriptWriter.
  */
 import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
 import "_scripts/commands/window_cmds.ccs"
 import "_scripts/commands/flag_cmds.ccs"
 import "_scripts/commands/item_cmds.ccs"
@@ -348,14 +349,28 @@ l_0xc7d85b:
     "{set(flag 227)}" call(l_0xc7d87f) "{unset(flag 227)}" eob
 
 l_0xc7d867:
-    "{set(flag 228)}" call(l_0xc7d87f) "{unset(flag 228)}" eob
+    "{set(flag 228)}" 
+    if flag flg_KeyItems { call(openitembox) GiveMenuKeyItem(item_Key_Carrot) set(flg_KeyItem_CarrotKey) }
+    else
+    {
+        call(l_0xc7d87f)
+    } 
+    "{unset(flag 228)}" eob
 
 l_0xc7d873:
     "{set(flag 229)}" call(l_0xc7d87f) "{unset(flag 229)}" eob
 
+openitembox:
+    "{store_registers}[1F A2][1B 05][19 10 01]{swap}" "{sound(16)}[1F A0]" next
+    "[1B 06][1B 03 {e(l_0xc7d907)}]"
+    eob
+
 l_0xc7d87f:
     "{store_registers}[1F A2][1B 05][19 10 01]{swap}" call(l_0xc7d90d) "{sound(16)}[1F A0]" next
-    "[1B 06][1B 03 {e(l_0xc7d907)}]" call(l_0xc7d92a) "{load_registers}[1B 02 {e(l_0xc7d8ee)}]{swap}" call(l_0xc7d947) "[1D 03 FF][1B 02 {e(l_0xc7d8e6)}]{store_registers}" call(data_33.l_0xc7dc85) "[1B 03 {e(l_0xc7d8d9)}]{load_registers}{swap}" call(l_0xc7d958) "[1D 0E 00 00]{sound(116)}" eob goto(l_0xc7d8d9)
+    "[1B 06][1B 03 {e(l_0xc7d907)}]" call(l_0xc7d92a) "{load_registers}[1B 02 {e(l_0xc7d8ee)}]{swap}" 
+    call(l_0xc7d947) "[1D 03 FF][1B 02 {e(l_0xc7d8e6)}]{store_registers}" call(data_33.l_0xc7dc85) 
+    "[1B 03 {e(l_0xc7d8d9)}]{load_registers}{swap}" call(l_0xc7d958) "[1D 0E 00 00]{sound(116)}" 
+    eob goto(l_0xc7d8d9)
 
 l_0xc7d8d9:
     call(l_0xc7d967) "[1D 0E 00 00]{sound(116)}" eob

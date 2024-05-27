@@ -50,7 +50,13 @@ l_0xc82468:
     "@Could you bring me her autograph on an eraser?" next
     "@Then, I'll show you something <extraordinary.>" next
     "@...Oh,{pause(15)} if you can get her autograph on anything,{pause(15)} don't worry about the eraser..." next
-    "@I don't care if the autograph is written on toilet paper...{wait}{set(flag 140)}{unset(flag 687)}" eob
+    "@I don't care if the autograph is written on toilet paper...{wait}{set(flag 140)}{unset(flag 687)}"
+    if flag flg_KeyItems and flag flg_KeyItem_SignedBanana
+    {
+        next
+        call(l_0xc8259f)
+    }
+    eob
 
 l_0xc82565:
     "@Please come back again to study," next

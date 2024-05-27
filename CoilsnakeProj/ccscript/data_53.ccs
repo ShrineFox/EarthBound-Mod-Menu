@@ -292,10 +292,16 @@ l_0xc9d5c4:
     "@But I'm impressed!{pause(20)}  You did so well for one who hasn't had much training." end
 
 l_0xc9d621:
-    "@(As strange as this may sound,{pause(15)} there are statues of rabbits blocking your way.)" end
+    "@(As strange as this may sound,{pause(15)} there are statues of rabbits blocking your way.)" 
+    if flag flg_KeyItems and flag flg_KeyItem_CarrotKey { next unset(flg_KeyItem_CarrotKey) goto(usedcarrotkey) }
+    end
 
 l_0xc9d656:
-    call(data_33.l_0xc7dd2c) "{result_is(253)}[1B 02 {e(l_0xc9d6b7)}]{load_registers}" call(data_33.l_0xc7dd37) "{sound(118)}[1B 06][1D 0F 00 00]" newline
+    call(data_33.l_0xc7dd2c) "{result_is(253)}[1B 02 {e(l_0xc9d6b7)}]{load_registers}" call(data_33.l_0xc7dd37) 
+    goto(usedcarrotkey)
+
+usedcarrotkey:
+    "{sound(118)}[1B 06][1D 0F 00 00]" newline
     "@(How strange!{pause(20)}  The rabbits and carrots disappeared all at once!){wait}{sound(33)}[1F 1E 53 04 08][1F 1E 54 04 08][1F 1E 55 04 08]{set(flag 652)}" eob
 
 l_0xc9d6b7:
