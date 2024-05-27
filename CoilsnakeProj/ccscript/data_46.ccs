@@ -225,6 +225,7 @@ l_0xc93378:
     "@getting caught in the palm trees!{pause(20)}  Mmm... I cannot move." next
     "@Well,{pause(20)} if I cannot move, it is okay." next
     "[19 10 01]{rtoarg}@[1C 02 00], it makes me sad," next
+    unset(flg_BrickRoad)
     "@but I must say goodbye here,{pause(20)} at my eternal resting place.[03]{window_closeall}{pause(20)}[1F 12 0A][1F 17 80 04 08 00 01]{set(flag 274)}" call(data_33.l_0xc7de60) "{unset(flag 756)}{sound(17)}{unset(flag 662)}[1F E8 FF]{pause(20)}{sound(5)}" call(data_33.l_0xc7dd6b) "{music_resume}" eob goto(l_0xc9344f)
 
 l_0xc9344f:
@@ -240,7 +241,9 @@ l_0xc934e4:
     "[1F 21 9F]" call(data_52.l_0xc9b112) eob
 
 l_0xc934ed:
-    "{set(flag 11)}[1F 41 05][1F E5 FF][1F 07 03][1F 15 6A 00 79 02 01][1F 61]{pause(60)}{window_open(1)}@([1C 02 01] and his friends carried out the submarine that [1C 02 03] fixed.)[03]{window_closeall}[1F EB FF 06][1F 15 F5 00 2A 01 FF][1F 21 5B][1F E7 F5 00]" call(data_33.l_0xc7dd6b) "{set(flag 542)}{music_resume}[1F EF F5 00][1F E8 FF][1F EA F5 00][1F 61][1F ED][1F E5 FF][1F 15 F5 00 2B 01 FF][1F 21 5C]                               [1F EF F5 00][1F E8 FF][1F 61]                                              [1F ED][1F E5 FF]" call(data_33.l_0xc7dd6b) "{unset(flag 542)}{music_resume}[1F EC FF 01][1F 15 6A 00 2C 01 01]       " call(data_52.l_0xc9b4b8) "{unset(flag 11)}{set(flag 218)}{unset(flag 762)}[19 26 0A][1F 41 06]" eob goto(l_0xc935b1)
+    "{set(flag 11)}[1F 41 05][1F E5 FF][1F 07 03][1F 15 6A 00 79 02 01][1F 61]{pause(60)}{window_open(1)}@([1C 02 01] and his friends carried out the submarine that [1C 02 03] fixed.)"
+    set(flg_InDeepDarkness)
+    "[03]{window_closeall}[1F EB FF 06][1F 15 F5 00 2A 01 FF][1F 21 5B][1F E7 F5 00]" call(data_33.l_0xc7dd6b) "{set(flag 542)}{music_resume}[1F EF F5 00][1F E8 FF][1F EA F5 00][1F 61][1F ED][1F E5 FF][1F 15 F5 00 2B 01 FF][1F 21 5C]                               [1F EF F5 00][1F E8 FF][1F 61]                                              [1F ED][1F E5 FF]" call(data_33.l_0xc7dd6b) "{unset(flag 542)}{music_resume}[1F EC FF 01][1F 15 6A 00 2C 01 01]       " call(data_52.l_0xc9b4b8) "{unset(flag 11)}{set(flag 218)}{unset(flag 762)}[19 26 0A][1F 41 06]" eob goto(l_0xc935b1)
 
 l_0xc935b1:
     "[1F E1 06 03 78]" eob
