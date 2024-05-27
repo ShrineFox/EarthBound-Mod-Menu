@@ -1,31 +1,38 @@
 /*
  * EarthBound Text Dump
- * Time: 09:28:30 - 12/02/2022
+ * Time: 20:12:57 - 25/05/2024
  * Generated using CCScriptWriter.
  */
 
+command e(label) "{long label}"
 import "_scripts/enums/flags.ccs"
 import "_scripts/enums/items.ccs"
-import "_scripts/commands/window_cmds.ccs"
 import "_scripts/commands/flag_cmds.ccs"
 import "_scripts/commands/item_cmds.ccs"
 
-command e(label) "{long label}"
-
 // Text Data
 l_0xc575f8:
-    "@I stayed here the whole time you were gone." next
+"@I stayed here the whole time you were gone." next
     "@But now I don't know why I did." end
 
 l_0xc5762c:
     "[06 50 01 {e(l_0xc576e0)}]@I am not sure if it was the <Dungeon Man,> but..." next
     "@there is a strange looking tower to the northwest." next
     "@...This key I picked up a little while ago shall maybe open the tower." next
-    "@You may have it, I do not need it."
-	if flag flg_KeyItems { newline GiveMenuKeyItem(item_Key_Tower) } 
-    else { "[1D 03 FF][1B 02 {e(l_0xc57718)}][03][1D 03 FF][1D 0E 00 C0][1B 05]" call(data_33.l_0xc7dcb6) set(flag 336) }
-	"{wait}{window_closeall}{isset(flag 691)}[1B 02 {e(data_50.l_0xc9992f)}]{pause(60)}" call(data_22.l_0xc692f7) eob
-	
+    "@You may have it, I do not need it." next
+    if flag flg_KeyItems
+    {
+         newline GiveMenuKeyItem(item_Key_Tower)
+    }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc57718)}][03][1D 0E 00 C0][1B 05]" call(data_33.l_0xc7dcb6)
+    }
+    goto(getdungeonmankey)
+
+getdungeonmankey:
+    "{set(flag 336)}{wait}{window_closeall}{isset(flag 691)}[1B 02 {e(data_50.l_0xc9992f)}]{pause(60)}" call(data_22.l_0xc692f7) eob
+
 l_0xc576e0:
     "@I'm not sure if it was the <Dungeon Man>..." next
     "@There's a strange looking tower to the northwest." end
@@ -35,24 +42,20 @@ l_0xc57718:
     "@...But it seems that you have too many things." end
 
 l_0xc57730:
-	if flag flg_KeyItems and flag flg_KeyItem_DungeonManKey { goto(l_0xc57760) }
+    if flag 606 { goto(l_0xc57753) }
+    else if flag flg_KeyItems and flag flg_KeyItem_DungeonManKey { goto(usetowerkey) }
     "[06 5E 02 {e(l_0xc57753)}]@(Looks like you could enter, but it's locked.)" end
 
+// Enter Dungeon Man
 l_0xc57753:
     "{window_closeall}{pause(1)}[1F 21 9F]" call(data_52.l_0xc9b112) eob
 
+// Unlock Dungeon Man with Tower Key
 l_0xc57760:
-	if flag flg_KeyItems and flag flg_KeyItem_DungeonManKey 
-	{
-        goto(opendungeonman)
-	}
-	else 
-    { 
-        "{store_registers}[06 5E 02 {e(l_0xc577c5)}]{load_registers}" call(data_33.l_0xc7dd2c) "{result_is(192)}[1B 02 {e(l_0xc577b2)}]{load_registers}"
-    }
-    eob
+    "{store_registers}[06 5E 02 {e(l_0xc577c5)}]{load_registers}" call(data_33.l_0xc7dd2c) "{result_is(192)}[1B 02 {e(l_0xc577b2)}]{load_registers}" call(data_33.l_0xc7dd37) newline
+    goto(usetowerkey)
 
-opendungeonman:
+usetowerkey:
     "@(The key worked to open the door." next
     "@You may enter.){wait}{wait}{set(flag 606)}{sound(119)}{window_closeall}[1F 21 9F]" call(data_52.l_0xc9b112) eob
 
