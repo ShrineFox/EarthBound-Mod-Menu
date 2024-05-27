@@ -262,9 +262,16 @@ l_0xc7ac3a:
     "[1F 15 0E 00 C3 01 01] " goto(l_0xc7ac42)
 
 l_0xc7ac42:
-    "{pause(64)}[1F 15 6A 00 C4 01 01]  [1F 61][1F 1F 0E 00 06]        [1F EC 01 01]{window_open(1)}@Wow, what a great photograph!" next
-    "@It will always bring back the fondest of memories..." next
-    "{window_closeall}[1F EA 8F 00]                      [1F 61][1F 1F 58 01 06]      [1F 61][1F 07 03]{pause(60)}{music_resume}" eob
+    "{pause(64)}[1F 15 6A 00 C4 01 01]  [1F 61][1F 1F 0E 00 06]        [1F EC 01 01]"
+    if not flag flg_NoPhotoGuy
+    { 
+        "{window_open(1)}@Wow, what a great photograph!" next
+        "@It will always bring back the fondest of memories..." next
+    }
+    "{window_closeall}[1F EA 8F 00]                      "
+    // "[1F 61][1F 1F 58 01 06]      "
+    // "[1F 61]"
+    "[1F 07 03]{pause(60)}{music_resume}" eob 
 
 l_0xc7acb8:
     "{music(115)}{pause(60)}{wait}[1F 01 00]{sound(11)}[19 10 01]{rtoarg}{window_open(1)}@[1C 02 01], I haven't talked with you in ages!{pause(20)}  This is Orange Kid." next

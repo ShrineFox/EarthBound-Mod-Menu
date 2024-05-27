@@ -5,6 +5,10 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/commands/flag_cmds.ccs"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc86ab3:
@@ -404,7 +408,12 @@ l_0xc87e37:
 l_0xc87e4c:
     "@(You found the book" linebreak
     "  <Overcoming Shyness>!)" next
-    "[1D 03 FF][1B 02 {e(l_0xc87e8e)}][1D 0E 00 A4][1B 05]" call(data_33.l_0xc7dcb6) "{wait}{set(flag 89)}{unset(flag 766)}{unset(flag 51)}" eob
+    if flag flg_KeyItems { GiveMenuKeyItem(item_Shyness_Book) }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc87e8e)}][1D 0E 00 A4][1B 05]" call(data_33.l_0xc7dcb6)
+    }
+    "{wait}{set(flag 89)}{unset(flag 766)}{unset(flag 51)}" eob
 
 l_0xc87e8e:
     "@(But look, at this glorious moment you have no more room.)" next

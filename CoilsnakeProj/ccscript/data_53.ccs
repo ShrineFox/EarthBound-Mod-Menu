@@ -5,6 +5,10 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/commands/flag_cmds.ccs"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc9bfcd:
@@ -56,6 +60,7 @@ l_0xc9c65b:
     "@I'm going to open the door, and you get out of there right now!" next
     "@I'm the boss,{pause(15)} so I will let you out.{wait}{window_closetop}[1F E9 04 05][1F 61][1F E6 04 05][1F 1E 13 05 06]{set(flag 651)}{window_open(1)}@Thank you for the Tendakraut." next
     "{sound(118)}[1D 01 FF D3]{set(flag 616)}[19 10 01]{rtoarg}@([1C 02 00]'s Tendakraut was stolen.)" next
+    unset(flg_KeyItem_Tendakraut)
     "@(The awful smell surrounding the group is now gone.)[03]{window_closeall}" eob goto(l_0xc9c7fa)
 
 l_0xc9c7fa:
@@ -328,7 +333,14 @@ l_0xc9d77f:
     "@Rumor, I heard a book to fix shyness, there is." next
     "@Where?" next
     "@Don't know." next
-    "@Just a rumor.{wait}{set(flag 154)}" eob
+    "@Just a rumor.{wait}{set(flag 154)}" 
+    if flag flg_KeyItems and flag flg_KeyItem_ShynessBook
+    {
+        next
+        unset(flg_KeyItem_ShynessBook)
+        call(l_0xc9d95e)
+    }
+    eob
 
 l_0xc9d7e2:
     "@Since we overcame our shyness, I'll give you a [1C 05 A0]." next
@@ -379,7 +391,14 @@ l_0xc9d95e:
     "@<[1C 05 D3]> is a type of dish that all Tenda like." next
     "@It stinks, but it tastes wonderful." next
     "[1D 01 FF A4][1D 0E 00 D3][1B 05]{sound(116)}{pause(60)}{window_open(1)}@[1C 02 01] lends the leader of the Tenda tribe the book <Overcoming Shyness.>" next
-    call(data_33.l_0xc7dcb6) "{wait}{window_closeall}{set(flag 155)}{pause(60)}{set(flag 509)}" call(data_22.l_0xc68931) call(data_46.l_0xc935b7) "[1F E8 FF][1F 41 06]" eob
+    if flag flg_KeyItems { GiveMenuKeyItem(flg_KeyItem_Tendakraut) }
+    else
+    {
+        call(data_33.l_0xc7dcb6)
+    }
+    "{wait}{window_closeall}{set(flag 155)}{pause(60)}{set(flag 509)}" call(data_22.l_0xc68931) 
+    // call(data_46.l_0xc935b7) // confirm player name
+    "[1F E8 FF][1F 41 06]" eob
 
 l_0xc9db12:
     "[06 9B 00 {e(l_0xc9db1e)}]" goto(l_0xc9d735)

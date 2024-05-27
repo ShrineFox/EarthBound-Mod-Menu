@@ -236,6 +236,7 @@ l_0xef733d:
 
 l_0xef7415:
     "[1F 71 04 02]" newline
+    set(flg_Poo)
     "@Suddenly, [1C 02 04] swooped down" linebreak
     "  from the sky!" eob
 
