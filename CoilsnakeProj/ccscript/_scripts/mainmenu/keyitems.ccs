@@ -73,11 +73,9 @@ KeyItems: {
 		}
 		if flag flg_KeyItem_BackstagePass
 		{
-			// TODO: Set/unset this in dialog
 			MenuOptionWithCallback("Backstage Pass", SetCount11)
 		}
 		if flag flg_KeyItem_ZombiePaper and not flag flg_ZombiePaperOnFloor and not flag flg_ZombiePaperUsed and not flag flg_Defeat_MasterBelch
-
         {
 			MenuOptionWithCallback("Zombie Paper", SetCount12)
 		}
@@ -90,9 +88,8 @@ KeyItems: {
 		{
 			MenuOptionWithCallback("Diamond", SetCount14)
 		}
-		if flag flg_KeyItem_YogurtMachine and not flag flg_UsedYogurtMachine
+		if flag flg_KeyItem_YogurtMachine
 		{
-			// TODO: set/unset this in dialog
 			MenuOptionWithCallback("Yogurt Dispenser", SetCount15)
 		}
 		if flag flg_KeyItem_SignedBanana and not flag flg_FoursideSewerOpen
@@ -201,7 +198,8 @@ KeyItems: {
     towerkey:
 		call(DescTowerKey) goto(KeyItems)
     hawkeye:
-		window_closeall window_open(1) call(data_55.l_0xc9fc6f) goto(KeyItems)
+		if not flag flg_InDeepDarkness { call(DescHawkEye) } else { window_closeall window_open(1) call(data_55.l_0xc9fc6f) }
+		goto(KeyItems)
     shynessbook:
 		call(DescShynessBook) goto(KeyItems)
     tendakraut:

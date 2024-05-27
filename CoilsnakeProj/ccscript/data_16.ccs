@@ -80,9 +80,9 @@ l_0xc60e30:
     "{pause(60)}" linebreak
     "@...Did you come in search of this?" next
     "@Someone left it behind in this hole." next
-    if not flg_KeyItems { "[1D 03 FF][1B 02 {e(l_0xc610f1)}]" } // Check if item has space to be carried
-	if flg_KeyItems { newline GiveMenuKeyItem(item_Yogurt_Dispenser) } 
-	else { "[1D 03 FF][1D 0E 00 8B]{set(flag 554)}" call(data_33.l_0xc7dcb6) next }
+	if flag flg_KeyItems { newline GiveMenuKeyItem(item_Yogurt_Dispenser) } 
+	else { "[1D 03 FF][1B 02 {e(l_0xc610f1)}]" "[1D 03 FF][1D 0E 00 8B]" call(data_33.l_0xc7dcb6) next }
+    "{set(flag 554)}"
     goto(l_0xc60ff3)
 
 l_0xc60ff3:

@@ -218,6 +218,7 @@ l_0xc89566:
     "{counter(1)}" call(data_33.l_0xc7dc7f) "[1B 02 {e(l_0xc89580)}]{counter(3)}" call(data_33.l_0xc7dc7f) "[1B 03 {e(l_0xc8955a)}]" goto(l_0xc89580)
 
 l_0xc89580:
+    unset(flg_Paula)
     "{counter(2)}" call(data_33.l_0xc7dc7f) "[1B 03 {e(l_0xc8955a)}][1F 07 02]{pause(10)}[1F 01 00][1F E1 1F 00 01]{pause(20)}[1F E1 14 01 01]{pause(20)}[1F E1 1F 00 01]{pause(1)}[1F E1 14 01 01]{pause(1)}[1F E1 1F 00 01]{pause(1)}{music(177)}{pause(20)}[1F 15 C7 01 99 02 01]{pause(50)}[1F EB 02 06][1F 12 02][1F E1 14 01 01]{pause(20)}[1F E1 1F 00 01][1F 1E 98 03 06][1F 1E 99 03 06][1F 1E A3 03 06]{set(flag 776)}{set(flag 57)}{set(flag 555)}{unset(flag 594)}{pause(30)}{pause(60)}" call(data_33.l_0xc7dd7d) "{sound(114)}{pause(180)}{window_open(1)}@Your attention please," next
     "@would the customer from Onett,{pause(15)} Mr. [1C 02 01]," next
     "@please proceed to the office on the fourth floor." next
@@ -289,7 +290,7 @@ l_0xc89b32:
 
 l_0xc89b4f:
     "[1F 41 05][1F 1A C0 03 01]{pause(60)}[1F 1B C0 03][1F F1 C0 03 BB 00][1F 61][1F E6 C0 03][19 22 01 02 C0 03][1F 13 01 00][19 22 02 02 C0 03][1F 13 02 00][19 22 03 02 C0 03][1F 13 03 00]{window_open(1)}@Heh heh heh..." linebreak
-    "  There's no need to wait...[03]{window_closeall}[1F 15 6A 00 BD 00 01][1F EF 6A 00][1F E8 FF][1F E9 C0 03][1F 61]{pause(60)}[1F 1F 6A 00 06][1F ED][1F 15 B9 01 09 03 01][1F 15 6A 00 BF 00 01][1F EF 6A 00][1F E8 FF][1F 61][1F EB FF 06]{unset(flag 536)}{set(flag 535)}{music_resume}[1F E5 FF]{unset(flag 317)}[1F F1 C0 03 C0 00][1F 61]{window_open(1)}@All right... on to Threed!" next
+    "  There's no need to wait...[03]{window_closeall}[1F 15 6A 00 BD 00 01][1F EF 6A 00][1F E8 FF][1F E9 C0 03][1F 61]{pause(60)}[1F 1F 6A 00 06][1F ED][1F 15 B9 01 09 03 01][1F 15 6A 00 BF 00 01][1F EF 6A 00][1F E8 FF][1F 61][1F EB FF 06]{unset(flag 536)}{set(flag 535)}{music_resume}[1F E5 FF]{unset(flag 317)}[1F F1 C0 03 C0 00][1F 61]{window_open(1)}@All right... on to Threed!" set(136) next
     "{window_closeall}[1F F1 E2 03 C1 00]{pause(60)}[1F EE E2 03][1F E8 FF][1F 67 01][02][1F ED][1F 15 F3 00 C2 00 FF][1F 21 4B][1F EF F3 00]" eob
 
 l_0xc89c2e:

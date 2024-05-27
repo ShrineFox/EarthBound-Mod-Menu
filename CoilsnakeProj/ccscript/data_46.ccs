@@ -5,6 +5,9 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc927ea:
@@ -41,6 +44,10 @@ l_0xc929ae:
     "{window_open(1)}" call(data_53.l_0xc9d523) "{window_closeall}[1F 1E 4F 04 06]{sound(99)}[1F 15 A9 00 9B 02 06][1F 61]" eob
 
 l_0xc929ca:
+    set(flg_Ness)
+    set(flg_Jeff)
+    set(flg_Paula)
+    set(flg_Poo)
     "{window_open(1)}@My name is [1C 02 04].{pause(20)}  I am the one who will fight beside you." next
     "@I am the servant of [1C 02 01].{pause(15)}  I will obey [1C 02 01]." next
     "@[1C 02 01]!{pause(20)}" linebreak
@@ -178,7 +185,15 @@ l_0xc931b7:
     "@(Wasn't it the whole reason you came here?)" end
 
 l_0xc931d3:
-    "[1D 03 FF][1B 02 {e(l_0xc931f1)}][1D 0E 00 AF]" call(data_33.l_0xc7dcb6) "{wait}{set(flag 348)}{pause(10)}[1F 1E AB 04 06]" eob
+    if flag flg_KeyItems
+    {
+        GiveMenuKeyItem(flg_KeyItem_HawkEye)
+    }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc931f1)}][1D 0E 00 AF]" call(data_33.l_0xc7dcb6)
+    }
+    "{wait}{set(flag 348)}{pause(10)}[1F 1E AB 04 06]" eob
 
 l_0xc931f1:
     "@(It's unbelievable that you would get this far," next

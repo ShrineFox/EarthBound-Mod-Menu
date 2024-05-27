@@ -5,6 +5,9 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc821fe:
@@ -324,7 +327,17 @@ l_0xc834a8:
     "@...I know better now." end
 
 l_0xc834e1:
-    "@I kept asking around for Trout-flavored yogurt, but...{wait}[1D 05 FF 8B][1B 03 {e(l_0xc83515)}]" eob
+    "@I kept asking around for Trout-flavored yogurt, but...{wait}"
+    if flag flg_KeyItems and flg_KeyItem_YogurtMachine
+    {
+        unset(flg_KeyItem_YogurtMachine)
+        goto(l_0xc83515)
+    }
+    else
+    {
+        "[1D 05 FF 8B][1B 03 {e(l_0xc83515)}]"
+    }
+    eob
 
 l_0xc83515:
     next

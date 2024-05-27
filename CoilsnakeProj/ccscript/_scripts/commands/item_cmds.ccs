@@ -62,6 +62,7 @@ command GiveKeyItemToParty(itemID)
 		arg(itemID)
 		if not full(0xFF)
 		{
+			// TODO: Ensure member is in party
 			if not full(1) { GiveKeyItem(1) }
 			else if not full(2) { GiveKeyItem(2) }
 			else if not full(3) { GiveKeyItem(3) }
