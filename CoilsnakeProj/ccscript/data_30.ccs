@@ -286,9 +286,10 @@ l_0xc79081:
 // Interact with Pencil Statue
 l_0xc79088:
     "@(For some weird reason," next
-    "@a pencil-shaped iron statue is blocking the path.)" next
+    "@a pencil-shaped iron statue is blocking the path.)"
     if flag flg_KeyItems and flag flg_KeyItem_PencilEraser
     {
+        next
         "@{name(1)} used" linebreak
         "  the Pencil Eraser." next
         "@For some weird reason, the iron pencil statue" linebreak
@@ -307,7 +308,7 @@ l_0xc79088:
             "[1F 1E 85 02 0A]{window_closeall}{set(flag 609)}" eob
         }
     }
-    eob
+    end
 
 // Peaceful Rest Valley Pencil Statue Erased
 l_0xc790c4:

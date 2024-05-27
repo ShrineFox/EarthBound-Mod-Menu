@@ -101,10 +101,25 @@ l_0xc9fc6f:
     newline
     "@{user}[19 1F]{swap} used the [1C 05 00]!{sound(95)}{pause(1)}{wait}{window_closeall}[1D 01 FF AF]{set(flag 288)}[1F 1E CF 04 06]" call(data_46.l_0xc935b1) "){set(flag 508)}" eob goto(l_0xc9fc9e)
 
+// Eraser Statue
 l_0xc9fc9e:
     "@(For some reason," next
-    "@something that looks like a very large iron eraser is in the way.)" end
+    "@something that looks like a very large iron eraser is in the way.)"
+    if flag flg_KeyItems and flag flg_KeyItem_EraserEraser
+    {
+        next
+        "@{name(1)} used" linebreak
+        "  the Eraser Eraser." next
+        "@(For some reason,{pause(15)} the iron eraser statue disappeared in an instant!)"
+        
+        if not flag 299
+        {
+            "{wait}{window_closeall}{pause(1)}{sound(33)}[1F 1E 9F 02 0A]{set(flag 299)}" eob
+        }
+    }
+    end
 
+// Eraser Statue erased in Stonehenge Base
 l_0xc9fcd5:
     call(data_33.l_0xc7dd2c) "{result_is(210)}[1B 02 {e(data_32.l_0xc7c6f1)}]{load_registers}" call(data_33.l_0xc7dd37) newline
     "@(For some reason,{pause(15)} the iron eraser statue disappeared in an instant!){wait}{window_closeall}{pause(1)}{sound(33)}[1F 1E 9F 02 0A]{set(flag 299)}" eob

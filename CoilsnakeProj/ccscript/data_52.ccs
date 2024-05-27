@@ -104,7 +104,7 @@ l_0xc9af3a:
     "[06 49 00 {e(data_50.l_0xc9992f)}][1F 66 01 0E 93 C2 C9 00]" eob
 
 l_0xc9af4a:
-    if flag 24 { set(flg_BrickRoad) }
+    if flag 24 and not flag 274 { set(flg_BrickRoad) } // Dungeon Man follow flag on, but not stuck in trees
     "[06 12 01 {e(l_0xc9af79)}]{isset(flag 24)}[1B 02 {e(l_0xc9af75)}]{set(flag 62)}[1F 11 0A]{set(flag 662)}{set(flag 754)}{set(flag 779)}{set(flag 756)}[1F 21 A3]{pause(1)}[19 26 08]" eob goto(l_0xc9af75)
 
 l_0xc9af75:

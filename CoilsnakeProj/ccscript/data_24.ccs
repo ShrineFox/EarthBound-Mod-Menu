@@ -70,7 +70,12 @@ l_0xc6c7d9:
     "@While he was calling you, he was kidnapped.{pause(20)}  He felt like this...!{pause(5)}!{pause(5)}!{pause(5)}!{pause(5)}!" next
     "@I was there, but was helpless.{pause(15)}  Sorry about that." next
     "@Anyway, take this machine." next
-    "[1D 03 FF][1B 02 {e(l_0xc6c8a3)}][1D 0E 00 D2]" call(data_33.l_0xc7dcb6) "{wait}{set(flag 618)}" eob
+    if flag flg_KeyItems { GiveMenuKeyItem(item_Eraser_Eraser) }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc6c8a3)}][1D 0E 00 D2]" call(data_33.l_0xc7dcb6)
+    }
+    "{wait}{set(flag 618)}" eob
 
 l_0xc6c8a3:
     "@I think this is an important item." next
