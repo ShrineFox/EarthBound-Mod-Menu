@@ -5,6 +5,10 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/commands/flag_cmds.ccs"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc765cf:
@@ -170,6 +174,7 @@ l_0xc76f96:
     call(l_0xc7716d) "[1B 03 {e(l_0xc77148)}]" call(l_0xc76fb2) call(data_21.l_0xc68397) "{set(flag 587)}{set(flag 29)}" eob
 
 l_0xc76fb2:
+    set(flg_FlyingMan)
     "[06 CF 00 {e(l_0xc770b0)}][06 CE 00 {e(l_0xc7706a)}][06 CD 00 {e(l_0xc7703f)}][06 CC 00 {e(l_0xc77007)}]@I am your courage." next
     "@I follow you here in Magicant." next
     "@...My name?" next
@@ -375,6 +380,7 @@ l_0xc7794c:
     call(l_0xc77c50) "@Giygas' goal is" linebreak
     "  to destroy you." next
     call(l_0xc77c50) "@Listen carefully!" next
+    unset(flg_FlyingMan)
     call(l_0xc77c50) "@Everything in the unverse could be destroyed at the hands of Giygas." next
     call(l_0xc77c50) "@But he and his followers are also in trouble." next
     call(l_0xc77c50) "@The Apple of Enlightenment has foretold" next
