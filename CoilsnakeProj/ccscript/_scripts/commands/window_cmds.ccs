@@ -37,7 +37,7 @@ command GetTextSpeed() { gettextspeed }
 // Set Text Speed
 command SetTextSpeed(num) { settextspeed(num) }
 // Set Text Speed to Zero
-command SetTextSpeedInstant() { SaveRAM() counter_zero ctoarg SetTextSpeed(0) LoadRAM() }
+command SetTextSpeedInstant() { store_registers counter_zero ctoarg SetTextSpeed(0) load_registers }
 // Show description of selected item in desc window
 command SetDescription(countNo, prevWndType, DescLabel)
 { 
@@ -51,15 +51,16 @@ command SetDescription(countNo, prevWndType, DescLabel)
 }
 
 /* Register Management */
+// The following are built-in commands:
+// 
+//command store_registers { "[1B 05]" } (Save current count/arg/result registers to RAM)
+// 
+//command load_registers { "[1B 06]" } (Retreive count/arg/result registers from RAM)
+// 
+// ctoarg (Load count value into arg for use as a parameter)
+// 
+// counter_zero (Reset counter to zero)
 
-// Save current count/arg/result registers to RAM
-command SaveRAM() { "[1B 05]" }
-// Retreive count/arg/result registers from RAM
-command LoadRAM() { "[1B 06]" }
-// Load count value into arg for use as a parameter
-command LoadCounter() { ctoarg }
-// Reset counter to zero
-command ResetCounter() { counter_zero }
 // Compare register value, returning a result of 0 or 1
 command compare_register(num, reg) { "[18 07 {long num} {byte reg}]" }
 command result_is_greaterthan_orequal(num) { compare_register(num, 0) }
@@ -72,13 +73,13 @@ command counter_is_greaterthan_orequal(num) { compare_register(num, 2) }
 command OpenWnd(wndType)
 {
 	window_open(wndType)
-	LoadRAM()
+	load_registers
 }
 
 // Close specific window while retaining register values
 command CloseWnd(wndType)
 {
-	SaveRAM()
+	store_registers
 	window_close(wndType)
 }
 
@@ -96,7 +97,7 @@ command CloseFlagWnd(wndType, flg)
 
 // Open a specific flag-dependent custom window
 command OpenModMenuWnd() { CloseModMenuWnd() OpenFlagWnd(wnd_ModMenu, flg_ModMenuWnd) }
-command OpenModMenu2Wnd(height) { CloseModMenu2Wnd() CustomWindow_open(wnd_ModMenu2, 4, 1, 15, height) LoadRAM() set(flg_ModMenuWnd2) }
+command OpenModMenu2Wnd(height) { CloseModMenu2Wnd() CustomWindow_open(wnd_ModMenu2, 4, 1, 15, height) load_registers set(flg_ModMenuWnd2) }
 command OpenModMenuConfirmWnd() { CloseModMenuConfirmWnd() OpenFlagWnd(wnd_ModMenuConfirm, flg_ModMenuConfirmWnd) }
 command OpenKeyItemWnd() { CloseKeyItemWnd() OpenFlagWnd(wnd_KeyItems, flg_KeyItemsWnd) }
 command OpenItemWnd() { CloseItemWnd() OpenFlagWnd(wnd_Item, flg_ItemWnd) }
@@ -123,39 +124,39 @@ command CloseAllModMenuWnd()
 // then switch back to active window
 command DebugPrint(prevWndType)
 {
-	SaveRAM()
+	store_registers
 	if flag flg_Debug
 	{
 		OpenDebugWnd()
 		Lbl(lbl_Debug)
-        LoadRAM()
+        load_registers
         "@Argument: {number(argument)}" newline
-		LoadRAM() ctoarg
+		load_registers ctoarg
 		"@Counter: {number(argument)}" newline
-		LoadRAM() rtoarg
+		load_registers rtoarg
 		"@Result: {number(argument)}"
 		// Go back to original window
 		OpenWnd(prevWndType)
 		SetTextSpeed(1)
 	}
-	LoadRAM()
+	load_registers
 }
 
 // Temporary window showing confirmation of action
 // waits about a second, then closes and returns to previous window
 command NotificationWnd(prevWndType, string)
 {
-	SaveRAM()
+	store_registers
 	window_open(wnd_ModMenuNotification)
 	SetTextSpeedInstant()
-	LoadRAM()
+	load_registers
 	Lbl(lbl_System)
 	"{string}"
 	SetTextSpeed(1)
 	"|||" // Pause for about a second
 	window_close(wnd_ModMenuNotification)
 	window_switch(prevWndType)
-	LoadRAM()
+	load_registers
 }
 
 // Redraw screen using giant window
@@ -183,13 +184,13 @@ command ConfirmNumber(wndLabel, digits, string, yesLabel)
 	Lbl(wndLabel)
 	input(digits)
 	rtoarg
-	SaveRAM()
+	store_registers
 	" " newline
 	"@{string}" newline
 	" {number(argument)}" newline
 	menu 2
 	{
-		"Yes": { LoadRAM() call(yesLabel) }
+		"Yes": { load_registers call(yesLabel) }
 default "No": { }
 	}
 	CloseModMenuConfirmWnd()

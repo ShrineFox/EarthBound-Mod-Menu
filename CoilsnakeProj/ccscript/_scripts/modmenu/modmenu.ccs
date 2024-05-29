@@ -35,7 +35,7 @@ ModMenu: {
 	OpenModMenuWnd()
 	// Set label to "MOD MENU"
 	Lbl(lbl_ModMenu)
-	ResetCounter() ctoarg
+	counter_zero ctoarg
 	// Pick a menu option
 	MenuOptionWithCallback("Party", Set_Count_1)
 	MenuOptionWithCallback("Save", Set_Count_2)

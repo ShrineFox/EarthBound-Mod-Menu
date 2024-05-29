@@ -34,7 +34,7 @@ MainMenu:
 	window_closeall
 	window_open(wnd_Action)
 	Lbl(lbl_Action)
-	ResetCounter()
+	counter_zero
 	ctoarg
 	// Options
 	MenuOptionWithCallback("Goods", Selected_Goods)

@@ -17,10 +17,10 @@ import "../enums/windows.ccs"
 // Give Item in argument register to party
 command GiveItem(charaID)
 {
-	SaveRAM()
+	store_registers
 	window_open(wnd_Dialog)
 	sound(SND_BOXTAKE)
-	LoadRAM()
+	load_registers
 	"[1D 0E {byte charaID} 00]"
 	call(0xc7dccf) next
 	window_close(wnd_Dialog)
@@ -28,10 +28,10 @@ command GiveItem(charaID)
 
 command GiveKeyItem(charaID)
 {
-	SaveRAM()
+	store_registers
 	window_open(wnd_Dialog)
 	sound(SND_SPECIALITEM)
-	LoadRAM()
+	load_registers
 	"[1D 0E {byte charaID} 00]"
 	call(0xc7dcb6) next
 	window_close(wnd_Dialog)
@@ -39,7 +39,7 @@ command GiveKeyItem(charaID)
 
 command GiveItemToParty(itemID)
 {
-	SaveRAM()
+	store_registers
 	arg(itemID)
 	if not full(0xFF)
 	{

@@ -29,7 +29,7 @@ KeyItems: {
 	if not flag flg_Ness and not flag flg_Jeff { /* NotificationWnd(wnd_ModMenuNotification, "@Error: No party flags set.") */ eob }
 	OpenKeyItemWnd()
 	Lbl(lbl_KeyItems)
-	ResetCounter()
+	counter_zero
 	ctoarg
 	if flag flg_Ness 
 	{

@@ -8,7 +8,7 @@ import "../../commands/window_cmds.ccs"
 PaletteMenu: {
 	window_open(wnd_FullScreen)
 	Lbl(lbl_Palette)
-	ResetCounter() ctoarg
+	counter_zero ctoarg
 	MenuOptionWithCallback("00", Set_Palette_0)
 	MenuOptionWithCallback("01", Set_Palette_1)
 	MenuOptionWithCallback("02", Set_Palette_2)

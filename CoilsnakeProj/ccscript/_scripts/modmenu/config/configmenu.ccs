@@ -18,7 +18,7 @@ if flg_ModConfigured {
 	CloseModMenuConfirmWnd()
 	OpenModMenuConfirmWnd()
 	Lbl(lbl_ModSetup)
-	ResetCounter()
+	counter_zero
 	"@Start the game?" newline
 		MenuOptionWithCallback("Begin", Selected_1)
 		MenuOptionWithCallback("Config", Selected_2)
@@ -69,7 +69,7 @@ ConfigMenu: {
 	CloseAllModMenuWnd()
 	OpenKeyItemWnd()
 	Lbl(lbl_ToggleMods)
-	ResetCounter()
+	counter_zero
 	ctoarg
 	if flag flg_KeyItems {
         MenuOptionWithCallback("[ac]Key Items", Set_Count_1)

@@ -371,13 +371,13 @@ command EscargotCheck() { "[1D 0C 00 00]" }
 StoreItemMenu:
 	window_open(wnd_Dialog)
 	call(data_14.l_0xc5e456)
-	SaveRAM()
+	store_registers
 	if result_is(0) { window_close(wnd_Dialog) goto(StorageMenu) }
 	else
 	{
-		LoadRAM()
+		load_registers
 		EscargotCheck()
-		if result_is(0) { LoadRAM() "{sound(118)}[1D 12 00 00]" }
+		if result_is(0) { load_registers "{sound(118)}[1D 12 00 00]" }
 	}
 	window_close(wnd_Dialog)
 goto(StoreItemMenu)
