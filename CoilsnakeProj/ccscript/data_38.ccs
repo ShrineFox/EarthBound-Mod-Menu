@@ -5,6 +5,10 @@
  */
 
 command e(label) "{long label}"
+import "_scripts/commands/flag_cmds.ccs"
+import "_scripts/enums/flags.ccs"
+import "_scripts/enums/items.ccs"
+import "_scripts/commands/item_cmds.ccs"
 
 // Text Data
 l_0xc85291:
@@ -241,7 +245,12 @@ l_0xc862f7:
     eob
 
 l_0xc862f8:
-    "[1D 03 FF][1B 02 {e(l_0xc86311)}][1D 0E 00 C1][1B 05]" call(data_33.l_0xc7dcb6) "{set(flag 79)}" end
+    if flag flg_KeyItems { GiveMenuKeyItem(item_Meteorite_Piece) }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc86311)}][1D 0E 00 C1][1B 05]" call(data_33.l_0xc7dcb6)
+    }
+    "{set(flag 79)}" end
 
 l_0xc86311:
     "@You don't have any more space." end
