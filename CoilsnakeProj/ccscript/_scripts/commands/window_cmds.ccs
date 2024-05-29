@@ -134,7 +134,7 @@ command DebugPrint(prevWndType)
 		load_registers ctoarg
 		"@Counter: {number(argument)}" newline
 		load_registers rtoarg
-		"@Result: {number(argument)}"
+		"@Result: {number(argument)}" pause(60)
 		// Go back to original window
 		OpenWnd(prevWndType)
 		SetTextSpeed(1)

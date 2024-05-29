@@ -10,49 +10,37 @@ MusicMenu:
 	music_switching_off
 	CloseModMenuConfirmWnd()
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(10)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"View List":    { goto(MusicList) }
 		"Enter ID":     { goto(MusicID) }
-		"Stop Music":   { music_stop set(flg_MuteMusic) NotificationWnd(wnd_ModMenu2, "{sound(SND_BOXTAKE)}@Music has been stopped.") }
-		"Resume Music": { unset(flg_MuteMusic) music_resume NotificationWnd(wnd_ModMenu2, "{sound(SND_BOXOPEN1)}@Music has resumed.") }
-		default "Back": { goto(modmenu.ModMenu) }
+		"Stop Music":   { music_stop set(flg_MuteMusic) NotificationWnd(wnd_ModMenu2, "{sound(SND_BOXTAKE)}@Music has been stopped.") goto(MusicMenu) }
+		"Resume Music": { unset(flg_MuteMusic) music_resume NotificationWnd(wnd_ModMenu2, "{sound(SND_BOXOPEN1)}@Music has resumed.") goto(MusicMenu) }
 	}
-goto(MusicMenu)
+goto(modmenu.ModMenu)
 
 MusicList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(20)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Town":         { goto(TownBGMList) }
 		"Indoors":      { goto(IndoorBGMList) }
 		"Dungeons":     { goto(DungeonBGMList) }
 		"Battle":       { goto(BattleBGMList) }
-		"More...":       { goto(MoreBGMList) }
-		default "Back": { goto(MusicMenu) }
-	}
-goto(MusicList)
-
-MoreBGMList:
-	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
-	Lbl(lbl_BGM)
-	menu 1 {
 		"Events":        { goto(EventBGMList) }
 		"Fanfare":       { goto(FanfareBGMList) }
 		"Ambiance":      { goto(AmbianceBGMList) }
 		"Miscellaneous": { goto(MiscBGMList) }
-		default "Back":  { goto(MusicList) }
 	}
-goto(MoreBGMList)
+goto(MusicMenu)
 
 /* Towns */
 
 TownBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(24)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Onett":         { goto(OnettBGMList) }
@@ -60,281 +48,233 @@ TownBGMList:
 		"Threed":        { goto(ThreedBGMList) }
 		"Fourside":      { goto(FoursideBGMList) }
 		"Winters":       { goto(WintersBGMList) }
-		"More...":       { goto(TownBGMList2) }
-		default "Back":  { goto(MusicList) }
-	}
-goto(TownBGMList)
-
-TownBGMList2:
-	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
-	Lbl(lbl_BGM)
-	menu 1 {
-		"Summers":          { music(bgm_Summers) }
+		"Summers":          { music(bgm_Summers) goto(TownBGMList) }
 		"Scaraba":          { goto(ScarabaBGMList) }
-		"Dalaam":      	    { music(bgm_Dalaam) }
+		"Dalaam":      	    { music(bgm_Dalaam) goto(TownBGMList) }
 		"Deep Darkness":    { goto(DeepDarknessBGMList) }
-		"More...":       { goto(TownBGMList3) }
-		default "Back":  { goto(TownBGMList) }
-	}
-goto(TownBGMList2)
-
-TownBGMList3:
-	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
-	Lbl(lbl_BGM)
-	menu 1 {
 		"Magicant":         { goto(MagicantBGMList) }
 		"Cave of the Past": { goto(CaveofPastBGMList) }
-		default "Back":     { goto(TownBGMList2) }
 	}
-goto(TownBGMList3)
+goto(MusicList)
 
 OnettBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(10)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Onett Day":      { music(bgm_Onett) }
-		"Onett Sunrise":  { music(bgm_Onett_Sunrise) }
-		"Onett Night":    { music(bgm_Onett_Night) }
-		"Onett Invasion": { music(bgm_Onett_Invasion) }
-		default "Back":   { goto(TownBGMList) }
+		"Onett Day":      { music(bgm_Onett) goto(OnettBGMList) }
+		"Onett Sunrise":  { music(bgm_Onett_Sunrise) goto(OnettBGMList) }
+		"Onett Night":    { music(bgm_Onett_Night) goto(OnettBGMList) }
+		"Onett Invasion": { music(bgm_Onett_Invasion) goto(OnettBGMList) }
 	}
-goto(OnettBGMList)
+goto(TownBGMList)
 
 TwosonBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(10)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Boy Meets Girl":  { music(bgm_Twoson) }
-		"Peaceful Valley": { music(bgm_PeacefulRestValley) }
-		"Happy Village":   { music(bgm_HappyHappyVillage) }
-		"Paula's Theme":   { music(bgm_PaulaTheme) }
-		default "Back":    { goto(TownBGMList) }
+		"Boy Meets Girl":  { music(bgm_Twoson) goto(TwosonBGMList) }
+		"Peaceful Valley": { music(bgm_PeacefulRestValley) goto(TwosonBGMList) }
+		"Happy Village":   { music(bgm_HappyHappyVillage) goto(TwosonBGMList) }
+		"Paula's Theme":   { music(bgm_PaulaTheme) goto(TwosonBGMList) }
 	}
-goto(TwosonBGMList)
+goto(TownBGMList)
 
 ThreedBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(10)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Peaceful Threed": { music(bgm_Threed) }
-		"Zombie Town":     { music(bgm_Threed_Zombies) }
-		"Saturn Valley":   { music(bgm_SaturnValley) }
-		"Coffee Break":    { music(bgm_CoffeeBreak) }
-		default "Back":    { goto(TownBGMList) }
+		"Peaceful Threed": { music(bgm_Threed) goto(ThreedBGMList) }
+		"Zombie Town":     { music(bgm_Threed_Zombies) goto(ThreedBGMList) }
+		"Saturn Valley":   { music(bgm_SaturnValley) goto(ThreedBGMList) }
+		"Coffee Break":    { music(bgm_CoffeeBreak) goto(ThreedBGMList) }
 	}
-goto(ThreedBGMList)
+goto(TownBGMList)
 
 FoursideBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(12)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Fourside":      { music(bgm_Threed) }
-		"Dusty Desert":  { music(bgm_Desert) }
-		"Monkey Caves":  { music(bgm_MonkeyCaves) }
-		"Moonside":      { music(bgm_Moonside) }
-		"Jackie's Cafe": { music(bgm_Cafe) }
-		default "Back":  { goto(TownBGMList) }
+		"Fourside":      { music(bgm_Fourside) goto(FoursideBGMList) }
+		"Dusty Desert":  { music(bgm_Desert) goto(FoursideBGMList) }
+		"Monkey Caves":  { music(bgm_MonkeyCaves) goto(FoursideBGMList) }
+		"Moonside":      { music(bgm_Moonside) goto(FoursideBGMList) }
+		"Jackie's Cafe": { music(bgm_Cafe) goto(FoursideBGMList) }
 	}
-goto(FoursideBGMList)
+goto(TownBGMList)
 
 WintersBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(10)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Snowman":       { music(bgm_SnowWood) }
-		"Winters":  	 { music(bgm_Winters) }
-		"Lake Tess":     { music(bgm_TessieWatchers) }
-		"Tessie": 		 { music(bgm_Tessie) }
-		default "Back":  { goto(TownBGMList) }
+		"Snowman":       { music(bgm_SnowWood) goto(WintersBGMList) }
+		"Winters":  	 { music(bgm_Winters) goto(WintersBGMList) }
+		"Lake Tess":     { music(bgm_TessieWatchers) goto(WintersBGMList) }
+		"Tessie": 		 { music(bgm_Tessie) goto(WintersBGMList) }
 	}
-goto(WintersBGMList)
+goto(TownBGMList)
 
 ScarabaBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(8)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Scaraba":         { music(bgm_Bazaar) }
-		"Scaraba Desert":  { music(bgm_Scaraba_Desert) }
-		"Megaton Walk":    { music(bgm_MegatonWalk) }
-		default "Back":    { goto(TownBGMList2) }
+		"Scaraba":         { music(bgm_Bazaar) goto(ScarabaBGMList) }
+		"Scaraba Desert":  { music(bgm_Scaraba_Desert) goto(ScarabaBGMList) }
+		"Megaton Walk":    { music(bgm_MegatonWalk) goto(ScarabaBGMList) }
 	}
-goto(ScarabaBGMList)
+goto(TownBGMList)
 
 DeepDarknessBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(10)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Deep Darkness":   { music(bgm_DeepDarkness) }
-		"Tenda Village":   { music(bgm_TendaVillage) }
-		"Lost Underworld": { music(bgm_LostUnderworld) }
-		"Fire Springs":    { music(bgm_VolcanoCave) }
-		default "Back":    { goto(TownBGMList2) }
+		"Deep Darkness":   { music(bgm_DeepDarkness) goto(DeepDarknessBGMList) }
+		"Tenda Village":   { music(bgm_TendaVillage) goto(DeepDarknessBGMList) }
+		"Lost Underworld": { music(bgm_LostUnderworld) goto(DeepDarknessBGMList) }
+		"Fire Springs":    { music(bgm_VolcanoCave) goto(DeepDarknessBGMList) }
 	}
-goto(DeepDarknessBGMList)
+goto(TownBGMList)
 
 MagicantBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(10)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Magicant":   { music(bgm_Magicant) }
-		"Flying Man": { music(bgm_FlyingMan) }
-		"Sea of Eden":     { music(bgm_SeaofEden) }
-		"Sea of Eden 2":   { music(bgm_SeaofEden_Deep) }
-		default "Back":    { goto(TownBGMList3) }
+		"Magicant":   { music(bgm_Magicant) goto(MagicantBGMList) }
+		"Flying Man": { music(bgm_FlyingMan) goto(MagicantBGMList) }
+		"Sea of Eden":     { music(bgm_SeaofEden) goto(MagicantBGMList) }
+		"Sea of Eden 2":   { music(bgm_SeaofEden_Deep) goto(MagicantBGMList) }
 	}
-goto(MagicantBGMList)
+goto(TownBGMList)
 
 CaveofPastBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(8)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Cliff Time Forgot": { music(bgm_CliffTimeForgot) }
-		"Cave of the Past":  { music(bgm_ThePast) }
-		"Giygas's Lair":     { music(bgm_GiygasLair) }
-		default "Back":      { goto(TownBGMList3) }
+		"Cliff Time Forgot": { music(bgm_CliffTimeForgot) goto(CaveofPastBGMList) }
+		"Cave of the Past":  { music(bgm_ThePast) goto(CaveofPastBGMList) }
+		"Giygas's Lair":     { music(bgm_GiygasLair) goto(CaveofPastBGMList) }
 	}
-goto(CaveofPastBGMList)
+goto(TownBGMList)
 
 /* Indoors */
 
 IndoorBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(6)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Houses":       { goto(HouseBGMList) }
 		"Facilities":   { goto(FacilityBGMList) }
-		default "Back": { goto(MusicList) }
 	}
-goto(IndoorBGMList)
+goto(MusicList)
 
 HouseBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(12)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Home Sweet Home": { music(bgm_HomeSweetHome) }
-		"Suspicious House":   { music(bgm_SuspiciousHouse) }
-		"Sloppy House":   { music(bgm_SloppyHouse) }
-		"Pokey's House":   { music(bgm_PokeysHouse) }
-		"Friendly Neighbors":   { music(bgm_FriendlyNeighbors) }
-		default "Back": { goto(IndoorBGMList) }
+		"Home Sweet Home": { music(bgm_HomeSweetHome) goto(HouseBGMList) }
+		"Suspicious House":   { music(bgm_SuspiciousHouse) goto(HouseBGMList) }
+		"Sloppy House":   { music(bgm_SloppyHouse) goto(HouseBGMList) }
+		"Pokey's House":   { music(bgm_PokeysHouse) goto(HouseBGMList) }
+		"Friendly Neighbors":   { music(bgm_FriendlyNeighbors) goto(HouseBGMList) }
 	}
-goto(HouseBGMList)
+goto(IndoorBGMList)
 
 FacilityBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(16)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Dept. Store":  { music(bgm_DeptStore) }
-		"Hotel":        { music(bgm_Hotel) }
-		"Hospital":     { music(bgm_Hospital) }
-		"Arcade":       { music(bgm_Arcade) }
-		"More...":      { goto(FacilityBGMList2) }
-		default "Back": { goto(IndoorBGMList) }
+		"Dept. Store":  { music(bgm_DeptStore) goto(FacilityBGMList) }
+		"Hotel":        { music(bgm_Hotel)  goto(FacilityBGMList) }
+		"Hospital":     { music(bgm_Hospital)  goto(FacilityBGMList) }
+		"Arcade":       { music(bgm_Arcade)  goto(FacilityBGMList) }
+		"Chaos Theater":   { music(bgm_ChaosTheater)  goto(FacilityBGMList) }
+		"Topolla Theater": { music(bgm_TopollaTheater)  goto(FacilityBGMList) }
+		"Andonuts Lab":    { music(bgm_AndonutsLab)  goto(FacilityBGMList) }
 	}
-goto(FacilityBGMList)
-
-FacilityBGMList2:
-	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
-	Lbl(lbl_BGM)
-	menu 1 {
-		"Chaos Theater":   { music(bgm_ChaosTheater) }
-		"Topolla Theater": { music(bgm_TopollaTheater) }
-		"Andonuts Lab":    { music(bgm_AndonutsLab) }
-		default "Back":    { goto(FacilityBGMList) }
-	}
-goto(FacilityBGMList2)
+goto(IndoorBGMList)
 
 /* Dungeons */
 
 DungeonBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(12)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Belch Factory":     { music(bgm_BelchFactory) }
-		"Third Strongest":   { music(bgm_ThirdStrongest) }
-		"Stonehenge Base":   { music(bgm_StonehengeBase) }
-		"Pink Cloud Shrine": { music(bgm_PinkCloud_Shrine) }
-		"Dungeon Man":       { music(bgm_DungeonMan) }
-		default "Back":      { goto(MusicList) }
+		"Belch Factory":     { music(bgm_BelchFactory) goto(DungeonBGMList) }
+		"Third Strongest":   { music(bgm_ThirdStrongest) goto(DungeonBGMList) }
+		"Stonehenge Base":   { music(bgm_StonehengeBase) goto(DungeonBGMList) }
+		"Pink Cloud Shrine": { music(bgm_PinkCloud_Shrine) goto(DungeonBGMList) }
+		"Dungeon Man":       { music(bgm_DungeonMan) goto(DungeonBGMList) }
 	}
-goto(DungeonBGMList)
+goto(MusicList)
 
 /* Battle */
 BattleBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(6)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Regular Foes": { goto(FoeBGMList) }
 		"Bosses":       { goto(BossBGMList) }
-		default "Back": { goto(MusicList) }
 	}
-goto(BattleBGMList)
+goto(MusicList)
 
 FoeBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(12)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Weird Opponent":  { music(bgm_Battle_WeirdOpponent) }
-		"Machine":         { music(bgm_Battle_Machine) }
-		"Mobile Opponent": { music(bgm_Battle_MobileOpponent) }
-		"Weak Opponent":   { music(bgm_Battle_WeakOpponent) }
-		"Unsettling":      { music(bgm_Battle_UnsettlingOpponent) }
-		default "Back":    { goto(BattleBGMList) }
+		"Weird Opponent":  { music(bgm_Battle_WeirdOpponent) goto(FoeBGMList) }
+		"Machine":         { music(bgm_Battle_Machine)  goto(FoeBGMList) }
+		"Mobile Opponent": { music(bgm_Battle_MobileOpponent)  goto(FoeBGMList) }
+		"Weak Opponent":   { music(bgm_Battle_WeakOpponent)  goto(FoeBGMList) }
+		"Unsettling":      { music(bgm_Battle_UnsettlingOpponent)  goto(FoeBGMList) }
 	}
-goto(FoeBGMList)
+goto(BattleBGMList)
 
 BossBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(14)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Sanctuary Guardian": { music(bgm_Battle_SanctuaryGuardian) }
-		"Otherworldly Foe": { music(bgm_Battle_OtherworldlyFoe) }
-		"Master Belch": { music(bgm_Battle_Belch) }
-		"Franky": { music(bgm_Battle_Hippie) }
-		"Kraken": { music(bgm_Battle_Kraken) }
+		"Sanctuary Guardian": { music(bgm_Battle_SanctuaryGuardian) goto(BossBGMList) }
+		"Otherworldly Foe": { music(bgm_Battle_OtherworldlyFoe) goto(BossBGMList) }
+		"Master Belch": { music(bgm_Battle_Belch) goto(BossBGMList) }
+		"Franky": { music(bgm_Battle_Hippie) goto(BossBGMList) }
+		"Kraken": { music(bgm_Battle_Kraken) goto(BossBGMList) }
 		"Giygas": { goto(GiygasBGMList) }
-		default "Back": { goto(BattleBGMList) }
 	}
-goto(BossBGMList)
+goto(BattleBGMList)
 
 GiygasBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(12)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Devil's Machine": { music(bgm_Battle_Giygas) }
-		"Giygas Phase 1": { music(bgm_Giygas_Phase_1) }
-		"Giygas Phase 2": { music(bgm_Giygas_Phase_2) }
-		"Giygas Phase 3": { music(bgm_Giygas_Phase_3) }
-		"Giygas Weakened": { music(bgm_Giygas_Weakening) }
-		default "Back": { goto(BossBGMList) }
+		"Devil's Machine": { music(bgm_Battle_Giygas) goto(GiygasBGMList) }
+		"Giygas Phase 1": { music(bgm_Giygas_Phase_1)  goto(GiygasBGMList) }
+		"Giygas Phase 2": { music(bgm_Giygas_Phase_2)  goto(GiygasBGMList) }
+		"Giygas Phase 3": { music(bgm_Giygas_Phase_3)  goto(GiygasBGMList) }
+		"Giygas Weakened": { music(bgm_Giygas_Weakening)  goto(GiygasBGMList) }
 	}
-goto(GiygasBGMList)
+goto(BossBGMList)
 
 /* Events */
 
 EventBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(14)
 	Lbl(lbl_BGM)
 	menu 1 {
 		"Vehicles":     { goto(VehicleBGMList) }
@@ -342,183 +282,152 @@ EventBGMList:
 		"Delivery": { music(bgm_Delivery) }
 		"Flyovers": { goto(FlyoverBGMList) }
 		"Good Morning": { goto(GoodMorningBGMList) }
-		"More...": { goto(EventBGMList2) }
-		default "Back": { goto(MoreBGMList) }
+		"More... (1/4)": { goto(EventBGMList2) }
 	}
-goto(EventBGMList)
+goto(MusicList)
 
 EventBGMList2:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(14)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Pokey": { music(bgm_Greeting_SancutaryBoss) }
-		"Sanctuary Boss":  { music(bgm_Greeting_SancutaryBoss) }
-		"Your Sanctuary":  { music(bgm_YourSanctuary) }
-		"Flash of Memory": { music(bgm_FlashOfMemory) }
-		"The Power":    { music(bgm_ThePower) }
-		"More...":      { goto(EventBGMList3) }
-		default "Back": { goto(EventBGMList) }
+		"Pokey": { music(bgm_Greeting_SancutaryBoss) goto(EventBGMList2) }
+		"Sanctuary Boss":  { music(bgm_Greeting_SancutaryBoss) goto(EventBGMList2) }
+		"Your Sanctuary":  { music(bgm_YourSanctuary) goto(EventBGMList2) }
+		"Flash of Memory": { music(bgm_FlashOfMemory) goto(EventBGMList2) }
+		"The Power":    { music(bgm_ThePower)  goto(EventBGMList2) }
+		"More... (2/4)":      { goto(EventBGMList3) }
 	}
-goto(EventBGMList2)
+goto(EventBGMList)
 
 EventBGMList3:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(14)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Magicant Depart": { music(bgm_Magicant_Departure) }
-		"Photograph":      { music(bgm_Photograph) }
-		"Coffee Break":    { music(bgm_CoffeeBreak) }
-		"Heroes Return":   { music(bgm_HeroesReturn) }
-		"Heroes Return 2": { music(bgm_HeroesReturn_2) }
-		"More...":         { goto(EventBGMList4) }
-		default "Back":    { goto(EventBGMList2) }
+		"Magicant Depart": { music(bgm_Magicant_Departure) goto(EventBGMList3) }
+		"Photograph":      { music(bgm_Photograph) goto(EventBGMList3) }
+		"Coffee Break":    { music(bgm_CoffeeBreak) goto(EventBGMList3) }
+		"Heroes Return":   { music(bgm_HeroesReturn) goto(EventBGMList3) }
+		"Heroes Return 2": { music(bgm_HeroesReturn_2) goto(EventBGMList3) }
+		"More... (3/4)":         { goto(EventBGMList4) }
 	}
-goto(EventBGMList3)
+goto(EventBGMList2)
 
 EventBGMList4:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(12)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Pokey Appears":  { music(bgm_Pokey_Appears) }
-		"Realization":    { music(bgm_Magicant_Realization) }
-		"Giygas Awakens": { music(bgm_GiygasAwakens) }
-		"Giygas Prayer":  { music(bgm_Giygas_Prayer) }
-		"Prophecy":       { music(bgm_BuzzBuzz_Prophecy) }
-		default "Back": { goto(EventBGMList3) }
+		"Pokey Appears":  { music(bgm_Pokey_Appears) goto(EventBGMList4) }
+		"Realization":    { music(bgm_Magicant_Realization) goto(EventBGMList4) }
+		"Giygas Awakens": { music(bgm_GiygasAwakens) goto(EventBGMList4) }
+		"Giygas Prayer":  { music(bgm_Giygas_Prayer) goto(EventBGMList4) }
+		"Prophecy":       { music(bgm_BuzzBuzz_Prophecy) goto(EventBGMList4) }
 	}
-goto(EventBGMList4)
+goto(EventBGMList3)
 
 VehicleBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(12)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Bicycle":        { music(bgm_Bicycle) }
-		"Get on the Bus": { music(bgm_Bus) }
-		"Tessie":         { music(bgm_Tessie) }
-		"Sky Runner":     { music(bgm_SkyRunner_InFlight) }
-		"Submarine":      { music(bgm_YellowSubmarine) }
-		default "Back":   { goto(EventBGMList) }
+		"Bicycle":        { music(bgm_Bicycle) goto(VehicleBGMList) }
+		"Get on the Bus": { music(bgm_Bus) goto(VehicleBGMList) }
+		"Tessie":         { music(bgm_Tessie) goto(VehicleBGMList) }
+		"Sky Runner":     { music(bgm_SkyRunner_InFlight) goto(VehicleBGMList) }
+		"Submarine":      { music(bgm_YellowSubmarine) goto(VehicleBGMList) }
 	}
-goto(VehicleBGMList)
+goto(EventBGMList)
 
 RunawayFiveBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(12)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"At Chaos Theater": { music(bgm_RunawayFive_ChaosTheater) }
-		"At Topolla":       { music(bgm_RunawayFive_Topolla) }
-		"On Tour":          { music(bgm_RunawayFive_OnTour) }
-		"Freedom!":         { music(bgm_RunawayFive_Free) }
-		"Venus Concert":    { music(bgm_VenusPerformance) }
-		default "Back":     { goto(EventBGMList) }
+		"At Chaos Theater": { music(bgm_RunawayFive_ChaosTheater) goto(RunawayFiveBGMList) }
+		"At Topolla":       { music(bgm_RunawayFive_Topolla) goto(RunawayFiveBGMList) }
+		"On Tour":          { music(bgm_RunawayFive_OnTour) goto(RunawayFiveBGMList) }
+		"Freedom!":         { music(bgm_RunawayFive_Free) goto(RunawayFiveBGMList) }
+		"Venus Concert":    { music(bgm_VenusPerformance) goto(RunawayFiveBGMList) }
 	}
-goto(RunawayFiveBGMList)
+goto(EventBGMList)
 
 FlyoverBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(8)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Onett Flyover":   { music(bgm_Onett_Flyover) }
-		"Winters Flyover": { music(bgm_Winters_Flyover) }
-		"Dalaam Flyover":  { music(bgm_Dalaam_Flyover) }
-		default "Back":    { goto(EventBGMList) }
+		"Onett Flyover":   { music(bgm_Onett_Flyover) goto(FlyoverBGMList) }
+		"Winters Flyover": { music(bgm_Winters_Flyover) goto(FlyoverBGMList) }
+		"Dalaam Flyover":  { music(bgm_Dalaam_Flyover) goto(FlyoverBGMList) }
 	}
-goto(FlyoverBGMList)
+goto(EventBGMList)
 
 GoodMorningBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(12)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"GM Eagleland": { music(bgm_GoodMorning) }
-		"GM Winters":   { music(bgm_GoodMorning_Winters) }
-		"GM Moonside":  { music(bgm_GoodMorning_Moonside) }
-		"GM Scaraba":   { music(bgm_GoodMorning_Scaraba) }
-		"Heartless":    { music(bgm_Hotel_Heartless) }
-		default "Back": { goto(EventBGMList) }
+		"GM Eagleland": { music(bgm_GoodMorning) goto(GoodMorningBGMList) }
+		"GM Winters":   { music(bgm_GoodMorning_Winters) goto(GoodMorningBGMList) }
+		"GM Moonside":  { music(bgm_GoodMorning_Moonside) goto(GoodMorningBGMList) }
+		"GM Scaraba":   { music(bgm_GoodMorning_Scaraba) goto(GoodMorningBGMList) }
+		"Heartless":    { music(bgm_Hotel_Heartless) goto(GoodMorningBGMList) }
 	}
-goto(GoodMorningBGMList)
+goto(EventBGMList)
 
 /* Fanfare */
 
 FanfareBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(20)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"You Won!":        { music(bgm_YouWon) }
-		"You Won! (Boss)": { music(bgm_YouWin_Boss) }
-		"Instant Victory": { music(bgm_InstantVictory) }
-		"Level Up":        { music(bgm_LevelUp) }
-		"More...":         { goto(FanfareBGMList2) }
-		default "Back":    { goto(MoreBGMList) }
+		"You Won!":        { music(bgm_YouWon) goto(FanfareBGMList) }
+		"You Won! (Boss)": { music(bgm_YouWin_Boss) goto(FanfareBGMList) }
+		"Instant Victory": { music(bgm_InstantVictory) goto(FanfareBGMList) }
+		"Level Up":        { music(bgm_LevelUp) goto(FanfareBGMList) }
+		"Game Over":      { music(bgm_ABadDream) goto(FanfareBGMList) }
+		"New Friend":     { music(bgm_NewFriend) goto(FanfareBGMList) }
+		"Revitalization": { music(bgm_InstantRevitalization) goto(FanfareBGMList) }
+		"Starman Jr.":    { music(bgm_StarmanJr_Appears) goto(FanfareBGMList) }
+		"Magic Cake":     { music(bgm_MagicCake) goto(FanfareBGMList) }
 	}
-goto(FanfareBGMList)
-
-FanfareBGMList2:
-	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
-	Lbl(lbl_BGM)
-	menu 1 {
-		"Game Over":      { music(bgm_ABadDream) }
-		"New Friend":     { music(bgm_NewFriend) }
-		"Revitalization": { music(bgm_InstantRevitalization) }
-		"Starman Jr.":    { music(bgm_StarmanJr_Appears) }
-		"Magic Cake":     { music(bgm_MagicCake) }
-		default "Back":   { goto(FanfareBGMList) }
-	}
-goto(FanfareBGMList2)
+goto(MusicList)
 
 /* Ambiance */
 
 AmbianceBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(10)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Cave":             { music(bgm_CaveAmbiance) }
-		"Spooky Cave":      { music(bgm_SpookyCave) }
-		"Winters Cavern":   { music(bgm_WintersCaverns) }
-		"Deep Underground": { music(bgm_DeepUnderground_Unused) }
-		default "Back":     { goto(MoreBGMList) }
+		"Cave":             { music(bgm_CaveAmbiance) goto(AmbianceBGMList) }
+		"Spooky Cave":      { music(bgm_SpookyCave) goto(AmbianceBGMList) }
+		"Winters Cavern":   { music(bgm_WintersCaverns) goto(AmbianceBGMList) }
+		"Deep Underground": { music(bgm_DeepUnderground_Unused) goto(AmbianceBGMList) }
 	}
-goto(AmbianceBGMList)
+goto(MusicList)
 
 /* Misc */
 
 MiscBGMList:
 	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
+	OpenModMenu2Wnd(20)
 	Lbl(lbl_BGM)
 	menu 1 {
-		"Gas Station":      { music(bgm_GasStation) }
-		"Gas Station 2":    { music(bgm_GasStation_2) }
-		"Title Screen":     { music(bgm_TitleScreen) }
-		"Choose A File":    { music(bgm_ChooseAFile) }
-		"Your Name Please": { music(bgm_Naming) }
-		"More...":          { goto(MiscBGMList2) }
-		default "Back":     { goto(MoreBGMList) }
+		"Gas Station":      { music(bgm_GasStation) goto(MiscBGMList) }
+		"Gas Station 2":    { music(bgm_GasStation_2) goto(MiscBGMList) }
+		"Title Screen":     { music(bgm_TitleScreen) goto(MiscBGMList) }
+		"Choose A File":    { music(bgm_ChooseAFile) goto(MiscBGMList) }
+		"Your Name Please": { music(bgm_Naming) goto(MiscBGMList) }
+		"Eight Melodies":     { music(bgm_EightMelodies) goto(MiscBGMList) }
+		"Because ILoveYou": { music(bgm_BecauseILoveYou) goto(MiscBGMList) }
+		"Cast Roll": { music(bgm_GoodFriendsBadFriends) goto(MiscBGMList) }
+		"Credits":     { music(bgm_SmilesAndTears) goto(MiscBGMList) }
 	}
-goto(MiscBGMList)
-
-MiscBGMList2:
-	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
-	Lbl(lbl_BGM)
-	menu 1 {
-		"Eight Melodies":     { music(bgm_EightMelodies) }
-		"Because ILoveYou": { music(bgm_BecauseILoveYou) }
-		"Cast Roll": { music(bgm_GoodFriendsBadFriends) }
-		"Credits":     { music(bgm_SmilesAndTears) }
-		default "Back":       { goto(MiscBGMList) }
-	}
-goto(MiscBGMList2)
+goto(MusicList)
 
 
 /* ID Entry */

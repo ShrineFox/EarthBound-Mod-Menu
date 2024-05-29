@@ -183,11 +183,13 @@ command AddToParty()
 	}
 	load_registers
 	ctoarg
-	party_add(argument)
-	RefreshScreen(wnd_ModMenu2)
-	load_registers
-	NotificationWnd(wnd_ModMenu2, "{music(0x7B)}@{name(argument)} joined the party.{pause(90)}{music_resume}.")
-	SetPartyFlags()
+    party_add(argument)
+    RefreshScreen(wnd_ModMenu2)
+    sound(SND_GIFTOPEN)
+    //set(flg_Debug)
+    //DebugPrint(wnd_ModMenu2)
+    //NotificationWnd(wnd_ModMenu2, "{music(0x7B)}@{name(argument)} joined the party.{pause(90)}{music_resume}.")
+    SetPartyFlags()
 }
 
 command RemoveFromParty() 
@@ -203,13 +205,12 @@ command RemoveFromParty()
 	goto(_remove_end)
 	_remove:
 		load_registers
-		ctoarg
+        ctoarg
 		party_remove(argument)
 		RefreshScreen(wnd_ModMenu2) 
-		NotificationWnd(wnd_ModMenu2, "{sound(SND_STATUSCHANGE)}@{name(argument)} left the party.")
-		load_registers
+		//NotificationWnd(wnd_ModMenu2, "{sound(SND_STATUSCHANGE)}@{name(argument)} left the party.")
+		sound(SND_BOXTAKE)
 		SetPartyFlags()
-		load_registers
 	_remove_end:
 		load_registers
 }
