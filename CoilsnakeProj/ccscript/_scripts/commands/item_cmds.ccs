@@ -56,38 +56,46 @@ command GiveItemToParty(itemID)
 
 command GiveKeyItemToParty(itemID)
 {
+    arg(itemID)
+
+    goto(givepartykeyitem)
+}
+
+givepartykeyitem:
 	if not flag flg_KeyItems
 	{
-		SaveRAM()
-		arg(itemID)
 		if not full(0xFF)
 		{
-			// TODO: Ensure member is in party
-			if not full(1) { GiveKeyItem(1) }
-			else if not full(2) { GiveKeyItem(2) }
-			else if not full(3) { GiveKeyItem(3) }
-			else if not full(4) { GiveKeyItem(4) }
+			if not full(1) and flag flg_Ness { GiveKeyItem(pty_Ness) }
+			else if not full(2) and flag flg_Paula { GiveKeyItem(pty_Paula) }
+			else if not full(3) and flag flg_Jeff { GiveKeyItem(pty_Jeff) }
+			else if not full(4) and flag flg_Poo { GiveKeyItem(pty_Poo) }
+			else { goto(sendtoescargot) }
 		}
-		else
+        else
 		{
-			// Store key item with Escargot Express
-			"[1D 18 {byte itemID}]"
-			window_closeall
-			window_open(1)
-			"@(The {itemname(itemID)} was sent to Escargot Express.)" next
-			window_closeall
-
-			// TODO: handle what to do when Escargot Express is full?
+			goto(sendtoescargot)
 		}
 	}
 	else
 	{
 		window_closeall
 		window_open(1)
-		GiveMenuKeyItem(itemID)
+		GiveMenuKeyItem(0)
 		window_closeall
 	}
-}
+eob
+
+sendtoescargot:
+    // Store key item with Escargot Express
+    "[1D 18 00]"
+	window_closeall
+	window_open(1)
+	"@(The {itemname(0)} was sent to Escargot Express.)" next
+	window_closeall
+
+	// TODO: handle what to do when Escargot Express is full?
+eob
 
 // Set the flag for the corresponding Key Item
 command GiveMenuKeyItem(itemID)

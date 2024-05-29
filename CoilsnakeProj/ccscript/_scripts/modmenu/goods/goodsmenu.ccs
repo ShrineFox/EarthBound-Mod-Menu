@@ -125,8 +125,8 @@ KeyItemList:
 		"Town Map": { counter(item_Town_Map) call(GiveKeyItemID) }
 		"Receiver Phone": { counter(item_Receiver_Phone) call(GiveKeyItemID) }
 		"Pencil Eraser": { counter(item_Eraser_Pencil) call(GiveKeyItemID) }
-		"Cabin Key": { counter(item_Wad_Bills) call(GiveKeyItemID) }
-		"Wad of Bills": { counter(item_Key_Cabin) call(GiveKeyItemID) }
+		"Cabin Key": { counter(item_Key_Cabin) call(GiveKeyItemID) }
+		"Wad of Bills": { counter(item_Wad_Bills) call(GiveKeyItemID) }
 		"Zombie Paper": { counter(item_Zombie_Paper) call(GiveKeyItemID) }
 		"Bad Key Machine": { counter(item_Bad_Key_Machine) call(GiveKeyItemID) }
 		"Eraser Eraser": { counter(item_Eraser_Eraser) call(GiveKeyItemID) }
