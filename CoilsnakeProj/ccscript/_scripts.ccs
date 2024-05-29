@@ -22,6 +22,7 @@ import "_scripts/asm/fix_oss_gameover.ccs"
 import "_scripts/asm/fix_teleport_hardlock.ccs"
 import "_scripts/asm/teleport_anywhere.ccs"
 import "_scripts/asm/y_mash.ccs"
+import "_scripts/asm/dead_can_use_items.ccs"
 //import "_scripts/asm/New_Stats_Window.ccs" (too laggy)
 import "_scripts/asm/fast_doors.ccs"
 import "_scripts/asm/easy_deaths.ccs"

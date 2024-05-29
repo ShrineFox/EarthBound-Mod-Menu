@@ -1,0 +1,73 @@
+// by cooprocks123e
+// Allows you to use inventory from dead characters
+import asm65816
+
+CharacterCantUseItemText:
+    "@Can't use this, they are not well."
+    end
+
+// Don't bother checking if we should hide Use
+ROM[0xc13658] = JMP(0xc13689)
+
+ROM[0xc1374e] = {
+    /* 374e */ JML(ItemUse)
+    /* 3752 */ JSR(0xc1af74) RTL
+    /* 3756 */ JSR(0xc10f40) RTL
+    /* 375a */ JSR(0xc133b0) RTL
+    /* 375e */ JSR(0xC10489) RTL
+    // We return back to 0xc13764, don't overwrite it!
+}
+define trampoline_OVERWORLD_USE_ITEM = 0xc13752
+define trampoline_UNKNOWN_C10F40 = 0xc13756
+define trampoline_UNKNOWN_C133B0 = 0xc1375a
+define trampoline_SET_ARGUMENT_MEMORY = 0xc1375e
+
+
+ItemUse: {
+    // Get character number
+    LDA_d(0x1f)
+    // Calculate offset into char_structs
+    DEC
+    LDY_i(0x005f)
+    JSL(0xc08ff7)
+    // Load afflictions[0] for given character
+    TAX
+    LDA_x(0x99dc)
+    AND_i(0x00ff)
+    // If (A==0 or A >= 4) goto CanUse
+    BEQ_a(CanUse)
+    CMP_i(0x0004)
+    BPL_a(CanUse)
+CharacterDead:
+    // The character is unconscious, diamondized, or paralyzed
+    // Idk what this does, copied from the Help text control path
+    LDA_i(0x0000)
+    JSL(trampoline_UNKNOWN_C10F40)
+    LDA_i(0x0002)
+    JSL(trampoline_UNKNOWN_C10F40)
+    SEP(0x20)
+    LDA_8(0xff)
+    STA_a(0x5e79)
+    REP(0x31)
+    LDA_i(0x0001)
+    JSL(0xC1DD47) // CreateWindowFar
+    // Set argument memory to character
+    LDA_d(0x1f)
+    STA_d(0x0e)
+    STZ_d(0x10)
+    STA_d(0x23) // Copy character number into where Help code expects it
+    JSL(trampoline_SET_ARGUMENT_MEMORY)
+    MText(CharacterCantUseItemText)
+    // Jump into help text code
+    JML(0xc137e0)
+CanUse:
+    LDY_i(0x0000)
+    LDX_d(0x1d)
+    STX_d(0x04)
+    LDA_d(0x1f)
+    STA_d(0x06)
+    STZ_d(0x08)
+    JSL(trampoline_OVERWORLD_USE_ITEM)
+    // Return to Use item code
+    JML(0xc13764)
+}

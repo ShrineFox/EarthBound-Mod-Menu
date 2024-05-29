@@ -6,9 +6,9 @@ CCScript Compilation Summary
 Compilation statistics
 =================================================================
 Compilation start:           $f10000
-Compilation end:             $f9e7ae
-Total compiled size:         583598 bytes
-Fragmented space:            35 bytes
+Compilation end:             $f9e849
+Total compiled size:         583753 bytes
+Fragmented space:            42 bytes
 -----------------------------------------------------------------
 
 
@@ -81,7 +81,7 @@ data_61                      $f9d289      933    bytes
 data_62                      $f2ffff      0      bytes
 main                         $f2ffff      0      bytes
 _scripts                     $f9ce4e      1083   bytes
-_startup                     $f9e677      117    bytes
+_startup                     $f9e6f2      117    bytes
 stdarg                       $f2ffff      0      bytes
 std                          $f2ffff      0      bytes
 configmenu                   $f965a2      3501   bytes
@@ -90,16 +90,16 @@ bgm                          $f2ffff      0      bytes
 labels                       $f9db06      496    bytes
 asm65816_2                   $f2ffff      0      bytes
 ccexpand                     $f9dcf6      443    bytes
-cc_asmcall                   $f6ff60      128    bytes
+cc_asmcall                   $f8ff7b      128    bytes
 window_cmds                  $f2ffff      0      bytes
-cc_text_speed                $f9e761      63     bytes
+cc_text_speed                $f9e7dc      63     bytes
 bg_viewer                    $f9e03d      336    bytes
-custom_windows_standalone    $f9e6ec      117    bytes
+custom_windows_standalone    $f9e767      117    bytes
 party                        $f2ffff      0      bytes
 items                        $f2ffff      0      bytes
 windows                      $f2ffff      0      bytes
 asm65816                     $f2ffff      0      bytes
-JSL_with_RTS                 $f3ffed      17     bytes
+JSL_with_RTS                 $f6ffe5      17     bytes
 flag_cmds                    $f9c242      1558   bytes
 health_cmds                  $f2ffff      0      bytes
 status                       $f2ffff      0      bytes
@@ -114,18 +114,19 @@ mute_music                   $f9e3c8      237    bytes
 fix_oss_gameover             $f2fff7      8      bytes
 fix_teleport_hardlock        $f1ffc6      58     bytes
 teleport_anywhere            $f2ffff      0      bytes
-y_mash                       $f6ffe0      16     bytes
-fast_doors                   $f9e7a0      14     bytes
+y_mash                       $f9e82b      16     bytes
+dead_can_use_items           $f3ff4b      148    bytes
+fast_doors                   $f9e83b      14     bytes
 easy_deaths                  $f2ffff      0      bytes
 run_button_toggleable        $f2ffd4      35     bytes
-repel_sandwiches             $f3ffd0      29     bytes
-run_accelerating             $f6fff0      16     bytes
+repel_sandwiches             $f3ffdf      29     bytes
+run_accelerating             $f9e81b      16     bytes
 GoodsMenuEquip               $f9e18d      307    bytes
 modmenu                      $f2fafe      1238   bytes
 goodsmenu                    $f68f38      8902   bytes
 mainmenu                     $f9deb1      396    bytes
 keyitems                     $f925db      4239   bytes
-cc_main_menu                 $f3ff4b      133    bytes
+cc_main_menu                 $f6ff60      133    bytes
 item_cmds                    $f9c858      1526   bytes
 partymenu                    $f74275      8232   bytes
 warpmenu                     $f9b3ac      2142   bytes
@@ -138,7 +139,7 @@ movscr_codes                 $f9e2c0      264    bytes
 counter                      $f9e598      223    bytes
 battles                      $f2ffff      0      bytes
 healthmenu                   $f17858      14982  bytes
-letterbox                    $f8ff7b      123    bytes
+letterbox                    $f9e677      123    bytes
 -----------------------------------------------------------------
 
 
@@ -6673,11 +6674,11 @@ threedtentafterdoor          $f9d240
 Labels in module _startup
 Name                         Address
 -----------------------------------------------------------------
-Config                       $f9e677
-DebugFlagSet                 $f9e682
-DebugStartup                 $f9e6a9
-GameStart                    $f9e6e8
-NewGameScreen                $f9e67d
+Config                       $f9e6f2
+DebugFlagSet                 $f9e6fd
+DebugStartup                 $f9e724
+GameStart                    $f9e763
+NewGameScreen                $f9e6f8
 -----------------------------------------------------------------
 
 
@@ -6841,7 +6842,7 @@ TableJumpUsing7E00BC         $f9de50
 Labels in module cc_asmcall
 Name                         Address
 -----------------------------------------------------------------
-CC_code_AsmCall              $f6ff60
+CC_code_AsmCall              $f8ff7b
 -----------------------------------------------------------------
 
 
@@ -6854,8 +6855,8 @@ Name                         Address
 Labels in module cc_text_speed
 Name                         Address
 -----------------------------------------------------------------
-CC_code_gettextspeed         $f9e761
-CC_code_settextspeed         $f9e779
+CC_code_gettextspeed         $f9e7dc
+CC_code_settextspeed         $f9e7f4
 -----------------------------------------------------------------
 
 
@@ -6871,9 +6872,9 @@ asm_ShowBattleBG             $f9e03d
 Labels in module custom_windows_standalone
 Name                         Address
 -----------------------------------------------------------------
-ASM_CustomWindow_open        $f9e6f7
-ASM_CustomWindow_setupWindow $f9e714
-CustomWindowList             $f9e6ec
+ASM_CustomWindow_open        $f9e772
+ASM_CustomWindow_setupWindow $f9e78f
+CustomWindowList             $f9e767
 -----------------------------------------------------------------
 
 
@@ -6904,7 +6905,7 @@ Name                         Address
 Labels in module JSL_with_RTS
 Name                         Address
 -----------------------------------------------------------------
-ToCounter                    $f3ffed
+ToCounter                    $f6ffe5
 -----------------------------------------------------------------
 
 
@@ -7024,15 +7025,23 @@ Name                         Address
 Labels in module y_mash
 Name                         Address
 -----------------------------------------------------------------
-MashFunc                     $f6ffe0
+MashFunc                     $f9e82b
+-----------------------------------------------------------------
+
+
+Labels in module dead_can_use_items
+Name                         Address
+-----------------------------------------------------------------
+CharacterCantUseItemText     $f3ff4b
+ItemUse                      $f3ff70
 -----------------------------------------------------------------
 
 
 Labels in module fast_doors
 Name                         Address
 -----------------------------------------------------------------
-FastDiv400                   $f9e7a7
-MonkeyPatch                  $f9e7a0
+FastDiv400                   $f9e842
+MonkeyPatch                  $f9e83b
 -----------------------------------------------------------------
 
 
@@ -7052,14 +7061,14 @@ InRunMode                    $f2ffd4
 Labels in module repel_sandwiches
 Name                         Address
 -----------------------------------------------------------------
-extended_spawn_check         $f3ffd0
+extended_spawn_check         $f3ffdf
 -----------------------------------------------------------------
 
 
 Labels in module run_accelerating
 Name                         Address
 -----------------------------------------------------------------
-SpeedHijack                  $f6fff0
+SpeedHijack                  $f9e81b
 -----------------------------------------------------------------
 
 
@@ -7213,16 +7222,16 @@ descwndlbl                   $f92da0
 Labels in module cc_main_menu
 Name                         Address
 -----------------------------------------------------------------
-CC_Close_HP                  $f3ffbb
-CC_Equip                     $f3ff67
-CC_Goods                     $f3ff4b
-CC_PSI                       $f3ff9f
-CC_Status                    $f3ff83
-Close_HP                     $f3ffcb
-Equip                        $f3ff77
-Goods                        $f3ff5b
-PSI                          $f3ffaf
-Status                       $f3ff93
+CC_Close_HP                  $f6ffd0
+CC_Equip                     $f6ff7c
+CC_Goods                     $f6ff60
+CC_PSI                       $f6ffb4
+CC_Status                    $f6ff98
+Close_HP                     $f6ffe0
+Equip                        $f6ff8c
+Goods                        $f6ff70
+PSI                          $f6ffc4
+Status                       $f6ffa8
 -----------------------------------------------------------------
 
 
@@ -7545,11 +7554,11 @@ StatusMenu                   $f17fff
 Labels in module letterbox
 Name                         Address
 -----------------------------------------------------------------
-asm_CutsceneInit             $f8ffbb
-asm_CutsceneOff              $f8ffec
-asm_write_letterbox_regs     $f8ffd8
-movscr_Cutscene              $f8ff7b
-movscr_Cutscene_Off          $f8ff9b
+asm_CutsceneInit             $f9e6b7
+asm_CutsceneOff              $f9e6e8
+asm_write_letterbox_regs     $f9e6d4
+movscr_Cutscene              $f9e677
+movscr_Cutscene_Off          $f9e697
 -----------------------------------------------------------------
 
 
