@@ -23,9 +23,10 @@ JSR(0xC10A1D) JMP(0xC13C8C) }
 
 Selected_Goods:   { counter(1) eob }  Selected_Equip:    { counter(2) eob }
 Selected_PSI:     { counter(3) eob }  Selected_KeyItems: { counter(4) eob }
-Selected_ModMenu: { counter(5) eob }  Selected_Status:   { counter(6) eob }
+Selected_ModMenu: { counter(5) eob }  Selected_Status: { counter(6) eob }
 
 MainMenu:
+	if (flg_EndLoop) { unset(flg_EndLoop) goto(goto_end) }
 	//sprite_spawn(106, 896, 1) // Invisible camera sprite running "Cutscene On"
 	// Stop player movement
 	"[1F E5 FF]"
@@ -68,11 +69,13 @@ MainMenu:
 	goto_keyitems:
 		window_closeall call(KeyItems) goto(MainMenu)
 	goto_modmenu:
-		window_closeall if flg_ModMenu { call(modmenu.ModMenu) } if not flg_ModMenu { call(configmenu.ConfigMenu) } goto(MainMenu)
+		window_closeall if flg_ModMenu { call(modmenu.ModMenu) } if not flg_ModMenu { call(configmenu.ConfigMenu) } goto(goto_end)
     goto_status:
 		window_closeall open_status goto(MainMenu)
 	goto_end:
-		//sprite_spawn(106, 897, 1) // Invisible camera sprite running "Cutscene Off"
-		// Resume player movement
-		"[1F ED]"
+		window_closeall
+		if flg_Proceed { unset(flg_Proceed) goto(MainMenu) } // Loop Main Menu while flag is on
+        //sprite_spawn(106, 897, 1) // Invisible camera sprite running "Cutscene Off"
+        // Resume player movement
+        "[1F ED]"
 eob

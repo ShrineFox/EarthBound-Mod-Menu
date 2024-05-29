@@ -41,14 +41,13 @@ ModMenu: {
 	MenuOptionWithCallback("Save", Set_Count_2)
 	MenuOptionWithCallback("BGM", Set_Count_3)
 	MenuOptionWithCallback("Goods", Set_Count_4)
-	MenuOptionWithCallback("Warp", Set_Count_5)
+	MenuOptionWithCallback("Map", Set_Count_5)
 	MenuOptionWithCallback("Battle", Set_Count_6)
 	MenuOptionWithCallback("Flags", Set_Count_7)
-	MenuOptionWithCallback("Map", Set_Count_8)
-	MenuOptionWithCallback("About", Set_Count_9)
+	MenuOptionWithCallback("About", Set_Count_8)
 	DisplayVertical(3) if not "[11]" { eob }
 	ctoarg swap
-    SwitchGoto(9)
+    SwitchGoto(8)
         SwitchCase(chose_party)
         SwitchCase(chose_save)
         SwitchCase(chose_bgm)
@@ -56,7 +55,6 @@ ModMenu: {
 		SwitchCase(chose_warp)
 		SwitchCase(chose_battle)
 		SwitchCase(chose_flags)
-		SwitchCase(chose_map)
 		SwitchCase(chose_about)
 	swap
 	"@Error! No option {number(0)} in this menu." eob
@@ -69,13 +67,11 @@ ModMenu: {
 	chose_goods:
 		Highlight("Goods") goto(GoodsMenu)
 	chose_warp:
-		Highlight("Warp") goto(WarpMenu)
+		Highlight("Map") goto(WarpMenu)
 	chose_battle:
 		Highlight("Battle") goto(BattleMenu)
 	chose_flags:
 		Highlight("Flags") goto(FlagsMenu)
-	chose_map:
-		Highlight("Map") goto(MapMenu)
 	chose_about:
 		Highlight("About") goto(ModMenu_AboutDlg)
 }
@@ -83,29 +79,8 @@ ModMenu: {
 ModMenu_AboutDlg:
 	window_open(wnd_Dialog)
 	Lbl(lbl_About)
-	"@EarthBound Mod Menu by ShrineFox." newline
+	"@EB Mod Menu v1.0 by ShrineFox." newline
 	"@Made using Coilsnake." newline
-	"@Updated 3[5F]14[5F]23." next
+	"@Updated 5[5F]29[5F]24." next
 	window_close(wnd_Dialog)
 goto(ModMenu)
-
-MapMenu: {
-	CloseModMenu2Wnd()
-	OpenModMenu2Wnd(18)
-	Lbl(lbl_Map)
-	ResetCounter() ctoarg
-	// Pick a menu option
-	MenuOptionWithCallback("Palette", Set_Count_1)
-	MenuOptionWithCallback("Corrupt", Set_Count_2)
-	DisplayVertical(1) if not "[11]" { goto(ModMenu) }
-	ctoarg swap
-    SwitchGoto(2)
-        SwitchCase(chose_palette)
-        SwitchCase(chose_corrupt)
-	swap
-	"@Error! No option {number(0)} in this menu." goto(ModMenu)
-	chose_palette:
-		call(PaletteMenu) goto(MapMenu)
-	chose_corrupt:
-		"[1A 0F]" goto(MapMenu)
-}

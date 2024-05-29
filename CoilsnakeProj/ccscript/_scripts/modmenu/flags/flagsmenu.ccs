@@ -20,7 +20,6 @@ FlagsMenu:
 		"Phone Numbers":  { goto(PhoneFlagsMenu) }
 		"Teleport Destination":  { goto(TeleportFlagsMenu) }
 		"Sound Stone": { goto(SoundStoneMenu) }
-		"Mod Config": { goto(ConfigMenu) }
 		default "Back": { goto(modmenu.ModMenu) }
 	}
 goto(FlagsMenu)
@@ -30,18 +29,18 @@ GameSettings:
 	OpenModMenu2Wnd(18)
 	Lbl(lbl_Flags)
 	menu 1 {
-		"No Enemy Spawn":  { ToggleFlag(flg_NoEnemies) }
-		"NoClip": { ToggleFlag(flg_DisableCollision) }
-		"Ness Pajamas":  { ToggleFlag(flg_PajamaNess) }
-		"Skip Lvlup Msgs": { ToggleFlag(flg_SkipStatIncMsgs) }
-		"Debug Window":   { ToggleFlag(flg_Debug) }
-		"Party Flag Test": { goto(PartyFlagTest) }
-		"Unset Pty Flags" : { call(unsetptyflags) }
-		"Set Pty Flags": { SetPartyFlags() }
-		"Restore Pty" : { RestorePartyFromFlags() }
-		default "Back": { goto(FlagsMenu) }
+		"No Enemy Spawn":  { ToggleFlag(flg_NoEnemies) goto(GameSettings) }
+		"NoClip": { ToggleFlag(flg_DisableCollision) goto(GameSettings) }
+		"Ness Pajamas":  { ToggleFlag(flg_PajamaNess) goto(GameSettings) }
+		"Skip Lvlup Msgs": { ToggleFlag(flg_SkipStatIncMsgs) goto(GameSettings) }
+		"Mod Config...": { goto(ConfigMenu) goto(GameSettings) }
+		// "Debug Window":   { ToggleFlag(flg_Debug) goto(GameSettings) }
+		// "Party Flag Test": { goto(PartyFlagTest) goto(GameSettings) }
+		// "Unset Pty Flags" : { call(unsetptyflags) goto(GameSettings) }
+		// "Set Pty Flags": { SetPartyFlags() goto(GameSettings) }
+		// "Restore Pty" : { RestorePartyFromFlags() goto(GameSettings) }
 	}
-goto(GameSettings)
+goto(FlagsMenu)
 
 PartyFlagTest:
 	OpenKeyItemWnd()
@@ -96,15 +95,14 @@ PartyFlagsMenu:
 	Lbl(lbl_Flags)
 	menu 1 
 	{
-		"Ness":  { ToggleFlag(flg_Ness) }
-		"Paula": { ToggleFlag(flg_Paula) }
-		"Jeff":  { ToggleFlag(flg_Jeff) }
-		"Poo":   { ToggleFlag(flg_Poo) }
+		"Ness":  { ToggleFlag(flg_Ness) goto(PartyFlagsMenu) }
+		"Paula": { ToggleFlag(flg_Paula) goto(PartyFlagsMenu) }
+		"Jeff":  { ToggleFlag(flg_Jeff) goto(PartyFlagsMenu) }
+		"Poo":   { ToggleFlag(flg_Poo) goto(PartyFlagsMenu) }
 		"Followers":   { goto(FollowerFlagsMenu) }
-		"Buzz Buzz": { ToggleFlag(flg_BuzzBuzz) }
-		default "Back": { goto(FlagsMenu) }
+		"Buzz Buzz": { ToggleFlag(flg_BuzzBuzz) goto(PartyFlagsMenu) }
 	}
-goto(PartyFlagsMenu)
+goto(FlagsMenu)
 
 FollowerFlagsMenu:
 	CloseModMenu2Wnd()
@@ -112,18 +110,17 @@ FollowerFlagsMenu:
 	Lbl(lbl_Flags)
 	menu 1 
 	{
-		"Pokey":  { ToggleFlag(flg_Pokey) }
-		"Picky": { ToggleFlag(flg_Picky) }
-		"King":  { ToggleFlag(flg_King) }
-		"Tony":   { ToggleFlag(flg_Tony) }
-		"B.Monkey":   { ToggleFlag(flg_BubbleMonkey) }
-		"BrickRoad": { ToggleFlag(flg_BrickRoad) }
-		"FlyingMan": { ToggleFlag(flg_FlyingMan) }
-		"TeddyBear": { ToggleFlag(flg_TeddyBear) }
-		"PlushBear": { ToggleFlag(flg_PlushBear) }
-		default "Back": { goto(PartyFlagsMenu) }
+		"Pokey":  { ToggleFlag(flg_Pokey) goto(FollowerFlagsMenu) }
+		"Picky": { ToggleFlag(flg_Picky) goto(FollowerFlagsMenu) }
+		"King":  { ToggleFlag(flg_King) goto(FollowerFlagsMenu) }
+		"Tony":   { ToggleFlag(flg_Tony) goto(FollowerFlagsMenu) }
+		"B.Monkey":   { ToggleFlag(flg_BubbleMonkey) goto(FollowerFlagsMenu) }
+		"BrickRoad": { ToggleFlag(flg_BrickRoad) goto(FollowerFlagsMenu) }
+		"FlyingMan": { ToggleFlag(flg_FlyingMan) goto(FollowerFlagsMenu) }
+		"TeddyBear": { ToggleFlag(flg_TeddyBear) goto(FollowerFlagsMenu) }
+		"PlushBear": { ToggleFlag(flg_PlushBear) goto(FollowerFlagsMenu) }
 	}
-goto(FollowerFlagsMenu)
+goto(PartyFlagsMenu)
 
 TownMenu:
 	CloseModMenu2Wnd()
@@ -131,15 +128,14 @@ TownMenu:
 	Lbl(lbl_Flags)
 	menu 1 
 	{
-		"Onett Daytime":  { ToggleFlag(flg_OnettDaytime) }
-		"Onett Day BGM":  { ToggleFlag(flg_OnettDaytimeMusic) }
-		"Home Lights On": { ToggleFlag(flg_LightsOnAtHome) }
-		"No Onett NPCs":  { ToggleFlag(flg_NoOnettNPCs) }
-		"Winters Daytime":  { ToggleFlag(flg_WintersDaytime) }
-		"Unshy Tendas":  { ToggleFlag(flg_UnshyTendas) }
-		default "Back": { goto(FlagsMenu) }
+		"Onett Daytime":  { ToggleFlag(flg_OnettDaytime) goto(TownMenu) }
+		"Onett Day BGM":  { ToggleFlag(flg_OnettDaytimeMusic) goto(TownMenu) }
+		"Home Lights On": { ToggleFlag(flg_LightsOnAtHome) goto(TownMenu) }
+		"No Onett NPCs":  { ToggleFlag(flg_NoOnettNPCs) goto(TownMenu) }
+		"Winters Daytime":  { ToggleFlag(flg_WintersDaytime) goto(TownMenu) }
+		"Unshy Tendas":  { ToggleFlag(flg_UnshyTendas) goto(TownMenu) }
 	}
-goto(TownMenu)
+goto(FlagsMenu)
 
 PhoneFlagsMenu:
 	CloseModMenu2Wnd()
@@ -147,14 +143,13 @@ PhoneFlagsMenu:
 	Lbl(lbl_Phone)
 	menu 1 
 	{
-		"Dad":  { ToggleFlag(flg_Phone_Dad) }
-		"Mom":  { ToggleFlag(flg_Phone_Mom) }
-		"Escargot":  { ToggleFlag(flg_Phone_EscargoExpress) }
-		"Mach Pizza":  { ToggleFlag(flg_Phone_MachPizza) }
-		"Stoic Club":  { ToggleFlag(flg_Phone_StoicClub) }
-		default "Back": { goto(FlagsMenu) }
+		"Dad":  { ToggleFlag(flg_Phone_Dad) goto(PhoneFlagsMenu) }
+		"Mom":  { ToggleFlag(flg_Phone_Mom) goto(PhoneFlagsMenu) }
+		"Escargot":  { ToggleFlag(flg_Phone_EscargoExpress) goto(PhoneFlagsMenu) }
+		"Mach Pizza":  { ToggleFlag(flg_Phone_MachPizza) goto(PhoneFlagsMenu) }
+		"Stoic Club":  { ToggleFlag(flg_Phone_StoicClub) goto(PhoneFlagsMenu) }
 	}
-goto(PhoneFlagsMenu)
+goto(FlagsMenu)
 
 TeleportFlagsMenu:
 	CloseModMenu2Wnd()
@@ -162,21 +157,20 @@ TeleportFlagsMenu:
 	Lbl(lbl_Teleport)
 	menu 1 
 	{
-		"Onett":  { ToggleFlag(flg_Onett) }
-		"Twoson":  { ToggleFlag(flg_Twoson) }
-		"Threed":  { ToggleFlag(flg_Threed) }
-		"Winters":  { ToggleFlag(flg_Winters) }
-		"Saturn Valley":  { ToggleFlag(flg_SaturnValley) }
-		"Fourside":  { ToggleFlag(flg_Fourside) }
-		"Summers":  { ToggleFlag(flg_Summers) }
-		"Dalaam":  { ToggleFlag(flg_Dalaam) }
-		"Scaraba":  { ToggleFlag(flg_Scaraba) }
-		"Deep Darkness":  { ToggleFlag(flg_DeepDarkness) }
-		"Tenda Village":  { ToggleFlag(flg_TendaVillage) }
-		"Underworld":  { ToggleFlag(flg_Underworld) }
-		default "Back": { goto(FlagsMenu) }
+		"Onett":  { ToggleFlag(flg_Onett) goto(TeleportFlagsMenu) }
+		"Twoson":  { ToggleFlag(flg_Twoson) goto(TeleportFlagsMenu) }
+		"Threed":  { ToggleFlag(flg_Threed) goto(TeleportFlagsMenu) }
+		"Winters":  { ToggleFlag(flg_Winters) goto(TeleportFlagsMenu) }
+		"Saturn Valley":  { ToggleFlag(flg_SaturnValley) goto(TeleportFlagsMenu) }
+		"Fourside":  { ToggleFlag(flg_Fourside) goto(TeleportFlagsMenu) }
+		"Summers":  { ToggleFlag(flg_Summers) goto(TeleportFlagsMenu) }
+		"Dalaam":  { ToggleFlag(flg_Dalaam) goto(TeleportFlagsMenu) }
+		"Scaraba":  { ToggleFlag(flg_Scaraba) goto(TeleportFlagsMenu) }
+		"Deep Darkness":  { ToggleFlag(flg_DeepDarkness) goto(TeleportFlagsMenu) }
+		"Tenda Village":  { ToggleFlag(flg_TendaVillage) goto(TeleportFlagsMenu) }
+		"Underworld":  { ToggleFlag(flg_Underworld) goto(TeleportFlagsMenu) }
 	}
-goto(TeleportFlagsMenu)
+goto(FlagsMenu)
 
 
 SoundStoneMenu:
@@ -185,17 +179,16 @@ SoundStoneMenu:
 	Lbl(lbl_SoundStone)
 	menu 1 
 	{
-		"Giant Step":  { ToggleFlag(flg_GiantStep) call(ToggleSoundStoneComplete) }
-		"Lilliput Steps":  { ToggleFlag(flg_LilliputSteps) call(ToggleSoundStoneComplete) }
-		"Milky Well":  { ToggleFlag(flg_MilkyWell) call(ToggleSoundStoneComplete) }
-		"Rainy Circle":  { ToggleFlag(flg_RainyCircle) call(ToggleSoundStoneComplete) }
-		"Magnet Hill":  { ToggleFlag(flg_MagnetHill) call(ToggleSoundStoneComplete) }
-		"Pink Cloud":  { ToggleFlag(flg_PinkCloud) call(ToggleSoundStoneComplete) }
-		"Lumine Hall":  { ToggleFlag(flg_LumineHall) call(ToggleSoundStoneComplete) }
-		"Fire Spring":  { ToggleFlag(flg_FireSpring) call(ToggleSoundStoneComplete) }
-		default "Back": { goto(FlagsMenu) }
+		"Giant Step":  { ToggleFlag(flg_GiantStep) call(ToggleSoundStoneComplete) goto(SoundStoneMenu) }
+		"Lilliput Steps":  { ToggleFlag(flg_LilliputSteps) call(ToggleSoundStoneComplete) goto(SoundStoneMenu) }
+		"Milky Well":  { ToggleFlag(flg_MilkyWell) call(ToggleSoundStoneComplete) goto(SoundStoneMenu) }
+		"Rainy Circle":  { ToggleFlag(flg_RainyCircle) call(ToggleSoundStoneComplete) goto(SoundStoneMenu) }
+		"Magnet Hill":  { ToggleFlag(flg_MagnetHill) call(ToggleSoundStoneComplete) goto(SoundStoneMenu) }
+		"Pink Cloud":  { ToggleFlag(flg_PinkCloud) call(ToggleSoundStoneComplete) goto(SoundStoneMenu) }
+		"Lumine Hall":  { ToggleFlag(flg_LumineHall) call(ToggleSoundStoneComplete) goto(SoundStoneMenu) }
+		"Fire Spring":  { ToggleFlag(flg_FireSpring) call(ToggleSoundStoneComplete) goto(SoundStoneMenu) }
 	}
-goto(SoundStoneMenu)
+goto(FlagsMenu)
 
 ToggleSoundStoneComplete:
 	if flg_GiantStep and flg_LilliputSteps and flg_MilkyWell and flg_RainyCircle and flg_MagnetHill and flg_PinkCloud and flg_LumineHall and flg_FireSpring

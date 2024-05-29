@@ -10,7 +10,7 @@ define flg_Ness = flag 0x664
 define flg_Paula = flag 0x663
 define flg_Jeff = flag 0x662
 define flg_Poo = flag 0x661
-// Whether to continue with current operation
+// Whether to continue with current operation (used for reopening mod menu after selection)
 define flg_Proceed = flag 0x660
 // Whether you are adding or removing a party member, item etc.
 define flg_Add = flag 0x65f
@@ -18,8 +18,8 @@ define flg_Remove = flag 0x65e
 // Whether you confirmed a confirmation prompt or not
 define flg_Yes = flag 0x65d
 define flg_No = flag 0x65c
-// Whether menu should loop or not
-define flg_Loop = flag 0x65b
+// Whether menu should loop or not (used for skipping mainmenu reopen on bicycle use)
+define flg_EndLoop = flag 0x65b
 // Whether Debug messages should appear or not
 define flg_Debug = flag 0x65a
 // Whether Mod Menu window is open

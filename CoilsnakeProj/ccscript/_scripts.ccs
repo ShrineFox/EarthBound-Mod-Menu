@@ -58,6 +58,7 @@ ModMenu_About:
 	
 // Temporarily remove party if using unrestricted bike feature
 BicycleStart:
+	set(flg_EndLoop)
 	window_closeall
 	if flag flg_UnrestrictBike
 	{

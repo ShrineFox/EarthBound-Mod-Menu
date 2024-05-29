@@ -79,7 +79,7 @@ PaletteMenu: {
 	MenuOptionWithCallback("67", Set_Palette_67)
 	MenuOptionWithCallback("68", Set_Palette_68)
 	MenuOptionWithCallback("69", Set_Palette_69)
-	DisplayVertical(9) if not "[11]" { window_close(wnd_FullScreen) goto(MapMenu) }
+	DisplayVertical(9) if not "[11]" { window_close(wnd_FullScreen) goto(warpmenu.WarpMenu) }
 	ctoarg
     swap
     SwitchGoto(70)
@@ -156,7 +156,7 @@ PaletteMenu: {
 	swap
 	"@Error! No option {number(0)} in this menu." window_close(wnd_FullScreen) eob
 	chose:
-		window_close(wnd_FullScreen) goto(MapMenu)
+		window_close(wnd_FullScreen) goto(warpmenu.WarpMenu)
 }
 
 command SetPalette(palette) { "[1F E1 01 {byte palette} 01]" }

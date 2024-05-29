@@ -26,8 +26,7 @@ SetCount23: { counter(23) ctoarg eob } SetCount24: { counter(24) ctoarg eob }
 SetCount25: { counter(25) ctoarg eob } SetCount26: { counter(26) ctoarg eob } 
 
 KeyItems: {
-	if not flag flg_Ness and not flag flg_Jeff { NotificationWnd(wnd_ModMenuNotification, "@Error: No party flags set.") eob }
-	CloseAllModMenuWnd()
+	if not flag flg_Ness and not flag flg_Jeff { /* NotificationWnd(wnd_ModMenuNotification, "@Error: No party flags set.") */ eob }
 	OpenKeyItemWnd()
 	Lbl(lbl_KeyItems)
 	ResetCounter()
@@ -219,6 +218,7 @@ descwndlbl:
 	CloseKeyItemDescWnd()
     OpenKeyItemDescWnd()
     Lbl(lbl_Description)
+    SetTextSpeedInstant()
 eob
 
 DescATM:
@@ -226,7 +226,8 @@ DescATM:
     //if counter_is(1) { //call(data_04.l_0xc5566b)  ATM Card
         "<[1C 05 B1]>" newline
 		"You know, you shouldn't leave home" newline 
-		"without... It even works overseas!" next
+		"without... It even works overseas!" 
+		SetTextSpeed(1)
 eob
 
 ShowDesc2:
@@ -235,7 +236,8 @@ ShowDesc2:
         "<[1C 05 C4]>" newline
 		"If you touch this to your forehead and" newline
 		"concentrate on your thoughts, Your" newline 
-		"Sanctuary melodies can be heard." next
+		"Sanctuary melodies can be heard." 
+		SetTextSpeed(1)
 eob
 
 ShowDesc3:
@@ -244,7 +246,8 @@ ShowDesc3:
         "<[1C 05 CA]>" newline
 		"A handy town map. It can be used in" newline
 		"Onett, as well as other towns. View" newline
-		"the map with the Start button." next
+		"the map with the Start button." 
+		SetTextSpeed(1)
 eob
 
 DescShackKey:
@@ -252,7 +255,8 @@ DescShackKey:
     //if counter_is(4) { //call(data_04.l_0xc554f6) // Shack Key
         "<[1C 05 AA]>" newline
 		"A key to the traveling" newline
-		"entertainer shack in Onett." next
+		"entertainer shack in Onett." 
+		SetTextSpeed(1)
 eob
 
 ShowDesc5:
@@ -261,7 +265,8 @@ ShowDesc5:
         "<[1C 05 B0]>" newline
 		"Riding this makes you feel like" newline
 		"whistling! You can even ring the" newline 
-		"bell by pressing the R button." next
+		"bell by pressing the R button." 
+		SetTextSpeed(1)
 eob
 
 ShowDesc6:
@@ -269,7 +274,8 @@ ShowDesc6:
     //if counter_is(6) { //call(data_04.l_0xc5570b) Receiver Phone
         "<[1C 05 B5]>" newline
 		"Apple Kid's invention. Now, you" newline
-		"can receive important calls." next
+		"can receive important calls." 
+		SetTextSpeed(1)
 eob
 
 DescPencilEraser:
@@ -278,7 +284,8 @@ DescPencilEraser:
         "<[1C 05 B8]>" newline
 		"Apple Kid's invention. It makes" newline
 		"something blocking your way that" newline
-		"looks like a pencil disappear." next
+		"looks like a pencil disappear." 
+		SetTextSpeed(1)
 eob
 
 DescEraserEraser:
@@ -287,7 +294,8 @@ DescEraserEraser:
         "<[1C 05 D2]>" newline
 		"Apple Kid's invention. It erases" newline
 		"something that looks like an eraser" newline
-		"that might be blocking your way." next
+		"that might be blocking your way." 
+		SetTextSpeed(1)
 eob
 
 DescCabinKey:
@@ -295,14 +303,16 @@ DescCabinKey:
     //if counter_is(9) { //call(data_04.l_0xc5551d) Cabin Key
         "<[1C 05 AB]>" newline
 		"A key to a holding cell made" newline
-		"specially for [1C 02 02]." next
+		"specially for [1C 02 02]." 
+		SetTextSpeed(1)
 eob
 
 DescWadBills:
 	call(descwndlbl)
     //if counter_is(10) { //call(data_04.l_0xc556e3) Wad of Bills
         "<[1C 05 B4]>" newline
-		"A bundle of brand new, crisp bills." next
+		"A bundle of brand new, crisp bills." 
+		SetTextSpeed(1)
 eob
 
 DescBackstagePass:
@@ -311,14 +321,16 @@ DescBackstagePass:
         "<[1C 05 7D]>" newline
 		"It allows you go back stage at the" newline
 		"Chaos Theater. Of course, you can" newline
-		"also watch the show using the pass." next
+		"also watch the show using the pass." 
+		SetTextSpeed(1)
 eob
 
 DescShowTicket:
 	call(descwndlbl)
     //if counter_is(12) { //call(data_04.l_0xc5569c) Show Ticket
         "<[1C 05 B2]>" newline
-		"It says, <Section B, seat 3D.>" next
+		"It says, <Section B, seat 3D.>" 
+		SetTextSpeed(1)
 eob
 
 DescZombiePaper:
@@ -326,8 +338,9 @@ DescZombiePaper:
     //if counter_is(13) { //call(data_04.l_0xc555b8) Zombie Paper
         "<[1C 05 AE]>" newline
 		"Apple Kid's invention. Lay this out" newline
-		"in the tent, and the next day, a lot" newline
-		"of zombies may be stuck to it." next
+		"in the tent, and the  day, a lot" newline
+		"of zombies may be stuck to it." 
+		SetTextSpeed(1)
 eob
 
 DescDiamond:
@@ -335,7 +348,8 @@ DescDiamond:
     //if counter_is(14) { //call(data_04.l_0xc55740) Diamond
         "<[1C 05 B6]>" newline
 		"A big, beautiful, and expensive" newline
-		"looking gem." next
+		"looking gem." 
+		SetTextSpeed(1)
 eob
 
 DescYogurtDisp:
@@ -344,14 +358,16 @@ DescYogurtDisp:
         "<[1C 05 8B]>" newline
 		"Invented by Apple Kid. If used during" newline
 		"combat, some damage will be dealt to" newline
-		"an enemy but it's not understood why." next
+		"an enemy but it's not understood why." 
+		SetTextSpeed(1)
 eob
 
 DescSignedBanana:
 	call(descwndlbl)
     //if counter_is(16) { //call(data_04.l_0xc5576a) Signed Banana
         "<[1C 05 B7]>" newline
-		"A banana skin with Venus's autograph." next
+		"A banana skin with Venus's autograph." 
+		SetTextSpeed(1)
 eob
 
 DescHeiroglyph:
@@ -360,7 +376,8 @@ DescHeiroglyph:
         "<[1C 05 B9]>" newline
 		"A copy of a hieroglyph. Something" newline
 		"important is recorded in the ancient" newline
-		"characters." next
+		"characters." 
+		SetTextSpeed(1)
 eob
 
 DescCarrotKey:
@@ -368,14 +385,16 @@ DescCarrotKey:
     //if counter_is(18) { //call(data_05.l_0xc5689f) Carrot Key
         "<[1C 05 FD]>" newline
 		"A special type of bunny's favorite" newline
-		"carrot." next
+		"carrot." 
+		SetTextSpeed(1)
 eob
 
 DescTowerKey:
 	call(descwndlbl)
     //if counter_is(19) { //call(data_04.l_0xc55943) Tower Key
         "<[1C 05 C0]>" newline
-		"An old key." next
+		"An old key." 
+		SetTextSpeed(1)
 eob
 
 DescHawkEye:
@@ -383,7 +402,8 @@ DescHawkEye:
     //if counter_is(20) { //call(data_04.l_0xc55602) Hawk Eye
         "<[1C 05 AF]>" newline
 		"What a miracle! Now you can see" newline
-		"in the dark!" next
+		"in the dark!" 
+		SetTextSpeed(1)
 eob
 
 DescShynessBook:
@@ -391,7 +411,8 @@ DescShynessBook:
     //if counter_is(21) { //call(data_04.l_0xc55409) Shyness Book
         "<[1C 05 A4]>" newline
 		"As the title says, it helps one" newline
-		"overcome shyness." next
+		"overcome shyness."
+		SetTextSpeed(1)
 eob
 
 DescTendakraut:
@@ -399,7 +420,8 @@ DescTendakraut:
     //if counter_is(22) { //call(data_04.l_0xc55e77) Tendakraut
         "<[1C 05 D3]>" newline
 		"A very strong-smelling dish. Those" newline
-		"who like it go nuts for it..." next
+		"who like it go nuts for it..."
+		SetTextSpeed(1)
 eob
 
 DescMeteoritePiece:
@@ -408,7 +430,8 @@ DescMeteoritePiece:
         "<[1C 05 C1]>" newline
 		"It looks like a plain old rock, but" newline
 		"to someone who knows about it, it's" newline
-		"a very precious, unusual element." next
+		"a very precious, unusual element."
+		SetTextSpeed(1)
 eob
 
 DescBadKeyMachine:
@@ -417,14 +440,16 @@ DescBadKeyMachine:
         "<[1C 05 AC]>" newline
 		"The <Machine that Opens Doors," newline
 		"especially when you have a slightly" newline
-		"bad key> machine." next
+		"bad key> machine."
+		SetTextSpeed(1)
 eob
 
 DescLockerKey:
 	call(descwndlbl)
     //if counter_is(25) { //call(data_04.l_0xc55d82) Locker Key
         "<[1C 05 CD]>" newline
-		"A key to a regular locker." next
+		"A key to a regular locker."
+		SetTextSpeed(1)
 eob
 
 DescBubbleGum:
@@ -433,5 +458,6 @@ DescBubbleGum:
         "<[1C 05 68]>" newline
 		"This is the Balloon Monkey's favorite." newline
 		"It won't help you recover, but you'll" newline
-		"never run out. It's a super jumbo pack!" next
+		"never run out. It's a super jumbo pack!"
+		SetTextSpeed(1)
 eob
