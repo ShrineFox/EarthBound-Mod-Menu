@@ -1,5 +1,6 @@
 /* Enums */
 import "../../enums/flags.ccs"
+import "../../enums/bgm.ccs"
 import "../../enums/windows.ccs"
 import "../../enums/labels.ccs"
 /* Commands */
@@ -45,7 +46,8 @@ eob
 ConfigMenuPrompt:
 	set(flg_SetBBG)
 	ShowBattleBG(298, 298, 0)
-	CloseModMenuConfirmWnd()
+    music(bgm_Moonside)
+    CloseModMenuConfirmWnd()
 	if not flg_ModConfigured 
 	{
 		window_open(1)
@@ -70,7 +72,6 @@ ConfigMenu: {
 	OpenKeyItemWnd()
 	Lbl(lbl_ToggleMods)
 	counter_zero
-	ctoarg
 	if flag flg_KeyItems {
         MenuOptionWithCallback("[ac]Key Items", Set_Count_1)
 	} else {
@@ -158,14 +159,11 @@ ConfigMenu: {
 
 
 ShowDescription:
-	CloseKeyItemDescWnd()
-	OpenKeyItemDescWnd()
-	Lbl(lbl_Description)
 	if counter_is(1) { "<Key Items>" newline "Makes Key Items separate from your" newline "Goods, so you have more space" newline "in your inventory." }
 	if counter_is(2) { "<Unrestrict Bike>" newline "Use your bicycle anywhere, even when" newline "you have other characters in" newline "your party." }
 	if counter_is(3) { "<No Photo Guy>" newline "Replaces Photo Guy cutscenes with a" newline "quick, unobtrusive shutter effect." }
 	if counter_is(4) { "<No Dad Calls>" newline "Prevents Ness's dad from calling" newline "you periodically during your" newline "adventure." }
-	if counter_is(5) { "<Skip Levelup Text>" newline "Don't shpw the text after" newline "a level-up about stat increases." }
+	if counter_is(5) { "<Skip Levelup Text>" newline "Don't show the text after" newline "a level-up about stat increases." }
 	if counter_is(6) { "<Mod Menu>" newline "Always have access to an in-game" newline "trainer, full of cheats and" newline "other fun stuff." }
 	if counter_is(7) { "<Easy Deaths> by JTolmar" newline "Fully revive and heal party after you" newline "lose a battle, without taking" newline "half of your money." }
 	if counter_is(8) { "<Fast Saving>" newline "Shorten the dialog you see when" newline "saving your game over the phone." }

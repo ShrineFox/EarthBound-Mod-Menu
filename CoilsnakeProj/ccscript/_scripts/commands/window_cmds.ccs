@@ -43,7 +43,9 @@ command SetDescription(countNo, prevWndType, DescLabel)
 { 
 	SetTextSpeedInstant()
 	counter(countNo)
-	ctoarg
+	store_wram
+    OpenKeyItemDescWnd()
+	load_wram
 	call(DescLabel)
 	window_switch(prevWndType)
 	SetTextSpeed(1)
@@ -51,15 +53,8 @@ command SetDescription(countNo, prevWndType, DescLabel)
 }
 
 /* Register Management */
-// The following are built-in commands:
-// 
-//command store_registers { "[1B 05]" } (Save current count/arg/result registers to RAM)
-// 
-//command load_registers { "[1B 06]" } (Retreive count/arg/result registers from RAM)
-// 
-// ctoarg (Load count value into arg for use as a parameter)
-// 
-// counter_zero (Reset counter to zero)
+command store_wram { "[1B 05]" }
+command load_wram { "[1B 06]" } 
 
 // Compare register value, returning a result of 0 or 1
 command compare_register(num, reg) { "[18 07 {long num} {byte reg}]" }
