@@ -11,25 +11,14 @@ import "../../commands/health_cmds.ccs"
 
 BattleMenu:
 	CloseModMenuConfirmWnd()
-	OpenModMenu2Wnd(11)
+	OpenModMenu2Wnd(9)
 	Lbl(lbl_Battle)
 	menu 1 {
-		"View List":    { goto(BattleList) }
+		"Boss List":    { goto(BossBattleList) }
 		"Enter ID":     { goto(BattleID) }
-		default "Back": { goto(modmenu.ModMenu) }
+		"Random": { random(255) rtoarg battle(0)  }
 	}
-goto(BattleMenu)
-
-BattleList:
-	OpenModMenu2Wnd(10)
-	Lbl(lbl_Battle)
-	menu 1 
-	{
-		"Regular Foe":  { goto(RegularFoeBattleList) }
-		"Boss":  { goto(BossBattleList) }
-		default "Back": { goto(BattleMenu) }
-	}
-goto(BattleList)
+goto(modmenu.ModMenu)
 
 BossBattleList:
 	OpenModMenu2Wnd(9)
@@ -37,18 +26,12 @@ BossBattleList:
 	menu 1 {
 		"Sanctuary Guardians":    { goto(SanctuaryBossList) }
 		"Regular Bosses":     { goto(MidbossBattleList) }
-		default "Back":  { goto(BattleList) }
 	}
-goto(BossBattleList)
-
-RegularFoeBattleList:
-goto(BattleList)
+goto(BattleMenu)
 
 SanctuaryBossList:
-	CloseModMenu2Wnd()
-	CloseModMenuWnd()
-	OpenModMenuWnd()
-	Lbl(lbl_Battle)
+	OpenModMenu2Wnd(18)
+    Lbl(lbl_Battle)
 	menu 1 {
 		"Titanic Ant":    { battle(boss_TitanicAnt) }
 		"Mondo Mole":     { battle(boss_MondoMole) }
@@ -58,15 +41,12 @@ SanctuaryBossList:
 		"ElectroSpecter": { battle(boss_ElectroSpecter) }
 		"ThunderNStorm":     { battle(boss_ThunderandStorm) }
 		"Carbon Dog":  { battle(boss_CarbonDog) }
-		default "Back":  { goto(BossBattleList) }
 	}
-goto(SanctuaryBossList)
+goto(BossBattleList)
 
 MidbossBattleList:
-	CloseModMenu2Wnd()
-	CloseModMenuWnd()
-	OpenModMenuWnd()
-	Lbl(lbl_Battle)
+	OpenModMenu2Wnd(26)
+    Lbl(lbl_Battle)
 	menu 1 {
 		"Frank":    { battle(boss_Frank) }
 		"Frankystein II":     { battle(boss_FrankysteinII) }
@@ -80,15 +60,12 @@ MidbossBattleList:
 		"Mani Mani": { battle(boss_ManiMani) }
 		"Clumsy Robot":  { battle(boss_ClumsyRobot) }
 		"More...":  { goto(MidbossBattleList2) }
-		default "Back":  { goto(BossBattleList) }
 	}
-goto(MidbossBattleList)
+goto(BossBattleList)
 
 MidbossBattleList2:
-	CloseModMenu2Wnd()
-	CloseModMenuWnd()
-	OpenModMenuWnd()
-	Lbl(lbl_Battle)
+	OpenModMenu2Wnd(14)
+    Lbl(lbl_Battle)
 	menu 1 {
 		"Starman DX":    { battle(boss_StarmanDX) }
 		"Ness's Nightmare":     { battle(boss_NessNightmare) }
@@ -96,15 +73,15 @@ MidbossBattleList2:
 		"Starman Jr":       { battle(boss_StarmanJr) }
 		"H. Armed Pokey":     { battle(boss_Giygas_Pokey) }
 		"Giygas": { battle(boss_Giygas) }
-		default "Back":  { goto(MidbossBattleList) }
 	}
-goto(MidbossBattleList2)
+goto(MidbossBattleList)
 
 /* ID Entry */
 
 BattleID:
-	ConfirmNumber(lbl_BGM, 3, "Start this battle?", StartBattle)
+	ConfirmNumber(lbl_Battle, 3, "Start this battle?", StartBattle)
 goto(BattleMenu)
 
 StartBattle:
-battle(0) eob
+	battle(0) 
+eob

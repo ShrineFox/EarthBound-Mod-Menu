@@ -51,5 +51,5 @@ WarpID:
 goto(WarpMenu)
 
 WarpToID:
-	warp(argument) WarpNotification("Warp ID {number(argument)}") goto(mainmenu.goto_end)
+	warp(argument) WarpNotification("selected Warp ID.") goto(mainmenu.goto_end)
 eob

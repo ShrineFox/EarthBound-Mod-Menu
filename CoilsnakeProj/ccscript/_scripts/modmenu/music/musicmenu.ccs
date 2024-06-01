@@ -282,7 +282,7 @@ EventBGMList:
 		"Delivery": { music(bgm_Delivery) }
 		"Flyovers": { goto(FlyoverBGMList) }
 		"Good Morning": { goto(GoodMorningBGMList) }
-		"More... (1/4)": { goto(EventBGMList2) }
+		"More... (1[5F]4)": { goto(EventBGMList2) }
 	}
 goto(MusicList)
 
@@ -296,7 +296,7 @@ EventBGMList2:
 		"Your Sanctuary":  { music(bgm_YourSanctuary) goto(EventBGMList2) }
 		"Flash of Memory": { music(bgm_FlashOfMemory) goto(EventBGMList2) }
 		"The Power":    { music(bgm_ThePower)  goto(EventBGMList2) }
-		"More... (2/4)":      { goto(EventBGMList3) }
+		"More... (2[5F]4)":      { goto(EventBGMList3) }
 	}
 goto(EventBGMList)
 
@@ -310,7 +310,7 @@ EventBGMList3:
 		"Coffee Break":    { music(bgm_CoffeeBreak) goto(EventBGMList3) }
 		"Heroes Return":   { music(bgm_HeroesReturn) goto(EventBGMList3) }
 		"Heroes Return 2": { music(bgm_HeroesReturn_2) goto(EventBGMList3) }
-		"More... (3/4)":         { goto(EventBGMList4) }
+		"More... (3[5F]4)":         { goto(EventBGMList4) }
 	}
 goto(EventBGMList2)
 
