@@ -16,7 +16,7 @@ BattleMenu:
 	menu 1 {
 		"Boss List":    { goto(BossBattleList) }
 		"Enter ID":     { goto(BattleID) }
-		"Random": { random(255) rtoarg battle(0)  }
+		"Random":		{ random(255) swap call(StartBattle)  }
 	}
 goto(modmenu.ModMenu)
 
@@ -83,5 +83,6 @@ BattleID:
 goto(BattleMenu)
 
 StartBattle:
-	battle(0) 
+	CloseAllModMenuWnd()
+    "[1F 23 00 00]"
 eob

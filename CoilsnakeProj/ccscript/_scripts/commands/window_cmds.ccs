@@ -9,8 +9,9 @@ import "../enums/party.ccs"
 import "../enums/items.ccs"
 import "../enums/windows.ccs"
 
-
+// Sets the result register value to a random number
 command random(n) "[1D 21 {byte n}]"
+
 /* Menu Options */
 
 // Overwrite selected menu option with purple background color
