@@ -36,8 +36,8 @@ define flg_SkipStatIncMsgs = flag 0x655
 define flg_DisableCollision = flag 0x654
 // Whether bike is unrestricted or not
 define flg_UnrestrictBike = flag 0x653
-// Whether your dad can call you
-define flg_DadCantCall = flag 0x652
+// Whether to replace dad call routine with a random event
+define flg_ChaosMode = flag 0x652
 // Whether the photo guy interrupts you or not
 define flg_NoPhotoGuy = flag 0x651
 // Whether Mod Menu Key Items window is open

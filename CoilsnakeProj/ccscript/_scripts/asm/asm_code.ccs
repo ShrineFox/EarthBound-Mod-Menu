@@ -14,14 +14,14 @@ RandDoor:
 
 /* Frequency of Dad Calls */
 // https://earthbound-rom-explorerr.herokuapp.com/address/$C0B67F
-//ROM[0xC0B6C2] = { LDA_i(0x0697) }
+ROM[0xC0B6C2] = { LDA_i(0x0001) } // normally 0x0697
 // https://earthbound-rom-explorerr.herokuapp.com/address/$C075DD
-//ROM[0xC0766C] = { LDA_i(0x0697) }
+ROM[0xC0766C] = { LDA_i(0x0001) } // normally 0x0697
 
 /* Disable Gas Station Sequence */
 ROM[0xC4DB33] = "[4C F9 DB]" 
 /* Disable Attract Mode */
-ROM[0xC422E4] = "[09]"
+// ROM[0xC422E4] = "[09]"
 /* Still Animate EarthBound Logo Even if Intro is Skipped */
 ROM[0xc3f3d0] = { STZ_a(0x9f75) }
 /* Play Custom Music at Boot */

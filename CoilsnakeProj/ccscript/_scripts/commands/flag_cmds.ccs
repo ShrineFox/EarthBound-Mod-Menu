@@ -76,13 +76,49 @@ command TempSoloPartyMember(ptyID)
 tempnessonly:
 	party_add(1)
 	counter(1)
+	_loop1:
+	if counter_is(18) { goto(_loop1end) }
+	else if not counter_is(1) { ctoarg party_remove(0) }
+	inc
+	goto(_loop1)
+	RefreshScreen_NoPrevWnd()
+	_loop1end:
+	eob
+
+temppaulaonly:
+	party_add(2)
+	counter(1)
 	_loop2:
 	if counter_is(18) { goto(_loop2end) }
-	else if not counter_is(1) { ctoarg party_remove(0) }
+	else if not counter_is(2) { ctoarg party_remove(0) }
 	inc
 	goto(_loop2)
 	RefreshScreen_NoPrevWnd()
 	_loop2end:
+	eob
+
+tempjeffonly:
+	party_add(3)
+	counter(1)
+	_loop3:
+	if counter_is(18) { goto(_loop3end) }
+	else if not counter_is(3) { ctoarg party_remove(0) }
+	inc
+	goto(_loop3)
+	RefreshScreen_NoPrevWnd()
+	_loop3end:
+	eob
+
+temppooonly:
+	party_add(3)
+	counter(1)
+	_loop4:
+	if counter_is(18) { goto(_loop4end) }
+	else if not counter_is(3) { ctoarg party_remove(0) }
+	inc
+	goto(_loop4)
+	RefreshScreen_NoPrevWnd()
+	_loop4end:
 	eob
 
 command RestorePartyFromFlags()

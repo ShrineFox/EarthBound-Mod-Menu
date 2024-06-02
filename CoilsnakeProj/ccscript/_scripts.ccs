@@ -46,7 +46,7 @@ import "_scripts/commands/flag_cmds.ccs"
 import "_scripts/commands/health_cmds.ccs"
 /* Main Menu Override */
 import "_scripts/mainmenu/mainmenu.ccs"
-
+import "_scripts/mainmenu/chaosmode.ccs"
 
 // Open the Mod Menu
 ModMenu:
@@ -82,7 +82,11 @@ eob
 
 // Prevent your dad from calling you
 DadCall:
-	if not flg_DadCantCall { goto(data_32.l_0xc7d33e_original) }
+	if not flg_ChaosMode { goto(data_32.l_0xc7d33e_original) }
+	else
+	{
+		goto(chaosmode.ChaosMode)
+	}
 eob
 
 // Prevent Photo Guy cutscene from happening

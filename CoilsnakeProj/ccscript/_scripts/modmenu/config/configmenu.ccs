@@ -87,10 +87,10 @@ ConfigMenu: {
 	} else {
 		MenuOptionWithCallback("No Photo Guy", Set_Count_3)
 	}
-	if flag flg_DadCantCall {
-        MenuOptionWithCallback("[ac]No Dad Calls", Set_Count_4)
+	if flag flg_ChaosMode {
+        MenuOptionWithCallback("[ac]Chaos Mode", Set_Count_4)
 	} else {
-		MenuOptionWithCallback("No Dad Calls", Set_Count_4)
+		MenuOptionWithCallback("Chaos Mode", Set_Count_4)
 	}
 	if flag flg_SkipStatIncMsgs {
 		MenuOptionWithCallback("[ac]Skip Levlup Text", Set_Count_5)
@@ -129,7 +129,7 @@ ConfigMenu: {
         SwitchCase(chose_keyitems)
         SwitchCase(chose_unrestrictbike)
         SwitchCase(chose_nophotoguy)
-        SwitchCase(chose_nodadcalls)
+        SwitchCase(chose_chaosmode)
 		SwitchCase(chose_skiplvluptxt)
 		SwitchCase(chose_modmenu)
 		SwitchCase(chose_easydeaths)
@@ -143,8 +143,8 @@ ConfigMenu: {
 		ToggleWithSound(flg_UnrestrictBike) goto(ConfigMenu)
 	chose_nophotoguy:
 		ToggleWithSound(flg_NoPhotoGuy) goto(ConfigMenu)
-	chose_nodadcalls:
-		ToggleWithSound(flg_DadCantCall) goto(ConfigMenu)
+	chose_chaosmode:
+		ToggleWithSound(flg_ChaosMode) goto(ConfigMenu)
 	chose_skiplvluptxt:
 		ToggleWithSound(flg_SkipStatIncMsgs) goto(ConfigMenu)
 	chose_modmenu:
@@ -162,7 +162,7 @@ ShowDescription:
 	if counter_is(1) { "<Key Items>" newline "Makes Key Items separate from your" newline "Goods, so you have more space" newline "in your inventory." }
 	if counter_is(2) { "<Unrestrict Bike>" newline "Use your bicycle anywhere, even when" newline "you have other characters in" newline "your party." }
 	if counter_is(3) { "<No Photo Guy>" newline "Replaces Photo Guy cutscenes with a" newline "quick, unobtrusive shutter effect." }
-	if counter_is(4) { "<No Dad Calls>" newline "Prevents Ness's dad from calling" newline "you periodically during your" newline "adventure." }
+	if counter_is(4) { "<Chaos Mode>" newline "Have a random chance of something" newline "unpredictable happening every" newline "now and then." }
 	if counter_is(5) { "<Skip Levelup Text>" newline "Don't show the text after" newline "a level-up about stat increases." }
 	if counter_is(6) { "<Mod Menu>" newline "Always have access to an in-game" newline "trainer, full of cheats and" newline "other fun stuff." }
 	if counter_is(7) { "<Easy Deaths> by JTolmar" newline "Fully revive and heal party after you" newline "lose a battle, without taking" newline "half of your money." }

@@ -39,7 +39,7 @@ DebugFlagSet:
 	set(flg_EasyDeaths)
 	set(flg_FastSaving)
 	set(flg_NoPhotoGuy)
-	set(flg_DadCantCall)
+	set(flg_ChaosMode)
 	set(flg_UnrestrictBike)
 	set(flg_DisableCollision)
 	set(flg_SkipStatIncMsgs)

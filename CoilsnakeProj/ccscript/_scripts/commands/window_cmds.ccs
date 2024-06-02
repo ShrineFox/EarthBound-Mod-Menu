@@ -126,11 +126,11 @@ command DebugPrint(prevWndType)
 	{
 		OpenDebugWnd()
 		Lbl(lbl_Debug)
-        load_wram
-        "@Argument: {number(argument)}" newline
 		load_wram ctoarg
 		"@Counter: {number(argument)}" newline
-		load_wram rtoarg
+        load_wram
+        "@Argument: {number(argument)}" newline
+        load_wram rtoarg
 		"@Result: {number(argument)}" pause(60)
 		// Go back to original window
 		OpenWnd(prevWndType)
