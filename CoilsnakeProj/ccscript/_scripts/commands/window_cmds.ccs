@@ -241,3 +241,10 @@ command SetPartyLabel()
 
 command ShowBattleBG(layerNumber, distortionNumber, letterBox) { show_battle_bg(layerNumber, distortionNumber, letterBox) }
 command HideBattleBG() { hide_battle_bg() }
+
+/* Screen Fade */
+
+command FadeOutSimple() { "[1f 15 6a 00 fe 02 01]" }
+command FadeInSimple() { "[1f ea 6a 00][1f 61]" }
+command FadeOutUntilWarp() { "[1f 15 6a 00 79 02 01][1f 61][1f 1f 6a 00 06]" }
+    

@@ -26,7 +26,8 @@ Selected_PSI:     { counter(3) eob }  Selected_KeyItems: { counter(4) eob }
 Selected_ModMenu: { counter(5) eob }  Selected_Status: { counter(6) eob }
 
 MainMenu:
-	if (flg_EndLoop) { unset(flg_EndLoop) goto(goto_end) }
+	unset(flg_RandomWarp)
+    if (flg_EndLoop) { unset(flg_EndLoop) goto(goto_end) }
 	//sprite_spawn(106, 896, 1) // Invisible camera sprite running "Cutscene On"
 	// Stop player movement
 	"[1F E5 FF]"

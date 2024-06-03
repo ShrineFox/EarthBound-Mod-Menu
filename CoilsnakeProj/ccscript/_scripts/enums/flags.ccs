@@ -96,6 +96,8 @@ define flg_DisableHomesick = flag 0x633
 define flg_RidingBike = flag 0x632
 // Whether player is in Deep Darkness (to use hawk eye)
 define flg_InDeepDarkness = flag 0x631
+// Whether player is due for a random warp in chaos mode
+define flg_RandomWarp = flag 0x630
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12

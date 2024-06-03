@@ -8,6 +8,8 @@ ChaosMode:
     random(100)
     store_wram
 
+	set(flg_RandomWarp)
+
 	if result_is(0) { eob }
 	load_wram if result_is_greaterthan_orequal(99) { goto(CorruptMap) }
 	load_wram if result_is_greaterthan_orequal(97) { goto(RandomBattle) }
@@ -135,8 +137,10 @@ eob
 RandomSound:
 	random(124)
     swap sound(0)
+eob
 
-    random(23)
+RandomBGMEffect:
+	random(23)
     swap music_effect(0)
 eob
 

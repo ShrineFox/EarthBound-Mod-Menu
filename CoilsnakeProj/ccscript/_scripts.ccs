@@ -137,6 +137,13 @@ MapReload:
 		unset(flg_GameOverContinue)
 	}
 	window_closeall
+	if flag flg_ChaosMode and flag flg_RandomWarp
+    {
+        // Load a random map
+        unset(flg_RandomWarp)
+        FadeOutUntilWarp()
+        call(chaosmode.RandomWarp)
+    }
 	eob
 }
 

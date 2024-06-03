@@ -14,9 +14,9 @@ RandDoor:
 
 /* Frequency of Dad Calls */
 // https://earthbound-rom-explorerr.herokuapp.com/address/$C0B67F
-ROM[0xC0B6C2] = { LDA_i(0x0001) } // normally 0x0697
+ROM[0xC0B6C2] = { LDA_i(0x0002) } // normally 0x0697
 // https://earthbound-rom-explorerr.herokuapp.com/address/$C075DD
-ROM[0xC0766C] = { LDA_i(0x0001) } // normally 0x0697
+ROM[0xC0766C] = { LDA_i(0x0002) } // normally 0x0697
 
 /* Disable Gas Station Sequence */
 ROM[0xC4DB33] = "[4C F9 DB]" 
