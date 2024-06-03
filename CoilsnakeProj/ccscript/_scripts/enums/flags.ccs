@@ -96,8 +96,22 @@ define flg_DisableHomesick = flag 0x633
 define flg_RidingBike = flag 0x632
 // Whether player is in Deep Darkness (to use hawk eye)
 define flg_InDeepDarkness = flag 0x631
-// Whether player is due for a random warp in chaos mode
+// Whether player is due for a random warp in Chaos Mode
 define flg_RandomWarp = flag 0x630
+// Toggleable Chaos Mode events
+define flg_DisableChaosEffect_RandomPalette = flag 0x62F
+define flg_DisableChaosEffect_RandomBattle = flag 0x623
+define flg_DisableChaosEffect_RandomWarp = flag 0x62D
+define flg_DisableChaosEffect_RandomBGM = flag 0x62C
+define flg_DisableChaosEffect_CorruptMap = flag 0x62B
+define flg_DisableChaosEffect_BacktrackWarp = flag 0x62A
+define flg_DisableChaosEffect_RandomFloatSprite = flag 0x629
+define flg_DisableChaosEffect_RandomSound = flag 0x628
+define flg_DisableChaosEffect_RandomBGMEffect = flag 0x627
+define flg_DisableChaosEffect_RandomizeMainParty = flag 0x626
+define flg_DisableChaosEffect_RandomizeNpcParty = flag 0x625
+define flg_DisableChaosEffect_RandomDistortion = flag 0x624
+define flg_DisableChaosEffect_RandomDoors = flag 0x623  
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12

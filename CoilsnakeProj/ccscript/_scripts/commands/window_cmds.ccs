@@ -26,6 +26,7 @@ command Highlight(text)
 
 // Menu that allows for flag-dependent options
 // and running specific scripts per highlighted menu item
+command goto_if_false(target) "[1B 02 {long target}]"
 command GotoIfFlag(flg, addr) { "[06 {short flg} {long addr}]" }
 command SwitchGoto(n) { "[09 {byte n}]" }
 command SwitchCase(addr) { long addr }
@@ -45,9 +46,9 @@ command SetDescription(countNo, prevWndType, DescLabel)
 { 
 	SetTextSpeedInstant()
 	counter(countNo)
-	store_wram
+	store_registers_global
     OpenKeyItemDescWnd()
-	load_wram
+	load_registers_global
 	call(DescLabel)
 	window_switch(prevWndType)
 	SetTextSpeed(1)
@@ -55,8 +56,8 @@ command SetDescription(countNo, prevWndType, DescLabel)
 }
 
 /* Register Management */
-command store_wram { "[1B 05]" }
-command load_wram { "[1B 06]" } 
+command store_registers_global { "[1B 05]" }
+command load_registers_global { "[1B 06]" }
 
 // Compare register value, returning a result of 0 or 1
 command compare_register(num, reg) { "[18 07 {long num} {byte reg}]" }
@@ -70,13 +71,13 @@ command counter_is_greaterthan_orequal(num) { compare_register(num, 2) }
 command OpenWnd(wndType)
 {
 	window_open(wndType)
-	load_wram
+	load_registers_global
 }
 
 // Close specific window while retaining register values
 command CloseWnd(wndType)
 {
-	store_wram
+	store_registers_global
 	window_close(wndType)
 }
 
@@ -87,14 +88,14 @@ command OpenFlagWnd(wndType, flg) { OpenWnd(wndType) set(flg) }
 // (to prevent crashing from attempting to close unopened windows)
 command CloseFlagWnd(wndType, flg) 
 { 
-	store_wram
+	store_registers_global
 	if flag flg { CloseWnd(wndType) unset(flg) }
-	load_wram
+	load_registers_global
 }
 
 // Open a specific flag-dependent custom window
 command OpenModMenuWnd() { CloseModMenuWnd() OpenFlagWnd(wnd_ModMenu, flg_ModMenuWnd) }
-command OpenModMenu2Wnd(height) { CloseModMenu2Wnd() CustomWindow_open(wnd_ModMenu2, 4, 1, 15, height) load_wram set(flg_ModMenuWnd2) }
+command OpenModMenu2Wnd(height) { CloseModMenu2Wnd() CustomWindow_open(wnd_ModMenu2, 4, 1, 15, height) load_registers_global set(flg_ModMenuWnd2) }
 command OpenModMenuConfirmWnd() { CloseModMenuConfirmWnd() OpenFlagWnd(wnd_ModMenuConfirm, flg_ModMenuConfirmWnd) }
 command OpenKeyItemWnd() { CloseKeyItemWnd() OpenFlagWnd(wnd_KeyItems, flg_KeyItemsWnd) }
 command OpenItemWnd() { CloseItemWnd() OpenFlagWnd(wnd_Item, flg_ItemWnd) }
@@ -121,22 +122,22 @@ command CloseAllModMenuWnd()
 // then switch back to active window
 command DebugPrint(prevWndType)
 {
-	store_wram
+	store_registers_global
 	if flag flg_Debug
 	{
 		OpenDebugWnd()
 		Lbl(lbl_Debug)
-		load_wram ctoarg
+		load_registers_global ctoarg
 		"@Counter: {number(argument)}" newline
-        load_wram
+        load_registers_global
         "@Argument: {number(argument)}" newline
-        load_wram rtoarg
+        load_registers_global rtoarg
 		"@Result: {number(argument)}" pause(60)
 		// Go back to original window
 		OpenWnd(prevWndType)
 		SetTextSpeed(1)
 	}
-	load_wram
+	load_registers_global
 }
 
 // Temporary window showing confirmation of action
@@ -145,14 +146,14 @@ command NotificationWnd(prevWndType, string)
 {
 	window_open(wnd_ModMenuNotification)
 	SetTextSpeedInstant()
-	load_wram
+	load_registers_global
 	Lbl(lbl_System)
 	"{string}"
 	SetTextSpeed(1)
 	"||||" // Pause for a moment
 	window_close(wnd_ModMenuNotification)
 	window_switch(prevWndType)
-	load_wram
+	load_registers_global
 }
 
 // Redraw screen using giant window
@@ -180,13 +181,13 @@ command ConfirmNumber(wndLabel, digits, string, yesLabel)
 	Lbl(wndLabel)
 	input(digits)
 	rtoarg
-	store_wram
+	store_registers_global
 	" " newline
 	"@{string}" newline
 	" {number(argument)}" newline
 	menu 2
 	{
-		"Yes": { load_wram SetTextSpeed(1) CloseModMenuConfirmWnd() call(yesLabel) }
+		"Yes": { load_registers_global SetTextSpeed(1) CloseModMenuConfirmWnd() call(yesLabel) }
 default "No": { }
 	}
 	CloseModMenuConfirmWnd()
@@ -203,7 +204,7 @@ command ConfirmYesNo(wndLabel, string, yesLabel)
 	"@{string}" newline
 	menu 2
 	{
-		"Yes": { CloseModMenuConfirmWnd() SetTextSpeed(1) load_wram goto(yesLabel) }
+		"Yes": { CloseModMenuConfirmWnd() SetTextSpeed(1) load_registers_global goto(yesLabel) }
 		default "No": { }
 	}
 	CloseModMenuConfirmWnd()

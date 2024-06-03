@@ -11,21 +11,21 @@ import "../enums/windows.ccs"
 // Turn active flag off or vice versa and show notification about it
 command ToggleFlag(flg)
 {
-	store_wram
+	store_registers_global
 	ToggleWithSound(flg)
 	if flag flg { sound(SND_GIFTOPEN) NotificationWnd(wnd_ModMenu2, "@Flag is now ON.") }
 	else { sound(SND_BOXTAKE) NotificationWnd(wnd_ModMenu2, "@Flag is now OFF.") }
-	load_wram
+	load_registers_global
 }
 
 // Turn active flag off or vice versa
 command ToggleWithSound(flg)
 {
-	store_wram
+	store_registers_global
 	toggle(flg)
 	if flag flg { sound(SND_GIFTOPEN) }
 	else { sound(SND_BOXTAKE) }
-	load_wram
+	load_registers_global
 }
 
 /* Party Management */

@@ -19,7 +19,7 @@ command GiveItem(charaID)
 {
 	window_open(wnd_Dialog)
 	sound(SND_BOXTAKE)
-	load_wram
+	load_registers_global
 	"[1D 0E {byte charaID} 00]"
 	call(0xc7dccf) next
 	window_close(wnd_Dialog)
@@ -27,10 +27,10 @@ command GiveItem(charaID)
 
 command GiveKeyItem(charaID)
 {
-	store_wram
+	store_registers_global
 	window_open(wnd_Dialog)
 	sound(SND_SPECIALITEM)
-	load_wram
+	load_registers_global
 	"[1D 0E {byte charaID} 00]"
 	call(0xc7dcb6) next
 	window_close(wnd_Dialog)
@@ -38,7 +38,7 @@ command GiveKeyItem(charaID)
 
 command GiveItemToParty(itemID)
 {
-	store_wram
+	store_registers_global
 	arg(itemID)
 	if not full(0xFF)
 	{

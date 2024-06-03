@@ -371,13 +371,13 @@ command EscargotCheck() { "[1D 0C 00 00]" }
 StoreItemMenu:
 	window_open(wnd_Dialog)
 	call(data_14.l_0xc5e456)
-	store_wram
+	store_registers_global
 	if result_is(0) { window_close(wnd_Dialog) goto(StorageMenu) }
 	else
 	{
-		load_wram
+		load_registers_global
 		EscargotCheck()
-		if result_is(0) { load_wram "{sound(118)}[1D 12 00 00]" }
+		if result_is(0) { load_registers_global "{sound(118)}[1D 12 00 00]" }
 	}
 	window_close(wnd_Dialog)
 goto(StoreItemMenu)
@@ -385,7 +385,7 @@ goto(StoreItemMenu)
 TakeItemMenu:
 	CloseAllModMenuWnd()
 	window_open(wnd_Dialog)
-	"{counter(1)}[19 14][1B 02 {e(NothingStored)}][1D 03 FF][1B 02 {e(InventoryFull)}][18 02][1A 07][1B 02 {e(GoBack)}]{swap}{store_wram}[18 02]" call(data_14.l_0xc5e54a) "[1B 02 {e(GoBack)}][1B 05]{window_switch(13)}{window_closetop}{window_switch(1)}[1B 06]{sound(116)}[1D 13 00 00][19 19 00 00]"
+	"{counter(1)}[19 14][1B 02 {e(NothingStored)}][1D 03 FF][1B 02 {e(InventoryFull)}][18 02][1A 07][1B 02 {e(GoBack)}]{swap}{store_registers_global}[18 02]" call(data_14.l_0xc5e54a) "[1B 02 {e(GoBack)}][1B 05]{window_switch(13)}{window_closetop}{window_switch(1)}[1B 06]{sound(116)}[1D 13 00 00][19 19 00 00]"
 	window_close(wnd_Dialog)
 goto(TakeItemMenu)
 

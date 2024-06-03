@@ -47,6 +47,9 @@ import "_scripts/commands/health_cmds.ccs"
 /* Main Menu Override */
 import "_scripts/mainmenu/mainmenu.ccs"
 import "_scripts/mainmenu/chaosmode.ccs"
+/* Sans Text Blip Noise */
+import "_scripts/asm/sans.ccs"
+import "_scripts/asm/text_blip_replace.ccs"
 
 // Open the Mod Menu
 ModMenu:
@@ -137,11 +140,10 @@ MapReload:
 		unset(flg_GameOverContinue)
 	}
 	window_closeall
-	if flag flg_ChaosMode and flag flg_RandomWarp
+	if flag flg_ChaosMode and flag flg_DisableChaosEffect_RandomDoors and flag flg_RandomWarp
     {
         // Load a random map
         unset(flg_RandomWarp)
-        FadeOutUntilWarp()
         call(chaosmode.RandomWarp)
     }
 	eob

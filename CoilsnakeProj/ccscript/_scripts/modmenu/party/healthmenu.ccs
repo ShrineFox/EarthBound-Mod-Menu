@@ -16,7 +16,7 @@ HealthMenu:
 	menu 1 {
 		"Heal":  { 
 			if (counter_is(0)) { healall NotificationWnd(wnd_ModMenu2, "{sound(SND_RECOVER)}@Restored everyone's HP and PP.") }
-			else { NotificationWnd(wnd_ModMenu2, "{call(data_45.l_0xc91675)}{sound(SND_RECOVER)}@{name(argument)}'s HP and PP are restored.") load_wram } 
+			else { NotificationWnd(wnd_ModMenu2, "{call(data_45.l_0xc91675)}{sound(SND_RECOVER)}@{name(argument)}'s HP and PP are restored.") load_registers_global } 
 		}
 		"Set Status":  { goto(StatusMenu) }
 		"Clear Status":

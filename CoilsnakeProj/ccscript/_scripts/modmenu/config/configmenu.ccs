@@ -1,3 +1,4 @@
+import "chaosmodeconfig.ccs"
 /* Enums */
 import "../../enums/flags.ccs"
 import "../../enums/bgm.ccs"
@@ -152,7 +153,7 @@ ConfigMenu: {
 	chose_nophotoguy:
 		ToggleWithSound(flg_NoPhotoGuy) goto(ConfigMenu)
 	chose_chaosmode:
-		ToggleWithSound(flg_ChaosMode) goto(ConfigMenu)
+		ToggleWithSound(flg_ChaosMode) if flag flg_ChaosMode { call(chaosmodeconfig.ChaosModeConfig) } goto(ConfigMenu)
 	chose_skiplvluptxt:
 		ToggleWithSound(flg_SkipStatIncMsgs) goto(ConfigMenu)
 	chose_modmenu:

@@ -23,7 +23,6 @@ command DEFINE_CUSTOM_POINTERS {
 	adr24(movscr_Cutscene_Off)    // 897
 }
 
-
 // This part intentionally has lots of newlines to separate the
 // "user" section from the "black magic" section
 

@@ -1,0 +1,19 @@
+
+// Text blip sound effect header
+ROM[0xE613A3] = {
+    // HEADER
+    byte 0x02 // STYLE (default note length + hold, instrument, volume, pan)
+
+    byte 4    // NOTE LENGTH
+    byte 4    // NOTE HOLD
+
+    byte 0x1A // INSTRUMENT
+    byte 0xF0 // VOLUME
+    byte 0xCA // PANNING
+
+    // SEQUENCE DATA
+    byte 0xBC // Play note C5
+    byte 0x00 // END SEQUENCE
+
+    // This ends up having the same size as the default sound effect, so nothing's being overwritten, just some values changed
+}
