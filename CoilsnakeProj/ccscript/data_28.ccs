@@ -6,6 +6,10 @@
 
 command e(label) "{long label}"
 import "_scripts/enums/flags.ccs"
+import "_scripts/commands/window_cmds.ccs"
+import "_scripts/asm/movement.ccs"
+import "_scripts/asm/movscr_codes.ccs"
+import "_scripts/asm/drug_util.ccs"
 
 // Text Data
 l_0xc74787:
@@ -167,7 +171,16 @@ l_0xc750b3:
     "@But,{pause(15)} I think you should change out of your jammies before you leave.{wait}{window_closeall}{pause(1)}{unset(flag 749)}[1F 21 C4]" eob
 
 l_0xc750e3:
-    "[06 49 00 {e(l_0xc7547d)}][06 78 02 {e(l_0xc7533c)}]{counter(1)}" call(data_33.l_0xc7dc7f) "[1B 03 {e(l_0xc75124)}][06 D1 00 {e(l_0xc75124)}]@Yeah,{pause(15)} sure,{pause(15)} you're cool!{pause(20)}  Whatever..." end
+    "[06 49 00 {e(l_0xc7547d)}][06 78 02 {e(l_0xc7533c)}]{counter(1)}" call(data_33.l_0xc7dc7f) "[1B 03 {e(l_0xc75124)}][06 D1 00 {e(l_0xc75124)}]@Yeah,{pause(15)} sure,{pause(15)} you're cool!{pause(20)}  Whatever..."
+    next
+    window_closeall
+    // random(277)
+    arg(102)
+    swap
+	store_registers_global // Backup it globally so the movement script can reference the result register
+    create_obj(106, movscr_Drug, 1)
+    wait_movscr // Wait until the movement script unlocks the text script
+    eob
 
 l_0xc75124:
     "[19 10 01]{rtoarg}{result_is(1)}[1B 03 {e(l_0xc75176)}][19 10 01]{rtoarg}@Any friend of [1C 02 01] is welcome in our home..." next

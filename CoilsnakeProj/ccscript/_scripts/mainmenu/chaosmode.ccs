@@ -2,25 +2,8 @@ import "../commands/window_cmds.ccs"
 import "../commands/flag_cmds.ccs"
 import "../enums/flags.ccs"
 import "../asm/bg_viewer.ccs"
-import "../asm/movscr_codes.ccs"
-import "../asm/drug_util.ccs"
 
-command sprite2_spawn(sprite, move, style) "[1F 15 {short sprite} {short move} {byte style}]"
-command wait_movement "[1F 61]"
 ChaosMode:
-	random(277)
-	store_registers_global // Backup it globally so the movement script can reference the result register
-
-	//sprite_spawn(106, movscr_Drug, 1)
-	sprite2_spawn(106, movscr_Drug, 1)
-	wait_movement
-	//"[1A 10]"
-	/*
-    create_obj(106, movscr_Drug, 1)
-    wait_movscr // Wait until the movement script unlocks the text script
-	*/
-
-	/*
 	set(flg_RandomWarp)
 
     random(100)
@@ -37,7 +20,6 @@ ChaosMode:
 	load_registers_global if result_is_greaterthan_orequal(20) { goto(RandomSound) }
 	load_registers_global if result_is_greaterthan_orequal(10) { goto(RandomDistortion) } // need a way to undo this
     else { goto(RandomPalette) }
-	*/
 eob
 
 command change_map_pal(tileset, palette, duration) "[1F E1 {byte tileset} {byte palette} {byte duration}]"
