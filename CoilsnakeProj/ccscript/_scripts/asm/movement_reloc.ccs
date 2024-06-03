@@ -2,6 +2,7 @@ import asm65816
 import movscr_codes
 import movement
 import letterbox
+import drug_util
 
 command CreateSprite(sprite, move, style) "[1F 15 {short sprite} {short move} {byte style}]"
 
@@ -21,6 +22,7 @@ command DEFINE_CUSTOM_POINTERS {
     adr24(M_SpriteOnScreen)    // 895
 	adr24(movscr_Cutscene)    // 896
 	adr24(movscr_Cutscene_Off)    // 897
+    adr24(drug_util.movscr_Drug)    // 896
 }
 
 // This part intentionally has lots of newlines to separate the

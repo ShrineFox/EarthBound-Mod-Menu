@@ -1,6 +1,8 @@
 import asm65816_2
 import cc_asmcall
 import JSL_with_RTS
+import drug_util
+import movscr_codes
 
 // CCExpand v0.3 - Additional CCScript codes
 // Initial version by jtolmar
@@ -48,7 +50,7 @@ CodeTable: {
   long cc_text_speed.CC_code_gettextspeed // [1A 0D]
   long cc_text_speed.CC_code_settextspeed // [1A 0E]
   long CC_BreakEverything // [1A 0F]
-  long DoNothing // [1A 10]
+  long CC_Drug // [1A 10]
   long cc_main_menu.CC_Goods // [1A 11]
   long cc_main_menu.CC_Equip // [1A 12]
   long DoNothing // [1A 13]
@@ -79,6 +81,10 @@ Brk: {
   //LDX_i(0x0069)
   ASM_JSL_With_RTS(BANKC0_RTL, 0xC008C3)
 	RTL }
+
+CC_Drug: M_EB_Function_Wrapper({
+    m_asmcall(movscr_Drug)
+})
 
 // Here is documentation on the various helper functions and macros available
 // for use in your assembly code.

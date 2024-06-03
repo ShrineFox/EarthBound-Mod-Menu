@@ -1,5 +1,18 @@
 // by Catador
 import asm65816
+import movement
+import movscr_codes
+
+movscr_Drug:
+    m_warp_to_leader    // This is because I'm creating a new sprite
+    m_disable_collision // This is because I'm creating a new sprite
+	m_set_anim(0)       // This is because I'm creating a new sprite. Newly created sprites start with animation frame -1 (invisible)
+    m_asmcall(InitDrug)
+    _drugloop:
+        m_asmcall(StepVideoDrug)
+        m_pause(1) // Need at least a 1 frame pause to not lock up on this loop
+        m_jmp(_drugloop)
+    m_end
 
 // Loads distortion data from the battle backgrounds table and applies it to BG layer 2
 InitDrug: {
