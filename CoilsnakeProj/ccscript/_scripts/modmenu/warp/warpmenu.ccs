@@ -6,6 +6,8 @@ import "../../enums/windows.ccs"
 /* Commands */
 import "../../commands/window_cmds.ccs"
 import "../../commands/flag_cmds.ccs"
+import "../../asm/drug_util.ccs"
+import "../../asm/cc_actionscript.ccs"
 
 command WarpNotification(string) { NotificationWnd(wnd_ModMenu, "{sound(SND_EDENWARP)}@Warped to {string}.") }
 
@@ -21,6 +23,7 @@ WarpMenu:
 		"Go To Anchor": { anchor_warp WarpNotification("anchor position") goto(mainmenu.goto_end) }
 		"Palette": { call(palettemenu.PaletteMenu) goto(WarpMenu) }
 		"Corrupt": { "[1A 0F]" goto(WarpMenu) }
+		"Distort": { call(DistortMenu) goto(WarpMenu) }
 	}
 goto(modmenu.ModMenu)
 
@@ -52,4 +55,14 @@ goto(WarpMenu)
 
 WarpToID:
 	warp(argument) WarpNotification("selected Warp ID.") goto(mainmenu.goto_end)
+eob
+
+DistortMenu:
+	ConfirmNumber(lbl_Warp, 3, "Use this Distortion ID?", WarpToID)
+	call(Distort)
+eob
+
+Distort:
+    store_registers_global
+    create_sprite_actionscript(106, movscr_Drug, 1)
 eob

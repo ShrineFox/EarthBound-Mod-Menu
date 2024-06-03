@@ -2,17 +2,17 @@ import "../commands/window_cmds.ccs"
 import "../commands/flag_cmds.ccs"
 import "../enums/flags.ccs"
 import "../asm/bg_viewer.ccs"
-import "..//asm/drug_util.ccs"
-import "..//asm/cc_actionscript.ccs"
+import "../asm/drug_util.ccs"
+import "../asm/cc_actionscript.ccs"
 
 ChaosMode:
 	set(flg_RandomWarp)
 
-    random(100)
+    random(104)
 
     if result_is(0) { eob }
-	load_registers_global if result_is_greaterthan_orequal(99) { goto(CorruptMap) }
-	load_registers_global if result_is_greaterthan_orequal(97) { goto(RandomBattle) }
+	load_registers_global if result_is_greaterthan_orequal(99) { goto(RandomBattle) }
+	load_registers_global if result_is_greaterthan_orequal(97) { goto(CorruptMap) }
 	load_registers_global if result_is_greaterthan_orequal(95) { goto(RandomWarp) }
 	load_registers_global if result_is_greaterthan_orequal(90) { goto(RandomBGM) }
 	load_registers_global if result_is_greaterthan_orequal(85) { goto(RandomFloatSprite) }
@@ -20,8 +20,8 @@ ChaosMode:
 	load_registers_global if result_is_greaterthan_orequal(70) { goto(RandomizeMainParty) }
 	load_registers_global if result_is_greaterthan_orequal(60) { goto(RandomizeNpcParty) }
 	load_registers_global if result_is_greaterthan_orequal(50) { goto(RandomSound) }
-	load_registers_global if result_is_greaterthan_orequal(30) { goto(RandomDistortion) }
-	load_registers_global if result_is_greaterthan_orequal(15) { goto(RandomBBG) } // need a way to undo this
+	load_registers_global if result_is_greaterthan_orequal(33) { goto(RandomDistortion) }
+	load_registers_global if result_is_greaterthan_orequal(30) { goto(RandomBBG) } // need a way to undo this
     else { goto(RandomPalette) }
 eob
 

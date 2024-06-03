@@ -93,7 +93,7 @@ ChaosModeConfig: {
     }
     ctoarg
     swap
-    SwitchGoto(12)
+    SwitchGoto(13)
         SwitchCase(chose_palette)
         SwitchCase(chose_battles)
         SwitchCase(chose_warps)
