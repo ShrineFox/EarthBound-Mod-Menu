@@ -82,7 +82,7 @@ eob
 
 // Prevent your dad from calling you
 DadCall:
-	if not flg_ChaosMode { goto(data_32.l_0xc7d33e_original) }
+	if not flg_ChaosMode { eob } //goto(data_32.l_0xc7d33e_original) }
 	else
 	{
 		goto(chaosmode.ChaosMode)

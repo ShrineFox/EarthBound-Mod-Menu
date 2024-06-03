@@ -39,7 +39,7 @@ command GetTextSpeed() { gettextspeed }
 // Set Text Speed
 command SetTextSpeed(num) { settextspeed(num) }
 // Set Text Speed to Zero
-command SetTextSpeedInstant() { store_wram counter_zero ctoarg SetTextSpeed(0) load_wram }
+command SetTextSpeedInstant() { store_registers arg_zero SetTextSpeed(0) load_registers }
 // Show description of selected item in desc window
 command SetDescription(countNo, prevWndType, DescLabel)
 { 
@@ -143,14 +143,13 @@ command DebugPrint(prevWndType)
 // waits about a second, then closes and returns to previous window
 command NotificationWnd(prevWndType, string)
 {
-	store_wram
 	window_open(wnd_ModMenuNotification)
 	SetTextSpeedInstant()
 	load_wram
 	Lbl(lbl_System)
 	"{string}"
 	SetTextSpeed(1)
-	"|||" // Pause for about a second
+	"||||" // Pause for a moment
 	window_close(wnd_ModMenuNotification)
 	window_switch(prevWndType)
 	load_wram

@@ -7,12 +7,16 @@ import "../../enums/labels.ccs"
 import "../../commands/window_cmds.ccs"
 import "../../commands/flag_cmds.ccs"
 import "../../commands/health_cmds.ccs"
+import "../../asm/bg_viewer.ccs"
 
 Selected_1:
 counter(1) eob
 
 Selected_2:
 counter(2) eob
+
+Selected_3:
+counter(3) eob
 
 ConfigMenuStart:
 if flg_ModConfigured {
@@ -23,6 +27,7 @@ if flg_ModConfigured {
 	"@Start the game?" newline
 		MenuOptionWithCallback("Begin", Selected_1)
 		MenuOptionWithCallback("Config", Selected_2)
+		MenuOptionWithCallback("BGView", Selected_3)
 	DisplayVertical(2)
 	if not "[11]" {
         // Exit
@@ -30,15 +35,18 @@ if flg_ModConfigured {
     }
 	ctoarg
     swap
-	SwitchGoto(2)
+	SwitchGoto(3)
         SwitchCase(chose_begin)
         SwitchCase(chose_configuremod)
+		SwitchCase(chose_bgview)
 	swap
     "@Error! No option {number(0)} in this menu." next goto(ConfigMenuStart)
 	chose_begin:
 		goto(EndConfig)
 	chose_configuremod:
 		goto(ConfigMenuPrompt)
+	chose_bgview:
+		goto(BGView)
 }
 else { goto(ConfigMenuPrompt) }
 eob
@@ -181,3 +189,39 @@ eob
 
 End_:
 eob
+
+BGView:
+	window_closeall
+    window_open(4)
+    menu 1 {
+        "Input IDs": { goto(InputIDs) }
+        "Back...": { goto(ConfigMenuStart)  }
+    }
+goto(ConfigMenuStart)
+
+InputIDs:
+{
+    // Reset all registers
+    counter_zero
+    arg_zero
+    swap
+    arg_zero
+    // Select Layer 1
+    window_open(4)
+    "Layer 1:" newline
+    " " input(3) newline
+    // Store Layer 1 value
+    counter(0)
+    // Select Layer 2
+    "Layer 2:" newline
+    " " input(3)
+    // Load Layer 1 value
+    ctoarg
+    // Display Layers 1 and 2
+    show_battle_bg(-1, -1, 0)
+    // Hide textbox until user input
+    window_close(4)
+    wait
+    // Restart
+    goto(BGView)
+}

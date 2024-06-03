@@ -1,6 +1,8 @@
 import "../commands/window_cmds.ccs"
 import "../commands/flag_cmds.ccs"
 import "../enums/flags.ccs"
+import "../asm/bg_viewer.ccs"
+import "../asm/movscr_codes.ccs"
 
 ChaosMode:
     random(100)
@@ -16,6 +18,7 @@ ChaosMode:
 	load_wram if result_is_greaterthan_orequal(60) { goto(RandomizeMainParty) }
 	load_wram if result_is_greaterthan_orequal(40) { goto(RandomizeNpcParty) }
 	load_wram if result_is_greaterthan_orequal(20) { goto(RandomSound) }
+	//load_wram if result_is_greaterthan_orequal(10) { goto(RandomDistortion) } // need a way to undo this
     else { goto(RandomPalette) }
 eob
 
@@ -240,4 +243,12 @@ RandomizeNpcParty:
 	call(removenpcparty)
 	call(addrandomnpcparty)
     call(addrandomnpcparty)
+eob
+
+command sprite_spawn(sprite, move, style) "[1F 15 {short sprite} {short move} {byte style}]"
+
+RandomDistortion:
+	sprite_spawn(106, 896, 1) // Invisible camera sprite running "Cutscene On"
+    show_battle_bg(221,221,0)
+    sprite_spawn(106, 897, 1) // Invisible camera sprite running "Cutscene Off"
 eob
