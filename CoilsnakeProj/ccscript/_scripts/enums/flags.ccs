@@ -100,7 +100,7 @@ define flg_InDeepDarkness = flag 0x631
 define flg_RandomWarp = flag 0x630
 // Toggleable Chaos Mode events
 define flg_DisableChaosEffect_RandomPalette = flag 0x62F
-define flg_DisableChaosEffect_RandomBattle = flag 0x623
+define flg_DisableChaosEffect_RandomBattle = flag 0x62E
 define flg_DisableChaosEffect_RandomWarp = flag 0x62D
 define flg_DisableChaosEffect_RandomBGM = flag 0x62C
 define flg_DisableChaosEffect_CorruptMap = flag 0x62B
@@ -111,7 +111,8 @@ define flg_DisableChaosEffect_RandomBGMEffect = flag 0x627
 define flg_DisableChaosEffect_RandomizeMainParty = flag 0x626
 define flg_DisableChaosEffect_RandomizeNpcParty = flag 0x625
 define flg_DisableChaosEffect_RandomDistortion = flag 0x624
-define flg_DisableChaosEffect_RandomDoors = flag 0x623  
+define flg_DisableChaosEffect_RandomDoors = flag 0x623
+define flg_DisableChaosEffect_RandomBBG = flag 0x622
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12

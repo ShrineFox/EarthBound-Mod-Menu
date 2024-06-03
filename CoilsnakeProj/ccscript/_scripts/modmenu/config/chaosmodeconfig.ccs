@@ -13,6 +13,7 @@ Set_Count_5: { SetDescription(5, wnd_KeyItems, ShowDescription) } Set_Count_6: {
 Set_Count_7: { SetDescription(7, wnd_KeyItems, ShowDescription) } Set_Count_8: { SetDescription(8, wnd_KeyItems, ShowDescription) }
 Set_Count_9: { SetDescription(9, wnd_KeyItems, ShowDescription) } Set_Count_10: { SetDescription(10, wnd_KeyItems, ShowDescription) }
 Set_Count_11: { SetDescription(11, wnd_KeyItems, ShowDescription) } Set_Count_12: { SetDescription(12, wnd_KeyItems, ShowDescription) }
+Set_Count_13: { SetDescription(13, wnd_KeyItems, ShowDescription) }
 
 ChaosModeConfig: {
 	CloseAllModMenuWnd()
@@ -79,6 +80,12 @@ ChaosModeConfig: {
 	} else {
 		MenuOptionWithCallback("Doors", Set_Count_12)
 	}
+    if not flag flg_DisableChaosEffect_RandomBBG {
+        MenuOptionWithCallback("[ac]Battle BG", Set_Count_13)
+    } else
+    {
+        MenuOptionWithCallback("Battle BG", Set_Count_13)
+    }
     DisplayVertical(2)
     if not "[11]" {
         // Exit
@@ -99,6 +106,7 @@ ChaosModeConfig: {
         SwitchCase(chose_npcparty)
         SwitchCase(chose_distortion)
 		SwitchCase(chose_doors)
+        SwitchCase(chose_bbg)
     swap
     "@Error! No option {number(0)} in this menu." next goto(ChaosModeConfig)
     chose_palette:
@@ -125,6 +133,8 @@ ChaosModeConfig: {
 		ToggleWithSound(flg_DisableChaosEffect_RandomDistortion) goto(ChaosModeConfig)
     chose_doors:
 		ToggleWithSound(flg_DisableChaosEffect_RandomDoors) goto(ChaosModeConfig)
+    chose_bbg:
+		ToggleWithSound(flg_DisableChaosEffect_RandomBBG) goto(ChaosModeConfig)
 }
 
 ShowDescription:
@@ -138,8 +148,10 @@ ShowDescription:
 	if counter_is(8) { "<Random Sounds>" newline "Play a random sound effect" newline "every now and then." }
 	if counter_is(9) { "<Random Main Party>" newline "Replaces playable party" newline "members in your squad with" newline "different ones at random." }
 	if counter_is(10) { "<Random NPC Party>" newline "Replaces non-playable NPC" newline "followers in your party with" newline "different ones at random." }
-	if counter_is(11) { "<Random Distortion>" newline "Shows a battle background in" newline "the overworld. Pauses other effects" newline "until a battle starts." }
+	if counter_is(11) { "<Random Distortion>" newline "Distorts the map using a" newline "random battle BG filter." }
 	if counter_is(12) { "<Random Doors>" newline "When you enter a new map," newline "have a chance of a different" newline "map loading instead." }
+	if counter_is(13) { "<Random Battle BG>" newline "Shows a battle background in" newline "the overworld. Pauses other effects" newline "until a battle starts." }
+
 eob
 
 EndConfig:

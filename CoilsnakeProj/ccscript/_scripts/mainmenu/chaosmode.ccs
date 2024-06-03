@@ -2,6 +2,8 @@ import "../commands/window_cmds.ccs"
 import "../commands/flag_cmds.ccs"
 import "../enums/flags.ccs"
 import "../asm/bg_viewer.ccs"
+import "..//asm/drug_util.ccs"
+import "..//asm/cc_actionscript.ccs"
 
 ChaosMode:
 	set(flg_RandomWarp)
@@ -15,10 +17,11 @@ ChaosMode:
 	load_registers_global if result_is_greaterthan_orequal(90) { goto(RandomBGM) }
 	load_registers_global if result_is_greaterthan_orequal(85) { goto(RandomFloatSprite) }
 	load_registers_global if result_is_greaterthan_orequal(80) { goto(BacktrackWarp) }
-	load_registers_global if result_is_greaterthan_orequal(60) { goto(RandomizeMainParty) }
-	load_registers_global if result_is_greaterthan_orequal(40) { goto(RandomizeNpcParty) }
-	load_registers_global if result_is_greaterthan_orequal(20) { goto(RandomSound) }
-	load_registers_global if result_is_greaterthan_orequal(10) { goto(RandomDistortion) } // need a way to undo this
+	load_registers_global if result_is_greaterthan_orequal(70) { goto(RandomizeMainParty) }
+	load_registers_global if result_is_greaterthan_orequal(60) { goto(RandomizeNpcParty) }
+	load_registers_global if result_is_greaterthan_orequal(50) { goto(RandomSound) }
+	load_registers_global if result_is_greaterthan_orequal(30) { goto(RandomDistortion) }
+	load_registers_global if result_is_greaterthan_orequal(15) { goto(RandomBBG) } // need a way to undo this
     else { goto(RandomPalette) }
 eob
 
@@ -154,7 +157,7 @@ eob
 RandomizeMainParty:
 	if flg_DisableChaosEffect_RandomizeMainParty { eob }
 	// Random Party Leader
-	random(100)
+	random(95)
     store_registers_global
     load_registers_global if result_is_greaterthan_orequal(75) 
 	{
@@ -262,7 +265,17 @@ command sprite_spawn(sprite, move, style) "[1F 15 {short sprite} {short move} {b
 
 RandomDistortion:
 	if flg_DisableChaosEffect_RandomDistortion { eob }
-	sprite_spawn(106, 896, 1) // Invisible camera sprite running "Cutscene On"
-    show_battle_bg(221,221,0)
+	random(255)
+    store_registers_global // Backup result register for movement script to use as distortion ID
+    create_sprite_actionscript(106, movscr_Drug, 1)
+eob
+
+RandomBBG:
+	if flg_DisableChaosEffect_RandomBBG { eob }
+	random(255)
+	swap
+    random(255)
+    sprite_spawn(106, 896, 1) // Invisible camera sprite running "Cutscene On"
+    show_battle_bg(-1,-1,0)
     sprite_spawn(106, 897, 1) // Invisible camera sprite running "Cutscene Off"
 eob

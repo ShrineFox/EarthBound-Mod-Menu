@@ -3,6 +3,7 @@ import cc_asmcall
 import JSL_with_RTS
 import drug_util
 import movscr_codes
+import cc_actionscript
 
 // CCExpand v0.3 - Additional CCScript codes
 // Initial version by jtolmar
@@ -58,8 +59,8 @@ CodeTable: {
   long cc_main_menu.CC_PSI // [1A 15]
   long cc_main_menu.CC_Close_HP // [1A 16]
   long DoNothing // [1A 17]
-  long DoNothing // [1A 18]
-  long DoNothing // [1A 19]
+  long cc_actionscript.IMPL_SpriteScript // [1A 18]
+  long cc_actionscript.IMPL_NpcScript    // [1A 19]
   long DoNothing // [1A 1A]
   long DoNothing // [1A 1B]
   long DoNothing // [1A 1C]
@@ -83,7 +84,8 @@ Brk: {
 	RTL }
 
 CC_Drug: M_EB_Function_Wrapper({
-    m_asmcall(movscr_Drug)
+    LDA_a(0x97CC)  // Global backup result window register
+    JSL(InitDrug)
 })
 
 // Here is documentation on the various helper functions and macros available
