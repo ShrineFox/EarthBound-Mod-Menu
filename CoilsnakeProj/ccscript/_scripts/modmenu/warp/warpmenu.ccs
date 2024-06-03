@@ -58,9 +58,8 @@ WarpToID:
 eob
 
 DistortMenu:
-	ConfirmNumber(lbl_Warp, 3, "Use this Distortion ID?", WarpToID)
-	call(Distort)
-eob
+	ConfirmNumber(lbl_Warp, 3, "Use this Distortion ID?", Distort)
+goto(WarpMenu)
 
 Distort:
     store_registers_global

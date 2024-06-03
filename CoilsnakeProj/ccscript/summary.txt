@@ -8,7 +8,7 @@ Compilation statistics
 Compilation start:           $f10000
 Compilation end:             $fa44b1
 Total compiled size:         607409 bytes
-Fragmented space:            46 bytes
+Fragmented space:            47 bytes
 -----------------------------------------------------------------
 
 
@@ -89,7 +89,7 @@ flags                        $f3ffff      0      bytes
 bgm                          $f3ffff      0      bytes
 labels                       $fa35af      508    bytes
 asm65816_2                   $f3ffff      0      bytes
-ccexpand                     $f9fe14      462    bytes
+ccexpand                     $f9fe13      462    bytes
 cc_asmcall                   $fa423a      128    bytes
 window_cmds                  $f3ffff      0      bytes
 cc_text_speed                $fa4462      63     bytes
@@ -119,7 +119,7 @@ mute_music                   $fa3f8b      237    bytes
 fix_oss_gameover             $f2fff8      8      bytes
 fix_teleport_hardlock        $f3ffc5      58     bytes
 teleport_anywhere            $f3ffff      0      bytes
-y_mash                       $f9ffe2      16     bytes
+y_mash                       $f9ffe1      16     bytes
 dead_can_use_items           $f2ff64      148    bytes
 fast_doors                   $f1fff2      14     bytes
 easy_deaths                  $f3ffff      0      bytes
@@ -137,7 +137,7 @@ keyitems                     $f9966b      4000   bytes
 cc_main_menu                 $f7ff75      133    bytes
 item_cmds                    $fa1935      1894   bytes
 partymenu                    $f7631a      8316   bytes
-warpmenu                     $f9f449      2507   bytes
+warpmenu                     $f9f449      2506   bytes
 flagsmenu                    $f29945      12798  bytes
 battlemenu                   $fa115a      2011   bytes
 musicmenu                    $f721ab      8384   bytes
@@ -6820,33 +6820,33 @@ Name                         Address
 Labels in module ccexpand
 Name                         Address
 -----------------------------------------------------------------
-Brk                          $f9feac
-CC_BreakEverything           $f9fe9c
-CC_Drug                      $f9feb8
-CodeTable                    $f9fe14
-DoNothing                    $f9ffe1
-Original1A00                 $f9ff9b
-Original1A01                 $f9ffa2
-Original1A04                 $f9ffa9
-Original1A05                 $f9ffb0
-Original1A06                 $f9ffb7
-Original1A07                 $f9ffbe
-Original1A08                 $f9ffc5
-Original1A09                 $f9ffcc
-Original1A0A                 $f9ffd3
-Original1A0B                 $f9ffda
-R_Get_Argument_Memory        $f9ff37
-R_Get_Secondary_Memory       $f9ff45
-R_Get_Secondary_Memory_In_A  $f9ff73
-R_Get_Working_Memory         $f9ff3e
-R_Increment_Secondary_Memory $f9ff6c
-R_Read_Parameter_Bytes       $f9fecb
-R_Set_06_To_Argument_If_Zero $f9ff29
-R_Set_Argument_Memory        $f9ff55
-R_Set_Secondary_Memory       $f9ff63
-R_Set_Secondary_Memory_To_A  $f9ff7a
-R_Set_Working_Memory         $f9ff5c
-TableJumpUsing7E00BC         $f9ff81
+Brk                          $f9feab
+CC_BreakEverything           $f9fe9b
+CC_Drug                      $f9feb7
+CodeTable                    $f9fe13
+DoNothing                    $f9ffe0
+Original1A00                 $f9ff9a
+Original1A01                 $f9ffa1
+Original1A04                 $f9ffa8
+Original1A05                 $f9ffaf
+Original1A06                 $f9ffb6
+Original1A07                 $f9ffbd
+Original1A08                 $f9ffc4
+Original1A09                 $f9ffcb
+Original1A0A                 $f9ffd2
+Original1A0B                 $f9ffd9
+R_Get_Argument_Memory        $f9ff36
+R_Get_Secondary_Memory       $f9ff44
+R_Get_Secondary_Memory_In_A  $f9ff72
+R_Get_Working_Memory         $f9ff3d
+R_Increment_Secondary_Memory $f9ff6b
+R_Read_Parameter_Bytes       $f9feca
+R_Set_06_To_Argument_If_Zero $f9ff28
+R_Set_Argument_Memory        $f9ff54
+R_Set_Secondary_Memory       $f9ff62
+R_Set_Secondary_Memory_To_A  $f9ff79
+R_Set_Working_Memory         $f9ff5b
+TableJumpUsing7E00BC         $f9ff80
 -----------------------------------------------------------------
 
 
@@ -7107,7 +7107,7 @@ Name                         Address
 Labels in module y_mash
 Name                         Address
 -----------------------------------------------------------------
-MashFunc                     $f9ffe2
+MashFunc                     $f9ffe1
 -----------------------------------------------------------------
 
 
@@ -7380,7 +7380,7 @@ StatsMenu                    $f76c73
 Labels in module warpmenu
 Name                         Address
 -----------------------------------------------------------------
-Distort                      $f9fe02
+Distort                      $f9fe01
 DistortMenu                  $f9fd09
 WarpID                       $f9fbb9
 WarpList                     $f9f632
