@@ -40,9 +40,6 @@ Not everything is fully tested, so let me know if you discover more by [opening 
 - Sometimes the spacing between "PK" and the name of an attack may be incorrect in battle.
 - Key Item inventory is currently based on who is in your party, so you may find yourself unable to advance if you remove i.e. Ness or Jeff.
 
-## Credits & About this Mod's Development
-See [README.md](https://github.com/ShrineFox/EarthBound-Mod-Menu/blob/main/README.md) for full credits and mod development information.  
-
 ## Credits
 - The **PK Hack Discord Server** for all their kind assistance. You guys PK Rock <3
 - **Mr. Tenda**: Creating [CoilSnake](https://github.com/pk-hack/CoilSnake)
@@ -56,7 +53,7 @@ See [README.md](https://github.com/ShrineFox/EarthBound-Mod-Menu/blob/main/READM
 - **ShadowOne333**: From [MaternalBound-Redux](https://github.com/ShadowOne333/MaternalBound-Redux): Changed controls, crying also affects enemies, lower HP/PP windows one tile, PSI => PK, restore spank sfx
 - **H.S.**: asm65816 and ASMRef for assembly patch support via CCScript  
   
-## About this Mod  
+## About this Mod's Development
 For developers, see [the wiki](https://github.com/ShrineFox/EarthBound-Mod-Menu/wiki) for information on how the mod's codebase works.  
   
 I started making an [EarthBound Mod Menu hack](https://www.youtube.com/watch?v=rNmggC3eQz4) way back in September 2015, intended as a more user friendly version of the game's cryptic Debug Menu.  
