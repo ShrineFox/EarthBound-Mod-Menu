@@ -1,5 +1,48 @@
-# EarthBound Mod Menu + Enhancements
-In-game trainer and customizable QoL patch collection for EarthBound (SNES). Made using CoilSnake.
+![](https://i.imgur.com/eL0DBtP.png)  
+**EarthBound Mod Menu** is a mod for the Super Nintendo RPG "EarthBound."  
+Play EarthBound YOUR way!  
+  
+This mod collects several quality of life enhancements, some made by myself, some made by the PK Hack community.  
+It's open source, so anyone can use parts of it for their own mods, or create their own derivatives.  
+## How to Install
+Download ``earthbound_mod_menu.ips`` from the [Releases page](https://github.com/ShrineFox/EarthBound-Mod-Menu/releases) and use a tool such as this [online ROM patcher](https://www.marcrobledo.com/RomPatcher.js/) or an offline version such as [LunarIPS](https://www.romhacking.net/utilities/240/) or [Coilsnake](https://pk-hack.github.io/CoilSnake/) to apply it to your ``EarthBound.smc`` ROM.
+
+# Features
+These are things that are built-in.  
+- Hold Y in the overworld to walk faster or automatically advance texboxes  
+- No periodic calls from your dad urging you to save and quit  
+- Faster swim/climbing speed and transitions between rooms  
+- Check/talk To by pressing A near NPCs and objects, like in MOTHER 3  
+- Equip items from the Goods menu  
+- Enemies can miss while crying  
+- PSI is renamed to PK, like MOTHER 3
+
+# Optional Features
+These are things you can toggle from the New Game/Load Save screen, or at any point from the main menu.
+- **Key Items**: Separate quest items from your inventory, just like MOTHER 3  
+- **Mod Menu**: Custom menu for changing party members, health, stats, location, items, BGM, starting battles or events, saving etc.
+- **No Photo Guy**: Significantly shortened Photo Guy cutscenes, just Ness doing a peace sign and the shutter effect (takes ~2 seconds)
+- **Chaos Mode**: Random effects can happen while playing. Warps, battles, visual distortions, or shuffled party members.
+- **Unrestricted Bike**: Allows you to use the Bicycle item anywhere, even when you have party members following you (temporarily reverts party to Ness only)
+- **Skip Lvlup Text**: Don't get notified of new moves unlocked or level increases at the end of battle.
+- **Easy Deaths**: Fully revive and heal party after a game over, without taking half your money.
+- **Fast Saving**: Shortens the dialogue when calling your dad on the phone.
+- **No Homesickness**: Prevents Ness from becoming homesick.
+
+# Known Bugs (& workarounds)
+Not everything is fully tested, so let me know if you discover more by [opening a GitHub Issue](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/new).
+- When using the bike, Ness will be shown as the character riding it regardless of party leader.
+- The Attract Mode on the title screen does not play (this is because for some reason it hangs halfway through).
+- Configuring optional mod settings may sometimes freeze the game when the third option is selected in a busy area.
+- Chaos Mode has a mild potential to sometimes crash the game.
+- Sometimes it says the wrong character received or used a key item, or the item's name displays incorrectly.
+- When toggling off the Key Items mod, you may end up lacking the items required to advance. Use the Mod Menu to give yourself key items as needed.
+- Sometimes the spacing between "PK" and the name of an attack may be incorrect in battle.
+- Key Item inventory is currently based on who is in your party, so you may find yourself unable to advance if you remove i.e. Ness or Jeff.
+
+## Credits & About this Mod's Development
+See [README.md](https://github.com/ShrineFox/EarthBound-Mod-Menu/blob/main/README.md) for full credits and mod development information.  
+
 ## Credits
 - The **PK Hack Discord Server** for all their kind assistance. You guys PK Rock <3
 - **Mr. Tenda**: Creating [CoilSnake](https://github.com/pk-hack/CoilSnake)
@@ -11,29 +54,11 @@ In-game trainer and customizable QoL patch collection for EarthBound (SNES). Mad
 - **jtolmar, phoenixbound, and Catador**: Fast Doors
 - **cooprocks123e**: Ability to call battle backgrounds from anywhere, CCExpand for custom control codes, extended flags
 - **ShadowOne333**: From [MaternalBound-Redux](https://github.com/ShadowOne333/MaternalBound-Redux): Changed controls, crying also affects enemies, lower HP/PP windows one tile, PSI => PK, restore spank sfx
-- **H.S.**: asm65816 and ASMRef for assembly patch support via CCScript
-## Built-in Features
-These features are not toggleable in-game, but can be changed by editing the CoilSnake project and rebuilding the ROM.
-- Run button when holding Y (faster than bike/skip sandwich)
-- Check/talk To by pressing A near NPCs and objects, like in MOTHER 3
-- Custom configuration menu when starting a new game or loading a save
-- Faster swim/climbing speed
-- Faster opening logos
-- Skipped Gas Station screen
-- Skip Sandwich repels enemy spawns
-- Equip items from the Goods menu
-- Transitions between areas load much faster
-- Enemies can miss while crying
-- PSI is renamed to PK, like MOTHER 3
-## Toggleable Features
-When starting a new game or loading a save, you can turn these on or off.
-- **Key Items**: Separate quest items from your inventory, just like MOTHER 3
-- **Mod Menu**: Custom menu for changing party members, health, stats, location, items, BGM, starting battles or events, saving etc.
-- **No Photo Guy**: Significantly shortened Photo Guy cutscenes, just Ness doing a peace sign and the shutter effect (takes ~2 seconds)
-- **No Dad Calls**: Stops periodic calls from your dad asking you to stop playing
-- **Unrestricted Bike**: Allows you to use the Bicycle item anywhere, even when you have party members following you (temporarily reverts party to Ness only)
-- **Auto-Advance**: Skips through Level Up messages automatically for you, no more mashing the A button!
-## About this Mod
+- **H.S.**: asm65816 and ASMRef for assembly patch support via CCScript  
+  
+## About this Mod  
+For developers, see [the wiki](https://github.com/ShrineFox/EarthBound-Mod-Menu/wiki) for information on how the mod's codebase works.  
+  
 I started making an [EarthBound Mod Menu hack](https://www.youtube.com/watch?v=rNmggC3eQz4) way back in September 2015, intended as a more user friendly version of the game's cryptic Debug Menu.  
 When EarthBound re-released on the Switch, replaying it inspired me to revisit the modding scene. Thanks to the PK Hack Discord Server, 
 I discovered tons of quality of life patches made by the community that alleviate a lot of my personal gripes with the game.  
