@@ -29,16 +29,24 @@ These are things you can toggle from the New Game/Load Save screen, or at any po
 - **Fast Saving**: Shortens the dialogue when calling your dad on the phone.
 - **No Homesickness**: Prevents Ness from becoming homesick.
 
-# Known Bugs (& workarounds)
+# Known Issues
 Not everything is fully tested, so let me know if you discover more by [opening a GitHub Issue](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/new).
-- When using the bike, Ness will be shown as the character riding it regardless of party leader.
-- The Attract Mode on the title screen does not play (this is because for some reason it hangs halfway through).
-- Configuring optional mod settings may sometimes freeze the game when the third option is selected in a busy area.
-- Chaos Mode has a mild potential to sometimes crash the game.
-- Sometimes it says the wrong character received or used a key item, or the item's name displays incorrectly.
-- When toggling off the Key Items mod, you may end up lacking the items required to advance. Use the Mod Menu to give yourself key items as needed.
+## Crashes & Softlocks
+- Some users report the mod hanging on a black screen on startup with certain emulators for unknown reasons. (i.e. Delta on iOS) ([#1](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/1))
+- The game softlocks if you remove Ness and Poo from the party and try to use PSI from the main menu. ([#3](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/1))
+- Chaos Mode crashes the game when Battle Background randomization is active during a scripted sequence involving moving sprites. ([#4](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/4))
+- Configuring optional mod settings may sometimes freeze the game when the third option is selected in a busy area. ([#7](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/7))
+## Story Progression Bugs
+- When toggling off the Key Items mod, you may end up lacking the items required to advance. Giving Key Items via Mod Menu currently doesn't work. ([#5](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/5))
+- Key Item inventory is currently based on who is in your party, so you may find yourself unable to advance if you remove i.e. Ness or Jeff. ([#8](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/8))
+## Miscellaneous Bugs
+- Increasing Stats via the Mod Menu is currently not working. ([#10](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/10))
+- Equipping an item from the Goods menu when one is already equipped results in a prompt to sell the item. ([#2](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/2))
+- Sometimes it says the wrong character received or used a key item, or the item's name displays incorrectly. 
 - Sometimes the spacing between "PK" and the name of an attack may be incorrect in battle.
-- Key Item inventory is currently based on who is in your party, so you may find yourself unable to advance if you remove i.e. Ness or Jeff.
+- Running while on a staircase will cause you to move vertically off the staircase and end up in a wall or out of bounds. ([#9](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/9))
+- When using the bike, Ness will be shown as the character riding it regardless of party leader. (Not easily fixable)
+- The Attract Mode on the title screen does not play. (it's skipped for now because it hangs halfway through for some reason)
 
 ## Credits
 - The **PK Hack Discord Server** for all their kind assistance. You guys PK Rock <3
