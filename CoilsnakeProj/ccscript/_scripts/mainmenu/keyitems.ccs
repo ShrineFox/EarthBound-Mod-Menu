@@ -31,8 +31,8 @@ KeyItems: {
 	Lbl(lbl_KeyItems)
 	counter_zero
 	ctoarg
-	if flag flg_Ness 
-	{
+	if not flag flg_PooSoloMission and not flag flg_JeffSoloMission
+    {
 		MenuOptionWithCallback("ATM Card", SetCount1)
 		if flag flg_BuzzBuzzDead and not flag flg_Defeat_NessNightmare
 		{
@@ -80,7 +80,6 @@ KeyItems: {
 		}
 		if flag flg_KeyItem_ShowTicket
 		{
-			// TODO: Set/unset this in dialog
 			MenuOptionWithCallback("Show Ticket", SetCount13)
 		}
 		if flag flg_KeyItem_Diamond and not flag 607
@@ -124,8 +123,8 @@ KeyItems: {
 			MenuOptionWithCallback("Meteorite Piece", SetCount23)
 		}
 	}
-	if flag flg_Jeff
-	{
+	if not flag flg_PooSoloMission
+    {
 		if flag flg_KeyItem_LockerKey
 		{
 			MenuOptionWithCallback("Locker Key", SetCount24)

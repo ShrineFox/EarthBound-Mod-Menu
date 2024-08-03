@@ -238,6 +238,7 @@ l_0xc8b191:
     unset(flg_Jeff)
     unset(flg_Paula)
     set(flg_Poo)
+    set(flg_PooSoloMission)
     "@I used all leftover materials.{pause(20)}  This is a very special Magic cake![03]{window_closeall}{unset(flag 61)}" goto(data_45.l_0xc920a2)
 
 l_0xc8b22e:

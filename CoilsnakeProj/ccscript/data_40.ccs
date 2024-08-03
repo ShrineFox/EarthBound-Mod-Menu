@@ -26,6 +26,7 @@ l_0xc882bd:
 l_0xc88332:
     set(flg_Ness)
     set(flg_Paula)
+    unset(flg_JeffSoloMission)
     "{set(flag 11)}[1F 41 05]" call(data_22.l_0xc69082) "[1F 15 6A 00 91 00 01][1F EF 6A 00][1F E8 FF][1F 61][1F EB FF 06]" call(data_33.l_0xc7dd6b) "{set(flag 655)}{music_resume}[1F ED][1F E5 FF][1F F1 67 02 8B 00][1F 61][06 B8 00 {e(l_0xc88386)}]{unset(flag 9)}[1F F1 67 02 8C 00][1F 61][06 09 00 {e(l_0xc88386)}]" call(l_0xc886f9) goto(l_0xc88386)
 
 l_0xc88386:

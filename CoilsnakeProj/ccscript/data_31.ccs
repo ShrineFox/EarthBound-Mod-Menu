@@ -115,6 +115,7 @@ l_0xc79f33:
     unset(flg_Ness)
     unset(flg_Paula)
     unset(flg_TeddyBear)
+    set(flg_JeffSoloMission)
     "@But you are our one and only hope!...[03]{window_closeall}[1F 07 03]{pause(120)}{pause(180)}[1F 1E 50 02 06][1F EC FF 01][1F E8 FF]{set(flag 128)}[19 26 06]{unset(flag 297)}{unset(flag 11)}{set(flag 212)}[02][1F 1A 4F 02 03]{pause(60)}[1F 1B 4F 02]{pause(30)}[1F 1E 4F 02 06][1F 15 B6 00 72 00 01]{pause(1)}[1F E7 B6 00]{window_open(1)}@[1C 02 03],{pause(20)} where are you going in the middle of the night?" next
     "{window_closeall}[1F EA B6 00][1F 61][1F E7 B6 00]{window_open(1)}@You know the dorm rules, right?" next
     "@If you get caught,{pause(15)} you'll get punished big time..." next

@@ -113,6 +113,8 @@ define flg_DisableChaosEffect_RandomizeNpcParty = flag 0x625
 define flg_DisableChaosEffect_RandomDistortion = flag 0x624
 define flg_DisableChaosEffect_RandomDoors = flag 0x623
 define flg_DisableChaosEffect_RandomBBG = flag 0x622
+define flg_JeffSoloMission = flag 0x621
+define flg_PooSoloMission = flag 0x620
 
 /* Original Game Flags */
 define flg_BuzzBuzz = flag 0x12
