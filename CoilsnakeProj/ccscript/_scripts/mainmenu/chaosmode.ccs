@@ -5,14 +5,14 @@ import "../asm/bg_viewer.ccs"
 import "../asm/drug_util.ccs"
 import "../asm/cc_actionscript.ccs"
 
-command compare_reg(num, reg) "[18 07 {long num} {byte reg}]"
-
 ChaosMode:
 	set(flg_RandomWarp)
 
     random(255)
 	store_registers_global
-    load_registers_global if result_is_greaterthan_orequal(215) { goto(RandomPalette) }
+
+	if result_is(0) { eob }
+	load_registers_global if result_is_greaterthan_orequal(215) { goto(RandomPalette) }
 	load_registers_global if result_is_greaterthan_orequal(200) { goto(RandomBattle) }
 	load_registers_global if result_is_greaterthan_orequal(160) { goto(RandomWarp) }
 	load_registers_global if result_is_greaterthan_orequal(140) { goto(RandomFloatSprite) }
