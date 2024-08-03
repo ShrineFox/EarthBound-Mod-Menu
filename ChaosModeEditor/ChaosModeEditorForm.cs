@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShrineFox.IO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -56,10 +57,16 @@ namespace ChaosModeEditor
             var lines = File.ReadAllLines(chaosModeLocation).ToList();
             lines.RemoveRange(13, 12);
 
-            List<NumericUpDown> controls = (List<NumericUpDown>)ShrineFox.IO.WinForms.EnumerateControls(this)
-                .Where(x => x.GetType() == typeof(NumericUpDown)
-                    && x.Enabled == true);
-            foreach (NumericUpDown numUpDwn in controls.OrderBy(x => x.Value))
+            var controls = WinForms.EnumerateControls(this)
+                .Where(x => x.GetType() == typeof(NumericUpDown) && x.Enabled == true);
+            List<NumericUpDown> numUpDwnList = new List<NumericUpDown>();
+            foreach (var control in controls)
+            {
+                var numUpDwn = (NumericUpDown)control;
+                numUpDwnList.Add(numUpDwn);
+            }
+
+            foreach (NumericUpDown numUpDwn in numUpDwnList.OrderBy(x => x.Value))
             {
                 string gotoName = numUpDwn.Name.Replace("num_", "");
                 lines.Insert(13, $"\tload_registers_global if result_is_greaterthan_orequal({numUpDwn.Value}) {{ goto({gotoName}) }}");
