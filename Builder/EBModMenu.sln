@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EBModMenu", "EBModMenu.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShrineFox.IO", "..\..\ShrineFox.IO\ShrineFox.IO.csproj", "{7640412A-7372-4925-B20C-0178D8818A8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaosModeEditor", "..\ChaosModeEditor\ChaosModeEditor.csproj", "{FFC7B2CF-D57C-4869-BD47-BAB96DABAEC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7640412A-7372-4925-B20C-0178D8818A8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7640412A-7372-4925-B20C-0178D8818A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7640412A-7372-4925-B20C-0178D8818A8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFC7B2CF-D57C-4869-BD47-BAB96DABAEC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFC7B2CF-D57C-4869-BD47-BAB96DABAEC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFC7B2CF-D57C-4869-BD47-BAB96DABAEC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFC7B2CF-D57C-4869-BD47-BAB96DABAEC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

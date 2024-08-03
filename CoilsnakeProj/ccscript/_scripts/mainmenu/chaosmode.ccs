@@ -21,8 +21,8 @@ ChaosMode:
 	load_registers_global if result_is_greaterthan_orequal(60) { goto(RandomizeNpcParty) }
 	load_registers_global if result_is_greaterthan_orequal(50) { goto(RandomSound) }
 	load_registers_global if result_is_greaterthan_orequal(33) { goto(RandomDistortion) }
-	load_registers_global if result_is_greaterthan_orequal(30) { goto(RandomBBG) } // need a way to undo this
-    else { goto(RandomPalette) }
+	load_registers_global if result_is_greaterthan_orequal(30) { goto(RandomBBG) }
+    load_registers_global if result_is_greaterthan_orequal(1)  { goto(RandomPalette) }
 eob
 
 command change_map_pal(tileset, palette, duration) "[1F E1 {byte tileset} {byte palette} {byte duration}]"
