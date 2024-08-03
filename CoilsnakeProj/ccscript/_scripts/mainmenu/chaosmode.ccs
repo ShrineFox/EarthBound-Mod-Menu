@@ -12,17 +12,17 @@ ChaosMode:
 
     random(255)
 	store_registers_global
-    load_registers_global if result_is_greaterthan_orequal(220) { goto(RandomPalette) }
+    load_registers_global if result_is_greaterthan_orequal(215) { goto(RandomPalette) }
 	load_registers_global if result_is_greaterthan_orequal(200) { goto(RandomBattle) }
 	load_registers_global if result_is_greaterthan_orequal(160) { goto(RandomWarp) }
 	load_registers_global if result_is_greaterthan_orequal(140) { goto(RandomFloatSprite) }
-	load_registers_global if result_is_greaterthan_orequal(90) { goto(RandomBGM) }
-	load_registers_global if result_is_greaterthan_orequal(45) { goto(RandomSound) }
-	load_registers_global if result_is_greaterthan_orequal(30) { goto(RandomizeNpcParty) }
-	load_registers_global if result_is_greaterthan_orequal(10) { goto(RandomizeMainParty) }
-	load_registers_global if result_is_greaterthan_orequal(4) { goto(BacktrackWarp) }
-	load_registers_global if result_is_greaterthan_orequal(3) { goto(CorruptMap) }
-	load_registers_global if result_is_greaterthan_orequal(2) { goto(RandomDistortion) }
+	load_registers_global if result_is_greaterthan_orequal(100) { goto(RandomBGM) }
+	load_registers_global if result_is_greaterthan_orequal(75) { goto(RandomSound) }
+	load_registers_global if result_is_greaterthan_orequal(60) { goto(RandomizeNpcParty) }
+	load_registers_global if result_is_greaterthan_orequal(40) { goto(RandomizeMainParty) }
+	load_registers_global if result_is_greaterthan_orequal(35) { goto(BacktrackWarp) }
+	load_registers_global if result_is_greaterthan_orequal(5) { goto(RandomDistortion) }
+	load_registers_global if result_is_greaterthan_orequal(2) { goto(CorruptMap) }
 	load_registers_global if result_is_greaterthan_orequal(1) { goto(RandomBBG) }
 eob
 

@@ -40,7 +40,14 @@ MainMenu:
 	// Options
 	MenuOptionWithCallback("Goods", Selected_Goods)
 	if flg_KeyItems { MenuOptionWithCallback("Key Items", Selected_KeyItems) }
-	if flag flg_LearnedPSI { if flag flg_Ness or flag flg_Poo { MenuOptionWithCallback("PSI", Selected_PSI) } }
+	if flag flg_LearnedPSI 
+	{
+		CheckIfCharacterInParty(1) if result_is(1) { MenuOptionWithCallback("PSI", Selected_PSI) }
+		else
+		{
+			CheckIfCharacterInParty(4) if result_is(1) { MenuOptionWithCallback("PSI", Selected_PSI) }
+		}
+	}
 	MenuOptionWithCallback("Equip", Selected_Equip)
 	if flg_ModMenu { MenuOptionWithCallback("Mod Menu", Selected_ModMenu) }
 	if not flg_ModMenu { MenuOptionWithCallback("Config", Selected_ModMenu) }
