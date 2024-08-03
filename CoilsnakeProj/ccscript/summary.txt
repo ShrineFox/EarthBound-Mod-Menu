@@ -6,8 +6,8 @@ CCScript Compilation Summary
 Compilation statistics
 =================================================================
 Compilation start:           $f10000
-Compilation end:             $fa45a7
-Total compiled size:         607655 bytes
+Compilation end:             $fa45b5
+Total compiled size:         607669 bytes
 Fragmented space:            37 bytes
 -----------------------------------------------------------------
 
@@ -80,42 +80,42 @@ data_60                      $f8e5c0      5754   bytes
 data_61                      $f8fc3a      933    bytes
 data_62                      $f1fffd      0      bytes
 main                         $f1fffd      0      bytes
-_scripts                     $fa2ea3      1127   bytes
-_startup                     $fa443b      117    bytes
+_scripts                     $fa2eb1      1127   bytes
+_startup                     $fa4449      117    bytes
 stdarg                       $f1fffd      0      bytes
 std                          $f1fffd      0      bytes
 configmenu                   $f9a61a      3975   bytes
 flags                        $f1fffd      0      bytes
 bgm                          $f1fffd      0      bytes
-labels                       $fa38f2      508    bytes
+labels                       $fa3900      508    bytes
 asm65816_2                   $f1fffd      0      bytes
 ccexpand                     $f9fe22      462    bytes
 cc_asmcall                   $f7ff7f      128    bytes
 window_cmds                  $f1fffd      0      bytes
-cc_text_speed                $fa4568      63     bytes
-bg_viewer                    $fa3c46      336    bytes
-custom_windows_standalone    $fa44b0      117    bytes
+cc_text_speed                $fa4576      63     bytes
+bg_viewer                    $fa3c54      336    bytes
+custom_windows_standalone    $fa44be      117    bytes
 party                        $f1fffd      0      bytes
 items                        $f1fffd      0      bytes
 windows                      $f1fffd      0      bytes
 asm65816                     $f1fffd      0      bytes
 JSL_with_RTS                 $f6ffe7      17     bytes
-drug_util                    $fa3aee      344    bytes
-movscr_codes                 $fa4009      264    bytes
-cc_actionscript              $fa4525      67     bytes
+drug_util                    $fa3afc      344    bytes
+movscr_codes                 $fa4017      264    bytes
+cc_actionscript              $fa4533      67     bytes
 movement                     $f2fcdc      651    bytes
 chaosmodeconfig              $f965da      4274   bytes
-flag_cmds                    $fa218f      1756   bytes
+flag_cmds                    $fa219d      1756   bytes
 health_cmds                  $f1fffd      0      bytes
 status                       $f1fffd      0      bytes
-asm_code                     $fa41fe      227    bytes
+asm_code                     $fa420c      227    bytes
 asm_controls                 $f1fffd      0      bytes
 expand_flags                 $f1fffd      0      bytes
-expand_text_windows          $fa36a5      589    bytes
-Title_Window                 $fa3d96      320    bytes
+expand_text_windows          $fa36b3      589    bytes
+Title_Window                 $fa3da4      320    bytes
 movement_reloc               $f9e9a7      2737   bytes
 noclip                       $f6ffcc      27     bytes
-mute_music                   $fa4111      237    bytes
+mute_music                   $fa411f      237    bytes
 fix_oss_gameover             $f1fff5      8      bytes
 fix_teleport_hardlock        $f3ffc5      58     bytes
 teleport_anywhere            $f1fffd      0      bytes
@@ -126,26 +126,26 @@ easy_deaths                  $f1fffd      0      bytes
 run_button_toggleable        $f1ffd2      35     bytes
 repel_sandwiches             $f4ffdb      29     bytes
 run_accelerating             $f8ffef      16     bytes
-GoodsMenuEquip               $fa3ed6      307    bytes
-modmenu                      $fa330a      923    bytes
+GoodsMenuEquip               $fa3ee4      307    bytes
+modmenu                      $fa3318      923    bytes
 goodsmenu                    $f70000      8619   bytes
 mainmenu                     $f7fd28      599    bytes
-chaosmode                    $fa0937      2327   bytes
+chaosmode                    $fa0937      2341   bytes
 sans                         $f10000      17978  bytes
 text_blip_replace            $f1fffd      0      bytes
 keyitems                     $f986c1      4015   bytes
 cc_main_menu                 $f6ff47      133    bytes
-item_cmds                    $fa1a29      1894   bytes
+item_cmds                    $fa1a37      1894   bytes
 partymenu                    $f7631a      8316   bytes
 warpmenu                     $f9f458      2506   bytes
 flagsmenu                    $f29948      12798  bytes
-battlemenu                   $fa124e      2011   bytes
+battlemenu                   $fa125c      2011   bytes
 musicmenu                    $f721ab      8384   bytes
-palettemenu                  $fa286b      1592   bytes
-counter                      $fa42e1      223    bytes
+palettemenu                  $fa2879      1592   bytes
+counter                      $fa42ef      223    bytes
 battles                      $f1fffd      0      bytes
 healthmenu                   $f1be95      14514  bytes
-letterbox                    $fa43c0      123    bytes
+letterbox                    $fa43ce      123    bytes
 -----------------------------------------------------------------
 
 
@@ -6663,28 +6663,28 @@ Name                         Address
 Labels in module _scripts
 Name                         Address
 -----------------------------------------------------------------
-BicycleEnd                   $fa2f06
-BicycleStart                 $fa2ead
-DadCall                      $fa2f1f
-MapReload                    $fa313a
-ModMenu                      $fa2ea3
-ModMenu_About                $fa2ea8
-NotEasyDeaths                $fa319e
-PhotoGuy                     $fa2f36
-ShortDadCall                 $fa308a
-threedtent                   $fa32ba
-threedtentafterdoor          $fa32c1
+BicycleEnd                   $fa2f14
+BicycleStart                 $fa2ebb
+DadCall                      $fa2f2d
+MapReload                    $fa3148
+ModMenu                      $fa2eb1
+ModMenu_About                $fa2eb6
+NotEasyDeaths                $fa31ac
+PhotoGuy                     $fa2f44
+ShortDadCall                 $fa3098
+threedtent                   $fa32c8
+threedtentafterdoor          $fa32cf
 -----------------------------------------------------------------
 
 
 Labels in module _startup
 Name                         Address
 -----------------------------------------------------------------
-Config                       $fa443b
-DebugFlagSet                 $fa4446
-DebugStartup                 $fa446d
-GameStart                    $fa44ac
-NewGameScreen                $fa4441
+Config                       $fa4449
+DebugFlagSet                 $fa4454
+DebugStartup                 $fa447b
+GameStart                    $fa44ba
+NewGameScreen                $fa444f
 -----------------------------------------------------------------
 
 
@@ -6741,73 +6741,73 @@ Name                         Address
 Labels in module labels
 Name                         Address
 -----------------------------------------------------------------
-lbl_About                    $fa38fb
-lbl_Action                   $fa394f
-lbl_AddMoney                 $fa3a62
-lbl_ArmsEquips               $fa3a25
-lbl_BGM                      $fa397c
-lbl_Battle                   $fa3980
-lbl_BodyEquips               $fa3a31
-lbl_BrickRoad                $fa3a89
-lbl_Broken                   $fa3a4a
-lbl_BubbleMonkey             $fa3a82
-lbl_Config                   $fa392a
-lbl_Confirm                  $fa3931
-lbl_Consumables              $fa39f7
-lbl_Debug                    $fa3902
-lbl_Description              $fa3943
-lbl_EXP                      $fa39c5
-lbl_Equips                   $fa3a16
-lbl_FlagID                   $fa3969
-lbl_Flags                    $fa3963
-lbl_FlyingMan                $fa3a90
-lbl_Goods                    $fa3987
-lbl_Group0                   $fa3abe
-lbl_Group1                   $fa3ac6
-lbl_Group2                   $fa3ace
-lbl_Group3                   $fa3ad6
-lbl_Group4                   $fa3ade
-lbl_Group5                   $fa3ae6
-lbl_Guts                     $fa39cc
-lbl_Health                   $fa3aa6
-lbl_IQ                       $fa39c9
-lbl_Inventions               $fa3a57
-lbl_KeyItems                 $fa39e5
-lbl_King                     $fa3a78
-lbl_Level                    $fa39bf
-lbl_Luck                     $fa39e0
-lbl_Map                      $fa398d
-lbl_ModMenu                  $fa38f2
-lbl_ModSetup                 $fa390f
-lbl_NPCs                     $fa3977
-lbl_None                     $fa3901
-lbl_Offensive                $fa3a0c
-lbl_OtherEquips              $fa3a3d
-lbl_PSI                      $fa3ab3
-lbl_Palette                  $fa3991
-lbl_Party                    $fa3971
-lbl_Passives                 $fa3a03
-lbl_Phone                    $fa3999
-lbl_Picky                    $fa3a72
-lbl_PlushBear                $fa3a9f
-lbl_Pokey                    $fa3a6c
-lbl_Randomizers              $fa39b3
-lbl_ShrineFox                $fa3939
-lbl_SoundStone               $fa39a8
-lbl_Speed                    $fa39d1
-lbl_Stats                    $fa3aad
-lbl_Status                   $fa3ab7
-lbl_Storage                  $fa39ef
-lbl_System                   $fa3908
-lbl_TeddyBear                $fa3a98
-lbl_Teleport                 $fa399f
-lbl_Test                     $fa3925
-lbl_ToggleMods               $fa3919
-lbl_Tony                     $fa3a7d
-lbl_Vitality                 $fa39d7
-lbl_Warp                     $fa3956
-lbl_WarpID                   $fa395b
-lbl_Weapons                  $fa3a1d
+lbl_About                    $fa3909
+lbl_Action                   $fa395d
+lbl_AddMoney                 $fa3a70
+lbl_ArmsEquips               $fa3a33
+lbl_BGM                      $fa398a
+lbl_Battle                   $fa398e
+lbl_BodyEquips               $fa3a3f
+lbl_BrickRoad                $fa3a97
+lbl_Broken                   $fa3a58
+lbl_BubbleMonkey             $fa3a90
+lbl_Config                   $fa3938
+lbl_Confirm                  $fa393f
+lbl_Consumables              $fa3a05
+lbl_Debug                    $fa3910
+lbl_Description              $fa3951
+lbl_EXP                      $fa39d3
+lbl_Equips                   $fa3a24
+lbl_FlagID                   $fa3977
+lbl_Flags                    $fa3971
+lbl_FlyingMan                $fa3a9e
+lbl_Goods                    $fa3995
+lbl_Group0                   $fa3acc
+lbl_Group1                   $fa3ad4
+lbl_Group2                   $fa3adc
+lbl_Group3                   $fa3ae4
+lbl_Group4                   $fa3aec
+lbl_Group5                   $fa3af4
+lbl_Guts                     $fa39da
+lbl_Health                   $fa3ab4
+lbl_IQ                       $fa39d7
+lbl_Inventions               $fa3a65
+lbl_KeyItems                 $fa39f3
+lbl_King                     $fa3a86
+lbl_Level                    $fa39cd
+lbl_Luck                     $fa39ee
+lbl_Map                      $fa399b
+lbl_ModMenu                  $fa3900
+lbl_ModSetup                 $fa391d
+lbl_NPCs                     $fa3985
+lbl_None                     $fa390f
+lbl_Offensive                $fa3a1a
+lbl_OtherEquips              $fa3a4b
+lbl_PSI                      $fa3ac1
+lbl_Palette                  $fa399f
+lbl_Party                    $fa397f
+lbl_Passives                 $fa3a11
+lbl_Phone                    $fa39a7
+lbl_Picky                    $fa3a80
+lbl_PlushBear                $fa3aad
+lbl_Pokey                    $fa3a7a
+lbl_Randomizers              $fa39c1
+lbl_ShrineFox                $fa3947
+lbl_SoundStone               $fa39b6
+lbl_Speed                    $fa39df
+lbl_Stats                    $fa3abb
+lbl_Status                   $fa3ac5
+lbl_Storage                  $fa39fd
+lbl_System                   $fa3916
+lbl_TeddyBear                $fa3aa6
+lbl_Teleport                 $fa39ad
+lbl_Test                     $fa3933
+lbl_ToggleMods               $fa3927
+lbl_Tony                     $fa3a8b
+lbl_Vitality                 $fa39e5
+lbl_Warp                     $fa3964
+lbl_WarpID                   $fa3969
+lbl_Weapons                  $fa3a2b
 -----------------------------------------------------------------
 
 
@@ -6866,26 +6866,26 @@ Name                         Address
 Labels in module cc_text_speed
 Name                         Address
 -----------------------------------------------------------------
-CC_code_gettextspeed         $fa4568
-CC_code_settextspeed         $fa4580
+CC_code_gettextspeed         $fa4576
+CC_code_settextspeed         $fa458e
 -----------------------------------------------------------------
 
 
 Labels in module bg_viewer
 Name                         Address
 -----------------------------------------------------------------
-InitEverything               $fa3cf7
-asm_HideBattleBG             $fa3cce
-asm_ShowBattleBG             $fa3c46
+InitEverything               $fa3d05
+asm_HideBattleBG             $fa3cdc
+asm_ShowBattleBG             $fa3c54
 -----------------------------------------------------------------
 
 
 Labels in module custom_windows_standalone
 Name                         Address
 -----------------------------------------------------------------
-ASM_CustomWindow_open        $fa44bb
-ASM_CustomWindow_setupWindow $fa44d8
-CustomWindowList             $fa44b0
+ASM_CustomWindow_open        $fa44c9
+ASM_CustomWindow_setupWindow $fa44e6
+CustomWindowList             $fa44be
 -----------------------------------------------------------------
 
 
@@ -6923,9 +6923,9 @@ ToCounter                    $f6ffe7
 Labels in module drug_util
 Name                         Address
 -----------------------------------------------------------------
-InitDrug                     $fa3afe
-StepVideoDrug                $fa3b23
-movscr_Drug                  $fa3aee
+InitDrug                     $fa3b0c
+StepVideoDrug                $fa3b31
+movscr_Drug                  $fa3afc
 -----------------------------------------------------------------
 
 
@@ -6938,8 +6938,8 @@ Name                         Address
 Labels in module cc_actionscript
 Name                         Address
 -----------------------------------------------------------------
-IMPL_NpcScript               $fa4551
-IMPL_SpriteScript            $fa453a
+IMPL_NpcScript               $fa455f
+IMPL_SpriteScript            $fa4548
 -----------------------------------------------------------------
 
 
@@ -6991,12 +6991,12 @@ ShowDescription              $f970b6
 Labels in module flag_cmds
 Name                         Address
 -----------------------------------------------------------------
-restoreparty                 $fa2297
-setptyflags                  $fa2474
-tempjeffonly                 $fa2213
-tempnessonly                 $fa218f
-temppaulaonly                $fa21d1
-temppooonly                  $fa2255
+restoreparty                 $fa22a5
+setptyflags                  $fa2482
+tempjeffonly                 $fa2221
+tempnessonly                 $fa219d
+temppaulaonly                $fa21df
+temppooonly                  $fa2263
 -----------------------------------------------------------------
 
 
@@ -7015,11 +7015,11 @@ Name                         Address
 Labels in module asm_code
 Name                         Address
 -----------------------------------------------------------------
-BootUpMusic                  $fa41fe
-Crying_EnemyMissRates        $fa42c0
-FastYouWon1                  $fa420a
-FastYouWon2                  $fa4242
-FastYouWon3                  $fa427a
+BootUpMusic                  $fa420c
+Crying_EnemyMissRates        $fa42ce
+FastYouWon1                  $fa4218
+FastYouWon2                  $fa4250
+FastYouWon3                  $fa4288
 -----------------------------------------------------------------
 
 
@@ -7038,28 +7038,28 @@ Name                         Address
 Labels in module expand_text_windows
 Name                         Address
 -----------------------------------------------------------------
-CustomWindows                $fa38aa
-GetExistenceAndLoadYWithSizeofStats $fa36e2
-GetExistenceAtA              $fa36f2
-NewWindowTable               $fa3702
-Patch_C11E94                 $fa36cc
-Patch_C11EA5                 $fa36d7
-Patch_C1E1C1                 $fa36af
-Patch_C1FB70                 $fa36b5
-Patch_C1FC22                 $fa36bb
-Patch_C2BBD0                 $fa36a5
-Patch_C3E5B3                 $fa36c1
-SetExistenceAtXToA           $fa36ea
+CustomWindows                $fa38b8
+GetExistenceAndLoadYWithSizeofStats $fa36f0
+GetExistenceAtA              $fa3700
+NewWindowTable               $fa3710
+Patch_C11E94                 $fa36da
+Patch_C11EA5                 $fa36e5
+Patch_C1E1C1                 $fa36bd
+Patch_C1FB70                 $fa36c3
+Patch_C1FC22                 $fa36c9
+Patch_C2BBD0                 $fa36b3
+Patch_C3E5B3                 $fa36cf
+SetExistenceAtXToA           $fa36f8
 -----------------------------------------------------------------
 
 
 Labels in module Title_Window
 Name                         Address
 -----------------------------------------------------------------
-Title_Char_Name              $fa3df8
-Title_Str_Name               $fa3e74
-Win_Title                    $fa3d96
-r_0xC1866D                   $fa3dc4
+Title_Char_Name              $fa3e06
+Title_Str_Name               $fa3e82
+Win_Title                    $fa3da4
+r_0xC1866D                   $fa3dd2
 -----------------------------------------------------------------
 
 
@@ -7080,7 +7080,7 @@ HIJACK_NoClip                $f6ffcc
 Labels in module mute_music
 Name                         Address
 -----------------------------------------------------------------
-MuteMusic                    $fa4111
+MuteMusic                    $fa411f
 -----------------------------------------------------------------
 
 
@@ -7157,30 +7157,30 @@ SpeedHijack                  $f8ffef
 Labels in module GoodsMenuEquip
 Name                         Address
 -----------------------------------------------------------------
-equipMessagePartOne          $fa3f3d
-equipMessagePartTwo          $fa3fa7
-finalDefense                 $fa3fb9
-finalOffense                 $fa3fd1
-initialDefense               $fa3f55
-initialOffense               $fa3f7e
-jeffDefenseStat              $fa3ff1
-jeffOffenseStat              $fa4001
-nessDefenseStat              $fa3fe9
-nessOffenseStat              $fa3ff9
-newCheck                     $fa3f1a
-newUse                       $fa3ed6
-paulaDefenseStat             $fa3fed
-paulaOffenseStat             $fa3ffd
-pooDefenseStat               $fa3ff5
-pooOffenseStat               $fa4005
+equipMessagePartOne          $fa3f4b
+equipMessagePartTwo          $fa3fb5
+finalDefense                 $fa3fc7
+finalOffense                 $fa3fdf
+initialDefense               $fa3f63
+initialOffense               $fa3f8c
+jeffDefenseStat              $fa3fff
+jeffOffenseStat              $fa400f
+nessDefenseStat              $fa3ff7
+nessOffenseStat              $fa4007
+newCheck                     $fa3f28
+newUse                       $fa3ee4
+paulaDefenseStat             $fa3ffb
+paulaOffenseStat             $fa400b
+pooDefenseStat               $fa4003
+pooOffenseStat               $fa4013
 -----------------------------------------------------------------
 
 
 Labels in module modmenu
 Name                         Address
 -----------------------------------------------------------------
-ModMenu                      $fa330a
-ModMenu_AboutDlg             $fa3644
+ModMenu                      $fa3318
+ModMenu_AboutDlg             $fa3652
 -----------------------------------------------------------------
 
 
@@ -7243,22 +7243,22 @@ goto_status                  $f7ff5b
 Labels in module chaosmode
 Name                         Address
 -----------------------------------------------------------------
-BacktrackWarp                $fa0ee8
+BacktrackWarp                $fa0ef6
 ChaosMode                    $fa0937
-CorruptMap                   $fa0ed6
-RandomBBG                    $fa121d
-RandomBGM                    $fa0ebd
-RandomBGMEffect              $fa0fbe
-RandomBattle                 $fa0dc8
-RandomDistortion             $fa11f9
-RandomFloatSprite            $fa0f11
-RandomPalette                $fa0a6c
-RandomSound                  $fa0fa6
-RandomWarp                   $fa0ea5
-RandomizeMainParty           $fa0fd6
-RandomizeNpcParty            $fa11da
-addrandomnpcparty            $fa107b
-removenpcparty               $fa104f
+CorruptMap                   $fa0ee4
+RandomBBG                    $fa122b
+RandomBGM                    $fa0ecb
+RandomBGMEffect              $fa0fcc
+RandomBattle                 $fa0dd6
+RandomDistortion             $fa1207
+RandomFloatSprite            $fa0f1f
+RandomPalette                $fa0a7a
+RandomSound                  $fa0fb4
+RandomWarp                   $fa0eb3
+RandomizeMainParty           $fa0fe4
+RandomizeNpcParty            $fa11e8
+addrandomnpcparty            $fa1089
+removenpcparty               $fa105d
 -----------------------------------------------------------------
 
 
@@ -7354,9 +7354,9 @@ Status                       $f6ff8f
 Labels in module item_cmds
 Name                         Address
 -----------------------------------------------------------------
-givepartykeyitem             $fa1a29
-keyitemcounter               $fa1b99
-sendtoescargot               $fa1b64
+givepartykeyitem             $fa1a37
+keyitemcounter               $fa1ba7
+sendtoescargot               $fa1b72
 -----------------------------------------------------------------
 
 
@@ -7410,13 +7410,13 @@ unsetptyflags                $f29efa
 Labels in module battlemenu
 Name                         Address
 -----------------------------------------------------------------
-BattleID                     $fa186d
-BattleMenu                   $fa124e
-BossBattleList               $fa12fe
-MidbossBattleList            $fa1514
-MidbossBattleList2           $fa1736
-SanctuaryBossList            $fa1386
-StartBattle                  $fa1960
+BattleID                     $fa187b
+BattleMenu                   $fa125c
+BossBattleList               $fa130c
+MidbossBattleList            $fa1522
+MidbossBattleList2           $fa1744
+SanctuaryBossList            $fa1394
+StartBattle                  $fa196e
 -----------------------------------------------------------------
 
 
@@ -7462,155 +7462,155 @@ WintersBGMList               $f7298f
 Labels in module palettemenu
 Name                         Address
 -----------------------------------------------------------------
-PaletteMenu                  $fa286b
-Set_Palette_0                $fa2c6b
-Set_Palette_1                $fa2c73
-Set_Palette_10               $fa2cbb
-Set_Palette_11               $fa2cc3
-Set_Palette_12               $fa2ccb
-Set_Palette_13               $fa2cd3
-Set_Palette_14               $fa2cdb
-Set_Palette_15               $fa2ce3
-Set_Palette_16               $fa2ceb
-Set_Palette_17               $fa2cf3
-Set_Palette_18               $fa2cfb
-Set_Palette_19               $fa2d03
-Set_Palette_2                $fa2c7b
-Set_Palette_20               $fa2d0b
-Set_Palette_21               $fa2d13
-Set_Palette_22               $fa2d1b
-Set_Palette_23               $fa2d23
-Set_Palette_24               $fa2d2b
-Set_Palette_25               $fa2d33
-Set_Palette_26               $fa2d3b
-Set_Palette_27               $fa2d43
-Set_Palette_28               $fa2d4b
-Set_Palette_29               $fa2d53
-Set_Palette_3                $fa2c83
-Set_Palette_30               $fa2d5b
-Set_Palette_31               $fa2d63
-Set_Palette_32               $fa2d6b
-Set_Palette_33               $fa2d73
-Set_Palette_34               $fa2d7b
-Set_Palette_35               $fa2d83
-Set_Palette_36               $fa2d8b
-Set_Palette_37               $fa2d93
-Set_Palette_38               $fa2d9b
-Set_Palette_39               $fa2da3
-Set_Palette_4                $fa2c8b
-Set_Palette_40               $fa2dab
-Set_Palette_41               $fa2db3
-Set_Palette_42               $fa2dbb
-Set_Palette_43               $fa2dc3
-Set_Palette_44               $fa2dcb
-Set_Palette_45               $fa2dd3
-Set_Palette_46               $fa2ddb
-Set_Palette_47               $fa2de3
-Set_Palette_48               $fa2deb
-Set_Palette_49               $fa2df3
-Set_Palette_5                $fa2c93
-Set_Palette_50               $fa2dfb
-Set_Palette_51               $fa2e03
-Set_Palette_52               $fa2e0b
-Set_Palette_53               $fa2e13
-Set_Palette_54               $fa2e1b
-Set_Palette_55               $fa2e23
-Set_Palette_56               $fa2e2b
-Set_Palette_57               $fa2e33
-Set_Palette_58               $fa2e3b
-Set_Palette_59               $fa2e43
-Set_Palette_6                $fa2c9b
-Set_Palette_60               $fa2e4b
-Set_Palette_61               $fa2e53
-Set_Palette_62               $fa2e5b
-Set_Palette_63               $fa2e63
-Set_Palette_64               $fa2e6b
-Set_Palette_65               $fa2e73
-Set_Palette_66               $fa2e7b
-Set_Palette_67               $fa2e83
-Set_Palette_68               $fa2e8b
-Set_Palette_69               $fa2e93
-Set_Palette_7                $fa2ca3
-Set_Palette_70               $fa2e9b
-Set_Palette_8                $fa2cab
-Set_Palette_9                $fa2cb3
+PaletteMenu                  $fa2879
+Set_Palette_0                $fa2c79
+Set_Palette_1                $fa2c81
+Set_Palette_10               $fa2cc9
+Set_Palette_11               $fa2cd1
+Set_Palette_12               $fa2cd9
+Set_Palette_13               $fa2ce1
+Set_Palette_14               $fa2ce9
+Set_Palette_15               $fa2cf1
+Set_Palette_16               $fa2cf9
+Set_Palette_17               $fa2d01
+Set_Palette_18               $fa2d09
+Set_Palette_19               $fa2d11
+Set_Palette_2                $fa2c89
+Set_Palette_20               $fa2d19
+Set_Palette_21               $fa2d21
+Set_Palette_22               $fa2d29
+Set_Palette_23               $fa2d31
+Set_Palette_24               $fa2d39
+Set_Palette_25               $fa2d41
+Set_Palette_26               $fa2d49
+Set_Palette_27               $fa2d51
+Set_Palette_28               $fa2d59
+Set_Palette_29               $fa2d61
+Set_Palette_3                $fa2c91
+Set_Palette_30               $fa2d69
+Set_Palette_31               $fa2d71
+Set_Palette_32               $fa2d79
+Set_Palette_33               $fa2d81
+Set_Palette_34               $fa2d89
+Set_Palette_35               $fa2d91
+Set_Palette_36               $fa2d99
+Set_Palette_37               $fa2da1
+Set_Palette_38               $fa2da9
+Set_Palette_39               $fa2db1
+Set_Palette_4                $fa2c99
+Set_Palette_40               $fa2db9
+Set_Palette_41               $fa2dc1
+Set_Palette_42               $fa2dc9
+Set_Palette_43               $fa2dd1
+Set_Palette_44               $fa2dd9
+Set_Palette_45               $fa2de1
+Set_Palette_46               $fa2de9
+Set_Palette_47               $fa2df1
+Set_Palette_48               $fa2df9
+Set_Palette_49               $fa2e01
+Set_Palette_5                $fa2ca1
+Set_Palette_50               $fa2e09
+Set_Palette_51               $fa2e11
+Set_Palette_52               $fa2e19
+Set_Palette_53               $fa2e21
+Set_Palette_54               $fa2e29
+Set_Palette_55               $fa2e31
+Set_Palette_56               $fa2e39
+Set_Palette_57               $fa2e41
+Set_Palette_58               $fa2e49
+Set_Palette_59               $fa2e51
+Set_Palette_6                $fa2ca9
+Set_Palette_60               $fa2e59
+Set_Palette_61               $fa2e61
+Set_Palette_62               $fa2e69
+Set_Palette_63               $fa2e71
+Set_Palette_64               $fa2e79
+Set_Palette_65               $fa2e81
+Set_Palette_66               $fa2e89
+Set_Palette_67               $fa2e91
+Set_Palette_68               $fa2e99
+Set_Palette_69               $fa2ea1
+Set_Palette_7                $fa2cb1
+Set_Palette_70               $fa2ea9
+Set_Palette_8                $fa2cb9
+Set_Palette_9                $fa2cc1
 -----------------------------------------------------------------
 
 
 Labels in module counter
 Name                         Address
 -----------------------------------------------------------------
-Set_Count_0                  $fa42e1
-Set_Count_1                  $fa42ee
-Set_Count_10                 $fa4309
-Set_Count_11                 $fa430c
-Set_Count_12                 $fa430f
-Set_Count_13                 $fa4312
-Set_Count_14                 $fa4315
-Set_Count_15                 $fa4318
-Set_Count_16                 $fa431b
-Set_Count_17                 $fa431e
-Set_Count_18                 $fa4321
-Set_Count_19                 $fa4324
-Set_Count_2                  $fa42f1
-Set_Count_20                 $fa4327
-Set_Count_21                 $fa432a
-Set_Count_22                 $fa432d
-Set_Count_23                 $fa4330
-Set_Count_24                 $fa4333
-Set_Count_25                 $fa4336
-Set_Count_26                 $fa4339
-Set_Count_27                 $fa433c
-Set_Count_28                 $fa433f
-Set_Count_29                 $fa4342
-Set_Count_3                  $fa42f4
-Set_Count_30                 $fa4345
-Set_Count_31                 $fa4348
-Set_Count_32                 $fa434b
-Set_Count_33                 $fa434e
-Set_Count_34                 $fa4351
-Set_Count_35                 $fa4354
-Set_Count_36                 $fa4357
-Set_Count_37                 $fa435a
-Set_Count_38                 $fa435d
-Set_Count_39                 $fa4360
-Set_Count_4                  $fa42f7
-Set_Count_40                 $fa4363
-Set_Count_41                 $fa4366
-Set_Count_42                 $fa4369
-Set_Count_43                 $fa436c
-Set_Count_44                 $fa436f
-Set_Count_45                 $fa4372
-Set_Count_46                 $fa4375
-Set_Count_47                 $fa4378
-Set_Count_48                 $fa437b
-Set_Count_49                 $fa437e
-Set_Count_5                  $fa42fa
-Set_Count_50                 $fa4381
-Set_Count_51                 $fa4384
-Set_Count_52                 $fa4387
-Set_Count_53                 $fa438a
-Set_Count_54                 $fa438d
-Set_Count_55                 $fa4390
-Set_Count_56                 $fa4393
-Set_Count_57                 $fa4396
-Set_Count_58                 $fa4399
-Set_Count_59                 $fa439c
-Set_Count_6                  $fa42fd
-Set_Count_60                 $fa439f
-Set_Count_61                 $fa43a2
-Set_Count_62                 $fa43a5
-Set_Count_63                 $fa43a8
-Set_Count_64                 $fa43ab
-Set_Count_65                 $fa43ae
-Set_Count_66                 $fa43b1
-Set_Count_67                 $fa43b4
-Set_Count_68                 $fa43b7
-Set_Count_69                 $fa43ba
-Set_Count_7                  $fa4300
-Set_Count_70                 $fa43bd
-Set_Count_8                  $fa4303
-Set_Count_9                  $fa4306
+Set_Count_0                  $fa42ef
+Set_Count_1                  $fa42fc
+Set_Count_10                 $fa4317
+Set_Count_11                 $fa431a
+Set_Count_12                 $fa431d
+Set_Count_13                 $fa4320
+Set_Count_14                 $fa4323
+Set_Count_15                 $fa4326
+Set_Count_16                 $fa4329
+Set_Count_17                 $fa432c
+Set_Count_18                 $fa432f
+Set_Count_19                 $fa4332
+Set_Count_2                  $fa42ff
+Set_Count_20                 $fa4335
+Set_Count_21                 $fa4338
+Set_Count_22                 $fa433b
+Set_Count_23                 $fa433e
+Set_Count_24                 $fa4341
+Set_Count_25                 $fa4344
+Set_Count_26                 $fa4347
+Set_Count_27                 $fa434a
+Set_Count_28                 $fa434d
+Set_Count_29                 $fa4350
+Set_Count_3                  $fa4302
+Set_Count_30                 $fa4353
+Set_Count_31                 $fa4356
+Set_Count_32                 $fa4359
+Set_Count_33                 $fa435c
+Set_Count_34                 $fa435f
+Set_Count_35                 $fa4362
+Set_Count_36                 $fa4365
+Set_Count_37                 $fa4368
+Set_Count_38                 $fa436b
+Set_Count_39                 $fa436e
+Set_Count_4                  $fa4305
+Set_Count_40                 $fa4371
+Set_Count_41                 $fa4374
+Set_Count_42                 $fa4377
+Set_Count_43                 $fa437a
+Set_Count_44                 $fa437d
+Set_Count_45                 $fa4380
+Set_Count_46                 $fa4383
+Set_Count_47                 $fa4386
+Set_Count_48                 $fa4389
+Set_Count_49                 $fa438c
+Set_Count_5                  $fa4308
+Set_Count_50                 $fa438f
+Set_Count_51                 $fa4392
+Set_Count_52                 $fa4395
+Set_Count_53                 $fa4398
+Set_Count_54                 $fa439b
+Set_Count_55                 $fa439e
+Set_Count_56                 $fa43a1
+Set_Count_57                 $fa43a4
+Set_Count_58                 $fa43a7
+Set_Count_59                 $fa43aa
+Set_Count_6                  $fa430b
+Set_Count_60                 $fa43ad
+Set_Count_61                 $fa43b0
+Set_Count_62                 $fa43b3
+Set_Count_63                 $fa43b6
+Set_Count_64                 $fa43b9
+Set_Count_65                 $fa43bc
+Set_Count_66                 $fa43bf
+Set_Count_67                 $fa43c2
+Set_Count_68                 $fa43c5
+Set_Count_69                 $fa43c8
+Set_Count_7                  $fa430e
+Set_Count_70                 $fa43cb
+Set_Count_8                  $fa4311
+Set_Count_9                  $fa4314
 -----------------------------------------------------------------
 
 
@@ -7637,11 +7637,11 @@ StatusMenu                   $f1c60c
 Labels in module letterbox
 Name                         Address
 -----------------------------------------------------------------
-asm_CutsceneInit             $fa4400
-asm_CutsceneOff              $fa4431
-asm_write_letterbox_regs     $fa441d
-movscr_Cutscene              $fa43c0
-movscr_Cutscene_Off          $fa43e0
+asm_CutsceneInit             $fa440e
+asm_CutsceneOff              $fa443f
+asm_write_letterbox_regs     $fa442b
+movscr_Cutscene              $fa43ce
+movscr_Cutscene_Off          $fa43ee
 -----------------------------------------------------------------
 
 
