@@ -5,6 +5,7 @@ Play EarthBound YOUR way!
 This mod collects several quality of life enhancements, some made by myself, some made by the PK Hack community.  
 It's open source, so anyone can use parts of it for their own mods, or create their own derivatives.  
 ## How to Install
+### Version v0.9.1 Out Now! Check the [Releases page](https://github.com/ShrineFox/EarthBound-Mod-Menu/releases).
 Download ``earthbound_mod_menu.ips`` from the [Releases page](https://github.com/ShrineFox/EarthBound-Mod-Menu/releases) and use a tool such as this [online ROM patcher](https://www.marcrobledo.com/RomPatcher.js/) or an offline version such as [LunarIPS](https://www.romhacking.net/utilities/240/) or [Coilsnake](https://pk-hack.github.io/CoilSnake/) to apply it to your ``EarthBound.smc`` ROM.
 
 # Features
@@ -33,7 +34,6 @@ These are things you can toggle from the New Game/Load Save screen, or at any po
 Not everything is fully tested, so let me know if you discover more by [opening a GitHub Issue](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/new).
 ## Crashes & Softlocks
 - Some users report the mod hanging on a black screen on startup with certain emulators for unknown reasons. (i.e. Delta on iOS) ([#1](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/1))
-- The game softlocks if you remove Ness and Poo from the party and try to use PSI from the main menu. ([#3](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/1))
 - Chaos Mode crashes the game when Battle Background randomization is active during a scripted sequence involving moving sprites. ([#4](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/4))
 - Configuring optional mod settings may sometimes freeze the game when the third option is selected in a busy area. ([#7](https://github.com/ShrineFox/EarthBound-Mod-Menu/issues/7))
 ## Story Progression Bugs
