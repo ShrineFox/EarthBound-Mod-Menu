@@ -5,24 +5,25 @@ import "../asm/bg_viewer.ccs"
 import "../asm/drug_util.ccs"
 import "../asm/cc_actionscript.ccs"
 
+command compare_reg(num, reg) "[18 07 {long num} {byte reg}]"
+
 ChaosMode:
 	set(flg_RandomWarp)
 
-    random(104)
-
-    if result_is(0) { eob }
-	load_registers_global if result_is_greaterthan_orequal(99) { goto(RandomBattle) }
-	load_registers_global if result_is_greaterthan_orequal(97) { goto(CorruptMap) }
-	load_registers_global if result_is_greaterthan_orequal(95) { goto(RandomWarp) }
+    random(255)
+	store_registers_global
+    load_registers_global if result_is_greaterthan_orequal(220) { goto(RandomPalette) }
+	load_registers_global if result_is_greaterthan_orequal(200) { goto(RandomBattle) }
+	load_registers_global if result_is_greaterthan_orequal(160) { goto(RandomWarp) }
+	load_registers_global if result_is_greaterthan_orequal(140) { goto(RandomFloatSprite) }
 	load_registers_global if result_is_greaterthan_orequal(90) { goto(RandomBGM) }
-	load_registers_global if result_is_greaterthan_orequal(85) { goto(RandomFloatSprite) }
-	load_registers_global if result_is_greaterthan_orequal(80) { goto(BacktrackWarp) }
-	load_registers_global if result_is_greaterthan_orequal(70) { goto(RandomizeMainParty) }
-	load_registers_global if result_is_greaterthan_orequal(60) { goto(RandomizeNpcParty) }
-	load_registers_global if result_is_greaterthan_orequal(50) { goto(RandomSound) }
-	load_registers_global if result_is_greaterthan_orequal(33) { goto(RandomDistortion) }
-	load_registers_global if result_is_greaterthan_orequal(30) { goto(RandomBBG) }
-	load_registers_global if result_is_greaterthan_orequal(1)  { goto(RandomPalette) }
+	load_registers_global if result_is_greaterthan_orequal(45) { goto(RandomSound) }
+	load_registers_global if result_is_greaterthan_orequal(30) { goto(RandomizeNpcParty) }
+	load_registers_global if result_is_greaterthan_orequal(10) { goto(RandomizeMainParty) }
+	load_registers_global if result_is_greaterthan_orequal(4) { goto(BacktrackWarp) }
+	load_registers_global if result_is_greaterthan_orequal(3) { goto(CorruptMap) }
+	load_registers_global if result_is_greaterthan_orequal(2) { goto(RandomDistortion) }
+	load_registers_global if result_is_greaterthan_orequal(1) { goto(RandomBBG) }
 eob
 
 command change_map_pal(tileset, palette, duration) "[1F E1 {byte tileset} {byte palette} {byte duration}]"

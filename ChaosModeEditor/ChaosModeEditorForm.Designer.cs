@@ -129,6 +129,11 @@
             // 
             this.num_RandomBBG.Dock = System.Windows.Forms.DockStyle.Right;
             this.num_RandomBBG.Location = new System.Drawing.Point(173, 18);
+            this.num_RandomBBG.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.num_RandomBBG.Name = "num_RandomBBG";
             this.num_RandomBBG.Size = new System.Drawing.Size(120, 22);
             this.num_RandomBBG.TabIndex = 0;
@@ -149,6 +154,11 @@
             // 
             this.num_RandomDistortion.Dock = System.Windows.Forms.DockStyle.Right;
             this.num_RandomDistortion.Location = new System.Drawing.Point(173, 18);
+            this.num_RandomDistortion.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.num_RandomDistortion.Name = "num_RandomDistortion";
             this.num_RandomDistortion.Size = new System.Drawing.Size(120, 22);
             this.num_RandomDistortion.TabIndex = 0;
@@ -169,6 +179,11 @@
             // 
             this.num_RandomSound.Dock = System.Windows.Forms.DockStyle.Right;
             this.num_RandomSound.Location = new System.Drawing.Point(173, 18);
+            this.num_RandomSound.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.num_RandomSound.Name = "num_RandomSound";
             this.num_RandomSound.Size = new System.Drawing.Size(120, 22);
             this.num_RandomSound.TabIndex = 0;
@@ -189,6 +204,11 @@
             // 
             this.num_RandomizeNpcParty.Dock = System.Windows.Forms.DockStyle.Right;
             this.num_RandomizeNpcParty.Location = new System.Drawing.Point(173, 18);
+            this.num_RandomizeNpcParty.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.num_RandomizeNpcParty.Name = "num_RandomizeNpcParty";
             this.num_RandomizeNpcParty.Size = new System.Drawing.Size(120, 22);
             this.num_RandomizeNpcParty.TabIndex = 0;
@@ -209,6 +229,11 @@
             // 
             this.num_RandomizeMainParty.Dock = System.Windows.Forms.DockStyle.Right;
             this.num_RandomizeMainParty.Location = new System.Drawing.Point(173, 18);
+            this.num_RandomizeMainParty.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.num_RandomizeMainParty.Name = "num_RandomizeMainParty";
             this.num_RandomizeMainParty.Size = new System.Drawing.Size(120, 22);
             this.num_RandomizeMainParty.TabIndex = 0;
@@ -228,6 +253,11 @@
             // 
             this.num_BacktrackWarp.Dock = System.Windows.Forms.DockStyle.Right;
             this.num_BacktrackWarp.Location = new System.Drawing.Point(173, 18);
+            this.num_BacktrackWarp.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.num_BacktrackWarp.Name = "num_BacktrackWarp";
             this.num_BacktrackWarp.Size = new System.Drawing.Size(120, 22);
             this.num_BacktrackWarp.TabIndex = 0;
@@ -247,6 +277,11 @@
             // 
             this.num_RandomFloatSprite.Dock = System.Windows.Forms.DockStyle.Right;
             this.num_RandomFloatSprite.Location = new System.Drawing.Point(173, 18);
+            this.num_RandomFloatSprite.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.num_RandomFloatSprite.Name = "num_RandomFloatSprite";
             this.num_RandomFloatSprite.Size = new System.Drawing.Size(120, 22);
             this.num_RandomFloatSprite.TabIndex = 0;
@@ -266,6 +301,11 @@
             // 
             this.num_RandomBGM.Dock = System.Windows.Forms.DockStyle.Right;
             this.num_RandomBGM.Location = new System.Drawing.Point(173, 18);
+            this.num_RandomBGM.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.num_RandomBGM.Name = "num_RandomBGM";
             this.num_RandomBGM.Size = new System.Drawing.Size(120, 22);
             this.num_RandomBGM.TabIndex = 0;
@@ -285,6 +325,11 @@
             // 
             this.num_RandomWarp.Dock = System.Windows.Forms.DockStyle.Right;
             this.num_RandomWarp.Location = new System.Drawing.Point(173, 18);
+            this.num_RandomWarp.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.num_RandomWarp.Name = "num_RandomWarp";
             this.num_RandomWarp.Size = new System.Drawing.Size(120, 22);
             this.num_RandomWarp.TabIndex = 0;
@@ -304,6 +349,11 @@
             // 
             this.num_RandomBattle.Dock = System.Windows.Forms.DockStyle.Right;
             this.num_RandomBattle.Location = new System.Drawing.Point(173, 18);
+            this.num_RandomBattle.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.num_RandomBattle.Name = "num_RandomBattle";
             this.num_RandomBattle.Size = new System.Drawing.Size(120, 22);
             this.num_RandomBattle.TabIndex = 0;
@@ -323,6 +373,11 @@
             // 
             this.num_CorruptMap.Dock = System.Windows.Forms.DockStyle.Right;
             this.num_CorruptMap.Location = new System.Drawing.Point(173, 18);
+            this.num_CorruptMap.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.num_CorruptMap.Name = "num_CorruptMap";
             this.num_CorruptMap.Size = new System.Drawing.Size(120, 22);
             this.num_CorruptMap.TabIndex = 0;
@@ -355,6 +410,11 @@
             // 
             this.num_RandomPalette.Dock = System.Windows.Forms.DockStyle.Right;
             this.num_RandomPalette.Location = new System.Drawing.Point(173, 18);
+            this.num_RandomPalette.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.num_RandomPalette.Name = "num_RandomPalette";
             this.num_RandomPalette.Size = new System.Drawing.Size(120, 22);
             this.num_RandomPalette.TabIndex = 0;

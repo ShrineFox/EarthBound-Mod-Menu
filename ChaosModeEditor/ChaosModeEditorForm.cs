@@ -55,7 +55,7 @@ namespace ChaosModeEditor
         private void Update_Click(object sender, EventArgs e)
         {
             var lines = File.ReadAllLines(chaosModeLocation).ToList();
-            lines.RemoveRange(13, 12);
+            lines.RemoveRange(14, 12);
 
             var controls = WinForms.EnumerateControls(this)
                 .Where(x => x.GetType() == typeof(NumericUpDown) && x.Enabled == true);
@@ -69,7 +69,7 @@ namespace ChaosModeEditor
             foreach (NumericUpDown numUpDwn in numUpDwnList.OrderBy(x => x.Value))
             {
                 string gotoName = numUpDwn.Name.Replace("num_", "");
-                lines.Insert(13, $"\tload_registers_global if result_is_greaterthan_orequal({numUpDwn.Value}) {{ goto({gotoName}) }}");
+                lines.Insert(14, $"\tload_registers_global if result_is_greaterthan_orequal({numUpDwn.Value}) {{ goto({gotoName}) }}");
             }
 
             File.WriteAllLines(chaosModeLocation, lines);
