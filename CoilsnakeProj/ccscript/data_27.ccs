@@ -147,7 +147,12 @@ l_0xc732e1:
     "@Pressing the X Button allows you to view the map at any time.{pause(15)}  How convenient!" next
     "@You know, the X Button... located near the top.{pause(15)}" linebreak
     "  Ha ha ha." next
-    "[1D 0E 00 CA]" call(data_33.l_0xc7dccf) "{set(flag 511)}" end
+    if flag flg_KeyItems { GiveMenuKeyItem(item_Town_Map) }
+    else
+    {
+        "[1D 0E 00 CA]" call(data_33.l_0xc7dccf)
+    }
+    "{set(flag 511)}" end
 
 l_0xc733a7:
     "@I suggest you bring a map along, even if you have to give up something else." next
