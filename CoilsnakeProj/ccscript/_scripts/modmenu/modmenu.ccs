@@ -44,10 +44,11 @@ ModMenu: {
 	MenuOptionWithCallback("Map", Set_Count_5)
 	MenuOptionWithCallback("Battle", Set_Count_6)
 	MenuOptionWithCallback("Flags", Set_Count_7)
-	MenuOptionWithCallback("About", Set_Count_8)
+    MenuOptionWithCallback("Effects", Set_Count_8)
+    MenuOptionWithCallback("About", Set_Count_9)
 	DisplayVertical(3) if not "[11]" { eob }
 	ctoarg swap
-    SwitchGoto(8)
+    SwitchGoto(9)
         SwitchCase(chose_party)
         SwitchCase(chose_save)
         SwitchCase(chose_bgm)
@@ -55,7 +56,8 @@ ModMenu: {
 		SwitchCase(chose_warp)
 		SwitchCase(chose_battle)
 		SwitchCase(chose_flags)
-		SwitchCase(chose_about)
+        SwitchCase(chose_effects)
+        SwitchCase(chose_about)
 	swap
 	"@Error! No option {number(0)} in this menu." eob
 	chose_party:
@@ -72,15 +74,17 @@ ModMenu: {
 		Highlight("Battle") goto(BattleMenu)
 	chose_flags:
 		Highlight("Flags") goto(FlagsMenu)
-	chose_about:
+    chose_effects:
+		Highlight("Effects") goto(chaosmode.ChooseEffect)
+    chose_about:
 		Highlight("About") goto(ModMenu_AboutDlg)
 }
 
 ModMenu_AboutDlg:
 	window_open(wnd_Dialog)
 	Lbl(lbl_About)
-	"@EB Mod Menu v0.9.1 by ShrineFox." newline
+	"@EB Mod Menu v0.9.2 by ShrineFox." newline
 	"@Made using Coilsnake." newline
-	"@Updated 8[5F]03[5F]24." next
+	"@Updated 8[5F]04[5F]24." next
 	window_close(wnd_Dialog)
 goto(ModMenu)

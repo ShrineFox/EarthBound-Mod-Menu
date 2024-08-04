@@ -156,25 +156,40 @@ RandomBGMEffect:
 eob
 
 RandomizeMainParty:
+	call(RandomizeMainPartyLeader)
+	call(AddRandomMainPartyMember)
+    call(AddRandomMainPartyMember)
+    call(AddRandomMainPartyMember)
+eob
+
+AddRandomMainPartyMember:
+	random(250)
+    store_registers_global
+    load_registers_global if result_is_greaterthan_orequal(225) { party_add(4) }
+	else {
+		load_registers_global if result_is_greaterthan_orequal(200) { party_add(3) }
+		else {
+			load_registers_global if result_is_greaterthan_orequal(175) { party_add(2) }
+			else {
+				load_registers_global if result_is_greaterthan_orequal(150) { party_add(1) }
+			}
+		}
+	}
+eob
+
+RandomizeMainPartyLeader:
 	if flg_DisableChaosEffect_RandomizeMainParty { eob }
 	// Random Party Leader
-	random(95)
-    store_registers_global
-    load_registers_global if result_is_greaterthan_orequal(75) 
-	{
-		call(flag_cmds.tempnessonly)
-	}
-	load_registers_global if result_is_greaterthan_orequal(50)
-	{ 
-		call(flag_cmds.temppaulaonly)
-	}
-	load_registers_global if result_is_greaterthan_orequal(25)
-	{
-		call(flag_cmds.tempjeffonly)
-	}
-	load_registers_global if result_is_greaterthan_orequal(0)
-	{
-		call(flag_cmds.temppooonly)
+	random(100)
+    store_registers_global if result_is_greaterthan_orequal(75) { party_add(1) party_remove(2) party_remove(3) party_remove(4) }
+    else {
+		load_registers_global if result_is_greaterthan_orequal(50) { party_add(2) party_remove(1) party_remove(3) party_remove(4) }
+		else {
+			load_registers_global if result_is_greaterthan_orequal(25) { party_add(3) party_remove(2) party_remove(1) party_remove(4) }
+			else {
+				load_registers_global if result_is_greaterthan_orequal(0) { party_add(4) party_remove(2) party_remove(3) party_remove(1) }
+			}
+		}
 	}
 eob
 
@@ -190,68 +205,53 @@ removenpcparty:
 eob
 
 addrandomnpcparty:
-	random(160)
+	random(120)
     store_registers_global
-	load_registers_global if result_is_greaterthan_orequal(150)
+	load_registers_global if result_is_greaterthan_orequal(110)
     {
         party_add(15)
     }
-    load_registers_global if result_is_greaterthan_orequal(140)
+    load_registers_global if result_is_greaterthan_orequal(100)
     {
         party_add(14)
     }
-    load_registers_global if result_is_greaterthan_orequal(130)
+    load_registers_global if result_is_greaterthan_orequal(90)
     {
         party_add(13)
     }
-    load_registers_global if result_is_greaterthan_orequal(120)
+    load_registers_global if result_is_greaterthan_orequal(80)
     {
         party_add(12)
     }
-    load_registers_global if result_is_greaterthan_orequal(110)
+    load_registers_global if result_is_greaterthan_orequal(70)
     {
         party_add(11)
     }
-    load_registers_global if result_is_greaterthan_orequal(100)
+    load_registers_global if result_is_greaterthan_orequal(60)
     {
         party_add(10)
     }
-    load_registers_global if result_is_greaterthan_orequal(90)
+    load_registers_global if result_is_greaterthan_orequal(50)
     {
         party_add(9)
 	}
-    load_registers_global if result_is_greaterthan_orequal(80)
+    load_registers_global if result_is_greaterthan_orequal(40)
     {
         party_add(8)
     }
-    load_registers_global if result_is_greaterthan_orequal(70)
+    load_registers_global if result_is_greaterthan_orequal(30)
     {
         party_add(7)
 	}
-    load_registers_global if result_is_greaterthan_orequal(60)
+    load_registers_global if result_is_greaterthan_orequal(20)
     {
         party_add(6)
 	}
-    load_registers_global if result_is_greaterthan_orequal(50)
+    load_registers_global if result_is_greaterthan_orequal(10)
     {
         party_add(5)
     }
-    load_registers_global if result_is_greaterthan_orequal(40)
-    {
-        party_add(4)
-    }
-    load_registers_global if result_is_greaterthan_orequal(30)
-    {
-        party_add(3)
-	}
-    load_registers_global if result_is_greaterthan_orequal(20)
-    {
-        party_add(2)
-    }
-    load_registers_global if result_is_greaterthan_orequal(10)
-    {
-        party_add(1)
-    }
+	load_registers_global if result_is_greaterthan_orequal(0) { eob }
 eob
 
 RandomizeNpcParty:
@@ -280,3 +280,17 @@ RandomBBG:
     show_battle_bg(-1,-1,0)
     sprite_spawn(106, 897, 1) // Invisible camera sprite running "Cutscene Off"
 eob
+
+ChooseEffect:
+	CloseAllModMenuWnd()
+    OpenModMenu2Wnd(18)
+	menu 1 {
+		"Rnd MainPty": { call(RandomizeMainParty) }
+		"Rnd NpcParty": { call(RandomizeNpcParty) }
+		"Rnd Palette": { call(RandomPalette) }
+		"Rnd Distort":  { call(RandomDistortion) }
+		"Rnd BattleBG":   { call(RandomBBG) }
+		"CRASH": { party_add(240) }
+		default "Back": { goto(modmenu.ModMenu) }
+	}
+goto(ChooseEffect)
