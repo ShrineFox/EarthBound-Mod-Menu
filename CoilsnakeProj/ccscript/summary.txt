@@ -1,4 +1,4 @@
-D:\Projects\EB\EarthBound_Mod_Menu.smc
+D:\Projects\EB\Mod\EarthBound_Mod_Menu.smc
 CCScript Compilation Summary
 ============================
 
@@ -7243,25 +7243,25 @@ goto_status                  $f7ff5b
 Labels in module chaosmode
 Name                         Address
 -----------------------------------------------------------------
-AddRandomMainPartyMember     $f9f221
-BacktrackWarp                $f9f11e
-ChaosMode                    $f9eb5f
-ChooseEffect                 $f9e9a7
-CorruptMap                   $f9f10c
-RandomBBG                    $f9f49d
-RandomBGM                    $f9f0f3
-RandomBGMEffect              $f9f1f4
-RandomBattle                 $f9effe
-RandomDistortion             $f9f479
-RandomFloatSprite            $f9f147
-RandomPalette                $f9eca2
-RandomSound                  $f9f1dc
-RandomWarp                   $f9f0db
-RandomizeMainParty           $f9f20c
-RandomizeMainPartyLeader     $f9f283
-RandomizeNpcParty            $f9f45a
-addrandomnpcparty            $f9f342
-removenpcparty               $f9f316
+AddRandomMainPartyMember     $f9f069
+BacktrackWarp                $f9ef66
+ChaosMode                    $f9e9a7
+ChooseEffect                 $f9f316
+CorruptMap                   $f9ef54
+RandomBBG                    $f9f2e5
+RandomBGM                    $f9ef3b
+RandomBGMEffect              $f9f03c
+RandomBattle                 $f9ee46
+RandomDistortion             $f9f2c1
+RandomFloatSprite            $f9ef8f
+RandomPalette                $f9eaea
+RandomSound                  $f9f024
+RandomWarp                   $f9ef23
+RandomizeMainParty           $f9f054
+RandomizeMainPartyLeader     $f9f0cb
+RandomizeNpcParty            $f9f2a2
+addrandomnpcparty            $f9f18a
+removenpcparty               $f9f15e
 -----------------------------------------------------------------
 
 

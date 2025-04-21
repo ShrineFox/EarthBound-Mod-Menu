@@ -144,6 +144,9 @@ namespace EBModMenu
                 }
             }
 
+            // uncomment to upgrade project
+            // string args = $"upgrade " + $"\"{inputROM}\" \"{GetAbsolutePath(proj_path)}\"";
+
             string args = $"compile \"{GetAbsolutePath(proj_path)}\" " +
                 $"\"{inputROM}\" \"{GetAbsolutePath(config.OutputROMPath)}\"";
 
