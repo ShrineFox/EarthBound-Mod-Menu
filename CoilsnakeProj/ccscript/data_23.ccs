@@ -132,10 +132,14 @@ l_0xc6ae07:
 
 // Get Gum
 l_0xc6ae36:
-    if flg_KeyItems { GiveMenuKeyItem(item_Bubble_Gum) "{set(flag 323)}" }
-    else 
+    "[1D 14 01 00 00 00][1B 03 {e(l_0xc6ae77)}]"
+    if flg_KeyItems
     {
-        "[1D 14 01 00 00 00][1B 03 {e(l_0xc6ae77)}][1D 03 FF][1B 02 {e(l_0xc6aee1)}]{pause(1)}[1D 09 01 00][1D 0E 03 68]{store_registers}" call(data_33.l_0xc7dcb6) 
+        "{pause(1)}[1D 09 01 00]{store_registers}" GiveMenuKeyItem(item_Bubble_Gum)
+    }
+    else
+    {
+        "[1D 03 FF][1B 02 {e(l_0xc6aee1)}]{pause(1)}[1D 09 01 00][1D 0E 03 68]{store_registers}" call(data_33.l_0xc7dcb6) 
     }
     "{sound(118)}{open_wallet}"
     "@Thanks!{pause(15)}  The monkey's yours."
@@ -144,7 +148,17 @@ l_0xc6ae36:
 l_0xc6ae77:
     "@What?{pause(20)}  You don't even have a buck?" next
     "@Then, I'll let you have the monkey for free." next
-    "[1D 03 FF][1B 02 {e(l_0xc6aee1)}][1D 0E 00 68]@Here's a pack of bubble gum.{pause(20)}  Don't forget to take the monkey." call(data_33.l_0xc7dcb6) "{set(flag 323)}" end
+    if not flag flg_KeyItems { "[1D 03 FF][1B 02 {e(l_0xc6aee1)}]" }
+    "@Here's a pack of bubble gum.{pause(20)}  Don't forget to take the monkey."
+    if flag flg_KeyItems
+    {
+        linebreak GiveMenuKeyItem(item_Bubble_Gum)
+    }
+    else
+    {
+        "[1D 0E 03 68]" call(data_33.l_0xc7dcb6)
+    }
+    "{set(flag 323)}" end
 
 l_0xc6aee1:
     "@Oh, oh,{pause(15)} you can't carry anything else." next
@@ -161,7 +175,9 @@ l_0xc6af5d:
     "@Is it cold outside?" end
 
 l_0xc6af6c:
-    "[1D 05 FF 68][1B 03 {e(l_0xc6af8a)}]@Kyee Kyee! (Yeah!)" end
+    if flag flg_KeyItems and flag flg_KeyItem_BubbleGum { goto(l_0xc6af8a) }
+    else if not flag flg_KeyItems and hasitem(255, item_Bubble_Gum) { goto(l_0xc6af8a) }
+    "@Kyee Kyee! (Yeah!)" end
 
 l_0xc6af8a:
     "@Kyu Ukyee" linebreak
