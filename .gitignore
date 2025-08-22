@@ -3,6 +3,7 @@
 
 # Custom ignores
 Build/
+venv/
 
 # User-specific files
 *.smc
