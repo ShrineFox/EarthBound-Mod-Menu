@@ -10,10 +10,18 @@ namespace EBModMenu
 {
     public class Config
     {
+#if DEBUG
+        public string CoilsnakeCLIPath { get; set; } = @"..\..\..\venv\Scripts";
+        public string InputROMPath { get; set; } = @"..\..\..\EarthBound.smc";
+        public string OutputROMPath { get; set; } = @".\Output\EarthBound_Mod_Menu.smc";
+        public string EmulatorPath { get; set; } = @"..\..\..\venv\Snes9x\snes9x-x64.exe";
+#endif
+#if !DEBUG
         public string CoilsnakeCLIPath { get; set; } = @"C:\Python\Scripts\coilsnake-cli.exe";
         public string InputROMPath { get; set; } = @".\Dependencies\InputROM\EarthBound.smc";
         public string OutputROMPath { get; set; } = @".\Output\EarthBound_Mod_Menu.smc";
         public string EmulatorPath { get; set; } = @".\Dependencies\Emulator\snes9x-x64.exe";
+#endif
         public bool LaunchEmuAfterBuild { get; set; } = true;
 
         public void SaveJson(Config settings)

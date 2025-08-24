@@ -4,6 +4,7 @@
 # Custom ignores
 Build/
 venv/
+__pycache__/
 
 # User-specific files
 *.smc

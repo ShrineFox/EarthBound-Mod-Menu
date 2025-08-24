@@ -1,4 +1,4 @@
-D:\Projects\EB\EarthBound_Mod_Menu.smc
+C:\Users\ShrineFox\Downloads\EarthBound_Mod_Menu.smc
 CCScript Compilation Summary
 ============================
 

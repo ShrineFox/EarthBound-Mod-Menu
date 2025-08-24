@@ -16,19 +16,9 @@ namespace EBModMenu
     class Program
     {
         // How to set up builder
-        // 1. Install Python 3.9: https://www.python.org/downloads/release/python-392/
-        // 2. Install Microsoft Visual C++ 14.0 for Visual Studio: https://visualstudio.microsoft.com/downloads/
-        // 3. Git clone Coilsnake repository: https://github.com/pk-hack/CoilSnake
-        // 4. Add path similar to the following to your system environment PATH variable:
-        //      C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x86
-        // 5. In command prompt, run:
-        //      python -m pip install pip==18.1
-        // 6. cd into Coilsnake repo and run:
-        //      python setup.py develop
-        // 7. If successful, coilsnake-cli.exe should appear in:
-        //      C:\Python\Scripts
-        // 8. Replace the .lnk files with shortcuts to your Expanded 6 MB ROM, coilsnake-cli.exe & emulator
-        // 9. Run ModMenuBuilder.exe to generate new output ROM for testing.
+        // 1. Place EB ROM in root of repository
+        // 2. Run "python -m prepare_venv"
+        // 3. Run ModMenuBuilder.exe to generate new output ROM for testing.
         // More info: https://github.com/pk-hack/CoilSnake/blob/master/DEVELOPMENT.md
 
         [STAThread]

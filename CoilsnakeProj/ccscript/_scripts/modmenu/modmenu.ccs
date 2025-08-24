@@ -85,6 +85,6 @@ ModMenu_AboutDlg:
 	Lbl(lbl_About)
 	"@EB Mod Menu v0.9.2 by ShrineFox." newline
 	"@Made using Coilsnake." newline
-	"@Updated 8[5F]04[5F]24." next
+	"@Updated 8[5F]24[5F]25." next
 	window_close(wnd_Dialog)
 goto(ModMenu)
