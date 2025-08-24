@@ -5,8 +5,8 @@ Play EarthBound YOUR way!
 This mod collects several quality of life enhancements, some made by myself, some made by the PK Hack community.  
 It's open source, so anyone can use parts of it for their own mods, or create their own derivatives.  
 ## How to Install
-### Version v0.9.1 Out Now! Check the [Releases page](https://github.com/ShrineFox/EarthBound-Mod-Menu/releases).
-Download ``earthbound_mod_menu.ips`` from the [Releases page](https://github.com/ShrineFox/EarthBound-Mod-Menu/releases) and use a tool such as this [online ROM patcher](https://www.marcrobledo.com/RomPatcher.js/) or an offline version such as [LunarIPS](https://www.romhacking.net/utilities/240/) or [Coilsnake](https://pk-hack.github.io/CoilSnake/) to apply it to your ``EarthBound.smc`` ROM.
+### Version v0.9.2 Out Now! Check the [Releases page](https://github.com/ShrineFox/EarthBound-Mod-Menu/releases).
+Download ``earthbound_mod_menu.ebp`` from the [Releases page](https://github.com/ShrineFox/EarthBound-Mod-Menu/releases) and use a tool such as this [online ROM patcher](https://www.marcrobledo.com/RomPatcher.js/) or an offline version such as [Coilsnake](https://pk-hack.github.io/CoilSnake/) to apply it to your ``EarthBound.smc`` ROM.
 
 # Features
 These are things that are built-in.  
